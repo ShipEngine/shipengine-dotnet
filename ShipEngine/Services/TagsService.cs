@@ -1,4 +1,8 @@
-using ShipEngine;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+using ShipEngine.Entities;
 
 namespace ShipEngine.Services
 {
@@ -9,9 +13,16 @@ namespace ShipEngine.Services
     {
     }
 
-    public string Create(string bar)
+    public async Task<Tag> Create(string tag)
     {
-      return "foo" + bar;
+      var request = new HttpRequestMessage(HttpMethod.Post, $"/v1/tags/{tag}");
+      var response = await this.Client.SendAsync(request);
+
+      response.EnsureSuccessStatusCode();
+
+      var content = await response.Content.ReadAsStringAsync();
+      
+      return JsonSerializer.Deserialize<Tag>(content);
     }
   }
 }

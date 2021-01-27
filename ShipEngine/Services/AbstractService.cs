@@ -4,7 +4,7 @@ namespace ShipEngine.Services
 {
   public abstract class AbstractService
   {
-    private ShipEngineClient Client;
+    protected ShipEngineClient Client;
     public AbstractService(ShipEngineClient client)
     {
       this.Client = client;

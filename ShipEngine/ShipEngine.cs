@@ -16,7 +16,7 @@ namespace ShipEngine
         {
             var userAgent = this.DeriveUserAgent();
             // set config
-            var config = new ShipEngineConfig();
+            var config = new ShipEngineConfig("MY_API_KEY", this.DeriveUserAgent());
             // set client
             var client = new ShipEngineClient(config);
 

@@ -1,11 +1,11 @@
+using System.Threading.Tasks;
+
+using ShipEngine.Entities;
+
 namespace ShipEngine.Extensions {
   public static class TagExtensions
   {
-    public static string CreateTag(this ShipEngine shipEngine)
-    {
-      return shipEngine.Tags.Create("foo");
-    }
-    public static string CreateTag(this ShipEngine shipEngine, string tag)
+    public static Task<Tag> CreateTag(this ShipEngine shipEngine, string tag)
     {
       return shipEngine.Tags.Create(tag);
     }
