@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Threading.Tasks;
 
 using ShipEngine;
@@ -17,7 +18,10 @@ namespace ShipEngine.Tests
         [Test]
         public async Task TestServicesAndExtensions()
         {
-            var shipEngine = new ShipEngine();
+            ShipEngineConfig config = new ShipEngineConfig("API_KEY");
+            config.BaseUri = new Uri("http://localhost:8500");
+
+            ShipEngine shipEngine = new ShipEngine(config);
             
             var first = await shipEngine.CreateTag("foo");
             Assert.AreEqual("foo", first.Name);
