@@ -5,14 +5,17 @@ namespace ShipEngine
   sealed public class ShipEngineConfig
   {
     public readonly string ApiKey;
-    public readonly Uri URI;
-    public readonly string UserAgent;
-    
-    public ShipEngineConfig(string apiKey, string userAgent)
+    public Uri BaseUri { get; set; }
+    public int PageSize { get; set; }
+    public int Retries { get; set; }
+    public string? UserAgent { get; set; }
+
+    public ShipEngineConfig(string apiKey)
     {
       this.ApiKey = apiKey;
-      this.URI = new Uri("http://localhost:8500");
-      this.UserAgent = userAgent;
+      this.BaseUri = ShipEngineConfigValidator.DefaultBaseUri;
+      this.PageSize = ShipEngineConfigValidator.DefaultPageSize;
+      this.Retries = ShipEngineConfigValidator.DefaultRetries;
     }
   }
 }

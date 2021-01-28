@@ -1,38 +1,49 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+using FluentValidation.Results;
+
 using ShipEngine.Services;
 
 namespace ShipEngine
 {
-    sealed public class ShipEngine
+  sealed public class ShipEngine
+  {
+    private readonly string Version = "0.0.1";
+
+    // SERVICES
+    public TagsService? Tags;
+
+    public ShipEngine(string apiKey)
     {
-        private readonly string Version = "0.0.1";
-
-        // SERVICES
-        public readonly TagsService Tags;
-
-        public ShipEngine()
-        {
-            var userAgent = this.DeriveUserAgent();
-            // set config
-            var config = new ShipEngineConfig("MY_API_KEY", this.DeriveUserAgent());
-            // set client
-            var client = new ShipEngineClient(config);
-
-            this.Tags = new TagsService(client);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private string DeriveUserAgent()
-        {
-            var os = Environment.OSVersion.ToString().Replace(" ", "/");
-            var runtime = RuntimeInformation.FrameworkDescription.Replace(" ", "/");
-
-            return $"shipengine-dotnet/{Version} {os} {runtime}";
-        }
+      ShipEngineConfig config = new ShipEngineConfig(apiKey);
+      config.UserAgent = this.DeriveUserAgent();
+      this.Ctor(config);
     }
+
+    public ShipEngine(ShipEngineConfig config)
+    {
+      config.UserAgent = this.DeriveUserAgent();
+      this.Ctor(config);
+    }
+
+    private void Ctor(ShipEngineConfig config) {
+      ShipEngineConfigValidator validator = new ShipEngineConfigValidator();
+      ValidationResult result = validator.Validate(config);
+      if (result.IsValid == false) {
+        throw new ArgumentException(result.Errors.ToString());
+      }
+
+      ShipEngineClient client = new ShipEngineClient(config);
+
+      this.Tags = new TagsService(client);
+    }
+    private string DeriveUserAgent()
+    {
+      string os = Environment.OSVersion.ToString().Replace(" ", "/");
+      string runtime = RuntimeInformation.FrameworkDescription.Replace(" ", "/");
+
+      return $"shipengine-dotnet/{Version} {os} {runtime}";
+    }
+  }
 }

@@ -7,7 +7,7 @@ namespace ShipEngine
   {
     public readonly HttpClient Client = new HttpClient();
     public ShipEngineClient(ShipEngineConfig config) {
-      this.Client.BaseAddress = config.URI;
+      this.Client.BaseAddress = config.BaseUri;
 
       this.Client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
       this.Client.DefaultRequestHeaders.Add("Accept", "application/json");
