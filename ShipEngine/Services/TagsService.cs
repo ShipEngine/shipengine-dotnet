@@ -13,7 +13,7 @@ namespace ShipEngine.Services
     {
     }
 
-    public async Task<Tag> Create(string tag)
+    public async Task<Tag?> Create(string tag)
     {
       var request = new HttpRequestMessage(HttpMethod.Post, $"/v1/tags/{tag}");
       var response = await this.Client.SendAsync(request);

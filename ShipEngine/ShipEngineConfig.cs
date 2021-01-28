@@ -12,10 +12,10 @@ namespace ShipEngine
 
     public ShipEngineConfig(string apiKey)
     {
-      this.ApiKey = apiKey;
-      this.BaseUri = ShipEngineConfigValidator.DefaultBaseUri;
-      this.PageSize = ShipEngineConfigValidator.DefaultPageSize;
-      this.Retries = ShipEngineConfigValidator.DefaultRetries;
+      ApiKey = apiKey;
+      BaseUri = ShipEngineConfigValidator.DefaultBaseUri;
+      PageSize = ShipEngineConfigValidator.DefaultPageSize;
+      Retries = ShipEngineConfigValidator.DefaultRetries;
     }
   }
 }

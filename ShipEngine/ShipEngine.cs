@@ -17,17 +17,17 @@ namespace ShipEngine
     public ShipEngine(string apiKey)
     {
       ShipEngineConfig config = new ShipEngineConfig(apiKey);
-      config.UserAgent = this.DeriveUserAgent();
-      this.Ctor(config);
+      config.UserAgent = DeriveUserAgent();
+      Build(config);
     }
 
     public ShipEngine(ShipEngineConfig config)
     {
-      config.UserAgent = this.DeriveUserAgent();
-      this.Ctor(config);
+      config.UserAgent = DeriveUserAgent();
+      Build(config);
     }
 
-    private void Ctor(ShipEngineConfig config) {
+    private void Build(ShipEngineConfig config) {
       ShipEngineConfigValidator validator = new ShipEngineConfigValidator();
       ValidationResult result = validator.Validate(config);
       if (result.IsValid == false) {

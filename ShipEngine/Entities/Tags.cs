@@ -5,6 +5,6 @@ namespace ShipEngine.Entities
   public class Tag
   {
     [JsonPropertyName("name")]
-    public string Name {get; set;}
+    public string? Name {get; set;}
   }
 }

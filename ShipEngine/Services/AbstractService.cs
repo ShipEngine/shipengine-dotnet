@@ -7,7 +7,7 @@ namespace ShipEngine.Services
     protected ShipEngineClient Client;
     public AbstractService(ShipEngineClient client)
     {
-      this.Client = client;
+      Client = client;
     }
   }
 }
