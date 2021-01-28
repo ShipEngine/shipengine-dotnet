@@ -18,10 +18,11 @@ namespace ShipEngine.Tests
         public async Task TestServicesAndExtensions()
         {
             var shipEngine = new ShipEngine();
+            
             var first = await shipEngine.CreateTag("foo");
-            var second = await shipEngine.Tags.Create("bar");
-
             Assert.AreEqual("foo", first.Name);
+
+            var second = await shipEngine.Tags.Create("bar");
             Assert.AreEqual("bar", second.Name);
         }
     }
