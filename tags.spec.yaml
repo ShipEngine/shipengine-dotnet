@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: ShipEngine
+  description: ShipEngine API
+  version: 0.0.1
+paths:
+  /v1/tags/{name}:
+    post:
+      description: Creates a new tag
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          examples:
+            foo:
+              value: foo
+          required: true
+          description: The name of the new tag
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/Tag'
+              examples:
+                foo:
+                  value:
+                    name: foo
+components:
+  schemas:
+    Tag:
+      required:
+        - name
+      properties:
+        name:
+          type: string

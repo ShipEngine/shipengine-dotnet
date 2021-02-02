@@ -2,12 +2,12 @@ using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 
-using ShipEngine;
+using ShipEngine.Entities;
 using ShipEngine.Extensions;
 
 namespace ShipEngine.Tests
 {
-    public class Tests
+    public class ShipEngineTests
     {
         [SetUp]
         public void Setup()
@@ -19,15 +19,15 @@ namespace ShipEngine.Tests
         public async Task TestServicesAndExtensions()
         {
             ShipEngineConfig config = new ShipEngineConfig("API_KEY");
-            config.BaseUri = new Uri("http://localhost:8500");
+            config.BaseUri = new Uri("http://localhost:9999");
 
             ShipEngine shipEngine = new ShipEngine(config);
             
-            var first = await shipEngine.CreateTag("foo");
-            Assert.AreEqual("foo", first.Name);
+            Tag one = await shipEngine.CreateTag("foo");
+            Assert.AreEqual("foo", one.Name);
 
-            var second = await shipEngine.Tags.Create("bar");
-            Assert.AreEqual("bar", second.Name);
+            Tag two = await shipEngine.Tags.Create("foo");
+            Assert.AreEqual("foo", two.Name);
         }
     }
 }

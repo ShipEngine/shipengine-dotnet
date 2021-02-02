@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace ShipEngine {
 
-  public class ShipEngineConfigValidator : AbstractValidator<ShipEngineConfig>
+  sealed public class ShipEngineConfigValidator : AbstractValidator<ShipEngineConfig>
   {
     public static readonly Uri DefaultBaseUri = new Uri("https://api.shipengine.com");
 
