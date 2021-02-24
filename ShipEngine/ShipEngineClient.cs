@@ -1,39 +1,35 @@
-using System;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Anemonis.JsonRpc.ServiceClient;
+using System.Collections.Generic;
 
 
 namespace ShipEngine
 {
+
+
     sealed public class ShipEngineClient
     {
+
         private ShipEngineConfig Config;
-        private readonly JsonRpcClient Client = new JsonRpcClient("http://localhost:8888");
+        private JsonRpcClient Client;
 
         public ShipEngineClient(ShipEngineConfig config)
         {
-            // Config = config;
+            Config = config;
 
-            // Client.BaseAddress = Config.BaseUri;
+            var httpClient = new HttpClient();
 
-            // Client.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
-            // Client.DefaultRequestHeaders.Add("Accept", "application/json");
-            // Client.DefaultRequestHeaders.Add("User-Agent", Config.UserAgent);
+            httpClient.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
 
+            Client = new JsonRpcClient(Config.BaseUri, httpClient);
         }
 
-        private HttpRequestMessage CloneRequest(HttpRequestMessage message)
+        public Task<Results> exec<Parameters, Results>(string method, Dictionary<string, object> parameters)
         {
-            var request = new HttpRequestMessage(message.Method, message.RequestUri);
-            request.Content = message.Content;
-            return request;
-        }
-        public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
-        {
-
+            var id = System.Guid.NewGuid().ToString();
+            return this.Client.InvokeAsync<Results>(method, id, parameters);
         }
     }
 }

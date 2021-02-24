@@ -8,7 +8,7 @@ namespace ShipEngine.Extensions
     {
         public static Task<Tag> CreateTag(this ShipEngine shipEngine, string tag)
         {
-            return shipEngine.Tags?.Create(tag);
+            return shipEngine.Tags.Create(tag);
         }
     }
 }

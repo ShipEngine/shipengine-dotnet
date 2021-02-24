@@ -1,7 +1,6 @@
-using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-
+using System.Collections.Generic;
 using ShipEngine.Entities;
 
 namespace ShipEngine.Services
@@ -16,14 +15,11 @@ namespace ShipEngine.Services
         public async Task<Entities.Tag?> Create(string tag)
         {
 
-            var request = new HttpRequestMessage(HttpMethod.Post, $"/v1/tags/{tag}");
-            var response = await this.Client.SendAsync(request);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("name", tag);
+            var response = await this.Client.exec<Tag, Tag>("tag/create", parameters);
 
-            response.EnsureSuccessStatusCode();
-
-            var content = await response.Content.ReadAsStringAsync();
-
-            return JsonSerializer.Deserialize<Tag>(content);
+            return response;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ShipEngine.Tests
         public async Task TestServicesAndExtensions()
         {
             ShipEngineConfig config = new ShipEngineConfig("API_KEY");
-            config.BaseUri = new Uri("http://localhost:9999");
+            config.BaseUri = new Uri("http://localhost:8500");
 
             ShipEngine shipEngine = new ShipEngine(config);
 
