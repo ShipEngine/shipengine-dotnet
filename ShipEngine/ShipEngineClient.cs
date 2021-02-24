@@ -1,6 +1,5 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Anemonis.JsonRpc.ServiceClient;
 using System.Collections.Generic;
 

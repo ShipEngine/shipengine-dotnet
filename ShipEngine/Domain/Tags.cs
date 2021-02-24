@@ -1,4 +1,4 @@
-namespace ShipEngine.Entities
+namespace ShipEngine.Domain
 {
     public class Tag
     {

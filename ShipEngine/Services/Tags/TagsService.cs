@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using ShipEngine.Entities;
+using ShipEngine.Domain;
 using ShipEngine.Dtos;
 namespace ShipEngine.Services
 {
@@ -11,7 +11,7 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<Entities.Tag?> Create(string tag)
+        public async Task<Domain.Tag?> Create(string tag)
         {
 
             var parameters = new Dictionary<string, object>();

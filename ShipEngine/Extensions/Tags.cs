@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-using ShipEngine.Entities;
+using ShipEngine.Domain;
 
 namespace ShipEngine.Extensions
 {

@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 
-using ShipEngine.Entities;
+using ShipEngine.Domain;
 using ShipEngine.Extensions;
 
 namespace ShipEngine.Tests
