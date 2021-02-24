@@ -2,41 +2,38 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Anemonis.JsonRpc.ServiceClient;
 
-using Polly;
-using Polly.Retry;
 
 namespace ShipEngine
 {
-  sealed public class ShipEngineClient
-  {
-    private ShipEngineConfig Config;
-    private readonly HttpClient Client = new HttpClient();
-    private readonly AsyncRetryPolicy<HttpResponseMessage> Policy;
-
-    public ShipEngineClient(ShipEngineConfig config)
+    sealed public class ShipEngineClient
     {
-      Config = config;
+        private ShipEngineConfig Config;
+        private readonly JsonRpcClient Client = new JsonRpcClient("http://localhost:8888");
 
-      Client.BaseAddress = Config.BaseUri;
+        public ShipEngineClient(ShipEngineConfig config)
+        {
+            // Config = config;
 
-      Client.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
-      Client.DefaultRequestHeaders.Add("Accept", "application/json");
-      Client.DefaultRequestHeaders.Add("User-Agent", Config.UserAgent);
+            // Client.BaseAddress = Config.BaseUri;
 
-      Policy = Polly.Policy.HandleResult<HttpResponseMessage>(r => r.StatusCode == HttpStatusCode.TooManyRequests)
-      .WaitAndRetryAsync(Config.Retries, _ => TimeSpan.FromSeconds(1));
+            // Client.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
+            // Client.DefaultRequestHeaders.Add("Accept", "application/json");
+            // Client.DefaultRequestHeaders.Add("User-Agent", Config.UserAgent);
+
+        }
+
+        private HttpRequestMessage CloneRequest(HttpRequestMessage message)
+        {
+            var request = new HttpRequestMessage(message.Method, message.RequestUri);
+            request.Content = message.Content;
+            return request;
+        }
+        public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
+        {
+
+        }
     }
-
-    private HttpRequestMessage CloneRequest(HttpRequestMessage message)
-    {
-      var request = new HttpRequestMessage(message.Method, message.RequestUri);
-      request.Content = message.Content;
-      return request;
-    }
-    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
-    {
-      return await Policy.ExecuteAsync(() => Client.SendAsync(CloneRequest(message)));
-    }
-  }
 }

@@ -22,7 +22,7 @@ namespace ShipEngine.Tests
             config.BaseUri = new Uri("http://localhost:9999");
 
             ShipEngine shipEngine = new ShipEngine(config);
-            
+
             Tag one = await shipEngine.CreateTag("foo");
             Assert.AreEqual("foo", one.Name);
 
