@@ -1,8 +1,7 @@
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using ShipEngine.Entities;
-
+using ShipEngine.Dtos;
 namespace ShipEngine.Services
 {
 
@@ -17,9 +16,13 @@ namespace ShipEngine.Services
 
             var parameters = new Dictionary<string, object>();
             parameters.Add("name", tag);
-            var response = await this.Client.exec<Tag, Tag>("tag/create", parameters);
+            var response = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", parameters);
 
-            return response;
+            var domainTag = new Tag
+            {
+                Name = response.Name
+            };
+            return domainTag;
         }
     }
 }
