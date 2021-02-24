@@ -7,7 +7,6 @@ namespace ShipEngine
         public readonly string ApiKey;
         public Uri BaseUri { get; set; }
         public int PageSize { get; set; }
-        public int Retries { get; set; }
         public string? UserAgent { get; set; }
 
         public ShipEngineConfig(string apiKey)
@@ -15,7 +14,6 @@ namespace ShipEngine
             ApiKey = apiKey;
             BaseUri = ShipEngineConfigValidator.DefaultBaseUri;
             PageSize = ShipEngineConfigValidator.DefaultPageSize;
-            Retries = ShipEngineConfigValidator.DefaultRetries;
         }
     }
 }
