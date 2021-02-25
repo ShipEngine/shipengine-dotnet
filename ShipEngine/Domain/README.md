@@ -1,1 +1,0 @@
-- These files represent .NET domain objects and should not have json attributes.

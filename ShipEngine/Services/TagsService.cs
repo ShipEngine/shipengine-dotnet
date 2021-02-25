@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using ShipEngine.Domain;
-using ShipEngine.Dtos;
+using ShipEngine.Models;
 namespace ShipEngine.Services
 {
 
@@ -11,18 +10,14 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<Domain.Tag?> Create(string tag)
+        public async Task<CreateTagResult?> Create(string tagName)
         {
 
             var parameters = new Dictionary<string, object>();
-            parameters.Add("name", tag);
+            parameters.Add("name", tagName);
             var response = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", parameters);
 
-            var domainTag = new Tag
-            {
-                Name = response.Name
-            };
-            return domainTag;
+            return response;
         }
     }
 }

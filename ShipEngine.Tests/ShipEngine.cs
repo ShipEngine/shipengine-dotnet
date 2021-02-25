@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 
-using ShipEngine.Domain;
+using ShipEngine.Models;
 using ShipEngine.Extensions;
 
 namespace ShipEngine.Tests
@@ -23,10 +23,10 @@ namespace ShipEngine.Tests
 
             ShipEngine shipEngine = new ShipEngine(config);
 
-            Tag one = await shipEngine.CreateTag("foo");
+            CreateTagResult one = await shipEngine.CreateTag("foo");
             Assert.AreEqual("foo", one.Name);
 
-            Tag two = await shipEngine.Tags.Create("foo");
+            CreateTagResult two = await shipEngine.Tags.Create("foo");
             Assert.AreEqual("foo", two.Name);
         }
     }
