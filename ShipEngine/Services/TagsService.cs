@@ -10,14 +10,19 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<CreateTagResult?> Create(string tagName)
+        public async Task<Models.CreateTagResult?> Create(CreateTagParams tag)
         {
 
-            var parameters = new Dictionary<string, object>();
-            parameters.Add("name", tagName);
-            var response = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", parameters);
 
-            return response;
+            var parameters = new CreateTagParams
+            {
+                Name = tag.Name
+            };
+
+            var createTagResult = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", parameters);
+
+            // Put stuff like "coercing to date", turning messages -> info, etc into CreateTagResult
+            return createTagResult;
         }
     }
 }

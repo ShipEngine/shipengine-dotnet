@@ -1,15 +1,19 @@
 
+using Newtonsoft.Json;
 namespace ShipEngine.Models
 {
     public class CreateTagParams
     {
-        public string? Name { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; } = default!;
     }
 
     public class CreateTagResult
     {
-        public string? Name { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; } = default!;
     }
+
 }
 
 

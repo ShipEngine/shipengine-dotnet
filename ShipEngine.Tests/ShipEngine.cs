@@ -23,10 +23,14 @@ namespace ShipEngine.Tests
 
             ShipEngine shipEngine = new ShipEngine(config);
 
-            CreateTagResult one = await shipEngine.CreateTag("foo");
+            var one = await shipEngine.CreateTag("foo");
             Assert.AreEqual("foo", one.Name);
 
-            CreateTagResult two = await shipEngine.Tags.Create("foo");
+            var two = await shipEngine.Tags.Create(new CreateTagParams
+            {
+                Name = "foo"
+            });
+
             Assert.AreEqual("foo", two.Name);
         }
     }
