@@ -19,3 +19,9 @@ Run the following command:
 %> hoverctl import simengine/rpc/rpc.json
 %> dotnet test
 ```
+
+Run tests on file change:
+
+```
+%> dotnet watch -p ShipEngine.tests/ test
+```
