@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using ShipEngine.Models;
 namespace ShipEngine.Services
 {
@@ -12,16 +11,8 @@ namespace ShipEngine.Services
 
         public async Task<Models.CreateTagResult?> Create(CreateTagParams tag)
         {
+            var createTagResult = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", tag);
 
-
-            var parameters = new CreateTagParams
-            {
-                Name = tag.Name
-            };
-
-            var createTagResult = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", parameters);
-
-            // Put stuff like "coercing to date", turning messages -> info, etc into CreateTagResult
             return createTagResult;
         }
     }
