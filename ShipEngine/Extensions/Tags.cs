@@ -6,15 +6,14 @@ namespace ShipEngine.Extensions
 {
     public static class TagExtensions
     {
-        public static Task<CreateTagResult> CreateTag(this ShipEngine shipEngine, string tag)
+        public async static Task<string> CreateTag(this ShipEngine shipEngine, string tag)
         {
             var tagParams = new CreateTagParams
             {
                 Name = tag,
             };
-
-            return shipEngine.Tags.Create(tagParams);
-
+            CreateTagResult tags = await shipEngine.Tags.Create(tagParams);
+            return tags.Name;
         }
     }
 }

@@ -9,10 +9,9 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<Models.CreateTagResult?> Create(CreateTagParams tag)
+        public async Task<Models.CreateTagResult> Create(CreateTagParams tag)
         {
             var createTagResult = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", tag);
-
             return createTagResult;
         }
     }

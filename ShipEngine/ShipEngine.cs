@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-using FluentValidation.Results;
 
 using ShipEngine.Services;
 
@@ -27,13 +26,6 @@ namespace ShipEngine
 
         private void Build(ShipEngineConfig config)
         {
-            ShipEngineConfigValidator validator = new ShipEngineConfigValidator();
-            ValidationResult result = validator.Validate(config);
-            if (result.IsValid == false)
-            {
-                throw new ArgumentException(result.Errors.ToString());
-            }
-
             ShipEngineClient client = new ShipEngineClient(config);
 
             this.Tags = new TagsService(client);
