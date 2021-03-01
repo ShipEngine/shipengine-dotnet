@@ -17,13 +17,11 @@ namespace ShipEngine
         public ShipEngine(string apiKey)
         {
             ShipEngineConfig config = new ShipEngineConfig(apiKey);
-            config.UserAgent = DeriveUserAgent();
             Build(config);
         }
 
         public ShipEngine(ShipEngineConfig config)
         {
-            config.UserAgent = DeriveUserAgent();
             Build(config);
         }
 
@@ -40,6 +38,7 @@ namespace ShipEngine
 
             this.Tags = new TagsService(client);
         }
+
         private string DeriveUserAgent()
         {
             string os = Environment.OSVersion.ToString().Replace(" ", "/");
