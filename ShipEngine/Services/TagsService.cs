@@ -1,28 +1,18 @@
-using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
-
-using ShipEngine.Entities;
-
+using ShipEngine.Models;
 namespace ShipEngine.Services
 {
-  
-  public class TagsService : AbstractService
-  {
-    public TagsService(ShipEngineClient client) : base(client)
+
+    public class TagsService : AbstractService
     {
+        public TagsService(ShipEngineClient client) : base(client)
+        {
+        }
+
+        public async Task<Models.CreateTagResult> Create(CreateTagParams tag)
+        {
+            var createTagResult = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", tag);
+            return createTagResult;
+        }
     }
-
-    public async Task<Tag?> Create(string tag)
-    {
-      var request = new HttpRequestMessage(HttpMethod.Post, $"/v1/tags/{tag}");
-      var response = await this.Client.SendAsync(request);
-
-      response.EnsureSuccessStatusCode();
-
-      var content = await response.Content.ReadAsStringAsync();
-      
-      return JsonSerializer.Deserialize<Tag>(content);
-    }
-  }
 }

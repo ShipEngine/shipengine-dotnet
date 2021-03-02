@@ -10,7 +10,18 @@ A C# library built on the [ShipEngine API](https://shipengine.com) offering low-
 
 ## TESTS
 
-In order for tests to pass, you need to have [Prism](https://stoplight.io/open-source/prism) running with the current [OpenApi](http://spec.openapis.org/oas/v3.0.3) spec:
+In order for tests to pass, you need to have [hoverfly installed](https://docs.hoverfly.io/en/latest/pages/introduction/downloadinstallation.html).
+
+Run the following command:
+
 ```
-%> prism mock --port 9999 ../shipengine-api-definition/v2.oas3.dist.yaml
+%> hoverfly -webserver -response-body-files-path simengine &
+%> hoverctl import simengine/rpc/rpc.json
+%> dotnet test
+```
+
+Run tests on file change:
+
+```
+%> dotnet watch -p ShipEngine.tests/ test
 ```

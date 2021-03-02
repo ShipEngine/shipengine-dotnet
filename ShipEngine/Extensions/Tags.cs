@@ -1,13 +1,19 @@
 using System.Threading.Tasks;
 
-using ShipEngine.Entities;
+using ShipEngine.Models;
 
-namespace ShipEngine.Extensions {
-  public static class TagExtensions
-  {
-    public static Task<Tag> CreateTag(this ShipEngine shipEngine, string tag)
+namespace ShipEngine.Extensions
+{
+    public static class TagExtensions
     {
-      return shipEngine.Tags.Create(tag);
+        public async static Task<string> CreateTag(this ShipEngine shipEngine, string tag)
+        {
+            var tagParams = new CreateTagParams
+            {
+                Name = tag,
+            };
+            CreateTagResult tags = await shipEngine.Tags.Create(tagParams);
+            return tags.Name;
+        }
     }
-  }
 }

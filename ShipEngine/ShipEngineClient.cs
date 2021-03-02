@@ -1,42 +1,40 @@
 using System;
-using System.Net;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-
-using Polly;
-using Polly.Retry;
+using Anemonis.JsonRpc.ServiceClient;
+using Newtonsoft.Json;
 
 namespace ShipEngine
 {
-  sealed public class ShipEngineClient
-  {
-    private ShipEngineConfig Config;
-    private readonly HttpClient Client = new HttpClient();
-    private readonly AsyncRetryPolicy<HttpResponseMessage> Policy;
 
-    public ShipEngineClient(ShipEngineConfig config)
+
+    sealed public class ShipEngineClient
     {
-      Config = config;
+        private ShipEngineConfig Config;
+        private JsonRpcClient Client;
 
-      Client.BaseAddress = Config.BaseUri;
+        public ShipEngineClient(ShipEngineConfig config)
+        {
+            Config = config;
 
-      Client.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
-      Client.DefaultRequestHeaders.Add("Accept", "application/json");
-      Client.DefaultRequestHeaders.Add("User-Agent", Config.UserAgent);
+            var httpClient = new HttpClient();
 
-      Policy = Polly.Policy.HandleResult<HttpResponseMessage>(r => r.StatusCode == HttpStatusCode.TooManyRequests)
-      .WaitAndRetryAsync(Config.Retries, _ => TimeSpan.FromSeconds(1));
+            httpClient.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
+
+            // var Foo = new JsonRpcClientFactory.Create<IRandomOrgService>;
+            Client = new JsonRpcClient(Config.BaseUri, httpClient);
+        }
+
+        public Task<Results> exec<Parameters, Results>(string method, Parameters parameters) where Parameters : class
+        {
+            var id = System.Guid.NewGuid().ToString();
+
+            // hacky way to convert from a class to a dictionary with keys reflected in DTO attributes
+            var serialized = JsonConvert.SerializeObject(parameters);
+            var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(serialized);
+
+            return this.Client.InvokeAsync<Results>(method, id, values);
+        }
     }
-
-    private HttpRequestMessage CloneRequest(HttpRequestMessage message)
-    {
-      var request = new HttpRequestMessage(message.Method, message.RequestUri);
-      request.Content = message.Content;
-      return request;
-    }
-    public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
-    {
-      return await Policy.ExecuteAsync(() => Client.SendAsync(CloneRequest(message)));
-    }
-  }
 }
