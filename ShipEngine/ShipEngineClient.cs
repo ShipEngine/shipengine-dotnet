@@ -3,30 +3,66 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Anemonis.JsonRpc.ServiceClient;
 using Newtonsoft.Json;
 
-namespace JsonRpc
+
+namespace ShipEngine
 {
+    namespace ShipEngineExceptions
+    {
+        [Serializable]
+        public class ShipEngineException : Exception
+        {
+            public int Code
+            {
+                get;
+            }
+
+            public readonly Dictionary<string, object>? Details;
+
+            public ShipEngineException(string message) : base(message)
+            {
+            }
+
+            public ShipEngineException(string message, int errorCode, Dictionary<string, object>? data) : base(message)
+            {
+                Code = errorCode;
+                Details = data;
+            }
+
+        }
+    }
+
     abstract class BaseResponse
     {
         [JsonProperty("jsonrpc")]
-        public readonly string JsonRpcVersion = "2.0";
+        public string JsonRpcVersion
+        {
+            get; set;
+        }
 
         [JsonProperty("id")]
-        public readonly string Id = System.Guid.NewGuid().ToString();
+        public string Id
+        {
+            get; set;
+        }
     }
 
-    class JsonRpcResponseSuccess<Data> : BaseResponse
+    class JsonRpcResponse<Data> : BaseResponse
     {
+        public JsonRpcResponse() : base() { }
 
         [JsonProperty("result")]
-        public Data Result;
+        public Data? Result;
 
-        JsonRpcResponseSuccess(Data result)
+        [JsonProperty("error")]
+        public JsonRpcResponseErrorData? Error;
+
+        JsonRpcResponse(Data result)
         {
             this.Result = result;
         }
+
     }
 
     class JsonRpcResponseErrorData
@@ -48,13 +84,33 @@ namespace JsonRpc
         {
             get; set;
         }
-
     }
-    class JsonRpcResponseError : BaseResponse
-    {
 
-        [JsonProperty("error")]
-        JsonRpcResponseError error = default!;
+    class JsonRpcRequest<Parameters>
+    {
+        [JsonProperty("jsonrpc")]
+        public readonly string JsonRpcVersion = "2.0";
+
+        [JsonProperty("id")]
+        public readonly string Id = new Guid().ToString();
+
+        [JsonProperty("method")]
+        public string Method
+        {
+            get; set;
+        }
+
+        [JsonProperty("params")]
+        public Parameters Params
+        {
+            get; set;
+        }
+
+        public JsonRpcRequest(string method, Parameters parameters)
+        {
+            Method = method;
+            Params = parameters;
+        }
     }
 }
 
@@ -62,8 +118,6 @@ namespace JsonRpc
 
 namespace ShipEngine
 {
-
-
     sealed public class ShipEngineClient
     {
         private ShipEngineConfig Config;
@@ -71,24 +125,19 @@ namespace ShipEngine
 
         public ShipEngineClient(ShipEngineConfig config)
         {
-            Config = config;
-
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
+            client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("User-Agent", Config.UserAgent);
             Client = client;
+            Config = config;
         }
 
         public HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
             var request = new HttpRequestMessage(HttpMethod.Post, Config.BaseUri);
-            var id = System.Guid.NewGuid().ToString();
-
-            var serialized = JsonConvert.SerializeObject(parameters);
-            request.Content = new StringContent(serialized, Encoding.UTF8, "application/json");
-
-
+            var jsonRpcRequest = new JsonRpcRequest<Parameters>(jsonRpcMethod, parameters);
+            string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequest);
+            request.Content = new StringContent(serializedRequest, Encoding.UTF8, "application/json");
             return request;
         }
 
@@ -101,14 +150,31 @@ namespace ShipEngine
 
         public async Task<Results> exec<Parameters, Results>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
-
-
             HttpRequestMessage message = CreateJsonRpcMessage<Parameters>(jsonRpcMethod, parameters);
             var httpResponseMessage = await this.SendAsync(message);
             httpResponseMessage.EnsureSuccessStatusCode();
-            Results results = JsonConvert.DeserializeObject<Results>(await httpResponseMessage.Content.ReadAsStringAsync());
-            return results;
+            var rpcResponse = JsonConvert.DeserializeObject<JsonRpcResponse<Results>>(
+                await httpResponseMessage.Content.ReadAsStringAsync(),
+                new JsonSerializerSettings { Error = (se, ev) => { ev.ErrorContext.Handled = true; } }
+            );
 
+            if (rpcResponse == null)
+            {
+                throw new ShipEngineExceptions.ShipEngineException("Invalid response; content empty");
+            }
+            else if (rpcResponse.Error != null)
+            {
+                // On a fatal user OR server error -- for example, the server was unable to handle the results
+                throw new ShipEngineExceptions.ShipEngineException(rpcResponse.Error.Message ?? "Unknown RPC error", rpcResponse.Error.Code, rpcResponse.Error.Data);
+            }
+            else if (rpcResponse.Result == null) // JSON RPC contract violation: Result/Error are mutually exclusive.
+            {
+                throw new ShipEngineExceptions.ShipEngineException("Invalid response; result missing");
+            }
+            else
+            {
+                return rpcResponse.Result;
+            }
         }
     }
 }

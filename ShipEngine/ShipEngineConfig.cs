@@ -20,17 +20,5 @@ namespace ShipEngine
             };
             BaseUri = uri;
         }
-
-        public string UserAgent
-        {
-            get
-            {
-                string os = Environment.OSVersion.ToString().Replace(" ", "/");
-                string runtime = RuntimeInformation.FrameworkDescription.Replace(" ", "/");
-                string ver = AppDomain.CurrentDomain.SetupInformation.TargetFrameworkName ?? "0.0.0";
-                return $"shipengine-dotnet/{ver} {os} {runtime}";
-
-            }
-        }
     }
 }
