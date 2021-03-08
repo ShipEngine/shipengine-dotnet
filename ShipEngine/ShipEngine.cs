@@ -31,12 +31,6 @@ namespace ShipEngine
             this.Tags = new TagsService(client);
         }
 
-        private string DeriveUserAgent()
-        {
-            string os = Environment.OSVersion.ToString().Replace(" ", "/");
-            string runtime = RuntimeInformation.FrameworkDescription.Replace(" ", "/");
 
-            return $"shipengine-dotnet/{Version} {os} {runtime}";
-        }
     }
 }

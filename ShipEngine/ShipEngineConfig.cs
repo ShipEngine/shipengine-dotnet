@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 
 namespace ShipEngine
 {
@@ -18,6 +19,18 @@ namespace ShipEngine
                 throw new ArgumentException(message: $"Could not construct URI with {baseUri}", paramName: nameof(baseUri));
             };
             BaseUri = uri;
+        }
+
+        public string UserAgent
+        {
+            get
+            {
+                string os = Environment.OSVersion.ToString().Replace(" ", "/");
+                string runtime = RuntimeInformation.FrameworkDescription.Replace(" ", "/");
+                string ver = AppDomain.CurrentDomain.SetupInformation.TargetFrameworkName ?? "0.0.0";
+                return $"shipengine-dotnet/{ver} {os} {runtime}";
+
+            }
         }
     }
 }
