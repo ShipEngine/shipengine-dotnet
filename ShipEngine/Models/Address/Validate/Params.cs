@@ -44,12 +44,12 @@ namespace ShipEngine.Models.AddressDto
         public static AddressValidationParams FromJson(string json) => JsonConvert.DeserializeObject<AddressValidationParams>(json, Models.Converter.Settings);
     }
 
-    public static class Serialize
+    public static class SerializeAddressValidationParams
     {
         public static string ToJson(this AddressValidationParams self) => JsonConvert.SerializeObject(self, Models.Converter.Settings);
     }
 
-    internal static class Converter
+    internal static class Convert
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
