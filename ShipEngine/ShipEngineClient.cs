@@ -9,10 +9,16 @@ using System.Threading.Tasks;
 
 namespace ShipEngine
 {
+
     sealed public class ShipEngineClient
     {
         private readonly ShipEngineConfig Config;
         private readonly HttpClient Client;
+
+        private readonly JsonSerializerSettings serializerSettings = new()
+        {
+            Error = (se, ev) => { ev.ErrorContext.Handled = true; }
+        };
 
         public ShipEngineClient(ShipEngineConfig config)
         {
@@ -23,12 +29,15 @@ namespace ShipEngine
             Config = config;
         }
 
-        private static async Task<JsonRpcResponse<T>?> DeserializeJsonRpcResponse<T>(HttpResponseMessage message)
+        private async Task<T> DeserializeHttpContent<T>(HttpResponseMessage message)
         {
             string msgContent = await message.Content.ReadAsStringAsync();
-
-            var serializerSettings = new JsonSerializerSettings { Error = (se, ev) => { ev.ErrorContext.Handled = true; } };
-            return JsonConvert.DeserializeObject<JsonRpcResponse<T>>(msgContent, serializerSettings);
+            var result = JsonConvert.DeserializeObject<T>(msgContent, serializerSettings);
+            if (result == null)
+            {
+                throw new ShipEngineException("Invalid response, Content empty after deserialization");
+            }
+            return result;
         }
 
         private HttpRequestMessage CreateConfiguredRequestMessage(string content)
@@ -63,35 +72,28 @@ namespace ShipEngine
             return Client.SendAsync(request);
         }
 
-        public async Task<Results> Exec<Parameters, Results>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        private async Task<HttpResponseMessage> SendAsyncRpc<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
-            var httpResponseMessage = await this.SendAsync(CreateJsonRpcMessage<Parameters>(jsonRpcMethod, parameters));
+            var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
-
-            var rpcResponse = await DeserializeJsonRpcResponse<Results>(httpResponseMessage);
-            if (rpcResponse == null)
-            {
-                throw new ShipEngineException("Invalid response; content empty");
-            }
-            else if (rpcResponse.Error != null)
-            {
-                // On a fatal user OR server error -- for example, the server was unable to handle the results
-                throw new ShipEngineException(rpcResponse.Error.Message ?? "Unknown RPC error", rpcResponse.Error.Code, rpcResponse.Error.Data);
-            }
-            else if (rpcResponse.Result == null) // JSON RPC contract violation: Result/Error are mutually exclusive.
-            {
-                throw new ShipEngineException("Invalid response; result missing");
-            }
-            else
-            {
-                return rpcResponse.Result;
-            }
+            return httpResponseMessage;
         }
 
-        public async Task<List<Results>> Exec<Parameters, Results>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
-            var result = await Exec<List<Parameters>, List<Results>>(jsonRpcMethod, parameters);
-            return result;
+            var httpResponseMessage = await SendAsyncRpc(jsonRpcMethod, parameters);
+            var rpcResponse = await DeserializeHttpContent<JsonRpcResponse<Result>>(httpResponseMessage);
+
+            return rpcResponse;
+        }
+
+        public async Task<List<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        {
+            var httpResponseMessage = await SendAsyncRpc(jsonRpcMethod, parameters);
+
+            // Only reason this overload is neccessary is because we want List<JsonRpcResponse<Foo>> rather than JsonRpcResponse<List<Foo>>
+            var rpcResponse = await DeserializeHttpContent<List<JsonRpcResponse<Result>>>(httpResponseMessage);
+            return rpcResponse;
         }
     }
 }

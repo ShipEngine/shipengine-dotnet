@@ -13,14 +13,15 @@ namespace ShipEngine.Services
         {
         }
 
-        public Task<AddressValidationResult> Validate(AddressValidationParams address)
+        public async Task<AddressValidationResult> Validate(AddressValidationParams address)
         {
-            return Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", address);
+            var result = await Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", address);
+            return result.UnwrapResultOrThrow();
         }
 
-        public Task<List<AddressValidationResult>> Validate(List<AddressValidationParams> addresses)
-        {
-            return Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", addresses);
-        }
+        // public Task<List<AddressValidationResult>> Validate(List<AddressValidationParams> addresses)
+        // {
+        //     var result = Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", addresses);
+        // }
     }
 }
