@@ -9,7 +9,7 @@ namespace ShipEngine.Tests
 {
     public class AddressService : BaseShipEngineServiceTest
     {
-        AddressValidationParams AddressValidationParamsFixture = new AddressValidationParams
+        readonly AddressValidationParams AddressValidationParamsFixture = new()
         {
             Street = new List<string> { "One", "Two", "Three" },
             CityLocality = "Chicago",

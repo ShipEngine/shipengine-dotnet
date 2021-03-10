@@ -3,8 +3,5 @@
     "omnisharp.useEditorFormattingSettings": false,
     "[csharp]": {
         "editor.defaultFormatter": "ms-dotnettools.csharp"
-    },
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": false,
-    "editor.detectIndentation": true
+    }
 }

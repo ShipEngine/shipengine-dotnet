@@ -11,7 +11,7 @@ namespace ShipEngine.Tests
         public ShipEngine MockShipEngineClient;
         public BaseShipEngineServiceTest()
         {
-            ShipEngineConfig config = new ShipEngineConfig("API_KEY", "http://localhost:8500");
+            var config = new ShipEngineConfig("API_KEY", "http://localhost:8500");
             MockShipEngineClient = new ShipEngine(config);
         }
 

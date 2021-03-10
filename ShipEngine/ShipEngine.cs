@@ -6,15 +6,13 @@ namespace ShipEngine
 {
     sealed public class ShipEngine
     {
-        private readonly string Version = "0.0.1";
-
         // SERVICES
         public TagsService Tags;
         public AddressService Address;
 
         public ShipEngine(string apiKey)
         {
-            ShipEngineConfig config = new ShipEngineConfig(apiKey);
+            var config = new ShipEngineConfig(apiKey);
             Build(config);
         }
 
@@ -25,7 +23,7 @@ namespace ShipEngine
 
         private void Build(ShipEngineConfig config)
         {
-            ShipEngineClient client = new ShipEngineClient(config);
+            var client = new ShipEngineClient(config);
 
             this.Tags = new TagsService(client);
             this.Address = new AddressService(client);

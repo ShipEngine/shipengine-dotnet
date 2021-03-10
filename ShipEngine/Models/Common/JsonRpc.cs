@@ -28,12 +28,6 @@ namespace ShipEngine.Models.JsonRpc
 
         [JsonProperty("error")]
         public JsonRpcResponseErrorData? Error;
-
-        JsonRpcResponse(Data result)
-        {
-            this.Result = result;
-        }
-
     }
 
     class JsonRpcResponseErrorData

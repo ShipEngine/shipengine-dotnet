@@ -9,8 +9,8 @@ namespace ShipEngine
 {
     sealed public class ShipEngineClient
     {
-        private ShipEngineConfig Config;
-        private HttpClient Client;
+        private readonly ShipEngineConfig Config;
+        private readonly HttpClient Client;
 
         public ShipEngineClient(ShipEngineConfig config)
         {
@@ -21,7 +21,7 @@ namespace ShipEngine
             Config = config;
         }
 
-        private async Task<JsonRpcResponse<T>?> DeserializeJsonRpcResponse<T>(HttpResponseMessage message)
+        private static async Task<JsonRpcResponse<T>?> DeserializeJsonRpcResponse<T>(HttpResponseMessage message)
         {
             string messageStr = await message.Content.ReadAsStringAsync();
 
@@ -40,17 +40,19 @@ namespace ShipEngine
 
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
         {
-            var request = new HttpRequestMessage(message.Method, message.RequestUri);
-            request.Content = message.Content;
+            var request = new HttpRequestMessage(message.Method, message.RequestUri)
+            {
+                Content = message.Content
+            };
             return Client.SendAsync(request);
         }
 
-        public async Task<Results> exec<Parameters, Results>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        public async Task<Results> Exec<Parameters, Results>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
             var httpResponseMessage = await this.SendAsync(CreateJsonRpcMessage<Parameters>(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
 
-            var rpcResponse = await this.DeserializeJsonRpcResponse<Results>(httpResponseMessage);
+            var rpcResponse = await DeserializeJsonRpcResponse<Results>(httpResponseMessage);
             if (rpcResponse == null)
             {
                 throw new ShipEngineException("Invalid response; content empty");
@@ -70,9 +72,9 @@ namespace ShipEngine
             }
         }
 
-        public async Task<List<Results>> exec<Parameters, Results>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        public async Task<List<Results>> Exec<Parameters, Results>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
         {
-            var result = await this.exec<List<Parameters>, List<Results>>(jsonRpcMethod, parameters);
+            var result = await this.Exec<List<Parameters>, List<Results>>(jsonRpcMethod, parameters);
             return result;
         }
     }

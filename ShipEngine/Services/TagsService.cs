@@ -11,7 +11,7 @@ namespace ShipEngine.Services
 
         public Task<Models.CreateTagResult> Create(CreateTagParams tag)
         {
-            return this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", tag);
+            return this.Client.Exec<CreateTagParams, CreateTagResult>("tag/create", tag);
         }
     }
 }
