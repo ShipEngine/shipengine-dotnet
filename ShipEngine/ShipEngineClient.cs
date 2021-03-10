@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
-
+using System.Collections.Generic;
 namespace ShipEngine
 {
     sealed public class ShipEngineClient
@@ -68,6 +68,12 @@ namespace ShipEngine
             {
                 return rpcResponse.Result;
             }
+        }
+
+        public async Task<List<Results>> exec<Parameters, Results>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        {
+            var result = await this.exec<List<Parameters>, List<Results>>(jsonRpcMethod, parameters);
+            return result;
         }
     }
 }

@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ShipEngine.Models.Address.Dto;
-
+using System.Linq;
 
 namespace ShipEngine.Services
 
@@ -12,9 +13,12 @@ namespace ShipEngine.Services
         {
         }
 
-        public Task<AddressValidationResult> Validate(AddressValidationParams address)
+        public async Task<AddressValidationResult> Validate(AddressValidationParams address)
         {
-            return this.Client.exec<AddressValidationParams, AddressValidationResult>("address/validate", address);
+            var addressList = new List<AddressValidationParams>() { address };
+            // Address is capable of bulk, so just putting this here in case we want to change it later. Currently, simengine alwa returns a list.
+            var response = await this.Client.exec<AddressValidationParams, AddressValidationResult>("address/validate", addressList);
+            return response.First();
         }
     }
 }

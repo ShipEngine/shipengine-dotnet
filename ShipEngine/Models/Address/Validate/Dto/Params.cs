@@ -15,7 +15,7 @@ namespace ShipEngine.Models.Address.Dto
     /// <summary>
     /// The params to validate an address.
     /// </summary>
-    public partial class AddressValidationParams
+    public class AddressValidationParams
     {
         [JsonProperty("city_locality", NullValueHandling = NullValueHandling.Ignore)]
         public string CityLocality { get; set; }
@@ -34,7 +34,7 @@ namespace ShipEngine.Models.Address.Dto
         public List<string> Street { get; set; }
     }
 
-    public partial class AddressValidationParams
+    public class AddressValidationParamsConvert
     {
         public static AddressValidationParams FromJson(string json) => JsonConvert.DeserializeObject<AddressValidationParams>(json, Models.Converter.Settings);
     }

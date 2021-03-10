@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 
 using ShipEngine.Models;
 using ShipEngine.Extensions;
+using ShipEngine.Models.Address.Dto;
+using System.Collections.Generic;
 
 namespace ShipEngine.Tests
 {
@@ -12,18 +14,19 @@ namespace ShipEngine.Tests
         [SetUp]
 
         [Test]
-        public async Task TestServicesAndExtensions()
+        public async Task AddressValidationHighLevelTest()
         {
-            var shipEngine = this.MockShipEngineClient;
-            string one = await shipEngine.CreateTag("foo");
-            Assert.AreEqual("foo", one);
-
-            CreateTagParams createTagParams = new CreateTagParams
+            AddressValidationParams p = new AddressValidationParams
             {
-                Name = "foo"
+                Street = new List<string> { "One", "Two", "Three" },
+                CityLocality = "Chicago",
+                CountryCode = "US",
+                PostalCode = "60613",
+                StateProvince = "IL",
             };
-            CreateTagResult two = await shipEngine.Tags.Create(createTagParams);
-            Assert.AreEqual("foo", two.Name);
+
+            var validationResult = await MockShipEngineClient.Address.Validate(p);
+            Assert.AreEqual(validationResult.Address.CountryCode, "US");
         }
     }
 }

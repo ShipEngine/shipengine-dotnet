@@ -8,17 +8,13 @@
 
 namespace ShipEngine.Models.Address.Dto
 {
-    using System;
     using System.Collections.Generic;
-
-    using System.Globalization;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The result of validating an address.
     /// </summary>
-    public partial class AddressValidationResult
+    public class AddressValidationResult
     {
         [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
         public AddressClass Address { get; set; }
@@ -29,8 +25,7 @@ namespace ShipEngine.Models.Address.Dto
         [JsonProperty("valid")]
         public bool Valid { get; set; }
     }
-
-    public partial class AddressClass
+    public class AddressClass
     {
         [JsonProperty("city_locality", NullValueHandling = NullValueHandling.Ignore)]
         public string CityLocality { get; set; }
@@ -51,7 +46,7 @@ namespace ShipEngine.Models.Address.Dto
         public List<string> Street { get; set; }
     }
 
-    public partial class MessagesClass
+    public class MessagesClass
     {
         [JsonProperty("errors", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Errors { get; set; }
@@ -63,26 +58,13 @@ namespace ShipEngine.Models.Address.Dto
         public List<string> Warnings { get; set; }
     }
 
-    public partial class AddressValidationResult
+    public class DeserializeAddressValidationResult
     {
         public static AddressValidationResult FromJson(string json) => JsonConvert.DeserializeObject<AddressValidationResult>(json, Models.Converter.Settings);
     }
 
-    public static class Serialize
+    public static class SerializeAddressValidationResult
     {
         public static string ToJson(this AddressValidationResult self) => JsonConvert.SerializeObject(self, Models.Converter.Settings);
-    }
-
-    internal static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
     }
 }
