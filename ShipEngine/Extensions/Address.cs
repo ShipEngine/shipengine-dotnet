@@ -1,8 +1,7 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 using ShipEngine.Models.Address.Dto;
 using ShipEngine.Models.Domain;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ShipEngine.Extensions
 {

@@ -15,6 +15,3 @@ namespace ShipEngine.Models
     }
 
 }
-
-
-

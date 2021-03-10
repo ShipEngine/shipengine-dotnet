@@ -1,8 +1,6 @@
-﻿using System;
+﻿using ShipEngine.Services;
+using System;
 using System.Runtime.InteropServices;
-
-
-using ShipEngine.Services;
 
 namespace ShipEngine
 {

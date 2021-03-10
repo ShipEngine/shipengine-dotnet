@@ -1,9 +1,8 @@
 using NUnit.Framework;
+using ShipEngine.Extensions;
+using ShipEngine.Models;
 using System;
 using System.Threading.Tasks;
-
-using ShipEngine.Models;
-using ShipEngine.Extensions;
 
 namespace ShipEngine.Tests
 {
@@ -18,5 +17,3 @@ namespace ShipEngine.Tests
 
     }
 }
-
-

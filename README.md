@@ -8,6 +8,20 @@ A C# library built on the [ShipEngine API](https://shipengine.com) offering low-
 
 <hr />
 
+### Setup
+
+- Install [.NET 5.x](https://dotnet.microsoft.com/download)
+
+```
+%> dotnet restore
+%> dotnet tool install -g dotnet-format
+```
+If you want to install precommit hook
+```
+%> bash scripts/install-precommit.sh
+```
+Otherwise, please run dotnet format before pushing
+
 ## TESTS
 
 In order for tests to pass, you need to have [hoverfly installed](https://docs.hoverfly.io/en/latest/pages/introduction/downloadinstallation.html).
@@ -21,7 +35,6 @@ Run the following command:
 ```
 
 Run tests on file change:
-
 ```
 %> dotnet watch -p ShipEngine.tests/ test
 ```

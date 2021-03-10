@@ -1,6 +1,6 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 namespace ShipEngine.Models.JsonRpc
 {
     abstract class BaseResponse
@@ -24,6 +24,7 @@ namespace ShipEngine.Models.JsonRpc
 
         [JsonProperty("result")]
         public Data? Result;
+
 
         [JsonProperty("error")]
         public JsonRpcResponseErrorData? Error;
@@ -61,8 +62,10 @@ namespace ShipEngine.Models.JsonRpc
         [JsonProperty("jsonrpc")]
         public readonly string JsonRpcVersion = "2.0";
 
+
         [JsonProperty("id")]
         public readonly string Id = new Guid().ToString();
+
 
         [JsonProperty("method")]
         public string Method

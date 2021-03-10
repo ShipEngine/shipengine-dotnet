@@ -1,10 +1,10 @@
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 namespace ShipEngine
 {
     sealed public class ShipEngineClient

@@ -1,11 +1,10 @@
 using NUnit.Framework;
-using System;
-using System.Threading.Tasks;
-
-using ShipEngine.Models;
 using ShipEngine.Extensions;
+using ShipEngine.Models;
 using ShipEngine.Models.Address.Dto;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ShipEngine.Tests
 {
