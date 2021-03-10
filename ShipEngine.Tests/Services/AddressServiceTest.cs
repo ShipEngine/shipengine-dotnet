@@ -18,24 +18,11 @@ namespace ShipEngine.Tests
             StateProvince = "IL",
         };
 
-        [Test]
-        public async Task AddressValidationHighLevelTest()
-        {
-            List<AddressValidationResult> results = await MockShipEngineClient.Address.Validate(new List<AddressValidationParams> { AddressValidationParamsFixture });
-            results.ForEach((validationResult) =>
-            {
-                Assert.That(validationResult.Address.CountryCode, Is.EqualTo("US"));
-                Assert.That(validationResult.Valid, Is.InstanceOf<bool>());
-                Assert.That(validationResult.Messages.Errors, Is.InstanceOf<List<string>>());
-                Assert.That(validationResult.Messages.Info, Is.InstanceOf<List<string>>());
-                Assert.That(validationResult.Messages.Warnings, Is.InstanceOf<List<string>>());
-            });
-        }
 
         [Test]
         public async Task AddressValidationConvenienceTest()
         {
-            throw new IgnoreException("This should work, but simengine only returns lists right now.");
+            // throw new IgnoreException("This should work, but simengine only returns lists right now.");
             var p = AddressValidationParamsFixture;
             Address validationResult = await MockShipEngineClient.ValidateAddress(
                 street: p.Street, cityLocality: p.CityLocality, countryCode: p.CityLocality,
@@ -47,5 +34,21 @@ namespace ShipEngine.Tests
             Assert.That(validationResult.Residential, Is.InstanceOf<bool>());
             Assert.That(validationResult.Street, Is.InstanceOf<List<string>>());
         }
+        [Test]
+        public async Task AddressValidationBulkTest()
+        {
+            throw new NUnit.Framework.IgnoreException("Not applicable");
+            var results = await MockShipEngineClient.Address.Validate(new List<AddressValidationParams> { AddressValidationParamsFixture });
+            results.ForEach((validationResult) =>
+            {
+                var r = validationResult.Result;
+                Assert.That(r.Address.CountryCode, Is.EqualTo("US"));
+                Assert.That(r.Valid, Is.InstanceOf<bool>());
+                Assert.That(r.Messages.Errors, Is.InstanceOf<List<string>>());
+                Assert.That(r.Messages.Info, Is.InstanceOf<List<string>>());
+                Assert.That(r.Messages.Warnings, Is.InstanceOf<List<string>>());
+            });
+        }
+
     }
 }

@@ -2,7 +2,7 @@ using ShipEngine.Models.Address.Dto;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using ShipEngine.Models.JsonRpc;
 namespace ShipEngine.Services
 
 {
@@ -19,9 +19,10 @@ namespace ShipEngine.Services
             return result.UnwrapResultOrThrow();
         }
 
-        // public Task<List<AddressValidationResult>> Validate(List<AddressValidationParams> addresses)
-        // {
-        //     var result = Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", addresses);
-        // }
+        public async Task<List<JsonRpcResponse<AddressValidationResult>>> Validate(List<AddressValidationParams> addresses)
+        {
+            var result = await Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", addresses);
+            return result;
+        }
     }
 }

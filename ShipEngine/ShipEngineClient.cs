@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace ShipEngine
 {
 
+
     sealed public class ShipEngineClient
     {
         private readonly ShipEngineConfig Config;
@@ -17,7 +18,8 @@ namespace ShipEngine
 
         private readonly JsonSerializerSettings serializerSettings = new()
         {
-            Error = (se, ev) => { ev.ErrorContext.Handled = true; }
+            Formatting = Formatting.Indented,
+
         };
 
         public ShipEngineClient(ShipEngineConfig config)
@@ -95,5 +97,6 @@ namespace ShipEngine
             var rpcResponse = await DeserializeHttpContent<List<JsonRpcResponse<Result>>>(httpResponseMessage);
             return rpcResponse;
         }
+
     }
 }
