@@ -9,21 +9,19 @@ namespace ShipEngine.Tests
 {
     public class AddressService : BaseShipEngineServiceTest
     {
-        readonly AddressValidationParams AddressValidationParamsFixture = new()
-        {
-            Street = new List<string> { "One", "Two", "Three" },
-            CityLocality = "Chicago",
-            CountryCode = "US",
-            PostalCode = "60613",
-            StateProvince = "IL",
-        };
-
 
         [Test]
         public async Task AddressValidationConvenienceTest()
         {
+            AddressValidationParams p = new()
+            {
+                Street = new List<string> { "100 Fake Street" },
+                CityLocality = "Chicago",
+                CountryCode = "US",
+                PostalCode = "60613",
+                StateProvince = "IL",
+            };
             // throw new IgnoreException("This should work, but simengine only returns lists right now.");
-            var p = AddressValidationParamsFixture;
             Address validationResult = await MockShipEngineClient.ValidateAddress(
                 street: p.Street, cityLocality: p.CityLocality, countryCode: p.CityLocality,
                 postalCode: p.PostalCode, stateProvince: p.StateProvince
@@ -37,8 +35,19 @@ namespace ShipEngine.Tests
         [Test]
         public async Task AddressValidationBulkTest()
         {
-            throw new NUnit.Framework.IgnoreException("Not applicable");
-            var results = await MockShipEngineClient.Address.Validate(new List<AddressValidationParams> { AddressValidationParamsFixture });
+            List<AddressValidationParams> paramsList = new()
+            {
+                new()
+                {
+                    Street = new List<string> { "validate-batch" }, // magic string triggers hoverfly batch
+                    CityLocality = "Chicago",
+                    CountryCode = "US",
+                    PostalCode = "60613",
+                    StateProvince = "IL",
+                }
+            };
+
+            var results = await MockShipEngineClient.Address.Validate(paramsList);
             results.ForEach((validationResult) =>
             {
                 var r = validationResult.Result;
