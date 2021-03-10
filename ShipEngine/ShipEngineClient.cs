@@ -1,40 +1,73 @@
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
-using Anemonis.JsonRpc.ServiceClient;
 using Newtonsoft.Json;
+using ShipEngine.Models.Exceptions;
+using ShipEngine.Models.JsonRpc;
 
 namespace ShipEngine
 {
-
-
     sealed public class ShipEngineClient
     {
         private ShipEngineConfig Config;
-        private JsonRpcClient Client;
+        private HttpClient Client;
 
         public ShipEngineClient(ShipEngineConfig config)
         {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            Client = client;
             Config = config;
-
-            var httpClient = new HttpClient();
-
-            httpClient.DefaultRequestHeaders.Add("Api-Key", Config.ApiKey);
-
-            // var Foo = new JsonRpcClientFactory.Create<IRandomOrgService>;
-            Client = new JsonRpcClient(Config.BaseUri, httpClient);
         }
 
-        public Task<Results> exec<Parameters, Results>(string method, Parameters parameters) where Parameters : class
+        private async Task<JsonRpcResponse<T>?> DeserializeJsonRpcResponse<T>(HttpResponseMessage message)
         {
-            var id = System.Guid.NewGuid().ToString();
+            string messageStr = await message.Content.ReadAsStringAsync();
 
-            // hacky way to convert from a class to a dictionary with keys reflected in DTO attributes
-            var serialized = JsonConvert.SerializeObject(parameters);
-            var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(serialized);
+            var serializerSettings = new JsonSerializerSettings { Error = (se, ev) => { ev.ErrorContext.Handled = true; } };
+            return JsonConvert.DeserializeObject<JsonRpcResponse<T>>(messageStr, serializerSettings);
+        }
 
-            return this.Client.InvokeAsync<Results>(method, id, values);
+        private HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, Config.BaseUri);
+            var jsonRpcRequest = new JsonRpcRequest<Parameters>(jsonRpcMethod, parameters);
+            string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequest);
+            request.Content = new StringContent(serializedRequest, Encoding.UTF8, "application/json");
+            return request;
+        }
+
+        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
+        {
+            var request = new HttpRequestMessage(message.Method, message.RequestUri);
+            request.Content = message.Content;
+            return Client.SendAsync(request);
+        }
+
+        public async Task<Results> exec<Parameters, Results>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        {
+            var httpResponseMessage = await this.SendAsync(CreateJsonRpcMessage<Parameters>(jsonRpcMethod, parameters));
+            httpResponseMessage.EnsureSuccessStatusCode();
+
+            var rpcResponse = await this.DeserializeJsonRpcResponse<Results>(httpResponseMessage);
+            if (rpcResponse == null)
+            {
+                throw new ShipEngineException("Invalid response; content empty");
+            }
+            else if (rpcResponse.Error != null)
+            {
+                // On a fatal user OR server error -- for example, the server was unable to handle the results
+                throw new ShipEngineException(rpcResponse.Error.Message ?? "Unknown RPC error", rpcResponse.Error.Code, rpcResponse.Error.Data);
+            }
+            else if (rpcResponse.Result == null) // JSON RPC contract violation: Result/Error are mutually exclusive.
+            {
+                throw new ShipEngineException("Invalid response; result missing");
+            }
+            else
+            {
+                return rpcResponse.Result;
+            }
         }
     }
 }
