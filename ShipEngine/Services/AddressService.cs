@@ -1,6 +1,9 @@
 using System.Threading.Tasks;
-using ShipEngine.Models;
+using ShipEngine.Models.Address.Dto;
+
+
 namespace ShipEngine.Services
+
 {
 
     public class AddressService : AbstractService
@@ -9,10 +12,9 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<Models.CreateTagResult> Create(CreateTagParams tag)
+        public Task<AddressValidationResult> Validate(AddressValidationParams address)
         {
-            var createTagResult = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", tag);
-            return createTagResult;
+            return this.Client.exec<AddressValidationParams, AddressValidationResult>("address/validate", address);
         }
     }
 }

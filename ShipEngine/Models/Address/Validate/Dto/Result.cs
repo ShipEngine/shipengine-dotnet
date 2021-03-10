@@ -6,7 +6,7 @@
 //
 //    var addressValidationResult = AddressValidationResult.FromJson(jsonString);
 
-namespace ShipEngine.Models.AddressDto
+namespace ShipEngine.Models.Address.Dto
 {
     using System;
     using System.Collections.Generic;

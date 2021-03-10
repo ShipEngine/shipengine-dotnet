@@ -11,7 +11,8 @@ namespace ShipEngine
         private readonly string Version = "0.0.1";
 
         // SERVICES
-        public TagsService? Tags;
+        public TagsService Tags;
+        public AddressService Address;
 
         public ShipEngine(string apiKey)
         {
@@ -29,6 +30,7 @@ namespace ShipEngine
             ShipEngineClient client = new ShipEngineClient(config);
 
             this.Tags = new TagsService(client);
+            this.Address = new AddressService(client);
         }
 
 

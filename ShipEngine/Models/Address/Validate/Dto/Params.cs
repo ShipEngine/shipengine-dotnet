@@ -6,14 +6,11 @@
 //
 //    var addressValidationParams = AddressValidationParams.FromJson(jsonString);
 
-namespace ShipEngine.Models.AddressDto
+namespace ShipEngine.Models.Address.Dto
 {
-    using System;
     using System.Collections.Generic;
 
-    using System.Globalization;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The params to validate an address.
@@ -29,8 +26,6 @@ namespace ShipEngine.Models.AddressDto
         [JsonProperty("postal_code", NullValueHandling = NullValueHandling.Ignore)]
         public string PostalCode { get; set; }
 
-        [JsonProperty("residential", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? Residential { get; set; }
 
         [JsonProperty("state_province", NullValueHandling = NullValueHandling.Ignore)]
         public string StateProvince { get; set; }
@@ -47,18 +42,5 @@ namespace ShipEngine.Models.AddressDto
     public static class SerializeAddressValidationParams
     {
         public static string ToJson(this AddressValidationParams self) => JsonConvert.SerializeObject(self, Models.Converter.Settings);
-    }
-
-    internal static class Convert
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
     }
 }
