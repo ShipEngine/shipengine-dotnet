@@ -2,9 +2,11 @@ using Newtonsoft.Json;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace ShipEngine
 {
     sealed public class ShipEngineClient
@@ -23,19 +25,33 @@ namespace ShipEngine
 
         private static async Task<JsonRpcResponse<T>?> DeserializeJsonRpcResponse<T>(HttpResponseMessage message)
         {
-            string messageStr = await message.Content.ReadAsStringAsync();
+            string msgContent = await message.Content.ReadAsStringAsync();
 
             var serializerSettings = new JsonSerializerSettings { Error = (se, ev) => { ev.ErrorContext.Handled = true; } };
-            return JsonConvert.DeserializeObject<JsonRpcResponse<T>>(messageStr, serializerSettings);
+            return JsonConvert.DeserializeObject<JsonRpcResponse<T>>(msgContent, serializerSettings);
+        }
+
+        private HttpRequestMessage CreateConfiguredRequestMessage(string content)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, Config.BaseUri)
+            {
+                Content = new StringContent(content, Encoding.UTF8, "application/json")
+            };
+            return request;
         }
 
         private HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, Config.BaseUri);
             var jsonRpcRequest = new JsonRpcRequest<Parameters>(jsonRpcMethod, parameters);
             string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequest);
-            request.Content = new StringContent(serializedRequest, Encoding.UTF8, "application/json");
-            return request;
+            return CreateConfiguredRequestMessage(serializedRequest);
+        }
+
+        public HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        {
+            var jsonRpcRequests = parameters.Select(p => new JsonRpcRequest<Parameters>(jsonRpcMethod, p)).ToList();
+            string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequests);
+            return CreateConfiguredRequestMessage(serializedRequest);
         }
 
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
@@ -74,7 +90,7 @@ namespace ShipEngine
 
         public async Task<List<Results>> Exec<Parameters, Results>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
         {
-            var result = await this.Exec<List<Parameters>, List<Results>>(jsonRpcMethod, parameters);
+            var result = await Exec<List<Parameters>, List<Results>>(jsonRpcMethod, parameters);
             return result;
         }
     }
