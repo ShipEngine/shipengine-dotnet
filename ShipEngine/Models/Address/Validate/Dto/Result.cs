@@ -58,13 +58,4 @@ namespace ShipEngine.Models.Address.Dto
         public List<string> Warnings { get; set; }
     }
 
-    public class DeserializeAddressValidationResult
-    {
-        public static AddressValidationResult FromJson(string json) => JsonConvert.DeserializeObject<AddressValidationResult>(json, Models.Converter.Settings);
-    }
-
-    public static class SerializeAddressValidationResult
-    {
-        public static string ToJson(this AddressValidationResult self) => JsonConvert.SerializeObject(self, Models.Converter.Settings);
-    }
 }
