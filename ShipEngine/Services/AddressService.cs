@@ -1,6 +1,5 @@
 using ShipEngine.Models.Address.Dto;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using ShipEngine.Models.JsonRpc;
 namespace ShipEngine.Services
