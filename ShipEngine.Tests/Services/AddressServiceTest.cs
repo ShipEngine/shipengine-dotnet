@@ -5,6 +5,7 @@ using ShipEngine.Models.Domain;
 using ShipEngine.Models.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShipEngine.Tests
@@ -40,7 +41,7 @@ namespace ShipEngine.Tests
             Assert.That(address.PostalCode, Is.InstanceOf<string>());
             Assert.That(address.CountryCode, Is.EqualTo("US"));
             Assert.That(address.Residential, Is.InstanceOf<bool>());
-            Assert.That(address.Street, Is.InstanceOf<List<string>>());
+            Assert.That(address.Street, Is.InstanceOf<IEnumerable<string>>());
         }
 
         [Test]
@@ -50,10 +51,10 @@ namespace ShipEngine.Tests
             try
             {
 
-                await MockShipEngineClient.ValidateAddress(
-                    street: p.Street, cityLocality: p.CityLocality, countryCode: p.CountryCode,
-                    postalCode: p.PostalCode, stateProvince: p.StateProvince
-                );
+                var result = await MockShipEngineClient.ValidateAddress(
+                     street: p.Street, cityLocality: p.CityLocality, countryCode: p.CountryCode,
+                     postalCode: p.PostalCode, stateProvince: p.StateProvince
+                 );
                 Assert.Fail("should throw");
             }
             catch (ShipEngineException e)
@@ -68,14 +69,14 @@ namespace ShipEngine.Tests
             List<AddressValidationParams> paramsList = new() { Fixtures.AddressValidationParams(), Fixtures.AddressValidationParams() };
 
             var responses = await MockShipEngineClient.Address.Validate(paramsList);
-            responses.ForEach((response) =>
+            responses.ToList().ForEach((response) =>
             {
                 var r = response.Result;
                 Assert.That(r.Address.CountryCode, Has.Length.EqualTo(2));
                 Assert.That(r.Valid, Is.InstanceOf<bool>());
-                Assert.That(r.Messages.Errors, Is.InstanceOf<List<string>>());
-                Assert.That(r.Messages.Info, Is.InstanceOf<List<string>>());
-                Assert.That(r.Messages.Warnings, Is.InstanceOf<List<string>>());
+                Assert.That(r.Messages.Errors, Is.InstanceOf<IEnumerable<string>>());
+                Assert.That(r.Messages.Info, Is.InstanceOf<IEnumerable<string>>());
+                Assert.That(r.Messages.Warnings, Is.InstanceOf<IEnumerable<string>>());
             });
         }
 
@@ -84,18 +85,18 @@ namespace ShipEngine.Tests
         {
             List<AddressValidationParams> p = new() { Fixtures.AddressValidationParams(shouldError: true) };
 
-            var response = await MockShipEngineClient.Address.Validate(p);
+            var responses = await MockShipEngineClient.Address.Validate(p);
             bool hasErrorResponse = false;
-            response.ForEach((response) =>
+            responses.ToList().ForEach((response) =>
             {
                 AddressValidationResult r = response.Result;
                 if (!r.Valid)
                 {
                     Assert.That(r.Address, Is.Null);
                     Assert.That(r.Valid, Is.InstanceOf<bool>());
-                    Assert.That(r.Messages.Errors, Is.InstanceOf<List<string>>());
-                    Assert.That(r.Messages.Info, Is.InstanceOf<List<string>>());
-                    Assert.That(r.Messages.Warnings, Is.InstanceOf<List<string>>());
+                    Assert.That(r.Messages.Errors, Is.InstanceOf<IEnumerable<string>>());
+                    Assert.That(r.Messages.Info, Is.InstanceOf<IEnumerable<string>>());
+                    Assert.That(r.Messages.Warnings, Is.InstanceOf<IEnumerable<string>>());
                     hasErrorResponse = true;
                 }
                 else

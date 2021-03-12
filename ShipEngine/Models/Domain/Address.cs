@@ -5,7 +5,7 @@ namespace ShipEngine.Models.Domain
 {
     public class Address
     {
-        public Address(List<string> street, string cityLocality, string stateProvince, string postalCode, string countryCode, bool? residential)
+        public Address(IEnumerable<string> street, string cityLocality, string stateProvince, string postalCode, string countryCode, bool? residential)
         {
             CountryCode = countryCode;
             PostalCode = postalCode;
@@ -25,7 +25,7 @@ namespace ShipEngine.Models.Domain
 
         public string CityLocality { get; set; }
 
-        public List<string> Street { get; set; }
+        public IEnumerable<string> Street { get; set; }
 
     }
 }

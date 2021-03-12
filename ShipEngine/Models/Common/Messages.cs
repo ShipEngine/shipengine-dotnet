@@ -20,7 +20,7 @@ namespace ShipEngine.Models
 
         public void AssertNoErrorMessages()
         {
-            if (Errors.Count > 0)
+            if (Errors.Any())
             {
                 throw new ShipEngineException(Errors.Aggregate((a, b) => a + ", " + b));
             }
