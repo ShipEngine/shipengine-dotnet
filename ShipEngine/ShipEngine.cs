@@ -9,6 +9,7 @@ namespace ShipEngine
         // SERVICES
         public TagsService Tags;
         public AddressService Address;
+        public PackageService Package;
 
         public ShipEngine(string apiKey)
         {
@@ -24,9 +25,9 @@ namespace ShipEngine
         private void Build(ShipEngineConfig config)
         {
             var client = new ShipEngineClient(config);
-
-            this.Tags = new TagsService(client);
-            this.Address = new AddressService(client);
+            Tags = new TagsService(client);
+            Address = new AddressService(client);
+            Package = new PackageService(client);
         }
 
 

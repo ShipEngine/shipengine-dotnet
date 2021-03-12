@@ -1,3 +1,4 @@
+using ShipEngine.Models;
 using ShipEngine.Models.Address.Dto;
 using ShipEngine.Models.Domain;
 using System.Collections.Generic;
@@ -19,7 +20,10 @@ namespace ShipEngine.Extensions
             };
 
             AddressValidationResult result = await shipEngine.Address.Validate(addressValidationParams);
-            var addressDomain = new Address(
+
+            result.Messages.AssertNoErrorMessages();
+
+            return new Address(
                 street: result.Address.Street,
                 cityLocality: result.Address.CityLocality,
                 stateProvince: result.Address.StateProvince,
@@ -27,7 +31,6 @@ namespace ShipEngine.Extensions
                 countryCode: result.Address.CountryCode,
                 residential: result.Address.Residential
             );
-            return addressDomain;
         }
     };
 };
