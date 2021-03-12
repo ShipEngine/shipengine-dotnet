@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using ShipEngine.Models;
+using System.Threading.Tasks;
 namespace ShipEngine.Services
 {
 
@@ -9,10 +9,10 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<Models.CreateTagResult> Create(CreateTagParams tag)
+        public async Task<CreateTagResult> Create(CreateTagParams tag)
         {
-            var createTagResult = await this.Client.exec<CreateTagParams, CreateTagResult>("tag/create", tag);
-            return createTagResult;
+            var result = await Client.Exec<CreateTagParams, CreateTagResult>("tag/create", tag);
+            return result.UnwrapResultOrThrow();
         }
     }
 }

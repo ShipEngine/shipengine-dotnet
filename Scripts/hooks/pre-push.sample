@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Checking dotnet format";
+(dotnet format && exit 0) || echo -e "\n 💣 🛑  🛑 Hook Failed. Please run dotnet format! 🛑 🛑 \n\n" && exit 1
+exit 0

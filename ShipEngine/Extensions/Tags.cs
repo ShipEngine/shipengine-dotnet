@@ -1,6 +1,5 @@
-using System.Threading.Tasks;
-
 using ShipEngine.Models;
+using System.Threading.Tasks;
 
 namespace ShipEngine.Extensions
 {

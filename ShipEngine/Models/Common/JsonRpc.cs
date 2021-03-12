@@ -1,9 +1,11 @@
+using Newtonsoft.Json;
+using ShipEngine.Models.Exceptions;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 namespace ShipEngine.Models.JsonRpc
 {
-    abstract class BaseResponse
+
+    public abstract class BaseResponse
     {
         [JsonProperty("jsonrpc")]
         public string JsonRpcVersion
@@ -18,24 +20,38 @@ namespace ShipEngine.Models.JsonRpc
         }
     }
 
-    class JsonRpcResponse<Data> : BaseResponse
+    public class JsonRpcResponse<Data> : BaseResponse
     {
         public JsonRpcResponse() : base() { }
 
         [JsonProperty("result")]
         public Data? Result;
 
+
         [JsonProperty("error")]
         public JsonRpcResponseErrorData? Error;
 
-        JsonRpcResponse(Data result)
+        public Data UnwrapResultOrThrow()
         {
-            this.Result = result;
+            {
+                if (Error != null)
+                {
+                    // On a fatal user OR server error -- for example, the server was unable to handle the results
+                    throw new ShipEngineException(Error.Message ?? "Unknown RPC error", Error.Code, Error.Data);
+                }
+                else if (Result == null) // JSON RPC contract violation: Result/Error are mutually exclusive.
+                {
+                    throw new ShipEngineException("Invalid response; result missing");
+                }
+                else
+                {
+                    return Result;
+                }
+            }
         }
-
     }
 
-    class JsonRpcResponseErrorData
+    public class JsonRpcResponseErrorData
     {
         [JsonProperty("code")]
         public int Code
@@ -56,13 +72,15 @@ namespace ShipEngine.Models.JsonRpc
         }
     }
 
-    class JsonRpcRequest<Parameters>
+    public class JsonRpcRequest<Parameters>
     {
         [JsonProperty("jsonrpc")]
         public readonly string JsonRpcVersion = "2.0";
 
+
         [JsonProperty("id")]
         public readonly string Id = new Guid().ToString();
+
 
         [JsonProperty("method")]
         public string Method
@@ -81,5 +99,6 @@ namespace ShipEngine.Models.JsonRpc
             Method = method;
             Params = parameters;
         }
+
     }
 }

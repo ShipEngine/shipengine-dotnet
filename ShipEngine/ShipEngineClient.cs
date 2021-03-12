@@ -1,16 +1,26 @@
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ShipEngine
 {
+
+
     sealed public class ShipEngineClient
     {
-        private ShipEngineConfig Config;
-        private HttpClient Client;
+        private readonly ShipEngineConfig Config;
+        private readonly HttpClient Client;
+
+        private readonly JsonSerializerSettings serializerSettings = new()
+        {
+            Formatting = Formatting.Indented,
+
+        };
 
         public ShipEngineClient(ShipEngineConfig config)
         {
@@ -21,53 +31,72 @@ namespace ShipEngine
             Config = config;
         }
 
-        private async Task<JsonRpcResponse<T>?> DeserializeJsonRpcResponse<T>(HttpResponseMessage message)
+        private async Task<T> DeserializeHttpContent<T>(HttpResponseMessage message)
         {
-            string messageStr = await message.Content.ReadAsStringAsync();
+            string msgContent = await message.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<T>(msgContent, serializerSettings);
+            if (result == null)
+            {
+                throw new ShipEngineException("Invalid response, Content empty after deserialization");
+            }
+            return result;
+        }
 
-            var serializerSettings = new JsonSerializerSettings { Error = (se, ev) => { ev.ErrorContext.Handled = true; } };
-            return JsonConvert.DeserializeObject<JsonRpcResponse<T>>(messageStr, serializerSettings);
+        private HttpRequestMessage CreateConfiguredRequestMessage(string content)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, Config.BaseUri)
+            {
+                Content = new StringContent(content, Encoding.UTF8, "application/json")
+            };
+            return request;
         }
 
         private HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, Config.BaseUri);
             var jsonRpcRequest = new JsonRpcRequest<Parameters>(jsonRpcMethod, parameters);
             string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequest);
-            request.Content = new StringContent(serializedRequest, Encoding.UTF8, "application/json");
-            return request;
+            return CreateConfiguredRequestMessage(serializedRequest);
+        }
+
+        public HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        {
+            var jsonRpcRequests = parameters.Select(p => new JsonRpcRequest<Parameters>(jsonRpcMethod, p)).ToList();
+            string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequests);
+            return CreateConfiguredRequestMessage(serializedRequest);
         }
 
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
         {
-            var request = new HttpRequestMessage(message.Method, message.RequestUri);
-            request.Content = message.Content;
+            var request = new HttpRequestMessage(message.Method, message.RequestUri)
+            {
+                Content = message.Content
+            };
             return Client.SendAsync(request);
         }
 
-        public async Task<Results> exec<Parameters, Results>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        private async Task<HttpResponseMessage> SendAsyncRpc<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
-            var httpResponseMessage = await this.SendAsync(CreateJsonRpcMessage<Parameters>(jsonRpcMethod, parameters));
+            var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
-
-            var rpcResponse = await this.DeserializeJsonRpcResponse<Results>(httpResponseMessage);
-            if (rpcResponse == null)
-            {
-                throw new ShipEngineException("Invalid response; content empty");
-            }
-            else if (rpcResponse.Error != null)
-            {
-                // On a fatal user OR server error -- for example, the server was unable to handle the results
-                throw new ShipEngineException(rpcResponse.Error.Message ?? "Unknown RPC error", rpcResponse.Error.Code, rpcResponse.Error.Data);
-            }
-            else if (rpcResponse.Result == null) // JSON RPC contract violation: Result/Error are mutually exclusive.
-            {
-                throw new ShipEngineException("Invalid response; result missing");
-            }
-            else
-            {
-                return rpcResponse.Result;
-            }
+            return httpResponseMessage;
         }
+
+        public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        {
+            var httpResponseMessage = await SendAsyncRpc(jsonRpcMethod, parameters);
+            var rpcResponse = await DeserializeHttpContent<JsonRpcResponse<Result>>(httpResponseMessage);
+
+            return rpcResponse;
+        }
+
+        public async Task<List<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        {
+            var httpResponseMessage = await SendAsyncRpc(jsonRpcMethod, parameters);
+
+            // Only reason this overload is neccessary is because we want List<JsonRpcResponse<Foo>> rather than JsonRpcResponse<List<Foo>>
+            var rpcResponse = await DeserializeHttpContent<List<JsonRpcResponse<Result>>>(httpResponseMessage);
+            return rpcResponse;
+        }
+
     }
 }
