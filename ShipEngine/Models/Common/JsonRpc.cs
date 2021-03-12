@@ -1,10 +1,12 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using ShipEngine.Models.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace ShipEngine.Models.JsonRpc
 {
-
     public abstract class BaseResponse
     {
         [JsonProperty("jsonrpc")]
@@ -22,11 +24,12 @@ namespace ShipEngine.Models.JsonRpc
 
     public class JsonRpcResponse<Data> : BaseResponse
     {
+
+
         public JsonRpcResponse() : base() { }
 
         [JsonProperty("result")]
         public Data? Result;
-
 
         [JsonProperty("error")]
         public JsonRpcResponseErrorData? Error;

@@ -51,7 +51,7 @@ namespace ShipEngine.Tests
             results.ForEach((validationResult) =>
             {
                 var r = validationResult.Result;
-                Assert.That(r.Address.CountryCode, Is.EqualTo("US"));
+                Assert.That(r.Address.CountryCode, Has.Length.EqualTo(2));
                 Assert.That(r.Valid, Is.InstanceOf<bool>());
                 Assert.That(r.Messages.Errors, Is.InstanceOf<List<string>>());
                 Assert.That(r.Messages.Info, Is.InstanceOf<List<string>>());

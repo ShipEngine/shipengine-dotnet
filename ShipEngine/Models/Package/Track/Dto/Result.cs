@@ -28,7 +28,7 @@ namespace ShipEngine.Models.Package.Dto
     public partial class Information
     {
         [JsonProperty("estimated_delivery")]
-        public string EstimatedDelivery { get; set; }
+        public DateTime EstimatedDelivery { get; set; }
 
         [JsonProperty("events")]
         public List<Event> Events { get; set; }
@@ -46,7 +46,7 @@ namespace ShipEngine.Models.Package.Dto
         public string CarrierStatusCode { get; set; }
 
         [JsonProperty("date_time")]
-        public string DateTime { get; set; }
+        public DateTime DateTime { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -90,17 +90,6 @@ namespace ShipEngine.Models.Package.Dto
         public double? Longitude { get; set; }
     }
 
-    public partial class Messages
-    {
-        [JsonProperty("errors", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Errors { get; set; }
-
-        [JsonProperty("info", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Info { get; set; }
-
-        [JsonProperty("warnings", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Warnings { get; set; }
-    }
 
     public enum Status { Accepted, AttemptedDelivery, Delivered, Exception, InTransit, Unknown };
 

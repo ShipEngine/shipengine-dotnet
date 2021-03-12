@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
 using System.Collections.Generic;
+using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -36,6 +37,7 @@ namespace ShipEngine
             string msgContent = await message.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<T>(msgContent, serializerSettings);
             if (result == null)
+
             {
                 throw new ShipEngineException("Invalid response, Content empty after deserialization");
             }
@@ -74,16 +76,12 @@ namespace ShipEngine
             return Client.SendAsync(request);
         }
 
-        private async Task<HttpResponseMessage> SendAsyncRpc<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
-        {
-            var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
-            httpResponseMessage.EnsureSuccessStatusCode();
-            return httpResponseMessage;
-        }
+
 
         public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class
         {
-            var httpResponseMessage = await SendAsyncRpc(jsonRpcMethod, parameters);
+            var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
+            httpResponseMessage.EnsureSuccessStatusCode();
             var rpcResponse = await DeserializeHttpContent<JsonRpcResponse<Result>>(httpResponseMessage);
 
             return rpcResponse;
@@ -91,7 +89,8 @@ namespace ShipEngine
 
         public async Task<List<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
         {
-            var httpResponseMessage = await SendAsyncRpc(jsonRpcMethod, parameters);
+            var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
+            httpResponseMessage.EnsureSuccessStatusCode();
 
             // Only reason this overload is neccessary is because we want List<JsonRpcResponse<Foo>> rather than JsonRpcResponse<List<Foo>>
             var rpcResponse = await DeserializeHttpContent<List<JsonRpcResponse<Result>>>(httpResponseMessage);

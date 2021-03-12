@@ -2,32 +2,35 @@ using ShipEngine.Models.Package.Dto;
 using ShipEngine.Models.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using ShipEngine.Models;
 namespace ShipEngine.Extensions
 {
     public static class PackageExtensions
     {
-        public async static Task<TrackPackageResult> TrackPackage(this ShipEngine shipEngine, string cityLocality, string countryCode, string postalCode, string stateProvince, List<string> street)
+        public async static Task<Information> TrackPackage(this ShipEngine shipEngine, string carrierCode, string trackingNumber)
         {
-            var packageValidationParams = new PackageValidationParams
+            var trackPackageParams = new TrackPackageParams
             {
-                CityLocality = cityLocality,
-                CountryCode = countryCode,
-                PostalCode = postalCode,
-                StateProvince = stateProvince,
-                Street = street
+                CarrierCode = carrierCode,
+                TrackingNumber = trackingNumber,
             };
 
-            PackageValidationResult result = await shipEngine.TrackPackage.Track(packageValidationParams);
-            var packageDomain = new Package(
-                street: result.Package.Street,
-                cityLocality: result.Package.CityLocality,
-                stateProvince: result.Package.StateProvince,
-                postalCode: result.Package.PostalCode,
-                countryCode: result.Package.CountryCode,
-                residential: result.Package.Residential
-            );
-            return packageDomain;
+            var result = await shipEngine.Package.Track(trackPackageParams);
+            result.Messages.AssertNoErrorMessages();
+            return result.Information;
+        }
+
+
+        public async static Task<Information> TrackPackage(this ShipEngine shipEngine, string packageId)
+        {
+            var trackPackageParams = new TrackPackageParams
+            {
+                PackageId = packageId,
+            };
+
+            var result = await shipEngine.Package.Track(trackPackageParams);
+            result.Messages.AssertNoErrorMessages();
+            return result.Information;
         }
     };
 };
