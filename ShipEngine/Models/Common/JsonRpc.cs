@@ -7,34 +7,25 @@ using System.Linq;
 
 namespace ShipEngine.Models.JsonRpc
 {
-    public abstract class BaseResponse
-    {
-        [JsonProperty("jsonrpc")]
-        public string JsonRpcVersion
-        {
-            get; set;
-        }
 
+    public class JsonRpcResponse<ResultData>
+    {
         [JsonProperty("id")]
         public string Id
         {
             get; set;
         }
-    }
 
-    public class JsonRpcResponse<Data> : BaseResponse
-    {
+        [JsonProperty("result", NullValueHandling = NullValueHandling.Ignore)]
+        public ResultData? Result
+        {
+            get; set;
+        }
 
-
-        public JsonRpcResponse() : base() { }
-
-        [JsonProperty("result")]
-        public Data? Result;
-
-        [JsonProperty("error")]
+        [JsonProperty("error", NullValueHandling = NullValueHandling.Ignore)]
         public JsonRpcResponseErrorData? Error;
 
-        public Data UnwrapResultOrThrow()
+        public ResultData UnwrapResultOrThrow()
         {
             {
                 if (Error != null)
