@@ -1,13 +1,10 @@
 ﻿using ShipEngine.Services;
-using System;
-using System.Runtime.InteropServices;
 
 namespace ShipEngine
 {
     sealed public class ShipEngine
     {
         // SERVICES
-        public TagsService Tags;
         public AddressService Address;
         public PackageService Package;
 
@@ -25,7 +22,6 @@ namespace ShipEngine
         private void Build(ShipEngineConfig config)
         {
             var client = new ShipEngineClient(config);
-            Tags = new TagsService(client);
             Address = new AddressService(client);
             Package = new PackageService(client);
         }

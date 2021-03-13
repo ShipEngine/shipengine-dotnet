@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using ShipEngine.Models;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
 using System.Collections.Generic;
@@ -77,7 +78,7 @@ namespace ShipEngine
 
 
 
-        public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class where Result : IResult
         {
             var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
@@ -86,7 +87,7 @@ namespace ShipEngine
             return rpcResponse;
         }
 
-        public async Task<IEnumerable<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class
+        public async Task<IEnumerable<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class where Result : IResult
         {
             var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
