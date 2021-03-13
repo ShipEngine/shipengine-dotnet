@@ -16,7 +16,7 @@ using Newtonsoft.Json.Converters;
 namespace ShipEngine.Models.Package.Dto
 {
 
-    public partial class TrackPackageResult
+    public partial class TrackPackageResult : IResult
     {
         [JsonProperty("information")]
         public Information Information { get; set; }

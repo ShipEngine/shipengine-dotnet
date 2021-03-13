@@ -16,7 +16,7 @@ namespace ShipEngine.Extensions
             };
 
             var result = await shipEngine.Package.Track(trackPackageParams);
-            result.Messages.AssertNoErrorMessages();
+            result.AssertNoErrorMessages();
             return result.Information;
         }
 
@@ -29,7 +29,7 @@ namespace ShipEngine.Extensions
             };
 
             var result = await shipEngine.Package.Track(trackPackageParams);
-            result.Messages.AssertNoErrorMessages();
+            result.AssertNoErrorMessages();
             return result.Information;
         }
     };

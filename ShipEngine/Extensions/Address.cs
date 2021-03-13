@@ -22,7 +22,7 @@ namespace ShipEngine.Extensions
 
             AddressValidationResult result = await shipEngine.Address.Validate(addressValidationParams);
 
-            result.Messages.AssertNoErrorMessages();
+            result.AssertNoErrorMessages();
 
             return new Address(
                 street: result.Address.Street,
