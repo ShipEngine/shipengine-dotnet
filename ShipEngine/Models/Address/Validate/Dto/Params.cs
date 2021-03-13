@@ -9,8 +9,10 @@
 namespace ShipEngine.Models.Address.Dto
 {
     using System.Collections.Generic;
-
+    using System.ComponentModel;
+    using System.Text.Json.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The params to validate an address.
@@ -31,7 +33,7 @@ namespace ShipEngine.Models.Address.Dto
         public string StateProvince { get; set; }
 
         [JsonProperty("street")]
-        public List<string> Street { get; set; }
+        public IEnumerable<string> Street { get; set; }
     }
 
     public class AddressValidationParamsConvert

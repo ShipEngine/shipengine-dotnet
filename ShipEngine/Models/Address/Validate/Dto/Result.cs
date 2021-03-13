@@ -46,7 +46,7 @@ namespace ShipEngine.Models.Address.Dto
         public string StateProvince { get; set; }
 
         [JsonProperty("street")]
-        public List<string> Street { get; set; }
+        public IEnumerable<string> Street { get; set; }
     }
 
 
