@@ -6,7 +6,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 using ShipEngine.Models;
+using System.Linq;
 
+// Using IEnumerable instead of list.
+// https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/guidelines-for-collections?redirectedfrom=MSDN
 namespace ShipEngine.Tests
 {
     public class PackageService : BaseShipEngineServiceTest
@@ -19,7 +22,7 @@ namespace ShipEngine.Tests
             var information = await MockShipEngineClient.TrackPackage(
              packageId: "abc123"
             );
-            var ev = information.Events[0];
+            var ev = information.Events.ToList()[0];
             Assert.That(ev.Status, Is.InstanceOf<Status>());
             Assert.That(information.EstimatedDelivery, Is.InstanceOf<DateTime>());
             Assert.That(information.TrackingNumber, Is.InstanceOf<string>());
@@ -50,6 +53,7 @@ namespace ShipEngine.Tests
             throw new NUnit.Framework.IgnoreException("No bulk dixture available yet.");
             List<TrackPackageParams> p = new()
             {
+
                 new()
                 {
                     CarrierCode = "UPS",
@@ -57,11 +61,11 @@ namespace ShipEngine.Tests
                 }
             };
 
-            var responses = await MockShipEngineClient.Package.Track(p);
-            Assert.That(responses, Is.InstanceOf<List>());
-            var r = responses[0].Result;
-            Assert.That(r.Messages, Is.InstanceOf<Messages>());
-            Assert.That(r.Information, Is.InstanceOf<Information>());
+            var responses = (await MockShipEngineClient.Package.Track(p)).ToList();
+            var aResponse = responses[0];
+            Assert.That(aResponse, Is.InstanceOf<TrackPackageResult>());
+            Assert.That(aResponse.Result.Messages, Is.InstanceOf<Messages>());
+            Assert.That(aResponse.Result.Information, Is.InstanceOf<Information>());
         }
     };
 

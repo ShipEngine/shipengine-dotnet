@@ -2,7 +2,6 @@ using Newtonsoft.Json;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -60,9 +59,9 @@ namespace ShipEngine
             return CreateConfiguredRequestMessage(serializedRequest);
         }
 
-        public HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        public HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class
         {
-            var jsonRpcRequests = parameters.Select(p => new JsonRpcRequest<Parameters>(jsonRpcMethod, p)).ToList();
+            var jsonRpcRequests = parameters.Select(p => new JsonRpcRequest<Parameters>(jsonRpcMethod, p));
             string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequests);
             return CreateConfiguredRequestMessage(serializedRequest);
         }
@@ -87,13 +86,13 @@ namespace ShipEngine
             return rpcResponse;
         }
 
-        public async Task<List<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, List<Parameters> parameters) where Parameters : class
+        public async Task<IEnumerable<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class
         {
             var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
 
-            // Only reason this overload is neccessary is because we want List<JsonRpcResponse<Foo>> rather than JsonRpcResponse<List<Foo>>
-            var rpcResponse = await DeserializeHttpContent<List<JsonRpcResponse<Result>>>(httpResponseMessage);
+            // Only reason this overload is neccessary is because we want IEnumerable<JsonRpcResponse<Foo>> rather than JsonRpcResponse<IEnumerable<Foo>>
+            var rpcResponse = await DeserializeHttpContent<IEnumerable<JsonRpcResponse<Result>>>(httpResponseMessage);
             return rpcResponse;
         }
 

@@ -19,9 +19,9 @@ namespace ShipEngine.Services
             return result.UnwrapResultOrThrow();
         }
 
-        public async Task<List<JsonRpcResponse<TrackPackageResult>>> Track(List<TrackPackageParams> Packagees)
+        public async Task<IEnumerable<JsonRpcResponse<TrackPackageResult>>> Track(IEnumerable<TrackPackageParams> Packages)
         {
-            var result = await Client.Exec<TrackPackageParams, TrackPackageResult>("package/track", Packagees);
+            var result = await Client.Exec<TrackPackageParams, TrackPackageResult>("package/track", Packages);
             return result;
         }
     }

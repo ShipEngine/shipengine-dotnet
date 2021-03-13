@@ -31,7 +31,7 @@ namespace ShipEngine.Models.Package.Dto
         public DateTime EstimatedDelivery { get; set; }
 
         [JsonProperty("events")]
-        public List<Event> Events { get; set; }
+        public IEnumerable<Event> Events { get; set; }
 
         [JsonProperty("tracking_number")]
         public string TrackingNumber { get; set; }
