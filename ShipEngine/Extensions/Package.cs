@@ -27,8 +27,8 @@ namespace ShipEngine.Extensions
                 PackageId = packageId,
             };
 
-            var result = await shipEngine.Package.Track(trackPackageParams);
-            return result.UnwrapResultOrThrow().Information;
+            var response = await shipEngine.Package.Track(trackPackageParams);
+            return response.UnwrapResultOrThrow().Information;
         }
     };
 };

@@ -20,9 +20,9 @@ namespace ShipEngine.Extensions
                 Street = street.ToList()
             };
 
-            AddressValidationResult result = await shipEngine.Address.Validate(addressValidationParams);
+            var response = await shipEngine.Address.Validate(addressValidationParams);
 
-            result.AssertNoErrorMessages();
+            var result = response.UnwrapResultOrThrow();
 
             return new Address(
                 street: result.Address.Street,
