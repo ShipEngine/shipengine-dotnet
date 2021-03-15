@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ShipEngine.Models.JsonRpc;
 using System.Linq;
+using ShipEngine.Extensions;
 
 namespace ShipEngine.Services
 {

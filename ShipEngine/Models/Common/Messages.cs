@@ -17,13 +17,5 @@ namespace ShipEngine.Models
         [JsonProperty("warnings", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> Warnings { get; set; }
 
-
-        public void AssertNoErrorMessages()
-        {
-            if (Errors.Any())
-            {
-                throw new ShipEngineException(Errors.Aggregate((a, b) => a + ", " + b));
-            }
-        }
     }
 }

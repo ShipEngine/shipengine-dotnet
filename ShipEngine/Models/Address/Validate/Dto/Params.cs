@@ -12,7 +12,6 @@ namespace ShipEngine.Models.Address.Dto
     using System.ComponentModel;
     using System.Text.Json.Serialization;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The params to validate an address.
@@ -34,15 +33,5 @@ namespace ShipEngine.Models.Address.Dto
 
         [JsonProperty("street")]
         public IEnumerable<string> Street { get; set; }
-    }
-
-    public class AddressValidationParamsConvert
-    {
-        public static AddressValidationParams FromJson(string json) => JsonConvert.DeserializeObject<AddressValidationParams>(json, Models.Converter.Settings);
-    }
-
-    public static class SerializeAddressValidationParams
-    {
-        public static string ToJson(this AddressValidationParams self) => JsonConvert.SerializeObject(self, Models.Converter.Settings);
     }
 }

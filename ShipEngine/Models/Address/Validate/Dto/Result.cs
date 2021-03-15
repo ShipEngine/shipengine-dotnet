@@ -16,7 +16,7 @@ namespace ShipEngine.Models.Address.Dto
     /// <summary>
     /// The result of validating an address.
     /// </summary>
-    public class AddressValidationResult
+    public class AddressValidationResult : IResult
     {
         [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
         public AddressClass Address { get; set; }

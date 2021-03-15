@@ -1,7 +1,11 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShipEngine.Models;
 using ShipEngine.Models.Exceptions;
 using ShipEngine.Models.JsonRpc;
+using ShipEngine.Models.Package.Dto;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -18,7 +22,14 @@ namespace ShipEngine
 
         private readonly JsonSerializerSettings serializerSettings = new()
         {
-            Formatting = Formatting.Indented,
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+            DateParseHandling = DateParseHandling.None,
+            Error = (serializer, err) => err.ErrorContext.Handled = true,
+            Converters =
+            {
+                StatusConverter.Singleton,
+                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+            },
 
         };
 
@@ -77,7 +88,7 @@ namespace ShipEngine
 
 
 
-        public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class where Result : IResult
         {
             var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
@@ -86,7 +97,7 @@ namespace ShipEngine
             return rpcResponse;
         }
 
-        public async Task<IEnumerable<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class
+        public async Task<IEnumerable<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class where Result : IResult
         {
             var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();

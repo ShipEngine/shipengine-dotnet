@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ShipEngine.Models.JsonRpc;
+
 namespace ShipEngine.Services
 
 {
@@ -13,10 +14,10 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<TrackPackageResult> Track(TrackPackageParams package)
+        public async Task<JsonRpcResponse<TrackPackageResult>> Track(TrackPackageParams package)
         {
-            var result = await Client.Exec<TrackPackageParams, TrackPackageResult>("package/track", package);
-            return result.UnwrapResultOrThrow();
+            var response = await Track(new List<TrackPackageParams> { package });
+            return response.First();
         }
 
         public async Task<IEnumerable<JsonRpcResponse<TrackPackageResult>>> Track(IEnumerable<TrackPackageParams> Packages)

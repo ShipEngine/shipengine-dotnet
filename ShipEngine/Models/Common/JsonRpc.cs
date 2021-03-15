@@ -8,7 +8,7 @@ using System.Linq;
 namespace ShipEngine.Models.JsonRpc
 {
 
-    public class JsonRpcResponse<ResultData>
+    public class JsonRpcResponse<ResultData> : IResponse<ResultData> where ResultData : IResult
     {
         [JsonProperty("id")]
         public string Id
@@ -23,26 +23,12 @@ namespace ShipEngine.Models.JsonRpc
         }
 
         [JsonProperty("error", NullValueHandling = NullValueHandling.Ignore)]
-        public JsonRpcResponseErrorData? Error;
-
-        public ResultData UnwrapResultOrThrow()
+        public JsonRpcResponseErrorData? Error
         {
-            {
-                if (Error != null)
-                {
-                    // On a fatal user OR server error -- for example, the server was unable to handle the results
-                    throw new ShipEngineException(Error.Message ?? "Unknown RPC error", Error.Code, Error.Data);
-                }
-                else if (Result == null) // JSON RPC contract violation: Result/Error are mutually exclusive.
-                {
-                    throw new ShipEngineException("Invalid response; result missing");
-                }
-                else
-                {
-                    return Result;
-                }
-            }
+            get; set;
         }
+
+
     }
 
     public class JsonRpcResponseErrorData
