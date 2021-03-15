@@ -14,10 +14,10 @@ namespace ShipEngine.Services
         {
         }
 
-        public async Task<AddressValidationResult> Validate(AddressValidationParams address)
+        public async Task<JsonRpcResponse<AddressValidationResult>> Validate(AddressValidationParams address)
         {
-            var result = await Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", address);
-            return result.UnwrapResultOrThrow();
+            var responses = await Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", new List<AddressValidationParams> { address });
+            return responses.First();
         }
 
         public async Task<IEnumerable<JsonRpcResponse<AddressValidationResult>>> Validate(IEnumerable<AddressValidationParams> addresses)

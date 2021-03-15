@@ -16,14 +16,14 @@ namespace ShipEngine.Services
 
         public async Task<JsonRpcResponse<TrackPackageResult>> Track(TrackPackageParams package)
         {
-            var response = await Track(new List<TrackPackageParams> { package });
-            return response.First();
+            var responses = await Track(new List<TrackPackageParams> { package });
+            return responses.First();
         }
 
         public async Task<IEnumerable<JsonRpcResponse<TrackPackageResult>>> Track(IEnumerable<TrackPackageParams> Packages)
         {
-            var result = await Client.Exec<TrackPackageParams, TrackPackageResult>("package/track", Packages);
-            return result;
+            var response = await Client.Exec<TrackPackageParams, TrackPackageResult>("package/track", Packages);
+            return response;
         }
     }
 }
