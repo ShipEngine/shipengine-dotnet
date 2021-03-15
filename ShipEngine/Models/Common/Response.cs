@@ -1,7 +1,7 @@
 using ShipEngine.Models;
 using ShipEngine.Models.Exceptions;
 
-namespace ShipEngine.Extensions
+namespace ShipEngine.ConvenienceMethods
 {
 
     public static class ResponseExtensions

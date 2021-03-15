@@ -6,9 +6,7 @@
 //
 //    var addressValidationResult = AddressValidationResult.FromJson(jsonString);
 
-using ShipEngine.Models;
 using System.Collections.Generic;
-using ShipEngine.Models.JsonRpc;
 using Newtonsoft.Json;
 namespace ShipEngine.Models.Address.Dto
 {
@@ -19,7 +17,7 @@ namespace ShipEngine.Models.Address.Dto
     public class AddressValidationResult : IResult
     {
         [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
-        public AddressClass Address { get; set; }
+        public Address Address { get; set; }
 
         [JsonProperty("messages")]
         public Messages Messages { get; set; }
@@ -28,7 +26,7 @@ namespace ShipEngine.Models.Address.Dto
         public bool Valid { get; set; }
     }
 
-    public class AddressClass
+    public class Address
     {
         [JsonProperty("city_locality", NullValueHandling = NullValueHandling.Ignore)]
         public string CityLocality { get; set; }

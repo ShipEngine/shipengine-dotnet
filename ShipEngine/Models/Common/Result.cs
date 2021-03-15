@@ -2,7 +2,7 @@ using ShipEngine.Models;
 using ShipEngine.Models.Exceptions;
 using System.Linq;
 
-namespace ShipEngine.Extensions
+namespace ShipEngine.ConvenienceMethods
 {
     public static class ResultExtensions
     {

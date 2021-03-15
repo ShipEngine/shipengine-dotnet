@@ -1,7 +1,6 @@
 using NUnit.Framework;
-using ShipEngine.Extensions;
+using ShipEngine.ConvenienceMethods;
 using ShipEngine.Models;
-using ShipEngine.Models.Domain;
 using ShipEngine.Models.Package.Dto;
 using System;
 using System.Collections.Generic;

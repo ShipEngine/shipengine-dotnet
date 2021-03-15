@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using ShipEngine.Extensions;
+using ShipEngine.ConvenienceMethods;
 using ShipEngine.Models;
 using System;
 using System.Threading.Tasks;
