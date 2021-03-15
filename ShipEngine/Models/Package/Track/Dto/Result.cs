@@ -109,6 +109,7 @@ namespace ShipEngine.Models.Package.Dto
         {
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             DateParseHandling = DateParseHandling.None,
+            Error = (serializer, err) => err.ErrorContext.Handled = true,
             Converters =
             {
                 StatusConverter.Singleton,

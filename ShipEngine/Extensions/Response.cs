@@ -1,8 +1,5 @@
 using ShipEngine.Models;
 using ShipEngine.Models.Exceptions;
-using ShipEngine.Models.JsonRpc;
-using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ShipEngine.Extensions
 {
@@ -10,7 +7,7 @@ namespace ShipEngine.Extensions
     public static class ResponseExtensions
     {
 
-        public static T UnwrapResultOrThrow<T>(this IResponse<T> response) where T : IResult
+        public static void AssertResponseHasResult<T>(this IResponse<T> response) where T : IResult
         {
             var err = response.Error;
             var result = response.Result;
@@ -24,10 +21,13 @@ namespace ShipEngine.Extensions
             {
                 throw new ShipEngineException("Invalid response; result missing");
             }
-            else
-            {
-                return result;
-            }
+        }
+
+        public static T UnwrapResultOrThrow<T>(this IResponse<T> response) where T : IResult
+        {
+            AssertResponseHasResult(response);
+            response.Result?.AssertNoErrorMessages();
+            return response.Result; // already did a null
         }
     };
 };

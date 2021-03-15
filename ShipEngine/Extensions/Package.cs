@@ -15,9 +15,8 @@ namespace ShipEngine.Extensions
                 TrackingNumber = trackingNumber,
             };
 
-            var result = await shipEngine.Package.Track(trackPackageParams);
-            result.AssertNoErrorMessages();
-            return result.Information;
+            var response = await shipEngine.Package.Track(trackPackageParams);
+            return response.UnwrapResultOrThrow().Information;
         }
 
 
@@ -29,8 +28,7 @@ namespace ShipEngine.Extensions
             };
 
             var result = await shipEngine.Package.Track(trackPackageParams);
-            result.AssertNoErrorMessages();
-            return result.Information;
+            return result.UnwrapResultOrThrow().Information;
         }
     };
 };
