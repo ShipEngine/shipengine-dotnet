@@ -1,11 +1,10 @@
 using ShipEngine.Models;
 using ShipEngine.Models.Address.Dto;
-using ShipEngine.Models.Domain;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShipEngine.Extensions
+namespace ShipEngine.ConvenienceMethods
 {
     public static class AddressExtensions
     {
@@ -24,14 +23,7 @@ namespace ShipEngine.Extensions
 
             var result = response.UnwrapResultOrThrow();
 
-            return new Address(
-                street: result.Address.Street,
-                cityLocality: result.Address.CityLocality,
-                stateProvince: result.Address.StateProvince,
-                postalCode: result.Address.PostalCode,
-                countryCode: result.Address.CountryCode,
-                residential: result.Address.Residential
-            );
+            return result.Address;
         }
     };
 };

@@ -1,9 +1,7 @@
 using ShipEngine.Models.Package.Dto;
-using ShipEngine.Models.Domain;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using ShipEngine.Models;
-namespace ShipEngine.Extensions
+namespace ShipEngine.ConvenienceMethods
 {
     public static class PackageExtensions
     {

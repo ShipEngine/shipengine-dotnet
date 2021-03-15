@@ -1,13 +1,14 @@
 using ShipEngine.Models;
 using ShipEngine.Models.Exceptions;
 
-namespace ShipEngine.Extensions
+namespace ShipEngine.ConvenienceMethods
 {
 
     public static class ResponseExtensions
     {
 
-        public static void AssertResponseHasResult<T>(this IResponse<T> response) where T : IResult
+
+        public static T UnwrapResultOrThrow<T>(this IResponse<T> response) where T : IResult
         {
             var err = response.Error;
             var result = response.Result;
@@ -21,13 +22,8 @@ namespace ShipEngine.Extensions
             {
                 throw new ShipEngineException("Invalid response; result missing");
             }
-        }
-
-        public static T UnwrapResultOrThrow<T>(this IResponse<T> response) where T : IResult
-        {
-            AssertResponseHasResult(response);
-            response.Result?.AssertNoErrorMessages();
-            return response.Result; // already did a null
+            result.AssertNoErrorMessages();
+            return result;
         }
     };
 };
