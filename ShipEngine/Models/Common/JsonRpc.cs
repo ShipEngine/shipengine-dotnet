@@ -1,9 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using ShipEngine.Models.Exceptions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ShipEngine.Models.JsonRpc
 {
@@ -59,7 +56,7 @@ namespace ShipEngine.Models.JsonRpc
 
 
         [JsonProperty("id")]
-        public readonly string Id = new Guid().ToString();
+        public readonly string Id = new Utils.RequestId().Id;
 
 
         [JsonProperty("method")]
