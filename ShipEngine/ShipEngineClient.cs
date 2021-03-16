@@ -45,13 +45,12 @@ namespace ShipEngine
         private async Task<T> DeserializeHttpContent<T>(HttpResponseMessage message)
         {
             string msgContent = await message.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<T>(msgContent, serializerSettings);
-            if (result == null)
-
+            var deserializedObject = JsonConvert.DeserializeObject<T>(msgContent, serializerSettings);
+            if (deserializedObject == null)
             {
-                throw new ShipEngineException("Invalid response, Content empty after deserialization");
-            }
-            return result;
+                throw new ShipEngineException("Content is null after deserialization.");
+            };
+            return deserializedObject;
         }
 
         private HttpRequestMessage CreateConfiguredRequestMessage(string content)
@@ -70,14 +69,14 @@ namespace ShipEngine
             return CreateConfiguredRequestMessage(serializedRequest);
         }
 
-        public HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class
+        private HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class
         {
             var jsonRpcRequests = parameters.Select(p => new JsonRpcRequest<Parameters>(jsonRpcMethod, p));
             string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequests);
             return CreateConfiguredRequestMessage(serializedRequest);
         }
 
-        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
+        private Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
         {
             var request = new HttpRequestMessage(message.Method, message.RequestUri)
             {
@@ -86,14 +85,11 @@ namespace ShipEngine
             return Client.SendAsync(request);
         }
 
-
-
         public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class where Result : IResult
         {
             var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
             httpResponseMessage.EnsureSuccessStatusCode();
             var rpcResponse = await DeserializeHttpContent<JsonRpcResponse<Result>>(httpResponseMessage);
-
             return rpcResponse;
         }
 
