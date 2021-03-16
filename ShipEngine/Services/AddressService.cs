@@ -1,9 +1,8 @@
 using ShipEngine.Models.Address.Dto;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using ShipEngine.Models.JsonRpc;
+using System.Collections.Generic;
 using System.Linq;
-using ShipEngine.ConvenienceMethods;
+using System.Threading.Tasks;
 
 namespace ShipEngine.Services
 {
@@ -16,14 +15,14 @@ namespace ShipEngine.Services
 
         public async Task<JsonRpcResponse<AddressValidationResult>> Validate(AddressValidationParams address)
         {
-            var responses = await Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", new List<AddressValidationParams> { address });
+            var responses = await Validate(new List<AddressValidationParams> { address });
             return responses.First();
         }
 
         public async Task<IEnumerable<JsonRpcResponse<AddressValidationResult>>> Validate(IEnumerable<AddressValidationParams> addresses)
         {
-            var result = await Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", addresses);
-            return result;
+            var responses = await Client.Exec<AddressValidationParams, AddressValidationResult>("address/validate", addresses);
+            return responses;
         }
     }
 }
