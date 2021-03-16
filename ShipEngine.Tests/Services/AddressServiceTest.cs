@@ -70,6 +70,8 @@ namespace ShipEngine.Tests
             var responses = await MockShipEngineClient.Address.Validate(paramsList);
             responses.ToList().ForEach((response) =>
             {
+                Assert.That(response.Id, Is.InstanceOf<string>());
+
                 var r = response.Result;
                 Assert.That(r.Address.CountryCode, Has.Length.EqualTo(2));
                 Assert.That(r.Valid, Is.InstanceOf<bool>());
