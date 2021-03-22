@@ -1,6 +1,6 @@
+using ShipEngine.Models;
 using ShipEngine.Models.Package.Dto;
 using System.Threading.Tasks;
-using ShipEngine.Models;
 namespace ShipEngine.ConvenienceMethods
 {
     public static class PackageExtensions
