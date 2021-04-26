@@ -33,7 +33,7 @@ namespace ShipEngine.Tests
             var p = Fixtures.AddressValidationParams();
             // throw new IgnoreException("This should work, but simengine only returns lists right now.");
             Address address = await MockShipEngineClient.ValidateAddress(
-                street: p.Street, cityLocality: p.CityLocality, countryCode: p.CityLocality,
+                street: p.Street, cityLocality: p.CityLocality, countryCode: p.CountryCode,
                 postalCode: p.PostalCode, stateProvince: p.StateProvince
             );
             Assert.That(address.Residential, Is.InstanceOf<bool>());
