@@ -7,8 +7,8 @@ namespace ShipEngineSDK
 {
     public class ShipEngineClient
     {
-
         private readonly HttpClient _httpClient;
+       
         public ShipEngineClient(string apiKey, HttpClient httpClient = null)
         {
 
@@ -38,23 +38,40 @@ namespace ShipEngineSDK
             {
                 var request = new HttpRequestMessage(HttpMethod.Post, url)
                 {
-                    Content = new StringContent(jsonBody, System.Text.Encoding.UTF8, "application/json")
+                    // Content = new StringContent(jsonBody, System.Text.Encoding.UTF8, "application/json")
                 };
 
                 var streamTask = this._httpClient.SendAsync(request);
-                var result = await streamTask;
+                var response = await streamTask;
 
-                result.EnsureSuccessStatusCode();
-
-                var contentString = await result.Content.ReadAsStringAsync();
-                var deserializedResult = await JsonSerializer.DeserializeAsync<T>(await result.Content.ReadAsStreamAsync());
+                var deserializedResult = await DeserializedResultOrThrow<T>(response);
 
                 return deserializedResult;
             }
+            // TODO: Is there a better way to do error handling?
+            catch (HttpRequestException e)
+            {
+                throw e;
+            }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 throw e;
+            }
+        }
+
+        private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                var contentString = await response.Content.ReadAsStringAsync();
+                var deserializeError = JsonSerializer.Deserialize<ShipEngineException>(contentString);
+                throw new ShipEngineException(deserializeError.RequestId, deserializeError.Errors);
+            }
+            else
+            {
+                var contentString = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<T>(contentString);
+                return result;
             }
         }
     }
