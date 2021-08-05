@@ -16,7 +16,12 @@ namespace ShipEngineSDK
         {
             string addressesJsonString = JsonSerializer.Serialize(addresses);
 
-            var validatedAddresses = await PostHttpRequest<List<ValidateAddressResult>>("v1/addresses/validate", addressesJsonString);
+            var request = new HttpRequestMessage(HttpMethod.Post, "v1/addresses/validate")
+            {
+                Content = new StringContent(addressesJsonString, System.Text.Encoding.UTF8, "application/json")
+            };
+
+            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddressResult>>(request);
 
             return validatedAddresses;
         }

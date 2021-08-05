@@ -8,7 +8,7 @@ namespace ShipEngineSDK
     public class ShipEngineClient
     {
         private readonly HttpClient _httpClient;
-       
+
         public ShipEngineClient(string apiKey, HttpClient httpClient = null)
         {
 
@@ -31,16 +31,11 @@ namespace ShipEngineSDK
             _httpClient.BaseAddress = new Uri("https://api.shipengine.com");
         }
 
-        public async Task<T> PostHttpRequest<T>(string url, string jsonBody)
+        public async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, url)
-                {
-                    Content = new StringContent(jsonBody, System.Text.Encoding.UTF8, "application/json")
-                };
-
-                var streamTask = this._httpClient.SendAsync(request);
+                var streamTask = _httpClient.SendAsync(request);
                 var response = await streamTask;
 
                 var deserializedResult = await DeserializedResultOrThrow<T>(response);
