@@ -43,10 +43,6 @@ namespace ShipEngineSDK
                 return deserializedResult;
             }
             // TODO: Is there a better way to do error handling?
-            catch (HttpRequestException e)
-            {
-                throw e;
-            }
             catch (Exception e)
             {
                 throw e;
@@ -59,6 +55,11 @@ namespace ShipEngineSDK
             {
                 var contentString = await response.Content.ReadAsStringAsync();
                 var deserializeError = JsonSerializer.Deserialize<ShipEngineException>(contentString);
+                // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
+                if (deserializeError == null)
+                {
+                    response.EnsureSuccessStatusCode();
+                }
                 throw new ShipEngineException(deserializeError.RequestId, deserializeError.Errors);
             }
             else
