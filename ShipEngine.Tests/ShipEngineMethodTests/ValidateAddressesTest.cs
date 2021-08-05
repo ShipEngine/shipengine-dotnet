@@ -7,11 +7,11 @@ using System.Net.Http;
 
 namespace ShipEngineTest
 {
-    public class AddressValidation
+    public class ValidateAddressesTest
     {
 
         [Fact]
-        public async void ValidAddressTest()
+        public async void ValidAddressesTest()
         {
             var mockHttpClientFixture = new MockHttpClientFixture();
 
