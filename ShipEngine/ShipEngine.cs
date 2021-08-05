@@ -1,31 +1,24 @@
-﻿using ShipEngine.Services;
+﻿using System.Net.Http;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
+using ShipEngineSDK.ValidateAddresses.Params;
+using ShipEngineSDK.ValidateAddresses.Result;
 
-namespace ShipEngine
+namespace ShipEngineSDK
 {
-    sealed public class ShipEngine
+    public class ShipEngine : ShipEngineClient
     {
-        // SERVICES
-        public AddressService Address;
-        public PackageService Package;
+        public ShipEngine(string apiKey, HttpClient httpClient = null) : base(apiKey, httpClient) { }
 
-        public ShipEngine(string apiKey)
+
+        public async Task<List<ValidateAddressResult>> ValidateAddresses(List<Address> addresses)
         {
-            var config = new ShipEngineConfig(apiKey);
-            Build(config);
+            string addressesJsonString = JsonSerializer.Serialize(addresses);
+
+            var validatedAddresses = await this.PostHttpRequest<List<ValidateAddressResult>>("v1/addresses/validate", addressesJsonString);
+
+            return validatedAddresses;
         }
-
-        public ShipEngine(ShipEngineConfig config)
-        {
-            Build(config);
-        }
-
-        private void Build(ShipEngineConfig config)
-        {
-            var client = new ShipEngineClient(config);
-            Address = new AddressService(client);
-            Package = new PackageService(client);
-        }
-
-
     }
 }
