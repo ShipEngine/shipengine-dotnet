@@ -29,9 +29,9 @@ namespace ShipEngineSDK.ValidateAddresses.Params
          *
          * @see https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
          */
-        // TODO: Replace string with enum?
+        // TODO: Replace string? with enum?
         [JsonPropertyName("country_code")]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /**
          * The name of the sender or recipient at the address, if applicable.
@@ -55,13 +55,13 @@ namespace ShipEngineSDK.ValidateAddresses.Params
          * The city or locality
          */
         [JsonPropertyName("city_locality")]
-        public string CityLocality { get; set; }
+        public string? CityLocality { get; set; }
 
         /**
          * The state or province
          */
         [JsonPropertyName("state_province")]
-        public string StateProvince { get; set; }
+        public string? StateProvince { get; set; }
 
         /**
          * The postal code

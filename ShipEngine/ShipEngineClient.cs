@@ -8,27 +8,27 @@ namespace ShipEngineSDK
     public class ShipEngineClient
     {
 
-        public HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
         public ShipEngineClient(string apiKey, HttpClient httpClient = null)
         {
 
             if (httpClient == null)
             {
-                this._httpClient = new HttpClient();
+                _httpClient = new HttpClient();
             }
             else
             {
-                this._httpClient = httpClient;
+                _httpClient = httpClient;
             }
 
-            this._httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
 
             // TODO: Add SDK version/OS/and other metadata here.
-            this._httpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
-            this._httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
-            this._httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
+            _httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
+            _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
-            this._httpClient.BaseAddress = new Uri("https://api.shipengine.com");
+            _httpClient.BaseAddress = new Uri("https://api.shipengine.com");
         }
 
         public async Task<T> PostHttpRequest<T>(string url, string jsonBody)
