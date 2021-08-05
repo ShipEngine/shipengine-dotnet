@@ -33,12 +33,11 @@ namespace ShipEngineSDK
 
         public async Task<T> PostHttpRequest<T>(string url, string jsonBody)
         {
-
             try
             {
                 var request = new HttpRequestMessage(HttpMethod.Post, url)
                 {
-                    // Content = new StringContent(jsonBody, System.Text.Encoding.UTF8, "application/json")
+                    Content = new StringContent(jsonBody, System.Text.Encoding.UTF8, "application/json")
                 };
 
                 var streamTask = this._httpClient.SendAsync(request);
