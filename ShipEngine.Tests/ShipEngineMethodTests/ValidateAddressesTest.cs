@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 using ShipEngineSDK;
 using System.Collections.Generic;
@@ -33,7 +32,6 @@ namespace ShipEngineTest
             var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", mockHttpClientFixture.HttpClient);
 
             var result = await client.ValidateAddresses(addressList);
-            Console.Write(result);
 
             Assert.Equal("verified", result[0].Status);
 

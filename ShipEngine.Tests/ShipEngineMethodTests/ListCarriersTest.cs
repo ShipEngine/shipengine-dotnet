@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 using ShipEngineSDK;
 using System.Net.Http;
@@ -21,8 +20,6 @@ namespace ShipEngineTest
             var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", mockHttpClientFixture.HttpClient);
 
             var result = await client.ListCarriers();
-            Console.Write(result);
-
 
             Assert.Empty(result.Errors);
             Assert.Equal("38b4eb4c-474f-4c50-b500-4f765114965e", result.RequestId);

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ShipEngineSDK.ValidateAddresses.Params;
 using ShipEngineSDK.ValidateAddresses.Result;
 using ShipEngineSDK.ListCarriers.Result;
+using ShipEngineSDK.VoidLabelWithLabelId.Result;
 
 namespace ShipEngineSDK
 {
@@ -34,6 +35,15 @@ namespace ShipEngineSDK
             var carriers = await SendHttpRequestAsync<CarrierResponse>(request);
 
             return carriers;
+        }
+
+        public async Task<VoidLabelIdResult> VoidLabelWithLabelId(string LabelId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/{LabelId}/void");
+
+            var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelIdResult>(request);
+
+            return VoidedLabelResponse;
         }
     }
 }
