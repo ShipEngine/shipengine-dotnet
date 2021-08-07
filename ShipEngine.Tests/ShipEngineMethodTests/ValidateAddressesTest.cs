@@ -4,6 +4,7 @@ using ShipEngineSDK;
 using System.Collections.Generic;
 using ShipEngineSDK.ValidateAddresses.Params;
 using System.Net.Http;
+using System.IO;
 
 namespace ShipEngineTest
 {
@@ -15,7 +16,8 @@ namespace ShipEngineTest
         {
             var mockHttpClientFixture = new MockHttpClientFixture();
 
-            var json = "[  {    \"status\": \"verified\",    \"original_address\": {      \"name\": null,      \"phone\": null,      \"company_name\": null,      \"address_line1\": \"2 Toronto St\",      \"address_line2\": null,      \"address_line3\": null,      \"city_locality\": \"Toronto\",      \"state_province\": \"ON\",      \"postal_code\": \"M5C 2B5\",      \"country_code\": \"CA\",      \"address_residential_indicator\": \"unknown\"    },    \"matched_address\": {      \"name\": null,      \"phone\": null,      \"company_name\": \"\",      \"address_line1\": \"100-2 Toronto St\",      \"address_line2\": \"\",      \"address_line3\": \"\",      \"city_locality\": \"Toronto\",      \"state_province\": \"ON\",      \"postal_code\": \"M5C 2B5\",      \"country_code\": \"CA\",      \"address_residential_indicator\": \"unknown\"    },    \"messages\": [      {        \"code\": \"a1007\",        \"message\": \"This address has been verified down to the suite/PO box level (highest possible accuracy with the provided data)\",        \"type\": \"info\",        \"detail_code\": \"verified_to_suite_level\"      }    ]  }]";
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateAddresses200Response.json"));
+
             mockHttpClientFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.OK, json);
 
             var addressList = new List<Address>(){
