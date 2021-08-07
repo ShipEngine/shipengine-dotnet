@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using ShipEngineSDK.ValidateAddresses.Params;
 using ShipEngineSDK.ValidateAddresses.Result;
+using ShipEngineSDK.ListCarriers.Result;
 
 namespace ShipEngineSDK
 {
@@ -24,6 +25,15 @@ namespace ShipEngineSDK
             var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddressResult>>(request);
 
             return validatedAddresses;
+        }
+
+        public async Task<CarrierResponse> ListCarriers()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
+
+            var carriers = await SendHttpRequestAsync<CarrierResponse>(request);
+
+            return carriers;
         }
     }
 }
