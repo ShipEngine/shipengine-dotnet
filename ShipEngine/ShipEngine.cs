@@ -7,7 +7,8 @@ using ShipEngineSDK.ValidateAddresses.Result;
 using ShipEngineSDK.ListCarriers.Result;
 using ShipEngineSDK.VoidLabelWithLabelId.Result;
 using ShipEngineSDK.TrackUsingLabelId.Result;
-
+using ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result;
+using System;
 namespace ShipEngineSDK
 {
     public class ShipEngine : ShipEngineClient
@@ -52,6 +53,16 @@ namespace ShipEngineSDK
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/labels/{LabelId}/track");
 
             var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelIdResult>(request);
+
+            return TrackingInfo;
+        }
+
+        public async Task<TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string TrackingNumber, string CarrierCode)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/tracking?tracking_number={TrackingNumber}&carrier_code={CarrierCode}");
+
+
+            var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumberResult>(request);
 
             return TrackingInfo;
         }
