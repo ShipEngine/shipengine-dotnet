@@ -6,6 +6,7 @@ using ShipEngineSDK.ValidateAddresses.Params;
 using ShipEngineSDK.ValidateAddresses.Result;
 using ShipEngineSDK.ListCarriers.Result;
 using ShipEngineSDK.VoidLabelWithLabelId.Result;
+using ShipEngineSDK.TrackUsingLabelId.Result;
 
 namespace ShipEngineSDK
 {
@@ -44,6 +45,15 @@ namespace ShipEngineSDK
             var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelIdResult>(request);
 
             return VoidedLabelResponse;
+        }
+
+        public async Task<TrackUsingLabelIdResult> TrackUsingLabelId(string LabelId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/labels/{LabelId}/track");
+
+            var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelIdResult>(request);
+
+            return TrackingInfo;
         }
     }
 }
