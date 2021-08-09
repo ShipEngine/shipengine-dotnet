@@ -9,31 +9,28 @@ namespace ShipEngineTest
 {
     public class ValidateAddressesTest
     {
-
         [Fact]
         public async void ValidAddressesTest()
         {
-            var mockHttpClientFixture = new MockHttpClientFixture();
+
+            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateAddresses200Response.json"));
 
-            mockHttpClientFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.OK, json);
+            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.OK, json);
 
             var addressList = new List<Address>(){
-                new Address() {
-                    AddressLine1 = "2 Toronto St",
-                    CityLocality = "Toronto",
-                    StateProvince = "ON",
-                    PostalCode = "M5C 2B5",
-                    CountryCode = "CA",
-                }
-            };
+            new Address() {
+                AddressLine1 = "2 Toronto St",
+                CityLocality = "Toronto",
+                StateProvince = "ON",
+                PostalCode = "M5C 2B5",
+                CountryCode = "CA",
+            }
+        };
 
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
-
-            client._httpClient = mockHttpClientFixture.HttpClient;
-
-            var result = await client.ValidateAddresses(addressList);
+            var result = await mockShipEngineFixture.ShipEngine.ValidateAddresses(addressList);
 
             Assert.Equal("verified", result[0].Status);
 
@@ -68,10 +65,11 @@ namespace ShipEngineTest
         [Fact]
         public async void InValidAddressTest()
         {
-            var mockHttpClientFixture = new MockHttpClientFixture();
+            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             var json = "{  \"request_id\": \"22467317-a130-4927-95a6-76124b716e58\",  \"errors\": [    {      \"error_source\": \"shipengine\",      \"error_type\": \"validation\",      \"error_code\": \"request_body_required\",      \"message\": \"Request body cannot be empty.\"    }  ]}";
-            mockHttpClientFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.BadRequest, json);
+            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.BadRequest, json);
 
             var addressList = new List<Address>(){
                 new Address() {
@@ -83,10 +81,7 @@ namespace ShipEngineTest
                 }
             };
 
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
-            client._httpClient = mockHttpClientFixture.HttpClient;
-
-            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await client.ValidateAddresses(addressList));
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await mockShipEngineFixture.ShipEngine.ValidateAddresses(addressList));
 
             Assert.Equal("22467317-a130-4927-95a6-76124b716e58", ex.RequestId);
             Assert.Equal("shipengine", ex.Errors[0].ErrorSource);

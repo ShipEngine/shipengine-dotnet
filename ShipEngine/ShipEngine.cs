@@ -2,15 +2,30 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using ShipEngineSDK;
 
 namespace ShipEngineSDK
 {
-    public class ShipEngine : ShipEngineClient
+    public class ShipEngine
     {
-        public ShipEngine(string apiKey) : base(apiKey) { }
 
-        public ShipEngine(ShipEngineConfig config) : base(config) { }
+        public HttpClient _client;
+        public ShipEngineConfig config;
+
+        public ShipEngine(string apiKey)
+        {
+
+            var client = new HttpClient();
+            config = new ShipEngineConfig(apiKey);
+            _client = ShipEngineClient.ConfigureHttpClient(config, client);
+
+        }
+
+        public ShipEngine(ShipEngineConfig config)
+        {
+            var client = new HttpClient();
+            this.config = config;
+            _client = ShipEngineClient.ConfigureHttpClient(config, client);
+        }
 
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
         {
@@ -21,7 +36,7 @@ namespace ShipEngineSDK
                 Content = new StringContent(addressesJsonString, System.Text.Encoding.UTF8, "application/json")
             };
 
-            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(request);
+            var validatedAddresses = await ShipEngineClient.SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(request, _client);
 
             return validatedAddresses;
         }
@@ -30,7 +45,7 @@ namespace ShipEngineSDK
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
-            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(request);
+            var carriers = await ShipEngineClient.SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(request, _client);
 
             return carriers;
         }
@@ -39,7 +54,7 @@ namespace ShipEngineSDK
         {
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/{LabelId}/void");
 
-            var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(request);
+            var VoidedLabelResponse = await ShipEngineClient.SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(request, _client);
 
             return VoidedLabelResponse;
         }
@@ -48,7 +63,7 @@ namespace ShipEngineSDK
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/labels/{LabelId}/track");
 
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(request);
+            var TrackingInfo = await ShipEngineClient.SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(request, _client);
 
             return TrackingInfo;
         }
@@ -57,7 +72,7 @@ namespace ShipEngineSDK
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/tracking?tracking_number={TrackingNumber}&carrier_code={CarrierCode}");
 
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(request);
+            var TrackingInfo = await ShipEngineClient.SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(request, _client);
 
             return TrackingInfo;
         }
@@ -75,7 +90,7 @@ namespace ShipEngineSDK
                 Content = new StringContent(LabelParamsString, System.Text.Encoding.UTF8, "application/json")
             };
 
-            var LabelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(request);
+            var LabelResult = await ShipEngineClient.SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(request, _client);
 
             return LabelResult;
         }

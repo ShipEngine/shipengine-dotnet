@@ -11,17 +11,14 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidTrackUsingLabelIdTest()
         {
-            var mockHttpClientFixture = new MockHttpClientFixture();
+            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/TrackUsingLabelId200Response.json"));
 
-            mockHttpClientFixture.StubRequest(HttpMethod.Get, "/v1/labels/se-1234/track", System.Net.HttpStatusCode.OK, json);
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/v1/labels/se-1234/track", System.Net.HttpStatusCode.OK, json);
 
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
-
-            client._httpClient = mockHttpClientFixture.HttpClient;
-
-            var result = await client.TrackUsingLabelId("se-1234");
+            var result = await mockShipEngineFixture.ShipEngine.TrackUsingLabelId("se-1234");
 
             Assert.Equal("1026167028310292", result.TrackingNumber);
             Assert.Equal("UN", result.StatusCode);

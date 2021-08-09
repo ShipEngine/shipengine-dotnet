@@ -5,45 +5,30 @@ using System.Text.Json;
 
 namespace ShipEngineSDK
 {
-    public class ShipEngineClient
+    public static class ShipEngineClient
     {
-        public HttpClient _httpClient;
-
-        public ShipEngineConfig _config;
-
-        public ShipEngineClient(string ApiKey)
+        public static HttpClient ConfigureHttpClient(ShipEngineConfig config, HttpClient client)
         {
-            ConfigureHttpClient(new ShipEngineConfig(ApiKey));
-        }
-
-        public ShipEngineClient(ShipEngineConfig config)
-        {
-            ConfigureHttpClient(config);
-        }
-
-        private void ConfigureHttpClient(ShipEngineConfig config)
-        {
-            _httpClient = new HttpClient();
-            _config = config;
-
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Clear();
 
             // TODO: Add SDK version/OS/and other metadata here.
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
-            _httpClient.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
-            _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
+            client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-            _httpClient.BaseAddress = new Uri("https://api.shipengine.com");
+            client.BaseAddress = new Uri("https://api.shipengine.com");
 
-            _httpClient.Timeout = config.Timeout;
+            client.Timeout = config.Timeout;
+
+            return client;
         }
 
 
-        public async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request)
+        public static async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
         {
             try
             {
-                var streamTask = _httpClient.SendAsync(request);
+                var streamTask = client.SendAsync(request);
                 var response = await streamTask;
 
                 var deserializedResult = await DeserializedResultOrThrow<T>(response);
@@ -57,7 +42,7 @@ namespace ShipEngineSDK
             }
         }
 
-        private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
+        private static async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
             {

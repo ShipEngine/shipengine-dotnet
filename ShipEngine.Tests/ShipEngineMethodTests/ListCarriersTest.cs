@@ -11,17 +11,14 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidListCarriersTest()
         {
-            var mockHttpClientFixture = new MockHttpClientFixture();
+            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
 
-            mockHttpClientFixture.StubRequest(HttpMethod.Get, "/v1/carriers", System.Net.HttpStatusCode.OK, json);
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/v1/carriers", System.Net.HttpStatusCode.OK, json);
 
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
-
-            client._httpClient = mockHttpClientFixture.HttpClient;
-
-            var result = await client.ListCarriers();
+            var result = await mockShipEngineFixture.ShipEngine.ListCarriers();
 
             Assert.Empty(result.Errors);
             Assert.Equal("38b4eb4c-474f-4c50-b500-4f765114965e", result.RequestId);

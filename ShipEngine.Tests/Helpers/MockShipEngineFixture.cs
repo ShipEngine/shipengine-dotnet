@@ -5,12 +5,14 @@ namespace ShipEngineTest
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using ShipEngineSDK;
     using Moq;
     using Moq.Protected;
 
-    public class MockHttpClientFixture
+
+    public class MockShipEngineFixture
     {
-        public MockHttpClientFixture()
+        public MockShipEngineFixture(ShipEngineConfig config)
         {
             MockHandler = new Mock<HttpClientHandler>
             {
@@ -18,16 +20,16 @@ namespace ShipEngineTest
             };
             HttpClient = new HttpClient(MockHandler.Object);
 
-            HttpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
-            HttpClient.DefaultRequestHeaders.Add("Api-Key", "test_1234");
-            HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            ShipEngine = new ShipEngine(config);
 
-            HttpClient.BaseAddress = new Uri("https://api.shipengine.com");
+            ShipEngine._client = ShipEngineClient.ConfigureHttpClient(config, HttpClient);
         }
 
         public Mock<HttpClientHandler> MockHandler { get; }
 
         public HttpClient HttpClient { get; }
+
+        public ShipEngine ShipEngine { get; }
 
         /// <summary>
         /// Resets the mock's state.

@@ -13,15 +13,12 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidCreateLabelFromShipmentDetailsTest()
         {
-            var mockHttpClientFixture = new MockHttpClientFixture();
+            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
 
-            mockHttpClientFixture.StubRequest(HttpMethod.Post, "/v1/labels", System.Net.HttpStatusCode.OK, json);
-
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
-
-            client._httpClient = mockHttpClientFixture.HttpClient;
+            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/labels", System.Net.HttpStatusCode.OK, json);
 
             var LabelParams = new LabelParams()
             {
@@ -65,7 +62,7 @@ namespace ShipEngineTest
                 }
             };
 
-            var result = await client.CreateLabelFromShipmentDetails(LabelParams);
+            var result = await mockShipEngineFixture.ShipEngine.CreateLabelFromShipmentDetails(LabelParams);
 
             Assert.Equal("se-76278969", result.LabelId);
             Assert.Equal("completed", result.Status);
