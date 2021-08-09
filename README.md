@@ -24,13 +24,9 @@ Otherwise, please run dotnet format before pushing
 
 ## TESTS
 
-In order for tests to pass, you need to have [hoverfly installed](https://docs.hoverfly.io/en/latest/pages/introduction/downloadinstallation.html).
-
 Run the following command:
 
 ```
-%> hoverfly -webserver -response-body-files-path simengine &
-%> hoverctl import simengine/rpc/rpc.json
 %> dotnet test
 ```
 

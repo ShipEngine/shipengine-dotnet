@@ -1,0 +1,31 @@
+{
+  "tracking_number": "1026167028310292",
+  "status_code": "UN",
+  "carrier_detail_code": null,
+  "status_description": "Unknown",
+  "carrier_status_code": "INDUCTION",
+  "carrier_status_description": "Electronic information submitted by shipper",
+  "ship_date": "2021-07-09T07:00:00Z",
+  "estimated_delivery_date": "2021-07-19T07:00:00Z",
+  "actual_delivery_date": null,
+  "exception_description": null,
+  "events": [
+    {
+      "occurred_at": "2021-07-10T02:58:01Z",
+      "carrier_occurred_at": "2021-07-10T02:58:01Z",
+      "description": "Electronic information submitted by shipper",
+      "city_locality": null,
+      "state_province": null,
+      "postal_code": null,
+      "country_code": null,
+      "company_name": null,
+      "signer": null,
+      "event_code": "3000",
+      "carrier_detail_code": null,
+      "status_code": "",
+      "carrier_status_code": "3000",
+      "latitude": null,
+      "longitude": null
+    }
+  ]
+}

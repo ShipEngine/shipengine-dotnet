@@ -1,107 +1,66 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using ShipEngine.Models;
-using ShipEngine.Models.Exceptions;
-using ShipEngine.Models.JsonRpc;
-using ShipEngine.Models.Package.Dto;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+using System;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
-namespace ShipEngine
+namespace ShipEngineSDK
 {
-
-
-    sealed public class ShipEngineClient
+    public static class ShipEngineClient
     {
-        private readonly ShipEngineConfig Config;
-        private readonly HttpClient Client;
-
-        private readonly JsonSerializerSettings serializerSettings = new()
+        public static HttpClient ConfigureHttpClient(ShipEngineConfig config, HttpClient client)
         {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Error = (serializer, err) => err.ErrorContext.Handled = true,
-            Converters =
-            {
-                StatusConverter.Singleton,
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
+            client.DefaultRequestHeaders.Accept.Clear();
 
-        };
-
-        public ShipEngineClient(ShipEngineConfig config)
-        {
-            var client = new HttpClient();
+            // TODO: Add SDK version/OS/and other metadata here.
+            client.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
             client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            Client = client;
-            Config = config;
+
+            client.BaseAddress = new Uri("https://api.shipengine.com");
+
+            client.Timeout = config.Timeout;
+
+            return client;
         }
 
-        private async Task<T> DeserializeHttpContent<T>(HttpResponseMessage message)
+
+        public static async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
         {
-            string msgContent = await message.Content.ReadAsStringAsync();
-            var deserializedObject = JsonConvert.DeserializeObject<T>(msgContent, serializerSettings);
-            if (deserializedObject == null)
+            try
             {
-                throw new ShipEngineException("Content is null after deserialization.");
-            };
-            return deserializedObject;
-        }
+                var streamTask = client.SendAsync(request);
+                var response = await streamTask;
 
-        private HttpRequestMessage CreateConfiguredRequestMessage(string content)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Post, Config.BaseUri)
+                var deserializedResult = await DeserializedResultOrThrow<T>(response);
+
+                return deserializedResult;
+            }
+            // TODO: Is there a better way to do error handling?
+            catch (Exception e)
             {
-                Content = new StringContent(content, Encoding.UTF8, "application/json")
-            };
-            return request;
+                throw e;
+            }
         }
 
-        private HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, Parameters parameters) where Parameters : class
+        private static async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
-            var jsonRpcRequest = new JsonRpcRequest<Parameters>(jsonRpcMethod, parameters);
-            string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequest);
-            return CreateConfiguredRequestMessage(serializedRequest);
-        }
-
-        private HttpRequestMessage CreateJsonRpcMessage<Parameters>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class
-        {
-            var jsonRpcRequests = parameters.Select(p => new JsonRpcRequest<Parameters>(jsonRpcMethod, p));
-            string serializedRequest = JsonConvert.SerializeObject(jsonRpcRequests);
-            return CreateConfiguredRequestMessage(serializedRequest);
-        }
-
-        private Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
-        {
-            var request = new HttpRequestMessage(message.Method, message.RequestUri)
+            if (!response.IsSuccessStatusCode)
             {
-                Content = message.Content
-            };
-            return Client.SendAsync(request);
+                var contentString = await response.Content.ReadAsStringAsync();
+                var deserializedError = JsonSerializer.Deserialize<ShipEngineException>(contentString);
+                // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
+                if (deserializedError == null)
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                throw new ShipEngineException(deserializedError.RequestId, deserializedError.Errors);
+            }
+            else
+            {
+                var contentString = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<T>(contentString);
+                return result;
+            }
         }
-
-        public async Task<JsonRpcResponse<Result>> Exec<Parameters, Result>(string jsonRpcMethod, Parameters parameters) where Parameters : class where Result : IResult
-        {
-            var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
-            httpResponseMessage.EnsureSuccessStatusCode();
-            var rpcResponse = await DeserializeHttpContent<JsonRpcResponse<Result>>(httpResponseMessage);
-            return rpcResponse;
-        }
-
-        public async Task<IEnumerable<JsonRpcResponse<Result>>> Exec<Parameters, Result>(string jsonRpcMethod, IEnumerable<Parameters> parameters) where Parameters : class where Result : IResult
-        {
-            var httpResponseMessage = await SendAsync(CreateJsonRpcMessage(jsonRpcMethod, parameters));
-            httpResponseMessage.EnsureSuccessStatusCode();
-
-            // Only reason this overload is neccessary is because we want IEnumerable<JsonRpcResponse<Foo>> rather than JsonRpcResponse<IEnumerable<Foo>>
-            var rpcResponse = await DeserializeHttpContent<IEnumerable<JsonRpcResponse<Result>>>(httpResponseMessage);
-            return rpcResponse;
-        }
-
     }
 }
