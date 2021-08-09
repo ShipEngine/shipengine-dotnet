@@ -1,5 +1,6 @@
 namespace ShipEngineTest
 {
+    using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -16,6 +17,12 @@ namespace ShipEngineTest
                 CallBase = true,
             };
             this.HttpClient = new HttpClient(this.MockHandler.Object);
+
+            this.HttpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
+            this.HttpClient.DefaultRequestHeaders.Add("Api-Key", "test_1234");
+            this.HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            this.HttpClient.BaseAddress = new Uri("https://api.shipengine.com");
         }
 
         public Mock<HttpClientHandler> MockHandler { get; }

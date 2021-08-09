@@ -19,7 +19,9 @@ namespace ShipEngineTest
 
             mockHttpClientFixture.StubRequest(HttpMethod.Post, "/v1/labels", System.Net.HttpStatusCode.OK, json);
 
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", mockHttpClientFixture.HttpClient);
+            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+
+            client._httpClient = mockHttpClientFixture.HttpClient;
 
             var LabelParams = new LabelParams()
             {

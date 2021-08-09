@@ -29,7 +29,9 @@ namespace ShipEngineTest
                 }
             };
 
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", mockHttpClientFixture.HttpClient);
+            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+
+            client._httpClient = mockHttpClientFixture.HttpClient;
 
             var result = await client.ValidateAddresses(addressList);
 
@@ -81,8 +83,8 @@ namespace ShipEngineTest
                 }
             };
 
-            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", mockHttpClientFixture.HttpClient);
-
+            var client = new ShipEngine("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            client._httpClient = mockHttpClientFixture.HttpClient;
 
             var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await client.ValidateAddresses(addressList));
 

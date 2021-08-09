@@ -9,7 +9,7 @@ namespace ShipEngineSDK
 {
     public class ShipEngine : ShipEngineClient
     {
-        public ShipEngine(string apiKey, HttpClient httpClient = null) : base(apiKey, httpClient) { }
+        public ShipEngine(string apiKey) : base(apiKey) { }
 
 
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
