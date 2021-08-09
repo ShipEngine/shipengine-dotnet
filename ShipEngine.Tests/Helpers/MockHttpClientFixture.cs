@@ -12,17 +12,17 @@ namespace ShipEngineTest
     {
         public MockHttpClientFixture()
         {
-            this.MockHandler = new Mock<HttpClientHandler>
+            MockHandler = new Mock<HttpClientHandler>
             {
                 CallBase = true,
             };
-            this.HttpClient = new HttpClient(this.MockHandler.Object);
+            HttpClient = new HttpClient(MockHandler.Object);
 
-            this.HttpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
-            this.HttpClient.DefaultRequestHeaders.Add("Api-Key", "test_1234");
-            this.HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            HttpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
+            HttpClient.DefaultRequestHeaders.Add("Api-Key", "test_1234");
+            HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
-            this.HttpClient.BaseAddress = new Uri("https://api.shipengine.com");
+            HttpClient.BaseAddress = new Uri("https://api.shipengine.com");
         }
 
         public Mock<HttpClientHandler> MockHandler { get; }
@@ -34,7 +34,7 @@ namespace ShipEngineTest
         /// </summary>
         public void Reset()
         {
-            this.MockHandler.Reset();
+            MockHandler.Reset();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace ShipEngineTest
         /// <param name="path">The HTTP path.</param>
         public void AssertRequest(HttpMethod method, string path)
         {
-            this.MockHandler.Protected()
+            MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
@@ -67,7 +67,7 @@ namespace ShipEngineTest
             var responseMessage = new HttpResponseMessage(status);
             responseMessage.Content = new StringContent(response);
 
-            this.MockHandler.Protected()
+            MockHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>

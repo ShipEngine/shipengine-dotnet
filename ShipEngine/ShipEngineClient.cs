@@ -9,19 +9,33 @@ namespace ShipEngineSDK
     {
         public HttpClient _httpClient;
 
+        public ShipEngineConfig _config;
+
         public ShipEngineClient(string ApiKey)
         {
+            ConfigureHttpClient(new ShipEngineConfig(ApiKey));
+        }
 
+        public ShipEngineClient(ShipEngineConfig config)
+        {
+            ConfigureHttpClient(config);
+        }
+
+        private void ConfigureHttpClient(ShipEngineConfig config)
+        {
             _httpClient = new HttpClient();
+            _config = config;
 
             _httpClient.DefaultRequestHeaders.Accept.Clear();
 
             // TODO: Add SDK version/OS/and other metadata here.
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
-            _httpClient.DefaultRequestHeaders.Add("Api-Key", ApiKey);
+            _httpClient.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
             _httpClient.BaseAddress = new Uri("https://api.shipengine.com");
+
+            _httpClient.Timeout = config.Timeout;
         }
 
 

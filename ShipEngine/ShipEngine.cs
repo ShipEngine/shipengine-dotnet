@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 using ShipEngineSDK;
-// using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
 
 namespace ShipEngineSDK
 {
@@ -11,6 +10,7 @@ namespace ShipEngineSDK
     {
         public ShipEngine(string apiKey) : base(apiKey) { }
 
+        public ShipEngine(ShipEngineConfig config) : base(config) { }
 
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
         {
