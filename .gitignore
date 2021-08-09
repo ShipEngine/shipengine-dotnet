@@ -1,3 +1,16 @@
+# build
+[Bb]in/
+[Oo]bj/
+*.nupkg
+
+# user
+*.user
+*.userprefs
+.vs
 .vscode
-bin
-obj
+.DS_Store
+.idea/
+
+.gitmodules
+dockerfile
+docker-compose.*
