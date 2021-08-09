@@ -54,13 +54,13 @@ namespace ShipEngineSDK
             if (!response.IsSuccessStatusCode)
             {
                 var contentString = await response.Content.ReadAsStringAsync();
-                var deserializeError = JsonSerializer.Deserialize<ShipEngineException>(contentString);
+                var deserializedError = JsonSerializer.Deserialize<ShipEngineException>(contentString);
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
-                if (deserializeError == null)
+                if (deserializedError == null)
                 {
                     response.EnsureSuccessStatusCode();
                 }
-                throw new ShipEngineException(deserializeError.RequestId, deserializeError.Errors);
+                throw new ShipEngineException(deserializedError.RequestId, deserializedError.Errors);
             }
             else
             {

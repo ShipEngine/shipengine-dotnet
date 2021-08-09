@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using ShipEngineSDK.ValidateAddresses.Params;
-using ShipEngineSDK.ValidateAddresses.Result;
-using ShipEngineSDK.ListCarriers.Result;
-using ShipEngineSDK.VoidLabelWithLabelId.Result;
-using ShipEngineSDK.TrackUsingLabelId.Result;
-using ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result;
-using System;
+using ShipEngineSDK;
+// using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
+
 namespace ShipEngineSDK
 {
     public class ShipEngine : ShipEngineClient
@@ -16,7 +12,7 @@ namespace ShipEngineSDK
         public ShipEngine(string apiKey, HttpClient httpClient = null) : base(apiKey, httpClient) { }
 
 
-        public async Task<List<ValidateAddressResult>> ValidateAddresses(List<Address> addresses)
+        public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
         {
             string addressesJsonString = JsonSerializer.Serialize(addresses);
 
@@ -25,46 +21,63 @@ namespace ShipEngineSDK
                 Content = new StringContent(addressesJsonString, System.Text.Encoding.UTF8, "application/json")
             };
 
-            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddressResult>>(request);
+            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(request);
 
             return validatedAddresses;
         }
 
-        public async Task<CarrierResponse> ListCarriers()
+        public async Task<ListCarriers.Result.CarrierResponse> ListCarriers()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
-            var carriers = await SendHttpRequestAsync<CarrierResponse>(request);
+            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(request);
 
             return carriers;
         }
 
-        public async Task<VoidLabelIdResult> VoidLabelWithLabelId(string LabelId)
+        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string LabelId)
         {
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/{LabelId}/void");
 
-            var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelIdResult>(request);
+            var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(request);
 
             return VoidedLabelResponse;
         }
 
-        public async Task<TrackUsingLabelIdResult> TrackUsingLabelId(string LabelId)
+        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string LabelId)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/labels/{LabelId}/track");
 
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelIdResult>(request);
+            var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(request);
 
             return TrackingInfo;
         }
 
-        public async Task<TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string TrackingNumber, string CarrierCode)
+        public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string TrackingNumber, string CarrierCode)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/tracking?tracking_number={TrackingNumber}&carrier_code={CarrierCode}");
 
-
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumberResult>(request);
+            var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(request);
 
             return TrackingInfo;
+        }
+
+        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams LabelDetails)
+        {
+
+            string LabelParamsString = JsonSerializer.Serialize(LabelDetails, new JsonSerializerOptions()
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            });
+
+            var request = new HttpRequestMessage(HttpMethod.Post, "/v1/labels")
+            {
+                Content = new StringContent(LabelParamsString, System.Text.Encoding.UTF8, "application/json")
+            };
+
+            var LabelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(request);
+
+            return LabelResult;
         }
     }
 }
