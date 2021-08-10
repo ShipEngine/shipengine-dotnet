@@ -1,0 +1,48 @@
+# GitHub Actions workflow
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions
+
+name: CI-CD
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+
+jobs:
+  node_tests:
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        dotnet: [ '2.1.x', '3.1.x', '5.0.x' ]
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+
+      - name: Dotnet Build
+        run: dotnet build <my project>
+
+      - name: Dotnet Format Install
+        run: dotnet tool install -g dotnet-format
+
+      - name: Run linter
+        run: dotnet format --check
+
+      - name: Run tests
+        run: dotnet test
