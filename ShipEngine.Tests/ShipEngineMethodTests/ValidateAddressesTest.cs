@@ -1,9 +1,9 @@
-using Xunit;
 using ShipEngineSDK;
-using System.Collections.Generic;
 using ShipEngineSDK.ValidateAddresses.Params;
-using System.Net.Http;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
+using Xunit;
 
 namespace ShipEngineTest
 {

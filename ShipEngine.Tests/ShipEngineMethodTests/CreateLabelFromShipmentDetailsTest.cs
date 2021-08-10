@@ -1,9 +1,9 @@
-using Xunit;
 using ShipEngineSDK;
-using System.Net.Http;
-using System.IO;
 using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using Xunit;
 
 namespace ShipEngineTest
 {
