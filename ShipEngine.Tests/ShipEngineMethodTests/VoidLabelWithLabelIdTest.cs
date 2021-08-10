@@ -11,7 +11,7 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidVoidLabelWithLabelIdTest()
         {
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
@@ -20,7 +20,7 @@ namespace ShipEngineTest
 
             var result = await mockShipEngineFixture.ShipEngine.VoidLabelWithLabelId("se-1234");
 
-            Assert.Equal(true, result.Approved);
+            Assert.True(result.Approved);
             Assert.Equal("Request for refund submitted.  This label has been voided.", result.Message);
         }
     }

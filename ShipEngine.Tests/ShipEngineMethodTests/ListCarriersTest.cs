@@ -11,7 +11,7 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidListCarriersTest()
         {
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
@@ -29,29 +29,29 @@ namespace ShipEngineTest
             Assert.Equal("se-656171", Carrier.CarrierId);
             Assert.Equal("stamps_com", Carrier.CarrierCode);
             Assert.Equal("test_account_656171", Carrier.AccountNumber);
-            Assert.Equal(true, Carrier.RequiresFundedAmount);
+            Assert.True(Carrier.RequiresFundedAmount);
             Assert.Equal(7707.9000, Carrier.Balance);
             Assert.Equal("ShipEngine Test Account - Stamps.com", Carrier.Nickname);
             Assert.Equal("Stamps.com", Carrier.FriendlyName);
-            Assert.Equal(false, Carrier.Primary);
-            Assert.Equal(false, Carrier.HasMultiPackageSupportingServices);
-            Assert.Equal(true, Carrier.SupportsLabelMessages);
+            Assert.False(Carrier.Primary);
+            Assert.False(Carrier.HasMultiPackageSupportingServices);
+            Assert.True(Carrier.SupportsLabelMessages);
 
             Assert.Equal("se-656171", Carrier.Services[0].CarrierId);
             Assert.Equal("stamps_com", Carrier.Services[0].CarrierCode);
             Assert.Equal("usps_first_class_mail", Carrier.Services[0].ServiceCode);
             Assert.Equal("USPS First Class Mail", Carrier.Services[0].Name);
-            Assert.Equal(true, Carrier.Services[0].Domestic);
-            Assert.Equal(false, Carrier.Services[0].International);
-            Assert.Equal(false, Carrier.Services[0].IsMultiPackageSupported);
+            Assert.True(Carrier.Services[0].Domestic);
+            Assert.False(Carrier.Services[0].International);
+            Assert.False(Carrier.Services[0].IsMultiPackageSupported);
 
             Assert.Equal("se-656171", Carrier.Services[1].CarrierId);
             Assert.Equal("stamps_com", Carrier.Services[1].CarrierCode);
             Assert.Equal("usps_media_mail", Carrier.Services[1].ServiceCode);
             Assert.Equal("USPS Media Mail", Carrier.Services[1].Name);
-            Assert.Equal(true, Carrier.Services[1].Domestic);
-            Assert.Equal(false, Carrier.Services[1].International);
-            Assert.Equal(false, Carrier.Services[1].IsMultiPackageSupported);
+            Assert.True(Carrier.Services[1].Domestic);
+            Assert.False(Carrier.Services[1].International);
+            Assert.False(Carrier.Services[1].IsMultiPackageSupported);
 
             Assert.Null(Carrier.Packages[0].PackageId);
             Assert.Equal("cubic", Carrier.Packages[0].PackageCode);

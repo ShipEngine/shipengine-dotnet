@@ -13,7 +13,7 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidCreateLabelFromShipmentDetailsTest()
         {
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
@@ -78,20 +78,20 @@ namespace ShipEngineTest
             Assert.Equal("usd", result.InsuranceCost.Currency);
 
             Assert.Equal("9405511899560337048294", result.TrackingNumber);
-            Assert.Equal(false, result.IsReturnLabel);
+            Assert.False(result.IsReturnLabel);
             Assert.Null(result.RmaNumber);
-            Assert.Equal(false, result.IsInternational);
+            Assert.False(result.IsInternational);
 
             Assert.Equal("", result.BatchId);
             Assert.Equal("se-656171", result.CarrierId);
             Assert.Equal("usps_priority_mail", result.ServiceCode);
             Assert.Equal("package", result.PackageCode);
-            Assert.Equal(false, result.Voided);
+            Assert.False(result.Voided);
             Assert.Null(result.VoidedAt);
             Assert.Equal("pdf", result.LabelFormat);
             Assert.Equal("label", result.DisplayScheme);
             Assert.Equal("4x6", result.LabelLayout);
-            Assert.Equal(true, result.Trackable);
+            Assert.True(result.Trackable);
             Assert.Null(result.LabelImageId);
             Assert.Equal("stamps_com", result.CarrierCode);
             Assert.Equal("in_transit", result.TrackingStatus);

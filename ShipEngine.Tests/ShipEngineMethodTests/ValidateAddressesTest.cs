@@ -13,7 +13,7 @@ namespace ShipEngineTest
         public async void ValidAddressesTest()
         {
 
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateAddresses200Response.json"));
@@ -65,7 +65,7 @@ namespace ShipEngineTest
         [Fact]
         public async void InValidAddressTest()
         {
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             var json = "{  \"request_id\": \"22467317-a130-4927-95a6-76124b716e58\",  \"errors\": [    {      \"error_source\": \"shipengine\",      \"error_type\": \"validation\",      \"error_code\": \"request_body_required\",      \"message\": \"Request body cannot be empty.\"    }  ]}";

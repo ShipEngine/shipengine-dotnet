@@ -7,7 +7,7 @@ namespace ShipEngineSDK
 {
     public static class ShipEngineClient
     {
-        public static HttpClient ConfigureHttpClient(ShipEngineConfig config, HttpClient client)
+        public static HttpClient ConfigureHttpClient(Config config, HttpClient client)
         {
             client.DefaultRequestHeaders.Accept.Clear();
 
