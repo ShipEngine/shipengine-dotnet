@@ -14,9 +14,12 @@ A C# library built on the [ShipEngine API](https://shipengine.com) offering low-
 
 ```
 %> dotnet restore
-%> dotnet tool install -g dotnet-format
+%> dotnet tool restore
 
-Please run dotnet format before pushing
+Please run dotnet format before pushing changes
+
+%> dotnet format
+```
 
 ## TESTS
 
@@ -29,10 +32,9 @@ Run the following command:
 ```
 
 Run tests on file change:
+
 ```
 
 %> dotnet watch -p ShipEngine.tests/ test
-
-```
 
 ```
