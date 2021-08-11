@@ -81,7 +81,7 @@ jobs:
         run: dotnet test -f netcoreapp3.1
 
       - name: Run 5.0 Tests
-        run: dotnet test -f net5.0 --settings Shipengine.Tests/coverage.runsettings
+        run: dotnet test -f net5.0 --settings ShipEngine.Tests/coverage.runsettings
 
       - name: Send code coverage results to Coveralls
         uses: coverallsapp/github-action@v1.1.0
