@@ -93,6 +93,7 @@ jobs:
         uses: coverallsapp/github-action@v1.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          # parallel: true
-          # flag-name: Unit
+          parallel: true
+          parallel-finished: true
+          flag-name: Unit
           path-to-lcov: ShipEngine.Tests/TestResults/lcov.info
