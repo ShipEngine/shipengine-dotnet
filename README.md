@@ -38,7 +38,3 @@ Run tests on file change:
 %> dotnet watch -p ShipEngine.tests/ test
 
 ```
-
-```
-
-```
