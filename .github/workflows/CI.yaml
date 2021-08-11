@@ -20,14 +20,17 @@ jobs:
       - name: Setup MSBuild Path
         uses: microsoft/setup-msbuild@v1.0.2
 
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.0.2
+      # - name: Setup NuGet
+      #   uses: NuGet/setup-nuget@v1.0.2
 
-      - name: Restore NuGet Packages
-        run: nuget restore shipengine-dotnet.sln
+      # - name: Restore NuGet Packages
+      #   run: nuget restore shipengine-dotnet.sln
 
       - name: Build .Net App
         run: msbuild shipengine-dotnet.sln /p:Configuration=Release
+
+      - name: Run Test
+        run: dotnet test ShipEngine.Tests/bin/Release/net461/ShipEngine.Tests.dll
 
   # dot_net_core:
   #   name: .Net Core and .Net 5.0 on ${{ matrix.os }}
