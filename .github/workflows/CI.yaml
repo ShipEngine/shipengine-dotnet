@@ -8,7 +8,7 @@ name: CI
 on: [push]
 
 jobs:
-  dot_net_framework:
+  dot_net_framework_build:
     name: .Net Framework 4.6.1
     runs-on: windows-latest
     timeout-minutes: 10
@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup MSBuild Path
-        uses: warrenbuckley/Setup-MSBuild@v1
+        uses: microsoft/setup-msbuild@v1.0.2
 
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.2
