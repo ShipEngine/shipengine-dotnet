@@ -81,4 +81,10 @@ jobs:
         run: dotnet test -f netcoreapp3.1
 
       - name: Run 5.0 Tests
-        run: dotnet test -f net5.0
+        run: dotnet test -f net5.0 --settings coverage.runsettings
+
+      - name: Send code coverage results to Coveralls
+        uses: coverallsapp/github-action@v1.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
