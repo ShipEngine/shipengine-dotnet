@@ -83,6 +83,11 @@ jobs:
       - name: Run 5.0 Tests
         run: dotnet test -f net5.0 --settings ShipEngine.Tests/coverage.runsettings
 
+      - name: Move generated lcov file to expected location
+        run: |
+          ls -Rlh ShipEngine.Tests/TestResults/*/lcov.info
+          cat ShipEngine.Tests/TestResults/*/lcov.info > ./coverage/lcov.info
+
       - name: Send code coverage results to Coveralls
         uses: coverallsapp/github-action@v1.1.0
         with:
