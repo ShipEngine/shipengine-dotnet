@@ -4,15 +4,7 @@
   "tools": {
     "dotnet-format": {
       "version": "5.1.225507",
-      "commands": [
-        "dotnet-format"
-      ]
-    },
-    "coveralls.net": {
-      "version": "3.0.0",
-      "commands": [
-        "csmacnz.Coveralls"
-      ]
+      "commands": ["dotnet-format"]
     }
   }
 }
