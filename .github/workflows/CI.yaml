@@ -86,10 +86,11 @@ jobs:
       - name: Move generated lcov file to expected location
         run: |
           ls -Rlh ShipEngine.Tests/TestResults/*/coverage.info
-          cat ShipEngine.Tests/TestResults/*/coverage.info > ./coverage/lcov.info
+          cat ShipEngine.Tests/TestResults/*/coverage.info > ShipEngine.Tests/TestResults/lcov.info
 
       - name: Send code coverage results to Coveralls
         uses: coverallsapp/github-action@v1.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
+          path-to-lcov: ShipEngine.Tests/TestResults/lcov.info
