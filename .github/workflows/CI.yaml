@@ -75,10 +75,10 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Run 2.1.x Tests
-        run: dotnet test ShipEngine.Tests/bin/Release/netcoreapp2.1/ShipEngine.Tests.dll
+        run: dotnet test -f netcoreapp2.1
 
       - name: Run 3.1.x Tests
-        run: dotnet test ShipEngine.Tests/bin/Release/netcoreapp3.1/ShipEngine.Tests.dll
+        run: dotnet test -f netcoreapp3.1
 
       - name: Run 5.0 Tests
-        run: dotnet test ShipEngine.Tests/bin/Release/net5.0/ShipEngine.Tests.dll
+        run: dotnet test -f net5.0
