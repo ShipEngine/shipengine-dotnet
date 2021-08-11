@@ -34,50 +34,50 @@ jobs:
       - name: Run Test
         run: dotnet test ShipEngine.Tests/bin/Release/net461/ShipEngine.Tests.dll
 
-  # dot_net_core:
-  #   name: .Net Core and .Net 5.0 on ${{ matrix.os }}
-  #   runs-on: ${{ matrix.os }}
-  #   timeout-minutes: 10
-  #   strategy:
-  #     fail-fast: true
-  #     matrix:
-  #       os:
-  #         - ubuntu-latest
-  #         - windows-latest
+  dot_net_core:
+    name: .Net Core 2.1.x, 3.1.x, and .Net 5.0 on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
 
-  #   steps:
-  #     - name: Checkout source
-  #       uses: actions/checkout@v2
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
 
-  #     - name: Setup dotnet 2.1.x
-  #       uses: actions/setup-dotnet@v1
-  #       with:
-  #         dotnet-version: 2.1.x
+      - name: Setup dotnet 2.1.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.1.x
 
-  #     - name: Setup dotnet 3.1.x
-  #       uses: actions/setup-dotnet@v1
-  #       with:
-  #         dotnet-version: 3.1.x
+      - name: Setup dotnet 3.1.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
 
-  #     - name: Setup dotnet 5.0.x
-  #       uses: actions/setup-dotnet@v1
-  #       with:
-  #         dotnet-version: 5.0.x
+      - name: Setup dotnet 5.0.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
 
-  #     - name: Dotnet tool restore
-  #       run: dotnet tool restore
+      - name: Dotnet tool restore
+        run: dotnet tool restore
 
-  #     - name: Lint
-  #       run: dotnet format --check
+      - name: Lint
+        run: dotnet format --check
 
-  #     - name: Dotnet Build
-  #       run: dotnet build --configuration Release
+      - name: Dotnet Build
+        run: dotnet build --configuration Release
 
-  #     - name: Run 2.1.x Tests
-  #       run: dotnet test ShipEngine.Tests/bin/Release/netcoreapp2.1/ShipEngine.Tests.dll
+      - name: Run 2.1.x Tests
+        run: dotnet test ShipEngine.Tests/bin/Release/netcoreapp2.1/ShipEngine.Tests.dll
 
-  #     - name: Run 3.1.x Tests
-  #       run: dotnet test ShipEngine.Tests/bin/Release/netcoreapp3.1/ShipEngine.Tests.dll
+      - name: Run 3.1.x Tests
+        run: dotnet test ShipEngine.Tests/bin/Release/netcoreapp3.1/ShipEngine.Tests.dll
 
-  #     - name: Run 5.0 Tests
-  #       run: dotnet test ShipEngine.Tests/bin/Release/net5.0/ShipEngine.Tests.dll
+      - name: Run 5.0 Tests
+        run: dotnet test ShipEngine.Tests/bin/Release/net5.0/ShipEngine.Tests.dll
