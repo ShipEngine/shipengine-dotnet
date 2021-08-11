@@ -85,8 +85,8 @@ jobs:
 
       - name: Move generated lcov file to expected location
         run: |
-          ls -Rlh ShipEngine.Tests/TestResults/*/lcov.info
-          cat ShipEngine.Tests/TestResults/*/lcov.info > ./coverage/lcov.info
+          ls -Rlh ShipEngine.Tests/TestResults/*/coverage.info
+          cat ShipEngine.Tests/TestResults/*/coverage.info > ./coverage/lcov.info
 
       - name: Send code coverage results to Coveralls
         uses: coverallsapp/github-action@v1.1.0
