@@ -11,7 +11,18 @@ namespace ShipEngineTest
     {
 
         [Fact]
-        public void EmptyAPIKeyThrowsError()
+        public void NullAPIKeyStringThrowsError()
+        {
+            var ex = Assert.Throws<ShipEngineException>(() => new ShipEngine(apiKey: null));
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.FieldValueRequired, ex.ErrorCode);
+            Assert.Equal("A ShipEngine API key must be specified", ex.Message);
+            Assert.Null(ex.RequestId);
+        }
+
+        [Fact]
+        public void EmptyAPIKeyStringThrowsError()
         {
             var ex = Assert.Throws<ShipEngineException>(() => new ShipEngine(""));
             Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
