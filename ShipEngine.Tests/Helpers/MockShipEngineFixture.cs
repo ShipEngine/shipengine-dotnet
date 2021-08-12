@@ -9,7 +9,6 @@ namespace ShipEngineTest
     using System.Threading;
     using System.Threading.Tasks;
 
-
     public class MockShipEngineFixture
     {
         public MockShipEngineFixture(Config config)
@@ -65,7 +64,7 @@ namespace ShipEngineTest
         /// <param name="path">The HTTP path.</param>
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
-        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, int timeout = 6)
+        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
         {
             var responseMessage = new HttpResponseMessage(status);
             responseMessage.Content = new StringContent(response);
@@ -77,11 +76,7 @@ namespace ShipEngineTest
                         m.Method == method &&
                         m.RequestUri.AbsolutePath == path),
                     ItExpr.IsAny<CancellationToken>())
-                .Returns(() =>
-                {
-                    Thread.Sleep(timeout);
-                    return Task.FromResult(responseMessage);
-                });
+                .Returns(Task.FromResult(responseMessage));
         }
     }
 }

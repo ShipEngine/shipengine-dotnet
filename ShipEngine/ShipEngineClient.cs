@@ -24,26 +24,7 @@ namespace ShipEngineSDK
             return client;
         }
 
-
-        public static async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
-        {
-            try
-            {
-                var streamTask = client.SendAsync(request);
-                var response = await streamTask;
-
-                var deserializedResult = await DeserializedResultOrThrow<T>(response);
-
-                return deserializedResult;
-            }
-            // TODO: Is there a better way to do error handling?
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
+        public static async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
             {

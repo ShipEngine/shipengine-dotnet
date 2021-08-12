@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace ShipEngineSDK
                 Content = new StringContent(addressesJsonString, System.Text.Encoding.UTF8, "application/json")
             };
 
-            var validatedAddresses = await ShipEngineClient.SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(request, client);
+            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(request, client);
 
             return validatedAddresses;
         }
@@ -48,7 +49,7 @@ namespace ShipEngineSDK
 
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
-            var carriers = await ShipEngineClient.SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(request, client);
+            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(request, client);
 
             return carriers;
         }
@@ -59,7 +60,7 @@ namespace ShipEngineSDK
 
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/{LabelId}/void");
 
-            var VoidedLabelResponse = await ShipEngineClient.SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(request, client);
+            var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(request, client);
 
             return VoidedLabelResponse;
         }
@@ -70,7 +71,7 @@ namespace ShipEngineSDK
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/labels/{LabelId}/track");
 
-            var TrackingInfo = await ShipEngineClient.SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(request, client);
+            var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(request, client);
 
             return TrackingInfo;
         }
@@ -81,7 +82,7 @@ namespace ShipEngineSDK
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/tracking?tracking_number={TrackingNumber}&carrier_code={CarrierCode}");
 
-            var TrackingInfo = await ShipEngineClient.SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(request, client);
+            var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(request, client);
 
             return TrackingInfo;
         }
@@ -101,7 +102,7 @@ namespace ShipEngineSDK
                 Content = new StringContent(LabelParamsString, System.Text.Encoding.UTF8, "application/json")
             };
 
-            var LabelResult = await ShipEngineClient.SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(request, client);
+            var LabelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(request, client);
 
             return LabelResult;
         }
@@ -116,6 +117,24 @@ namespace ShipEngineSDK
             }
 
             return client;
+        }
+
+        public virtual async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
+        {
+            try
+            {
+                var streamTask = client.SendAsync(request);
+                var response = await streamTask;
+
+                var deserializedResult = await ShipEngineClient.DeserializedResultOrThrow<T>(response);
+
+                return deserializedResult;
+            }
+            // TODO: Is there a better way to do error handling?
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
