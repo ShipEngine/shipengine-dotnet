@@ -77,6 +77,8 @@ namespace ShipEngineSDK
 
             var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(request, client);
 
+            client.Dispose();
+
             return carriers;
         }
 
@@ -96,6 +98,8 @@ namespace ShipEngineSDK
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/{LabelId}/void");
 
             var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(request, client);
+
+            client.Dispose();
 
             return VoidedLabelResponse;
         }
@@ -117,6 +121,8 @@ namespace ShipEngineSDK
 
             var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(request, client);
 
+            client.Dispose();
+
             return TrackingInfo;
         }
 
@@ -137,6 +143,8 @@ namespace ShipEngineSDK
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/tracking?tracking_number={TrackingNumber}&carrier_code={CarrierCode}");
 
             var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(request, client);
+
+            client.Dispose();
 
             return TrackingInfo;
         }
@@ -175,6 +183,8 @@ namespace ShipEngineSDK
             };
 
             var LabelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(request, client);
+
+            client.Dispose();
 
             return LabelResult;
         }
