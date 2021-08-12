@@ -14,23 +14,27 @@ A C# library built on the [ShipEngine API](https://shipengine.com) offering low-
 
 ```
 %> dotnet restore
-%> dotnet tool install -g dotnet-format
+%> dotnet tool restore
+
+Please run dotnet format before pushing changes
+
+%> dotnet format
 ```
-If you want to install precommit hook
-```
-%> bash scripts/install-precommit.sh
-```
-Otherwise, please run dotnet format before pushing
 
 ## TESTS
 
 Run the following command:
 
 ```
+
 %> dotnet test
+
 ```
 
 Run tests on file change:
+
 ```
+
 %> dotnet watch -p ShipEngine.tests/ test
+
 ```

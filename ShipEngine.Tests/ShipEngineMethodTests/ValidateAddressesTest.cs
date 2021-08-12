@@ -1,9 +1,9 @@
-using Xunit;
 using ShipEngineSDK;
-using System.Collections.Generic;
 using ShipEngineSDK.ValidateAddresses.Params;
-using System.Net.Http;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
+using Xunit;
 
 namespace ShipEngineTest
 {
@@ -68,7 +68,7 @@ namespace ShipEngineTest
             var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
-            var json = "{  \"request_id\": \"22467317-a130-4927-95a6-76124b716e58\",  \"errors\": [    {      \"error_source\": \"shipengine\",      \"error_type\": \"validation\",      \"error_code\": \"request_body_required\",      \"message\": \"Request body cannot be empty.\"    }  ]}";
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/BadRequest400Response.json"));
             mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.BadRequest, json);
 
             var addressList = new List<Address>(){
@@ -84,10 +84,10 @@ namespace ShipEngineTest
             var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await mockShipEngineFixture.ShipEngine.ValidateAddresses(addressList));
 
             Assert.Equal("22467317-a130-4927-95a6-76124b716e58", ex.RequestId);
-            Assert.Equal("shipengine", ex.Errors[0].ErrorSource);
-            Assert.Equal("validation", ex.Errors[0].ErrorType);
-            Assert.Equal("request_body_required", ex.Errors[0].ErrorCode);
-            Assert.Equal("validation", ex.Errors[0].ErrorType);
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.RequestBodyRequired, ex.ErrorCode);
+            Assert.Equal("Request body cannot be empty.", ex.Message);
         }
     }
 }

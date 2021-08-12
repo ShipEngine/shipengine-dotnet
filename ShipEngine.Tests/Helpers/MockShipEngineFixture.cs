@@ -1,13 +1,13 @@
 namespace ShipEngineTest
 {
+    using Moq;
+    using Moq.Protected;
+    using ShipEngineSDK;
     using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using ShipEngineSDK;
-    using Moq;
-    using Moq.Protected;
 
 
     public class MockShipEngineFixture

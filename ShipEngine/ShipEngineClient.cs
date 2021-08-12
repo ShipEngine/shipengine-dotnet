@@ -1,7 +1,8 @@
+using ShipEngineSDK.Common;
 using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
@@ -47,20 +48,33 @@ namespace ShipEngineSDK
             if (!response.IsSuccessStatusCode)
             {
                 var contentString = await response.Content.ReadAsStringAsync();
-                var deserializedError = JsonSerializer.Deserialize<ShipEngineException>(contentString);
+                var deserializedError = JsonSerializer.Deserialize<ShipEngineAPIError>(contentString);
+
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
                 {
                     response.EnsureSuccessStatusCode();
                 }
-                throw new ShipEngineException(deserializedError.RequestId, deserializedError.Errors);
+
+                var error = deserializedError.Errors[0];
+
+                if (error != null)
+                {
+                    throw new ShipEngineException(error.Message, error.ErrorSource, error.ErrorType, error.ErrorCode, deserializedError.RequestId);
+                }
+
             }
             else
             {
                 var contentString = await response.Content.ReadAsStringAsync();
                 var result = JsonSerializer.Deserialize<T>(contentString);
-                return result;
+                if (result != null)
+                {
+                    return result;
+                }
             }
+
+            throw new ShipEngineException(message: "Unexpected Error");
         }
     }
 }
