@@ -1,3 +1,4 @@
+using ShipEngineSDK.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,6 @@ namespace ShipEngineSDK.ListCarriers.Result
 
         [JsonPropertyName("errors")]
         public List<Error>? Errors { get; set; }
-
     }
 
 
