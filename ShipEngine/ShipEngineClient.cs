@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
-    public static class ShipEngineClient
+    public class ShipEngineClient
     {
-        public static HttpClient ConfigureHttpClient(ShipEngineConfig config, HttpClient client)
+        public static HttpClient ConfigureHttpClient(Config config, HttpClient client)
         {
             client.DefaultRequestHeaders.Accept.Clear();
 
@@ -24,26 +24,7 @@ namespace ShipEngineSDK
             return client;
         }
 
-
-        public static async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
-        {
-            try
-            {
-                var streamTask = client.SendAsync(request);
-                var response = await streamTask;
-
-                var deserializedResult = await DeserializedResultOrThrow<T>(response);
-
-                return deserializedResult;
-            }
-            // TODO: Is there a better way to do error handling?
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
+        private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
             {
@@ -75,6 +56,23 @@ namespace ShipEngineSDK
             }
 
             throw new ShipEngineException(message: "Unexpected Error");
+        }
+
+        public virtual async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
+        {
+            try
+            {
+                var streamTask = client.SendAsync(request);
+                var response = await streamTask;
+
+                var deserializedResult = await DeserializedResultOrThrow<T>(response);
+
+                return deserializedResult;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

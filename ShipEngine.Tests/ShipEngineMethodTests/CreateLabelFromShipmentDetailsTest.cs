@@ -1,8 +1,12 @@
+using Moq;
 using ShipEngineSDK;
 using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ShipEngineTest
@@ -13,7 +17,7 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidCreateLabelFromShipmentDetailsTest()
         {
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
@@ -78,20 +82,20 @@ namespace ShipEngineTest
             Assert.Equal("usd", result.InsuranceCost.Currency);
 
             Assert.Equal("9405511899560337048294", result.TrackingNumber);
-            Assert.Equal(false, result.IsReturnLabel);
+            Assert.False(result.IsReturnLabel);
             Assert.Null(result.RmaNumber);
-            Assert.Equal(false, result.IsInternational);
+            Assert.False(result.IsInternational);
 
             Assert.Equal("", result.BatchId);
             Assert.Equal("se-656171", result.CarrierId);
             Assert.Equal("usps_priority_mail", result.ServiceCode);
             Assert.Equal("package", result.PackageCode);
-            Assert.Equal(false, result.Voided);
+            Assert.False(result.Voided);
             Assert.Null(result.VoidedAt);
             Assert.Equal("pdf", result.LabelFormat);
             Assert.Equal("label", result.DisplayScheme);
             Assert.Equal("4x6", result.LabelLayout);
-            Assert.Equal(true, result.Trackable);
+            Assert.True(result.Trackable);
             Assert.Null(result.LabelImageId);
             Assert.Equal("stamps_com", result.CarrierCode);
             Assert.Equal("in_transit", result.TrackingStatus);
@@ -129,6 +133,81 @@ namespace ShipEngineTest
             Assert.Equal(1, package.Sequence);
 
             Assert.Equal("carrier_default", result.ChargeEvent);
+        }
+
+        [Fact]
+        public async void ValidateCustomSettingsAtMethodLevel()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString, timeout: TimeSpan.FromSeconds(1));
+
+            var mockHandler = new Mock<ShipEngine>(config);
+
+            var shipEngine = mockHandler.Object;
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
+
+            var voidLabelResult = JsonSerializer.Deserialize<ShipEngineSDK.CreateLabelFromShipmentDetails.Result.LabelResult>(json);
+            var request = new HttpRequestMessage(HttpMethod.Post, "v1/labels");
+
+            // Verify that the client has a custom timeout of 1 second when called.
+            mockHandler
+                .Setup(x => x.SendHttpRequestAsync<ShipEngineSDK.CreateLabelFromShipmentDetails.Result.LabelResult>
+                (
+                    It.IsAny<HttpRequestMessage>(),
+                    It.Is<HttpClient>(client =>
+                        client.Timeout == TimeSpan.FromSeconds(1) &&
+                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                ))
+                .Returns(Task.FromResult(voidLabelResult));
+
+            var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
+
+            var LabelParams = new LabelParams()
+            {
+                Shipment = new Shipment()
+                {
+                    ServiceCode = "usps_priority_mail",
+                    ShipFrom = new Address()
+                    {
+                        Name = "John Doe",
+                        AddressLine1 = "4009 Marathon Blvd",
+                        CityLocality = "Austin",
+                        StateProvince = "TX",
+                        PostalCode = "78756",
+                        CountryCode = "US",
+                        Phone = "512-555-5555"
+                    },
+                    ShipTo = new Address()
+                    {
+                        Name = "Amanda Miller",
+                        AddressLine1 = "525 S Winchester Blvd",
+                        CityLocality = "San Jose",
+                        StateProvince = "CA",
+                        PostalCode = "95128",
+                        CountryCode = "US",
+                        Phone = "512-555-5555"
+                    },
+                    Packages = new List<Package>() {
+                        new Package() {
+                            Weight = new Weight() {
+                                Value = 17,
+                                Unit = "pound"
+                            },
+                            Dimensions = new Dimensions() {
+                                Length = 36,
+                                Width = 12,
+                                Height = 24,
+                                Unit = "inch",
+                            }
+                        }
+                    }
+                }
+            };
+
+            await shipEngine.CreateLabelFromShipmentDetails(LabelParams, config: customConfig);
+
+            mockHandler.VerifyAll();
         }
     }
 }

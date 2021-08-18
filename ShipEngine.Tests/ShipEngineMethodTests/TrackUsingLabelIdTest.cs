@@ -1,6 +1,11 @@
+using Moq;
 using ShipEngineSDK;
+using ShipEngineSDK.TrackUsingLabelId.Result;
+using System;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ShipEngineTest
@@ -11,7 +16,7 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidTrackUsingLabelIdTest()
         {
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/TrackUsingLabelId200Response.json"));
@@ -46,6 +51,39 @@ namespace ShipEngineTest
             Assert.Equal("3000", result.Events[0].CarrierStatusCode);
             Assert.Null(result.Events[0].Latitude);
             Assert.Null(result.Events[0].Longitude);
+        }
+
+        [Fact]
+        // Check that both API Key and timeout can be set at the method level
+        public async void ValidateCustomSettingsAtMethodLevel()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString, timeout: TimeSpan.FromSeconds(1));
+
+            var mockHandler = new Mock<ShipEngine>(config);
+
+            var shipEngine = mockHandler.Object;
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
+
+            var listCarriersResult = JsonSerializer.Deserialize<TrackUsingLabelIdResult>(json);
+            var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
+
+            // Verify that the client has a custom timeout of 1 second when called.
+            mockHandler
+                .Setup(x => x.SendHttpRequestAsync<TrackUsingLabelIdResult>
+                (
+                    It.IsAny<HttpRequestMessage>(),
+                    It.Is<HttpClient>(client =>
+                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                ))
+                .Returns(Task.FromResult(listCarriersResult));
+
+            var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
+
+            await shipEngine.TrackUsingLabelId("se-1234", config: customConfig);
+
+            mockHandler.VerifyAll();
         }
     }
 }

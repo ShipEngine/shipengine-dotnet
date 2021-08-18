@@ -1,19 +1,25 @@
+using Moq;
 using ShipEngineSDK;
 using ShipEngineSDK.ValidateAddresses.Params;
+using ShipEngineSDK.ValidateAddresses.Result;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ShipEngineTest
 {
+
     public class ValidateAddressesTest
     {
         [Fact]
         public async void ValidAddressesTest()
         {
 
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateAddresses200Response.json"));
@@ -21,14 +27,14 @@ namespace ShipEngineTest
             mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.OK, json);
 
             var addressList = new List<Address>(){
-            new Address() {
-                AddressLine1 = "2 Toronto St",
-                CityLocality = "Toronto",
-                StateProvince = "ON",
-                PostalCode = "M5C 2B5",
-                CountryCode = "CA",
-            }
-        };
+                new Address() {
+                    AddressLine1 = "2 Toronto St",
+                    CityLocality = "Toronto",
+                    StateProvince = "ON",
+                    PostalCode = "M5C 2B5",
+                    CountryCode = "CA",
+                }
+            };
 
             var result = await mockShipEngineFixture.ShipEngine.ValidateAddresses(addressList);
 
@@ -65,7 +71,7 @@ namespace ShipEngineTest
         [Fact]
         public async void InValidAddressTest()
         {
-            var config = new ShipEngineConfig("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/BadRequest400Response.json"));
@@ -88,6 +94,50 @@ namespace ShipEngineTest
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.RequestBodyRequired, ex.ErrorCode);
             Assert.Equal("Request body cannot be empty.", ex.Message);
+        }
+
+        [Fact]
+        // Check that both API Key and timeout can be set at the method level
+        public async void ValidateCustomSettingsAtMethodLevel()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString, timeout: TimeSpan.FromSeconds(1));
+
+            var mockHandler = new Mock<ShipEngine>(config);
+
+            var shipEngine = mockHandler.Object;
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateAddresses200Response.json"));
+
+            var listCarriersResult = JsonSerializer.Deserialize<List<ValidateAddressResult>>(json);
+            var request = new HttpRequestMessage(HttpMethod.Post, "/v1/addresses/validate");
+
+            // Verify that the client has a custom timeout of 1 second when called.
+            mockHandler
+                .Setup(x => x.SendHttpRequestAsync<List<ValidateAddressResult>>
+                (
+                    It.IsAny<HttpRequestMessage>(),
+                    It.Is<HttpClient>(client =>
+                        client.Timeout == TimeSpan.FromSeconds(1) &&
+                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                ))
+                .Returns(Task.FromResult(listCarriersResult));
+
+            var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
+
+            var addressList = new List<Address>(){
+                new Address() {
+                    AddressLine1 = "2 Toronto St",
+                    CityLocality = "Toronto",
+                    StateProvince = "ON",
+                    PostalCode = "M5C 2B5",
+                    CountryCode = "CA",
+                }
+            };
+
+            await shipEngine.ValidateAddresses(addressList, config: customConfig);
+
+            mockHandler.VerifyAll();
         }
     }
 }

@@ -9,10 +9,9 @@ namespace ShipEngineTest
     using System.Threading;
     using System.Threading.Tasks;
 
-
     public class MockShipEngineFixture
     {
-        public MockShipEngineFixture(ShipEngineConfig config)
+        public MockShipEngineFixture(Config config)
         {
             MockHandler = new Mock<HttpClientHandler>
             {
@@ -55,6 +54,7 @@ namespace ShipEngineTest
                         m.RequestUri.AbsolutePath == path),
                     ItExpr.IsAny<CancellationToken>());
         }
+
 
         /// <summary>
         /// Stubs an HTTP request with the specified method and path to return the specified status

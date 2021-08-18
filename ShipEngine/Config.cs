@@ -2,12 +2,12 @@ using System;
 
 namespace ShipEngineSDK
 {
-    sealed public class ShipEngineConfig
+    sealed public class Config
     {
         public readonly string ApiKey;
         public readonly TimeSpan Timeout;
 
-        public ShipEngineConfig(string apiKey, TimeSpan? timeout = null)
+        public Config(string apiKey, TimeSpan? timeout = null)
         {
             if (apiKey == null || apiKey == "")
             {
