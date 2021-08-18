@@ -30,7 +30,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void ValidateCustomTimeoutAtMethodLevel()
+        public async void ValidateCustomSettingsAtMethodLevel()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 

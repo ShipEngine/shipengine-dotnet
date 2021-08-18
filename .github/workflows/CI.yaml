@@ -98,6 +98,7 @@ jobs:
           path-to-lcov: ShipEngine.Tests/TestResults/lcov.info
 
   coverage:
+    name: Code Coverage
     needs: dot_net_core
     runs-on: ubuntu-latest
     steps:
