@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
-    public class ShipEngine
+    public class ShipEngine : ShipEngineClient
     {
         public HttpClient _client;
         public Config config;
@@ -16,14 +16,14 @@ namespace ShipEngineSDK
 
             var client = new HttpClient();
             config = new Config(apiKey);
-            _client = ShipEngineClient.ConfigureHttpClient(config, client);
+            _client = ConfigureHttpClient(config, client);
         }
 
         public ShipEngine(Config config)
         {
             var client = new HttpClient();
             this.config = config;
-            _client = ShipEngineClient.ConfigureHttpClient(config, client);
+            _client = ConfigureHttpClient(config, client);
         }
 
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
@@ -44,7 +44,7 @@ namespace ShipEngineSDK
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses, Config config)
         {
 
-            var client = ShipEngineClient.ConfigureHttpClient(config, new HttpClient());
+            var client = ConfigureHttpClient(config, new HttpClient());
 
             string addressesJsonString = JsonSerializer.Serialize(addresses);
 
@@ -71,7 +71,7 @@ namespace ShipEngineSDK
 
         public async Task<ListCarriers.Result.CarrierResponse> ListCarriers(Config config)
         {
-            var client = ShipEngineClient.ConfigureHttpClient(config, new HttpClient());
+            var client = ConfigureHttpClient(config, new HttpClient());
 
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
@@ -93,7 +93,7 @@ namespace ShipEngineSDK
 
         public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string LabelId, Config config)
         {
-            var client = ShipEngineClient.ConfigureHttpClient(config, new HttpClient());
+            var client = ConfigureHttpClient(config, new HttpClient());
 
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/{LabelId}/void");
 
@@ -115,7 +115,7 @@ namespace ShipEngineSDK
 
         public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string LabelId, Config config)
         {
-            var client = ShipEngineClient.ConfigureHttpClient(config, new HttpClient());
+            var client = ConfigureHttpClient(config, new HttpClient());
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/labels/{LabelId}/track");
 
@@ -138,7 +138,7 @@ namespace ShipEngineSDK
 
         public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string TrackingNumber, string CarrierCode, Config config)
         {
-            var client = ShipEngineClient.ConfigureHttpClient(config, new HttpClient());
+            var client = ConfigureHttpClient(config, new HttpClient());
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/tracking?tracking_number={TrackingNumber}&carrier_code={CarrierCode}");
 
@@ -170,7 +170,7 @@ namespace ShipEngineSDK
         public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams LabelDetails, Config config)
         {
 
-            var client = ShipEngineClient.ConfigureHttpClient(config, new HttpClient());
+            var client = ConfigureHttpClient(config, new HttpClient());
 
             string LabelParamsString = JsonSerializer.Serialize(LabelDetails, new JsonSerializerOptions()
             {
@@ -189,21 +189,5 @@ namespace ShipEngineSDK
             return LabelResult;
         }
 
-        public virtual async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
-        {
-            try
-            {
-                var streamTask = client.SendAsync(request);
-                var response = await streamTask;
-
-                var deserializedResult = await ShipEngineClient.DeserializedResultOrThrow<T>(response);
-
-                return deserializedResult;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
     }
 }
