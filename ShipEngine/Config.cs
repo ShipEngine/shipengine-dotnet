@@ -15,6 +15,14 @@ namespace ShipEngineSDK
                 throw new ShipEngineException(message, ErrorSource.ShipEngine, ErrorType.Validation, ErrorCode.FieldValueRequired);
             }
             ApiKey = apiKey;
+
+
+            if (timeout <= TimeSpan.Zero)
+            {
+                var message = "Timeout must be greater than zero.";
+                throw new ShipEngineException(message, ErrorSource.ShipEngine, ErrorType.Validation, ErrorCode.InvalidFieldValue);
+            }
+
             Timeout = timeout ?? TimeSpan.FromSeconds(5);
         }
     }
