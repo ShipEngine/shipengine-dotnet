@@ -31,5 +31,20 @@ namespace ShipEngineTest
             Assert.Equal("A ShipEngine API key must be specified", ex.Message);
             Assert.Null(ex.RequestId);
         }
+
+        [Fact]
+        public void InvalidsTimeoutAtInstantiation()
+        {
+            var ex = Assert.Throws<ShipEngineException>(
+                () => new ShipEngine(
+                    new Config(apiKey: "TEST_1234", timeout: System.TimeSpan.FromSeconds(-1))
+                )
+            );
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal("Timeout must be greater than zero.", ex.Message);
+            Assert.Null(ex.RequestId);
+        }
     }
 }
