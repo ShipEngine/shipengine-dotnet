@@ -143,7 +143,7 @@ namespace ShipEngineTest
 
             var duration = stopwatch.Elapsed;
 
-            Assert.Equal(1, TimeSpan.Compare(stopwatch.Elapsed, TimeSpan.FromSeconds(1)));
+            Assert.Equal(1, TimeSpan.Compare(stopwatch.Elapsed, TimeSpan.FromSeconds(0.9)));
         }
 
         [Fact]
