@@ -59,12 +59,24 @@ namespace ShipEngineSDK
             throw new ShipEngineException(message: "Unexpected Error");
         }
 
+
+        /// <summary>
+        /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
+        /// 429 rate limit exceeded errors and subsequent retry logic.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="method"></param>
+        /// <param name="path"></param>
+        /// <param name="jsonContent"></param>
+        /// <param name="client"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config)
         {
             int retry = 0;
 
             HttpResponseMessage response = null;
-            Exception requestException;
+            ShipEngineException requestException;
             while (true)
             {
                 try
@@ -93,16 +105,15 @@ namespace ShipEngineSDK
                 }
 
 
-                if (!ShouldRetry(retry, response?.StatusCode, response?.Headers, config.Retries))
+                if (!ShouldRetry(retry, response?.StatusCode, response?.Headers, config))
                 {
                     break;
                 }
 
                 retry += 1;
-                await WaitAndRetry(response);
+                await WaitAndRetry(response, config, requestException);
             }
 
-            // If max retries have been met throw
             if (requestException != null)
             {
                 throw requestException;
@@ -113,8 +124,7 @@ namespace ShipEngineSDK
             }
         }
 
-        // On a 429 response,
-        private async Task WaitAndRetry(HttpResponseMessage response)
+        private async Task WaitAndRetry(HttpResponseMessage response, Config config, ShipEngineException ex)
         {
             int? retryAfter;
 
@@ -125,6 +135,17 @@ namespace ShipEngineSDK
             catch
             {
                 retryAfter = 5;
+            }
+
+            if (config.Timeout.Seconds < retryAfter)
+            {
+                throw new ShipEngineException(
+                    $"The request took longer than the {config.Timeout.Milliseconds} milliseconds allowed",
+                    ErrorSource.ShipEngine,
+                    ErrorType.System,
+                    ErrorCode.Timeout,
+                    ex.RequestId
+                );
             }
 
             await Task.Delay((int)retryAfter * 1000).ConfigureAwait(false);
@@ -146,10 +167,10 @@ namespace ShipEngineSDK
             int numRetries,
             HttpStatusCode? statusCode,
             HttpHeaders? headers,
-            int maxRetries)
+            Config config)
         {
             // Do not retry if we are out of retries.
-            if (numRetries >= maxRetries)
+            if (numRetries >= config.Retries)
             {
                 return false;
             }
