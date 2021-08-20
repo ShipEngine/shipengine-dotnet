@@ -14,17 +14,11 @@ namespace ShipEngineTest
     public class CreateLabelFromShipmentDetailsTest
     {
 
-        [Fact]
-        public async void ValidCreateLabelFromShipmentDetailsTest()
+        LabelParams LabelParams;
+
+        public CreateLabelFromShipmentDetailsTest()
         {
-            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
-            var mockShipEngineFixture = new MockShipEngineFixture(config);
-
-            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
-
-            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/labels", System.Net.HttpStatusCode.OK, json);
-
-            var LabelParams = new LabelParams()
+            LabelParams = new LabelParams()
             {
                 Shipment = new Shipment()
                 {
@@ -65,6 +59,17 @@ namespace ShipEngineTest
                     }
                 }
             };
+        }
+
+        [Fact]
+        public async void ValidCreateLabelFromShipmentDetailsTest()
+        {
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
+
+            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/labels", System.Net.HttpStatusCode.OK, json);
 
             var result = await mockShipEngineFixture.ShipEngine.CreateLabelFromShipmentDetails(LabelParams);
 
@@ -154,60 +159,38 @@ namespace ShipEngineTest
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<ShipEngineSDK.CreateLabelFromShipmentDetails.Result.LabelResult>
                 (
-                    It.IsAny<HttpRequestMessage>(),
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
                         client.Timeout == TimeSpan.FromSeconds(1) &&
-                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                        client.DefaultRequestHeaders.ToString().Contains("12345")),
+                    It.IsAny<Config>()
                 ))
                 .Returns(Task.FromResult(voidLabelResult));
 
             var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
 
-            var LabelParams = new LabelParams()
-            {
-                Shipment = new Shipment()
-                {
-                    ServiceCode = "usps_priority_mail",
-                    ShipFrom = new Address()
-                    {
-                        Name = "John Doe",
-                        AddressLine1 = "4009 Marathon Blvd",
-                        CityLocality = "Austin",
-                        StateProvince = "TX",
-                        PostalCode = "78756",
-                        CountryCode = "US",
-                        Phone = "512-555-5555"
-                    },
-                    ShipTo = new Address()
-                    {
-                        Name = "Amanda Miller",
-                        AddressLine1 = "525 S Winchester Blvd",
-                        CityLocality = "San Jose",
-                        StateProvince = "CA",
-                        PostalCode = "95128",
-                        CountryCode = "US",
-                        Phone = "512-555-5555"
-                    },
-                    Packages = new List<Package>() {
-                        new Package() {
-                            Weight = new Weight() {
-                                Value = 17,
-                                Unit = "pound"
-                            },
-                            Dimensions = new Dimensions() {
-                                Length = 36,
-                                Width = 12,
-                                Height = 24,
-                                Unit = "inch",
-                            }
-                        }
-                    }
-                }
-            };
-
-            await shipEngine.CreateLabelFromShipmentDetails(LabelParams, config: customConfig);
+            await shipEngine.CreateLabelFromShipmentDetails(LabelParams, methodConfig: customConfig);
 
             mockHandler.VerifyAll();
+        }
+
+        [Fact]
+        public async void InvalidRetriesInMethodCall()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString);
+            var mockHandler = new Mock<ShipEngine>(config);
+            var shipEngine = mockHandler.Object;
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await shipEngine.CreateLabelFromShipmentDetails(LabelParams, methodConfig: new Config(apiKey: "12345", retries: -1)));
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal("Retries must be greater than zero.", ex.Message);
+            Assert.Null(ex.RequestId);
         }
     }
 }

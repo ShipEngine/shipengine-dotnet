@@ -15,6 +15,21 @@ namespace ShipEngineTest
 
     public class ValidateAddressesTest
     {
+        List<Address> AddressList;
+
+        public ValidateAddressesTest()
+        {
+            AddressList = new List<Address>(){
+                new Address() {
+                    AddressLine1 = "2 Toronto St",
+                    CityLocality = "Toronto",
+                    StateProvince = "ON",
+                    PostalCode = "M5C 2B5",
+                    CountryCode = "CA",
+                }
+            };
+        }
+
         [Fact]
         public async void ValidAddressesTest()
         {
@@ -26,17 +41,7 @@ namespace ShipEngineTest
 
             mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.OK, json);
 
-            var addressList = new List<Address>(){
-                new Address() {
-                    AddressLine1 = "2 Toronto St",
-                    CityLocality = "Toronto",
-                    StateProvince = "ON",
-                    PostalCode = "M5C 2B5",
-                    CountryCode = "CA",
-                }
-            };
-
-            var result = await mockShipEngineFixture.ShipEngine.ValidateAddresses(addressList);
+            var result = await mockShipEngineFixture.ShipEngine.ValidateAddresses(AddressList);
 
             Assert.Equal("verified", result[0].Status);
 
@@ -77,17 +82,7 @@ namespace ShipEngineTest
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/BadRequest400Response.json"));
             mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/addresses/validate", System.Net.HttpStatusCode.BadRequest, json);
 
-            var addressList = new List<Address>(){
-                new Address() {
-                    AddressLine1 = "2 Toronto St",
-                    CityLocality = "Toronto",
-                    StateProvince = "ON",
-                    PostalCode = "M5C 2B5",
-                    CountryCode = "CA",
-                }
-            };
-
-            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await mockShipEngineFixture.ShipEngine.ValidateAddresses(addressList));
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await mockShipEngineFixture.ShipEngine.ValidateAddresses(AddressList));
 
             Assert.Equal("22467317-a130-4927-95a6-76124b716e58", ex.RequestId);
             Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
@@ -116,28 +111,40 @@ namespace ShipEngineTest
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<List<ValidateAddressResult>>
                 (
-                    It.IsAny<HttpRequestMessage>(),
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
                         client.Timeout == TimeSpan.FromSeconds(1) &&
-                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                        client.DefaultRequestHeaders.ToString().Contains("12345")),
+                    It.IsAny<Config>()
                 ))
                 .Returns(Task.FromResult(listCarriersResult));
 
             var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
 
-            var addressList = new List<Address>(){
-                new Address() {
-                    AddressLine1 = "2 Toronto St",
-                    CityLocality = "Toronto",
-                    StateProvince = "ON",
-                    PostalCode = "M5C 2B5",
-                    CountryCode = "CA",
-                }
-            };
-
-            await shipEngine.ValidateAddresses(addressList, config: customConfig);
+            await shipEngine.ValidateAddresses(AddressList, methodConfig: customConfig);
 
             mockHandler.VerifyAll();
+        }
+
+        [Fact]
+        public async void InvalidRetriesInMethodCall()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString);
+            var mockHandler = new Mock<ShipEngine>(config);
+            var shipEngine = mockHandler.Object;
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipEngine.ValidateAddresses(AddressList, methodConfig: new Config(apiKey: "12345", retries: -1))
+            );
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal("Retries must be greater than zero.", ex.Message);
+            Assert.Null(ex.RequestId);
         }
     }
 }

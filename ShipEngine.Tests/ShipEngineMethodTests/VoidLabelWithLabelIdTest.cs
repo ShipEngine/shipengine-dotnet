@@ -48,18 +48,40 @@ namespace ShipEngineTest
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<VoidLabelIdResult>
                 (
-                    It.IsAny<HttpRequestMessage>(),
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
                         client.Timeout == TimeSpan.FromSeconds(1) &&
-                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                        client.DefaultRequestHeaders.ToString().Contains("12345")),
+                    It.IsAny<Config>()
                 ))
                 .Returns(Task.FromResult(voidLabelResult));
 
             var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
 
-            await shipEngine.VoidLabelWithLabelId("se-1234", config: customConfig);
+            await shipEngine.VoidLabelWithLabelId("se-1234", methodConfig: customConfig);
 
             mockHandler.VerifyAll();
+        }
+
+        [Fact]
+        public async void InvalidRetriesInMethodCall()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString);
+            var mockHandler = new Mock<ShipEngine>(config);
+            var shipEngine = mockHandler.Object;
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipEngine.VoidLabelWithLabelId("se-1234", methodConfig: new Config(apiKey: "12345", retries: -1))
+            );
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal("Retries must be greater than zero.", ex.Message);
+            Assert.Null(ex.RequestId);
         }
     }
 }

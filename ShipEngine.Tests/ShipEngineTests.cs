@@ -17,7 +17,7 @@ namespace ShipEngineTest
             Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.FieldValueRequired, ex.ErrorCode);
-            Assert.Equal("A ShipEngine API key must be specified", ex.Message);
+            Assert.Equal("A ShipEngine API key must be specified.", ex.Message);
             Assert.Null(ex.RequestId);
         }
 
@@ -28,12 +28,12 @@ namespace ShipEngineTest
             Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.FieldValueRequired, ex.ErrorCode);
-            Assert.Equal("A ShipEngine API key must be specified", ex.Message);
+            Assert.Equal("A ShipEngine API key must be specified.", ex.Message);
             Assert.Null(ex.RequestId);
         }
 
         [Fact]
-        public void InvalidsTimeoutAtInstantiation()
+        public void InvalidTimeoutAtInstantiation()
         {
             var ex = Assert.Throws<ShipEngineException>(
                 () => new ShipEngine(
@@ -44,6 +44,21 @@ namespace ShipEngineTest
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
             Assert.Equal("Timeout must be greater than zero.", ex.Message);
+            Assert.Null(ex.RequestId);
+        }
+
+        [Fact]
+        public void InvalidRetriesAtInstantiation()
+        {
+            var ex = Assert.Throws<ShipEngineException>(
+                () => new ShipEngine(
+                    new Config(apiKey: "TEST_1234", retries: -1)
+                )
+            );
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal("Retries must be greater than zero.", ex.Message);
             Assert.Null(ex.RequestId);
         }
     }

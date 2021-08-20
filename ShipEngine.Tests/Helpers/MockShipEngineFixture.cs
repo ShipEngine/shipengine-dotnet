@@ -43,12 +43,12 @@ namespace ShipEngineTest
         /// </summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The HTTP path.</param>
-        public void AssertRequest(HttpMethod method, string path)
+        public void AssertRequest(HttpMethod method, string path, int numberOfCalls = 1)
         {
             MockHandler.Protected()
                 .Verify(
                     "SendAsync",
-                    Times.Once(),
+                    Times.Exactly(numberOfCalls),
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Method == method &&
                         m.RequestUri.AbsolutePath == path),

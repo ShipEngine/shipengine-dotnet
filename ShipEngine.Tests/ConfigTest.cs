@@ -33,10 +33,14 @@ namespace ShipEngineTest
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<VoidLabelIdResult>
                 (
-                    It.IsAny<HttpRequestMessage>(),
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
                         client.Timeout == TimeSpan.FromSeconds(5) &&
-                        client.DefaultRequestHeaders.ToString().Contains(apiKeyString))
+                        client.DefaultRequestHeaders.ToString().Contains(apiKeyString)),
+                    It.IsAny<Config>()
+
                 ))
                 .Returns(Task.FromResult(voidLabelResult));
 
@@ -64,10 +68,14 @@ namespace ShipEngineTest
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<VoidLabelIdResult>
                 (
-                    It.IsAny<HttpRequestMessage>(),
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
                         client.Timeout == TimeSpan.FromSeconds(1) &&
-                        client.DefaultRequestHeaders.ToString().Contains(apiKeyString))
+                        client.DefaultRequestHeaders.ToString().Contains(apiKeyString)),
+                    It.IsAny<Config>()
+
                 ))
                 .Returns(Task.FromResult(voidLabelResult));
 
