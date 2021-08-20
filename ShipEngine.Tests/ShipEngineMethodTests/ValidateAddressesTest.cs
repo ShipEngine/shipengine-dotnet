@@ -142,5 +142,34 @@ namespace ShipEngineTest
 
             mockHandler.VerifyAll();
         }
+
+        [Fact]
+        public async void InvalidRetriesInMethodCall()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString);
+            var mockHandler = new Mock<ShipEngine>(config);
+            var shipEngine = mockHandler.Object;
+
+            var addressList = new List<Address>(){
+                new Address() {
+                    AddressLine1 = "2 Toronto St",
+                    CityLocality = "Toronto",
+                    StateProvince = "ON",
+                    PostalCode = "M5C 2B5",
+                    CountryCode = "CA",
+                }
+            };
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipEngine.ValidateAddresses(addressList, methodConfig: new Config(apiKey: "12345", retries: -1))
+            );
+            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal("Retries must be greater than zero.", ex.Message);
+            Assert.Null(ex.RequestId);
+        }
     }
 }
