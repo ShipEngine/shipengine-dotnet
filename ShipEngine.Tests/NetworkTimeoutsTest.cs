@@ -15,18 +15,25 @@ namespace ShipEngineTest
 {
     public class NetworkRetriesTest
     {
+        string VoidLabelResponse;
+        string rateLimitResponse;
+        HttpResponseMessage RateLimitResponseMessage;
+
+        public NetworkRetriesTest()
+        {
+            rateLimitResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/RateLimited429Response.json"));
+            VoidLabelResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
+
+            RateLimitResponseMessage = new HttpResponseMessage((HttpStatusCode)429);
+            RateLimitResponseMessage.Content = new StringContent(rateLimitResponse);
+            RateLimitResponseMessage.Headers.Add("RetryAfter", "2");
+        }
+
         [Fact]
         public async void DefaultRetryOn429()
         {
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
-
-            string rateLimitResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/RateLimited429Response.json"));
-            string voidLabelResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
-
-            var rateLimitResponseMessage = new HttpResponseMessage((HttpStatusCode)429);
-            rateLimitResponseMessage.Content = new StringContent(rateLimitResponse);
-            rateLimitResponseMessage.Headers.Add("RetryAfter", "2");
 
             mockShipEngineFixture.MockHandler.Protected()
                 .SetupSequence<Task<HttpResponseMessage>>(
@@ -35,11 +42,11 @@ namespace ShipEngineTest
                         m.Method == HttpMethod.Put &&
                         m.RequestUri.AbsolutePath == "/v1/labels/se-1234/void"),
                     ItExpr.IsAny<CancellationToken>())
-                .Returns(Task.FromResult(rateLimitResponseMessage))
+                .Returns(Task.FromResult(RateLimitResponseMessage))
                 .Returns(Task.FromResult(
                     new HttpResponseMessage(HttpStatusCode.OK)
                     {
-                        Content = new StringContent(voidLabelResponse)
+                        Content = new StringContent(VoidLabelResponse)
                     }
                 ));
 
@@ -64,13 +71,6 @@ namespace ShipEngineTest
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(0.5), retries: 2);
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
-            string rateLimitResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/RateLimited429Response.json"));
-            string voidLabelResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
-
-            var rateLimitResponseMessage = new HttpResponseMessage((HttpStatusCode)429);
-            rateLimitResponseMessage.Content = new StringContent(rateLimitResponse);
-            rateLimitResponseMessage.Headers.Add("RetryAfter", "2");
-
             mockShipEngineFixture.MockHandler.Protected()
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
@@ -78,12 +78,12 @@ namespace ShipEngineTest
                         m.Method == HttpMethod.Put &&
                         m.RequestUri.AbsolutePath == "/v1/labels/se-1234/void"),
                     ItExpr.IsAny<CancellationToken>())
-                .Returns(Task.FromResult(rateLimitResponseMessage))
-                .Returns(Task.FromResult(rateLimitResponseMessage))
+                .Returns(Task.FromResult(RateLimitResponseMessage))
+                .Returns(Task.FromResult(RateLimitResponseMessage))
                 .Returns(Task.FromResult(
                     new HttpResponseMessage(HttpStatusCode.OK)
                     {
-                        Content = new StringContent(voidLabelResponse)
+                        Content = new StringContent(VoidLabelResponse)
                     }
                 ));
 
@@ -99,13 +99,6 @@ namespace ShipEngineTest
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(0.5), retries: 0);
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
-            string rateLimitResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/RateLimited429Response.json"));
-            string voidLabelResponse = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
-
-            var rateLimitResponseMessage = new HttpResponseMessage((HttpStatusCode)429);
-            rateLimitResponseMessage.Content = new StringContent(rateLimitResponse);
-            rateLimitResponseMessage.Headers.Add("RetryAfter", "2");
-
             mockShipEngineFixture.MockHandler.Protected()
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
@@ -113,11 +106,11 @@ namespace ShipEngineTest
                         m.Method == HttpMethod.Put &&
                         m.RequestUri.AbsolutePath == "/v1/labels/se-1234/void"),
                     ItExpr.IsAny<CancellationToken>())
-                .Returns(Task.FromResult(rateLimitResponseMessage))
+                .Returns(Task.FromResult(RateLimitResponseMessage))
                 .Returns(Task.FromResult(
                     new HttpResponseMessage(HttpStatusCode.OK)
                     {
-                        Content = new StringContent(voidLabelResponse)
+                        Content = new StringContent(VoidLabelResponse)
                     }
                 ));
 
