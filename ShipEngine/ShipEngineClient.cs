@@ -29,9 +29,11 @@ namespace ShipEngineSDK
 
         private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
+
+            var contentString = await response.Content.ReadAsStringAsync();
+
             if (!response.IsSuccessStatusCode)
             {
-                var contentString = await response.Content.ReadAsStringAsync();
                 var deserializedError = JsonSerializer.Deserialize<ShipEngineAPIError>(contentString);
 
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
@@ -42,20 +44,16 @@ namespace ShipEngineSDK
 
                 var error = deserializedError.Errors[0];
 
-                if (error != null)
+                if (error != null && error.Message != null && error.ErrorSource != null && error.ErrorType != null && error.ErrorCode != null && deserializedError.RequestId != null)
                 {
                     throw new ShipEngineException(error.Message, error.ErrorSource, error.ErrorType, error.ErrorCode, deserializedError.RequestId);
                 }
 
             }
-            else
+            var result = JsonSerializer.Deserialize<T>(contentString);
+            if (result != null)
             {
-                var contentString = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<T>(contentString);
-                if (result != null)
-                {
-                    return result;
-                }
+                return result;
             }
 
             throw new ShipEngineException(message: "Unexpected Error");
@@ -64,7 +62,6 @@ namespace ShipEngineSDK
         public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config)
         {
             int retry = 0;
-
 
             HttpResponseMessage response = null;
             Exception requestException;
@@ -80,10 +77,6 @@ namespace ShipEngineSDK
 
                     return deserializedResult;
                 }
-                // Check for ShipEngineException
-                // If not 429 then deserialize and throw
-                // If 429 then check for the
-
                 catch (ShipEngineException e)
                 {
                     if (e.ErrorCode != ErrorCode.RateLimitExceeded)
@@ -105,23 +98,11 @@ namespace ShipEngineSDK
                     break;
                 }
 
-                int? retryAfter;
-
-                try
-                {
-                    retryAfter = Int32.Parse(response?.Headers.GetValues("RetryAfter").First());
-                }
-                catch
-                {
-                    retryAfter = 5;
-                }
-
                 retry += 1;
-
-                await Task.Delay((int)retryAfter * 1000).ConfigureAwait(false);
-
+                await WaitAndRetry(response);
             }
 
+            // If max retries have been met throw
             if (requestException != null)
             {
                 throw requestException;
@@ -130,8 +111,23 @@ namespace ShipEngineSDK
             {
                 throw new ShipEngineException(message: "Unexpected Error");
             }
+        }
 
+        // On a 429 response,
+        private async Task WaitAndRetry(HttpResponseMessage response)
+        {
+            int? retryAfter;
 
+            try
+            {
+                retryAfter = Int32.Parse(response?.Headers.GetValues("RetryAfter").First());
+            }
+            catch
+            {
+                retryAfter = 5;
+            }
+
+            await Task.Delay((int)retryAfter * 1000).ConfigureAwait(false);
         }
 
         private HttpRequestMessage BuildRequest(HttpMethod method, string path, string? jsonContent)
@@ -158,12 +154,7 @@ namespace ShipEngineSDK
                 return false;
             }
 
-            if (statusCode == (HttpStatusCode)429)
-            {
-                return true;
-            }
-
-            if (headers != null && headers.Contains("retry-after"))
+            if (statusCode == (HttpStatusCode)429 || headers != null && headers.Contains("RetryAfter"))
             {
                 return true;
             }
