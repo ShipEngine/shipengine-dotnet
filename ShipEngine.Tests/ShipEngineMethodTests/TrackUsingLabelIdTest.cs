@@ -73,15 +73,18 @@ namespace ShipEngineTest
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<TrackUsingLabelIdResult>
                 (
-                    It.IsAny<HttpRequestMessage>(),
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
-                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                        client.DefaultRequestHeaders.ToString().Contains("12345")),
+                    It.IsAny<Config>()
                 ))
                 .Returns(Task.FromResult(listCarriersResult));
 
             var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
 
-            await shipEngine.TrackUsingLabelId("se-1234", config: customConfig);
+            await shipEngine.TrackUsingLabelId("se-1234", methodConfig: customConfig);
 
             mockHandler.VerifyAll();
         }

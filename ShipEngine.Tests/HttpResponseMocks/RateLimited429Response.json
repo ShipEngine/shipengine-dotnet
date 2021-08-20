@@ -1,0 +1,11 @@
+{
+  "request_id": "204c855f-dcc0-4270-ba12-c585fc5ef4bf",
+  "errors": [
+    {
+      "error_source": "shipengine",
+      "error_type": "system",
+      "error_code": "rate_limit_exceeded",
+      "message": "You have exceeded the rate limit. Please see https://www.shipengine.com/docs/rate-limits"
+    }
+  ]
+}

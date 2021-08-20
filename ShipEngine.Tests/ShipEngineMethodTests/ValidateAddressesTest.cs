@@ -116,10 +116,13 @@ namespace ShipEngineTest
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<List<ValidateAddressResult>>
                 (
-                    It.IsAny<HttpRequestMessage>(),
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
                         client.Timeout == TimeSpan.FromSeconds(1) &&
-                        client.DefaultRequestHeaders.ToString().Contains("12345"))
+                        client.DefaultRequestHeaders.ToString().Contains("12345")),
+                    It.IsAny<Config>()
                 ))
                 .Returns(Task.FromResult(listCarriersResult));
 
@@ -135,7 +138,7 @@ namespace ShipEngineTest
                 }
             };
 
-            await shipEngine.ValidateAddresses(addressList, config: customConfig);
+            await shipEngine.ValidateAddresses(addressList, methodConfig: customConfig);
 
             mockHandler.VerifyAll();
         }

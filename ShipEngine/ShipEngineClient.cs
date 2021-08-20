@@ -1,6 +1,9 @@
 using ShipEngineSDK.Common;
 using System;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -58,21 +61,114 @@ namespace ShipEngineSDK
             throw new ShipEngineException(message: "Unexpected Error");
         }
 
-        public virtual async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
+        public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config)
         {
-            try
-            {
-                var streamTask = client.SendAsync(request);
-                var response = await streamTask;
+            int retry = 0;
 
-                var deserializedResult = await DeserializedResultOrThrow<T>(response);
 
-                return deserializedResult;
-            }
-            catch (Exception e)
+            HttpResponseMessage response = null;
+            Exception requestException;
+            while (true)
             {
-                throw e;
+                try
+                {
+                    var request = BuildRequest(method, path, jsonContent);
+                    var streamTask = client.SendAsync(request);
+                    response = await streamTask;
+
+                    var deserializedResult = await DeserializedResultOrThrow<T>(response);
+
+                    return deserializedResult;
+                }
+                // Check for ShipEngineException
+                // If not 429 then deserialize and throw
+                // If 429 then check for the
+
+                catch (ShipEngineException e)
+                {
+                    if (e.ErrorCode != ErrorCode.RateLimitExceeded)
+                    {
+                        throw e;
+                    }
+
+                    requestException = e;
+                }
+
+                catch (Exception e)
+                {
+                    throw e;
+                }
+
+
+                if (!ShouldRetry(retry, response?.StatusCode, response?.Headers, config.Retries))
+                {
+                    break;
+                }
+
+                int? retryAfter;
+
+                try
+                {
+                    retryAfter = Int32.Parse(response?.Headers.GetValues("RetryAfter").First());
+                }
+                catch
+                {
+                    retryAfter = 5;
+                }
+
+                retry += 1;
+
+                await Task.Delay((int)retryAfter * 1000).ConfigureAwait(false);
+
             }
+
+            if (requestException != null)
+            {
+                throw requestException;
+            }
+            else
+            {
+                throw new ShipEngineException(message: "Unexpected Error");
+            }
+
+
+        }
+
+        private HttpRequestMessage BuildRequest(HttpMethod method, string path, string? jsonContent)
+        {
+            var request = new HttpRequestMessage(method, path);
+
+            if (jsonContent != null)
+            {
+                request.Content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
+            }
+
+            return request;
+        }
+
+        private bool ShouldRetry(
+            int numRetries,
+            HttpStatusCode? statusCode,
+            HttpHeaders? headers,
+            int maxRetries)
+        {
+            // Do not retry if we are out of retries.
+            if (numRetries >= maxRetries)
+            {
+                return false;
+            }
+
+            if (statusCode == (HttpStatusCode)429)
+            {
+                return true;
+            }
+
+            if (headers != null && headers.Contains("retry-after"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

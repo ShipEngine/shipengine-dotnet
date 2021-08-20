@@ -6,8 +6,9 @@ namespace ShipEngineSDK
     {
         public readonly string ApiKey;
         public readonly TimeSpan Timeout;
+        public readonly int Retries;
 
-        public Config(string apiKey, TimeSpan? timeout = null)
+        public Config(string apiKey, TimeSpan? timeout = null, int retries = 1)
         {
             if (apiKey == null || apiKey == "")
             {
@@ -24,6 +25,8 @@ namespace ShipEngineSDK
             }
 
             Timeout = timeout ?? TimeSpan.FromSeconds(5);
+
+            Retries = retries;
         }
     }
 }
