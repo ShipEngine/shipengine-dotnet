@@ -11,6 +11,8 @@ namespace ShipEngineSDK
 {
     public class ShipEngineClient
     {
+
+        private const string JsonMediaType = "application/json";
         public static HttpClient ConfigureHttpClient(Config config, HttpClient client)
         {
             client.DefaultRequestHeaders.Accept.Clear();
@@ -18,7 +20,7 @@ namespace ShipEngineSDK
             // TODO: Add SDK version/OS/and other metadata here.
             client.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
             client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Accept", JsonMediaType);
 
             client.BaseAddress = new Uri("https://api.shipengine.com");
 
@@ -157,7 +159,7 @@ namespace ShipEngineSDK
 
             if (jsonContent != null)
             {
-                request.Content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
+                request.Content = new StringContent(jsonContent, System.Text.Encoding.UTF8, JsonMediaType);
             }
 
             return request;
