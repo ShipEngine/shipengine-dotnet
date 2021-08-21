@@ -15,6 +15,7 @@ namespace ShipEngineSDK
                 var message = "A ShipEngine API key must be specified.";
                 throw new ShipEngineException(message, ErrorSource.ShipEngine, ErrorType.Validation, ErrorCode.FieldValueRequired);
             }
+
             ApiKey = apiKey;
 
 

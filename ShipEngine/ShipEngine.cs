@@ -76,57 +76,57 @@ namespace ShipEngineSDK
             return carriers;
         }
 
-        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string LabelId)
+        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string labelId)
         {
-            var path = $"v1/labels/{LabelId}/void";
+            var path = $"v1/labels/{labelId}/void";
 
-            var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, _client, config);
+            var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, _client, config);
 
-            return VoidedLabelResponse;
+            return voidedLabelResponse;
         }
 
-        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string LabelId, Config methodConfig)
+        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var path = $"v1/labels/{LabelId}/void";
+            var path = $"v1/labels/{labelId}/void";
 
-            var VoidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, client, methodConfig);
+            var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, client, methodConfig);
 
             client.Dispose();
 
-            return VoidedLabelResponse;
+            return voidedLabelResponse;
         }
 
-        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string LabelId)
+        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId)
         {
-            var path = $"/v1/labels/{LabelId}/track";
+            var path = $"/v1/labels/{labelId}/track";
 
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, _client, config);
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, _client, config);
 
-            return TrackingInfo;
+            return trackingInfo;
         }
 
-        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string LabelId, Config methodConfig)
+        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var path = $"/v1/labels/{LabelId}/track";
+            var path = $"/v1/labels/{labelId}/track";
 
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, client, methodConfig);
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, client, methodConfig);
 
             client.Dispose();
 
-            return TrackingInfo;
+            return trackingInfo;
         }
 
         public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode)
         {
             var path = $"/v1/tracking?tracking_number={trackingNumber}&carrier_code={carrierCode}";
 
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, _client, config);
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, _client, config);
 
-            return TrackingInfo;
+            return trackingInfo;
         }
 
 
@@ -136,26 +136,26 @@ namespace ShipEngineSDK
 
             var path = $"/v1/tracking?tracking_number={trackingNumber}&carrier_code={carrierCode}";
 
-            var TrackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, client, methodConfig);
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, client, methodConfig);
 
             client.Dispose();
 
-            return TrackingInfo;
+            return trackingInfo;
         }
 
         public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams labelDetails)
         {
 
-            string LabelParamsString = JsonSerializer.Serialize(labelDetails, new JsonSerializerOptions()
+            string labelParamsString = JsonSerializer.Serialize(labelDetails, new JsonSerializerOptions()
             {
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             });
 
             var path = "/v1/labels";
 
-            var LabelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, LabelParamsString, _client, config);
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, labelParamsString, _client, config);
 
-            return LabelResult;
+            return labelResult;
         }
 
         public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams labelDetails, Config methodConfig)
@@ -163,18 +163,18 @@ namespace ShipEngineSDK
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string LabelParamsString = JsonSerializer.Serialize(labelDetails, new JsonSerializerOptions()
+            string labelParamsString = JsonSerializer.Serialize(labelDetails, new JsonSerializerOptions()
             {
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             });
 
             var path = "/v1/labels";
 
-            var LabelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, LabelParamsString, client, methodConfig);
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, labelParamsString, client, methodConfig);
 
             client.Dispose();
 
-            return LabelResult;
+            return labelResult;
         }
 
     }
