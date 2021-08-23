@@ -15,8 +15,8 @@ namespace ShipEngineTest
 {
     public class NetworkRetriesTest
     {
-        string VoidLabelResponse;
-        string rateLimitResponse;
+        readonly string VoidLabelResponse;
+        readonly string rateLimitResponse;
         HttpResponseMessage RateLimitResponseMessage;
 
         public NetworkRetriesTest()

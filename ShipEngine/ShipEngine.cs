@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
@@ -11,15 +12,16 @@ namespace ShipEngineSDK
         public HttpClient _client;
         public Config config;
 
-        public ShipEngine(string apiKey)
+        public ShipEngine(string apiKey) : base()
         {
 
             var client = new HttpClient();
             config = new Config(apiKey);
             _client = ConfigureHttpClient(config, client);
+
         }
 
-        public ShipEngine(Config config)
+        public ShipEngine(Config config) : base()
         {
             var client = new HttpClient();
             this.config = config;
@@ -29,7 +31,7 @@ namespace ShipEngineSDK
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
         {
 
-            string addressesJsonString = JsonSerializer.Serialize(addresses);
+            string addressesJsonString = JsonConvert.SerializeObject(addresses, JsonSerializerSettings);
 
             var path = "v1/addresses/validate";
 
@@ -43,7 +45,7 @@ namespace ShipEngineSDK
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string addressesJsonString = JsonSerializer.Serialize(addresses);
+            string addressesJsonString = JsonConvert.SerializeObject(addresses, JsonSerializerSettings);
 
             var path = "v1/addresses/validate";
 
@@ -146,10 +148,7 @@ namespace ShipEngineSDK
         public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams labelDetails)
         {
 
-            string labelParamsString = JsonSerializer.Serialize(labelDetails, new JsonSerializerOptions()
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            });
+            string labelParamsString = JsonConvert.SerializeObject(labelDetails, JsonSerializerSettings);
 
             var path = "/v1/labels";
 
@@ -163,10 +162,7 @@ namespace ShipEngineSDK
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string labelParamsString = JsonSerializer.Serialize(labelDetails, new JsonSerializerOptions()
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            });
+            string labelParamsString = JsonConvert.SerializeObject(labelDetails, JsonSerializerSettings);
 
             var path = "/v1/labels";
 
@@ -176,6 +172,5 @@ namespace ShipEngineSDK
 
             return labelResult;
         }
-
     }
 }

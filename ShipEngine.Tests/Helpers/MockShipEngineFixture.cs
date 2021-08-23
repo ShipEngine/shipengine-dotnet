@@ -2,6 +2,8 @@ namespace ShipEngineTest
 {
     using Moq;
     using Moq.Protected;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
     using ShipEngineSDK;
     using System;
     using System.Net;
@@ -19,9 +21,19 @@ namespace ShipEngineTest
             };
             HttpClient = new HttpClient(MockHandler.Object);
 
-            ShipEngine = new ShipEngine(config);
+            ShipEngine = new ShipEngine(config)
+            {
+                _client = ShipEngineClient.ConfigureHttpClient(config, HttpClient)
+            };
 
-            ShipEngine._client = ShipEngineClient.ConfigureHttpClient(config, HttpClient);
+            JsonSerializerSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Include,
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
         }
 
         public Mock<HttpClientHandler> MockHandler { get; }
@@ -29,6 +41,8 @@ namespace ShipEngineTest
         public HttpClient HttpClient { get; }
 
         public ShipEngine ShipEngine { get; }
+
+        public JsonSerializerSettings JsonSerializerSettings { get; set; }
 
         /// <summary>
         /// Resets the mock's state.

@@ -1,10 +1,10 @@
 using Moq;
+using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.TrackUsingLabelId.Result;
 using System;
 using System.IO;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,6 +12,12 @@ namespace ShipEngineTest
 {
     public class TrackUsingLabelIdTest
     {
+        public TestUtils TestUtils;
+
+        public TrackUsingLabelIdTest()
+        {
+            TestUtils = new TestUtils();
+        }
 
         [Fact]
         public async void ValidTrackUsingLabelIdTest()
@@ -66,7 +72,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
 
-            var listCarriersResult = JsonSerializer.Deserialize<TrackUsingLabelIdResult>(json);
+            var listCarriersResult = JsonConvert.DeserializeObject<TrackUsingLabelIdResult>(json);
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
             // Verify that the client has a custom timeout of 1 second when called.

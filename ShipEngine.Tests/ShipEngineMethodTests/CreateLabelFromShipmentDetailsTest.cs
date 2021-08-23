@@ -1,11 +1,11 @@
 using Moq;
+using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,8 +16,11 @@ namespace ShipEngineTest
 
         LabelParams LabelParams;
 
+        public TestUtils TestUtils;
+
         public CreateLabelFromShipmentDetailsTest()
         {
+            TestUtils = new TestUtils();
             LabelParams = new LabelParams()
             {
                 Shipment = new Shipment()
@@ -152,7 +155,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
 
-            var voidLabelResult = JsonSerializer.Deserialize<ShipEngineSDK.CreateLabelFromShipmentDetails.Result.LabelResult>(json);
+            var voidLabelResult = JsonConvert.DeserializeObject<ShipEngineSDK.CreateLabelFromShipmentDetails.Result.LabelResult>(json);
             var request = new HttpRequestMessage(HttpMethod.Post, "v1/labels");
 
             // Verify that the client has a custom timeout of 1 second when called.
