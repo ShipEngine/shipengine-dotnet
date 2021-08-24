@@ -52,7 +52,7 @@ namespace ShipEngineTest
             // Default retry is 1.
             mockShipEngineFixture.AssertRequest(HttpMethod.Put, "/v1/labels/se-1234/void", numberOfCalls: 2);
 
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.System, ex.ErrorType);
             Assert.Equal(ErrorCode.RateLimitExceeded, ex.ErrorCode);
             Assert.Equal("204c855f-dcc0-4270-ba12-c585fc5ef4bf", ex.RequestId);
@@ -110,7 +110,7 @@ namespace ShipEngineTest
 
             mockShipEngineFixture.AssertRequest(HttpMethod.Put, "/v1/labels/se-1234/void", numberOfCalls: 1);
 
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.System, ex.ErrorType);
             Assert.Equal(ErrorCode.RateLimitExceeded, ex.ErrorCode);
             Assert.Equal("204c855f-dcc0-4270-ba12-c585fc5ef4bf", ex.RequestId);
@@ -167,7 +167,7 @@ namespace ShipEngineTest
             mockShipEngineFixture.AssertRequest(HttpMethod.Put, "/v1/labels/se-1234/void", numberOfCalls: 1);
 
             Assert.Equal("The request took longer than the 500 milliseconds allowed", ex.Message);
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.System, ex.ErrorType);
             Assert.Equal(ErrorCode.Timeout, ex.ErrorCode);
             Assert.Equal("204c855f-dcc0-4270-ba12-c585fc5ef4bf", ex.RequestId);

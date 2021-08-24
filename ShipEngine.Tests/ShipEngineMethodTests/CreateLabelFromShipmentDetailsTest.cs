@@ -193,7 +193,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
 
             var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await shipEngine.CreateLabelFromShipmentDetails(LabelParams, methodConfig: new Config(apiKey: "12345", retries: -1)));
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
             Assert.Equal("Retries must be greater than zero.", ex.Message);

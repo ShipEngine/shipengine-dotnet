@@ -9,17 +9,17 @@ namespace ShipEngineSDK.ListCarriers.Result
         /// <summary>
         /// List of carriers associated with the account
         /// </summary>
-        public List<Carrier>? Carriers { get; set; }
+        public List<Carrier> Carriers { get; set; }
 
         /// <summary>
         /// The request id associated with the method call
         /// </summary>
-        public string? RequestId { get; set; }
+        public string RequestId { get; set; }
 
         /// <summary>
         /// List of errors that occurred while retrieving carriers
         /// </summary>
-        public List<Error> Errors { get; set; } = new List<Error>();
+        public List<Error> Errors { get; set; }
     }
 
 

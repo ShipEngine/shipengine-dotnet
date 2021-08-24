@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 

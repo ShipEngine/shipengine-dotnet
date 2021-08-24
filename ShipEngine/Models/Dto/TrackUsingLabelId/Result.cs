@@ -1,6 +1,3 @@
-
-
-
 using System.Collections.Generic;
 /**
 * The Tracking information and events associated with a label

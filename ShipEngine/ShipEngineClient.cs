@@ -63,14 +63,19 @@ namespace ShipEngineSDK
 
                 if (error != null && error.Message != null && error.ErrorSource != null && error.ErrorType != null && error.ErrorCode != null && deserializedError.RequestId != null)
                 {
-                    throw new ShipEngineException(error.Message, error.ErrorSource, error.ErrorType, error.ErrorCode, deserializedError.RequestId);
+                    throw new ShipEngineException(
+                        error.Message,
+                        error.ErrorSource,
+                        error.ErrorType,
+                        error.ErrorCode,
+                        deserializedError.RequestId
+                    );
                 }
 
             }
 
             var result = JsonConvert.DeserializeObject<T>(contentString, JsonSerializerSettings);
 
-            // var result = JsonSerializer.Deserialize<T>(contentString);
             if (result != null)
             {
                 return result;
@@ -161,7 +166,7 @@ namespace ShipEngineSDK
             {
                 throw new ShipEngineException(
                     $"The request took longer than the {config.Timeout.Milliseconds} milliseconds allowed",
-                    ErrorSource.ShipEngine,
+                    ErrorSource.Shipengine,
                     ErrorType.System,
                     ErrorCode.Timeout,
                     ex.RequestId

@@ -6,14 +6,19 @@ namespace ShipEngineSDK
     {
         public string? RequestId { get; }
 
-        public string? ErrorSource { get; set; }
+        public ErrorSource ErrorSource { get; set; }
 
-        public string? ErrorType { get; set; }
+        public ErrorType ErrorType { get; set; }
 
-        public string? ErrorCode { get; set; }
+        public ErrorCode ErrorCode { get; set; }
 
 
-        public ShipEngineException(string message, string errorSource = "shipengine", string errorType = "system", string errorCode = "unspecified", string requestID = null) : base(message)
+        public ShipEngineException(
+            string message,
+            ErrorSource errorSource = ErrorSource.Shipengine,
+            ErrorType errorType = ErrorType.System,
+            ErrorCode errorCode = ErrorCode.Unspecified,
+            string requestID = null) : base(message)
         {
             ErrorSource = errorSource;
             ErrorType = errorType;
