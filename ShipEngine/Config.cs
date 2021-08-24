@@ -32,7 +32,7 @@ namespace ShipEngineSDK
             if (apiKey == null || apiKey == "")
             {
                 var message = "A ShipEngine API key must be specified.";
-                throw new ShipEngineException(message, ErrorSource.ShipEngine, ErrorType.Validation, ErrorCode.FieldValueRequired);
+                throw new ShipEngineException(message, ErrorSource.Shipengine, ErrorType.Validation, ErrorCode.FieldValueRequired);
             }
 
             ApiKey = apiKey;
@@ -41,7 +41,7 @@ namespace ShipEngineSDK
             if (timeout <= TimeSpan.Zero)
             {
                 var message = "Timeout must be greater than zero.";
-                throw new ShipEngineException(message, ErrorSource.ShipEngine, ErrorType.Validation, ErrorCode.InvalidFieldValue);
+                throw new ShipEngineException(message, ErrorSource.Shipengine, ErrorType.Validation, ErrorCode.InvalidFieldValue);
             }
 
             Timeout = timeout ?? TimeSpan.FromSeconds(5);
@@ -49,7 +49,7 @@ namespace ShipEngineSDK
             if (retries < 0)
             {
                 var message = "Retries must be greater than zero.";
-                throw new ShipEngineException(message, ErrorSource.ShipEngine, ErrorType.Validation, ErrorCode.InvalidFieldValue);
+                throw new ShipEngineException(message, ErrorSource.Shipengine, ErrorType.Validation, ErrorCode.InvalidFieldValue);
             }
 
             Retries = retries;

@@ -14,7 +14,7 @@ namespace ShipEngineTest
         public void NullAPIKeyStringThrowsError()
         {
             var ex = Assert.Throws<ShipEngineException>(() => new ShipEngine(apiKey: null));
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.FieldValueRequired, ex.ErrorCode);
             Assert.Equal("A ShipEngine API key must be specified.", ex.Message);
@@ -25,7 +25,7 @@ namespace ShipEngineTest
         public void EmptyAPIKeyStringThrowsError()
         {
             var ex = Assert.Throws<ShipEngineException>(() => new ShipEngine(""));
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.FieldValueRequired, ex.ErrorCode);
             Assert.Equal("A ShipEngine API key must be specified.", ex.Message);
@@ -40,7 +40,7 @@ namespace ShipEngineTest
                     new Config(apiKey: "TEST_1234", timeout: System.TimeSpan.FromSeconds(-1))
                 )
             );
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
             Assert.Equal("Timeout must be greater than zero.", ex.Message);
@@ -55,7 +55,7 @@ namespace ShipEngineTest
                     new Config(apiKey: "TEST_1234", retries: -1)
                 )
             );
-            Assert.Equal(ErrorSource.ShipEngine, ex.ErrorSource);
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
             Assert.Equal("Retries must be greater than zero.", ex.Message);
