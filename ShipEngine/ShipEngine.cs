@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -18,7 +16,6 @@ namespace ShipEngineSDK
             var client = new HttpClient();
             config = new Config(apiKey);
             _client = ConfigureHttpClient(config, client);
-
         }
 
         public ShipEngine(Config config) : base()
