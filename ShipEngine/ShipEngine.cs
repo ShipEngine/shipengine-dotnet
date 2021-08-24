@@ -123,6 +123,11 @@ namespace ShipEngineSDK
             return voidedLabelResponse;
         }
 
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <returns>An object that contains the label id tracking information</returns>
         public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId)
         {
             var path = $"/v1/labels/{labelId}/track";
@@ -132,6 +137,12 @@ namespace ShipEngineSDK
             return trackingInfo;
         }
 
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <param name="methodConfig"></param>
+        /// <returns>An object that contains the label id tracking information</returns>
         public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
