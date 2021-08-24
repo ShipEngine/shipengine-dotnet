@@ -3,6 +3,7 @@
 [Oo]bj/
 *.nupkg
 TestResults
+*mono_crash*.blob
 
 # user
 *.user

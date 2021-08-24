@@ -1,4 +1,5 @@
 using Moq;
+using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.ValidateAddresses.Params;
 using ShipEngineSDK.ValidateAddresses.Result;
@@ -6,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,6 +16,7 @@ namespace ShipEngineTest
     public class ValidateAddressesTest
     {
         List<Address> AddressList;
+        public TestUtils TestUtils;
 
         public ValidateAddressesTest()
         {
@@ -28,6 +29,8 @@ namespace ShipEngineTest
                     CountryCode = "CA",
                 }
             };
+
+            TestUtils = new TestUtils();
         }
 
         [Fact]
@@ -104,7 +107,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateAddresses200Response.json"));
 
-            var listCarriersResult = JsonSerializer.Deserialize<List<ValidateAddressResult>>(json);
+            var listCarriersResult = JsonConvert.DeserializeObject<List<ValidateAddressResult>>(json, TestUtils.JsonSerializerSettings);
             var request = new HttpRequestMessage(HttpMethod.Post, "/v1/addresses/validate");
 
             // Verify that the client has a custom timeout of 1 second when called.

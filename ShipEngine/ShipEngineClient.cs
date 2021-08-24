@@ -1,16 +1,33 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using ShipEngineSDK.Common;
 using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
     public class ShipEngineClient
     {
+
+        protected readonly JsonSerializerSettings JsonSerializerSettings;
+
+        public ShipEngineClient()
+        {
+            JsonSerializerSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Include,
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+        }
+
+        private const string JsonMediaType = "application/json";
         public static HttpClient ConfigureHttpClient(Config config, HttpClient client)
         {
             client.DefaultRequestHeaders.Accept.Clear();
@@ -18,7 +35,7 @@ namespace ShipEngineSDK
             // TODO: Add SDK version/OS/and other metadata here.
             client.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
             client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Accept", JsonMediaType);
 
             client.BaseAddress = new Uri("https://api.shipengine.com");
 
@@ -34,7 +51,7 @@ namespace ShipEngineSDK
 
             if (!response.IsSuccessStatusCode)
             {
-                var deserializedError = JsonSerializer.Deserialize<ShipEngineAPIError>(contentString);
+                var deserializedError = JsonConvert.DeserializeObject<ShipEngineAPIError>(contentString, JsonSerializerSettings);
 
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
@@ -50,7 +67,10 @@ namespace ShipEngineSDK
                 }
 
             }
-            var result = JsonSerializer.Deserialize<T>(contentString);
+
+            var result = JsonConvert.DeserializeObject<T>(contentString, JsonSerializerSettings);
+
+            // var result = JsonSerializer.Deserialize<T>(contentString);
             if (result != null)
             {
                 return result;
@@ -157,7 +177,7 @@ namespace ShipEngineSDK
 
             if (jsonContent != null)
             {
-                request.Content = new StringContent(jsonContent, System.Text.Encoding.UTF8, "application/json");
+                request.Content = new StringContent(jsonContent, System.Text.Encoding.UTF8, JsonMediaType);
             }
 
             return request;
