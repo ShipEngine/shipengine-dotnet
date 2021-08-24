@@ -63,14 +63,19 @@ namespace ShipEngineSDK
 
                 if (error != null && error.Message != null && error.ErrorSource != null && error.ErrorType != null && error.ErrorCode != null && deserializedError.RequestId != null)
                 {
-                    throw new ShipEngineException(error.Message, (ErrorSource)error.ErrorSource, (ErrorType)error.ErrorType, (ErrorCode)error.ErrorCode, deserializedError.RequestId);
+                    throw new ShipEngineException(
+                        error.Message,
+                        error.ErrorSource,
+                        error.ErrorType,
+                        error.ErrorCode,
+                        deserializedError.RequestId
+                    );
                 }
 
             }
 
             var result = JsonConvert.DeserializeObject<T>(contentString, JsonSerializerSettings);
 
-            // var result = JsonSerializer.Deserialize<T>(contentString);
             if (result != null)
             {
                 return result;
