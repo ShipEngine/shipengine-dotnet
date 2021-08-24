@@ -141,8 +141,9 @@ namespace ShipEngineSDK
         /// Track a shipment using the label id
         /// </summary>
         /// <param name="labelId">The label id associated with the shipment</param>
-        /// <param name="methodConfig"></param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>An object that contains the label id tracking information</returns>
+
         public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
@@ -156,6 +157,12 @@ namespace ShipEngineSDK
             return trackingInfo;
         }
 
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <returns></returns>
         public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode)
         {
             var path = $"/v1/tracking?tracking_number={trackingNumber}&carrier_code={carrierCode}";
@@ -165,7 +172,13 @@ namespace ShipEngineSDK
             return trackingInfo;
         }
 
-
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns></returns>
         public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
