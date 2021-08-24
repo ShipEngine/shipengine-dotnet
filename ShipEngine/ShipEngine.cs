@@ -60,22 +60,31 @@ namespace ShipEngineSDK
             return validatedAddresses;
         }
 
-        public async Task<ListCarriers.Result.CarrierResponse> ListCarriers()
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <returns>A list of carriers</returns>
+        public async Task<ListCarriers.Result.CarrierResult> ListCarriers()
         {
             var path = "v1/carriers";
 
-            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(HttpMethod.Get, path, null, _client, config);
+            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResult>(HttpMethod.Get, path, null, _client, config);
 
             return carriers;
         }
 
-        public async Task<ListCarriers.Result.CarrierResponse> ListCarriers(Config methodConfig)
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>A list of carriers</returns>
+        public async Task<ListCarriers.Result.CarrierResult> ListCarriers(Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
             var path = "v1/carriers";
 
-            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(HttpMethod.Get, path, null, client, methodConfig);
+            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResult>(HttpMethod.Get, path, null, client, methodConfig);
 
             client.Dispose();
 
@@ -99,7 +108,7 @@ namespace ShipEngineSDK
         /// Void a label by ID to get a refund.
         /// </summary>
         /// <param name="labelId">The id of the label to void</param>
-        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Result object indicating the success of the void label attempt</returns>
         public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string labelId, Config methodConfig)
         {

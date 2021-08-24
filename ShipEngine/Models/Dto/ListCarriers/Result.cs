@@ -1,170 +1,201 @@
 using ShipEngineSDK.Common;
+using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
 namespace ShipEngineSDK.ListCarriers.Result
 {
-    public class CarrierResponse
+    public class CarrierResult
     {
+        /// <summary>
+        /// List of carriers associated with the account
+        /// </summary>
         public List<Carrier>? Carriers { get; set; }
 
+        /// <summary>
+        /// The request id associated with the method call
+        /// </summary>
         public string? RequestId { get; set; }
 
-        public List<Error>? Errors { get; set; }
+        /// <summary>
+        /// List of errors that occurred while retrieving carriers
+        /// </summary>
+        public List<Error> Errors { get; set; } = new List<Error>();
     }
 
 
     public class Carrier
     {
-        /**
-         * The carrier ID
-         */
+        /// <summary>
+        /// The carrier ID
+        /// </summary>
         public string? CarrierId { get; set; }
 
-        /**
-         * The code associated with the carrier
-         */
+        /// <summary>
+        /// The code associated with the carrier
+        /// </summary>
         public string? CarrierCode { get; set; }
 
-        /**
-         * The ShipEngine account number connected to this carrier
-         */
+        /// <summary>
+        /// The ShipEngine account number connected to this carrier
+        /// </summary>
         public string? AccountNumber { get; set; }
 
-        /**
-         * Flag indicating if carrier requires funding
-         */
+        /// <summary>
+        /// Flag indicating if carrier requires funding
+        /// </summary>
         public bool? RequiresFundedAmount { get; set; }
 
-        /**
-         * The carrier account balance
-         */
+        /// <summary>
+        /// The carrier account balance
+        /// </summary>
         public double? Balance { get; set; }
 
-        /**
-         * The carrier account nickname
-         */
+        /// <summary>
+        /// The carrier account nickname
+        /// </summary>
         public string? Nickname { get; set; }
 
-        /**
-         * The carrier account friendly name
-         */
+        /// <summary>
+        /// The carrier account friendly name
+        /// </summary>
         public string? FriendlyName { get; set; }
 
-        /**
-         * Flag indicating if this is the primary account
-         */
+        /// <summary>
+        /// Flag indicating if this is the primary account
+        /// </summary>
         public bool? Primary { get; set; }
 
-        /**
-         * Flag indicating if the carrier supports multi package shipments
-         */
+        /// <summary>
+        /// Flag indicating if the carrier supports multi package shipments
+        /// </summary>
         public bool? HasMultiPackageSupportingServices { get; set; }
 
-        /**
-         * Flag indicating if the carrier supports label messages
-         */
+        /// <summary>
+        /// Flag indicating if the carrier supports label messages
+        /// </summary>
         public bool? SupportsLabelMessages { get; set; }
 
-        /**
-         * Array of supported carrier services
-         */
+        /// <summary>
+        /// Array of supported carrier services
+        /// </summary>
         public List<Service>? Services { get; set; }
 
-        /**
-         * Array of supported package types
-         */
+        /// <summary>
+        /// Array of supported package types
+        /// </summary>
         public List<PackageType>? Packages { get; set; }
 
-        /**
-         * Array of supported advanced options
-         */
+        /// <summary>
+        /// Array of supported advanced options
+        /// </summary>
         public List<AdvancedOption>? Options { get; set; }
     }
 
     public class Service
     {
-        /**
-         * The carrier ID
-         */
+        /// <summary>
+        /// The carrier ID
+        /// </summary>
         public string? CarrierId { get; set; }
-        /**
-         * The code associated with the carrier for this service
-         */
+        /// <summary>
+        /// The code associated with the carrier for this service
+        /// </summary>
 
         public string? CarrierCode { get; set; }
 
-        /**
-         * The code associated with the service
-         */
+        /// <summary>
+        /// The code associated with the service
+        /// </summary>
         public string? ServiceCode { get; set; }
 
-        /**
-         * The name of the service
-         */
+        /// <summary>
+        /// The name of the service
+        /// </summary>
         public string? Name { get; set; }
 
-        /**
-         * Flag indicating if the service is domestic
-         */
+        /// <summary>
+        /// Flag indicating if the service is domestic
+        /// </summary>
         public bool? Domestic { get; set; }
 
-        /**
-         * Flag indicating if the service is international
-         */
+        /// <summary>
+        /// Flag indicating if the service is international
+        /// </summary>
         public bool? International { get; set; }
 
-        /**
-         * Flag indicating if the service supports multi package shipments
-         */
+        /// <summary>
+        /// Flag indicating if the service supports multi package shipments
+        /// </summary>
         public bool? IsMultiPackageSupported { get; set; }
     }
 
     public class PackageType
     {
-        /**
-         * The package type ID
-         */
-
+        /// <summary>
+        /// The package type ID
+        /// </summary>
         public string? PackageId { get; set; }
 
-        /**
-         * The package type code
-         */
-
+        /// <summary>
+        /// The package type code
+        /// </summary>
         public string? PackageCode { get; set; }
 
-        /**
-         * The package type name
-         */
+        /// <summary>
+        /// The package type name
+        /// </summary>
         public string? Name { get; set; }
 
-        /**
-         * The package type dimensions
-         */
+        /// <summary>
+        /// The package type dimensions
+        /// </summary>
         public Dimensions? Dimensions { get; set; }
 
+        /// <summary>
+        /// The package type description
+        /// </summary>
         public string? Description { get; set; }
     }
 
 
     public class Dimensions
     {
-        // TODO: Add enum
-        public string? Unit { get; set; }
+        /// <summary>
+        /// The dimension units that are supported by ShipEngine.
+        /// </summary>
+        public DimensionUnit? Unit { get; set; }
 
+        /// <summary>
+        /// The length of the package, in the specified unit
+        /// </summary>
         public double? Length { get; set; }
 
+        /// <summary>
+        /// The width of the package, in the specified unit
+        /// </summary>
         public double? Width { get; set; }
 
+        /// <summary>
+        /// The length of the package, in the specified unit
+        /// </summary>
         public double? Height { get; set; }
     }
 
     public class AdvancedOption
     {
+        /// <summary>
+        /// Name of advanced option
+        /// </summary>
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Default value of option
+        /// </summary>
         public string? DefaultValue { get; set; }
 
+        /// <summary>
+        /// Description of option
+        /// </summary>
         public string? Description { get; set; }
     }
 }
