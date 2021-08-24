@@ -10,14 +10,21 @@ namespace ShipEngineSDK
         public HttpClient _client;
         public Config config;
 
+        /// <summary>
+        /// Initialize the ShipEngine SDK with an API Key
+        /// </summary>
+        /// <param name="apiKey">Api Key associated with the ShipEngine account you want to use</param>
         public ShipEngine(string apiKey) : base()
         {
-
             var client = new HttpClient();
             config = new Config(apiKey);
             _client = ConfigureHttpClient(config, client);
         }
 
+        /// <summary>
+        /// Initialize the ShipEngine SDK with a config object
+        /// </summary>
+        /// <param name="config">Config object containing custom configurations</param>
         public ShipEngine(Config config) : base()
         {
             var client = new HttpClient();
@@ -74,7 +81,11 @@ namespace ShipEngineSDK
 
             return carriers;
         }
-
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
         public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string labelId)
         {
             var path = $"v1/labels/{labelId}/void";
@@ -84,6 +95,12 @@ namespace ShipEngineSDK
             return voidedLabelResponse;
         }
 
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
         public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
