@@ -1,3 +1,6 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
 namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
@@ -22,12 +25,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
 
         public string? RMANumber { get; set; }
 
-        /**
-         * Enum: "carrierDefault" "onCreation" "onCarrierAcceptance". The label charge event.
-         */
-        //TODO: Enum?
-
-        public string? ChargeEvent { get; set; }
+        public ChargeEvent? ChargeEvent { get; set; }
 
         /**
          * The labelId of the original (outgoing) label that the return label is for. This associates the two labels together, which is required by some carriers.
@@ -41,36 +39,32 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
          * The possible validate address values
          */
 
-        public string? ValidateAddress { get; set; }
+        public ValidateAddress? ValidateAddress { get; set; }
 
         /**
          * Default: "url"
          * Enum: "url" "inline"
          * There are two different ways to download a label:
          */
-        // TODO: Enum?
 
-        public string? LabelDownloadType { get; set; }
+        public LabelDownloadType? LabelDownloadType { get; set; }
 
         /**
          * The file format that you want the label to be in. We recommend pdf format because it is supported by all carriers, whereas some carriers do not support the png or zpl formats.
          */
-        // TODO: Enum?
 
-        public string? LabelFormat { get; set; }
+        public LabelFormat? LabelFormat { get; set; }
+
         /**
          * The display format that the label should be shown in.
          */
-        //TODO: Enum?
-
-        public string? DisplayScheme { get; set; }
+        public DisplayScheme? DisplayScheme { get; set; }
 
         /**
          * The layout (size) that you want the label to be in. The labelFormat determines which sizes are allowed. 4x6 is supported for all label formats, whereas letter (8.5" x 11") is only supported for pdf format.
          */
-        //TODO: Enum?
 
-        public string? LabelLayout { get; set; }
+        public LabelLayout? LabelLayout { get; set; }
 
         /**
          * The label image resource that was used to create a custom label image.
@@ -147,9 +141,8 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /**
          * The type of delivery confirmation that is required for this shipment.
          */
-        // TODO: Enum?
 
-        public string? Confirmation { get; set; }
+        public DeliveryConfirmation? Confirmation { get; set; }
 
         /**
          * Customs information. This is usually only needed for international shipments.
@@ -166,27 +159,24 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /**
          * Indicates if the package will be picked up or dropped off by the carrier
          */
-        //TODO: ENum?
 
-        public string? OriginType { get; set; }
+        public OriginType? OriginType { get; set; }
 
         /**
          * The insurance provider to use for any insured packages in the shipment
          */
-        //TODO: ENum?
 
-        public string? InsuranceProvider { get; set; }
+        public InsuranceProvider? InsuranceProvider { get; set; }
 
         /**
          * The order sources that are supported by ShipEngine
          */
-        // TODO: Enum?
 
-        public string? OrderSourceCode { get; set; }
+        public OrderSourceCode? OrderSourceCode { get; set; }
 
         /**
         * The packages in the shipment.
-*/
+        */
 
         public List<Package>? Packages { get; set; }
     }
@@ -218,8 +208,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
 
     public class Dimensions
     {
-        // TODO: Enum?
-        public string? Unit { get; set; }
+        public DimensionUnit? Unit { get; set; }
 
         public double? Length { get; set; }
 
@@ -247,18 +236,13 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
 
         public string? Asin { get; set; }
 
-        //TODO: Enum?
-
-        public string? OrderSourceCode { get; set; }
+        public OrderSourceCode? OrderSourceCode { get; set; }
     }
     public class TaxIdentifier
     {
-        //TODO: Enum?
+        public TaxableEntityType? TaxableEntityType { get; set; }
 
-        public string? TaxableEntityType { get; set; }
-        //TODO: Enum?
-
-        public string? IdentifierType { get; set; }
+        public IdentifierType? IdentifierType { get; set; }
 
         public string? IssuingAuthority { get; set; }
 
@@ -291,11 +275,9 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
 
     public class InternationalShipmentOptions
     {
-        //TODO: Enum?
-        public string? Contents { get; set; }
+        public PackageContents? Contents { get; set; }
 
-        //TODO: Enum?
-        public string? NonDelivery { get; set; }
+        public NonDelivery? NonDelivery { get; set; }
 
         public List<CustomsItem>? CustomsItems { get; set; }
     }
@@ -307,8 +289,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
 
         public string? HarmonizedTariffCode { get; set; }
 
-        // TODO: Enum
-        public string? CountryOfOrigin { get; set; }
+        public Country? CountryOfOrigin { get; set; }
 
         public string? UnitOfMeasure { get; set; }
 
@@ -318,8 +299,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
     }
     public class MonetaryValue
     {
-        //TODO: enum?
-        public string? Currency { get; set; }
+        public Currency? Currency { get; set; }
 
         public double? Amount { get; set; }
     }
@@ -329,8 +309,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
 
         public string? BillToCountryCode { get; set; }
 
-        // TODO: Enum?
-        public string? BillToParty { get; set; }
+        public BillToParty? BillToParty { get; set; }
 
         public string? BillToPostalCode { get; set; }
 
@@ -356,8 +335,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
 
         public string? CustomField3 { get; set; }
 
-        // TODO: enum?
-        public string? OriginType { get; set; }
+        public OriginType? OriginType { get; set; }
 
         public bool? ShipperRelease { get; set; }
 
@@ -366,22 +344,19 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
     public class Weight
     {
         public double? Value { get; set; }
-        //TODO: Enum?
 
-        public string? Unit { get; set; }
+        public WeightUnit? Unit { get; set; }
     }
     public class CollectOnDelivery
     {
-        // TODO: Enum?
-        public string? PaymentType { get; set; }
+        public PaymentType? PaymentType { get; set; }
 
         public PaymentAmount? PaymentAmount { get; set; }
     }
 
     public class PaymentAmount
     {
-        // TODO: Enum?
-        public string? Currency { get; set; }
+        public Currency? Currency { get; set; }
 
         public double? Amount { get; set; }
     }

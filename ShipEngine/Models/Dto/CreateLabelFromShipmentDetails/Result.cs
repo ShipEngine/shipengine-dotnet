@@ -1,6 +1,7 @@
 
 
 
+using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 /**
 * The Tracking information and events associated with a label
@@ -11,9 +12,8 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
     public class LabelResult
     {
         public string? LabelId { get; set; }
-        //TODO: enum?
 
-        public string? Status { get; set; }
+        public LabelStatus? Status { get; set; }
 
         public string? ShipmentId { get; set; }
 
@@ -37,8 +37,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
 
         public string? CarrierId { get; set; }
 
-        //TODO: enum?
-        public string? ChargeEvent { get; set; }
+        public ChargeEvent? ChargeEvent { get; set; }
 
         public string? ServiceCode { get; set; }
 
@@ -48,14 +47,11 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
 
         public string? VoidedAt { get; set; }
 
-        //TODO: enum?
-        public string? LabelFormat { get; set; }
+        public LabelFormat? LabelFormat { get; set; }
 
-        //TODO: enum?
-        public string? DisplayScheme { get; set; }
+        public DisplayScheme? DisplayScheme { get; set; }
 
-        // TODO: enum?
-        public string? LabelLayout { get; set; }
+        public LabelLayout? LabelLayout { get; set; }
 
         public bool? Trackable { get; set; }
 
@@ -65,8 +61,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
 
         public LabelDownload? LabelDownload { get; set; }
 
-        //TODO: enum?
-        public string? TrackingStatus { get; set; }
+        public TrackingStatus? TrackingStatus { get; set; }
 
         public Link? FormDownload { get; set; }
 
@@ -77,8 +72,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
 
     public class MonetaryValue
     {
-        //TODO: enum?
-        public string? Currency { get; set; }
+        public Currency? Currency { get; set; }
 
         public double? Amount { get; set; }
     }
@@ -126,14 +120,12 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
     {
         public double? Value { get; set; }
 
-        //TODO: Enum?
-        public string? Unit { get; set; }
+        public WeightUnit? Unit { get; set; }
     }
 
     public class Dimensions
     {
-        // TODO: Enum?
-        public string? Unit { get; set; }
+        public DimensionUnit? Unit { get; set; }
 
         public double? Length { get; set; }
 

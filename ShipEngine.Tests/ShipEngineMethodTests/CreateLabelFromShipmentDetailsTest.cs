@@ -1,6 +1,8 @@
 using Moq;
 using Newtonsoft.Json;
 using ShipEngineSDK;
+using ShipEngineSDK.Common.Enums;
+using ShipEngineSDK.CreateLabelFromShipmentDetails;
 using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,7 @@ namespace ShipEngineTest
         public CreateLabelFromShipmentDetailsTest()
         {
             TestUtils = new TestUtils();
+
             LabelParams = new LabelParams()
             {
                 Shipment = new Shipment()
@@ -50,17 +53,18 @@ namespace ShipEngineTest
                         new Package() {
                             Weight = new Weight() {
                                 Value = 17,
-                                Unit = "pound"
+                                Unit = WeightUnit.Pound
                             },
                             Dimensions = new Dimensions() {
                                 Length = 36,
                                 Width = 12,
                                 Height = 24,
-                                Unit = "inch",
+                                Unit = DimensionUnit.Inch,
                             }
                         }
                     }
-                }
+                },
+                ValidateAddress = ValidateAddress.ValidateAndClean
             };
         }
 
@@ -77,17 +81,17 @@ namespace ShipEngineTest
             var result = await mockShipEngineFixture.ShipEngine.CreateLabelFromShipmentDetails(LabelParams);
 
             Assert.Equal("se-76278969", result.LabelId);
-            Assert.Equal("completed", result.Status);
+            Assert.Equal(LabelStatus.Completed, result.Status);
             Assert.Equal("se-146030558", result.ShipmentId);
             Assert.Equal("2021-08-09T00:00:00Z", result.ShipDate);
             Assert.Equal("2021-08-09T14:55:37.5393659Z", result.CreatedAt);
             Assert.Equal("2021-08-09T14:55:37.5393659Z", result.CreatedAt);
 
-            Assert.Equal("usd", result.ShipmentCost.Currency);
+            Assert.Equal(Currency.USD, result.ShipmentCost.Currency);
             Assert.Equal(115.51, result.ShipmentCost.Amount);
 
             Assert.Equal(0.0, result.InsuranceCost.Amount);
-            Assert.Equal("usd", result.InsuranceCost.Currency);
+            Assert.Equal(Currency.USD, result.InsuranceCost.Currency);
 
             Assert.Equal("9405511899560337048294", result.TrackingNumber);
             Assert.False(result.IsReturnLabel);
@@ -100,13 +104,13 @@ namespace ShipEngineTest
             Assert.Equal("package", result.PackageCode);
             Assert.False(result.Voided);
             Assert.Null(result.VoidedAt);
-            Assert.Equal("pdf", result.LabelFormat);
-            Assert.Equal("label", result.DisplayScheme);
-            Assert.Equal("4x6", result.LabelLayout);
+            Assert.Equal(LabelFormat.PDF, result.LabelFormat);
+            Assert.Equal(DisplayScheme.Label, result.DisplayScheme);
+            Assert.Equal(LabelLayout.FourBySix, result.LabelLayout);
             Assert.True(result.Trackable);
             Assert.Null(result.LabelImageId);
             Assert.Equal("stamps_com", result.CarrierCode);
-            Assert.Equal("in_transit", result.TrackingStatus);
+            Assert.Equal(TrackingStatus.InTransit, result.TrackingStatus);
 
             Assert.Equal("https://api.shipengine.com/v1/downloads/10/9-VbKDnISUGt_z3zrjvPTw/label-76278969.pdf", result.LabelDownload.Pdf);
             Assert.Equal("https://api.shipengine.com/v1/downloads/10/9-VbKDnISUGt_z3zrjvPTw/label-76278969.png", result.LabelDownload.Png);
@@ -121,14 +125,14 @@ namespace ShipEngineTest
 
             Assert.Equal("package", package.PackageCode);
             Assert.Equal(17.0, package.Weight.Value);
-            Assert.Equal("pound", package.Weight.Unit);
+            Assert.Equal(WeightUnit.Pound, package.Weight.Unit);
 
-            Assert.Equal("inch", package.Dimensions.Unit);
+            Assert.Equal(DimensionUnit.Inch, package.Dimensions.Unit);
             Assert.Equal(36.0, package.Dimensions.Length);
             Assert.Equal(12.0, package.Dimensions.Width);
             Assert.Equal(24.0, package.Dimensions.Height);
 
-            Assert.Equal("usd", package.InsuredValue.Currency);
+            Assert.Equal(Currency.USD, package.InsuredValue.Currency);
             Assert.Equal(0.0, package.InsuredValue.Amount);
 
             Assert.Equal("9405511899560337048294", package.TrackingNumber);
@@ -140,7 +144,7 @@ namespace ShipEngineTest
             Assert.Null(package.ExternalPackageId);
             Assert.Equal(1, package.Sequence);
 
-            Assert.Equal("carrier_default", result.ChargeEvent);
+            Assert.Equal(ChargeEvent.CarrierDefault, result.ChargeEvent);
         }
 
         [Fact]
