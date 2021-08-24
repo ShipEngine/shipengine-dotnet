@@ -2,12 +2,31 @@ using System;
 
 namespace ShipEngineSDK
 {
-    sealed public class Config
+    public class Config
     {
+        /// <summary>
+        //  Your ShipEngine API key.
+        /// </summary>
         public readonly string ApiKey;
+
+        /// <summary>
+        /// The timespan to wait before the request times out.
+        /// Defaults to 5 seconds.
+        /// </summary>
         public readonly TimeSpan Timeout;
+
+        /// <summary>
+        /// The number of retries to attempt after a failed request.
+        /// Defaults to 1.
+        /// </summary>
         public readonly int Retries;
 
+        /// <summary>
+        /// Configure the global settings for the ShipEngine SDK.
+        /// </summary>
+        /// <param name="apiKey">The api key associated with the account you wish to use.</param>
+        /// <param name="timeout">The timespan to wait before the request times out. Defaults to 5 seconds</param>
+        /// <param name="retries">The number of retries to attempt after a failed request. Defaults t o1</param>
         public Config(string apiKey, TimeSpan? timeout = null, int retries = 1)
         {
             if (apiKey == null || apiKey == "")
