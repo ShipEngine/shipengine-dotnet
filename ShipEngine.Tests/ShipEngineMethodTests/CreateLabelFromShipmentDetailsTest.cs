@@ -36,7 +36,7 @@ namespace ShipEngineTest
                         CityLocality = "Austin",
                         StateProvince = "TX",
                         PostalCode = "78756",
-                        CountryCode = "US",
+                        CountryCode = Country.US,
                         Phone = "512-555-5555"
                     },
                     ShipTo = new Address()
@@ -46,7 +46,7 @@ namespace ShipEngineTest
                         CityLocality = "San Jose",
                         StateProvince = "CA",
                         PostalCode = "95128",
-                        CountryCode = "US",
+                        CountryCode = Country.US,
                         Phone = "512-555-5555"
                     },
                     Packages = new List<Package>() {

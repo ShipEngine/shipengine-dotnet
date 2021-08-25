@@ -203,10 +203,15 @@ namespace ShipEngineSDK
             return trackingInfo;
         }
 
-        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams labelDetails)
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="label">The label that you want to create</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams label)
         {
 
-            string labelParamsString = JsonConvert.SerializeObject(labelDetails, JsonSerializerSettings);
+            string labelParamsString = JsonConvert.SerializeObject(label, JsonSerializerSettings);
 
             var path = "/v1/labels";
 
@@ -215,12 +220,18 @@ namespace ShipEngineSDK
             return labelResult;
         }
 
-        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams labelDetails, Config methodConfig)
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="label">The label that you want to create</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams label, Config methodConfig)
         {
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string labelParamsString = JsonConvert.SerializeObject(labelDetails, JsonSerializerSettings);
+            string labelParamsString = JsonConvert.SerializeObject(label, JsonSerializerSettings);
 
             var path = "/v1/labels";
 
