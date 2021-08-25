@@ -1,6 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>ShipEngine</PackageId>
+    <PackageTags>sdk;rest;api;shipping;rates;address;validation;tracking;fedex;ups;usps;</PackageTags>
+
+    <Version>0.0.1-alpha</Version>
+    <Authors>ShipEngine Team</Authors>
+    <Company>ShipEngine</Company>
+    <Summary>The official ShipEngine .NET 4.6.1+ SDK</Summary>
+    <Description>ShipEngine is The official ShipEngine .NET 4.6.1+ SDK for accessing the ShipEngine REST API via a class library</Description>
+    <PackageIcon>icon.png</PackageIcon>
+
+    <PackageProjectUrl>https://github.com/ShipEngine/shipengine-dotnet</PackageProjectUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
@@ -8,6 +23,12 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\"/>
+    <None Include="../LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
 </Project>

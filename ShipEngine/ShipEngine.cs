@@ -101,6 +101,7 @@ namespace ShipEngineSDK
 
             return carriers;
         }
+
         /// <summary>
         /// Void a label by ID to get a refund.
         /// </summary>
@@ -154,7 +155,6 @@ namespace ShipEngineSDK
         /// <param name="labelId">The label id associated with the shipment</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>An object that contains the label id tracking information</returns>
-
         public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
