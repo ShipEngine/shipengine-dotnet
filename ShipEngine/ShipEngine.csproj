@@ -4,7 +4,7 @@
     <PackageId>ShipEngine</PackageId>
     <PackageTags>sdk;rest;api;shipping;rates;address;validation;tracking;fedex;ups;usps;</PackageTags>
 
-    <Version>0.0.1-alpha</Version>
+    <Version>0.0.2-alpha</Version>
     <Authors>ShipEngine Team</Authors>
     <Company>ShipEngine</Company>
     <Summary>The official ShipEngine .NET 4.6.1+ SDK</Summary>
