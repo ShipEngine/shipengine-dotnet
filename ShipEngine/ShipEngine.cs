@@ -206,7 +206,7 @@ namespace ShipEngineSDK
         /// <summary>
         /// Create a label from shipment details
         /// </summary>
-        /// <param name="labelDetails">The label that you want to create</param>
+        /// <param name="label">The label that you want to create</param>
         /// <returns>Object containing the created label information</returns>
         public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams label)
         {
