@@ -5,7 +5,6 @@ namespace ShipEngineTest
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using ShipEngineSDK;
-    using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;

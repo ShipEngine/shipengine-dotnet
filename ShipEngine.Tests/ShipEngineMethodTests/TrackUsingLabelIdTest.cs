@@ -1,6 +1,7 @@
 using Moq;
 using Newtonsoft.Json;
 using ShipEngineSDK;
+using ShipEngineSDK.TrackUsingLabelId;
 using ShipEngineSDK.TrackUsingLabelId.Result;
 using System;
 using System.IO;
@@ -32,9 +33,9 @@ namespace ShipEngineTest
             var result = await mockShipEngineFixture.ShipEngine.TrackUsingLabelId("se-1234");
 
             Assert.Equal("1026167028310292", result.TrackingNumber);
-            Assert.Equal("UN", result.StatusCode);
+            Assert.Equal(StatusCode.UN, result.StatusCode);
             Assert.Null(result.CarrierDetailCode);
-            Assert.Equal("Unknown", result.StatusDescription);
+            Assert.Equal(StatusDescription.Unknown, result.StatusDescription);
             Assert.Equal("INDUCTION", result.CarrierStatusCode);
             Assert.Equal("Electronic information submitted by shipper", result.CarrierStatusDescription);
             Assert.Equal("2021-07-09T07:00:00Z", result.ShipDate);
