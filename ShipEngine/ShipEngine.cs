@@ -32,6 +32,11 @@ namespace ShipEngineSDK
             _client = ConfigureHttpClient(config, client);
         }
 
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <returns>An address validation result object</returns>
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
         {
 
@@ -44,6 +49,12 @@ namespace ShipEngineSDK
             return validatedAddresses;
         }
 
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>An address validation result object</returns>
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses, Config methodConfig)
         {
 
