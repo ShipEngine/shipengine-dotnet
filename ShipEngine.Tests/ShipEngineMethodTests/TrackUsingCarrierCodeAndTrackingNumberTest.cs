@@ -1,6 +1,10 @@
+using Moq;
 using Moq.Protected;
+using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber;
+using ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -11,6 +15,12 @@ namespace ShipEngineTest
 {
     public class TrackUsingCarrierCodeAndTrackingNumberTest
     {
+        public TestUtils TestUtils;
+
+        public TrackUsingCarrierCodeAndTrackingNumberTest()
+        {
+            TestUtils = new TestUtils();
+        }
 
         [Fact]
         public async void ValidTrackUsingCarrierCodeAndTrackingNumberTest()
@@ -63,6 +73,66 @@ namespace ShipEngineTest
             Assert.Equal("3000", result.Events[0].CarrierStatusCode);
             Assert.Null(result.Events[0].Latitude);
             Assert.Null(result.Events[0].Longitude);
+        }
+
+        [Fact]
+        // Check that both API Key and timeout can be set at the method level
+        public async void ValidateCustomSettingsAtMethodLevel()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString, timeout: TimeSpan.FromSeconds(1));
+
+            var mockHandler = new Mock<ShipEngine>(config);
+
+            var shipEngine = mockHandler.Object;
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
+
+            var listCarriersResult = JsonConvert.DeserializeObject<TrackUsingCarrierCodeAndTrackingNumberResult>(json, TestUtils.JsonSerializerSettings);
+            var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
+
+            // Verify that the client has a custom timeout of 1 second when called.
+            mockHandler
+                .Setup(x => x.SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumberResult>
+                (
+                    It.IsAny<HttpMethod>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.Is<HttpClient>(client =>
+                        client.Timeout == TimeSpan.FromSeconds(1) &&
+                        client.DefaultRequestHeaders.ToString().Contains("12345")),
+                    It.IsAny<Config>()
+                ))
+                .Returns(Task.FromResult(listCarriersResult));
+
+            var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
+
+            await shipEngine.TrackUsingCarrierCodeAndTrackingNumber("1026167028310292", "usps", methodConfig: customConfig);
+
+            mockHandler.VerifyAll();
+        }
+
+        [Fact]
+        public async void InvalidRetriesInMethodCall()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+
+            var config = new Config(apiKey: apiKeyString);
+            var mockHandler = new Mock<ShipEngine>(config);
+            var shipEngine = mockHandler.Object;
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipEngine.TrackUsingCarrierCodeAndTrackingNumber(
+                    "1026167028310292",
+                    "usps",
+                    methodConfig: new Config(apiKey: "12345", retries: -1)
+                )
+            );
+            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal("Retries must be greater than zero.", ex.Message);
+            Assert.Null(ex.RequestId);
         }
     }
 }
