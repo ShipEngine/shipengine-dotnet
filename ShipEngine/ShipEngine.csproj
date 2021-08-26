@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <PackageId>ShipEngine</PackageId>
-    <PackageTags>sdk;rest;api;shipping;rates;address;validation;tracking;fedex;ups;usps;</PackageTags>
+    <PackageTags>sdk;rest;api;shipping;rates;label;tracking;cost;address;validation;normalization;fedex;ups;usps;</PackageTags>
 
     <Version>0.0.2-alpha</Version>
-    <Authors>ShipEngine Team</Authors>
+    <Authors>ShipEngine</Authors>
     <Company>ShipEngine</Company>
-    <Summary>The official ShipEngine .NET 4.6.1+ SDK</Summary>
-    <Description>ShipEngine is The official ShipEngine .NET 4.6.1+ SDK for accessing the ShipEngine REST API via a class library</Description>
+    <Summary>The official ShipEngine C# SDK for .NET</Summary>
+    <Description>The official ShipEngine C# SDK for .NET</Description>
     <PackageIcon>icon.png</PackageIcon>
 
     <PackageProjectUrl>https://github.com/ShipEngine/shipengine-dotnet</PackageProjectUrl>
