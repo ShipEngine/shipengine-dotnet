@@ -99,7 +99,7 @@ jobs:
 
   coverage:
     name: Code Coverage
-    needs: dot_net_core
+    needs: dot_net_core_test
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
