@@ -5,7 +5,7 @@ namespace ShipEngineSDK
     public class Config
     {
         /// <summary>
-        //  Your ShipEngine API key.
+        ///  Your ShipEngine API key.
         /// </summary>
         public readonly string ApiKey;
 

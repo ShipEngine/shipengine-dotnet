@@ -5,7 +5,7 @@ on:
 
 name: ShipEngine DotNet Nuget Deploy
 jobs:
-  release-please:
+  nuget-deploy:
     runs-on: ubuntu-latest
     steps:
       # Checkout code if release was created
