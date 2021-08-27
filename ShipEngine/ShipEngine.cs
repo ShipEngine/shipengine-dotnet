@@ -241,5 +241,39 @@ namespace ShipEngineSDK
 
             return labelResult;
         }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="rateId">The rate that you want to use to purchase a label</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromRate.Result.LabelResult> CreateLabelFromRate(string rateId)
+        {
+            var path = $"/v1/labels/rates/{rateId}";
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result.LabelResult>(HttpMethod.Post, path, null, _client, config);
+
+            return labelResult;
+        }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="rateId">The rate that you want to use to purchase a label</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromRate.Result.LabelResult> CreateLabelFromRate(string rateId, Config methodConfig)
+        {
+
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/labels/rates/{rateId}";
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result.LabelResult>(HttpMethod.Post, path, null, client, methodConfig);
+
+            client.Dispose();
+
+            return labelResult;
+        }
     }
 }

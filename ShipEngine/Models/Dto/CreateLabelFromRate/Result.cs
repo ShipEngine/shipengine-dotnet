@@ -3,11 +3,12 @@
 
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
+
 /**
 * The Tracking information and events associated with a label
 * @see https://www.shipengine.com/docs/tracking/track-by-label-id/
 */
-namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
+namespace ShipEngineSDK.CreateLabelFromRate.Result
 {
     public class LabelResult
     {
