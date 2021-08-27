@@ -12,7 +12,6 @@ namespace ShipEngineSDK
 {
     public class ShipEngineClient
     {
-
         protected readonly JsonSerializerSettings JsonSerializerSettings;
 
         public ShipEngineClient()
@@ -32,8 +31,16 @@ namespace ShipEngineSDK
         {
             client.DefaultRequestHeaders.Accept.Clear();
 
-            // TODO: Add SDK version/OS/and other metadata here.
-            client.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
+            var osPlatform = Environment.OSVersion.Platform.ToString();
+            var osVersion = Environment.OSVersion.Version.ToString();
+            var clrVersion = Environment.Version.ToString();
+
+            var sdkVersionObject = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            var sdkVersion = $"{sdkVersionObject.Major}.{sdkVersionObject.Minor}.{sdkVersionObject.Build}";
+
+            var userAgentString = $"shipengine-dotnet/{sdkVersion} {osPlatform}/{osVersion} clr/{clrVersion}";
+
+            client.DefaultRequestHeaders.Add("User-Agent", userAgentString);
             client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
             client.DefaultRequestHeaders.Add("Accept", JsonMediaType);
 
