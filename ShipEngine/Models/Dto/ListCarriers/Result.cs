@@ -22,7 +22,6 @@ namespace ShipEngineSDK.ListCarriers.Result
         public List<Error> Errors { get; set; }
     }
 
-
     public class Carrier
     {
         /// <summary>
@@ -155,30 +154,6 @@ namespace ShipEngineSDK.ListCarriers.Result
         /// The package type description
         /// </summary>
         public string? Description { get; set; }
-    }
-
-
-    public class Dimensions
-    {
-        /// <summary>
-        /// The dimension units that are supported by ShipEngine.
-        /// </summary>
-        public DimensionUnit? Unit { get; set; }
-
-        /// <summary>
-        /// The length of the package, in the specified unit
-        /// </summary>
-        public double? Length { get; set; }
-
-        /// <summary>
-        /// The width of the package, in the specified unit
-        /// </summary>
-        public double? Width { get; set; }
-
-        /// <summary>
-        /// The length of the package, in the specified unit
-        /// </summary>
-        public double? Height { get; set; }
     }
 
     public class AdvancedOption

@@ -1,6 +1,7 @@
 using Moq;
 using Newtonsoft.Json;
 using ShipEngineSDK;
+using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.CreateLabelFromShipmentDetails;
 using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
