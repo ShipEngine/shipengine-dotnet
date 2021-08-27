@@ -2,10 +2,10 @@ using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
-namespace ShipEngineSDK.GetRatesFromShipment.Params
+namespace ShipEngineSDK.GetRatesFromShipment
 {
 
-    public class ShipmentParams
+    public class Params
     {
 
         public string ShipmentId { get; set; }
@@ -69,7 +69,6 @@ namespace ShipEngineSDK.GetRatesFromShipment.Params
         /// Then you can simply specify the warehouse_id rather than the complete address each time.
         /// </summary>
         public Address ShipFrom { get; set; }
-
 
         /// <summary>
         /// The warehouse that the shipment is being shipped from. Either warehouse_id or ship_from must be specified.
