@@ -85,7 +85,6 @@ namespace ShipEngineTest
             Assert.Equal("se-146030558", result.ShipmentId);
             Assert.Equal("2021-08-09T00:00:00Z", result.ShipDate);
             Assert.Equal("2021-08-09T14:55:37.5393659Z", result.CreatedAt);
-            Assert.Equal("2021-08-09T14:55:37.5393659Z", result.CreatedAt);
 
             Assert.Equal(Currency.USD, result.ShipmentCost.Currency);
             Assert.Equal(115.51, result.ShipmentCost.Amount);
