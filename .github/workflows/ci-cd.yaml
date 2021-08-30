@@ -111,7 +111,7 @@ jobs:
   nuget-deploy:
     runs-on: ubuntu-latest
     needs: [dot_net_framework_test, dot_net_core_test]
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     steps:
       # Checkout code if release was created
       - uses: actions/checkout@v2
