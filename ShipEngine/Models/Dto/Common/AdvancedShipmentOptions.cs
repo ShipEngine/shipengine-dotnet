@@ -48,6 +48,11 @@ namespace ShipEngineSDK.Common
         public Weight? DryIceWeight { get; set; }
 
         /// <summary>
+        /// FedEx Freight Option
+        /// </summary>
+        public string? FedexFreight { get; set; }
+
+        /// <summary>
         /// Indicates that the package cannot be processed automatically because it is too large or irregularly shaped.
         /// This is primarily for USPS shipments. See Section 1.2 of the USPS parcel standards for details.
         /// </summary>

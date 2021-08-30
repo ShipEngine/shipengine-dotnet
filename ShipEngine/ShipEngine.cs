@@ -281,7 +281,7 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="rateParams"></param>
         /// <returns>The rates result</returns>
-        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.Params rateParams)
+        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.RatesParams rateParams)
         {
             var path = "/v1/rates";
 
@@ -298,7 +298,7 @@ namespace ShipEngineSDK
         /// <param name="rateParams"></param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>The rates result</returns>
-        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.Params rateParams, Config methodConfig)
+        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.RatesParams rateParams, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 

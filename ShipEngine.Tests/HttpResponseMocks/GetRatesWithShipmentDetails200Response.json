@@ -1,0 +1,156 @@
+{
+  "rate_response": {
+    "rates": [
+      {
+        "rate_id": "se-843583649",
+        "rate_type": "shipment",
+        "carrier_id": "se-423888",
+        "shipping_amount": {
+          "currency": "usd",
+          "amount": 75.53
+        },
+        "insurance_amount": {
+          "currency": "usd",
+          "amount": 0.0
+        },
+        "confirmation_amount": {
+          "currency": "usd",
+          "amount": 0.0
+        },
+        "other_amount": {
+          "currency": "usd",
+          "amount": 21.5
+        },
+        "zone": null,
+        "package_type": null,
+        "delivery_days": 4,
+        "guaranteed_service": true,
+        "estimated_delivery_date": "2021-09-02T23:00:00Z",
+        "carrier_delivery_days": "Thursday 9/2 by 11:00 PM",
+        "ship_date": "2021-08-27T00:00:00Z",
+        "negotiated_rate": false,
+        "service_type": "UPS® Ground",
+        "service_code": "ups_ground",
+        "trackable": true,
+        "carrier_code": "ups",
+        "carrier_nickname": "ShipEngine Test Account - UPS",
+        "carrier_friendly_name": "UPS",
+        "validation_status": "valid",
+        "warning_messages": [],
+        "error_messages": []
+      }
+    ],
+    "invalid_rates": [],
+    "rate_request_id": "se-93210292",
+    "shipment_id": "se-153814671",
+    "created_at": "2021-08-27T16:29:26.3335224Z",
+    "status": "completed",
+    "errors": []
+  },
+  "shipment_id": "se-153814671",
+  "carrier_id": "se-423888",
+  "service_code": "ups_ground",
+  "external_shipment_id": null,
+  "ship_date": "2021-08-27T00:00:00Z",
+  "created_at": "2021-08-27T16:29:25.257Z",
+  "modified_at": "2021-08-27T16:29:25.24Z",
+  "shipment_status": "pending",
+  "ship_to": {
+    "name": "Amanda Miller",
+    "phone": null,
+    "company_name": null,
+    "address_line1": "525 S Winchester Blvd",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "San Jose",
+    "state_province": "CA",
+    "postal_code": "95128",
+    "country_code": "US",
+    "address_residential_indicator": "unknown"
+  },
+  "ship_from": {
+    "name": "John Doe",
+    "phone": "512-555-5555",
+    "company_name": "",
+    "address_line1": "4009 Marathon Blvd",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "Austin",
+    "state_province": "TX",
+    "postal_code": "78756",
+    "country_code": "US",
+    "address_residential_indicator": "unknown"
+  },
+  "warehouse_id": null,
+  "return_to": {
+    "name": "John Doe",
+    "phone": "512-555-5555",
+    "company_name": "",
+    "address_line1": "4009 Marathon Blvd",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "Austin",
+    "state_province": "TX",
+    "postal_code": "78756",
+    "country_code": "US",
+    "address_residential_indicator": "unknown"
+  },
+  "confirmation": "none",
+  "customs": {
+    "contents": "merchandise",
+    "customs_items": [],
+    "non_delivery": "return_to_sender"
+  },
+  "external_order_id": null,
+  "order_source_code": null,
+  "advanced_options": {
+    "bill_to_account": null,
+    "bill_to_country_code": null,
+    "bill_to_party": null,
+    "bill_to_postal_code": null,
+    "contains_alcohol": false,
+    "delivered_duty_paid": false,
+    "non_machinable": false,
+    "saturday_delivery": false,
+    "dry_ice": false,
+    "dry_ice_weight": null,
+    "fedex_freight": null,
+    "freight_class": null,
+    "custom_field1": null,
+    "custom_field2": null,
+    "custom_field3": null,
+    "collect_on_delivery": null
+  },
+  "insurance_provider": "none",
+  "tags": [],
+  "packages": [
+    {
+      "package_code": "package",
+      "weight": {
+        "value": 17.0,
+        "unit": "pound"
+      },
+      "dimensions": {
+        "unit": "inch",
+        "length": 36.0,
+        "width": 12.0,
+        "height": 24.0
+      },
+      "insured_value": {
+        "currency": "usd",
+        "amount": 0.0
+      },
+      "label_messages": {
+        "reference1": null,
+        "reference2": null,
+        "reference3": null
+      },
+      "external_package_id": null
+    }
+  ],
+  "total_weight": {
+    "value": 17.0,
+    "unit": "pound"
+  },
+  "items": []
+}

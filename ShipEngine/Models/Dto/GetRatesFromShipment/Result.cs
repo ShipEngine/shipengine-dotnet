@@ -9,22 +9,22 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// A string that uniquely identifies the shipment
         /// </summary>
-        public string ShipmentId { get; set; }
+        public string? ShipmentId { get; set; }
 
         /// <summary>
         /// The carrier account that is billed for the shipping charges
         /// </summary>
-        public string CarrierId { get; set; }
+        public string? CarrierId { get; set; }
 
         /// <summary>
         /// The carrier service used to ship the package
         /// </summary>
-        public string ServiceCode { get; set; }
+        public string? ServiceCode { get; set; }
 
         /// <summary>
         /// ID that the Order Source assigned
         /// </summary>
-        public string ExternalOrderId { get; set; }
+        public string? ExternalOrderId { get; set; }
 
         /// <summary>
         /// Describe the packages included in this shipment as related to potential metadata that was imported from external order sources
@@ -39,22 +39,22 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// You can optionally use this field to store your own identifier for this shipment.
         /// </summary>
-        public string ExternalShipmentId { get; set; }
+        public string? ExternalShipmentId { get; set; }
 
         /// <summary>
         /// The date that the shipment was (or will be) shippped. ShipEngine will take the day of week into consideration.
         /// For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.
         /// </summary>
-        public string ShipDate { get; set; }
+        public string? ShipDate { get; set; }
 
         /// <summary>
         /// The date and time that the shipment was created in ShipEngine.
         /// </summary>
-        public string CreatedAt { get; set; }
+        public string? CreatedAt { get; set; }
         /// <summary>
         /// The date and time that the shipment was created or last modified.
         /// </summary>
-        public string ModifiedAt { get; set; }
+        public string? ModifiedAt { get; set; }
 
         /// <summary>
         /// The current status of the shipment
@@ -75,7 +75,7 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// The warehouse that the shipment is being shipped from. Either warehouse_id or ship_from must be specified.
         /// </summary>
-        public string WarehouseId { get; set; }
+        public string? WarehouseId { get; set; }
 
         /// <summary>
         /// The return address for this shipment. Defaults to the ship_from address.
@@ -112,10 +112,16 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// </summary>
         public List<string> Tags { get; set; }
 
+
+        /// <summary>
+        /// Total Weight of the Shipment
+        /// </summary>
+        public Weight TotalWeight { get; set; }
+
         /// <summary>
         /// The order sources that are supported by ShipEngine
         /// </summary>
-        public OrderSourceCode OrderSourceCode { get; set; }
+        public OrderSourceCode? OrderSourceCode { get; set; }
 
         /// <summary>
         /// The packages in the shipment.
@@ -148,17 +154,17 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// A string that uniquely identifies the rate request
         /// </summary>
-        public string RateRequestId { get; set; }
+        public string? RateRequestId { get; set; }
 
         /// <summary>
         /// A string that uniquely identifies the shipment
         /// </summary>
-        public string ShipmentId { get; set; }
+        public string? ShipmentId { get; set; }
 
         /// <summary>
         /// When the rate was created
         /// </summary>
-        public string CreatedAt { get; set; }
+        public string? CreatedAt { get; set; }
 
         /// <summary>
         /// Rate response status values
@@ -216,12 +222,12 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// Certain carriers base their rates off of custom zones that vary depending upon
         /// the ship_to and ship_from location
         /// </summary>
-        public int Zone { get; set; }
+        public int? Zone { get; set; }
 
         /// <summary>
         /// package type that this rate was estimated for
         /// </summary>
-        public string PackageType { get; set; }
+        public string? PackageType { get; set; }
 
         /// <summary>
         /// The number of days estimated for delivery, this will show the actual delivery time if for example,
@@ -238,17 +244,17 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// An ISO 8601 string that represents a date, but not a specific time.
         /// The value may contain a time component, but it will be set to 00:00:00 UTC by ShipEngine.
         /// </summary>/
-        public string EstimatedDeliveryDate { get; set; }
+        public string? EstimatedDeliveryDate { get; set; }
 
         /// <summary>
         /// The carrier delivery days
         /// </summary>
-        public string CarrierDeliveryDays { get; set; }
+        public string? CarrierDeliveryDays { get; set; }
 
         /// <summary>
         /// Ship date
         /// </summary>
-        public string ShipDate { get; set; }
+        public string? ShipDate { get; set; }
 
         /// <summary>
         /// Indicates if the rates been negotiated
@@ -258,12 +264,12 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// Service type
         /// </summary>
-        public string ServiceType { get; set; }
+        public string? ServiceType { get; set; }
 
         /// <summary>
         /// Service code for the rate
         /// </summary>
-        public string ServiceCode { get; set; }
+        public string? ServiceCode { get; set; }
 
         /// <summary>
         /// Indicates if rate is trackable
@@ -273,23 +279,22 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// Carrier code
         /// </summary>
-        public string CarrierCode { get; set; }
+        public string? CarrierCode { get; set; }
 
         /// <summary>
         /// Carrier_nickname
         /// </summary>
-        public string CarrierNickname { get; set; }
+        public string? CarrierNickname { get; set; }
 
         /// <summary>
         /// Carrier friendly name
         /// </summary>
-        public string CarrierFriendlyName { get; set; }
+        public string? CarrierFriendlyName { get; set; }
 
         /// <summary>
         /// The possible validation status values
         /// </summary>
         public ValidationStatus ValidationStatus { get; set; }
-
 
         /// <summary>
         /// The warning messages
