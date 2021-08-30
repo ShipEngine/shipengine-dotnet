@@ -1,4 +1,6 @@
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.ValidateAddresses.Params
@@ -23,6 +25,7 @@ namespace ShipEngineSDK.ValidateAddresses.Params
         /// <summary>
         /// The <see href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166 country code</see>
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public Country? CountryCode { get; set; }
 
         /// <summary>
@@ -58,6 +61,7 @@ namespace ShipEngineSDK.ValidateAddresses.Params
         /// <summary>
         /// Indicates whether the address is residential or commercial, if known.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
 
     }

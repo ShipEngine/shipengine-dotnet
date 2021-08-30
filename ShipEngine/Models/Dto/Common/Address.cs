@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
@@ -57,6 +59,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// Indicates whether the address is residential or commercial, if known.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     }
 }

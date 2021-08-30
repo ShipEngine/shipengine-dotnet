@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ShipEngineSDK.Common.Enums
@@ -6,6 +8,7 @@ namespace ShipEngineSDK.Common.Enums
     {
         [EnumMember(Value = "no_validation")]
         NoValidation,
+
 
         [EnumMember(Value = "validate_only")]
         ValidateOnly,

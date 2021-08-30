@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
@@ -7,6 +9,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The dimension units that are supported by ShipEngine.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public DimensionUnit? Unit { get; set; }
 
         /// <summary>

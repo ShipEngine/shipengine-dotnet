@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
@@ -24,6 +26,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /// <summary>
         /// The label charge event.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public ChargeEvent? ChargeEvent { get; set; }
 
         /// <summary>
@@ -34,26 +37,31 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /// <summary>
         /// The possible validate address values
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public ValidateAddress? ValidateAddress { get; set; }
 
         /// <summary>
         /// There are two different ways to download a label:
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public LabelDownloadType? LabelDownloadType { get; set; }
 
         /// <summary>
         /// The file format that you want the label to be in. We recommend pdf format because it is supported by all carriers, whereas some carriers do not support the png or zpl formats.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public LabelFormat? LabelFormat { get; set; }
 
         /// <summary>
         /// The display format that the label should be shown in.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public DisplayScheme? DisplayScheme { get; set; }
 
         /// <summary>
         /// The layout (size) that you want the label to be in. The labelFormat determines which sizes are allowed. 4x6 is supported for all label formats, whereas letter (8.5" x 11") is only supported for pdf format.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public LabelLayout? LabelLayout { get; set; }
 
         /// <summary>
@@ -122,6 +130,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /// <summary>
         /// The type of delivery confirmation that is required for this shipment.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public DeliveryConfirmation? Confirmation { get; set; }
 
         /// <summary>
@@ -137,16 +146,19 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /// <summary>
         /// Indicates if the package will be picked up or dropped off by the carrier
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public OriginType? OriginType { get; set; }
 
         /// <summary>
         /// The insurance provider to use for any insured packages in the shipment
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public InsuranceProvider? InsuranceProvider { get; set; }
 
         /// <summary>
         /// The order sources that are supported by ShipEngine
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public OrderSourceCode? OrderSourceCode { get; set; }
 
         /// <summary>
@@ -195,11 +207,13 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /// <summary>
         /// The type of contents in this shipment. This may impact import duties or customs treatment.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public PackageContents? Contents { get; set; }
 
         /// <summary>
         /// Indicates what to do if a package is unable to be delivered.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public NonDelivery? NonDelivery { get; set; }
 
         /// <summary>

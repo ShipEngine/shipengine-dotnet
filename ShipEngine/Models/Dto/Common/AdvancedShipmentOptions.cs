@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
@@ -91,6 +93,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// Indicates if the package will be picked up or dropped off by the carrier
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public OriginType? OriginType { get; set; }
 
         public bool? ShipperRelease { get; set; }

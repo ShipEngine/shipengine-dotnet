@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
@@ -47,6 +49,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The order sources that are supported by ShipEngine
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public OrderSourceCode? OrderSourceCode { get; set; }
     }
 }

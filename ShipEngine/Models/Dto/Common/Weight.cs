@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
@@ -12,6 +14,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The possible weight unit values
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public WeightUnit? Unit { get; set; }
     }
 }
