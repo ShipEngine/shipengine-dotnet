@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 
 namespace ShipEngineSDK.Common
@@ -12,10 +14,13 @@ namespace ShipEngineSDK.Common
 
     public class Error
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public ErrorSource ErrorSource { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public ErrorType ErrorType { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public ErrorCode ErrorCode { get; set; }
 
         public string Message { get; set; }

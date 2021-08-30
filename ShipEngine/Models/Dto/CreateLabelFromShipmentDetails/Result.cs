@@ -1,12 +1,10 @@
 
 
 
+using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
-/**
-* The Tracking information and events associated with a label
-* @see https://www.shipengine.com/docs/tracking/track-by-label-id/
-*/
+
 namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
 {
     public class LabelResult
@@ -163,13 +161,6 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
         public List<Package> Packages { get; set; }
     }
 
-    public class MonetaryValue
-    {
-        public Currency? Currency { get; set; }
-
-        public double? Amount { get; set; }
-    }
-
     public class LabelDownload
     {
         /// <summary>
@@ -246,44 +237,5 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Result
         public string? ExternalPackageId { get; set; }
 
         public int? Sequence { get; set; }
-    }
-
-    public class Weight
-    {
-        public double? Value { get; set; }
-
-        public WeightUnit? Unit { get; set; }
-    }
-
-    public class Dimensions
-    {
-        public DimensionUnit? Unit { get; set; }
-
-        public double? Length { get; set; }
-
-        public double? Width { get; set; }
-
-        public double? Height { get; set; }
-    }
-
-    public class LabelMessages
-    {
-        /// <summary>
-        /// The first line of the custom label message.
-        /// Some carriers may prefix this line with something like "REF", "Reference", "Trx Ref No.", etc.
-        /// </summary>
-        public string? Reference1 { get; set; }
-
-        /// <summary>
-        /// The second line of the custom label message.
-        /// Some carriers may prefix this line with something like "REF", "Reference", "Trx Ref No.", etc.
-        /// </summary>
-        public string? Reference2 { get; set; }
-
-        /// <summary>
-        /// The third line of the custom label message.
-        /// Some carriers may prefix this line with something like "REF", "Reference", "Trx Ref No.", etc.
-        /// </summary>
-        public string? Reference3 { get; set; }
     }
 }
