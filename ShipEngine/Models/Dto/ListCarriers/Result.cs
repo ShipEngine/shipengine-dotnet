@@ -1,208 +1,176 @@
-using System;
+using ShipEngineSDK.Common;
+using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.ListCarriers.Result
 {
-    public class CarrierResponse
+    public class CarrierResult
     {
-        [JsonPropertyName("carriers")]
-        public List<Carrier>? Carriers { get; set; }
+        /// <summary>
+        /// List of carriers associated with the account
+        /// </summary>
+        public List<Carrier> Carriers { get; set; }
 
-        [JsonPropertyName("request_id")]
-        public string? RequestId { get; set; }
+        /// <summary>
+        /// The request id associated with the method call
+        /// </summary>
+        public string RequestId { get; set; }
 
-        [JsonPropertyName("errors")]
-        public List<Error>? Errors { get; set; }
-
+        /// <summary>
+        /// List of errors that occurred while retrieving carriers
+        /// </summary>
+        public List<Error> Errors { get; set; }
     }
-
 
     public class Carrier
     {
-        /**
-         * The carrier ID
-         */
-        [JsonPropertyName("carrier_id")]
+        /// <summary>
+        /// The carrier ID
+        /// </summary>
         public string? CarrierId { get; set; }
 
-        /**
-         * The code associated with the carrier
-         */
-        [JsonPropertyName("carrier_code")]
+        /// <summary>
+        /// The code associated with the carrier
+        /// </summary>
         public string? CarrierCode { get; set; }
 
-        /**
-         * The ShipEngine account number connected to this carrier
-         */
-        [JsonPropertyName("account_number")]
+        /// <summary>
+        /// The ShipEngine account number connected to this carrier
+        /// </summary>
         public string? AccountNumber { get; set; }
 
-        /**
-         * Flag indicating if carrier requires funding
-         */
-        [JsonPropertyName("requires_funded_amount")]
+        /// <summary>
+        /// Flag indicating if carrier requires funding
+        /// </summary>
         public bool? RequiresFundedAmount { get; set; }
 
-        /**
-         * The carrier account balance
-         */
-        [JsonPropertyName("balance")]
+        /// <summary>
+        /// The carrier account balance
+        /// </summary>
         public double? Balance { get; set; }
 
-        /**
-         * The carrier account nickname
-         */
-        [JsonPropertyName("nickname")]
+        /// <summary>
+        /// The carrier account nickname
+        /// </summary>
         public string? Nickname { get; set; }
 
-        /**
-         * The carrier account friendly name
-         */
-        [JsonPropertyName("friendly_name")]
+        /// <summary>
+        /// The carrier account friendly name
+        /// </summary>
         public string? FriendlyName { get; set; }
 
-        /**
-         * Flag indicating if this is the primary account
-         */
-        [JsonPropertyName("primary")]
+        /// <summary>
+        /// Flag indicating if this is the primary account
+        /// </summary>
         public bool? Primary { get; set; }
 
-        /**
-         * Flag indicating if the carrier supports multi package shipments
-         */
-        [JsonPropertyName("has_multi_package_supporting_services")]
+        /// <summary>
+        /// Flag indicating if the carrier supports multi package shipments
+        /// </summary>
         public bool? HasMultiPackageSupportingServices { get; set; }
 
-        /**
-         * Flag indicating if the carrier supports label messages
-         */
-        [JsonPropertyName("supports_label_messages")]
+        /// <summary>
+        /// Flag indicating if the carrier supports label messages
+        /// </summary>
         public bool? SupportsLabelMessages { get; set; }
 
-        /**
-         * Array of supported carrier services
-         */
-        [JsonPropertyName("services")]
+        /// <summary>
+        /// Array of supported carrier services
+        /// </summary>
         public List<Service>? Services { get; set; }
 
-        /**
-         * Array of supported package types
-         */
-        [JsonPropertyName("packages")]
+        /// <summary>
+        /// Array of supported package types
+        /// </summary>
         public List<PackageType>? Packages { get; set; }
 
-        /**
-         * Array of supported advanced options
-         */
-        [JsonPropertyName("options")]
+        /// <summary>
+        /// Array of supported advanced options
+        /// </summary>
         public List<AdvancedOption>? Options { get; set; }
     }
 
     public class Service
     {
-        /**
-         * The carrier ID
-         */
-        [JsonPropertyName("carrier_id")]
+        /// <summary>
+        /// The carrier ID
+        /// </summary>
         public string? CarrierId { get; set; }
-        /**
-         * The code associated with the carrier for this service
-         */
-        [JsonPropertyName("carrier_code")]
+        /// <summary>
+        /// The code associated with the carrier for this service
+        /// </summary>
 
         public string? CarrierCode { get; set; }
 
-        /**
-         * The code associated with the service
-         */
-        [JsonPropertyName("service_code")]
+        /// <summary>
+        /// The code associated with the service
+        /// </summary>
         public string? ServiceCode { get; set; }
 
-        /**
-         * The name of the service
-         */
-        [JsonPropertyName("name")]
+        /// <summary>
+        /// The name of the service
+        /// </summary>
         public string? Name { get; set; }
 
-        /**
-         * Flag indicating if the service is domestic
-         */
-        [JsonPropertyName("domestic")]
+        /// <summary>
+        /// Flag indicating if the service is domestic
+        /// </summary>
         public bool? Domestic { get; set; }
 
-        /**
-         * Flag indicating if the service is international
-         */
-        [JsonPropertyName("international")]
+        /// <summary>
+        /// Flag indicating if the service is international
+        /// </summary>
         public bool? International { get; set; }
 
-        /**
-         * Flag indicating if the service supports multi package shipments
-         */
-        [JsonPropertyName("is_multi_package_supported")]
+        /// <summary>
+        /// Flag indicating if the service supports multi package shipments
+        /// </summary>
         public bool? IsMultiPackageSupported { get; set; }
     }
 
     public class PackageType
     {
-        /**
-         * The package type ID
-         */
-
-        [JsonPropertyName("package_id")]
+        /// <summary>
+        /// The package type ID
+        /// </summary>
         public string? PackageId { get; set; }
 
-        /**
-         * The package type code
-         */
-
-        [JsonPropertyName("package_code")]
+        /// <summary>
+        /// The package type code
+        /// </summary>
         public string? PackageCode { get; set; }
 
-        /**
-         * The package type name
-         */
-        [JsonPropertyName("name")]
+        /// <summary>
+        /// The package type name
+        /// </summary>
         public string? Name { get; set; }
 
-        /**
-         * The package type dimensions
-         */
-        [JsonPropertyName("dimensions")]
+        /// <summary>
+        /// The package type dimensions
+        /// </summary>
         public Dimensions? Dimensions { get; set; }
 
-        [JsonPropertyName("description")]
+        /// <summary>
+        /// The package type description
+        /// </summary>
         public string? Description { get; set; }
-    }
-
-
-    public class Dimensions
-    {
-        // TODO: Add enum
-        [JsonPropertyName("unit")]
-        public string? Unit { get; set; }
-
-        [JsonPropertyName("length")]
-        public double? Length { get; set; }
-
-        [JsonPropertyName("width")]
-        public double? Width { get; set; }
-
-        [JsonPropertyName("height")]
-        public double? Height { get; set; }
     }
 
     public class AdvancedOption
     {
-        [JsonPropertyName("name")]
+        /// <summary>
+        /// Name of advanced option
+        /// </summary>
         public string? Name { get; set; }
 
-        [JsonPropertyName("default_value")]
+        /// <summary>
+        /// Default value of option
+        /// </summary>
         public string? DefaultValue { get; set; }
 
-        [JsonPropertyName("description")]
+        /// <summary>
+        /// Description of option
+        /// </summary>
         public string? Description { get; set; }
     }
 }

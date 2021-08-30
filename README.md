@@ -43,3 +43,8 @@ Run tests on file change:
 %> dotnet watch -p ShipEngine.tests/ test
 
 ```
+
+## Release
+
+In the `ShipEngine.csproj` file, update to the desired version and push to the `main` branch.
+The [Publish NuGet Github Actions](https://github.com/marketplace/actions/publish-nuget) will handle all the necessary github tags and nuget packaging and publishing.

@@ -1,80 +1,68 @@
-using System;
-using System.ComponentModel;
-using System.Text.Json.Serialization;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.ValidateAddresses.Params
 {
     public class Address
     {
-        /**
-       * The first line of the address.
-       */
-        [JsonPropertyName("address_line1")]
+        /// <summary>
+        /// The first line of the address.
+        /// </summary>
         public string? AddressLine1 { get; set; }
 
-        /**
-         * The second line of the address.
-         */
-        [JsonPropertyName("address_line2")]
+        /// <summary>
+        /// The second line of the address.
+        /// </summary>
         public string? AddressLine2 { get; set; }
 
-        /**
-         * The third line of the address.
-         */
-        [JsonPropertyName("address_line3")]
+        /// <summary>
+        /// The third line of the address.
+        /// </summary>
         public string? AddressLine3 { get; set; }
 
-        /**
-         * The ISO 3166 country code
-         *
-         * @see https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
-         */
-        // TODO: Replace string? with enum?
-        [JsonPropertyName("country_code")]
-        public string? CountryCode { get; set; }
+        /// <summary>
+        /// The <see href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166 country code</see>
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Country? CountryCode { get; set; }
 
-        /**
-         * The name of the sender or recipient at the address, if applicable.
-         */
-        [JsonPropertyName("name")]
+        /// <summary>
+        /// The name of the sender or recipient at the address, if applicable.
+        /// </summary>
         public string? Name { get; set; }
 
-        /**
-         * The company name, if this is a business address.
-         */
-        [JsonPropertyName("company_name")]
+        /// <summary>
+        /// The company name, if this is a business address.
+        /// </summary>
         public string? CompanyName { get; set; }
 
-        /**
-         * The phone number associated with this address, if any.
-         */
-        [JsonPropertyName("phone")]
+        /// <summary>
+        /// The phone number associated with this address, if any.
+        /// </summary>
         public string? Phone { get; set; }
 
-        /**
-         * The city or locality
-         */
-        [JsonPropertyName("city_locality")]
+        /// <summary>
+        /// The city or locality
+        /// </summary>
         public string? CityLocality { get; set; }
 
-        /**
-         * The state or province
-         */
-        [JsonPropertyName("state_province")]
+        /// <summary>
+        /// The state or province
+        /// </summary>
         public string? StateProvince { get; set; }
 
-        /**
-         * The postal code
-         */
-        [JsonPropertyName("postal_code")]
+        /// <summary>
+        /// The postal code
+        /// </summary>
         public string? PostalCode { get; set; }
 
-        /**
-         * Indicates whether the address is residential or commercial, if known.
-         */
-        //TODO: Turn into Enum of "unknown", "yes", "no" ??
-        [JsonPropertyName("address_residential_indicator")]
-        public string? AddressResidentialIndicator { get; set; } = "unknown";
+        /// <summary>
+        /// Indicates whether the address is residential or commercial, if known.
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
 
     }
 }

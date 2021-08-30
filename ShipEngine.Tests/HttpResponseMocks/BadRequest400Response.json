@@ -1,0 +1,11 @@
+{
+  "request_id": "22467317-a130-4927-95a6-76124b716e58",
+  "errors": [
+    {
+      "error_source": "shipengine",
+      "error_type": "validation",
+      "error_code": "request_body_required",
+      "message": "Request body cannot be empty."
+    }
+  ]
+}

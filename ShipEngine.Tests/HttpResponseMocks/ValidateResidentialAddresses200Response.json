@@ -1,0 +1,39 @@
+[
+  {
+    "status": "verified",
+    "original_address": {
+      "name": "John Smith",
+      "phone": null,
+      "company_name": null,
+      "address_line1": "3910 Bailey Lane",
+      "address_line2": null,
+      "address_line3": null,
+      "city_locality": "Austin",
+      "state_province": "TX",
+      "postal_code": "78756",
+      "country_code": "US",
+      "address_residential_indicator": "yes"
+    },
+    "matched_address": {
+      "name": "JOHN SMITH",
+      "phone": null,
+      "company_name": null,
+      "address_line1": "3910 BAILEY LN",
+      "address_line2": null,
+      "address_line3": null,
+      "city_locality": "AUSTIN",
+      "state_province": "TX",
+      "postal_code": "78756-3924",
+      "country_code": "US",
+      "address_residential_indicator": "yes"
+    },
+    "messages": [
+      {
+        "code": "a1007",
+        "message": "This address has been verified down to the suite/PO box level (highest possible accuracy with the provided data)",
+        "type": "info",
+        "detail_code": "verified_to_suite_level"
+      }
+    ]
+  }
+]

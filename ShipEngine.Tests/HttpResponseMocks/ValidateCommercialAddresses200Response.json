@@ -1,0 +1,32 @@
+[
+  {
+    "status": "verified",
+    "original_address": {
+      "name": "John Smith",
+      "phone": null,
+      "company_name": "ShipStation",
+      "address_line1": "3800 N Lamar Blvd",
+      "address_line2": "#220",
+      "address_line3": null,
+      "city_locality": "Austin",
+      "state_province": "TX",
+      "postal_code": "78756",
+      "country_code": "US",
+      "address_residential_indicator": "no"
+    },
+    "matched_address": {
+      "name": "JOHN SMITH",
+      "phone": null,
+      "company_name": "SHIPSTATION",
+      "address_line1": "3800 N LAMAR BLVD STE 220",
+      "address_line2": null,
+      "address_line3": null,
+      "city_locality": "AUSTIN",
+      "state_province": "TX",
+      "postal_code": "78756-0003",
+      "country_code": "US",
+      "address_residential_indicator": "no"
+    },
+    "messages": []
+  }
+]

@@ -1,20 +1,48 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using ShipEngineSDK.Common;
 using System;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
-using System.Text.Json;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
-    public static class ShipEngineClient
+    public class ShipEngineClient
     {
-        public static HttpClient ConfigureHttpClient(ShipEngineConfig config, HttpClient client)
+        protected readonly JsonSerializerSettings JsonSerializerSettings;
+
+        public ShipEngineClient()
+        {
+            JsonSerializerSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Include,
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
+        }
+
+        private const string JsonMediaType = "application/json";
+        public static HttpClient ConfigureHttpClient(Config config, HttpClient client)
         {
             client.DefaultRequestHeaders.Accept.Clear();
 
-            // TODO: Add SDK version/OS/and other metadata here.
-            client.DefaultRequestHeaders.Add("User-Agent", "User-Agent-goes-here");
+            var osPlatform = Environment.OSVersion.Platform.ToString();
+            var osVersion = Environment.OSVersion.Version.ToString();
+            var clrVersion = Environment.Version.ToString();
+
+            var sdkVersionObject = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            var sdkVersion = $"{sdkVersionObject.Major}.{sdkVersionObject.Minor}.{sdkVersionObject.Build}";
+
+            var userAgentString = $"shipengine-dotnet/{sdkVersion} {osPlatform}/{osVersion} clr/{clrVersion}";
+
+            client.DefaultRequestHeaders.Add("User-Agent", userAgentString);
             client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Accept", JsonMediaType);
 
             client.BaseAddress = new Uri("https://api.shipengine.com");
 
@@ -23,44 +51,168 @@ namespace ShipEngineSDK
             return client;
         }
 
-
-        public static async Task<T> SendHttpRequestAsync<T>(HttpRequestMessage request, HttpClient client)
+        private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
-            try
-            {
-                var streamTask = client.SendAsync(request);
-                var response = await streamTask;
 
-                var deserializedResult = await DeserializedResultOrThrow<T>(response);
+            var contentString = await response.Content.ReadAsStringAsync();
 
-                return deserializedResult;
-            }
-            // TODO: Is there a better way to do error handling?
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
-        {
             if (!response.IsSuccessStatusCode)
             {
-                var contentString = await response.Content.ReadAsStringAsync();
-                var deserializedError = JsonSerializer.Deserialize<ShipEngineException>(contentString);
+                var deserializedError = JsonConvert.DeserializeObject<ShipEngineAPIError>(contentString, JsonSerializerSettings);
+
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
                 {
                     response.EnsureSuccessStatusCode();
                 }
-                throw new ShipEngineException(deserializedError.RequestId, deserializedError.Errors);
+
+                var error = deserializedError.Errors[0];
+
+                if (error != null && error.Message != null && error.ErrorSource != null && error.ErrorType != null && error.ErrorCode != null && deserializedError.RequestId != null)
+                {
+                    throw new ShipEngineException(
+                        error.Message,
+                        error.ErrorSource,
+                        error.ErrorType,
+                        error.ErrorCode,
+                        deserializedError.RequestId
+                    );
+                }
+
+            }
+
+            var result = JsonConvert.DeserializeObject<T>(contentString, JsonSerializerSettings);
+
+            if (result != null)
+            {
+                return result;
+            }
+
+            throw new ShipEngineException(message: "Unexpected Error");
+        }
+
+
+        /// <summary>
+        /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
+        /// 429 rate limit exceeded errors and subsequent retry logic.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="method"></param>
+        /// <param name="path"></param>
+        /// <param name="jsonContent"></param>
+        /// <param name="client"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config)
+        {
+            int retry = 0;
+
+            HttpResponseMessage response = null;
+            ShipEngineException requestException;
+            while (true)
+            {
+                try
+                {
+                    var request = BuildRequest(method, path, jsonContent);
+                    var streamTask = client.SendAsync(request);
+                    response = await streamTask;
+
+                    var deserializedResult = await DeserializedResultOrThrow<T>(response);
+
+                    return deserializedResult;
+                }
+                catch (ShipEngineException e)
+                {
+                    if (e.ErrorCode != ErrorCode.RateLimitExceeded)
+                    {
+                        throw e;
+                    }
+
+                    requestException = e;
+                }
+
+                catch (Exception e)
+                {
+                    throw e;
+                }
+
+
+                if (!ShouldRetry(retry, response?.StatusCode, response?.Headers, config))
+                {
+                    break;
+                }
+
+                retry += 1;
+                await WaitAndRetry(response, config, requestException);
+            }
+
+            if (requestException != null)
+            {
+                throw requestException;
             }
             else
             {
-                var contentString = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<T>(contentString);
-                return result;
+                throw new ShipEngineException(message: "Unexpected Error");
             }
+        }
+
+        private async Task WaitAndRetry(HttpResponseMessage response, Config config, ShipEngineException ex)
+        {
+            int? retryAfter;
+
+            try
+            {
+                retryAfter = Int32.Parse(response?.Headers.GetValues("RetryAfter").First());
+            }
+            catch
+            {
+                retryAfter = 5;
+            }
+
+            if (config.Timeout.Seconds < retryAfter)
+            {
+                throw new ShipEngineException(
+                    $"The request took longer than the {config.Timeout.Milliseconds} milliseconds allowed",
+                    ErrorSource.Shipengine,
+                    ErrorType.System,
+                    ErrorCode.Timeout,
+                    ex.RequestId
+                );
+            }
+
+            await Task.Delay((int)retryAfter * 1000).ConfigureAwait(false);
+        }
+
+        private HttpRequestMessage BuildRequest(HttpMethod method, string path, string? jsonContent)
+        {
+            var request = new HttpRequestMessage(method, path);
+
+            if (jsonContent != null)
+            {
+                request.Content = new StringContent(jsonContent, System.Text.Encoding.UTF8, JsonMediaType);
+            }
+
+            return request;
+        }
+
+        private bool ShouldRetry(
+            int numRetries,
+            HttpStatusCode? statusCode,
+            HttpHeaders? headers,
+            Config config)
+        {
+            // Do not retry if we are out of retries.
+            if (numRetries >= config.Retries)
+            {
+                return false;
+            }
+
+            if (statusCode == (HttpStatusCode)429 || headers != null && headers.Contains("RetryAfter"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -1,219 +1,140 @@
-
-
-
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
-/**
-* The Tracking information and events associated with a label
-* @see https://www.shipengine.com/docs/tracking/track-by-label-id/
-*/
 namespace ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result
 {
     public class TrackUsingCarrierCodeAndTrackingNumberResult
     {
-        /**
-        * A tracking number for a package. The format depends on the carrier.
-*/
-        [JsonPropertyName("tracking_number")]
-
+        ///<summary>
+        ///A tracking number for a package. The format depends on the carrier.
+        ///</summary>
         public string TrackingNumber { get; set; }
 
-        /**
-        * Status Code
-*/
-        // statusCode: "AC" | "IT" | "DE" | "EX" | "AT" | "UN";
-        [JsonPropertyName("status_code")]
+        ///<summary>
+        ///Status Code
+        ///</summary>
+        public StatusCode StatusCode { get; set; }
 
-        public string StatusCode { get; set; }
+        ///<summary>
+        ///Status Description
+        ///</summary>
+        public StatusDescription StatusDescription { get; set; }
 
-        /**
-        * Status Description
-*/
-        // statusDescription:
-        //     | "Accepted"
-        //     | "Attempted Delivery"
-        //     | "Delivered"
-        //     | "Exception"
-        //     | "In Transit"
-        //     | "Unknown";
-
-        [JsonPropertyName("status_description")]
-        public string StatusDescription { get; set; }
-
-        /**
-        * Carrier Detail Code
-*/
-        [JsonPropertyName("carrier_detail_code")]
-
+        ///<summary>
+        ///Carrier Detail Code
+        ///</summary>
         public string CarrierDetailCode { get; set; }
 
-        /**
-        * Carrier Status Code
-*/
-        [JsonPropertyName("carrier_status_code")]
-
+        ///<summary>
+        ///Carrier Status Code
+        ///</summary>
         public string CarrierStatusCode { get; set; }
 
-        /**
-        * Carrier Status Description
-*/
-        [JsonPropertyName("carrier_status_description")]
-
+        ///<summary>
+        ///Carrier Status Description
+        ///</summary>
         public string CarrierStatusDescription { get; set; }
 
-        /**
-        * An ISO 8601 string that represents a date and time.
-        * @see https://en.wikipedia.org/wiki/ISO_8601
-*/
-
-        [JsonPropertyName("ship_date")]
-
+        ///<summary>
+        ///An <see href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</see> string that represents a date and time.
+        ///</summary>
         public string ShipDate { get; set; }
 
-        /**
-        * An ISO 8601 string that represents a date and time.
-        * @see https://en.wikipedia.org/wiki/ISO_8601
-*/
-        [JsonPropertyName("estimated_delivery_date")]
-
+        ///<summary>
+        ///An <see href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</see> string that represents a date and time.
+        ///</summary>
         public string EstimatedDeliveryDate { get; set; }
 
-        /**
-        * An ISO 8601 string that represents a date and time.
-        * @see https://en.wikipedia.org/wiki/ISO_8601
-*/
-        [JsonPropertyName("actual_delivery_date")]
-
+        ///<summary>
+        ///An ISO 8601 string that represents a date and time.
+        ///@see https://en.wikipedia.org/wiki/ISO_8601
+        ///</summary>
         public string ActualDeliveryDate { get; set; }
 
-        /**
-        * Exception description
-*/
-        [JsonPropertyName("exception_description")]
-
+        ///<summary>
+        ///Exception description
+        ///</summary>
         public string ExceptionDescription { get; set; }
 
-        /**
-        * The events that have occured during the lifetime of this tracking number.
-*/
-        [JsonPropertyName("events")]
-
+        ///<summary>
+        ///The events that have occured during the lifetime of this tracking number.
+        ///</summary>
         public List<TrackingEvent> Events { get; set; }
     }
 
-    /**
-     * The events that have occurred during the lifetime of this tracking number.
-     *
-     * @see https://www.shipengine.com/docs/tracking/track-by-label-id/
-     */
     public class TrackingEvent
     {
-        /**
-         * Timestamp for carrier event
-         */
-        [JsonPropertyName("occurred_at")]
-
+        ///<summary>
+        ///Timestamp for carrier event
+        ///</summary>
         public string OccurredAt { get; set; }
 
-        /**
-         * Carrier timestamp for the event, it is assumed to be the local time of where the event occurred.
-         */
-        [JsonPropertyName("carrier_occurred_at")]
-
+        ///<summary>
+        ///Carrier timestamp for the event, it is assumed to be the local time of where the event occurred.
+        ///</summary>
         public string CarrierOccurredAt { get; set; }
 
-        /**
-         * Event description
-         */
-        [JsonPropertyName("description")]
-
+        ///<summary>
+        ///Event description
+        ///</summary>
         public string Description { get; set; }
 
-        /**
-         * City Locality
-         */
-        [JsonPropertyName("city_locality")]
-
+        ///<summary>
+        ///City Locality
+        ///</summary>
         public string CityLocality { get; set; }
 
-        /**
-         * State Province
-         */
-        [JsonPropertyName("state_province")]
-
+        ///<summary>
+        ///State Province
+        ///</summary>
         public string StateProvince { get; set; }
 
-        /**
-         * Postal Code
-         */
-        [JsonPropertyName("postal_code")]
-
+        ///<summary>
+        ///Postal Code
+        ///</summary>
         public string PostalCode { get; set; }
 
-        /**
-         * The ISO 3166 country code
-         *
-         * @see https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
-         */
-        [JsonPropertyName("country_code")]
-
+        ///<summary>
+        ///The ISO 3166 <see href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">country code</see>
+        ///</summary>
         public string CountryCode { get; set; }
 
-        /**
-         * Company Name
-         */
-        [JsonPropertyName("company_name")]
-
+        ///<summary>
+        ///Company Name
+        ///</summary>
         public string CompanyName { get; set; }
 
-        /**
-         * Signer information
-        [JsonPropertyName("postal_code")]
-         */
-        [JsonPropertyName("signer")]
-
+        ///<summary>
+        ///Signer information
+        ///</summary>
         public string Signer { get; set; }
 
-        /**
-         * Event Code
-         */
-        [JsonPropertyName("event_code")]
-
+        ///<summary>
+        ///Event Code
+        ///</summary>
         public string EventCode { get; set; }
 
-        /**
-         * Event status code
-         */
-        [JsonPropertyName("status_code")]
-
+        ///<summary>
+        ///Event status code
+        ///</summary>
         public string StatusCode { get; set; }
 
-        /**
-         * Carrier Status Code
-         */
-        [JsonPropertyName("carrier_status_code")]
-
+        ///<summary>
+        ///Carrier Status Code
+        ///</summary>
         public string CarrierStatusCode { get; set; }
 
-        /**
-         * Carrier Detail Code
-         */
-        [JsonPropertyName("carrier_detail_code")]
-
+        ///<summary>
+        ///Carrier Detail Code
+        ///</summary>
         public string CarrierDetailCode { get; set; }
 
-        /**
-         * Latitude coordinate of tracking event
-         */
-        [JsonPropertyName("latitude")]
-
+        ///<summary>
+        ///Latitude coordinate of tracking event
+        ///</summary>
         public double? Latitude { get; set; }
 
-        /**
-         * Longitude coordinate of tracking event
-         */
-        [JsonPropertyName("longitude")]
-
+        ///<summary>
+        ///Longitude coordinate of tracking event
+        ///</summary>
         public double? Longitude { get; set; }
     }
 

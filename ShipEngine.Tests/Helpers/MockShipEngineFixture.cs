@@ -2,17 +2,17 @@ namespace ShipEngineTest
 {
     using Moq;
     using Moq.Protected;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
     using ShipEngineSDK;
-    using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-
     public class MockShipEngineFixture
     {
-        public MockShipEngineFixture(ShipEngineConfig config)
+        public MockShipEngineFixture(Config config)
         {
             MockHandler = new Mock<HttpClientHandler>
             {
@@ -20,9 +20,19 @@ namespace ShipEngineTest
             };
             HttpClient = new HttpClient(MockHandler.Object);
 
-            ShipEngine = new ShipEngine(config);
+            ShipEngine = new ShipEngine(config)
+            {
+                _client = ShipEngineClient.ConfigureHttpClient(config, HttpClient)
+            };
 
-            ShipEngine._client = ShipEngineClient.ConfigureHttpClient(config, HttpClient);
+            JsonSerializerSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Include,
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            };
         }
 
         public Mock<HttpClientHandler> MockHandler { get; }
@@ -30,6 +40,8 @@ namespace ShipEngineTest
         public HttpClient HttpClient { get; }
 
         public ShipEngine ShipEngine { get; }
+
+        public JsonSerializerSettings JsonSerializerSettings { get; set; }
 
         /// <summary>
         /// Resets the mock's state.
@@ -44,17 +56,18 @@ namespace ShipEngineTest
         /// </summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The HTTP path.</param>
-        public void AssertRequest(HttpMethod method, string path)
+        public void AssertRequest(HttpMethod method, string path, int numberOfCalls = 1)
         {
             MockHandler.Protected()
                 .Verify(
                     "SendAsync",
-                    Times.Once(),
+                    Times.Exactly(numberOfCalls),
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Method == method &&
                         m.RequestUri.AbsolutePath == path),
                     ItExpr.IsAny<CancellationToken>());
         }
+
 
         /// <summary>
         /// Stubs an HTTP request with the specified method and path to return the specified status

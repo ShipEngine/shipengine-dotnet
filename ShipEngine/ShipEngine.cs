@@ -1,98 +1,316 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
-    public class ShipEngine
+    public class ShipEngine : ShipEngineClient
     {
-
         public HttpClient _client;
-        public ShipEngineConfig config;
+        public Config config;
 
-        public ShipEngine(string apiKey)
+        /// <summary>
+        /// Initialize the ShipEngine SDK with an API Key
+        /// </summary>
+        /// <param name="apiKey">Api Key associated with the ShipEngine account you want to use</param>
+        public ShipEngine(string apiKey) : base()
         {
-
             var client = new HttpClient();
-            config = new ShipEngineConfig(apiKey);
-            _client = ShipEngineClient.ConfigureHttpClient(config, client);
-
+            config = new Config(apiKey);
+            _client = ConfigureHttpClient(config, client);
         }
 
-        public ShipEngine(ShipEngineConfig config)
+        /// <summary>
+        /// Initialize the ShipEngine SDK with a config object
+        /// </summary>
+        /// <param name="config">Config object containing custom configurations</param>
+        public ShipEngine(Config config) : base()
         {
             var client = new HttpClient();
             this.config = config;
-            _client = ShipEngineClient.ConfigureHttpClient(config, client);
+            _client = ConfigureHttpClient(config, client);
         }
 
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <returns>An address validation result object</returns>
         public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
         {
-            string addressesJsonString = JsonSerializer.Serialize(addresses);
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "v1/addresses/validate")
-            {
-                Content = new StringContent(addressesJsonString, System.Text.Encoding.UTF8, "application/json")
-            };
+            string addressesJsonString = JsonConvert.SerializeObject(addresses, JsonSerializerSettings);
 
-            var validatedAddresses = await ShipEngineClient.SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(request, _client);
+            var path = "v1/addresses/validate";
+
+            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(HttpMethod.Post, path, addressesJsonString, _client, config);
 
             return validatedAddresses;
         }
 
-        public async Task<ListCarriers.Result.CarrierResponse> ListCarriers()
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>An address validation result object</returns>
+        public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses, Config methodConfig)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
-            var carriers = await ShipEngineClient.SendHttpRequestAsync<ListCarriers.Result.CarrierResponse>(request, _client);
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            string addressesJsonString = JsonConvert.SerializeObject(addresses, JsonSerializerSettings);
+
+            var path = "v1/addresses/validate";
+
+            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(HttpMethod.Post, path, addressesJsonString, client, methodConfig);
+
+            client.Dispose();
+
+            return validatedAddresses;
+        }
+
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <returns>A list of carriers</returns>
+        public async Task<ListCarriers.Result.CarrierResult> ListCarriers()
+        {
+            var path = "v1/carriers";
+
+            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResult>(HttpMethod.Get, path, null, _client, config);
 
             return carriers;
         }
 
-        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string LabelId)
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>A list of carriers</returns>
+        public async Task<ListCarriers.Result.CarrierResult> ListCarriers(Config methodConfig)
         {
-            var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/{LabelId}/void");
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var VoidedLabelResponse = await ShipEngineClient.SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(request, _client);
+            var path = "v1/carriers";
 
-            return VoidedLabelResponse;
+            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResult>(HttpMethod.Get, path, null, client, methodConfig);
+
+            client.Dispose();
+
+            return carriers;
         }
 
-        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string LabelId)
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
+        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string labelId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/labels/{LabelId}/track");
+            var path = $"v1/labels/{labelId}/void";
 
-            var TrackingInfo = await ShipEngineClient.SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(request, _client);
+            var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, _client, config);
 
-            return TrackingInfo;
+            return voidedLabelResponse;
         }
 
-        public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string TrackingNumber, string CarrierCode)
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
+        public async Task<VoidLabelWithLabelId.Result.VoidLabelIdResult> VoidLabelWithLabelId(string labelId, Config methodConfig)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"/v1/tracking?tracking_number={TrackingNumber}&carrier_code={CarrierCode}");
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var TrackingInfo = await ShipEngineClient.SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(request, _client);
+            var path = $"v1/labels/{labelId}/void";
 
-            return TrackingInfo;
+            var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, client, methodConfig);
+
+            client.Dispose();
+
+            return voidedLabelResponse;
         }
 
-        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams LabelDetails)
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <returns>An object that contains the label id tracking information</returns>
+        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId)
+        {
+            var path = $"/v1/labels/{labelId}/track";
+
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, _client, config);
+
+            return trackingInfo;
+        }
+
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>An object that contains the label id tracking information</returns>
+        public async Task<TrackUsingLabelId.Result.TrackUsingLabelIdResult> TrackUsingLabelId(string labelId, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/labels/{labelId}/track";
+
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, client, methodConfig);
+
+            client.Dispose();
+
+            return trackingInfo;
+        }
+
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <returns></returns>
+        public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode)
+        {
+            var path = $"/v1/tracking?tracking_number={trackingNumber}&carrier_code={carrierCode}";
+
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, _client, config);
+
+            return trackingInfo;
+        }
+
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns></returns>
+        public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/tracking?tracking_number={trackingNumber}&carrier_code={carrierCode}";
+
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, client, methodConfig);
+
+            client.Dispose();
+
+            return trackingInfo;
+        }
+
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="label">The label that you want to create</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams label)
         {
 
-            string LabelParamsString = JsonSerializer.Serialize(LabelDetails, new JsonSerializerOptions()
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            });
+            string labelParamsString = JsonConvert.SerializeObject(label, JsonSerializerSettings);
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "/v1/labels")
-            {
-                Content = new StringContent(LabelParamsString, System.Text.Encoding.UTF8, "application/json")
-            };
+            var path = "/v1/labels";
 
-            var LabelResult = await ShipEngineClient.SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(request, _client);
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, labelParamsString, _client, config);
 
-            return LabelResult;
+            return labelResult;
+        }
+
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="label">The label that you want to create</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromShipmentDetails.Result.LabelResult> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params.LabelParams label, Config methodConfig)
+        {
+
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            string labelParamsString = JsonConvert.SerializeObject(label, JsonSerializerSettings);
+
+            var path = "/v1/labels";
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, labelParamsString, client, methodConfig);
+
+            client.Dispose();
+
+            return labelResult;
+        }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="rateId">The rate that you want to use to purchase a label</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromRate.Result.LabelResult> CreateLabelFromRate(string rateId)
+        {
+            var path = $"/v1/labels/rates/{rateId}";
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result.LabelResult>(HttpMethod.Post, path, null, _client, config);
+
+            return labelResult;
+        }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="rateId">The rate that you want to use to purchase a label</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromRate.Result.LabelResult> CreateLabelFromRate(string rateId, Config methodConfig)
+        {
+
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/labels/rates/{rateId}";
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result.LabelResult>(HttpMethod.Post, path, null, client, methodConfig);
+
+            client.Dispose();
+
+            return labelResult;
+        }
+
+        /// <summary>
+        /// Retrieve rates for a package with the provided shipment details.
+        /// </summary>
+        /// <param name="rateParams"></param>
+        /// <returns>The rates result</returns>
+        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.RatesParams rateParams)
+        {
+            var path = "/v1/rates";
+
+            string paramString = JsonConvert.SerializeObject(rateParams, JsonSerializerSettings);
+
+            var labelResult = await SendHttpRequestAsync<GetRatesFromShipment.Result>(HttpMethod.Post, path, paramString, _client, config);
+
+            return labelResult;
+        }
+
+        /// <summary>
+        /// Retrieve rates for a package with the provided shipment details.
+        /// </summary>
+        /// <param name="rateParams"></param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>The rates result</returns>
+        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.RatesParams rateParams, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = "/v1/rates";
+
+            string paramString = JsonConvert.SerializeObject(rateParams, JsonSerializerSettings);
+
+            var labelResult = await SendHttpRequestAsync<GetRatesFromShipment.Result>(HttpMethod.Post, path, paramString, client, methodConfig);
+
+            client.Dispose();
+
+            return labelResult;
         }
     }
 }

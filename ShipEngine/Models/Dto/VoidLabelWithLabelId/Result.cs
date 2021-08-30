@@ -1,15 +1,15 @@
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-
-
 namespace ShipEngineSDK.VoidLabelWithLabelId.Result
 {
     public class VoidLabelIdResult
     {
-        [JsonPropertyName("approved")]
-        public bool? Approved { get; set; }
+        /// <summary>
+        /// Indicates whether the attempt to void the label was successful
+        /// </summary>
+        public bool Approved { get; set; }
 
-        [JsonPropertyName("message")]
-        public string? Message { get; set; }
+        /// <summary>
+        /// Message associated with the result of the void label attempt
+        /// </summary>
+        public string Message { get; set; }
     }
 }
