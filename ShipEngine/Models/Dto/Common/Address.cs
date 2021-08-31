@@ -4,6 +4,9 @@ using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// A physical address for a person or company.
+    /// </summary>
     public class Address
     {
         /// <summary>

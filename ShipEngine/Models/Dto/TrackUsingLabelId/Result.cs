@@ -1,6 +1,12 @@
+#nullable disable
+
+using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 namespace ShipEngineSDK.TrackUsingLabelId.Result
 {
+    /// <summary>
+    /// Tracking information results
+    /// </summary>
     public class TrackUsingLabelIdResult
     {
         ///<summary>
@@ -11,12 +17,12 @@ namespace ShipEngineSDK.TrackUsingLabelId.Result
         ///<summary>
         ///Status Code
         ///</summary>
-        public StatusCode StatusCode { get; set; }
+        public TrackingStatusCode StatusCode { get; set; }
 
         ///<summary>
         ///Status Description
         ///</summary>
-        public StatusDescription StatusDescription { get; set; }
+        public TrackingStatusDescription StatusDescription { get; set; }
 
         ///<summary>
         ///Carrier Detail Code
@@ -60,6 +66,9 @@ namespace ShipEngineSDK.TrackUsingLabelId.Result
         public List<TrackingEvent> Events { get; set; }
     }
 
+    /// <summary>
+    /// Tracking Event
+    /// </summary>
     public class TrackingEvent
     {
         ///<summary>

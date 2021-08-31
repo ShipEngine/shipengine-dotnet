@@ -4,6 +4,9 @@ using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Details associated with a shipment item.
+    /// </summary>
     public class ShipmentItem
     {
         /// <summary>

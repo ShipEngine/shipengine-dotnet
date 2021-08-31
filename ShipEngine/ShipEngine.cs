@@ -5,10 +5,20 @@ using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
+    /// <summary>
+    /// Contains methods for interacting with the ShipEngine API.
+    /// </summary>
     public class ShipEngine : ShipEngineClient
     {
+        /// <summary>
+        /// Global HttpClient for ShipEngine instance.
+        /// </summary>
         public HttpClient _client;
-        public Config config;
+
+        /// <summary>
+        /// Global config for ShipEngine instance.
+        /// </summary>
+        public Config _config;
 
         /// <summary>
         /// Initialize the ShipEngine SDK with an API Key
@@ -17,8 +27,8 @@ namespace ShipEngineSDK
         public ShipEngine(string apiKey) : base()
         {
             var client = new HttpClient();
-            config = new Config(apiKey);
-            _client = ConfigureHttpClient(config, client);
+            _config = new Config(apiKey);
+            _client = ConfigureHttpClient(_config, client);
         }
 
         /// <summary>
@@ -28,7 +38,7 @@ namespace ShipEngineSDK
         public ShipEngine(Config config) : base()
         {
             var client = new HttpClient();
-            this.config = config;
+            this._config = config;
             _client = ConfigureHttpClient(config, client);
         }
 
@@ -44,7 +54,7 @@ namespace ShipEngineSDK
 
             var path = "v1/addresses/validate";
 
-            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(HttpMethod.Post, path, addressesJsonString, _client, config);
+            var validatedAddresses = await SendHttpRequestAsync<List<ValidateAddresses.Result.ValidateAddressResult>>(HttpMethod.Post, path, addressesJsonString, _client, _config);
 
             return validatedAddresses;
         }
@@ -79,7 +89,7 @@ namespace ShipEngineSDK
         {
             var path = "v1/carriers";
 
-            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResult>(HttpMethod.Get, path, null, _client, config);
+            var carriers = await SendHttpRequestAsync<ListCarriers.Result.CarrierResult>(HttpMethod.Get, path, null, _client, _config);
 
             return carriers;
         }
@@ -111,7 +121,7 @@ namespace ShipEngineSDK
         {
             var path = $"v1/labels/{labelId}/void";
 
-            var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, _client, config);
+            var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result.VoidLabelIdResult>(HttpMethod.Put, path, null, _client, _config);
 
             return voidedLabelResponse;
         }
@@ -144,7 +154,7 @@ namespace ShipEngineSDK
         {
             var path = $"/v1/labels/{labelId}/track";
 
-            var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, _client, config);
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result.TrackUsingLabelIdResult>(HttpMethod.Get, path, null, _client, _config);
 
             return trackingInfo;
         }
@@ -178,7 +188,7 @@ namespace ShipEngineSDK
         {
             var path = $"/v1/tracking?tracking_number={trackingNumber}&carrier_code={carrierCode}";
 
-            var trackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, _client, config);
+            var trackingInfo = await SendHttpRequestAsync<TrackUsingCarrierCodeAndTrackingNumber.Result.TrackUsingCarrierCodeAndTrackingNumberResult>(HttpMethod.Get, path, null, _client, _config);
 
             return trackingInfo;
         }
@@ -215,7 +225,7 @@ namespace ShipEngineSDK
 
             var path = "/v1/labels";
 
-            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, labelParamsString, _client, config);
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentDetails.Result.LabelResult>(HttpMethod.Post, path, labelParamsString, _client, _config);
 
             return labelResult;
         }
@@ -251,7 +261,7 @@ namespace ShipEngineSDK
         {
             var path = $"/v1/labels/rates/{rateId}";
 
-            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result.LabelResult>(HttpMethod.Post, path, null, _client, config);
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result.LabelResult>(HttpMethod.Post, path, null, _client, _config);
 
             return labelResult;
         }
@@ -287,7 +297,7 @@ namespace ShipEngineSDK
 
             string paramString = JsonConvert.SerializeObject(rateParams, JsonSerializerSettings);
 
-            var labelResult = await SendHttpRequestAsync<GetRatesFromShipment.Result>(HttpMethod.Post, path, paramString, _client, config);
+            var labelResult = await SendHttpRequestAsync<GetRatesFromShipment.Result>(HttpMethod.Post, path, paramString, _client, _config);
 
             return labelResult;
         }

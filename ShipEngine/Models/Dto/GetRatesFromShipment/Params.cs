@@ -1,3 +1,5 @@
+#nullable disable
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common;
@@ -6,37 +8,53 @@ using System.Collections.Generic;
 
 namespace ShipEngineSDK.GetRatesFromShipment
 {
+    /// <summary>
+    /// Params for retrieving rates for your shipments.
+    /// Must specify either the ShipmentId or Shipment property.
+    /// </summary>
     public class RatesParams
     {
-        public string? ShipmentId { get; set; }
+        /// <summary>
+        /// A string that uniquely identifies the shipment
+        /// </summary>
+        public string ShipmentId { get; set; }
 
-        public Shipment? Shipment { get; set; }
+        /// <summary>
+        /// The shipment object
+        /// </summary>
+        public Shipment Shipment { get; set; }
 
-        public RateOptions? RateOptions { get; set; }
+        /// <summary>
+        /// Options for your rate estimates
+        /// </summary>
+        public RateOptions RateOptions { get; set; }
     }
 
+    /// <summary>
+    /// Shipment object
+    /// </summary>
     public class Shipment
     {
         /// <summary>
         /// The possible validate address values
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public ValidateAddress? ValidateAddress { get; set; }
+        public ValidateAddress ValidateAddress { get; set; }
 
         /// <summary>
         /// The carrier account that is billed for the shipping charges
         /// </summary>
-        public string? CarrierId { get; set; }
+        public string CarrierId { get; set; }
 
         /// <summary>
         /// The carrier service used to ship the package
         /// </summary>
-        public string? ServiceCode { get; set; }
+        public string ServiceCode { get; set; }
 
         /// <summary>
         /// ID that the Order Source assigned
         /// </summary>
-        public string? ExternalOrderId { get; set; }
+        public string ExternalOrderId { get; set; }
 
         /// <summary>
         /// Describe the packages included in this shipment as related to potential metadata that was imported from external order sources
@@ -51,13 +69,13 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// You can optionally use this field to store your own identifier for this shipment.
         /// </summary>
-        public string? ExternalShipmentId { get; set; }
+        public string ExternalShipmentId { get; set; }
 
         /// <summary>
         /// The date that the shipment was (or will be) shippped. ShipEngine will take the day of week into consideration.
         /// For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.
         /// </summary>
-        public string? ShipDate { get; set; }
+        public string ShipDate { get; set; }
 
         /// <summary>
         /// The recipient's mailing address
@@ -73,7 +91,7 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// The warehouse that the shipment is being shipped from. Either warehouse_id or ship_from must be specified.
         /// </summary>
-        public string? WarehouseId { get; set; }
+        public string WarehouseId { get; set; }
 
         /// <summary>
         /// The return address for this shipment. Defaults to the ship_from address.
@@ -129,6 +147,9 @@ namespace ShipEngineSDK.GetRatesFromShipment
         public Weight Weight { get; set; }
     }
 
+    /// <summary>
+    /// Rate options for specifying the type of rate estimates
+    /// </summary>
     public class RateOptions
     {
         /// <summary>
@@ -136,8 +157,14 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// </summary>
         public List<string> CarrierIds { get; set; }
 
+        /// <summary>
+        /// Filter rate response by package types
+        /// </summary>
         public List<string> PackageTypes { get; set; }
 
+        /// <summary>
+        /// Filter rate response by service codes
+        /// </summary>
         public List<string> ServiceCodes { get; set; }
 
         /// <summary>

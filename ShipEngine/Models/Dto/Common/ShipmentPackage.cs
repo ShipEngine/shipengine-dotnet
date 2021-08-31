@@ -1,5 +1,8 @@
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Package details associated with a shipment
+    /// </summary>
     public class ShipmentPackage
     {
         /// <summary>

@@ -10,10 +10,21 @@ using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
+    /// <summary>
+    /// ShipEngine Client is used for handling generic calls and settings that
+    /// are needed for all ShipEngine API calls.
+    /// </summary>
     public class ShipEngineClient
     {
+        /// <summary>
+        /// Settings for serializing the method call params to JSON.
+        /// A separate inline setting is used for deserializing the response
+        /// </summary>
         protected readonly JsonSerializerSettings JsonSerializerSettings;
 
+        /// <summary>
+        /// Constructor for ShipEngineClient
+        /// </summary>
         public ShipEngineClient()
         {
             JsonSerializerSettings = new JsonSerializerSettings()
@@ -27,6 +38,14 @@ namespace ShipEngineSDK
         }
 
         private const string JsonMediaType = "application/json";
+
+        /// <summary>
+        /// Sets the HttpClient User agent, the json media type, and the API key to be used
+        /// for all ShipEngine API calls unless overrwritten at the method level.
+        /// </summary>
+        /// <param name="config">Config object used to configure the HttpClient</param>
+        /// <param name="client">The HttpClient to be configured</param>
+        /// <returns></returns>
         public static HttpClient ConfigureHttpClient(Config config, HttpClient client)
         {
             client.DefaultRequestHeaders.Accept.Clear();
@@ -68,7 +87,7 @@ namespace ShipEngineSDK
 
                 var error = deserializedError.Errors[0];
 
-                if (error != null && error.Message != null && error.ErrorSource != null && error.ErrorType != null && error.ErrorCode != null && deserializedError.RequestId != null)
+                if (error != null && error.Message != null && deserializedError.RequestId != null)
                 {
                     throw new ShipEngineException(
                         error.Message,

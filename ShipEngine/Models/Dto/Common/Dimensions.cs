@@ -4,6 +4,9 @@ using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Dimensions associated with a shipment package
+    /// </summary>
     public class Dimensions
     {
         /// <summary>

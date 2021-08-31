@@ -1,8 +1,12 @@
 using ShipEngineSDK.Common;
+using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
 namespace ShipEngineSDK.CreateLabelFromRate.Result
 {
+    /// <summary>
+    /// Purchased label information
+    /// </summary>
     public class LabelResult
     {
         /// <summary>
@@ -157,7 +161,10 @@ namespace ShipEngineSDK.CreateLabelFromRate.Result
         public List<Package> Packages { get; set; }
     }
 
-    public class LabelDownload
+    /// <summary>
+    ///  Link information
+    /// </summary>
+    public class Link
     {
         /// <summary>
         /// The URL of the linked resource, if any
@@ -165,28 +172,14 @@ namespace ShipEngineSDK.CreateLabelFromRate.Result
         public string? Href { get; set; }
 
         /// <summary>
-        /// The URL for the pdf generated label
+        /// The type of resource, or the type of relationship to the parent resource
         /// </summary>
-        public string? Pdf { get; set; }
-
-        /// <summary>
-        /// The URL for the png generated label
-        /// </summary>
-        public string? Png { get; set; }
-
-        /// <summary>
-        /// The URL for the zpl generated label
-        /// </summary>
-        public string? Zpl { get; set; }
-    }
-
-    public class Link
-    {
-        public string? Href { get; set; }
-
         public string? Type { get; set; }
     }
 
+    /// <summary>
+    /// Package information
+    /// </summary>
     public class Package
     {
         /// <summary>
@@ -232,6 +225,9 @@ namespace ShipEngineSDK.CreateLabelFromRate.Result
         /// </summary>
         public string? ExternalPackageId { get; set; }
 
+        /// <summary>
+        /// Package sequence
+        /// </summary>
         public int? Sequence { get; set; }
     }
 }

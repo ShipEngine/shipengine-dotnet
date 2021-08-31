@@ -1,7 +1,12 @@
+#pragma warning disable 1591
+
 using System.Runtime.Serialization;
 
 namespace ShipEngineSDK.Common.Enums
 {
+    /// <summary>
+    /// The order sources that are supported by ShipEngine
+    /// </summary>
     public enum OrderSourceCode
     {
         [EnumMember(Value = "amazon_ca")]

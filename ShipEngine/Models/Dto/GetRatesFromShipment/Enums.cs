@@ -1,7 +1,11 @@
+#pragma warning disable 1591
 using System.Runtime.Serialization;
 
 namespace ShipEngineSDK.GetRatesFromShipment
 {
+    /// <summary>
+    /// The possible shipment status values
+    /// </summary>
     public enum ShipmentStatus
     {
         Pending,
@@ -12,28 +16,18 @@ namespace ShipEngineSDK.GetRatesFromShipment
         Cancelled
     }
 
-    public enum DeliveryConfirmation
-    {
-        None,
-        Delivery,
-        Signature,
-
-        [EnumMember(Value = "adult_signature")]
-        AdultSignature,
-
-        [EnumMember(Value = "direct_signature")]
-        DirectSignature,
-
-        [EnumMember(Value = "delivery_mailed")]
-        DeliveryMailed
-    }
-
+    /// <summary>
+    /// The possible rate type values
+    /// </summary>
     public enum RateType
     {
         Check,
         Shipment
     }
 
+    /// <summary>
+    /// The possible validation status values
+    /// </summary>
     public enum ValidationStatus
     {
         Valid,

@@ -1,3 +1,5 @@
+#pragma warning disable 1591
+
 using System.Runtime.Serialization;
 
 namespace ShipEngineSDK.CreateLabelFromRate
@@ -22,28 +24,7 @@ namespace ShipEngineSDK.CreateLabelFromRate
         Voided
     }
 
-    public enum DisplayScheme
-    {
-        Label,
 
-        [EnumMember(Value = "qr_code")]
-        QRCode
-    }
-
-    public enum LabelLayout
-    {
-        Letter,
-
-        [EnumMember(Value = "4x6")]
-        FourBySix
-    }
-
-    public enum LabelFormat
-    {
-        PDF,
-        PNG,
-        ZPL
-    }
 
     public enum TrackingStatus
     {
@@ -61,19 +42,4 @@ namespace ShipEngineSDK.CreateLabelFromRate
         Inline,
     }
 
-    public enum DeliveryConfirmation
-    {
-        None,
-        Delivery,
-        Signature,
-
-        [EnumMember(Value = "adult_signature")]
-        AdultSignature,
-
-        [EnumMember(Value = "direct_signature")]
-        DirectSignature,
-
-        [EnumMember(Value = "delivery_mailed")]
-        DeliveryMailed
-    }
 }

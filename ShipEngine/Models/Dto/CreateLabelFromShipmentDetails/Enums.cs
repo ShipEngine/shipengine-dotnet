@@ -1,7 +1,12 @@
+#pragma warning disable 1591
+
 using System.Runtime.Serialization;
 
 namespace ShipEngineSDK.CreateLabelFromShipmentDetails
 {
+    /// <summary>
+    /// The label charge event.
+    /// </summary>
     public enum ChargeEvent
     {
         [EnumMember(Value = "carrier_default")]
@@ -14,6 +19,9 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         OnCarrierAcceptance
     }
 
+    /// <summary>
+    /// The possible statuses that a shipping label can be in.
+    /// </summary>
     public enum LabelStatus
     {
         Processing,
@@ -22,29 +30,9 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         Voided
     }
 
-    public enum DisplayScheme
-    {
-        Label,
-
-        [EnumMember(Value = "qr_code")]
-        QRCode
-    }
-
-    public enum LabelLayout
-    {
-        Letter,
-
-        [EnumMember(Value = "4x6")]
-        FourBySix
-    }
-
-    public enum LabelFormat
-    {
-        PDF,
-        PNG,
-        ZPL
-    }
-
+    /// <summary>
+    /// The current status of the package.
+    /// </summary>
     public enum TrackingStatus
     {
         Unknown,
@@ -55,25 +43,21 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         Delivered
     }
 
+    /// <summary>
+    /// The available label download types.
+    /// </summary>
     public enum LabelDownloadType
     {
+        /// <summary>
+        /// You will receive a URL, which you can use to download the label in a separate request.
+        /// The URL will remain valid for 90 days.
+        /// </summary>
         Url,
+
+        /// <summary>
+        /// You will receive the Base64-encoded label as part of the response.
+        /// No need for a second request to download the label.
+        /// </summary>
         Inline,
-    }
-
-    public enum DeliveryConfirmation
-    {
-        None,
-        Delivery,
-        Signature,
-
-        [EnumMember(Value = "adult_signature")]
-        AdultSignature,
-
-        [EnumMember(Value = "direct_signature")]
-        DirectSignature,
-
-        [EnumMember(Value = "delivery_mailed")]
-        DeliveryMailed
     }
 }

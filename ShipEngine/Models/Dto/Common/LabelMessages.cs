@@ -1,5 +1,8 @@
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Label Messsages to be printed on the label when supported
+    /// </summary>
     public class LabelMessages
     {
         /// <summary>

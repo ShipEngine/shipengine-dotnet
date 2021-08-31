@@ -1,29 +1,13 @@
+#pragma warning disable 1591
+
 using System.Runtime.Serialization;
 
-namespace ShipEngineSDK.TrackUsingLabelId
+namespace ShipEngineSDK.Common.Enums
 {
-    public enum StatusCode
-    {
-        [EnumMember(Value = "AC")]
-        AC,
-
-        [EnumMember(Value = "IT")]
-        IT,
-
-        [EnumMember(Value = "DE")]
-        DE,
-
-        [EnumMember(Value = "EX")]
-        EX,
-
-        [EnumMember(Value = "AT")]
-        AT,
-
-        [EnumMember(Value = "UN")]
-        UN
-    }
-
-    public enum StatusDescription
+    /// <summary>
+    /// Tracking status description.
+    /// </summary>
+    public enum TrackingStatusDescription
     {
         [EnumMember(Value = "Accepted")]
         Accepted,

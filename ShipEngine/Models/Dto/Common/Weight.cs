@@ -4,6 +4,9 @@ using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Used to indicate the weight of a package or shipment.
+    /// </summary>
     public class Weight
     {
         /// <summary>
