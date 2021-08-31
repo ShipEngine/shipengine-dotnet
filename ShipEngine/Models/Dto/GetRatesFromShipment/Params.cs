@@ -175,6 +175,8 @@ namespace ShipEngineSDK.GetRatesFromShipment
         /// <summary>
         /// The currencies that are supported by ShipEngine.
         /// </summary>
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public Currency PreferredCurrency { get; set; }
     }
 }

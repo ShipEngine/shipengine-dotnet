@@ -11,7 +11,6 @@ namespace ShipEngineSDK.Common.Enums
         [EnumMember(Value = "no_validation")]
         NoValidation,
 
-
         [EnumMember(Value = "validate_only")]
         ValidateOnly,
 

@@ -264,6 +264,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
         /// <summary>
         /// The two-letter ISO 3166-1 country code where this item originated
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public Country CountryOfOrigin { get; set; }
 
         /// <summary>

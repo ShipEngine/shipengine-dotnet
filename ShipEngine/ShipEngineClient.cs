@@ -29,7 +29,7 @@ namespace ShipEngineSDK
         {
             JsonSerializerSettings = new JsonSerializerSettings()
             {
-                NullValueHandling = NullValueHandling.Include,
+                NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new DefaultContractResolver
                 {
                     NamingStrategy = new SnakeCaseNamingStrategy()
@@ -100,7 +100,14 @@ namespace ShipEngineSDK
 
             }
 
-            var result = JsonConvert.DeserializeObject<T>(contentString, JsonSerializerSettings);
+            var result = JsonConvert.DeserializeObject<T>(contentString, new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Include,
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            });
 
             if (result != null)
             {

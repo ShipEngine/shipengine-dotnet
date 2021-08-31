@@ -1,9 +1,9 @@
 using Moq;
 using Newtonsoft.Json;
 using ShipEngineSDK;
+using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.ValidateAddresses;
-using ShipEngineSDK.ValidateAddresses.Params;
 using ShipEngineSDK.ValidateAddresses.Result;
 using System;
 using System.Collections.Generic;

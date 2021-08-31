@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ShipEngineSDK.Common;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
         /// <returns>An address validation result object</returns>
-        public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses)
+        public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<Address> addresses)
         {
 
             string addressesJsonString = JsonConvert.SerializeObject(addresses, JsonSerializerSettings);
@@ -65,7 +66,7 @@ namespace ShipEngineSDK
         /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
         /// <returns>An address validation result object</returns>
-        public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<ValidateAddresses.Params.Address> addresses, Config methodConfig)
+        public async Task<List<ValidateAddresses.Result.ValidateAddressResult>> ValidateAddresses(List<Address> addresses, Config methodConfig)
         {
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());

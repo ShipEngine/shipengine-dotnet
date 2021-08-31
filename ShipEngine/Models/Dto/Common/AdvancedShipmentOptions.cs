@@ -24,6 +24,7 @@ namespace ShipEngineSDK.Common
         /// Indicates whether to bill shipping costs to the recipient or to a third-party.
         /// When billing to a third-party, the bill_to_account, bill_to_country_code, and bill_to_postal_code fields must also be set.
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public BillToParty? BillToParty { get; set; }
 
         /// <summary>
