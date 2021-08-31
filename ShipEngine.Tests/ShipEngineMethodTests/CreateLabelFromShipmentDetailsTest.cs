@@ -1,5 +1,7 @@
 using Moq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
@@ -50,6 +52,7 @@ namespace ShipEngineTest
                         CountryCode = Country.US,
                         Phone = "512-555-5555"
                     },
+                    Confirmation = DeliveryConfirmation.DeliveryMailed,
                     Packages = new List<Package>() {
                         new Package() {
                             Weight = new Weight() {
@@ -72,7 +75,8 @@ namespace ShipEngineTest
         [Fact]
         public async void ValidCreateLabelFromShipmentDetailsTest()
         {
-            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var config = new Config("TEST_ycvJAgX6tLB1Awm9WGJmD8mpZ8wXiQ20WhqFowCk32s");
+
             var mockShipEngineFixture = new MockShipEngineFixture(config);
 
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
@@ -146,6 +150,28 @@ namespace ShipEngineTest
 
             Assert.Equal(ChargeEvent.CarrierDefault, result.ChargeEvent);
         }
+
+        [Fact]
+        public void TestParamsSerialization()
+        {
+            string labelParamsString = JsonConvert.SerializeObject(LabelParams, new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore,
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
+            });
+
+            JObject parsedJson = JObject.Parse(labelParamsString);
+
+            Assert.Equal("John Doe", parsedJson["shipment"]["ship_from"]["name"]);
+            Assert.Equal("delivery_mailed", parsedJson["shipment"]["confirmation"]);
+            Assert.Null(parsedJson["label_layout"]);
+            Assert.Null(parsedJson["label_format"]);
+        }
+
 
         [Fact]
         public async void ValidateCustomSettingsAtMethodLevel()

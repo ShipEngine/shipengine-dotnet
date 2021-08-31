@@ -20,7 +20,7 @@ namespace ShipEngineSDK.GetRatesFromShipment
         public string ShipmentId { get; set; }
 
         /// <summary>
-        /// The shipment object
+        /// The shipment information
         /// </summary>
         public Shipment Shipment { get; set; }
 
@@ -31,7 +31,7 @@ namespace ShipEngineSDK.GetRatesFromShipment
     }
 
     /// <summary>
-    /// Shipment object
+    /// Shipment information
     /// </summary>
     public class Shipment
     {
