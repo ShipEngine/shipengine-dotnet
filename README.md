@@ -5,7 +5,7 @@
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ShipEngine)
 ![GitHub](https://img.shields.io/github/license/ShipEngine/shipengine-dotnet)
 
-[![Build Status](https://github.com/ShipEngine/shipengine-dotnet/workflows/ci-cd/badge.svg)](https://github.com/ShipEngine/shipengine-dotnet/actions)
+[![Build Status](https://github.com/ShipEngine/shipengine-dotnet/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/ShipEngine/shipengine-dotnet/actions/workflows/ci-cd.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/ShipEngine/shipengine-dotnet/badge.svg?branch=main)](https://coveralls.io/github/ShipEngine/shipengine-dotnet?branch=main)
 
 [![OS Compatibility](https://shipengine.github.io/img/badges/os-badges.svg)](https://github.com/ShipEngine/shipengine-dotnet/actions)
