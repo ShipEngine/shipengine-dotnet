@@ -2,7 +2,15 @@
 
 # ShipEngine .NET
 
-:warning: **WARNING**: This is alpha software under active development. `Caveat emptor` until a 0.1.0 release is ready.
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ShipEngine)
+![GitHub](https://img.shields.io/github/license/ShipEngine/shipengine-dotnet)
+
+[![Build Status](https://github.com/ShipEngine/shipengine-dotnet/workflows/ci-cd/badge.svg)](https://github.com/ShipEngine/shipengine-dotnet/actions)
+[![Coverage Status](https://coveralls.io/repos/github/ShipEngine/shipengine-dotnet/badge.svg?branch=main)](https://coveralls.io/github/ShipEngine/shipengine-dotnet?branch=main)
+
+[![OS Compatibility](https://shipengine.github.io/img/badges/os-badges.svg)](https://github.com/ShipEngine/shipengine-dotnet/actions)
+
+:warning: **WARNING**: This is alpha software under active development. `Caveat emptor` until a 1.0.0 release is ready.
 
 A C# library built on the [ShipEngine API](https://shipengine.com) offering low-level access as well as convenience methods.
 
@@ -26,17 +34,20 @@ Please run dotnet format before pushing changes
 Run the following command:
 
 ```
-
 %> dotnet test
+```
 
+By default, the test project targets all supported frameworks, if your environment only supports a subset then you
+can specify in the CLI.
+
+```
+%> dotnet test -f net5.0
 ```
 
 Run tests on file change:
 
 ```
-
 %> dotnet watch -p ShipEngine.tests/ test
-
 ```
 
 ## Release
