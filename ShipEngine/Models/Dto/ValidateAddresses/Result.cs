@@ -9,7 +9,7 @@ namespace ShipEngineSDK.ValidateAddresses.Result
     /// <summary>
     /// Addresss validation result
     /// </summary>
-    public class ValidateAddressResult
+    public class ValidatedAddresses
     {
         /// <summary>
         /// Indicates whether the address has been verified

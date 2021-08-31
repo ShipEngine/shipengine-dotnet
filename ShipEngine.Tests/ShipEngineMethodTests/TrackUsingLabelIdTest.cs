@@ -74,12 +74,12 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
 
-            var listCarriersResult = JsonConvert.DeserializeObject<TrackUsingLabelIdResult>(json);
+            var listCarriersResult = JsonConvert.DeserializeObject<TrackingInfo>(json);
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
             // Verify that the client has a custom timeout of 1 second when called.
             mockHandler
-                .Setup(x => x.SendHttpRequestAsync<TrackUsingLabelIdResult>
+                .Setup(x => x.SendHttpRequestAsync<TrackingInfo>
                 (
                     It.IsAny<HttpMethod>(),
                     It.IsAny<string>(),

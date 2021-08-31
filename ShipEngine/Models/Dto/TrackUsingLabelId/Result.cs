@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace ShipEngineSDK.TrackUsingLabelId.Result
 {
     /// <summary>
-    /// Tracking information results
+    /// Tracking results
     /// </summary>
-    public class TrackUsingLabelIdResult
+    public class TrackingInfo
     {
         ///<summary>
         ///A tracking number for a package. The format depends on the carrier.

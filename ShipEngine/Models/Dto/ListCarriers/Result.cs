@@ -9,7 +9,7 @@ namespace ShipEngineSDK.ListCarriers.Result
     /// <summary>
     /// List Carrier Results
     /// </summary>
-    public class CarrierResult
+    public class CarrierInfo
     {
         /// <summary>
         /// List of carriers associated with the account

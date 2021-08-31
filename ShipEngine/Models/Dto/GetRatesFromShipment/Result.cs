@@ -2,9 +2,9 @@ using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
-namespace ShipEngineSDK.GetRatesFromShipment
+namespace ShipEngineSDK.GetRatesFromShipment.Result
 {
-    public class Result
+    public class ShipmentRates
     {
         /// <summary>
         /// A string that uniquely identifies the shipment

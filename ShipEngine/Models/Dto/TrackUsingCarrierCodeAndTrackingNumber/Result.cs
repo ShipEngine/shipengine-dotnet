@@ -7,7 +7,7 @@ namespace ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result
     /// <summary>
     /// Tracking Result.
     /// </summary>
-    public class TrackUsingCarrierCodeAndTrackingNumberResult
+    public class TrackingInfo
     {
         ///<summary>
         ///A tracking number for a package. The format depends on the carrier.

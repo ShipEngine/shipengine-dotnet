@@ -6,13 +6,13 @@ using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
-namespace ShipEngineSDK.GetRatesFromShipment
+namespace ShipEngineSDK.GetRatesFromShipment.Params
 {
     /// <summary>
     /// Params for retrieving rates for your shipments.
     /// Must specify either the ShipmentId or Shipment property.
     /// </summary>
-    public class RatesParams
+    public class Rates
     {
         /// <summary>
         /// A string that uniquely identifies the shipment
