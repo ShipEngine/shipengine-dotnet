@@ -11,7 +11,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
     /// <summary>
     /// Paramters needed for purchasing a label.
     /// </summary>
-    public class Label
+    public class LabelParams
     {
         /// <summary>
         /// The shipment information used to generate the label
