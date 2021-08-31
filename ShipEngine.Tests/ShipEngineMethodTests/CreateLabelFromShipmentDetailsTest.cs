@@ -6,7 +6,6 @@ using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.CreateLabelFromShipmentDetails;
-using ShipEngineSDK.CreateLabelFromShipmentDetails.Params;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +18,7 @@ namespace ShipEngineTest
     public class CreateLabelFromShipmentDetailsTest
     {
 
-        Label LabelParams;
+        Params LabelParams;
 
         public TestUtils TestUtils;
 
@@ -27,7 +26,7 @@ namespace ShipEngineTest
         {
             TestUtils = new TestUtils();
 
-            LabelParams = new Label()
+            LabelParams = new Params()
             {
                 Shipment = new Shipment()
                 {
@@ -185,12 +184,12 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
 
-            var voidLabelResult = JsonConvert.DeserializeObject<ShipEngineSDK.CreateLabelFromShipmentDetails.Result.Label>(json);
+            var voidLabelResult = JsonConvert.DeserializeObject<Result>(json);
             var request = new HttpRequestMessage(HttpMethod.Post, "v1/labels");
 
             // Verify that the client has a custom timeout of 1 second when called.
             mockHandler
-                .Setup(x => x.SendHttpRequestAsync<ShipEngineSDK.CreateLabelFromShipmentDetails.Result.Label>
+                .Setup(x => x.SendHttpRequestAsync<Result>
                 (
                     It.IsAny<HttpMethod>(),
                     It.IsAny<string>(),

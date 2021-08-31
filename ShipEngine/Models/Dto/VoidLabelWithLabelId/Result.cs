@@ -1,9 +1,9 @@
-namespace ShipEngineSDK.VoidLabelWithLabelId.Result
+namespace ShipEngineSDK.VoidLabelWithLabelId
 {
     /// <summary>
     /// Voided label result.
     /// </summary>
-    public class VoidedLabelId
+    public class Result
     {
         /// <summary>
         /// Indicates whether the attempt to void the label was successful

@@ -4,8 +4,6 @@ using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.GetRatesFromShipment;
-using ShipEngineSDK.GetRatesFromShipment.Params;
-using ShipEngineSDK.GetRatesFromShipment.Result;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +15,7 @@ namespace ShipEngineTest
 {
     public class GetRatesFromShipmentTest
     {
-        public Rates RatesParameters;
+        public Params RatesParameters;
 
         public TestUtils TestUtils;
 
@@ -25,7 +23,7 @@ namespace ShipEngineTest
         {
             TestUtils = new TestUtils();
 
-            RatesParameters = new Rates()
+            RatesParameters = new Params()
             {
                 Shipment = new Shipment()
                 {
@@ -189,12 +187,12 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/GetRatesWithShipmentDetails200Response.json"));
 
-            var getRatesResults = JsonConvert.DeserializeObject<ShipmentRates>(json);
+            var getRatesResults = JsonConvert.DeserializeObject<Result>(json);
             var request = new HttpRequestMessage(HttpMethod.Post, "v1/rates");
 
             // Verify that the client has a custom timeout of 1 second when called.
             mockHandler
-                .Setup(x => x.SendHttpRequestAsync<ShipmentRates>
+                .Setup(x => x.SendHttpRequestAsync<Result>
                 (
                     It.IsAny<HttpMethod>(),
                     It.IsAny<string>(),

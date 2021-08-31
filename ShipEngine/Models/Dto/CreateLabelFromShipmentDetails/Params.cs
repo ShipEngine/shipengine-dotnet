@@ -6,12 +6,12 @@ using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
-namespace ShipEngineSDK.CreateLabelFromShipmentDetails.Params
+namespace ShipEngineSDK.CreateLabelFromShipmentDetails
 {
     /// <summary>
     /// Paramters needed for purchasing a label.
     /// </summary>
-    public class LabelParams
+    public class Params
     {
         /// <summary>
         /// The shipment information used to generate the label
