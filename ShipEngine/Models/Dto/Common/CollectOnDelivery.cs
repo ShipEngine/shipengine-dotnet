@@ -4,6 +4,9 @@ using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Payment information needed for a collect on delivery shipment
+    /// </summary>
     public class CollectOnDelivery
     {
         /// <summary>
@@ -12,6 +15,9 @@ namespace ShipEngineSDK.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public PaymentType? PaymentType { get; set; }
 
+        /// <summary>
+        /// Payment amount needed for the collect on delivery shipment
+        /// </summary>
         public MonetaryValue? PaymentAmount { get; set; }
     }
 }

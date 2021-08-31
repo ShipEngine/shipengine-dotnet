@@ -1,5 +1,4 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+#pragma warning disable 1591
 
 namespace ShipEngineSDK.Common.Enums
 {

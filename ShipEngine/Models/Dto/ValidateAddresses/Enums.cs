@@ -1,7 +1,13 @@
+#pragma warning disable 1591
+
 using System.Runtime.Serialization;
 
 namespace ShipEngineSDK.ValidateAddresses
 {
+    /// <summary>
+    /// Result of the address validation.
+    /// <see href="https://www.shipengine.com/docs/addresses/validation/"/>
+    /// </summary>
 
     public enum AddressValidationResult
     {
@@ -25,6 +31,10 @@ namespace ShipEngineSDK.ValidateAddresses
         Error
     }
 
+    /// <summary>
+    /// Codes associated with the address validation result, for more info see
+    /// <see href="https://www.shipengine.com/docs/addresses/validation/messages/#list-of-messages" />
+    /// </summary>
     public enum ValidationMessageDetailCode
     {
         [EnumMember(Value = "unsupported_country")]

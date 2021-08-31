@@ -4,6 +4,9 @@ using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// <see href="https://www.shipengine.com/docs/shipping/international/#the-tax-identifiers-object" />
+    /// </summary>
     public class TaxIdentifier
     {
         /// <summary>

@@ -1,5 +1,8 @@
 namespace ShipEngineSDK.VoidLabelWithLabelId.Result
 {
+    /// <summary>
+    /// Voided label result.
+    /// </summary>
     public class VoidLabelIdResult
     {
         /// <summary>

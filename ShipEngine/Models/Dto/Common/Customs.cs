@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Customs information associated with rates/shipments
+    /// </summary>
     public class Customs
     {
         /// <summary>
@@ -25,6 +28,9 @@ namespace ShipEngineSDK.Common
         public List<CustomsItem> CustomsItems { get; set; }
     }
 
+    /// <summary>
+    /// Customs Item in shipment.
+    /// </summary>
     public class CustomsItem
     {
         /// <summary>
@@ -53,6 +59,9 @@ namespace ShipEngineSDK.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public Country? CountryOfOrigin { get; set; }
 
+        /// <summary>
+        /// Unit that the customs item is measured in.
+        /// </summary>
         public string? UnitOfMeasure { get; set; }
 
         /// <summary>

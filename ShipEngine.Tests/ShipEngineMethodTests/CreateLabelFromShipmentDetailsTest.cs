@@ -111,6 +111,7 @@ namespace ShipEngineTest
             Assert.Null(result.LabelImageId);
             Assert.Equal("stamps_com", result.CarrierCode);
             Assert.Equal(TrackingStatus.InTransit, result.TrackingStatus);
+            // InsuranceProvider.Ship
 
             Assert.Equal("https://api.shipengine.com/v1/downloads/10/9-VbKDnISUGt_z3zrjvPTw/label-76278969.pdf", result.LabelDownload.Pdf);
             Assert.Equal("https://api.shipengine.com/v1/downloads/10/9-VbKDnISUGt_z3zrjvPTw/label-76278969.png", result.LabelDownload.Png);

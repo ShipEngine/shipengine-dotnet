@@ -2,6 +2,9 @@ using System;
 
 namespace ShipEngineSDK
 {
+    /// <summary>
+    /// Sets the various configuration options for the ShipEngine SDK.
+    /// </summary>
     public class Config
     {
         /// <summary>

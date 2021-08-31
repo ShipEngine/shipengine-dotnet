@@ -4,6 +4,9 @@ using ShipEngineSDK.Common.Enums;
 
 namespace ShipEngineSDK.Common
 {
+    /// <summary>
+    /// Advanced shipment options. These are entirely optional.
+    /// </summary>
     public class AdvancedShipmentOptions
     {
         /// <summary>
@@ -96,6 +99,9 @@ namespace ShipEngineSDK.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public OriginType? OriginType { get; set; }
 
+        /// <summary>
+        /// Indicates if this is a shipper relesae
+        /// </summary>
         public bool? ShipperRelease { get; set; }
 
         /// <summary>
