@@ -15,7 +15,7 @@ namespace ShipEngineTest
 {
     public class GetRatesFromShipmentTest
     {
-        public RatesParams RatesParameters;
+        public Params RatesParameters;
 
         public TestUtils TestUtils;
 
@@ -23,7 +23,7 @@ namespace ShipEngineTest
         {
             TestUtils = new TestUtils();
 
-            RatesParameters = new RatesParams()
+            RatesParameters = new Params()
             {
                 Shipment = new Shipment()
                 {

@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 using ShipEngineSDK.Common;
 using System.Collections.Generic;
 
-namespace ShipEngineSDK.ValidateAddresses.Result
+namespace ShipEngineSDK.ValidateAddresses
 {
     /// <summary>
     /// Addresss validation result
     /// </summary>
-    public class ValidateAddressResult
+    public class Result
     {
         /// <summary>
         /// Indicates whether the address has been verified

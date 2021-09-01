@@ -12,7 +12,7 @@ namespace ShipEngineSDK.GetRatesFromShipment
     /// Params for retrieving rates for your shipments.
     /// Must specify either the ShipmentId or Shipment property.
     /// </summary>
-    public class RatesParams
+    public class Params
     {
         /// <summary>
         /// A string that uniquely identifies the shipment

@@ -1,15 +1,14 @@
 #nullable disable
 
 using ShipEngineSDK.Common;
-using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
 
-namespace ShipEngineSDK.ListCarriers.Result
+namespace ShipEngineSDK.ListCarriers
 {
     /// <summary>
     /// List Carrier Results
     /// </summary>
-    public class CarrierResult
+    public class Result
     {
         /// <summary>
         /// List of carriers associated with the account

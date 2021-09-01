@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.TrackUsingLabelId;
-using ShipEngineSDK.TrackUsingLabelId.Result;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -74,12 +73,12 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
 
-            var listCarriersResult = JsonConvert.DeserializeObject<TrackUsingLabelIdResult>(json);
+            var listCarriersResult = JsonConvert.DeserializeObject<Result>(json);
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
             // Verify that the client has a custom timeout of 1 second when called.
             mockHandler
-                .Setup(x => x.SendHttpRequestAsync<TrackUsingLabelIdResult>
+                .Setup(x => x.SendHttpRequestAsync<Result>
                 (
                     It.IsAny<HttpMethod>(),
                     It.IsAny<string>(),

@@ -2,12 +2,12 @@
 
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
-namespace ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result
+namespace ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber
 {
     /// <summary>
     /// Tracking Result.
     /// </summary>
-    public class TrackUsingCarrierCodeAndTrackingNumberResult
+    public class Result
     {
         ///<summary>
         ///A tracking number for a package. The format depends on the carrier.
