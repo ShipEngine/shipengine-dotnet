@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
-using ShipEngineSDK.GetRatesFromShipment;
+using ShipEngineSDK.GetRatesWithShipmentDetails;
 using System;
 using System.Collections.Generic;
 using System.IO;

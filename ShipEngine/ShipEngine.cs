@@ -296,13 +296,13 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="rateParams"></param>
         /// <returns>The rates result</returns>
-        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.Params rateParams)
+        public async Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams)
         {
             var path = "/v1/rates";
 
             string paramString = JsonConvert.SerializeObject(rateParams, JsonSerializerSettings);
 
-            var labelResult = await SendHttpRequestAsync<GetRatesFromShipment.Result>(HttpMethod.Post, path, paramString, _client, _config);
+            var labelResult = await SendHttpRequestAsync<GetRatesWithShipmentDetails.Result>(HttpMethod.Post, path, paramString, _client, _config);
 
             return labelResult;
         }
@@ -313,7 +313,7 @@ namespace ShipEngineSDK
         /// <param name="rateParams"></param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>The rates result</returns>
-        public async Task<GetRatesFromShipment.Result> GetRatesWithShipmentDetails(GetRatesFromShipment.Params rateParams, Config methodConfig)
+        public async Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
@@ -321,7 +321,7 @@ namespace ShipEngineSDK
 
             string paramString = JsonConvert.SerializeObject(rateParams, JsonSerializerSettings);
 
-            var labelResult = await SendHttpRequestAsync<GetRatesFromShipment.Result>(HttpMethod.Post, path, paramString, client, methodConfig);
+            var labelResult = await SendHttpRequestAsync<GetRatesWithShipmentDetails.Result>(HttpMethod.Post, path, paramString, client, methodConfig);
 
             client.Dispose();
 

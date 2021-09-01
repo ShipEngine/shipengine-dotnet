@@ -1,7 +1,7 @@
 #pragma warning disable 1591
 using System.Runtime.Serialization;
 
-namespace ShipEngineSDK.GetRatesFromShipment
+namespace ShipEngineSDK.GetRatesWithShipmentDetails
 {
     /// <summary>
     /// The possible shipment status values
