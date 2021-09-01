@@ -23,7 +23,7 @@ namespace ShipEngineTest
 
             Params = new Params()
             {
-                RateId = "se-853449547",
+                RateId = "se-1234",
                 ValidateAddress = ValidateAddress.NoValidation,
                 LabelLayout = LabelLayout.Letter,
                 LabelFormat = LabelFormat.PDF,
