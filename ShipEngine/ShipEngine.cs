@@ -217,12 +217,12 @@ namespace ShipEngineSDK
         /// <summary>
         /// Create a label from shipment details
         /// </summary>
-        /// <param name="label">The label that you want to create</param>
+        /// <param name="labelParams">Details of the label that you want to create</param>
         /// <returns>Object containing the created label information</returns>
-        public async Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params label)
+        public async Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams)
         {
 
-            string labelParamsString = JsonConvert.SerializeObject(label, JsonSerializerSettings);
+            string labelParamsString = JsonConvert.SerializeObject(labelParams, JsonSerializerSettings);
 
             var path = "/v1/labels";
 
@@ -234,15 +234,15 @@ namespace ShipEngineSDK
         /// <summary>
         /// Create a label from shipment details
         /// </summary>
-        /// <param name="label">The label that you want to create</param>
+        /// <param name="labelParams">Details of the label that you want to create</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the created label information</returns>
-        public async Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params label, Config methodConfig)
+        public async Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams, Config methodConfig)
         {
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string labelParamsString = JsonConvert.SerializeObject(label, JsonSerializerSettings);
+            string labelParamsString = JsonConvert.SerializeObject(labelParams, JsonSerializerSettings);
 
             var path = "/v1/labels";
 
@@ -256,13 +256,15 @@ namespace ShipEngineSDK
         /// <summary>
         /// Create a label from a rate id
         /// </summary>
-        /// <param name="rateId">The rate that you want to use to purchase a label</param>
+        /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
         /// <returns>Object containing the created label information</returns>
-        public async Task<CreateLabelFromRate.Result> CreateLabelFromRate(string rateId)
+        public async Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams)
         {
-            var path = $"/v1/labels/rates/{rateId}";
+            var path = $"/v1/labels/rates/{createLabelFromRateParams.RateId}";
 
-            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result>(HttpMethod.Post, path, null, _client, _config);
+            string createLabelFromRateParamsString = JsonConvert.SerializeObject(createLabelFromRateParams, JsonSerializerSettings);
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result>(HttpMethod.Post, path, createLabelFromRateParamsString, _client, _config);
 
             return labelResult;
         }
@@ -270,17 +272,19 @@ namespace ShipEngineSDK
         /// <summary>
         /// Create a label from a rate id
         /// </summary>
-        /// <param name="rateId">The rate that you want to use to purchase a label</param>
+        /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the created label information</returns>
-        public async Task<CreateLabelFromRate.Result> CreateLabelFromRate(string rateId, Config methodConfig)
+        public async Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams, Config methodConfig)
         {
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var path = $"/v1/labels/rates/{rateId}";
+            var path = $"/v1/labels/rates/{createLabelFromRateParams.RateId}";
 
-            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result>(HttpMethod.Post, path, null, client, methodConfig);
+            string createLabelFromRateParamsString = JsonConvert.SerializeObject(createLabelFromRateParams, JsonSerializerSettings);
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result>(HttpMethod.Post, path, createLabelFromRateParamsString, client, methodConfig);
 
             client.Dispose();
 

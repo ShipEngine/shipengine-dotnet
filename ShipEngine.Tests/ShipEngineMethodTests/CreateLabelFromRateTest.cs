@@ -16,8 +16,20 @@ namespace ShipEngineTest
 
         public TestUtils TestUtils;
 
+        public Params Params;
+
         public CreateLabelFromRateTest()
         {
+
+            Params = new Params()
+            {
+                RateId = "se-853449547",
+                ValidateAddress = ValidateAddress.NoValidation,
+                LabelLayout = LabelLayout.Letter,
+                LabelFormat = LabelFormat.PDF,
+                LabelDownloadType = LabelDownloadType.Url
+            };
+
             TestUtils = new TestUtils();
         }
 
@@ -31,7 +43,7 @@ namespace ShipEngineTest
 
             mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/labels/rates/se-1234", System.Net.HttpStatusCode.OK, json);
 
-            var result = await mockShipEngineFixture.ShipEngine.CreateLabelFromRate("se-1234");
+            var result = await mockShipEngineFixture.ShipEngine.CreateLabelFromRate(Params);
 
             Assert.Equal("se-80255646", result.LabelId);
             Assert.Equal(LabelStatus.Completed, result.Status);
@@ -130,7 +142,7 @@ namespace ShipEngineTest
 
             var customConfig = new Config(apiKey: "12345", timeout: TimeSpan.FromSeconds(1));
 
-            await shipEngine.CreateLabelFromRate("se-1234", methodConfig: customConfig);
+            await shipEngine.CreateLabelFromRate(Params, methodConfig: customConfig);
 
             mockHandler.VerifyAll();
         }
@@ -144,7 +156,7 @@ namespace ShipEngineTest
             var mockHandler = new Mock<ShipEngine>(config);
             var shipEngine = mockHandler.Object;
 
-            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await shipEngine.CreateLabelFromRate("se-12345", methodConfig: new Config(apiKey: "12345", retries: -1)));
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await shipEngine.CreateLabelFromRate(Params, methodConfig: new Config(apiKey: "12345", retries: -1)));
             Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
