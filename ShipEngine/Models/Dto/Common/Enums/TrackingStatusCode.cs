@@ -44,6 +44,13 @@ namespace ShipEngineSDK.Common.Enums
         /// Unknown
         /// </summary>
         [EnumMember(Value = "UN")]
-        UN
+        UN,
+
+        /// <summary>
+        /// Not Yet In System
+        /// </summary>
+        [EnumMember(Value = "NY")]
+        NY
+
     }
 }

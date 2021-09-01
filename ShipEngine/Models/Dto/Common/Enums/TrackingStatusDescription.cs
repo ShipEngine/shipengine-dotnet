@@ -25,6 +25,9 @@ namespace ShipEngineSDK.Common.Enums
         InTransit,
 
         [EnumMember(Value = "Unknown")]
-        Unknown
+        Unknown,
+
+        [EnumMember(Value = "Not Yet In System")]
+        NotYetInSystem
     }
 }
