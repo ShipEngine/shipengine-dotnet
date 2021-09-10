@@ -42,7 +42,7 @@ var shipengine = new ShipEngine("___YOUR_API_KEY_HERE__");
 
 ## Contributing
 
-Contributions, enhancements, and bug-fixes are welcome! [Open an issue](https://github.com/ShipEngine/shipengine-js/issues) on GitHub and [submit a pull request](https://github.com/ShipEngine/shipengine-js/pulls).
+Contributions, enhancements, and bug-fixes are welcome! [Open an issue](https://github.com/ShipEngine/shipengine-dotnet/issues) on GitHub and [submit a pull request](https://github.com/ShipEngine/shipengine-dotnet/pulls).
 
 ### Building
 
