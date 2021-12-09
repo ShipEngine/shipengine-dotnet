@@ -233,7 +233,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// The number of days estimated for delivery, this will show the actual delivery time if for example,
         /// the package gets shipped on a Friday
         /// </summary>
-        public int DeliveryDays { get; set; }
+        public int? DeliveryDays { get; set; }
 
         /// <summary>
         /// Indicates if the rate is guaranteed.

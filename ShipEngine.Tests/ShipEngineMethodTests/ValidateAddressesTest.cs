@@ -79,6 +79,8 @@ namespace ShipEngineTest
             Assert.Equal(ValidationMessageDetailCode.VerifiedToSuiteLevel, result[0].Messages[0].DetailCode);
             Assert.Equal("This address has been verified down to the suite/PO box level (highest possible accuracy with the provided data)", result[0].Messages[0].Message);
             Assert.Equal(ValidationMessageType.Info, result[0].Messages[0].Type);
+            Assert.Null(result[0].Messages[1].DetailCode);
+
         }
 
         [Fact]
