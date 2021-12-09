@@ -23,7 +23,7 @@
         },
         "zone": null,
         "package_type": null,
-        "delivery_days": 4,
+        "delivery_days": null,
         "guaranteed_service": true,
         "estimated_delivery_date": "2021-09-02T23:00:00Z",
         "carrier_delivery_days": "Thursday 9/2 by 11:00 PM",

@@ -60,6 +60,6 @@ namespace ShipEngineSDK.ValidateAddresses
         /// <summary>
         /// The detailed error codes that can be returned by the address validation API
         /// </summary>
-        public ValidationMessageDetailCode DetailCode { get; set; }
+        public ValidationMessageDetailCode? DetailCode { get; set; }
     }
 }

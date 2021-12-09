@@ -33,6 +33,12 @@
         "message": "This address has been verified down to the suite/PO box level (highest possible accuracy with the provided data)",
         "type": "info",
         "detail_code": "verified_to_suite_level"
+      },
+      {
+        "code": "a1007",
+        "message": "This address has been verified down to the suite/PO box level (highest possible accuracy with the provided data)",
+        "type": "info",
+        "detail_code": null
       }
     ]
   }
