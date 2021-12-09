@@ -12,6 +12,8 @@
 
 [![OS Compatibility](https://shipengine.github.io/img/badges/os-badges.svg)](https://github.com/ShipEngine/shipengine-dotnet/actions)
 
+[Nuget Page](https://www.nuget.org/packages/ShipEngine/)
+
 ## Quick Start
 
 Install ShipEngine .NET SDK via the [.NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
