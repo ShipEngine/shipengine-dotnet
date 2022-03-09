@@ -1,5 +1,7 @@
 #pragma warning disable 1591
 
+using System.Runtime.Serialization;
+
 namespace ShipEngineSDK.Common.Enums
 {
     /// <summary>
@@ -7,8 +9,11 @@ namespace ShipEngineSDK.Common.Enums
     /// </summary>
     public enum LabelFormat
     {
+        [EnumMember(Value = "pdf")]
         PDF,
+        [EnumMember(Value = "png")]
         PNG,
+        [EnumMember(Value = "zpl")]
         ZPL
     }
 

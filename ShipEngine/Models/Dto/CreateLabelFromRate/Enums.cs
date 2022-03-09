@@ -38,7 +38,9 @@ namespace ShipEngineSDK.CreateLabelFromRate
 
     public enum LabelDownloadType
     {
+        [EnumMember(Value = "url")]
         Url,
+        [EnumMember(Value = "inline")]
         Inline,
     }
 
