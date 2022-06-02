@@ -30,7 +30,7 @@ namespace ShipEngineSDK
             JsonSerializerSettings = new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Include,
                 ContractResolver = new DefaultContractResolver
                 {
                     NamingStrategy = new SnakeCaseNamingStrategy()
