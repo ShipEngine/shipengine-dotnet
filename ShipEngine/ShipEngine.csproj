@@ -4,7 +4,7 @@
     <PackageId>ShipEngine</PackageId>
     <PackageTags>sdk;rest;api;shipping;rates;label;tracking;cost;address;validation;normalization;fedex;ups;usps;</PackageTags>
 
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Authors>ShipEngine</Authors>
     <Company>ShipEngine</Company>
     <Summary>The official ShipEngine C# SDK for .NET</Summary>
@@ -23,12 +23,12 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="icon.png" Pack="true" PackagePath="\"/>
-    <None Include="../LICENSE" Pack="true" PackagePath=""/>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
+    <None Include="../LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
