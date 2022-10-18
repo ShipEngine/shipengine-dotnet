@@ -46,6 +46,8 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The declared customs value of each item
         /// </summary>
+        /// 
+        [JsonConverter(typeof(MonetaryValueConverter))]
         public MonetaryValue? Value { get; set; }
 
         /// <summary>
