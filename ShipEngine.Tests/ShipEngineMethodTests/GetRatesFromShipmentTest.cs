@@ -7,6 +7,7 @@ using ShipEngineSDK.GetRatesWithShipmentDetails;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -47,6 +48,26 @@ namespace ShipEngineTest
                         PostalCode = "95128",
                         CountryCode = Country.US,
                         Phone = "512-555-5555"
+                    },
+                    Customs = new Customs()
+                    {
+                        NonDelivery = NonDelivery.ReturnToSender,
+                        Contents = PackageContents.Merchandise,
+                        CustomsItems = new List<CustomsItem>()
+                        {
+                            new CustomsItem()
+                            {
+                                Description = "Merchandise",
+                                 CountryOfOrigin = Country.US,
+                                 Quantity = 1,
+                                 UnitOfMeasure = "each",
+                                 Value = new MonetaryValue()
+                                 {
+                                     Amount = 100D,
+                                     Currency = Currency.USD
+                                 }
+                            }
+                        }
                     },
                     Packages = new List<ShipmentPackage>() {
                         new ShipmentPackage() {
@@ -126,7 +147,8 @@ namespace ShipEngineTest
             Assert.Equal(DeliveryConfirmation.None, result.Confirmation);
 
             Assert.Equal(PackageContents.Merchandise, result.Customs.Contents);
-            Assert.Empty(result.Customs.CustomsItems);
+            Assert.NotEmpty(result.Customs.CustomsItems);
+            Assert.Equal(100D, result.Customs.CustomsItems.First().Value.Amount);
             Assert.Equal(NonDelivery.ReturnToSender, result.Customs.NonDelivery);
 
             Assert.Null(result.ExternalOrderId);

@@ -98,8 +98,20 @@
   "confirmation": "none",
   "customs": {
     "contents": "merchandise",
-    "customs_items": [],
-    "non_delivery": "return_to_sender"
+    "customs_items": [
+      {
+        "customs_item_id": "se-65172544",
+        "description": "Prescription",
+        "quantity": 1,
+        "value": 100.00,
+        "harmonized_tariff_code": null,
+        "country_of_origin": null,
+        "unit_of_measure": null
+      }
+    ],
+    "non_delivery": "return_to_sender",
+    "buyer_shipping_amount_paid": null,
+    "duties_paid": null
   },
   "external_order_id": null,
   "order_source_code": null,
