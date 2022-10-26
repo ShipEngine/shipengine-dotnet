@@ -89,7 +89,7 @@
         /// Object containing the href link to download the manifest file
         /// </summary>
         [Obsolete("Deprecated. Use value on individual manifest.")]
-        public LabelDownload? ManifestDownload { get; set; }
+        public Download? ManifestDownload { get; set; }
     }
 
     /// <summary>
@@ -145,7 +145,7 @@
         /// <summary>
         /// Object containing the href link to download the manifest file
         /// </summary>
-        public LabelDownload? ManifestDownload { get; set; }
+        public Download? ManifestDownload { get; set; }
     }
 
     /// <summary>

@@ -136,7 +136,7 @@ namespace ShipEngineSDK.CreateLabelFromRate
         /// <summary>
         /// Reference to the various downloadable file formats for the generated label
         /// </summary>
-        public LabelDownload? LabelDownload { get; set; }
+        public Download? LabelDownload { get; set; }
 
         /// <summary>
         /// The current status of the package, such as in_transit or delivered

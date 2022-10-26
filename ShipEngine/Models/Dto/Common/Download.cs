@@ -1,9 +1,19 @@
 namespace ShipEngineSDK.Common
 {
+    using System;
+
     /// <summary>
     /// Reference to the various downloadable file formats for the generated label
     /// </summary>
-    public class LabelDownload
+    [Obsolete("Deprecated Object.  Use ShipEnginSDK.Common.Download")]
+    public class LabelDownload : Download
+    {
+
+    }
+    /// <summary>
+    /// Reference to the various downloadable file formats
+    /// </summary>
+    public class Download
     {
         /// <summary>
         /// The URL of the linked resource, if any
