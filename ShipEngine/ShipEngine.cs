@@ -113,6 +113,31 @@ namespace ShipEngineSDK
             return carriers;
         }
 
+
+        public async Task<Manifests.Result> CreateImplicitManifest(Manifests.Params manifestParams)
+        {
+            var path = "v1/manifests";
+
+            string paramString = JsonConvert.SerializeObject(manifestParams, JsonSerializerSettings);
+
+            var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Post, path, paramString, _client, _config);
+
+            return manifest;
+        }
+
+        public async Task<Manifests.Result> CreateImplicitManifest(Config methodConfig, Manifests.Params manifestParams)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = "v1/manifests";
+
+            string paramString = JsonConvert.SerializeObject(manifestParams, JsonSerializerSettings);
+
+            var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Post, path, paramString, client, _config);
+
+            return manifest;
+        }
+
         /// <summary>
         /// Void a label by ID to get a refund.
         /// </summary>
