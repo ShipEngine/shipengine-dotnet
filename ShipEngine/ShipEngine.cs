@@ -114,7 +114,12 @@ namespace ShipEngineSDK
         }
 
 
-        public async Task<Manifests.Result> CreateImplicitManifest(Manifests.Params manifestParams)
+        /// <summary>
+        /// Create a manifest
+        /// </summary>
+        /// <param name="manifestParams">The details of the manifest you want to create.</param>
+        /// <returns></returns>
+        public async Task<Manifests.Result> CreateManifest(Manifests.Params manifestParams)
         {
             var path = "v1/manifests";
 
@@ -125,7 +130,13 @@ namespace ShipEngineSDK
             return manifest;
         }
 
-        public async Task<Manifests.Result> CreateImplicitManifest(Config methodConfig, Manifests.Params manifestParams)
+        /// <summary>
+        /// Create a manifest
+        /// </summary>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <param name="manifestParams">The details of the manifest you want to create.</param>
+        /// <returns></returns>
+        public async Task<Manifests.Result> CreateManifest(Config methodConfig, Manifests.Params manifestParams)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
