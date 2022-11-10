@@ -40,7 +40,8 @@ var shipengine = new ShipEngine("___YOUR_API_KEY_HERE__");
 - [`TrackUsingLabelId`](./docs/TrackUsingLabelId.md) - Track a package by its associated label ID.
 - [`TrackUsingCarrierCodeAndTrackingNumber`](./docs/TrackUsingCarrierCodeAndTrackingNumber.md) - Track a package for a given carrier and tracking number.
 - [`ValidateAddresses`](./docs/ValidateAddresses.md) - Indicates whether the provided addresses are valid. If the addresses are valid, the method returns a normalized version based on the standards of the country in which the address resides. If an address cannot be normalized, an error is returned.
-- [`VoidLabelWithLabelId`](./docs/VoidLabelWithLabelIdd) - Void a label with its Label ID.
+- [`VoidLabelWithLabelId`](./docs/VoidLabelWithLabelId.md) - Void a label with its Label ID.
+- [`CreateManifests`](./docs/CreateManifest.md) - Create a shipment manifest.
 
 ## Contributing
 
@@ -70,9 +71,14 @@ To build the project locally on your computer:
    `dotnet test -f net5.0`
 
 ## Release
+Create a [fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for your changes.
 
-Update the [Changelog](./CHANGELOG.md) with any relevant new features or bug fixes associated with the new version being released.
+Update the [Changelog](./CHANGELOG.md) with any relevant new features or bug fixes.
 
-In the `ShipEngine.csproj` file, update to the desired version and push to the `main` branch.
+In the `ShipEngine.csproj` file, update to the desired version (using [semantic versioning](https://semver.org/)) and push to your fork.
 
-The [Publish NuGet Github Actions](https://github.com/marketplace/actions/publish-nuget) will handle all the necessary github tags and nuget packaging and publishing.
+Run `dotnet format`
+
+Create a pull request.
+
+Once a member of the ShipEngine team reviews your PR and it's merged to main, the build pipeline will handle all the necessary github tags and nuget packaging and publishing.

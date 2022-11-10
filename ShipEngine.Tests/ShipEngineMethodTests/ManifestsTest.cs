@@ -31,7 +31,7 @@
 
             mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/manifests", System.Net.HttpStatusCode.OK, json);
 
-            var result = await mockShipEngineFixture.ShipEngine.CreateImplicitManifest(new ShipEngineSDK.Manifests.Params { CarrierId = "se-1234567", WarehouseId = "se-7654312", ShipDate = DateTime.Today });
+            var result = await mockShipEngineFixture.ShipEngine.CreateManifest(new ShipEngineSDK.Manifests.Params { CarrierId = "se-1234567", WarehouseId = "se-7654312", ShipDate = DateTime.Today });
         }
     }
 }
