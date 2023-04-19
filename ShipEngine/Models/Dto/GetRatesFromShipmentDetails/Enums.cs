@@ -4,19 +4,6 @@ using System.Runtime.Serialization;
 namespace ShipEngineSDK.GetRatesWithShipmentDetails
 {
     /// <summary>
-    /// The possible shipment status values
-    /// </summary>
-    public enum ShipmentStatus
-    {
-        Pending,
-        Processing,
-
-        [EnumMember(Value = "label_purchased")]
-        LabelPurchased,
-        Cancelled
-    }
-
-    /// <summary>
     /// The possible rate type values
     /// </summary>
     public enum RateType
