@@ -372,7 +372,7 @@ namespace ShipEngineSDK
         public async Task<UpdateShipmentByID.Result> UpdateShipmentFromShipmentDetails(UpdateShipmentByID.Params shipmentParams, string shipmentID)
         {
 
-            string shipmentParamsString = JsonConvert.SerializeObject(shipmentParams, JsonSerializerSettings);
+            string shipmentParamsString = JsonConvert.SerializeObject(shipmentParams.Shipment, JsonSerializerSettings);
 
             var path = $"/v1/shipments/{shipmentID}";
 
@@ -392,7 +392,7 @@ namespace ShipEngineSDK
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string shipmentParamsString = JsonConvert.SerializeObject(shipmentParams, JsonSerializerSettings);
+            string shipmentParamsString = JsonConvert.SerializeObject(shipmentParams.Shipment, JsonSerializerSettings);
 
             var path = $"/v1/shipments/{shipmentID}";
 
