@@ -1,0 +1,150 @@
+﻿{
+  "shipment_id": "se-153814671",
+  "carrier_id": "se-423888",
+  "service_code": "ups_ground",
+  "external_shipment_id": null,
+  "ship_date": "2021-08-27T00:00:00Z",
+  "created_at": "2021-08-27T16:29:25.257Z",
+  "modified_at": "2021-08-27T16:29:25.24Z",
+  "shipment_status": "pending",
+  "ship_to": {
+    "name": "Amanda Miller",
+    "phone": null,
+    "company_name": null,
+    "address_line1": "525 S Winchester Blvd",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "San Jose",
+    "state_province": "CA",
+    "postal_code": "95128",
+    "country_code": "US",
+    "address_residential_indicator": "unknown"
+  },
+  "ship_from": {
+    "name": "John Doe",
+    "phone": "512-555-5555",
+    "company_name": "",
+    "address_line1": "4009 Marathon Blvd",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "Austin",
+    "state_province": "TX",
+    "postal_code": "78756",
+    "country_code": "US",
+    "address_residential_indicator": "unknown"
+  },
+  "warehouse_id": null,
+  "return_to": {
+    "name": "John Doe",
+    "phone": "512-555-5555",
+    "company_name": "",
+    "address_line1": "4009 Marathon Blvd",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "Austin",
+    "state_province": "TX",
+    "postal_code": "78756",
+    "country_code": "US",
+    "address_residential_indicator": "unknown"
+  },
+  "confirmation": "none",
+  "customs": {
+    "contents": "merchandise",
+    "customs_items": [
+      {
+        "customs_item_id": "se-65172544",
+        "description": "Prescription",
+        "quantity": 1,
+        "value": 100.00,
+        "harmonized_tariff_code": null,
+        "country_of_origin": null,
+        "unit_of_measure": null
+      }
+    ],
+    "non_delivery": "return_to_sender",
+    "buyer_shipping_amount_paid": null,
+    "duties_paid": null
+  },
+  "external_order_id": null,
+  "order_source_code": null,
+  "advanced_options": {
+    "bill_to_account": null,
+    "bill_to_country_code": null,
+    "bill_to_party": null,
+    "bill_to_postal_code": null,
+    "contains_alcohol": false,
+    "delivered_duty_paid": false,
+    "non_machinable": false,
+    "saturday_delivery": false,
+    "dry_ice": false,
+    "dry_ice_weight": null,
+    "fedex_freight": null,
+    "freight_class": null,
+    "custom_field1": null,
+    "custom_field2": null,
+    "custom_field3": null,
+    "collect_on_delivery": null
+  },
+  "insurance_provider": "none",
+  "tags": [],
+  "packages": [
+    {
+      "package_code": "package",
+      "weight": {
+        "value": 17.0,
+        "unit": "pound"
+      },
+      "dimensions": {
+        "unit": "inch",
+        "length": 36.0,
+        "width": 12.0,
+        "height": 24.0
+      },
+      "insured_value": {
+        "currency": "usd",
+        "amount": 0.0
+      },
+      "label_messages": {
+        "reference1": null,
+        "reference2": null,
+        "reference3": null
+      },
+      "external_package_id": null
+    }
+  ],
+  "total_weight": {
+    "value": 17.0,
+    "unit": "pound"
+  },
+  "items": [],
+  "address_validation": {
+      "status": "verified",
+      "original_address": {
+        "name": "John Smith",
+        "phone": null,
+        "company_name": "ShipStation",
+        "address_line1": "3800 N Lamar Blvd",
+        "address_line2": "#220",
+        "address_line3": null,
+        "city_locality": "Austin",
+        "state_province": "TX",
+        "postal_code": "78756",
+        "country_code": "US",
+        "address_residential_indicator": "no"
+      },
+      "matched_address": {
+        "name": "JOHN SMITH",
+        "phone": null,
+        "company_name": "SHIPSTATION",
+        "address_line1": "3800 N LAMAR BLVD STE 220",
+        "address_line2": null,
+        "address_line3": null,
+        "city_locality": "AUSTIN",
+        "state_province": "TX",
+        "postal_code": "78756-0003",
+        "country_code": "US",
+        "address_residential_indicator": "no"
+      },
+      "messages": []
+  }
+}
