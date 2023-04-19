@@ -52,8 +52,8 @@ namespace ShipEngineTest
                         Phone = "512-555-5555"
                     },
                     Confirmation = DeliveryConfirmation.DeliveryMailed,
-                    Packages = new List<Package>() {
-                        new Package() {
+                    Packages = new List<ShipmentPackage>() {
+                        new ShipmentPackage() {
                             Weight = new Weight() {
                                 Value = 17,
                                 Unit = WeightUnit.Pound
