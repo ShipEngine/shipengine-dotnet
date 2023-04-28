@@ -443,5 +443,43 @@ namespace ShipEngineSDK
 
             return shipmentResult;
         }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="createLabelFromShipmentIDParams">The details of the shipment that you want to use to purchase a label</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromShipmentID.Result> CreateLabelFromShipmentID(CreateLabelFromShipmentID.Params createLabelFromShipmentIDParams)
+        {
+            var path = $"/v1/labels/shipment/{createLabelFromShipmentIDParams.ShipmentID}";
+
+            string createLabelFromShipmentIDParamsString = JsonConvert.SerializeObject(createLabelFromShipmentIDParams, JsonSerializerSettings);
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentID.Result>(HttpMethod.Post, path, createLabelFromShipmentIDParamsString, _client, _config);
+
+            return labelResult;
+        }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="createLabelFromShipmentIDParams">The details of the shipment that you want to use to purchase a label</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        public async Task<CreateLabelFromShipmentID.Result> CreateLabelFromShipmentID(CreateLabelFromShipmentID.Params createLabelFromShipmentIDParams, Config methodConfig)
+        {
+
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/labels/shipment/{createLabelFromShipmentIDParams.ShipmentID}";
+
+            string createLabelFromShipmentIDParamsString = JsonConvert.SerializeObject(createLabelFromShipmentIDParams, JsonSerializerSettings);
+
+            var labelResult = await SendHttpRequestAsync<CreateLabelFromShipmentID.Result>(HttpMethod.Post, path, createLabelFromShipmentIDParamsString, client, methodConfig);
+
+            client.Dispose();
+
+            return labelResult;
+        }
     }
 }
