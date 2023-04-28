@@ -54,3 +54,9 @@ Updated package class to use the Shipment Package class in Rate Requests.
 ### Added
 
 Create Shipments request
+
+## 1.4.0
+
+### Added
+
+Create Label from Shipment ID
