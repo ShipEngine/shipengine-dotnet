@@ -48,3 +48,9 @@ Method to Update Shipment By Shipment ID
 
 Moved Shipment Class to the common models, as it is used in multiple requests.
 Updated package class to use the Shipment Package class in Rate Requests. 
+
+## 1.3.0
+
+### Added
+
+Create Shipments request
