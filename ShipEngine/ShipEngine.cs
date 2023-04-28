@@ -368,6 +368,7 @@ namespace ShipEngineSDK
         /// Update a shipment from shipment details
         /// </summary>
         /// <param name="shipmentParams">Details of the shipment that you want to update</param>
+        /// <param name="shipmentID">Shipment ID to update</param>
         /// <returns>Object containing the updated shipment information</returns>
         public async Task<UpdateShipmentByID.Result> UpdateShipmentFromShipmentDetails(UpdateShipmentByID.Params shipmentParams, string shipmentID)
         {
@@ -385,6 +386,7 @@ namespace ShipEngineSDK
         /// Update a shipment from shipment details
         /// </summary>
         /// <param name="shipmentParams">Details of the shipment that you want to update</param>
+        /// <param name="shipmentID">Shipment ID to update</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the updated shipment information</returns>
         public async Task<UpdateShipmentByID.Result> UpdateShipmentFromShipmentDetails(UpdateShipmentByID.Params shipmentParams, string shipmentID, Config methodConfig)
