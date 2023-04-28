@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PackageId>ShipEngine</PackageId>
     <PackageTags>sdk;rest;api;shipping;rates;label;tracking;cost;address;validation;normalization;fedex;ups;usps;</PackageTags>
 
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <Authors>ShipEngine</Authors>
     <Company>ShipEngine</Company>
     <Summary>The official ShipEngine C# SDK for .NET</Summary>
@@ -19,11 +19,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>

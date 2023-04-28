@@ -368,6 +368,7 @@ namespace ShipEngineSDK
         /// Update a shipment from shipment details
         /// </summary>
         /// <param name="shipmentParams">Details of the shipment that you want to update</param>
+        /// <param name="shipmentID">Shipment ID to update</param>
         /// <returns>Object containing the updated shipment information</returns>
         public async Task<UpdateShipmentByID.Result> UpdateShipmentFromShipmentDetails(UpdateShipmentByID.Params shipmentParams, string shipmentID)
         {
@@ -385,6 +386,7 @@ namespace ShipEngineSDK
         /// Update a shipment from shipment details
         /// </summary>
         /// <param name="shipmentParams">Details of the shipment that you want to update</param>
+        /// <param name="shipmentID">Shipment ID to update</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the updated shipment information</returns>
         public async Task<UpdateShipmentByID.Result> UpdateShipmentFromShipmentDetails(UpdateShipmentByID.Params shipmentParams, string shipmentID, Config methodConfig)
@@ -401,6 +403,45 @@ namespace ShipEngineSDK
             client.Dispose();
 
             return labelResult;
+        }
+
+        /// <summary>
+        /// Create one or multiple shipments
+        /// </summary>
+        /// <param name="shipmentParams">List of details of the shipments that you want to create</param>
+        /// <returns>Object containing the created shipments information</returns>
+        public async Task<CreateShipments.Result> CreateShipments(CreateShipments.Params shipmentParams)
+        {
+
+            string shipmentParamsString = JsonConvert.SerializeObject(shipmentParams.Shipments, JsonSerializerSettings);
+
+            var path = $"/v1/shipments";
+
+            var shipmentResult = await SendHttpRequestAsync<CreateShipments.Result>(HttpMethod.Post, path, shipmentParamsString, _client, _config);
+
+            return shipmentResult;
+        }
+
+        /// <summary>
+        /// Create one or multiple shipments
+        /// </summary>
+        /// <param name="shipmentParams">List of details of the shipments that you want to create</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created shipments information</returns>
+        public async Task<CreateShipments.Result> CreateShipments(CreateShipments.Params shipmentParams, Config methodConfig)
+        {
+
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            string shipmentParamsString = JsonConvert.SerializeObject(shipmentParams.Shipments, JsonSerializerSettings);
+
+            var path = $"/v1/shipments";
+
+            var shipmentResult = await SendHttpRequestAsync<CreateShipments.Result>(HttpMethod.Post, path, shipmentParamsString, _client, _config);
+
+            client.Dispose();
+
+            return shipmentResult;
         }
     }
 }
