@@ -37,3 +37,26 @@ Rename LabelDownload method to the more generic Download
 ### Fixed
 
 Some documentation linking errors and minor typos
+
+## 1.2.0
+
+### Added
+
+Method to Update Shipment By Shipment ID
+
+### Changed
+
+Moved Shipment Class to the common models, as it is used in multiple requests.
+Updated package class to use the Shipment Package class in Rate Requests. 
+
+## 1.3.0
+
+### Added
+
+Create Shipments request
+
+## 1.4.0
+
+### Added
+
+Create Label from Shipment ID
