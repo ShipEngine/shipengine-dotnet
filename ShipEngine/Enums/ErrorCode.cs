@@ -26,7 +26,7 @@ namespace ShipEngineSDK
         /// </summary>
         [EnumMember(Value = "carrier_conflict")]
         CarrierConflict,
-        
+
         // <summary>
         // You have selected to insure a package, however the carrier you are attempting to create a shipping label
         // for does not support declaring insurance on shipments.
@@ -53,7 +53,7 @@ namespace ShipEngineSDK
         /// </summary>
         [EnumMember(Value = "confirmation_not_supported")]
         ConfirmationNotSupported,
-        
+
         // <summary>
         // When shipping internationally, you must add a customs declaration which outlines the items you are shipping.
         // This is helpful to customs agents when your package enters it's destination country. This error arises when you
@@ -121,7 +121,7 @@ namespace ShipEngineSDK
         /// </summary>
         [EnumMember(Value = "invalid_charge_event")]
         InvalidChargeEvent,
-        
+
         // <summary>
         // When creating a label, if you set the date to an invalid date e.g. A date in the past
         // </summary>
