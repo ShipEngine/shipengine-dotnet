@@ -249,7 +249,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// <summary>
         /// The quantity of this item in the shipment.
         /// </summary>
-        public double Quantity { get; set; }
+        public int Quantity { get; set; }
 
         /// <summary>
         /// The declared customs value of each item
