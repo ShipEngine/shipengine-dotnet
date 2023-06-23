@@ -46,4 +46,4 @@ Some documentation linking errors and minor typos
 
 ### Fixed
 
-The Customs Item Quatnity type has been changed to integer type for CreateLabelFromShipmentDetails model.
+The Customs Item Quantity type has been changed to integer type for CreateLabelFromShipmentDetails model.
