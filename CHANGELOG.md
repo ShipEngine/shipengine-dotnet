@@ -37,3 +37,13 @@ Rename LabelDownload method to the more generic Download
 ### Fixed
 
 Some documentation linking errors and minor typos
+
+## 1.1.1
+
+### Added
+
+### Changed
+
+### Fixed
+
+The Customs Item Quantity type has been changed to integer type for CreateLabelFromShipmentDetails model.
