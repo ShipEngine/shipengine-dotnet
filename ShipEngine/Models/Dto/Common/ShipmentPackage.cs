@@ -11,7 +11,7 @@ namespace ShipEngineSDK.Common
         /// See: https://www.shipengine.com/docs/shipping/international/#bill-of-lading-for-shipments-to-and-from-mexico-carta-porte
         /// </summary>
         public string? ContentDescription { get; set; }
-        
+
         /// <summary>
         /// The package type, such as thick_envelope, small_flat_rate_box, large_package, etc. The code package indicates a custom or unknown package type
         /// </summary>
