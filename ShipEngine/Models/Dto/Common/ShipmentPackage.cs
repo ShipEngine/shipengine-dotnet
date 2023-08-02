@@ -6,6 +6,13 @@ namespace ShipEngineSDK.Common
     public class ShipmentPackage
     {
         /// <summary>
+        /// A recent regulation in Mexico requires a content description when shipping to this country
+        /// and when creating a bill of lading.
+        /// See: https://www.shipengine.com/docs/shipping/international/#bill-of-lading-for-shipments-to-and-from-mexico-carta-porte
+        /// </summary>
+        public string? ContentDescription { get; set; }
+
+        /// <summary>
         /// The package type, such as thick_envelope, small_flat_rate_box, large_package, etc. The code package indicates a custom or unknown package type
         /// </summary>
         public string? PackageCode { get; set; }
