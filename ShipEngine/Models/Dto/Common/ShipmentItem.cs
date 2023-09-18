@@ -27,7 +27,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The quantity of this item included in a shipment
         /// </summary>
-        public double? Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// The item stock keeping unit

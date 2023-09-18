@@ -1,5 +1,6 @@
 # Changelog
 
+
 ## 1.0.0
 
 ### Features
@@ -15,12 +16,14 @@ Implement the following SDK methods.
 - `CreateLabelFromRate`
 - `GetRatesWithShipmentDetails`
 
+
 ## 1.0.7
 
 ### Features
 
 Implement the following SDK methods.
 - `CreateImplicitManifest`
+
 
 
 ## 1.1.0
@@ -38,6 +41,7 @@ Rename LabelDownload method to the more generic Download
 
 Some documentation linking errors and minor typos
 
+
 ## 1.1.1
 
 ### Added
@@ -47,3 +51,10 @@ Some documentation linking errors and minor typos
 ### Fixed
 
 The Customs Item Quantity type has been changed to integer type for CreateLabelFromShipmentDetails model.
+
+
+## 1.1.2
+
+### Fixed
+
+ShipmentItem.Quantity is now an int? instead of a double?.
