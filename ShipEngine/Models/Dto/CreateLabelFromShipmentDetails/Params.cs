@@ -32,36 +32,38 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// The label charge event.
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public ChargeEvent ChargeEvent { get; set; }
+        public ChargeEvent? ChargeEvent { get; set; }
 
         /// <summary>
         /// The labelId of the original (outgoing) label that the return label is for. This associates the two labels together, which is required by some carriers.
         /// </summary>
-        public string OutboundLabelId { get; set; }
+        #nullable enable
+        public string? OutboundLabelId { get; set; }
+        #nullable disable
 
         /// <summary>
         /// The possible validate address values
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public ValidateAddress ValidateAddress { get; set; }
+        public ValidateAddress? ValidateAddress { get; set; }
 
         /// <summary>
         /// There are two different ways to download a label:
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public LabelDownloadType LabelDownloadType { get; set; }
+        public LabelDownloadType? LabelDownloadType { get; set; }
 
         /// <summary>
         /// The file format that you want the label to be in. We recommend pdf format because it is supported by all carriers, whereas some carriers do not support the png or zpl formats.
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public LabelFormat LabelFormat { get; set; }
+        public LabelFormat? LabelFormat { get; set; }
 
         /// <summary>
         /// The display format that the label should be shown in.
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public DisplayScheme DisplayScheme { get; set; }
+        public DisplayScheme? DisplayScheme { get; set; }
 
         /// <summary>
         /// The layout (size) that you want the label to be in. The labelFormat determines which sizes are allowed. 4x6 is supported for all label formats, whereas letter (8.5" x 11") is only supported for pdf format.
@@ -167,7 +169,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// The order sources that are supported by ShipEngine
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public OrderSourceCode OrderSourceCode { get; set; }
+        public OrderSourceCode? OrderSourceCode { get; set; }
 
         /// <summary>
         /// The packages in the shipment.
