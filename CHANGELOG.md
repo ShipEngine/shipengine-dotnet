@@ -58,3 +58,10 @@ The Customs Item Quantity type has been changed to integer type for CreateLabelF
 ### Fixed
 
 ShipmentItem.Quantity is now an int? instead of a double?.
+
+
+## 1.1.3
+
+### Fixed
+
+CreateLabelFromShipmentDetails parameters causing problems when unused has been made optional.
