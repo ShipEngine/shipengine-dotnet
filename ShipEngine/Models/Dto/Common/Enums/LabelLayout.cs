@@ -10,6 +10,7 @@ namespace ShipEngineSDK.Common.Enums
         /// <summary>
         /// Letter (8.5" x 11"), only supported for the PDF format.
         /// </summary>
+        [EnumMember(Value = "letter")]
         Letter,
 
         /// <summary>
