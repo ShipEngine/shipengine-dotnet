@@ -68,3 +68,9 @@ ShipmentItem.Quantity is now an int? instead of a double?.
 ### Fixed
 
 Set casing of letter label layout enum
+
+## 1.1.4
+
+### Fixed
+
+CreateLabelFromShipmentDetails parameters causing problems when unused has been made optional.
