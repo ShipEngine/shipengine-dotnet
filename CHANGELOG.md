@@ -59,8 +59,17 @@ The Customs Item Quantity type has been changed to integer type for CreateLabelF
 
 ShipmentItem.Quantity is now an int? instead of a double?.
 
-
 ## 1.1.3
+
+### Added
+
+### Changed
+
+### Fixed
+
+Set casing of letter label layout enum
+
+## 1.1.4
 
 ### Fixed
 
