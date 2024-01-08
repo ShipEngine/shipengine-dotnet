@@ -74,3 +74,9 @@ Set casing of letter label layout enum
 ### Fixed
 
 CreateLabelFromShipmentDetails parameters causing problems when unused has been made optional.
+
+## 1.1.5
+
+### Changed
+
+Update default timeout to 60s
