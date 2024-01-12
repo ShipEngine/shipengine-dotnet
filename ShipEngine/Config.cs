@@ -14,7 +14,7 @@ namespace ShipEngineSDK
 
         /// <summary>
         /// The timespan to wait before the request times out.
-        /// Defaults to 5 seconds.
+        /// Defaults to 60 seconds.
         /// </summary>
         public readonly TimeSpan Timeout;
 
@@ -28,8 +28,8 @@ namespace ShipEngineSDK
         /// Configure the global settings for the ShipEngine SDK.
         /// </summary>
         /// <param name="apiKey">The api key associated with the account you wish to use.</param>
-        /// <param name="timeout">The timespan to wait before the request times out. Defaults to 5 seconds</param>
-        /// <param name="retries">The number of retries to attempt after a failed request. Defaults t o1</param>
+        /// <param name="timeout">The timespan to wait before the request times out. Defaults to 60 seconds</param>
+        /// <param name="retries">The number of retries to attempt after a failed request. Defaults to 1</param>
         public Config(string apiKey, TimeSpan? timeout = null, int retries = 1)
         {
             if (apiKey == null || apiKey == "")
@@ -47,7 +47,7 @@ namespace ShipEngineSDK
                 throw new ShipEngineException(message, ErrorSource.Shipengine, ErrorType.Validation, ErrorCode.InvalidFieldValue);
             }
 
-            Timeout = timeout ?? TimeSpan.FromSeconds(5);
+            Timeout = timeout ?? TimeSpan.FromSeconds(60);
 
             if (retries < 0)
             {

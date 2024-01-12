@@ -34,7 +34,7 @@ namespace ShipEngineTest
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/se-1234/void");
 
 
-            // Verify that the client has a default timeout of 5 seconds when called.
+            // Verify that the client has a default timeout of 60 seconds when called.
             mockHandler
                 .Setup(x => x.SendHttpRequestAsync<Result>
                 (
@@ -42,7 +42,7 @@ namespace ShipEngineTest
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.Is<HttpClient>(client =>
-                        client.Timeout == TimeSpan.FromSeconds(5) &&
+                        client.Timeout == TimeSpan.FromSeconds(60) &&
                         client.DefaultRequestHeaders.ToString().Contains(apiKeyString)),
                     It.IsAny<Config>()
 

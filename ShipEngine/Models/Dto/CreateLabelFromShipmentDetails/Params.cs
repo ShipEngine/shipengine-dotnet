@@ -37,9 +37,9 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// <summary>
         /// The labelId of the original (outgoing) label that the return label is for. This associates the two labels together, which is required by some carriers.
         /// </summary>
-        #nullable enable
+#nullable enable
         public string? OutboundLabelId { get; set; }
-        #nullable disable
+#nullable disable
 
         /// <summary>
         /// The possible validate address values
