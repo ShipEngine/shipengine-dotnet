@@ -113,7 +113,58 @@ namespace ShipEngineSDK
 
             return carriers;
         }
+        /// <summary>
+        /// List Manifests
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ListManifest.Result> ListManifests()
+        {
+            var path = $"/v1/manifests";
+            var manifests = await SendHttpRequestAsync<ListManifest.Result>(HttpMethod.Get, path, null, _client, _config);
+            return manifests;
+        }
 
+        /// <summary>
+        /// List Manifests
+        /// </summary>
+        /// <param name="manifestId"></param>
+        /// <param name="methodConfig"></param>
+        /// <returns></returns>
+        public async Task<ListManifest.Result> ListManifests(string manifestId, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/manifests";
+            var manifests = await SendHttpRequestAsync<ListManifest.Result>(HttpMethod.Get, path, null, client, methodConfig);
+            return manifests;
+        }
+
+        /// <summary>
+        /// Get Created Manifest
+        /// </summary>
+        /// <param name="manifestId"></param>
+        /// <returns></returns>
+        public async Task<Manifests.Result> GetManifest(string manifestId)
+        {
+            var path = $"/v1/manifests/{manifestId}";
+            var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Get, path, null, _client, _config);
+            return manifest;
+        }
+
+        /// <summary>
+        /// Get Created Manifest
+        /// </summary>
+        /// <param name="manifestId"></param>
+        /// <param name="methodConfig"></param>
+        /// <returns></returns>
+        public async Task<Manifests.Result> GetManifest(string manifestId, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/manifests/{manifestId}";
+            var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Get, path, null, client, methodConfig);
+            return manifest;
+        }
 
         /// <summary>
         /// Create a manifest
