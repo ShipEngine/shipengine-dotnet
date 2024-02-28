@@ -251,14 +251,14 @@ namespace ShipEngineSDK
         /// <summary>
         /// Track a shipment using the label id
         /// </summary>
-        /// <param name="warehouseId">The label id associated with the shipment</param>
+        /// <param name="labelId">The label id associated with the shipment</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>An object that contains the label id tracking information</returns>
-        public async Task<TrackUsingLabelId.Result> TrackUsingLabelId(string warehouseId, Config methodConfig)
+        public async Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var path = $"/v1/labels/{warehouseId}/track";
+            var path = $"/v1/labels/{labelId}/track";
 
             var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result>(HttpMethod.Get, path, null, client, methodConfig);
 
