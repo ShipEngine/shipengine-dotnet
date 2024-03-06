@@ -11,5 +11,6 @@
         public string Name { get; set; }
         public Address OriginAddress { get; set; }
         public Address ReturnAddress { get; set; }
+        public string WarehouseId { get; set; }
     }
 }

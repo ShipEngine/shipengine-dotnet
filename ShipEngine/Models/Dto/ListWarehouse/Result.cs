@@ -1,11 +1,11 @@
-﻿namespace ShipEngineSDK.CreateWarehouse
+﻿namespace ShipEngineSDK.ListWarehouse
 {
     using ShipEngineSDK.Common;
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public class Result
+    public class Params
     {
         public string WarehouseId { get; set; }
         public bool IsDefault { get; set; }

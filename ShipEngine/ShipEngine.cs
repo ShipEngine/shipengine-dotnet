@@ -421,13 +421,13 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="warehouseParams"></param>
         /// <returns></returns>
-        public async Task<CreateWarehouse.Result> CreateWarehouse(ShipEngineSDK.CreateWarehouse.Params warehouseParams)
+        public async Task<CreateWarehouse.Params> CreateWarehouse(ShipEngineSDK.CreateWarehouse.Params warehouseParams)
         {
             var path = $"/v1/warehouses";
 
             string warehouseParamsString = JsonConvert.SerializeObject(warehouseParams, JsonSerializerSettings);
 
-            var warehosueResult = await SendHttpRequestAsync<CreateWarehouse.Result>(HttpMethod.Post, path, warehouseParamsString, _client, _config);
+            var warehosueResult = await SendHttpRequestAsync<CreateWarehouse.Params>(HttpMethod.Post, path, warehouseParamsString, _client, _config);
 
             _client.Dispose();
 
@@ -439,7 +439,7 @@ namespace ShipEngineSDK
         /// <param name="warehouseParams"></param>
         /// <param name="methodConfig"></param>
         /// <returns></returns>
-        public async Task<CreateWarehouse.Result> CreateWarehouse(ShipEngineSDK.CreateWarehouse.Params warehouseParams, Config methodConfig)
+        public async Task<CreateWarehouse.Params> CreateWarehouse(ShipEngineSDK.CreateWarehouse.Params warehouseParams, Config methodConfig)
         {
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
@@ -448,7 +448,7 @@ namespace ShipEngineSDK
 
             string warehouseParamsString = JsonConvert.SerializeObject(warehouseParams, JsonSerializerSettings);
 
-            var warehosueResult = await SendHttpRequestAsync<CreateWarehouse.Result>(HttpMethod.Post, path, warehouseParamsString, client, methodConfig);
+            var warehosueResult = await SendHttpRequestAsync<CreateWarehouse.Params>(HttpMethod.Post, path, warehouseParamsString, client, methodConfig);
 
             client.Dispose();
 
@@ -518,6 +518,34 @@ namespace ShipEngineSDK
 
             return warehouseInfo;
         }
+
+        public async Task ImportOrders(ImportOrders.Params importOrderParams)
+        {
+            var path = "/v-beta/order_sources/";
+
+            string paramString = JsonConvert.SerializeObject(importOrderParams, JsonSerializerSettings);
+
+            await SendHttpRequestAsync<object>(HttpMethod.Put, path, paramString, _client, _config);
+            _client.Dispose();
+            return;
+        }
+        public async Task<ListSalesOrder.Result> ListSalesOrders(string orderSourceId)
+        {
+            try
+            {
+                var path = $"/v-beta/sales_orders{orderSourceId}";
+                var result = await SendHttpRequestAsync<ListSalesOrder.Result>(HttpMethod.Put, path, null, _client, _config);
+
+                _client.Dispose();
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+        }
+
 
     }
 }
