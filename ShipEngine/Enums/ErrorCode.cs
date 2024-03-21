@@ -174,6 +174,12 @@ namespace ShipEngineSDK
         NotFound,
 
         /// <summary>
+        /// This error means that there were no rates returned for the carrier referenced in the carrier_code field.
+        /// </summary>
+        [EnumMember(Value = "no_rates_returned")]
+        NoRatesReturned,
+
+        /// <summary>
         /// You have exceeded a rate limit. Check the the error_source field to determine whether the rate limit was imposed by ShipEngine or by a third-party, such as a carrier. If the rate limit is from ShipEngine, then consider using bulk operations to reduce the nuber of API calls, or contact our support team about increasing your rate limit.
         /// </summary>
         [EnumMember(Value = "rate_limit_exceeded")]
