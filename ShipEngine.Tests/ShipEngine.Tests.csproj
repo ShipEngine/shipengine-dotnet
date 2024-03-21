@@ -25,6 +25,6 @@
     <ProjectReference Include="..\ShipEngine\ShipEngine.csproj" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties httpresponsemocks_4createimplicitmanifest200response_1json__JsonSchema="{" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
