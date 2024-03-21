@@ -80,3 +80,9 @@ CreateLabelFromShipmentDetails parameters causing problems when unused has been 
 ### Changed
 
 Update default timeout to 60s
+
+## 1.1.6
+
+### Changed
+
+Added error mapping for NoRatesReturned
