@@ -205,6 +205,13 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         public MonetaryValue InsuranceAmount { get; set; }
 
         /// <summary>
+        /// The sum of the carrier costs for the shipment
+        /// </summary>
+        public MonetaryValue RequestedComparisonAmount { get; set; }
+
+
+
+        /// <summary>
         /// The confirmation amount
         /// </summary>
         public MonetaryValue ConfirmationAmount { get; set; }
