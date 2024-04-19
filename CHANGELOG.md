@@ -86,3 +86,9 @@ Update default timeout to 60s
 ### Changed
 
 Added error mapping for NoRatesReturned
+
+## 1.1.7
+
+### Changed
+
+Added support for requesting retail rates
