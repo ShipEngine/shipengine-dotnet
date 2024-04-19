@@ -145,6 +145,10 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// The combined weight of all packages in the shipment
         /// </summary>
         public Weight Weight { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ComparisonRateType? ComparisonRateType { get; set; }
+
     }
 
     /// <summary>

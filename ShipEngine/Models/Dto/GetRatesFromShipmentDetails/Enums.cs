@@ -45,4 +45,11 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         Partial,
         Error
     }
+
+    public enum ComparisonRateType
+    {
+        [EnumMember(Value = "retail")]
+        Retail,
+    }
+
 }
