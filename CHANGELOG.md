@@ -92,3 +92,9 @@ Added error mapping for NoRatesReturned
 ### Changed
 
 Added support for requesting retail rates
+
+## 1.1.8
+
+### Changed
+
+Added support LabelDownload to Package on CreateLabelFromShipment and CreateLabelFromRate
