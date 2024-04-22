@@ -229,5 +229,10 @@ namespace ShipEngineSDK.CreateLabelFromRate
         /// Package sequence
         /// </summary>
         public int? Sequence { get; set; }
+
+        /// <summary>
+        /// Reference to the various downloadable file formats for the generated label
+        /// </summary>
+        public Download? LabelDownload { get; set; }
     }
 }
