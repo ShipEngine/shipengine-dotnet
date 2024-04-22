@@ -236,4 +236,3 @@ namespace ShipEngineSDK.CreateLabelFromRate
         public Download? LabelDownload { get; set; }
     }
 }
-
