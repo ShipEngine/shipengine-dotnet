@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
+    using Converters;
+
     /// <summary>
     /// ShipEngine Client is used for handling generic calls and settings that
     /// are needed for all ShipEngine API calls.
@@ -101,14 +103,15 @@ namespace ShipEngineSDK
 
             }
 
-            var result = JsonConvert.DeserializeObject<T>(contentString, new JsonSerializerSettings()
+            var settings = new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Include,
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
-            });
+                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
+            };
+
+            settings.Converters.Add(new ErrorCodeEnumConverter { DefaultValue = ErrorCode.Unspecified });
+
+            var result = JsonConvert.DeserializeObject<T>(contentString, settings);
 
             if (result != null)
             {
