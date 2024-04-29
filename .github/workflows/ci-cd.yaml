@@ -9,7 +9,7 @@ on: [push]
 
 jobs:
   dot_net_framework_test:
-    name: .Net Framework 4.6.1
+    name: .Net Framework 4.6.2
     runs-on: windows-latest
     timeout-minutes: 10
 
@@ -32,7 +32,7 @@ jobs:
         run: msbuild shipengine-dotnet.sln /p:Configuration=Release
 
       - name: Run Test
-        run: dotnet test ShipEngine.Tests/bin/Release/net461/ShipEngine.Tests.dll
+        run: dotnet test ShipEngine.Tests/bin/Release/net462/ShipEngine.Tests.dll
 
   dot_net_core_test:
     name: .Net Core 2.1.x, 3.1.x, and .Net 5.0 on ${{ matrix.os }}
