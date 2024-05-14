@@ -9,7 +9,7 @@ on: [push]
 
 jobs:
   dot_net_framework_test:
-    name: .Net Framework 4.6.2
+    name: .Net Framework 8
     runs-on: windows-latest
     timeout-minutes: 10
 
@@ -23,7 +23,7 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1
         with:
-          nuget-version: "5.x"
+          nuget-version: "6.x"
 
       - name: Restore NuGet Packages
         run: nuget restore shipengine-dotnet.sln
@@ -32,95 +32,21 @@ jobs:
         run: msbuild shipengine-dotnet.sln /p:Configuration=Release
 
       - name: Run Test
-        run: dotnet test ShipEngine.Tests/bin/Release/net462/ShipEngine.Tests.dll
-
-  dot_net_core_test:
-    name: .Net Core 2.1.x, 3.1.x, and .Net 5.0 on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
-    strategy:
-      fail-fast: true
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v2
-
-      - name: Setup dotnet 2.1.x
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 2.1.x
-
-      - name: Setup dotnet 3.1.x
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.x
-
-      - name: Setup dotnet 5.0.x
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 5.0.x
-
-      - name: Dotnet tool restore
-        run: dotnet tool restore
-
-      - name: Lint
-        if: ${{ matrix.os == 'ubuntu-latest'}}
-        run: dotnet format --check
-
-      - name: Dotnet Build
-        run: dotnet build --configuration Release
-
-      - name: Run 2.1.x Tests
-        run: dotnet test -f netcoreapp2.1
-
-      - name: Run 3.1.x Tests
-        run: dotnet test -f netcoreapp3.1
-
-      - name: Run 5.0 Tests
-        run: dotnet test -f net5.0 --settings ShipEngine.Tests/coverage.runsettings
-
-      - name: Move generated lcov file to expected location
-        shell: bash
-        run: |
-          ls -Rlh ShipEngine.Tests/TestResults/*/coverage.info
-          cat ShipEngine.Tests/TestResults/*/coverage.info > ShipEngine.Tests/TestResults/lcov.info
-
-      - name: Send code coverage results to Coveralls
-        uses: coverallsapp/github-action@v1.1.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel: true
-          flag-name: run-${{ matrix.test_number }}
-          path-to-lcov: ShipEngine.Tests/TestResults/lcov.info
-
-  coverage:
-    name: Code Coverage
-    needs: dot_net_core_test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Coveralls Finished
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.github_token }}
-          parallel-finished: true
+        run: dotnet test ShipEngine.Tests/bin/Release/net8.0/ShipEngine.Tests.dll
 
   nuget-deploy:
     runs-on: ubuntu-latest
-    needs: [dot_net_framework_test, dot_net_core_test]
+    needs: [dot_net_framework_test]
     if: github.ref == 'refs/heads/main'
     steps:
       # Checkout code if release was created
       - uses: actions/checkout@v2
 
       # Setup Dotnet if release was created
-      - name: Setup dotnet 5.0.x
+      - name: Setup dotnet 8.0.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x
+          dotnet-version: 8.0.x
 
       - name: publish on version change
         id: publish_nuget
