@@ -98,3 +98,9 @@ Added support for requesting retail rates
 ### Changed
 
 Added support LabelDownload to Package on CreateLabelFromShipment and CreateLabelFromRate
+
+## 2.0.0
+
+### Changed
+
+Updated target framework to .NET 8.0, updated Nuget packages, formatting

@@ -54,7 +54,7 @@ To build the project locally on your computer:
 1. **Clone this repo**<br>
    `git clone https://github.com/ShipEngine/shipengine-dotnet.git`
 
-2. **Install [.NET 5.x](https://dotnet.microsoft.com/download)**
+2. **Install [.NET 8.x](https://dotnet.microsoft.com/download)**
 
 3. **Install dependencies**<br>
    `dotnet restore`
