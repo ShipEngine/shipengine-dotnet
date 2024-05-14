@@ -152,7 +152,7 @@ namespace ShipEngineSDK
                 {
                     if (e.ErrorCode != ErrorCode.RateLimitExceeded)
                     {
-                        throw e;
+                        throw;
                     }
 
                     requestException = e;
@@ -160,7 +160,7 @@ namespace ShipEngineSDK
 
                 catch (Exception e)
                 {
-                    throw e;
+                    throw;
                 }
 
 

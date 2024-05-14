@@ -72,7 +72,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void ValidCreateLabelFromShipmentDetailsTest()
+        public async Task ValidCreateLabelFromShipmentDetailsTest()
         {
             var config = new Config("TEST_ycvJAgX6tLB1Awm9WGJmD8mpZ8wXiQ20WhqFowCk32s");
 
@@ -173,7 +173,7 @@ namespace ShipEngineTest
 
 
         [Fact]
-        public async void ValidateCustomSettingsAtMethodLevel()
+        public async Task ValidateCustomSettingsAtMethodLevel()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 
@@ -209,7 +209,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void InvalidRetriesInMethodCall()
+        public async Task InvalidRetriesInMethodCall()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 
