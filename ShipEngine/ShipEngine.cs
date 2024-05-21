@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ShipEngineSDK.Common;
+using ShipEngineSDK.ListWarehouse;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -112,7 +113,58 @@ namespace ShipEngineSDK
 
             return carriers;
         }
+        /// <summary>
+        /// List Manifests
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ListManifest.Result> ListManifests()
+        {
+            var path = $"/v1/manifests";
+            var manifests = await SendHttpRequestAsync<ListManifest.Result>(HttpMethod.Get, path, null, _client, _config);
+            return manifests;
+        }
 
+        /// <summary>
+        /// List Manifests
+        /// </summary>
+        /// <param name="manifestId"></param>
+        /// <param name="methodConfig"></param>
+        /// <returns></returns>
+        public async Task<ListManifest.Result> ListManifests(string manifestId, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/manifests";
+            var manifests = await SendHttpRequestAsync<ListManifest.Result>(HttpMethod.Get, path, null, client, methodConfig);
+            return manifests;
+        }
+
+        /// <summary>
+        /// Get Created Manifest
+        /// </summary>
+        /// <param name="manifestId"></param>
+        /// <returns></returns>
+        public async Task<Manifests.Result> GetManifest(string manifestId)
+        {
+            var path = $"/v1/manifests/{manifestId}";
+            var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Get, path, null, _client, _config);
+            return manifest;
+        }
+
+        /// <summary>
+        /// Get Created Manifest
+        /// </summary>
+        /// <param name="manifestId"></param>
+        /// <param name="methodConfig"></param>
+        /// <returns></returns>
+        public async Task<Manifests.Result> GetManifest(string manifestId, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/manifests/{manifestId}";
+            var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Get, path, null, client, methodConfig);
+            return manifest;
+        }
 
         /// <summary>
         /// Create a manifest
@@ -363,5 +415,137 @@ namespace ShipEngineSDK
 
             return labelResult;
         }
+
+        /// <summary>
+        /// Create a warehouse with provided details
+        /// </summary>
+        /// <param name="warehouseParams"></param>
+        /// <returns></returns>
+        public async Task<CreateWarehouse.Params> CreateWarehouse(ShipEngineSDK.CreateWarehouse.Params warehouseParams)
+        {
+            var path = $"/v1/warehouses";
+
+            string warehouseParamsString = JsonConvert.SerializeObject(warehouseParams, JsonSerializerSettings);
+
+            var warehosueResult = await SendHttpRequestAsync<CreateWarehouse.Params>(HttpMethod.Post, path, warehouseParamsString, _client, _config);
+
+            _client.Dispose();
+
+            return warehosueResult;
+        }
+        /// <summary>
+        /// Creates a warehouse with the provided details
+        /// </summary>
+        /// <param name="warehouseParams"></param>
+        /// <param name="methodConfig"></param>
+        /// <returns></returns>
+        public async Task<CreateWarehouse.Params> CreateWarehouse(ShipEngineSDK.CreateWarehouse.Params warehouseParams, Config methodConfig)
+        {
+
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/warehouses";
+
+            string warehouseParamsString = JsonConvert.SerializeObject(warehouseParams, JsonSerializerSettings);
+
+            var warehosueResult = await SendHttpRequestAsync<CreateWarehouse.Params>(HttpMethod.Post, path, warehouseParamsString, client, methodConfig);
+
+            client.Dispose();
+
+            return warehosueResult;
+        }
+
+        /// <summary>
+        /// List all warehouses
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ListWarehouse.Result> ListWarehouses()
+        {
+            var path = "v1/warehouses";
+
+            var warehouses = await SendHttpRequestAsync<ListWarehouse.Result>(HttpMethod.Get, path, null, _client, _config);
+
+            _client.Dispose();
+            return warehouses;
+        }
+        /// <summary>
+        /// Get a list of all warehouses
+        /// </summary>
+        /// <param name="methodConfig"></param>
+        /// <returns></returns>
+        public async Task<ListWarehouse.Result> ListWarehouses(Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+            var path = "v1/warehouses";
+
+            var warehouses = await SendHttpRequestAsync<ListWarehouse.Result>(HttpMethod.Get, path, null, client, methodConfig);
+
+            client.Dispose();
+            return warehouses;
+        }
+
+        /// <summary>
+        /// Get warehouse by Id
+        /// </summary>
+        /// <param name="warehouseId"></param>
+        /// <returns></returns>
+        public async Task<Warehouse.Result> GetWarehouseByWarehouseId(string warehouseId)
+        {
+            var path = $"/v1/warehouse/{warehouseId}";
+
+            var warehouseInfo = await SendHttpRequestAsync<Warehouse.Result>(HttpMethod.Get, path, null, _client, _config);
+
+            _client.Dispose();
+
+            return warehouseInfo;
+        }
+
+        /// <summary>
+        /// Get warehouse by Id
+        /// </summary>
+        /// <param name="warehouseId"></param>
+        /// <param name="methodConfig"></param>
+        /// <returns></returns>
+        public async Task<Warehouse.Result> GetWarehouseByWarehouseId(string warehouseId, Config methodConfig)
+        {
+            var client = ConfigureHttpClient(methodConfig, new HttpClient());
+
+            var path = $"/v1/warehouse/{warehouseId}";
+
+            var warehouseInfo = await SendHttpRequestAsync<Warehouse.Result>(HttpMethod.Get, path, null, client, methodConfig);
+
+            client.Dispose();
+
+            return warehouseInfo;
+        }
+
+        public async Task ImportOrders(ImportOrders.Params importOrderParams)
+        {
+            var path = "/v-beta/order_sources/";
+
+            string paramString = JsonConvert.SerializeObject(importOrderParams, JsonSerializerSettings);
+
+            await SendHttpRequestAsync<object>(HttpMethod.Put, path, paramString, _client, _config);
+            _client.Dispose();
+            return;
+        }
+        public async Task<ListSalesOrder.Result> ListSalesOrders(string orderSourceId)
+        {
+            try
+            {
+                var path = $"/v-beta/sales_orders{orderSourceId}";
+                var result = await SendHttpRequestAsync<ListSalesOrder.Result>(HttpMethod.Put, path, null, _client, _config);
+
+                _client.Dispose();
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+
     }
 }
