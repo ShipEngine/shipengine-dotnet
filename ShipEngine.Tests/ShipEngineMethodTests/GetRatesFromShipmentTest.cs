@@ -249,5 +249,23 @@ namespace ShipEngineTest
             Assert.Equal("Retries must be greater than zero.", ex.Message);
             Assert.Null(ex.RequestId);
         }
+
+        [Fact]
+        public async void MissingErrorCodeEnumResolvesToUnspecified()
+        {
+            var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
+            var config = new Config(apiKey: apiKeyString);
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/GetRatesWithShipmentDetailsMissingErrorCodeEnum200Response.json"));
+
+            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/rates", System.Net.HttpStatusCode.OK, json);
+
+            var result = await mockShipEngineFixture.ShipEngine.GetRatesWithShipmentDetails(RatesParameters);
+
+            var errorCode = result.RateResponse.Errors.FirstOrDefault().ErrorCode;
+
+            Assert.Equal(ErrorCode.Unspecified, errorCode);
+        }
     }
 }

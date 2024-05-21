@@ -3,9 +3,12 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ShipEngineSDK.Common
 {
+    using Converters;
+
     /// <summary>
     /// Error object returned by the ShipEngine API when an error occurs.
     /// <see href="https://www.shipengine.com/docs/errors/"/>
@@ -46,7 +49,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The error code specified for the failed API Call
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(ErrorCodeEnumConverter))]
         public ErrorCode ErrorCode { get; set; }
 
         /// <summary>

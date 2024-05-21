@@ -98,3 +98,9 @@ Added support for requesting retail rates
 ### Changed
 
 Added support LabelDownload to Package on CreateLabelFromShipment and CreateLabelFromRate
+
+## 1.1.9
+
+### Changed
+
+Added custom converter to fallback to default unspecified error code if value cannot be found in the enumeration

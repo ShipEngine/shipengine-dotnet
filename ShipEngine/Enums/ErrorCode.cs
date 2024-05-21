@@ -27,10 +27,10 @@ namespace ShipEngineSDK
         [EnumMember(Value = "carrier_conflict")]
         CarrierConflict,
 
-        // <summary>
-        // You have selected to insure a package, however the carrier you are attempting to create a shipping label
-        // for does not support declaring insurance on shipments.
-        // </summary>
+        /// <summary>
+        /// You have selected to insure a package, however the carrier you are attempting to create a shipping label
+        /// for does not support declaring insurance on shipments.
+        /// </summary>
         [EnumMember(Value = "carrier_insurance_not_supported")]
         CarrierInsuranceNotSupported,
 
@@ -54,12 +54,12 @@ namespace ShipEngineSDK
         [EnumMember(Value = "confirmation_not_supported")]
         ConfirmationNotSupported,
 
-        // <summary>
-        // When shipping internationally, you must add a customs declaration which outlines the items you are shipping.
-        // This is helpful to customs agents when your package enters it's destination country. This error arises when you
-        // do not add a customs declaration to your shipment before attempting to create a shipping label for an 
-        // international shipmet.
-        // </summary>
+        /// <summary>
+        /// When shipping internationally, you must add a customs declaration which outlines the items you are shipping.
+        /// This is helpful to customs agents when your package enters it's destination country. This error arises when you
+        /// do not add a customs declaration to your shipment before attempting to create a shipping label for an 
+        /// international shipment.
+        /// </summary>
         [EnumMember(Value = "customs_items_required")]
         CustomsItemsRequired,
 
@@ -122,9 +122,9 @@ namespace ShipEngineSDK
         [EnumMember(Value = "invalid_charge_event")]
         InvalidChargeEvent,
 
-        // <summary>
-        // When creating a label, if you set the date to an invalid date e.g. A date in the past
-        // </summary>
+        /// <summary>
+        /// When creating a label, if you set the date to an invalid date e.g. A date in the past
+        /// </summary>
         [EnumMember(Value = "invalid_date")]
         InvalidDate,
 

@@ -1,0 +1,146 @@
+{
+  "rate_response": {
+    "rates": [],
+    "invalid_rates": [],
+    "rate_request_id": "se-139005222",
+    "shipment_id": "se-1506668211",
+    "created_at": "2024-04-23T16:09:08.1763483Z",
+    "status": "error",
+    "errors": [
+      {
+        "error_source": "carrier",
+        "error_type": "business_rules",
+        "error_code": "this_code_doesn't_exist",
+        "message": "A shipping carrier error occurred: Authentication failed.",
+        "carrier_id": "se-325186",
+        "carrier_code": "stamps_com",
+        "carrier_name": "Stamps.com"
+      }
+    ]
+  },
+  "shipment_id": "se-1506668211",
+  "carrier_id": "se-325186",
+  "service_code": "usps_priority_mail_international",
+  "external_shipment_id": null,
+  "shipment_number": null,
+  "ship_date": "2024-04-23T00:00:00Z",
+  "created_at": "2024-04-23T16:09:08.037Z",
+  "modified_at": "2024-04-23T16:09:08.02Z",
+  "shipment_status": "pending",
+  "ship_to": {
+    "geolocation": null,
+    "instructions": "",
+    "name": "Test Person",
+    "phone": "8889997777",
+    "email": null,
+    "company_name": "Test Company",
+    "address_line1": "123 Fake St",
+    "address_line2": "",
+    "address_line3": null,
+    "city_locality": "NEW YORK",
+    "state_province": "NY",
+    "postal_code": "10011-4758",
+    "country_code": "US",
+    "address_residential_indicator": "unknown"
+  },
+  "ship_from": {
+    "instructions": null,
+    "name": "Test Person",
+    "phone": "8889997777",
+    "email": null,
+    "company_name": null,
+    "address_line1": "321 Fake St.",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "Brooklyn",
+    "state_province": "NY",
+    "postal_code": "11207",
+    "country_code": "US",
+    "address_residential_indicator": "no"
+  },
+  "warehouse_id": null,
+  "return_to": {
+    "instructions": null,
+    "name": "Test Person",
+    "phone": "8889997777",
+    "email": null,
+    "company_name": null,
+    "address_line1": "321 Fake St.",
+    "address_line2": null,
+    "address_line3": null,
+    "city_locality": "Brooklyn",
+    "state_province": "NY",
+    "postal_code": "11207",
+    "country_code": "US",
+    "address_residential_indicator": "no"
+  },
+  "is_return": false,
+  "confirmation": "none",
+  "customs": null,
+  "external_order_id": null,
+  "order_source_code": null,
+  "advanced_options": {
+    "bill_to_account": null,
+    "bill_to_country_code": null,
+    "bill_to_party": null,
+    "bill_to_postal_code": null,
+    "contains_alcohol": false,
+    "delivered_duty_paid": false,
+    "non_machinable": false,
+    "saturday_delivery": false,
+    "dry_ice": false,
+    "dry_ice_weight": null,
+    "fedex_freight": null,
+    "third_party_consignee": false,
+    "ancillary_endorsements_option": null,
+    "freight_class": null,
+    "custom_field1": null,
+    "custom_field2": null,
+    "custom_field3": null,
+    "collect_on_delivery": null,
+    "return_pickup_attempts": null,
+    "additional_handling": false,
+    "own_document_upload": false,
+    "limited_quantity": false,
+    "event_notification": false
+  },
+  "comparison_rate_type": null,
+  "shipping_rule_id": null,
+  "insurance_provider": "none",
+  "tags": [],
+  "packages": [
+    {
+      "shipment_package_id": "se-645844381",
+      "package_id": "se-3",
+      "package_code": "package",
+      "package_name": "Package",
+      "weight": {
+        "value": 3.83,
+        "unit": "pound"
+      },
+      "dimensions": {
+        "unit": "inch",
+        "length": 0.00,
+        "width": 0.00,
+        "height": 0.00
+      },
+      "insured_value": {
+        "currency": "usd",
+        "amount": 0.00
+      },
+      "label_messages": {
+        "reference1": null,
+        "reference2": null,
+        "reference3": null
+      },
+      "external_package_id": null,
+      "content_description": null,
+      "products": null
+    }
+  ],
+  "total_weight": {
+    "value": 3.83,
+    "unit": "pound"
+  },
+  "items": []
+}
