@@ -20,7 +20,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void ValidateDefaultTimeoutTest()
+        public async Task ValidateDefaultTimeoutTest()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
             var config = new Config(apiKeyString);
@@ -55,7 +55,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void ValidateCustomTimeout()
+        public async Task ValidateCustomTimeout()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 
