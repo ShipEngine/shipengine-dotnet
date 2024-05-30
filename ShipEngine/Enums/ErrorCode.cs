@@ -1,10 +1,13 @@
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK
 {
     /// <summary>
     /// Indicates the specific error that occurred.
     /// </summary>
+    [JsonStringEnumMemberConverterOptions(deserializationFailureFallbackValue: Unspecified)]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum ErrorCode
     {
         /// <summary>

@@ -1,10 +1,9 @@
 #nullable disable
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.GetRatesWithShipmentDetails
 {
@@ -38,7 +37,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The possible validate address values
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public ValidateAddress ValidateAddress { get; set; }
 
         /// <summary>
@@ -101,7 +100,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The type of delivery confirmation that is required for this shipment.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public DeliveryConfirmation Confirmation { get; set; }
 
         /// <summary>
@@ -122,7 +121,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The insurance provider to use for any insured packages in the shipment.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public InsuranceProvider InsuranceProvider { get; set; }
 
         /// <summary>
@@ -133,7 +132,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The order sources that are supported by ShipEngine
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public OrderSourceCode OrderSourceCode { get; set; }
 
         /// <summary>
@@ -146,7 +145,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// </summary>
         public Weight Weight { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ComparisonRateType? ComparisonRateType { get; set; }
 
     }
@@ -180,7 +179,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// The currencies that are supported by ShipEngine.
         /// </summary>
 
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Currency PreferredCurrency { get; set; }
     }
 }

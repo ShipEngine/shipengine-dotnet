@@ -1,11 +1,13 @@
 #pragma warning disable 1591
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.GetRatesWithShipmentDetails
 {
     /// <summary>
     /// The possible shipment status values
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum ShipmentStatus
     {
         Pending,
@@ -28,6 +30,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
     /// <summary>
     /// The possible validation status values
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum ValidationStatus
     {
         Valid,
@@ -46,6 +49,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         Error
     }
 
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum ComparisonRateType
     {
         [EnumMember(Value = "retail")]

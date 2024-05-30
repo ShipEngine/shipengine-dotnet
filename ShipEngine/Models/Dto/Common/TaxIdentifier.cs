@@ -1,6 +1,5 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common
 {
@@ -12,13 +11,13 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The taxable entity type for this tax item. Valid values include the following
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TaxableEntityType? TaxableEntityType { get; set; }
 
         /// <summary>
         /// Determines how FedEx will pickup your packages
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public IdentifierType? IdentifierType { get; set; }
 
         /// <summary>

@@ -1,11 +1,11 @@
 using Moq;
-using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.CreateLabelFromRate;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -123,7 +123,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromRate200Response.json"));
 
-            var voidLabelResult = JsonConvert.DeserializeObject<ShipEngineSDK.CreateLabelFromRate.Result>(json);
+            var voidLabelResult = JsonSerializer.Deserialize<ShipEngineSDK.CreateLabelFromRate.Result>(json);
             var request = new HttpRequestMessage(HttpMethod.Post, "v1/labels/rates/se-1234");
 
             // Verify that the client has a custom timeout of 1 second when called.

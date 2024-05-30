@@ -1,7 +1,6 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common
 {
@@ -13,13 +12,13 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The type of contents in this shipment. This may impact import duties or customs treatment.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public PackageContents Contents { get; set; }
 
         /// <summary>
         /// Indicates what to do if a package is unable to be delivered.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public NonDelivery NonDelivery { get; set; }
 
         /// <summary>
@@ -58,7 +57,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The two-letter ISO 3166-1 country code where this item originated
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Country? CountryOfOrigin { get; set; }
 
         /// <summary>

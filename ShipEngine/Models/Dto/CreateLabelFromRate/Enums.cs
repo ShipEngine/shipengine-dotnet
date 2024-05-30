@@ -1,9 +1,11 @@
 #pragma warning disable 1591
 
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.CreateLabelFromRate
 {
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum ChargeEvent
     {
         [EnumMember(Value = "carrier_default")]
@@ -26,6 +28,7 @@ namespace ShipEngineSDK.CreateLabelFromRate
 
 
 
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum TrackingStatus
     {
         Unknown,
@@ -36,6 +39,7 @@ namespace ShipEngineSDK.CreateLabelFromRate
         Delivered
     }
 
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum LabelDownloadType
     {
         [EnumMember(Value = "url")]

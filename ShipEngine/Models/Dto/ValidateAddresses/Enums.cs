@@ -1,6 +1,7 @@
 #pragma warning disable 1591
 
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.ValidateAddresses
 {
@@ -9,6 +10,7 @@ namespace ShipEngineSDK.ValidateAddresses
     /// <see href="https://www.shipengine.com/docs/addresses/validation/"/>
     /// </summary>
 
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum AddressValidationResult
     {
         [EnumMember(Value = "unverified")]
@@ -35,6 +37,7 @@ namespace ShipEngineSDK.ValidateAddresses
     /// Codes associated with the address validation result, for more info see
     /// <see href="https://www.shipengine.com/docs/addresses/validation/messages/#list-of-messages" />
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum ValidationMessageDetailCode
     {
         [EnumMember(Value = "unsupported_country")]

@@ -1,5 +1,4 @@
 using Moq;
-using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
@@ -8,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -159,7 +159,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateResidentialAddresses200Response.json"));
 
-            var listCarriersResult = JsonConvert.DeserializeObject<List<Result>>(json, TestUtils.JsonSerializerSettings);
+            var listCarriersResult = JsonSerializer.Deserialize<List<Result>>(json, TestUtils.JsonSerializerOptions);
             var request = new HttpRequestMessage(HttpMethod.Post, "/v1/addresses/validate");
 
             // Verify that the client has a custom timeout of 1 second when called.

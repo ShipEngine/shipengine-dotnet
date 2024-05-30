@@ -1,15 +1,16 @@
 using Moq;
-using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.VoidLabelWithLabelId;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace ShipEngineTest
 {
+
     public class ConfigTest
     {
         public TestUtils TestUtils;
@@ -30,7 +31,8 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
 
-            var voidLabelResult = JsonConvert.DeserializeObject<Result>(json, TestUtils.JsonSerializerSettings);
+            var voidLabelResult = System.Text.Json.JsonSerializer.Deserialize<Result>(json, TestUtils.JsonSerializerOptions);
+
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/se-1234/void");
 
 
@@ -66,7 +68,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
 
-            var voidLabelResult = JsonConvert.DeserializeObject<Result>(json, TestUtils.JsonSerializerSettings);
+            var voidLabelResult = JsonSerializer.Deserialize<Result>(json, TestUtils.JsonSerializerOptions);
             var request = new HttpRequestMessage(HttpMethod.Put, $"v1/labels/se-1234/void");
 
             // Verify that the client has a custom timeout of 1 second when called.

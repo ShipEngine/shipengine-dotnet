@@ -1,10 +1,13 @@
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK
 {
+
     /// <summary>
     /// The error_type field indicates the type of error that occurred. Think of this as a broad category of error.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum ErrorType
     {
 

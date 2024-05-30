@@ -1,11 +1,11 @@
 using Moq;
-using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.TrackUsingLabelId;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -73,7 +73,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ListCarriers200Response.json"));
 
-            var listCarriersResult = JsonConvert.DeserializeObject<Result>(json);
+            var listCarriersResult = JsonSerializer.Deserialize<Result>(json);
             var request = new HttpRequestMessage(HttpMethod.Get, "v1/carriers");
 
             // Verify that the client has a custom timeout of 1 second when called.
