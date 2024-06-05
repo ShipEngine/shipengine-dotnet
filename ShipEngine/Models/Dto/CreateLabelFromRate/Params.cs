@@ -1,7 +1,6 @@
 #nullable disable
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.CreateLabelFromRate
 {
@@ -18,31 +17,31 @@ namespace ShipEngineSDK.CreateLabelFromRate
         /// <summary>
         /// Address validation to perform while purchasing the label.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public ValidateAddress ValidateAddress { get; set; }
 
         /// <summary>
         /// The layout (size) that you want the label to be in.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public LabelLayout LabelLayout { get; set; }
 
         /// <summary>
         /// The file format that you want the label to be in.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public LabelFormat LabelFormat { get; set; }
 
         /// <summary>
         /// Download the label via url or a base64 encoded string.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public LabelDownloadType LabelDownloadType { get; set; }
 
         /// <summary>
         /// The display format that the label should be shown in.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public DisplayScheme DisplayScheme { get; set; }
     }
 }

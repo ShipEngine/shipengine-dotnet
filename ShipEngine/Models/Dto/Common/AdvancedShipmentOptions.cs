@@ -1,6 +1,5 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common
 {
@@ -24,7 +23,7 @@ namespace ShipEngineSDK.Common
         /// Indicates whether to bill shipping costs to the recipient or to a third-party.
         /// When billing to a third-party, the bill_to_account, bill_to_country_code, and bill_to_postal_code fields must also be set.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public BillToParty? BillToParty { get; set; }
 
         /// <summary>
@@ -97,7 +96,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// Indicates if the package will be picked up or dropped off by the carrier
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public OriginType? OriginType { get; set; }
 
         /// <summary>

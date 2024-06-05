@@ -1,6 +1,5 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ShipEngineSDK.Common.Enums;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common
 {
@@ -57,13 +56,13 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The <see href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166 country code</see>
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Country? CountryCode { get; set; }
 
         /// <summary>
         /// Indicates whether the address is residential or commercial, if known.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     }
 }

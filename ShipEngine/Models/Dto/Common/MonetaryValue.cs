@@ -1,17 +1,18 @@
 #pragma warning disable 1591
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using ShipEngineSDK.Common.Enums;
 using System;
-using System.Linq;
+using System.Buffers;
+using System.Buffers.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common
 {
+
     public class MonetaryValue
     {
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Currency? Currency { get; set; }
 
         public double? Amount { get; set; }
@@ -19,25 +20,23 @@ namespace ShipEngineSDK.Common
 
     public class MonetaryValueConverter : JsonConverter<MonetaryValue>
     {
-        public override bool CanWrite => false;
-
-        public override MonetaryValue ReadJson(JsonReader reader, Type objectType, MonetaryValue existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override MonetaryValue Read(ref Utf8JsonReader reader, Type type, JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonToken.StartObject)
+            if (reader.TokenType == JsonTokenType.String)
             {
                 var response = new MonetaryValue();
-                while (reader.TokenType != JsonToken.EndObject)
+                while (reader.TokenType != JsonTokenType.EndObject)
                 {
                     reader.Read();
-                    if (reader.TokenType == JsonToken.PropertyName)
+                    if (reader.TokenType == JsonTokenType.PropertyName)
                     {
-                        switch (reader.Value)
+                        switch (reader.GetString())
                         {
                             case "amount":
-                                response.Amount = reader.ReadAsDouble();
+                                response.Amount = reader.GetDouble();
                                 break;
                             case "currency":
-                                if (Enum.TryParse(reader.ReadAsString(), true, out Currency currency))
+                                if (Enum.TryParse(reader.GetString(), true, out Currency currency))
                                 {
                                     response.Currency = currency;
                                 }
@@ -49,16 +48,17 @@ namespace ShipEngineSDK.Common
                 }
                 return response;
             }
-            if (reader.TokenType == JsonToken.Float)
+            if (reader.TokenType == JsonTokenType.Number)
             {
-                return new MonetaryValue() { Amount = (double)reader.Value };
+                var amount = reader.GetDouble();
+                return new MonetaryValue() { Amount = reader.GetDouble() };
             }
             return new MonetaryValue();
         }
 
-        public override void WriteJson(JsonWriter writer, MonetaryValue value, JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, MonetaryValue value, JsonSerializerOptions options)
         {
-            throw new NotImplementedException();
+            writer.WriteStringValue(value.Amount.ToString());
         }
     }
 }

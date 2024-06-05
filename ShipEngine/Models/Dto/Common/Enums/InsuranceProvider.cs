@@ -1,10 +1,12 @@
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common.Enums
 {
     /// <summary>
     /// The insurance provider to use for any insured packages in the shipment.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum InsuranceProvider
     {
         /// <summary>

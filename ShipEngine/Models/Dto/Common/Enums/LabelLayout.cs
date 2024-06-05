@@ -1,10 +1,12 @@
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common.Enums
 {
     /// <summary>
     /// The available layouts (sizes) in which shipping labels can be downloaded.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum LabelLayout
     {
         /// <summary>

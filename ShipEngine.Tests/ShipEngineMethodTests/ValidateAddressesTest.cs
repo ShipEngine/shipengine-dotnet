@@ -1,5 +1,4 @@
 using Moq;
-using Newtonsoft.Json;
 using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
@@ -8,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -35,7 +35,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void ValidResidentialAddressTest()
+        public async Task ValidResidentialAddressTest()
         {
 
             var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
@@ -84,7 +84,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void ValidateCommericalAddressTest()
+        public async Task ValidateCommericalAddressTest()
         {
 
             var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
@@ -129,7 +129,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void InValidAddressTest()
+        public async Task InValidAddressTest()
         {
             var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -148,7 +148,7 @@ namespace ShipEngineTest
 
         [Fact]
         // Check that both API Key and timeout can be set at the method level
-        public async void ValidateCustomSettingsAtMethodLevel()
+        public async Task ValidateCustomSettingsAtMethodLevel()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 
@@ -159,7 +159,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/ValidateResidentialAddresses200Response.json"));
 
-            var listCarriersResult = JsonConvert.DeserializeObject<List<Result>>(json, TestUtils.JsonSerializerSettings);
+            var listCarriersResult = JsonSerializer.Deserialize<List<Result>>(json, TestUtils.JsonSerializerOptions);
             var request = new HttpRequestMessage(HttpMethod.Post, "/v1/addresses/validate");
 
             // Verify that the client has a custom timeout of 1 second when called.
@@ -184,7 +184,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void InvalidRetriesInMethodCall()
+        public async Task InvalidRetriesInMethodCall()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 

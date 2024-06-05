@@ -29,7 +29,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void RetryOnceByDefault()
+        public async Task RetryOnceByDefault()
         {
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(2));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -58,7 +58,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void CustomRetriesSetting()
+        public async Task CustomRetriesSetting()
         {
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(2), retries: 2);
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -85,7 +85,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void RetriesDisabled()
+        public async Task RetriesDisabled()
         {
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(2), retries: 0);
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -117,7 +117,7 @@ namespace ShipEngineTest
 
         // Retry after is set to 2 seconds. Total elapsed time should be greater
         [Fact]
-        public async void RetriesWaitTheCorrectAmountOfTime()
+        public async Task RetriesWaitTheCorrectAmountOfTime()
         {
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(2));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -146,7 +146,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void RetryAfterIsGreaterThanTimeoutSetting()
+        public async Task RetryAfterIsGreaterThanTimeoutSetting()
         {
             var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);

@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
-using ShipEngineSDK.Common;
+﻿using ShipEngineSDK.Common;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
@@ -51,7 +52,7 @@ namespace ShipEngineSDK
         public async Task<List<ValidateAddresses.Result>> ValidateAddresses(List<Address> addresses)
         {
 
-            string addressesJsonString = JsonConvert.SerializeObject(addresses, JsonSerializerSettings);
+            string addressesJsonString = JsonSerializer.Serialize(addresses, JsonSerializerOptions);
 
             var path = "v1/addresses/validate";
 
@@ -71,7 +72,7 @@ namespace ShipEngineSDK
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string addressesJsonString = JsonConvert.SerializeObject(addresses, JsonSerializerSettings);
+            string addressesJsonString = JsonSerializer.Serialize(addresses, JsonSerializerOptions);
 
             var path = "v1/addresses/validate";
 
@@ -123,7 +124,7 @@ namespace ShipEngineSDK
         {
             var path = "v1/manifests";
 
-            string paramString = JsonConvert.SerializeObject(manifestParams, JsonSerializerSettings);
+            string paramString = JsonSerializer.Serialize(manifestParams, JsonSerializerOptions);
 
             var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Post, path, paramString, _client, _config);
 
@@ -142,7 +143,7 @@ namespace ShipEngineSDK
 
             var path = "v1/manifests";
 
-            string paramString = JsonConvert.SerializeObject(manifestParams, JsonSerializerSettings);
+            string paramString = JsonSerializer.Serialize(manifestParams, JsonSerializerOptions);
 
             var manifest = await SendHttpRequestAsync<Manifests.Result>(HttpMethod.Post, path, paramString, client, _config);
 
@@ -258,7 +259,7 @@ namespace ShipEngineSDK
         public async Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams)
         {
 
-            string labelParamsString = JsonConvert.SerializeObject(labelParams, JsonSerializerSettings);
+            string labelParamsString = JsonSerializer.Serialize(labelParams, JsonSerializerOptions);
 
             var path = "/v1/labels";
 
@@ -278,7 +279,7 @@ namespace ShipEngineSDK
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            string labelParamsString = JsonConvert.SerializeObject(labelParams, JsonSerializerSettings);
+            string labelParamsString = JsonSerializer.Serialize(labelParams, JsonSerializerOptions);
 
             var path = "/v1/labels";
 
@@ -298,7 +299,7 @@ namespace ShipEngineSDK
         {
             var path = $"/v1/labels/rates/{createLabelFromRateParams.RateId}";
 
-            string createLabelFromRateParamsString = JsonConvert.SerializeObject(createLabelFromRateParams, JsonSerializerSettings);
+            string createLabelFromRateParamsString = JsonSerializer.Serialize(createLabelFromRateParams, JsonSerializerOptions);
 
             var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result>(HttpMethod.Post, path, createLabelFromRateParamsString, _client, _config);
 
@@ -318,7 +319,7 @@ namespace ShipEngineSDK
 
             var path = $"/v1/labels/rates/{createLabelFromRateParams.RateId}";
 
-            string createLabelFromRateParamsString = JsonConvert.SerializeObject(createLabelFromRateParams, JsonSerializerSettings);
+            string createLabelFromRateParamsString = JsonSerializer.Serialize(createLabelFromRateParams, JsonSerializerOptions);
 
             var labelResult = await SendHttpRequestAsync<CreateLabelFromRate.Result>(HttpMethod.Post, path, createLabelFromRateParamsString, client, methodConfig);
 
@@ -336,7 +337,7 @@ namespace ShipEngineSDK
         {
             var path = "/v1/rates";
 
-            string paramString = JsonConvert.SerializeObject(rateParams, JsonSerializerSettings);
+            string paramString = JsonSerializer.Serialize(rateParams, JsonSerializerOptions);
 
             var labelResult = await SendHttpRequestAsync<GetRatesWithShipmentDetails.Result>(HttpMethod.Post, path, paramString, _client, _config);
 
@@ -355,7 +356,7 @@ namespace ShipEngineSDK
 
             var path = "/v1/rates";
 
-            string paramString = JsonConvert.SerializeObject(rateParams, JsonSerializerSettings);
+            string paramString = JsonSerializer.Serialize(rateParams, JsonSerializerOptions);
 
             var labelResult = await SendHttpRequestAsync<GetRatesWithShipmentDetails.Result>(HttpMethod.Post, path, paramString, client, methodConfig);
 

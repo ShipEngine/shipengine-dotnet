@@ -1,1 +1,3 @@
-﻿
+﻿override ShipEngineSDK.Common.MonetaryValueConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! type, System.Text.Json.JsonSerializerOptions! options) -> ShipEngineSDK.Common.MonetaryValue!
+override ShipEngineSDK.Common.MonetaryValueConverter.Write(System.Text.Json.Utf8JsonWriter! writer, ShipEngineSDK.Common.MonetaryValue! value, System.Text.Json.JsonSerializerOptions! options) -> void
+readonly ShipEngineSDK.ShipEngineClient.JsonSerializerOptions -> System.Text.Json.JsonSerializerOptions!

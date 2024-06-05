@@ -104,3 +104,9 @@ Added support LabelDownload to Package on CreateLabelFromShipment and CreateLabe
 ### Changed
 
 Added custom converter to fallback to default unspecified error code if value cannot be found in the enumeration
+
+## 2.0.0
+
+### Changed
+
+Updated to .NET 8.0, removed Newtonsoft.Json dependency, and updated to System.Text.Json

@@ -1,11 +1,12 @@
 #nullable disable
 
-using Newtonsoft.Json;
 using ShipEngineSDK.Common;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.ValidateAddresses
 {
+
     /// <summary>
     /// Addresss validation result
     /// </summary>
@@ -28,7 +29,7 @@ namespace ShipEngineSDK.ValidateAddresses
         /// Addresses are normalized according to the normalization rules of the
         /// country they're in.
         /// </summary>
-        [JsonProperty("matched_address")]
+        [JsonPropertyName("matched_address")]
         public Address NormalizedAddress { get; set; }
 
         /// <summary>

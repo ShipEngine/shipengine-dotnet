@@ -1,18 +1,21 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class TestUtils
 {
-    public readonly JsonSerializerSettings JsonSerializerSettings;
+    public readonly JsonSerializerOptions JsonSerializerOptions;
 
     public TestUtils()
     {
-        JsonSerializerSettings = new JsonSerializerSettings()
+        JsonSerializerOptions = new JsonSerializerOptions()
         {
-            NullValueHandling = NullValueHandling.Include,
-            ContractResolver = new DefaultContractResolver
+            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+            PropertyNameCaseInsensitive = true,
+            WriteIndented = true,
+            Converters =
             {
-                NamingStrategy = new SnakeCaseNamingStrategy()
+                new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower)
             }
         };
     }

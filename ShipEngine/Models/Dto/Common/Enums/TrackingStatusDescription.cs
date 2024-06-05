@@ -1,12 +1,14 @@
 #pragma warning disable 1591
 
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common.Enums
 {
     /// <summary>
     /// Tracking status description.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum TrackingStatusDescription
     {
         [EnumMember(Value = "Accepted")]

@@ -1,16 +1,15 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using ShipEngineSDK.Common;
 using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
-    using Converters;
 
     /// <summary>
     /// ShipEngine Client is used for handling generic calls and settings that
@@ -19,24 +18,23 @@ namespace ShipEngineSDK
     public class ShipEngineClient
     {
         /// <summary>
-        /// Settings for serializing the method call params to JSON.
+        /// Options for serializing the method call params to JSON.
         /// A separate inline setting is used for deserializing the response
         /// </summary>
-        protected readonly JsonSerializerSettings JsonSerializerSettings;
+        protected readonly JsonSerializerOptions JsonSerializerOptions;
 
         /// <summary>
         /// Constructor for ShipEngineClient
         /// </summary>
         public ShipEngineClient()
         {
-            JsonSerializerSettings = new JsonSerializerSettings()
+            JsonSerializerOptions = new JsonSerializerOptions
             {
-                NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Include,
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                }
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+                PropertyNameCaseInsensitive = true,
+                WriteIndented = true,
+                Converters = { new JsonStringEnumMemberConverter() }
             };
         }
 
@@ -80,7 +78,7 @@ namespace ShipEngineSDK
 
             if (!response.IsSuccessStatusCode)
             {
-                var deserializedError = JsonConvert.DeserializeObject<ShipEngineAPIError>(contentString, JsonSerializerSettings);
+                var deserializedError = JsonSerializer.Deserialize<ShipEngineAPIError>(contentString, JsonSerializerOptions);
 
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
@@ -88,9 +86,9 @@ namespace ShipEngineSDK
                     response.EnsureSuccessStatusCode();
                 }
 
-                var error = deserializedError.Errors[0];
+                var error = deserializedError?.Errors[0];
 
-                if (error != null && error.Message != null && deserializedError.RequestId != null)
+                if (error != null && error.Message != null && deserializedError?.RequestId != null)
                 {
                     throw new ShipEngineException(
                         error.Message,
@@ -103,15 +101,7 @@ namespace ShipEngineSDK
 
             }
 
-            var settings = new JsonSerializerSettings()
-            {
-                NullValueHandling = NullValueHandling.Include,
-                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
-            };
-
-            settings.Converters.Add(new ErrorCodeEnumConverter { DefaultValue = ErrorCode.Unspecified });
-
-            var result = JsonConvert.DeserializeObject<T>(contentString, settings);
+            var result = JsonSerializer.Deserialize<T>(contentString, JsonSerializerOptions);
 
             if (result != null)
             {

@@ -1,7 +1,4 @@
 using Moq;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
@@ -10,11 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace ShipEngineTest
 {
+
     public class CreateLabelFromShipmentDetailsTest
     {
 
@@ -72,7 +73,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void ValidCreateLabelFromShipmentDetailsTest()
+        public async Task ValidCreateLabelFromShipmentDetailsTest()
         {
             var config = new Config("TEST_ycvJAgX6tLB1Awm9WGJmD8mpZ8wXiQ20WhqFowCk32s");
 
@@ -153,27 +154,29 @@ namespace ShipEngineTest
         [Fact]
         public void TestParamsSerialization()
         {
-            string labelParamsString = JsonConvert.SerializeObject(LabelParams, new JsonSerializerSettings()
+            string labelParamsString = JsonSerializer.Serialize(LabelParams, new JsonSerializerOptions()
             {
-                NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Ignore,
-                ContractResolver = new DefaultContractResolver
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+                PropertyNameCaseInsensitive = true,
+                WriteIndented = true,
+                Converters =
                 {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
+                    new JsonStringEnumMemberConverter()
                 }
             });
 
-            JObject parsedJson = JObject.Parse(labelParamsString);
+            var parsedJson = JsonSerializer.Deserialize<JsonObject>(labelParamsString);
 
-            Assert.Equal("John Doe", parsedJson["shipment"]["ship_from"]["name"]);
-            Assert.Equal("delivery_mailed", parsedJson["shipment"]["confirmation"]);
+            Assert.Equal("John Doe", parsedJson["shipment"]["ship_from"]["name"].ToString());
+            Assert.Equal("delivery_mailed", parsedJson["shipment"]["confirmation"].ToString());
             Assert.Null(parsedJson["label_layout"]);
             Assert.Null(parsedJson["label_format"]);
         }
 
 
         [Fact]
-        public async void ValidateCustomSettingsAtMethodLevel()
+        public async Task ValidateCustomSettingsAtMethodLevel()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 
@@ -184,7 +187,7 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
             string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromShipmentDetails200Response.json"));
 
-            var voidLabelResult = JsonConvert.DeserializeObject<Result>(json);
+            var voidLabelResult = JsonSerializer.Deserialize<Result>(json);
             var request = new HttpRequestMessage(HttpMethod.Post, "v1/labels");
 
             // Verify that the client has a custom timeout of 1 second when called.
@@ -209,7 +212,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async void InvalidRetriesInMethodCall()
+        public async Task InvalidRetriesInMethodCall()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
 

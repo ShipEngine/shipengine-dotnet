@@ -1,6 +1,7 @@
 #pragma warning disable 1591
 
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common.Enums
 {
@@ -8,6 +9,7 @@ namespace ShipEngineSDK.Common.Enums
     /// Tracking status code.
     /// <see href="https://www.shipengine.com/docs/tracking/"/>
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum TrackingStatusCode
     {
         /// <summary>

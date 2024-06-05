@@ -1,11 +1,14 @@
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ShipEngineSDK.Common.Enums
 {
+
     /// <summary>
     /// Delivery Confirmation for your shipments
     /// <see href="https://www.shipengine.com/docs/shipping/delivery-confirmation/" />
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum DeliveryConfirmation
     {
         /// <summary>
