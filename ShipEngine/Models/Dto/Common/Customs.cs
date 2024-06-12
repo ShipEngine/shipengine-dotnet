@@ -12,7 +12,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The type of contents in this shipment. This may impact import duties or customs treatment.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public PackageContents Contents { get; set; }
 
         /// <summary>

@@ -30,7 +30,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// <summary>
         /// The label charge event.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public ChargeEvent? ChargeEvent { get; set; }
 
         /// <summary>
@@ -155,19 +155,19 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// <summary>
         /// Indicates if the package will be picked up or dropped off by the carrier
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public OriginType OriginType { get; set; }
 
         /// <summary>
         /// The insurance provider to use for any insured packages in the shipment
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public InsuranceProvider InsuranceProvider { get; set; }
 
         /// <summary>
         /// The order sources that are supported by ShipEngine
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public OrderSourceCode? OrderSourceCode { get; set; }
 
         /// <summary>
@@ -222,13 +222,13 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// <summary>
         /// The type of contents in this shipment. This may impact import duties or customs treatment.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public PackageContents Contents { get; set; }
 
         /// <summary>
         /// Indicates what to do if a package is unable to be delivered.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public NonDelivery NonDelivery { get; set; }
 
         /// <summary>

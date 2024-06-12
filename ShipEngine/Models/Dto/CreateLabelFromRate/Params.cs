@@ -23,13 +23,13 @@ namespace ShipEngineSDK.CreateLabelFromRate
         /// <summary>
         /// The layout (size) that you want the label to be in.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public LabelLayout LabelLayout { get; set; }
 
         /// <summary>
         /// The file format that you want the label to be in.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public LabelFormat LabelFormat { get; set; }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace ShipEngineSDK.CreateLabelFromRate
         /// <summary>
         /// The display format that the label should be shown in.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public DisplayScheme DisplayScheme { get; set; }
     }
 }

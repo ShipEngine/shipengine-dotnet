@@ -110,3 +110,9 @@ Added custom converter to fallback to default unspecified error code if value ca
 ### Changed
 
 Updated to .NET 8.0, removed Newtonsoft.Json dependency, and updated to System.Text.Json
+
+## 2.0.1
+
+### Changed
+
+Updated references to use proper converter to resolve enum string values

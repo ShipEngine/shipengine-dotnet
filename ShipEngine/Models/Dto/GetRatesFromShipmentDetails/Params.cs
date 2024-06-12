@@ -100,7 +100,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The type of delivery confirmation that is required for this shipment.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public DeliveryConfirmation Confirmation { get; set; }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The insurance provider to use for any insured packages in the shipment.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public InsuranceProvider InsuranceProvider { get; set; }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The order sources that are supported by ShipEngine
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public OrderSourceCode OrderSourceCode { get; set; }
 
         /// <summary>
