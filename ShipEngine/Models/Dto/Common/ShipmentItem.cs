@@ -51,7 +51,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// The order sources that are supported by ShipEngine
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public OrderSourceCode? OrderSourceCode { get; set; }
     }
 }

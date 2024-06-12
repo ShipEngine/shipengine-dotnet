@@ -62,7 +62,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// Indicates whether the address is residential or commercial, if known.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     }
 }

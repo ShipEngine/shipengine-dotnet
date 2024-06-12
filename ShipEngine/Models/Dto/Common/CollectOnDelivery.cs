@@ -12,7 +12,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// Types of payment that are supported
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
         public PaymentType? PaymentType { get; set; }
 
         /// <summary>
