@@ -1,4 +1,7 @@
-﻿using ShipEngineSDK.Common;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using ShipEngineSDK.Common;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
@@ -8,18 +11,45 @@ using System.Threading.Tasks;
 namespace ShipEngineSDK
 {
     /// <summary>
+    /// Extension method to allow customized client configuration
+    /// </summary>
+    public static class ShipEngineExtensions
+    {
+        /// <summary>
+        /// Adds ShipEngine to the host builder and configures the client.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="configureClient"></param>
+        /// <returns></returns>
+        public static IHostApplicationBuilder AddShipEngine(this IHostApplicationBuilder builder, Action<HttpClient>? configureClient = null)
+        {
+            builder.Services.AddHttpClient<ShipEngine>(c =>
+            {
+                var baseUri = builder.Configuration["ShipEngine:BaseUrl"] ?? "https://api.shipengine.com";
+                var apiKey = builder.Configuration["ShipEngine:ApiKey"] ?? "";
+                ShipEngineClient.ConfigureHttpClient(c, apiKey, new Uri(baseUri));
+                configureClient?.Invoke(c);
+            });
+
+            return builder;
+        }
+    }
+
+    /// <summary>
     /// Contains methods for interacting with the ShipEngine API.
     /// </summary>
-    public class ShipEngine : ShipEngineClient
+    public class ShipEngine : ShipEngineClient, IDisposable
     {
         /// <summary>
         /// Global HttpClient for ShipEngine instance.
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         public HttpClient _client;
 
         /// <summary>
         /// Global config for ShipEngine instance.
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         public Config _config;
 
         /// <summary>
@@ -28,9 +58,8 @@ namespace ShipEngineSDK
         /// <param name="apiKey">Api Key associated with the ShipEngine account you want to use</param>
         public ShipEngine(string apiKey) : base()
         {
-            var client = new HttpClient();
             _config = new Config(apiKey);
-            _client = ConfigureHttpClient(_config, client);
+            _client = ConfigureHttpClient(_config, new HttpClient());
         }
 
         /// <summary>
@@ -39,9 +68,34 @@ namespace ShipEngineSDK
         /// <param name="config">Config object containing custom configurations</param>
         public ShipEngine(Config config) : base()
         {
-            var client = new HttpClient();
             this._config = config;
-            _client = ConfigureHttpClient(config, client);
+            _client = ConfigureHttpClient(config, new HttpClient());
+        }
+
+        /// <summary>
+        /// Initialize the ShipEngine SDK with an httpClient object
+        /// </summary>
+        /// <param name="httpClient">HttpClient object to be used for ShipEngine API calls. We expect the httpClient has already been configured with ConfigureHttpClient</param>
+        public ShipEngine(HttpClient httpClient) : base()
+        {
+            _client = httpClient;
+        }
+
+        /// <summary>
+        /// Dispose of the ShipEngine client
+        /// </summary>
+        public void Dispose()
+        {
+            _client.Dispose();
+        }
+
+        /// <summary>
+        /// Modify the ShipEngine request
+        /// </summary>
+        public new ShipEngine ModifyRequest(Action<HttpRequestMessage> modifyRequest)
+        {
+            base.ModifyRequest = modifyRequest;
+            return this;
         }
 
         /// <summary>

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
@@ -21,28 +22,30 @@ namespace ShipEngineSDK
         /// Options for serializing the method call params to JSON.
         /// A separate inline setting is used for deserializing the response
         /// </summary>
-        protected readonly JsonSerializerOptions JsonSerializerOptions;
-
-        /// <summary>
-        /// Constructor for ShipEngineClient
-        /// </summary>
-        public ShipEngineClient()
+        protected static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
         {
-            JsonSerializerOptions = new JsonSerializerOptions
-            {
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-                PropertyNameCaseInsensitive = true,
-                WriteIndented = true,
-                Converters = { new JsonStringEnumMemberConverter() }
-            };
-        }
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+            PropertyNameCaseInsensitive = true,
+            WriteIndented = true,
+            Converters = { new JsonStringEnumMemberConverter() }
+        };
 
         private const string JsonMediaType = "application/json";
 
         /// <summary>
+        /// Modifies the client request before it is sent
+        /// </summary>
+        protected Action<HttpRequestMessage>? ModifyRequest { get; set; }
+
+        /// <summary>
+        /// Token to cancel the request
+        /// </summary>
+        public CancellationToken CancellationToken { get; set; }
+
+        /// <summary>
         /// Sets the HttpClient User agent, the json media type, and the API key to be used
-        /// for all ShipEngine API calls unless overrwritten at the method level.
+        /// for all ShipEngine API calls unless overwritten at the method level.
         /// </summary>
         /// <param name="config">Config object used to configure the HttpClient</param>
         /// <param name="client">The HttpClient to be configured</param>
@@ -67,6 +70,39 @@ namespace ShipEngineSDK
             client.BaseAddress = new Uri("https://api.shipengine.com");
 
             client.Timeout = config.Timeout;
+
+            return client;
+        }
+
+        /// <summary>
+        /// Sets the HttpClient User agent, the json media type, and the API key to be used
+        /// for all ShipEngine API calls unless overwritten at the method level.
+        /// </summary>
+        /// <param name="client">The HttpClient to be configured</param>
+        /// <param name="apiKey">The API key to be used for all ShipEngine API calls</param>
+        /// <param name="baseUri">The base URI for the ShipEngine API</param>
+        /// <param name="timeout">The timeout for the ShipEngine API Calls</param>
+        /// <returns></returns>
+        public static HttpClient ConfigureHttpClient(HttpClient client, string apiKey, Uri? baseUri, TimeSpan? timeout = null)
+        {
+            client.DefaultRequestHeaders.Accept.Clear();
+
+            var osPlatform = Environment.OSVersion.Platform.ToString();
+            var osVersion = Environment.OSVersion.Version.ToString();
+            var clrVersion = Environment.Version.ToString();
+
+            var sdkVersionObject = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            var sdkVersion = $"{sdkVersionObject.Major}.{sdkVersionObject.Minor}.{sdkVersionObject.Build}";
+
+            var userAgentString = $"shipengine-dotnet/{sdkVersion} {osPlatform}/{osVersion} clr/{clrVersion}";
+
+            client.DefaultRequestHeaders.Add("User-Agent", userAgentString);
+            client.DefaultRequestHeaders.Add("Api-Key", apiKey);
+            client.DefaultRequestHeaders.Add("Accept", JsonMediaType);
+
+            client.BaseAddress = baseUri ?? new Uri("https://api.shipengine.com");
+
+            client.Timeout = timeout ?? TimeSpan.FromSeconds(60);
 
             return client;
         }
@@ -135,7 +171,8 @@ namespace ShipEngineSDK
                 try
                 {
                     var request = BuildRequest(method, path, jsonContent);
-                    var streamTask = client.SendAsync(request);
+                    ModifyRequest?.Invoke(request);
+                    var streamTask = client.SendAsync(request, CancellationToken);
                     response = await streamTask;
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
@@ -183,7 +220,7 @@ namespace ShipEngineSDK
 
             try
             {
-                retryAfter = Int32.Parse(response?.Headers.GetValues("RetryAfter").First());
+                retryAfter = Int32.Parse(response?.Headers.GetValues("RetryAfter").First() ?? String.Empty);
             }
             catch
             {
@@ -202,10 +239,10 @@ namespace ShipEngineSDK
                 );
             }
 
-            await Task.Delay((int)retryAfter * 1000).ConfigureAwait(false);
+            await Task.Delay((int)retryAfter * 1000, CancellationToken).ConfigureAwait(false);
         }
 
-        private HttpRequestMessage BuildRequest(HttpMethod method, string path, string? jsonContent)
+        private static HttpRequestMessage BuildRequest(HttpMethod method, string path, string? jsonContent)
         {
             var request = new HttpRequestMessage(method, path);
 
@@ -217,7 +254,7 @@ namespace ShipEngineSDK
             return request;
         }
 
-        private bool ShouldRetry(
+        private static bool ShouldRetry(
             int numRetries,
             HttpStatusCode? statusCode,
             HttpHeaders? headers,

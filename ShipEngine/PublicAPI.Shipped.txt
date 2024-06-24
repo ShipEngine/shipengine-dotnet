@@ -4,7 +4,6 @@ override ShipEngineSDK.Common.MonetaryValueConverter.Write(System.Text.Json.Utf8
 readonly ShipEngineSDK.Config.ApiKey -> string!
 readonly ShipEngineSDK.Config.Retries -> int
 readonly ShipEngineSDK.Config.Timeout -> System.TimeSpan
-readonly ShipEngineSDK.ShipEngineClient.JsonSerializerOptions -> System.Text.Json.JsonSerializerOptions!
 ShipEngineSDK.Common.Address
 ShipEngineSDK.Common.Address.Address() -> void
 ShipEngineSDK.Common.Address.AddressLine1.get -> string?
@@ -1152,12 +1151,15 @@ ShipEngineSDK.ShipEngine.CreateLabelFromShipmentDetails(ShipEngineSDK.CreateLabe
 ShipEngineSDK.ShipEngine.CreateLabelFromShipmentDetails(ShipEngineSDK.CreateLabelFromShipmentDetails.Params! labelParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromShipmentDetails.Result!>!
 ShipEngineSDK.ShipEngine.CreateManifest(ShipEngineSDK.Config! methodConfig, ShipEngineSDK.Manifests.Params! manifestParams) -> System.Threading.Tasks.Task<ShipEngineSDK.Manifests.Result!>!
 ShipEngineSDK.ShipEngine.CreateManifest(ShipEngineSDK.Manifests.Params! manifestParams) -> System.Threading.Tasks.Task<ShipEngineSDK.Manifests.Result!>!
+ShipEngineSDK.ShipEngine.Dispose() -> void
 ShipEngineSDK.ShipEngine.GetRatesWithShipmentDetails(ShipEngineSDK.GetRatesWithShipmentDetails.Params! rateParams) -> System.Threading.Tasks.Task<ShipEngineSDK.GetRatesWithShipmentDetails.Result!>!
 ShipEngineSDK.ShipEngine.GetRatesWithShipmentDetails(ShipEngineSDK.GetRatesWithShipmentDetails.Params! rateParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.GetRatesWithShipmentDetails.Result!>!
 ShipEngineSDK.ShipEngine.ListCarriers() -> System.Threading.Tasks.Task<ShipEngineSDK.ListCarriers.Result!>!
 ShipEngineSDK.ShipEngine.ListCarriers(ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.ListCarriers.Result!>!
+ShipEngineSDK.ShipEngine.ModifyRequest(System.Action<System.Net.Http.HttpRequestMessage!>! modifyRequest) -> ShipEngineSDK.ShipEngine!
 ShipEngineSDK.ShipEngine.ShipEngine(ShipEngineSDK.Config! config) -> void
 ShipEngineSDK.ShipEngine.ShipEngine(string! apiKey) -> void
+ShipEngineSDK.ShipEngine.ShipEngine(System.Net.Http.HttpClient! httpClient) -> void
 ShipEngineSDK.ShipEngine.TrackUsingCarrierCodeAndTrackingNumber(string! trackingNumber, string! carrierCode) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result!>!
 ShipEngineSDK.ShipEngine.TrackUsingCarrierCodeAndTrackingNumber(string! trackingNumber, string! carrierCode, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result!>!
 ShipEngineSDK.ShipEngine.TrackUsingLabelId(string! labelId) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingLabelId.Result!>!
@@ -1170,6 +1172,10 @@ ShipEngineSDK.ShipEngine._client -> System.Net.Http.HttpClient!
 ShipEngineSDK.ShipEngine._config -> ShipEngineSDK.Config!
 ShipEngineSDK.ShipEngineClient
 ShipEngineSDK.ShipEngineClient.ShipEngineClient() -> void
+ShipEngineSDK.ShipEngineClient.CancellationToken.get -> System.Threading.CancellationToken
+ShipEngineSDK.ShipEngineClient.CancellationToken.set -> void
+ShipEngineSDK.ShipEngineClient.ModifyRequest.get -> System.Action<System.Net.Http.HttpRequestMessage>
+ShipEngineSDK.ShipEngineClient.ModifyRequest.set -> void
 ShipEngineSDK.ShipEngineException
 ShipEngineSDK.ShipEngineException.ErrorCode.get -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ShipEngineException.ErrorCode.set -> void
@@ -1181,6 +1187,7 @@ ShipEngineSDK.ShipEngineException.RequestId.get -> string?
 ShipEngineSDK.ShipEngineException.ResponseMessage.get -> System.Net.Http.HttpResponseMessage?
 ShipEngineSDK.ShipEngineException.ResponseMessage.set -> void
 ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, System.Net.Http.HttpResponseMessage? responseMessage = null, string? requestID = null) -> void
+ShipEngineSDK.ShipEngineExtensions
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.Result() -> void
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.StatusCode.get -> ShipEngineSDK.Common.Enums.TrackingStatusCode
@@ -1289,7 +1296,10 @@ ShipEngineSDK.VoidLabelWithLabelId.Result.Approved.set -> void
 ShipEngineSDK.VoidLabelWithLabelId.Result.Message.get -> string?
 ShipEngineSDK.VoidLabelWithLabelId.Result.Message.set -> void
 ShipEngineSDK.VoidLabelWithLabelId.Result.Result() -> void
+static readonly ShipEngineSDK.ShipEngineClient.JsonSerializerOptions -> System.Text.Json.JsonSerializerOptions!
 static ShipEngineSDK.ShipEngineClient.ConfigureHttpClient(ShipEngineSDK.Config! config, System.Net.Http.HttpClient! client) -> System.Net.Http.HttpClient!
+static ShipEngineSDK.ShipEngineClient.ConfigureHttpClient(System.Net.Http.HttpClient! client, string! apiKey, System.Uri? baseUri, System.TimeSpan? timeout = null) -> System.Net.Http.HttpClient!
+static ShipEngineSDK.ShipEngineExtensions.AddShipEngine(this Microsoft.Extensions.Hosting.IHostApplicationBuilder! builder, System.Action<System.Net.Http.HttpClient!>? configureClient = null) -> Microsoft.Extensions.Hosting.IHostApplicationBuilder!
 virtual ShipEngineSDK.ShipEngineClient.SendHttpRequestAsync<T>(System.Net.Http.HttpMethod! method, string! path, string? jsonContent, System.Net.Http.HttpClient! client, ShipEngineSDK.Config! config) -> System.Threading.Tasks.Task<T>!
 ~ShipEngineSDK.Common.Error.Message.get -> string
 ~ShipEngineSDK.Common.Error.Message.set -> void
