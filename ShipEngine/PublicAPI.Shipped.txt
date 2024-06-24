@@ -1048,6 +1048,25 @@ ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus.HasWarnings = 2 -> Sh
 ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus.Invalid = 1 -> ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus
 ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus.Unknown = 3 -> ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus
 ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus.Valid = 0 -> ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus
+ShipEngineSDK.IShipEngine
+ShipEngineSDK.IShipEngine.CreateLabelFromRate(ShipEngineSDK.CreateLabelFromRate.Params! createLabelFromRateParams) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromRate.Result!>!
+ShipEngineSDK.IShipEngine.CreateLabelFromRate(ShipEngineSDK.CreateLabelFromRate.Params! createLabelFromRateParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromRate.Result!>!
+ShipEngineSDK.IShipEngine.CreateLabelFromShipmentDetails(ShipEngineSDK.CreateLabelFromShipmentDetails.Params! labelParams) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromShipmentDetails.Result!>!
+ShipEngineSDK.IShipEngine.CreateLabelFromShipmentDetails(ShipEngineSDK.CreateLabelFromShipmentDetails.Params! labelParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromShipmentDetails.Result!>!
+ShipEngineSDK.IShipEngine.CreateManifest(ShipEngineSDK.Config! methodConfig, ShipEngineSDK.Manifests.Params! manifestParams) -> System.Threading.Tasks.Task<ShipEngineSDK.Manifests.Result!>!
+ShipEngineSDK.IShipEngine.CreateManifest(ShipEngineSDK.Manifests.Params! manifestParams) -> System.Threading.Tasks.Task<ShipEngineSDK.Manifests.Result!>!
+ShipEngineSDK.IShipEngine.GetRatesWithShipmentDetails(ShipEngineSDK.GetRatesWithShipmentDetails.Params! rateParams) -> System.Threading.Tasks.Task<ShipEngineSDK.GetRatesWithShipmentDetails.Result!>!
+ShipEngineSDK.IShipEngine.GetRatesWithShipmentDetails(ShipEngineSDK.GetRatesWithShipmentDetails.Params! rateParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.GetRatesWithShipmentDetails.Result!>!
+ShipEngineSDK.IShipEngine.ListCarriers() -> System.Threading.Tasks.Task<ShipEngineSDK.ListCarriers.Result!>!
+ShipEngineSDK.IShipEngine.ListCarriers(ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.ListCarriers.Result!>!
+ShipEngineSDK.IShipEngine.TrackUsingCarrierCodeAndTrackingNumber(string! trackingNumber, string! carrierCode) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result!>!
+ShipEngineSDK.IShipEngine.TrackUsingCarrierCodeAndTrackingNumber(string! trackingNumber, string! carrierCode, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result!>!
+ShipEngineSDK.IShipEngine.TrackUsingLabelId(string! labelId) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingLabelId.Result!>!
+ShipEngineSDK.IShipEngine.TrackUsingLabelId(string! labelId, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingLabelId.Result!>!
+ShipEngineSDK.IShipEngine.ValidateAddresses(System.Collections.Generic.List<ShipEngineSDK.Common.Address!>! addresses) -> System.Threading.Tasks.Task<System.Collections.Generic.List<ShipEngineSDK.ValidateAddresses.Result!>!>!
+ShipEngineSDK.IShipEngine.ValidateAddresses(System.Collections.Generic.List<ShipEngineSDK.Common.Address!>! addresses, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<System.Collections.Generic.List<ShipEngineSDK.ValidateAddresses.Result!>!>!
+ShipEngineSDK.IShipEngine.VoidLabelWithLabelId(string! labelId) -> System.Threading.Tasks.Task<ShipEngineSDK.VoidLabelWithLabelId.Result!>!
+ShipEngineSDK.IShipEngine.VoidLabelWithLabelId(string! labelId, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.VoidLabelWithLabelId.Result!>!
 ShipEngineSDK.ListCarriers.AdvancedOption
 ShipEngineSDK.ListCarriers.AdvancedOption.AdvancedOption() -> void
 ShipEngineSDK.ListCarriers.Carrier
@@ -1188,6 +1207,8 @@ ShipEngineSDK.ShipEngineException.ResponseMessage.get -> System.Net.Http.HttpRes
 ShipEngineSDK.ShipEngineException.ResponseMessage.set -> void
 ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, System.Net.Http.HttpResponseMessage? responseMessage = null, string? requestID = null) -> void
 ShipEngineSDK.ShipEngineExtensions
+ShipEngineSDK.ShipEngineMock
+ShipEngineSDK.ShipEngineMock.ShipEngineMock() -> void
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.Result() -> void
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.StatusCode.get -> ShipEngineSDK.Common.Enums.TrackingStatusCode
@@ -1301,6 +1322,24 @@ static ShipEngineSDK.ShipEngineClient.ConfigureHttpClient(ShipEngineSDK.Config! 
 static ShipEngineSDK.ShipEngineClient.ConfigureHttpClient(System.Net.Http.HttpClient! client, string! apiKey, System.Uri? baseUri, System.TimeSpan? timeout = null) -> System.Net.Http.HttpClient!
 static ShipEngineSDK.ShipEngineExtensions.AddShipEngine(this Microsoft.Extensions.Hosting.IHostApplicationBuilder! builder, System.Action<System.Net.Http.HttpClient!>? configureClient = null) -> Microsoft.Extensions.Hosting.IHostApplicationBuilder!
 virtual ShipEngineSDK.ShipEngineClient.SendHttpRequestAsync<T>(System.Net.Http.HttpMethod! method, string! path, string? jsonContent, System.Net.Http.HttpClient! client, ShipEngineSDK.Config! config) -> System.Threading.Tasks.Task<T>!
+virtual ShipEngineSDK.ShipEngineMock.CreateLabelFromRate(ShipEngineSDK.CreateLabelFromRate.Params! createLabelFromRateParams) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromRate.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.CreateLabelFromRate(ShipEngineSDK.CreateLabelFromRate.Params! createLabelFromRateParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromRate.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.CreateLabelFromShipmentDetails(ShipEngineSDK.CreateLabelFromShipmentDetails.Params! labelParams) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromShipmentDetails.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.CreateLabelFromShipmentDetails(ShipEngineSDK.CreateLabelFromShipmentDetails.Params! labelParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.CreateLabelFromShipmentDetails.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.CreateManifest(ShipEngineSDK.Config! methodConfig, ShipEngineSDK.Manifests.Params! manifestParams) -> System.Threading.Tasks.Task<ShipEngineSDK.Manifests.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.CreateManifest(ShipEngineSDK.Manifests.Params! manifestParams) -> System.Threading.Tasks.Task<ShipEngineSDK.Manifests.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.GetRatesWithShipmentDetails(ShipEngineSDK.GetRatesWithShipmentDetails.Params! rateParams) -> System.Threading.Tasks.Task<ShipEngineSDK.GetRatesWithShipmentDetails.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.GetRatesWithShipmentDetails(ShipEngineSDK.GetRatesWithShipmentDetails.Params! rateParams, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.GetRatesWithShipmentDetails.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.ListCarriers() -> System.Threading.Tasks.Task<ShipEngineSDK.ListCarriers.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.ListCarriers(ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.ListCarriers.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.TrackUsingCarrierCodeAndTrackingNumber(string! trackingNumber, string! carrierCode) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.TrackUsingCarrierCodeAndTrackingNumber(string! trackingNumber, string! carrierCode, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.TrackUsingLabelId(string! labelId) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingLabelId.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.TrackUsingLabelId(string! labelId, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.TrackUsingLabelId.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.ValidateAddresses(System.Collections.Generic.List<ShipEngineSDK.Common.Address!>! addresses) -> System.Threading.Tasks.Task<System.Collections.Generic.List<ShipEngineSDK.ValidateAddresses.Result!>!>!
+virtual ShipEngineSDK.ShipEngineMock.ValidateAddresses(System.Collections.Generic.List<ShipEngineSDK.Common.Address!>! addresses, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<System.Collections.Generic.List<ShipEngineSDK.ValidateAddresses.Result!>!>!
+virtual ShipEngineSDK.ShipEngineMock.VoidLabelWithLabelId(string! labelId) -> System.Threading.Tasks.Task<ShipEngineSDK.VoidLabelWithLabelId.Result!>!
+virtual ShipEngineSDK.ShipEngineMock.VoidLabelWithLabelId(string! labelId, ShipEngineSDK.Config! methodConfig) -> System.Threading.Tasks.Task<ShipEngineSDK.VoidLabelWithLabelId.Result!>!
 ~ShipEngineSDK.Common.Error.Message.get -> string
 ~ShipEngineSDK.Common.Error.Message.set -> void
 ~ShipEngineSDK.Common.ShipEngineAPIError.Errors.get -> System.Collections.Generic.List<ShipEngineSDK.Common.Error>
