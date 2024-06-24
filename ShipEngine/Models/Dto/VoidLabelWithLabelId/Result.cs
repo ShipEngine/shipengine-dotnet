@@ -13,6 +13,6 @@ namespace ShipEngineSDK.VoidLabelWithLabelId
         /// <summary>
         /// Message associated with the result of the void label attempt
         /// </summary>
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

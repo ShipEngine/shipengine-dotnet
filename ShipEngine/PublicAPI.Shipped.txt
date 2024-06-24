@@ -1,11 +1,10 @@
 ﻿#nullable enable
-override ShipEngineSDK.Common.MonetaryValueConverter.CanWrite.get -> bool
-override ShipEngineSDK.Common.MonetaryValueConverter.ReadJson(Newtonsoft.Json.JsonReader! reader, System.Type! objectType, ShipEngineSDK.Common.MonetaryValue! existingValue, bool hasExistingValue, Newtonsoft.Json.JsonSerializer! serializer) -> ShipEngineSDK.Common.MonetaryValue!
-override ShipEngineSDK.Common.MonetaryValueConverter.WriteJson(Newtonsoft.Json.JsonWriter! writer, ShipEngineSDK.Common.MonetaryValue! value, Newtonsoft.Json.JsonSerializer! serializer) -> void
+override ShipEngineSDK.Common.MonetaryValueConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! type, System.Text.Json.JsonSerializerOptions! options) -> ShipEngineSDK.Common.MonetaryValue!
+override ShipEngineSDK.Common.MonetaryValueConverter.Write(System.Text.Json.Utf8JsonWriter! writer, ShipEngineSDK.Common.MonetaryValue! value, System.Text.Json.JsonSerializerOptions! options) -> void
 readonly ShipEngineSDK.Config.ApiKey -> string!
 readonly ShipEngineSDK.Config.Retries -> int
 readonly ShipEngineSDK.Config.Timeout -> System.TimeSpan
-readonly ShipEngineSDK.ShipEngineClient.JsonSerializerSettings -> Newtonsoft.Json.JsonSerializerSettings!
+readonly ShipEngineSDK.ShipEngineClient.JsonSerializerOptions -> System.Text.Json.JsonSerializerOptions!
 ShipEngineSDK.Common.Address
 ShipEngineSDK.Common.Address.Address() -> void
 ShipEngineSDK.Common.Address.AddressLine1.get -> string?
@@ -80,7 +79,7 @@ ShipEngineSDK.Common.Customs
 ShipEngineSDK.Common.Customs.Contents.get -> ShipEngineSDK.Common.Enums.PackageContents
 ShipEngineSDK.Common.Customs.Contents.set -> void
 ShipEngineSDK.Common.Customs.Customs() -> void
-ShipEngineSDK.Common.Customs.CustomsItems.get -> System.Collections.Generic.List<ShipEngineSDK.Common.CustomsItem!>!
+ShipEngineSDK.Common.Customs.CustomsItems.get -> System.Collections.Generic.List<ShipEngineSDK.Common.CustomsItem!>?
 ShipEngineSDK.Common.Customs.CustomsItems.set -> void
 ShipEngineSDK.Common.Customs.NonDelivery.get -> ShipEngineSDK.Common.Enums.NonDelivery
 ShipEngineSDK.Common.Customs.NonDelivery.set -> void
@@ -657,7 +656,7 @@ ShipEngineSDK.CreateLabelFromRate.Result.LabelLayout.get -> ShipEngineSDK.Common
 ShipEngineSDK.CreateLabelFromRate.Result.LabelLayout.set -> void
 ShipEngineSDK.CreateLabelFromRate.Result.PackageCode.get -> string?
 ShipEngineSDK.CreateLabelFromRate.Result.PackageCode.set -> void
-ShipEngineSDK.CreateLabelFromRate.Result.Packages.get -> System.Collections.Generic.List<ShipEngineSDK.CreateLabelFromRate.Package!>!
+ShipEngineSDK.CreateLabelFromRate.Result.Packages.get -> System.Collections.Generic.List<ShipEngineSDK.CreateLabelFromRate.Package!>?
 ShipEngineSDK.CreateLabelFromRate.Result.Packages.set -> void
 ShipEngineSDK.CreateLabelFromRate.Result.Result() -> void
 ShipEngineSDK.CreateLabelFromRate.Result.RmaNumber.get -> string?
@@ -794,7 +793,7 @@ ShipEngineSDK.CreateLabelFromShipmentDetails.Result.LabelLayout.get -> ShipEngin
 ShipEngineSDK.CreateLabelFromShipmentDetails.Result.LabelLayout.set -> void
 ShipEngineSDK.CreateLabelFromShipmentDetails.Result.PackageCode.get -> string?
 ShipEngineSDK.CreateLabelFromShipmentDetails.Result.PackageCode.set -> void
-ShipEngineSDK.CreateLabelFromShipmentDetails.Result.Packages.get -> System.Collections.Generic.List<ShipEngineSDK.CreateLabelFromShipmentDetails.LabelPackage!>!
+ShipEngineSDK.CreateLabelFromShipmentDetails.Result.Packages.get -> System.Collections.Generic.List<ShipEngineSDK.CreateLabelFromShipmentDetails.LabelPackage!>?
 ShipEngineSDK.CreateLabelFromShipmentDetails.Result.Packages.set -> void
 ShipEngineSDK.CreateLabelFromShipmentDetails.Result.Result() -> void
 ShipEngineSDK.CreateLabelFromShipmentDetails.Result.RmaNumber.get -> string?
@@ -899,21 +898,21 @@ ShipEngineSDK.GetRatesWithShipmentDetails.Rate.CarrierId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.CarrierId.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.CarrierNickname.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.CarrierNickname.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ConfirmationAmount.get -> ShipEngineSDK.Common.MonetaryValue!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ConfirmationAmount.get -> ShipEngineSDK.Common.MonetaryValue?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ConfirmationAmount.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.DeliveryDays.get -> int?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.DeliveryDays.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ErrorMessages.get -> System.Collections.Generic.List<string!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ErrorMessages.get -> System.Collections.Generic.List<string!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ErrorMessages.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.EstimatedDeliveryDate.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.EstimatedDeliveryDate.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.GuaranteedService.get -> bool
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.GuaranteedService.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.InsuranceAmount.get -> ShipEngineSDK.Common.MonetaryValue!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.InsuranceAmount.get -> ShipEngineSDK.Common.MonetaryValue?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.InsuranceAmount.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.NegotiatedRate.get -> bool
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.NegotiatedRate.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.OtherAmount.get -> ShipEngineSDK.Common.MonetaryValue!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.OtherAmount.get -> ShipEngineSDK.Common.MonetaryValue?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.OtherAmount.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.PackageType.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.PackageType.set -> void
@@ -922,7 +921,7 @@ ShipEngineSDK.GetRatesWithShipmentDetails.Rate.RateId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.RateId.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.RateType.get -> ShipEngineSDK.GetRatesWithShipmentDetails.RateType
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.RateType.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.RequestedComparisonAmount.get -> ShipEngineSDK.Common.MonetaryValue!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.RequestedComparisonAmount.get -> ShipEngineSDK.Common.MonetaryValue?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.RequestedComparisonAmount.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ServiceCode.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ServiceCode.set -> void
@@ -930,15 +929,15 @@ ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ServiceType.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ServiceType.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ShipDate.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ShipDate.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ShippingAmount.get -> ShipEngineSDK.Common.MonetaryValue!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ShippingAmount.get -> ShipEngineSDK.Common.MonetaryValue?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ShippingAmount.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.TaxAmount.get -> ShipEngineSDK.Common.MonetaryValue!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.TaxAmount.get -> ShipEngineSDK.Common.MonetaryValue?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.TaxAmount.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.Trackable.get -> bool
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.Trackable.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ValidationStatus.get -> ShipEngineSDK.GetRatesWithShipmentDetails.ValidationStatus
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.ValidationStatus.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Rate.WarningMessages.get -> System.Collections.Generic.List<string!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.Rate.WarningMessages.get -> System.Collections.Generic.List<string!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.WarningMessages.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.Zone.get -> int?
 ShipEngineSDK.GetRatesWithShipmentDetails.Rate.Zone.set -> void
@@ -951,14 +950,14 @@ ShipEngineSDK.GetRatesWithShipmentDetails.RateOptions.RateOptions() -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.CreatedAt.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.CreatedAt.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.Errors.get -> System.Collections.Generic.List<ShipEngineSDK.ShipEngineException!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.Errors.get -> System.Collections.Generic.List<ShipEngineSDK.ShipEngineException!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.Errors.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.InvalidRates.get -> System.Collections.Generic.List<ShipEngineSDK.GetRatesWithShipmentDetails.Rate!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.InvalidRates.get -> System.Collections.Generic.List<ShipEngineSDK.GetRatesWithShipmentDetails.Rate!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.InvalidRates.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.RateRequestId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.RateRequestId.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.RateResponse() -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.Rates.get -> System.Collections.Generic.List<ShipEngineSDK.GetRatesWithShipmentDetails.Rate!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.Rates.get -> System.Collections.Generic.List<ShipEngineSDK.GetRatesWithShipmentDetails.Rate!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.Rates.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.ShipmentId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse.ShipmentId.set -> void
@@ -973,7 +972,7 @@ ShipEngineSDK.GetRatesWithShipmentDetails.RateType
 ShipEngineSDK.GetRatesWithShipmentDetails.RateType.Check = 0 -> ShipEngineSDK.GetRatesWithShipmentDetails.RateType
 ShipEngineSDK.GetRatesWithShipmentDetails.RateType.Shipment = 1 -> ShipEngineSDK.GetRatesWithShipmentDetails.RateType
 ShipEngineSDK.GetRatesWithShipmentDetails.Result
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.AdvancedOptions.get -> ShipEngineSDK.Common.AdvancedShipmentOptions!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.AdvancedOptions.get -> ShipEngineSDK.Common.AdvancedShipmentOptions?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.AdvancedOptions.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.CarrierId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.CarrierId.set -> void
@@ -981,7 +980,7 @@ ShipEngineSDK.GetRatesWithShipmentDetails.Result.Confirmation.get -> ShipEngineS
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.Confirmation.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.CreatedAt.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.CreatedAt.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.Customs.get -> ShipEngineSDK.Common.Customs!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.Customs.get -> ShipEngineSDK.Common.Customs?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.Customs.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ExternalOrderId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ExternalOrderId.set -> void
@@ -989,7 +988,7 @@ ShipEngineSDK.GetRatesWithShipmentDetails.Result.ExternalShipmentId.get -> strin
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ExternalShipmentId.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.InsuranceProvider.get -> ShipEngineSDK.Common.Enums.InsuranceProvider
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.InsuranceProvider.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.Items.get -> System.Collections.Generic.List<ShipEngineSDK.Common.ShipmentItem!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.Items.get -> System.Collections.Generic.List<ShipEngineSDK.Common.ShipmentItem!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.Items.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ModifiedAt.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ModifiedAt.set -> void
@@ -997,34 +996,34 @@ ShipEngineSDK.GetRatesWithShipmentDetails.Result.OrderSourceCode.get -> ShipEngi
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.OrderSourceCode.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.OriginType.get -> ShipEngineSDK.Common.Enums.OriginType
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.OriginType.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.Packages.get -> System.Collections.Generic.List<ShipEngineSDK.Common.ShipmentPackage!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.Packages.get -> System.Collections.Generic.List<ShipEngineSDK.Common.ShipmentPackage!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.Packages.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.RateResponse.get -> ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.RateResponse.get -> ShipEngineSDK.GetRatesWithShipmentDetails.RateResponse?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.RateResponse.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.Result() -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.ReturnTo.get -> ShipEngineSDK.Common.Address!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.ReturnTo.get -> ShipEngineSDK.Common.Address?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ReturnTo.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ServiceCode.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ServiceCode.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipDate.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipDate.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipFrom.get -> ShipEngineSDK.Common.Address!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipFrom.get -> ShipEngineSDK.Common.Address?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipFrom.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipmentId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipmentId.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipmentStatus.get -> ShipEngineSDK.GetRatesWithShipmentDetails.ShipmentStatus
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipmentStatus.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipTo.get -> ShipEngineSDK.Common.Address!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipTo.get -> ShipEngineSDK.Common.Address?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.ShipTo.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.Tags.get -> System.Collections.Generic.List<string!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.Tags.get -> System.Collections.Generic.List<string!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.Tags.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.TaxIdentifiers.get -> System.Collections.Generic.List<ShipEngineSDK.Common.TaxIdentifier!>!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.TaxIdentifiers.get -> System.Collections.Generic.List<ShipEngineSDK.Common.TaxIdentifier!>?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.TaxIdentifiers.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.TotalWeight.get -> ShipEngineSDK.Common.Weight!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.TotalWeight.get -> ShipEngineSDK.Common.Weight?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.TotalWeight.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.WarehouseId.get -> string?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.WarehouseId.set -> void
-ShipEngineSDK.GetRatesWithShipmentDetails.Result.Weight.get -> ShipEngineSDK.Common.Weight!
+ShipEngineSDK.GetRatesWithShipmentDetails.Result.Weight.get -> ShipEngineSDK.Common.Weight?
 ShipEngineSDK.GetRatesWithShipmentDetails.Result.Weight.set -> void
 ShipEngineSDK.GetRatesWithShipmentDetails.Shipment
 ShipEngineSDK.GetRatesWithShipmentDetails.Shipment.ComparisonRateType.get -> ShipEngineSDK.GetRatesWithShipmentDetails.ComparisonRateType?
@@ -1179,7 +1178,7 @@ ShipEngineSDK.ShipEngineException.ErrorSource.set -> void
 ShipEngineSDK.ShipEngineException.ErrorType.get -> ShipEngineSDK.ErrorType
 ShipEngineSDK.ShipEngineException.ErrorType.set -> void
 ShipEngineSDK.ShipEngineException.RequestId.get -> string?
-ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, string! requestID = null) -> void
+ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, string? requestID = null) -> void
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.Result() -> void
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.StatusCode.get -> ShipEngineSDK.Common.Enums.TrackingStatusCode
@@ -1285,7 +1284,7 @@ ShipEngineSDK.ValidateAddresses.ValidationMessageType.Warning = 1 -> ShipEngineS
 ShipEngineSDK.VoidLabelWithLabelId.Result
 ShipEngineSDK.VoidLabelWithLabelId.Result.Approved.get -> bool
 ShipEngineSDK.VoidLabelWithLabelId.Result.Approved.set -> void
-ShipEngineSDK.VoidLabelWithLabelId.Result.Message.get -> string!
+ShipEngineSDK.VoidLabelWithLabelId.Result.Message.get -> string?
 ShipEngineSDK.VoidLabelWithLabelId.Result.Message.set -> void
 ShipEngineSDK.VoidLabelWithLabelId.Result.Result() -> void
 static ShipEngineSDK.ShipEngineClient.ConfigureHttpClient(ShipEngineSDK.Config! config, System.Net.Http.HttpClient! client) -> System.Net.Http.HttpClient!

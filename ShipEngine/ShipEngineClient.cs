@@ -127,7 +127,7 @@ namespace ShipEngineSDK
         {
             int retry = 0;
 
-            HttpResponseMessage response = null;
+            HttpResponseMessage? response = null;
             ShipEngineException requestException;
             while (true)
             {
@@ -176,7 +176,7 @@ namespace ShipEngineSDK
             }
         }
 
-        private async Task WaitAndRetry(HttpResponseMessage response, Config config, ShipEngineException ex)
+        private async Task WaitAndRetry(HttpResponseMessage? response, Config config, ShipEngineException ex)
         {
             int? retryAfter;
 

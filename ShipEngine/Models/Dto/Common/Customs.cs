@@ -24,7 +24,7 @@ namespace ShipEngineSDK.Common
         /// <summary>
         /// Customs declarations for each item in the shipment.
         /// </summary>
-        public List<CustomsItem> CustomsItems { get; set; }
+        public List<CustomsItem>? CustomsItems { get; set; }
     }
 
     /// <summary>

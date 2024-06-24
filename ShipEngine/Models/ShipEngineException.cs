@@ -38,7 +38,7 @@ namespace ShipEngineSDK
             ErrorSource errorSource = ErrorSource.Shipengine,
             ErrorType errorType = ErrorType.System,
             ErrorCode errorCode = ErrorCode.Unspecified,
-            string requestID = null) : base(message)
+            string? requestID = null) : base(message)
         {
             ErrorSource = errorSource;
             ErrorType = errorType;
