@@ -1178,7 +1178,9 @@ ShipEngineSDK.ShipEngineException.ErrorSource.set -> void
 ShipEngineSDK.ShipEngineException.ErrorType.get -> ShipEngineSDK.ErrorType
 ShipEngineSDK.ShipEngineException.ErrorType.set -> void
 ShipEngineSDK.ShipEngineException.RequestId.get -> string?
-ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, string? requestID = null) -> void
+ShipEngineSDK.ShipEngineException.ResponseMessage.get -> System.Net.Http.HttpResponseMessage?
+ShipEngineSDK.ShipEngineException.ResponseMessage.set -> void
+ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, System.Net.Http.HttpResponseMessage? responseMessage = null, string? requestID = null) -> void
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.Result() -> void
 ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber.Result.StatusCode.get -> ShipEngineSDK.Common.Enums.TrackingStatusCode
