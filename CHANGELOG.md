@@ -116,3 +116,13 @@ Updated to .NET 8.0, removed Newtonsoft.Json dependency, and updated to System.T
 ### Changed
 
 Updated references to use proper converter to resolve enum string values
+
+## 2.0.2
+
+### Changed
+
+- Adds the ability to initialize SDK with an HttpClient, and to make modifications to subsequent requests
+- Adds cancellation token to client
+- Adds HttpResponseMessage to ShipEngineException
+- Adds missing markdown
+- Redefines several properties as nullable reference types
