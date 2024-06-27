@@ -1,4 +1,6 @@
 ﻿using ShipEngineSDK.Common;
+using ShipEngineSDK.Manifests;
+using Result = ShipEngineSDK.ValidateAddresses.Result;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
@@ -8,9 +10,345 @@ using System.Threading.Tasks;
 namespace ShipEngineSDK
 {
     /// <summary>
+    /// Interface for ShipEngine
+    /// </summary>
+    public interface IShipEngine
+    {
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <returns>An address validation result object</returns>
+        Task<List<ValidateAddresses.Result>> ValidateAddresses(List<Address> addresses);
+
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>An address validation result object</returns>
+        Task<List<ValidateAddresses.Result>> ValidateAddresses(List<Address> addresses, Config methodConfig);
+
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <returns>A list of carriers</returns>
+        Task<ListCarriers.Result> ListCarriers();
+
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>A list of carriers</returns>
+        Task<ListCarriers.Result> ListCarriers(Config methodConfig);
+
+        /// <summary>
+        /// Create a manifest
+        /// </summary>
+        /// <param name="manifestParams">The details of the manifest you want to create.</param>
+        /// <returns></returns>
+        Task<Manifests.Result> CreateManifest(Manifests.Params manifestParams);
+
+        /// <summary>
+        /// Create a manifest
+        /// </summary>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <param name="manifestParams">The details of the manifest you want to create.</param>
+        /// <returns></returns>
+        Task<Manifests.Result> CreateManifest(Config methodConfig, Manifests.Params manifestParams);
+
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
+        Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId);
+
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
+        Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId, Config methodConfig);
+
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <returns>An object that contains the label id tracking information</returns>
+        Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId);
+
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>An object that contains the label id tracking information</returns>
+        Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId, Config methodConfig);
+
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <returns></returns>
+        Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode);
+
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns></returns>
+        Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode, Config methodConfig);
+
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="labelParams">Details of the label that you want to create</param>
+        /// <returns>Object containing the created label information</returns>
+        Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams);
+
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="labelParams">Details of the label that you want to create</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams, Config methodConfig);
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
+        /// <returns>Object containing the created label information</returns>
+        Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams);
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams, Config methodConfig);
+
+        /// <summary>
+        /// Retrieve rates for a package with the provided shipment details.
+        /// </summary>
+        /// <param name="rateParams"></param>
+        /// <returns>The rates result</returns>
+        Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams);
+
+        /// <summary>
+        /// Retrieve rates for a package with the provided shipment details.
+        /// </summary>
+        /// <param name="rateParams"></param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>The rates result</returns>
+        Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams, Config methodConfig);
+    }
+
+    /// <summary>
+    /// Mock implementation of IShipEngine
+    /// </summary>
+    public class ShipEngineMock : IShipEngine
+    {
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <returns>An address validation result object</returns>
+        public virtual Task<List<Result>> ValidateAddresses(List<Address> addresses)
+        {
+            return Task.FromResult(new List<Result>());
+        }
+
+        /// <summary>
+        /// Validates an address in nearly any country in the world.
+        /// </summary>
+        /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>An address validation result object</returns>
+        public virtual Task<List<Result>> ValidateAddresses(List<Address> addresses, Config methodConfig)
+        {
+            return Task.FromResult(new List<Result>());
+        }
+
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <returns>A list of carriers</returns>
+        public virtual Task<ListCarriers.Result> ListCarriers()
+        {
+            return Task.FromResult(new ListCarriers.Result());
+        }
+
+        /// <summary>
+        /// Retrieve a list of all carriers that have been added to this account
+        /// </summary>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <returns>A list of carriers</returns>
+        public virtual Task<ListCarriers.Result> ListCarriers(Config methodConfig)
+        {
+            return Task.FromResult(new ListCarriers.Result());
+        }
+
+        /// <summary>
+        /// Create a manifest
+        /// </summary>
+        /// <param name="manifestParams">The details of the manifest you want to create.</param>
+        /// <returns></returns>
+        public virtual Task<Manifests.Result> CreateManifest(Params manifestParams)
+        {
+            return Task.FromResult(new Manifests.Result());
+        }
+
+        /// <summary>
+        /// Create a manifest
+        /// </summary>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
+        /// <param name="manifestParams">The details of the manifest you want to create.</param>
+        /// <returns></returns>
+        public virtual Task<Manifests.Result> CreateManifest(Config methodConfig, Params manifestParams)
+        {
+            return Task.FromResult(new Manifests.Result());
+        }
+
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
+        public virtual Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId)
+        {
+            return Task.FromResult(new VoidLabelWithLabelId.Result());
+        }
+
+        /// <summary>
+        /// Void a label by ID to get a refund.
+        /// </summary>
+        /// <param name="labelId">The id of the label to void</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Result object indicating the success of the void label attempt</returns>
+        public virtual Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId, Config methodConfig)
+        {
+            return Task.FromResult(new VoidLabelWithLabelId.Result());
+        }
+
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <returns>An object that contains the label id tracking information</returns>
+        public virtual Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId)
+        {
+            return Task.FromResult(new TrackUsingLabelId.Result());
+        }
+
+        /// <summary>
+        /// Track a shipment using the label id
+        /// </summary>
+        /// <param name="labelId">The label id associated with the shipment</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>An object that contains the label id tracking information</returns>
+        public virtual Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId, Config methodConfig)
+        {
+            return Task.FromResult(new TrackUsingLabelId.Result());
+        }
+
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <returns></returns>
+        public virtual Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode)
+        {
+            return Task.FromResult(new TrackUsingCarrierCodeAndTrackingNumber.Result());
+        }
+
+        /// <summary>
+        /// Tracks a package based on the trackingNumber and carrierCode.
+        /// </summary>
+        /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
+        /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns></returns>
+        public virtual Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode, Config methodConfig)
+        {
+            return Task.FromResult(new TrackUsingCarrierCodeAndTrackingNumber.Result());
+        }
+
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="labelParams">Details of the label that you want to create</param>
+        /// <returns>Object containing the created label information</returns>
+        public virtual Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams)
+        {
+            return Task.FromResult(new CreateLabelFromShipmentDetails.Result());
+        }
+
+        /// <summary>
+        /// Create a label from shipment details
+        /// </summary>
+        /// <param name="labelParams">Details of the label that you want to create</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        public virtual Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams, Config methodConfig)
+        {
+            return Task.FromResult(new CreateLabelFromShipmentDetails.Result());
+        }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
+        /// <returns>Object containing the created label information</returns>
+        public virtual Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams)
+        {
+            return Task.FromResult(new CreateLabelFromRate.Result());
+        }
+
+        /// <summary>
+        /// Create a label from a rate id
+        /// </summary>
+        /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>Object containing the created label information</returns>
+        public virtual Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams, Config methodConfig)
+        {
+            return Task.FromResult(new CreateLabelFromRate.Result());
+        }
+
+        /// <summary>
+        /// Retrieve rates for a package with the provided shipment details.
+        /// </summary>
+        /// <param name="rateParams"></param>
+        /// <returns>The rates result</returns>
+        public virtual Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams)
+        {
+            return Task.FromResult(new GetRatesWithShipmentDetails.Result());
+        }
+
+        /// <summary>
+        /// Retrieve rates for a package with the provided shipment details.
+        /// </summary>
+        /// <param name="rateParams"></param>
+        /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
+        /// <returns>The rates result</returns>
+        public virtual Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams, Config methodConfig)
+        {
+            return Task.FromResult(new GetRatesWithShipmentDetails.Result());
+        }
+    }
+
+    /// <summary>
     /// Contains methods for interacting with the ShipEngine API.
     /// </summary>
-    public class ShipEngine : ShipEngineClient
+    public class ShipEngine : ShipEngineClient, IShipEngine
     {
         /// <summary>
         /// Global HttpClient for ShipEngine instance.
