@@ -95,6 +95,7 @@ namespace ShipEngineSDK
                         error.ErrorSource,
                         error.ErrorType,
                         error.ErrorCode,
+                        response,
                         deserializedError.RequestId
                     );
                 }
@@ -196,6 +197,7 @@ namespace ShipEngineSDK
                     ErrorSource.Shipengine,
                     ErrorType.System,
                     ErrorCode.Timeout,
+                    ex.ResponseMessage,
                     ex.RequestId
                 );
             }
