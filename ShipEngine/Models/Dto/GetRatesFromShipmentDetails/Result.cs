@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace ShipEngineSDK.GetRatesWithShipmentDetails
 {
+    /// <summary>
+    /// Get rates with shipment details result
+    /// </summary>
     public class Result
     {
         /// <summary>
@@ -29,12 +32,12 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// Describe the packages included in this shipment as related to potential metadata that was imported from external order sources
         /// </summary>
-        public List<ShipmentItem> Items { get; set; }
+        public List<ShipmentItem>? Items { get; set; }
 
         /// <summary>
         /// Tax identifiers
         /// </summary>
-        public List<TaxIdentifier> TaxIdentifiers { get; set; }
+        public List<TaxIdentifier>? TaxIdentifiers { get; set; }
 
         /// <summary>
         /// You can optionally use this field to store your own identifier for this shipment.
@@ -64,13 +67,13 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The recipient's mailing address
         /// </summary>
-        public Address ShipTo { get; set; }
+        public Address? ShipTo { get; set; }
 
         /// <summary>
         /// The shipment's origin address. If you frequently ship from the same location, consider creating a warehouse.
         /// Then you can simply specify the warehouse_id rather than the complete address each time.
         /// </summary>
-        public Address ShipFrom { get; set; }
+        public Address? ShipFrom { get; set; }
 
         /// <summary>
         /// The warehouse that the shipment is being shipped from. Either warehouse_id or ship_from must be specified.
@@ -80,7 +83,7 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The return address for this shipment. Defaults to the ship_from address.
         /// </summary>
-        public Address ReturnTo { get; set; }
+        public Address? ReturnTo { get; set; }
 
         /// <summary>
         /// The type of delivery confirmation that is required for this shipment.
@@ -90,12 +93,12 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// Customs information. This is usually only needed for international shipments.
         /// </summary>
-        public Customs Customs { get; set; }
+        public Customs? Customs { get; set; }
 
         /// <summary>
         /// Advanced shipment options. These are entirely optional.
         /// </summary>
-        public AdvancedShipmentOptions AdvancedOptions { get; set; }
+        public AdvancedShipmentOptions? AdvancedOptions { get; set; }
 
         /// <summary>
         /// Indicates if the package will be picked up or dropped off by the carrier
@@ -110,13 +113,13 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// Arbitrary tags associated with this shipment. Tags can be used to categorize shipments, and shipments can be queried by their tags.
         /// </summary>
-        public List<string> Tags { get; set; }
+        public List<string>? Tags { get; set; }
 
 
         /// <summary>
         /// Total Weight of the Shipment
         /// </summary>
-        public Weight TotalWeight { get; set; }
+        public Weight? TotalWeight { get; set; }
 
         /// <summary>
         /// The order sources that are supported by ShipEngine
@@ -126,30 +129,33 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The packages in the shipment.
         /// </summary>
-        public List<ShipmentPackage> Packages { get; set; }
+        public List<ShipmentPackage>? Packages { get; set; }
 
         /// <summary>
         /// The combined weight of all packages in the shipment
         /// </summary>
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// The rate responses
         /// </summary>
-        public RateResponse RateResponse { get; set; }
+        public RateResponse? RateResponse { get; set; }
     }
 
+    /// <summary>
+    /// The get rates with shipment details rate response
+    /// </summary>
     public class RateResponse
     {
         /// <summary>
         /// A list of shipment rates
         /// </summary>
-        public List<Rate> Rates { get; set; }
+        public List<Rate>? Rates { get; set; }
 
         /// <summary>
         /// A list of invalid shipment rates
         /// </summary>
-        public List<Rate> InvalidRates { get; set; }
+        public List<Rate>? InvalidRates { get; set; }
 
         /// <summary>
         /// A string that uniquely identifies the rate request
@@ -174,9 +180,12 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// Any errors associated with the rate request
         /// </summary>
-        public List<ShipEngineException> Errors { get; set; }
+        public List<ShipEngineException>? Errors { get; set; }
     }
 
+    /// <summary>
+    /// The individual rate
+    /// </summary>
     public class Rate
     {
         /// <summary>
@@ -197,33 +206,31 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The shipping amount
         /// </summary>
-        public MonetaryValue ShippingAmount { get; set; }
+        public MonetaryValue? ShippingAmount { get; set; }
 
         /// <summary>
         /// The insurance amount
         /// </summary>
-        public MonetaryValue InsuranceAmount { get; set; }
+        public MonetaryValue? InsuranceAmount { get; set; }
 
         /// <summary>
         /// The sum of the carrier costs for the shipment
         /// </summary>
-        public MonetaryValue RequestedComparisonAmount { get; set; }
-
-
+        public MonetaryValue? RequestedComparisonAmount { get; set; }
 
         /// <summary>
         /// The confirmation amount
         /// </summary>
-        public MonetaryValue ConfirmationAmount { get; set; }
+        public MonetaryValue? ConfirmationAmount { get; set; }
 
         /// <summary>
         /// Any other charges associated with this rate
         /// </summary>
-        public MonetaryValue OtherAmount { get; set; }
+        public MonetaryValue? OtherAmount { get; set; }
         /// <summary>
         /// Tariff and additional taxes associated with an international shipment.
         /// </summary>
-        public MonetaryValue TaxAmount { get; set; }
+        public MonetaryValue? TaxAmount { get; set; }
 
         /// <summary>
         /// Certain carriers base their rates off of custom zones that vary depending upon
@@ -306,11 +313,11 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// <summary>
         /// The warning messages
         /// </summary>
-        public List<string> WarningMessages { get; set; }
+        public List<string>? WarningMessages { get; set; }
 
         /// <summary>
         /// The error messages
         /// </summary>
-        public List<string> ErrorMessages { get; set; }
+        public List<string>? ErrorMessages { get; set; }
     }
 }

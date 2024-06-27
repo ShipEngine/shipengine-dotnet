@@ -145,6 +145,9 @@ namespace ShipEngineSDK.GetRatesWithShipmentDetails
         /// </summary>
         public Weight Weight { get; set; }
 
+        /// <summary>
+        /// The type of comparison rate
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public ComparisonRateType? ComparisonRateType { get; set; }
 
