@@ -158,7 +158,7 @@ namespace ShipEngineSDK.CreateLabelFromRate
         /// <summary>
         /// The label's package(s).
         /// </summary>
-        public List<Package> Packages { get; set; }
+        public List<Package>? Packages { get; set; }
     }
 
     /// <summary>

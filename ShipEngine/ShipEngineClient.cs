@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
@@ -21,24 +22,21 @@ namespace ShipEngineSDK
         /// Options for serializing the method call params to JSON.
         /// A separate inline setting is used for deserializing the response
         /// </summary>
-        protected readonly JsonSerializerOptions JsonSerializerOptions;
-
-        /// <summary>
-        /// Constructor for ShipEngineClient
-        /// </summary>
-        public ShipEngineClient()
+        protected static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
         {
-            JsonSerializerOptions = new JsonSerializerOptions
-            {
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-                PropertyNameCaseInsensitive = true,
-                WriteIndented = true,
-                Converters = { new JsonStringEnumMemberConverter() }
-            };
-        }
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+            PropertyNameCaseInsensitive = true,
+            WriteIndented = true,
+            Converters = { new JsonStringEnumMemberConverter() }
+        };
 
         private const string JsonMediaType = "application/json";
+
+        /// <summary>
+        /// Token to cancel the request
+        /// </summary>
+        public CancellationToken CancellationToken { get; set; }
 
         /// <summary>
         /// Sets the HttpClient User agent, the json media type, and the API key to be used
@@ -71,9 +69,24 @@ namespace ShipEngineSDK
             return client;
         }
 
+        /// <summary>
+        /// Sets the HttpClient User agent, the json media type, and the API key to be used
+        /// for all ShipEngine API calls unless overwritten at the method level.
+        /// </summary>
+        /// <param name="client">The HttpClient to be configured</param>
+        /// <param name="apiKey">The API key to be used for all ShipEngine API calls</param>
+        /// <param name="baseUri">The base URI for the ShipEngine API</param>
+        /// <param name="timeout">The timeout for the ShipEngine API Calls</param>
+        /// <returns></returns>
+        public static HttpClient ConfigureHttpClient(HttpClient client, string apiKey, Uri? baseUri, TimeSpan? timeout = null)
+        {
+            var config = new Config(apiKey, timeout);
+            client.BaseAddress = baseUri ?? new Uri("https://api.shipengine.com");
+            return ConfigureHttpClient(config, client);
+        }
+
         private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
-
             var contentString = await response.Content.ReadAsStringAsync();
 
             if (!response.IsSuccessStatusCode)
@@ -95,7 +108,8 @@ namespace ShipEngineSDK
                         error.ErrorSource,
                         error.ErrorType,
                         error.ErrorCode,
-                        deserializedError.RequestId
+                        deserializedError.RequestId,
+                        response
                     );
                 }
 
@@ -127,14 +141,14 @@ namespace ShipEngineSDK
         {
             int retry = 0;
 
-            HttpResponseMessage response = null;
+            HttpResponseMessage? response = null;
             ShipEngineException requestException;
             while (true)
             {
                 try
                 {
                     var request = BuildRequest(method, path, jsonContent);
-                    var streamTask = client.SendAsync(request);
+                    var streamTask = client.SendAsync(request, CancellationToken);
                     response = await streamTask;
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
@@ -176,7 +190,7 @@ namespace ShipEngineSDK
             }
         }
 
-        private async Task WaitAndRetry(HttpResponseMessage response, Config config, ShipEngineException ex)
+        private async Task WaitAndRetry(HttpResponseMessage? response, Config config, ShipEngineException ex)
         {
             int? retryAfter;
 
@@ -196,14 +210,15 @@ namespace ShipEngineSDK
                     ErrorSource.Shipengine,
                     ErrorType.System,
                     ErrorCode.Timeout,
-                    ex.RequestId
+                    ex.RequestId,
+                    ex.ResponseMessage
                 );
             }
 
-            await Task.Delay((int)retryAfter * 1000).ConfigureAwait(false);
+            await Task.Delay((int)retryAfter * 1000, CancellationToken).ConfigureAwait(false);
         }
 
-        private HttpRequestMessage BuildRequest(HttpMethod method, string path, string? jsonContent)
+        private static HttpRequestMessage BuildRequest(HttpMethod method, string path, string? jsonContent)
         {
             var request = new HttpRequestMessage(method, path);
 
@@ -215,7 +230,7 @@ namespace ShipEngineSDK
             return request;
         }
 
-        private bool ShouldRetry(
+        private static bool ShouldRetry(
             int numRetries,
             HttpStatusCode? statusCode,
             HttpHeaders? headers,

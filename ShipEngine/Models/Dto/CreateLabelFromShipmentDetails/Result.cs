@@ -161,7 +161,7 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// <summary>
         /// The label's package(s).
         /// </summary>
-        public List<LabelPackage> Packages { get; set; }
+        public List<LabelPackage>? Packages { get; set; }
     }
 
     /// <summary>
