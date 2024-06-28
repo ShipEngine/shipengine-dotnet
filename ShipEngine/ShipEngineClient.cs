@@ -101,26 +101,22 @@ namespace ShipEngineSDK
                 {
                 }
 
-                // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
                 {
-                    response.EnsureSuccessStatusCode();
+                    // in this case, the response body was not parseable JSON
+                    throw new ShipEngineException("Unexpected HTTP status", responseMessage: response);
                 }
 
-                var error = deserializedError?.Errors[0];
-
-                if (error != null && error.Message != null && deserializedError?.RequestId != null)
-                {
-                    throw new ShipEngineException(
-                        error.Message,
-                        error.ErrorSource,
-                        error.ErrorType,
-                        error.ErrorCode,
-                        deserializedError.RequestId,
-                        response
-                    );
-                }
-
+                var error = deserializedError.Errors?.FirstOrDefault(e => e.Message != null);
+                // if error is null, it means we got back a JSON response, but it wasn't the format we expected
+                throw new ShipEngineException(
+                    error?.Message ?? response.ReasonPhrase,
+                    error?.ErrorSource ?? ErrorSource.Shipengine,
+                    error?.ErrorType ?? ErrorType.System,
+                    error?.ErrorCode ?? ErrorCode.Unspecified,
+                    deserializedError.RequestId,
+                    response
+                );
             }
 
             T? result;

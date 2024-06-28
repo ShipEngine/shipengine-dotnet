@@ -10,7 +10,7 @@ namespace ShipEngineTest
     public class ShipEngineClientTests
     {
         [Fact]
-        public async Task FailureWithShipengineResponseThrowsPopulatedShipEngineException()
+        public async Task FailureStatusWithShipengineContentThrowsPopulatedShipEngineException()
         {
             var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -51,7 +51,26 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async Task FailureWithoutShipengineResponseThrowsHttpException()
+        public async Task FailureStatusWithoutShipEngineDetailsThrowsShipEngineExceptionWithOriginalResponse()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine;
+
+            var responseBody = @"{""description"": ""valid JSON, but not what you expect""}";
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/v1/something", System.Net.HttpStatusCode.NotFound,
+                responseBody);
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Get, "/v1/something", null,
+                    mockShipEngineFixture.HttpClient, config)
+            );
+
+            Assert.NotNull(ex.ResponseMessage);
+            Assert.Equal(404, (int) ex.ResponseMessage.StatusCode);
+        }
+
+        [Fact]
+        public async Task FailureStatusWithoutJsonContentThrowsShipEngineExceptionWithOriginalResponse()
         {
             var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -60,16 +79,17 @@ namespace ShipEngineTest
             var responseBody = @"<h1>Bad Gateway</h1>";
             mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.BadGateway,
                 responseBody);
-            var ex = await Assert.ThrowsAsync<HttpRequestException>(
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
                 async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Post, "/v1/something", "",
                     mockShipEngineFixture.HttpClient, config)
             );
 
-            Assert.Contains("502", ex.Message);
+            Assert.NotNull(ex.ResponseMessage);
+            Assert.Equal(502, (int) ex.ResponseMessage.StatusCode);
         }
 
         [Fact]
-        public async Task FailureToParseSuccessResponseThrowsExceptionWithUnparsedResponse()
+        public async Task SuccessResponseThatCannotBeParsedThrowsExceptionWithUnparsedResponse()
         {
             var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -90,7 +110,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async Task NullStringResponseThrowsExceptionWithUnparsedResponse()
+        public async Task SuccessResponseWithNullContentThrowsShipEngineExceptionWithUnparsedResponse()
         {
             var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
