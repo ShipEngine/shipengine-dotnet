@@ -10,7 +10,7 @@ namespace ShipEngineTest
     public class ShipEngineClientTests
     {
         [Fact]
-        public async Task FailureWithShipengineResponseThrowsPopulatedShipEngineException()
+        public async Task FailureStatusWithShipengineContentThrowsPopulatedShipEngineException()
         {
             var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -46,24 +46,94 @@ namespace ShipEngineTest
             Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
             Assert.Equal(ErrorType.Validation, ex.ErrorType);
             Assert.Equal(ErrorCode.RequestBodyRequired, ex.ErrorCode);
+            Assert.NotNull(ex.ResponseMessage);
+            Assert.Equal(400, (int)ex.ResponseMessage.StatusCode);
         }
 
         [Fact]
-        public async Task FailureWithoutShipengineResponseThrowsHttpException()
+        public async Task FailureStatusWithoutShipEngineDetailsThrowsShipEngineExceptionWithOriginalResponse()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine;
+
+            var responseBody = @"{""description"": ""valid JSON, but not what you expect""}";
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Get, "/v1/something", System.Net.HttpStatusCode.NotFound,
+                responseBody);
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Get, "/v1/something", null,
+                    mockShipEngineFixture.HttpClient, config)
+            );
+
+            Assert.NotNull(ex.ResponseMessage);
+            Assert.Equal(404, (int) ex.ResponseMessage.StatusCode);
+            Assert.Equal(requestId, ex.RequestId);
+        }
+
+        [Fact]
+        public async Task FailureStatusWithoutJsonContentThrowsShipEngineExceptionWithOriginalResponse()
         {
             var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
             var shipengine = mockShipEngineFixture.ShipEngine;
 
             var responseBody = @"<h1>Bad Gateway</h1>";
-            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.BadGateway,
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.BadGateway,
                 responseBody);
-            var ex = await Assert.ThrowsAsync<HttpRequestException>(
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
                 async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Post, "/v1/something", "",
                     mockShipEngineFixture.HttpClient, config)
             );
 
-            Assert.Contains("502", ex.Message);
+            Assert.NotNull(ex.ResponseMessage);
+            Assert.Equal(502, (int) ex.ResponseMessage.StatusCode);
+            Assert.Equal(requestId, ex.RequestId);
+        }
+
+        [Fact]
+        public async Task SuccessResponseThatCannotBeParsedThrowsExceptionWithUnparsedResponse()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine;
+
+            var responseBody = @"Unexpected response - not JSON";
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.OK,
+                responseBody);
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Post, "/v1/something", "",
+                    mockShipEngineFixture.HttpClient, config)
+            );
+            mockShipEngineFixture.AssertRequest(HttpMethod.Post, "/v1/something");
+
+            Assert.NotNull(ex.ResponseMessage);
+            Assert.Equal(200, (int)ex.ResponseMessage.StatusCode);
+            Assert.Equal(responseBody, await ex.ResponseMessage.Content.ReadAsStringAsync());
+            Assert.Equal(requestId, ex.RequestId);
+        }
+
+        [Fact]
+        public async Task SuccessResponseWithNullContentThrowsShipEngineExceptionWithUnparsedResponse()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine;
+
+            // this scenario is similar to unparseable JSON - except that it is valid JSON
+            var responseBody = @"null";
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.OK,
+                responseBody);
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(
+                async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Post, "/v1/something", "",
+                    mockShipEngineFixture.HttpClient, config)
+            );
+            mockShipEngineFixture.AssertRequest(HttpMethod.Post, "/v1/something");
+
+            Assert.NotNull(ex.ResponseMessage);
+            Assert.Equal("Unexpected null response", ex.Message);
+            Assert.Equal(200, (int)ex.ResponseMessage.StatusCode);
+            Assert.Equal(responseBody, await ex.ResponseMessage.Content.ReadAsStringAsync());
+            Assert.Equal(requestId, ex.RequestId);
         }
     }
 }

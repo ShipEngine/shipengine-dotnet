@@ -3,6 +3,7 @@ namespace ShipEngineTest
     using Moq;
     using Moq.Protected;
     using ShipEngineSDK;
+    using System;
     using System.Net;
     using System.Net.Http;
     using System.Text.Json;
@@ -74,10 +75,13 @@ namespace ShipEngineTest
         /// <param name="path">The HTTP path.</param>
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
-        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
+        public string StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
         {
+            var requestId = Guid.NewGuid().ToString();
             var responseMessage = new HttpResponseMessage(status);
             responseMessage.Content = new StringContent(response);
+            responseMessage.Headers.Add("x-shipengine-requestid", requestId);
+            responseMessage.Headers.Add("request-id", requestId);
 
             MockHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>(
@@ -87,6 +91,7 @@ namespace ShipEngineTest
                         m.RequestUri.AbsolutePath == path),
                     ItExpr.IsAny<CancellationToken>())
                 .Returns(Task.FromResult(responseMessage));
+            return requestId;
         }
     }
 }
