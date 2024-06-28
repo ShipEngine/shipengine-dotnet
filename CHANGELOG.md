@@ -126,3 +126,9 @@ Updated references to use proper converter to resolve enum string values
 - Adds HttpResponseMessage to ShipEngineException
 - Adds missing markdown
 - Redefines several properties as nullable reference types
+
+## 2.0.3
+
+### Changed
+
+Impoved handling of unexpected HTTP responses
