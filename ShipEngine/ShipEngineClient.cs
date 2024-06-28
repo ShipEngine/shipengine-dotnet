@@ -91,7 +91,15 @@ namespace ShipEngineSDK
 
             if (!response.IsSuccessStatusCode)
             {
-                var deserializedError = JsonSerializer.Deserialize<ShipEngineAPIError>(contentString, JsonSerializerOptions);
+                ShipEngineAPIError? deserializedError = null;
+                try
+                {
+                    deserializedError =
+                        JsonSerializer.Deserialize<ShipEngineAPIError>(contentString, JsonSerializerOptions);
+                }
+                catch (JsonException)
+                {
+                }
 
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
