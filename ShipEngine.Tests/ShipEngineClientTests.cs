@@ -58,7 +58,7 @@ namespace ShipEngineTest
             var shipengine = mockShipEngineFixture.ShipEngine;
 
             var responseBody = @"{""description"": ""valid JSON, but not what you expect""}";
-            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/v1/something", System.Net.HttpStatusCode.NotFound,
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Get, "/v1/something", System.Net.HttpStatusCode.NotFound,
                 responseBody);
             var ex = await Assert.ThrowsAsync<ShipEngineException>(
                 async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Get, "/v1/something", null,
@@ -67,6 +67,7 @@ namespace ShipEngineTest
 
             Assert.NotNull(ex.ResponseMessage);
             Assert.Equal(404, (int) ex.ResponseMessage.StatusCode);
+            Assert.Equal(requestId, ex.RequestId);
         }
 
         [Fact]
@@ -77,7 +78,7 @@ namespace ShipEngineTest
             var shipengine = mockShipEngineFixture.ShipEngine;
 
             var responseBody = @"<h1>Bad Gateway</h1>";
-            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.BadGateway,
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.BadGateway,
                 responseBody);
             var ex = await Assert.ThrowsAsync<ShipEngineException>(
                 async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Post, "/v1/something", "",
@@ -86,6 +87,7 @@ namespace ShipEngineTest
 
             Assert.NotNull(ex.ResponseMessage);
             Assert.Equal(502, (int) ex.ResponseMessage.StatusCode);
+            Assert.Equal(requestId, ex.RequestId);
         }
 
         [Fact]
@@ -96,7 +98,7 @@ namespace ShipEngineTest
             var shipengine = mockShipEngineFixture.ShipEngine;
 
             var responseBody = @"Unexpected response - not JSON";
-            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.OK,
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.OK,
                 responseBody);
             var ex = await Assert.ThrowsAsync<ShipEngineException>(
                 async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Post, "/v1/something", "",
@@ -107,6 +109,7 @@ namespace ShipEngineTest
             Assert.NotNull(ex.ResponseMessage);
             Assert.Equal(200, (int)ex.ResponseMessage.StatusCode);
             Assert.Equal(responseBody, await ex.ResponseMessage.Content.ReadAsStringAsync());
+            Assert.Equal(requestId, ex.RequestId);
         }
 
         [Fact]
@@ -118,7 +121,7 @@ namespace ShipEngineTest
 
             // this scenario is similar to unparseable JSON - except that it is valid JSON
             var responseBody = @"null";
-            mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.OK,
+            var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.OK,
                 responseBody);
             var ex = await Assert.ThrowsAsync<ShipEngineException>(
                 async () => await shipengine.SendHttpRequestAsync<Result>(HttpMethod.Post, "/v1/something", "",
@@ -130,6 +133,7 @@ namespace ShipEngineTest
             Assert.Equal("Unexpected null response", ex.Message);
             Assert.Equal(200, (int)ex.ResponseMessage.StatusCode);
             Assert.Equal(responseBody, await ex.ResponseMessage.Content.ReadAsStringAsync());
+            Assert.Equal(requestId, ex.RequestId);
         }
     }
 }

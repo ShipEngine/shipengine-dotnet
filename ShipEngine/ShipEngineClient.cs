@@ -88,6 +88,12 @@ namespace ShipEngineSDK
         private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
             var contentString = await response.Content.ReadAsStringAsync();
+            string? requestId = null;
+            if (response.Headers.TryGetValues("x-shipengine-requestid", out var requestIdValues))
+            {
+                requestId = requestIdValues.FirstOrDefault();
+            }
+
 
             if (!response.IsSuccessStatusCode)
             {
@@ -104,7 +110,7 @@ namespace ShipEngineSDK
                 if (deserializedError == null)
                 {
                     // in this case, the response body was not parseable JSON
-                    throw new ShipEngineException("Unexpected HTTP status", responseMessage: response);
+                    throw new ShipEngineException("Unexpected HTTP status", requestID: requestId, responseMessage: response);
                 }
 
                 var error = deserializedError.Errors?.FirstOrDefault(e => e.Message != null);
@@ -114,7 +120,7 @@ namespace ShipEngineSDK
                     error?.ErrorSource ?? ErrorSource.Shipengine,
                     error?.ErrorType ?? ErrorType.System,
                     error?.ErrorCode ?? ErrorCode.Unspecified,
-                    deserializedError.RequestId,
+                    deserializedError.RequestId ?? requestId,
                     response
                 );
             }
@@ -126,7 +132,7 @@ namespace ShipEngineSDK
             }
             catch (JsonException)
             {
-                throw new ShipEngineException("Unable to parse response", responseMessage: response);
+                throw new ShipEngineException("Unable to parse response", requestID: requestId, responseMessage: response);
             }
 
 
@@ -135,7 +141,7 @@ namespace ShipEngineSDK
                 return result;
             }
 
-            throw new ShipEngineException(message: "Unexpected null response", responseMessage: response);
+            throw new ShipEngineException(message: "Unexpected null response", requestID: requestId, responseMessage: response);
         }
 
 
