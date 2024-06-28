@@ -13,8 +13,8 @@ namespace ShipEngineSDK
         ErrorSource errorSource = ErrorSource.Shipengine,
         ErrorType errorType = ErrorType.System,
         ErrorCode errorCode = ErrorCode.Unspecified,
-        HttpResponseMessage? responseMessage = null,
-        string? requestID = null)
+        string? requestID = null,
+        HttpResponseMessage? responseMessage = null)
         : Exception(message)
     {
         /// <summary>

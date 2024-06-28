@@ -108,8 +108,8 @@ namespace ShipEngineSDK
                         error.ErrorSource,
                         error.ErrorType,
                         error.ErrorCode,
-                        response,
-                        deserializedError.RequestId
+                        deserializedError.RequestId,
+                        response
                     );
                 }
 
@@ -210,8 +210,8 @@ namespace ShipEngineSDK
                     ErrorSource.Shipengine,
                     ErrorType.System,
                     ErrorCode.Timeout,
-                    ex.ResponseMessage,
-                    ex.RequestId
+                    ex.RequestId,
+                    ex.ResponseMessage
                 );
             }
 

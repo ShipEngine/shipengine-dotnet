@@ -1202,7 +1202,7 @@ ShipEngineSDK.ShipEngineException.ErrorType.set -> void
 ShipEngineSDK.ShipEngineException.RequestId.get -> string?
 ShipEngineSDK.ShipEngineException.ResponseMessage.get -> System.Net.Http.HttpResponseMessage?
 ShipEngineSDK.ShipEngineException.ResponseMessage.set -> void
-ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, System.Net.Http.HttpResponseMessage? responseMessage = null, string? requestID = null) -> void
+ShipEngineSDK.ShipEngineException.ShipEngineException(string! message, ShipEngineSDK.ErrorSource errorSource = ShipEngineSDK.ErrorSource.Shipengine, ShipEngineSDK.ErrorType errorType = ShipEngineSDK.ErrorType.System, ShipEngineSDK.ErrorCode errorCode = ShipEngineSDK.ErrorCode.Unspecified, string? requestID = null, System.Net.Http.HttpResponseMessage? responseMessage = null) -> void
 ShipEngineSDK.ShipEngineExtensions
 ShipEngineSDK.ShipEngineMock
 ShipEngineSDK.ShipEngineMock.ShipEngineMock() -> void
