@@ -88,41 +88,60 @@ namespace ShipEngineSDK
         private async Task<T> DeserializedResultOrThrow<T>(HttpResponseMessage response)
         {
             var contentString = await response.Content.ReadAsStringAsync();
+            string? requestId = null;
+            if (response.Headers.TryGetValues("x-shipengine-requestid", out var requestIdValues))
+            {
+                requestId = requestIdValues.FirstOrDefault();
+            }
+
 
             if (!response.IsSuccessStatusCode)
             {
-                var deserializedError = JsonSerializer.Deserialize<ShipEngineAPIError>(contentString, JsonSerializerOptions);
+                ShipEngineAPIError? deserializedError = null;
+                try
+                {
+                    deserializedError =
+                        JsonSerializer.Deserialize<ShipEngineAPIError>(contentString, JsonSerializerOptions);
+                }
+                catch (JsonException)
+                {
+                }
 
-                // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
                 {
-                    response.EnsureSuccessStatusCode();
+                    // in this case, the response body was not parseable JSON
+                    throw new ShipEngineException("Unexpected HTTP status", requestID: requestId, responseMessage: response);
                 }
 
-                var error = deserializedError?.Errors[0];
-
-                if (error != null && error.Message != null && deserializedError?.RequestId != null)
-                {
-                    throw new ShipEngineException(
-                        error.Message,
-                        error.ErrorSource,
-                        error.ErrorType,
-                        error.ErrorCode,
-                        deserializedError.RequestId,
-                        response
-                    );
-                }
-
+                var error = deserializedError.Errors?.FirstOrDefault(e => e.Message != null);
+                // if error is null, it means we got back a JSON response, but it wasn't the format we expected
+                throw new ShipEngineException(
+                    error?.Message ?? response.ReasonPhrase,
+                    error?.ErrorSource ?? ErrorSource.Shipengine,
+                    error?.ErrorType ?? ErrorType.System,
+                    error?.ErrorCode ?? ErrorCode.Unspecified,
+                    deserializedError.RequestId ?? requestId,
+                    response
+                );
             }
 
-            var result = JsonSerializer.Deserialize<T>(contentString, JsonSerializerOptions);
+            T? result;
+            try
+            {
+                result = JsonSerializer.Deserialize<T>(contentString, JsonSerializerOptions);
+            }
+            catch (JsonException)
+            {
+                throw new ShipEngineException("Unable to parse response", requestID: requestId, responseMessage: response);
+            }
+
 
             if (result != null)
             {
                 return result;
             }
 
-            throw new ShipEngineException(message: "Unexpected Error");
+            throw new ShipEngineException(message: "Unexpected null response", requestID: requestId, responseMessage: response);
         }
 
 
@@ -148,8 +167,7 @@ namespace ShipEngineSDK
                 try
                 {
                     var request = BuildRequest(method, path, jsonContent);
-                    var streamTask = client.SendAsync(request, CancellationToken);
-                    response = await streamTask;
+                    response = await client.SendAsync(request, CancellationToken);
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
 
@@ -159,15 +177,10 @@ namespace ShipEngineSDK
                 {
                     if (e.ErrorCode != ErrorCode.RateLimitExceeded)
                     {
-                        throw e;
+                        throw;
                     }
 
                     requestException = e;
-                }
-
-                catch (Exception e)
-                {
-                    throw e;
                 }
 
 
@@ -180,14 +193,7 @@ namespace ShipEngineSDK
                 await WaitAndRetry(response, config, requestException);
             }
 
-            if (requestException != null)
-            {
-                throw requestException;
-            }
-            else
-            {
-                throw new ShipEngineException(message: "Unexpected Error");
-            }
+            throw requestException;
         }
 
         private async Task WaitAndRetry(HttpResponseMessage? response, Config config, ShipEngineException ex)
