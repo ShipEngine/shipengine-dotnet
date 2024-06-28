@@ -91,7 +91,15 @@ namespace ShipEngineSDK
 
             if (!response.IsSuccessStatusCode)
             {
-                var deserializedError = JsonSerializer.Deserialize<ShipEngineAPIError>(contentString, JsonSerializerOptions);
+                ShipEngineAPIError? deserializedError = null;
+                try
+                {
+                    deserializedError =
+                        JsonSerializer.Deserialize<ShipEngineAPIError>(contentString, JsonSerializerOptions);
+                }
+                catch (JsonException)
+                {
+                }
 
                 // Throw Generic HttpClient Error if unable to deserialize to a ShipEngineException
                 if (deserializedError == null)
@@ -115,14 +123,23 @@ namespace ShipEngineSDK
 
             }
 
-            var result = JsonSerializer.Deserialize<T>(contentString, JsonSerializerOptions);
+            T? result;
+            try
+            {
+                result = JsonSerializer.Deserialize<T>(contentString, JsonSerializerOptions);
+            }
+            catch (JsonException)
+            {
+                throw new ShipEngineException("Unable to parse response", responseMessage: response);
+            }
+
 
             if (result != null)
             {
                 return result;
             }
 
-            throw new ShipEngineException(message: "Unexpected Error");
+            throw new ShipEngineException(message: "Unexpected null response", responseMessage: response);
         }
 
 
@@ -148,8 +165,7 @@ namespace ShipEngineSDK
                 try
                 {
                     var request = BuildRequest(method, path, jsonContent);
-                    var streamTask = client.SendAsync(request, CancellationToken);
-                    response = await streamTask;
+                    response = await client.SendAsync(request, CancellationToken);
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
 
@@ -159,15 +175,10 @@ namespace ShipEngineSDK
                 {
                     if (e.ErrorCode != ErrorCode.RateLimitExceeded)
                     {
-                        throw e;
+                        throw;
                     }
 
                     requestException = e;
-                }
-
-                catch (Exception e)
-                {
-                    throw e;
                 }
 
 
@@ -180,14 +191,7 @@ namespace ShipEngineSDK
                 await WaitAndRetry(response, config, requestException);
             }
 
-            if (requestException != null)
-            {
-                throw requestException;
-            }
-            else
-            {
-                throw new ShipEngineException(message: "Unexpected Error");
-            }
+            throw requestException;
         }
 
         private async Task WaitAndRetry(HttpResponseMessage? response, Config config, ShipEngineException ex)
