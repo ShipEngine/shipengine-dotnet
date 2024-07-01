@@ -43,32 +43,27 @@ namespace ShipEngineSDK.CreateLabelFromShipmentDetails
         /// <summary>
         /// The possible validate address values
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
-        public ValidateAddress? ValidateAddress { get; set; }
+        public StringEnum<ValidateAddress> ValidateAddress { get; set; }
 
         /// <summary>
         /// There are two different ways to download a label:
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
-        public LabelDownloadType? LabelDownloadType { get; set; }
+        public StringEnum<LabelDownloadType> LabelDownloadType { get; set; }
 
         /// <summary>
         /// The file format that you want the label to be in. We recommend pdf format because it is supported by all carriers, whereas some carriers do not support the png or zpl formats.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
-        public LabelFormat? LabelFormat { get; set; }
+        public StringEnum<LabelFormat> LabelFormat { get; set; }
 
         /// <summary>
         /// The display format that the label should be shown in.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
-        public DisplayScheme? DisplayScheme { get; set; }
+        public StringEnum<DisplayScheme> DisplayScheme { get; set; }
 
         /// <summary>
         /// The layout (size) that you want the label to be in. The labelFormat determines which sizes are allowed. 4x6 is supported for all label formats, whereas letter (8.5" x 11") is only supported for pdf format.
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumMemberConverter))]
-        public LabelLayout LabelLayout { get; set; }
+        public StringEnum<LabelLayout> LabelLayout { get; set; }
 
         /// <summary>
         /// The label image resource that was used to create a custom label image.

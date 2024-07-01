@@ -68,7 +68,9 @@ namespace ShipEngineTest
                         }
                     }
                 },
-                ValidateAddress = ValidateAddress.ValidateAndClean
+                ValidateAddress = ValidateAddress.ValidateAndClean,
+                LabelLayout = LabelLayout.FourBySix,
+                LabelFormat = LabelFormat.ZPL
             };
         }
 
@@ -154,6 +156,7 @@ namespace ShipEngineTest
         [Fact]
         public void TestParamsSerialization()
         {
+            LabelParams.LabelLayout = "A4";
             string labelParamsString = JsonSerializer.Serialize(LabelParams, new JsonSerializerOptions()
             {
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
@@ -170,8 +173,9 @@ namespace ShipEngineTest
 
             Assert.Equal("John Doe", parsedJson["shipment"]["ship_from"]["name"].ToString());
             Assert.Equal("delivery_mailed", parsedJson["shipment"]["confirmation"].ToString());
-            Assert.Null(parsedJson["label_layout"]);
-            Assert.Null(parsedJson["label_format"]);
+            Assert.Equal("A4", parsedJson["label_layout"].ToString());
+            Assert.Equal("zpl", parsedJson["label_format"].ToString());
+            Assert.Null(parsedJson["display_scheme"]);
         }
 
 
