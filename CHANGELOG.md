@@ -132,3 +132,10 @@ Updated references to use proper converter to resolve enum string values
 ### Changed
 
 Impoved handling of unexpected HTTP responses
+
+## 2.0.4
+
+### Changed
+
+- Allow setting alternate base address on HTTP Client
+- Moved the SDK version to static fields so they are only determined once at startup.
