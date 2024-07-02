@@ -31,6 +31,12 @@ namespace ShipEngineSDK
             Converters = { new JsonStringEnumMemberConverter() }
         };
 
+        private static readonly string? OsPlatform = Environment.OSVersion.Platform.ToString();
+        private static readonly string? OsVersion = Environment.OSVersion.Version.ToString();
+        private static readonly string? ClrVersion = Environment.Version.ToString();
+        private static readonly Version? SdkVersionObject = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+        private static readonly string SdkVersion = $"{SdkVersionObject.Major}.{SdkVersionObject.Minor}.{SdkVersionObject.Build}";
+
         private const string JsonMediaType = "application/json";
 
         /// <summary>
@@ -49,20 +55,16 @@ namespace ShipEngineSDK
         {
             client.DefaultRequestHeaders.Accept.Clear();
 
-            var osPlatform = Environment.OSVersion.Platform.ToString();
-            var osVersion = Environment.OSVersion.Version.ToString();
-            var clrVersion = Environment.Version.ToString();
-
-            var sdkVersionObject = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            var sdkVersion = $"{sdkVersionObject.Major}.{sdkVersionObject.Minor}.{sdkVersionObject.Build}";
-
-            var userAgentString = $"shipengine-dotnet/{sdkVersion} {osPlatform}/{osVersion} clr/{clrVersion}";
+            var userAgentString = $"shipengine-dotnet/{SdkVersion} {OsPlatform}/{OsVersion} clr/{ClrVersion}";
 
             client.DefaultRequestHeaders.Add("User-Agent", userAgentString);
             client.DefaultRequestHeaders.Add("Api-Key", config.ApiKey);
             client.DefaultRequestHeaders.Add("Accept", JsonMediaType);
 
-            client.BaseAddress = new Uri("https://api.shipengine.com");
+            if (client.BaseAddress == null)
+            {
+                client.BaseAddress = new Uri("https://api.shipengine.com");
+            }
 
             client.Timeout = config.Timeout;
 
