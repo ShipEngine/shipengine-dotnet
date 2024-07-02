@@ -3,12 +3,66 @@ namespace ShipEngineTest
     using ShipEngineSDK;
     using ShipEngineSDK.VoidLabelWithLabelId;
     using System;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Xunit;
 
     public class ShipEngineClientTests
     {
+        [Fact]
+        public void ConfigureSetsDefaultBaseAddressOnHttpClient()
+        {
+            var httpClient = new HttpClient();
+            var returnedClient = ShipEngineClient.ConfigureHttpClient(httpClient, "my-api-key", null);
+
+            Assert.Same(httpClient, returnedClient);
+            Assert.Equal("https://api.shipengine.com/", httpClient.BaseAddress.ToString());
+        }
+
+        [Fact]
+        public void ConfigureAllowsSettingBaseAddressOnHttpClient()
+        {
+            var httpClient = new HttpClient();
+            var returnedClient = ShipEngineClient.ConfigureHttpClient(httpClient, "my-api-key", new Uri("http://localhost:5454/"));
+
+            Assert.Same(httpClient, returnedClient);
+            Assert.Equal("http://localhost:5454/", httpClient.BaseAddress.ToString());
+        }
+
+        [Fact]
+        public void ConfigureAllowsSettingTimeoutOnHttpClient()
+        {
+            var httpClient = new HttpClient();
+            var returnedClient = ShipEngineClient.ConfigureHttpClient(httpClient, "my-api-key", null, TimeSpan.FromMinutes(7));
+
+            Assert.Same(httpClient, returnedClient);
+            Assert.Equal(7, httpClient.Timeout.TotalMinutes);
+        }
+
+        [Fact]
+        public void ConfigureSetsTheApiKeyHeader()
+        {
+            var httpClient = new HttpClient();
+            var returnedClient = ShipEngineClient.ConfigureHttpClient(httpClient, "my-api-key", null);
+
+            Assert.Same(httpClient, returnedClient);
+            Assert.Equal("my-api-key", httpClient.DefaultRequestHeaders.FirstOrDefault(x => x.Key == "Api-Key").Value.SingleOrDefault());
+        }
+
+        [Fact]
+        public void ConfigureSetsTheSdkUserAgentHeader()
+        {
+            var httpClient = new HttpClient();
+            var returnedClient = ShipEngineClient.ConfigureHttpClient(httpClient, "my-api-key", null);
+
+            Assert.Same(httpClient, returnedClient);
+            var userAgents = httpClient.DefaultRequestHeaders.FirstOrDefault(x => x.Key == "User-Agent").Value;
+            Assert.NotNull(userAgents);
+            var sdkHeader = userAgents.FirstOrDefault(x => x.StartsWith("shipengine-dotnet/"));
+            Assert.NotNull(sdkHeader);
+        }
+
         [Fact]
         public async Task FailureStatusWithShipengineContentThrowsPopulatedShipEngineException()
         {
