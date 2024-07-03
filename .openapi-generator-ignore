@@ -22,15 +22,15 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
-**/*.sln
-**/ShipEngineSDK/Client/*.cs
+*.sln
+ShipEngineSDK/Client/*.cs
 **/*.csproj
-**/appveyor.yml
-**/git_push.sh
+appveyor.yml
+git_push.sh
 
 # We should re-enable these eventually
-**/README.md
-**/docs/*.md
-**/api/**
-**/.gitignore
-**/.openapi-generator-ignore
+README.md
+docs/*.md
+api/**
+.gitignore
+.openapi-generator-ignore

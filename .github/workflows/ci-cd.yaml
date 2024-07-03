@@ -32,7 +32,7 @@ jobs:
         run: msbuild shipengine-dotnet.sln /p:Configuration=Release
 
       - name: Run Test
-        run: dotnet test ShipEngineSDK.Tests/bin/Release/net462/ShipEngineSDK.Tests.dll
+        run: dotnet test ShipEngineSDK.Test/bin/Release/net462/ShipEngineSDK.Test.dll
 
   dot_net_core_test:
     name: .Net 8.0 on ${{ matrix.os }}
@@ -65,13 +65,13 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Run 8.0 Tests
-        run: dotnet test -f net8.0 --settings ShipEngineSDK.Tests/coverage.runsettings
+        run: dotnet test -f net8.0 --settings ShipEngineSDK.Test/coverage.runsettings
 
       - name: Move generated lcov file to expected location
         shell: bash
         run: |
-          ls -Rlh ShipEngineSDK.Tests/TestResults/*/coverage.info
-          cat ShipEngineSDK.Tests/TestResults/*/coverage.info > ShipEngineSDK.Tests/TestResults/lcov.info
+          ls -Rlh ShipEngineSDK.Test/TestResults/*/coverage.info
+          cat ShipEngineSDK.Test/TestResults/*/coverage.info > ShipEngineSDK.Test/TestResults/lcov.info
 
       - name: Send code coverage results to Coveralls
         uses: coverallsapp/github-action@v1.1.0
@@ -79,7 +79,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
           flag-name: run-${{ matrix.test_number }}
-          path-to-lcov: ShipEngineSDK.Tests/TestResults/lcov.info
+          path-to-lcov: ShipEngineSDK.Test/TestResults/lcov.info
 
   coverage:
     name: Code Coverage
