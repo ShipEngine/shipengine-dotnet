@@ -1,0 +1,17 @@
+{
+  "name": "shipengine-dotnet",
+  "version": "1.0.0",
+  "description": "Package primarily used to generate the API and models from OpenApi spec\"",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Auctane",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.13.4"
+  }
+}

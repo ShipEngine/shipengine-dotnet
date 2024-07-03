@@ -56,7 +56,7 @@
             set
             {
                 {{#oneOf}}
-                {{^-first}}else {{/-first}}if (value.GetType() == typeof({{{.}}}) || value is {{{.}}})
+                {{^-first}}else {{/-first}}if (value.GetType() == typeof({{{.}}}))
                 {
                     this._actualInstance = value;
                 }
