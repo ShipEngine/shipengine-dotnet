@@ -2,6 +2,21 @@
   "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
   "spaces": 2,
   "generator-cli": {
-    "version": "7.7.0"
+    "version": "7.7.0",
+    "generators": {
+      "csharp": {
+        "generatorName": "csharp",
+        "output": "out",
+        "inputSpec": "./generation/swagger.json",
+        "templateDir": "./generation/templates",
+        "skipValidateSpec": true,
+        "packageName": "ShipEngineSDK",
+        "additionalProperties": {
+          "targetFramework": "netstandard2.0",
+          "validatable": false,
+          "optionalProjectFile": false
+        }
+      }
+    }
   }
 }
