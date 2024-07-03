@@ -23,6 +23,8 @@
 #!docs/README.md
 
 **/*.sln
+**/ShipEngineSDK/Client/*.cs
+**/*.csproj
 **/appveyor.yml
 **/git_push.sh
 
