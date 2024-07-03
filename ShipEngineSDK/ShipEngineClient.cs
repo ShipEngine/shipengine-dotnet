@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
+    using Client;
+    using HttpMethod = System.Net.Http.HttpMethod;
 
     /// <summary>
     /// ShipEngine Client is used for handling generic calls and settings that
@@ -146,6 +148,20 @@ namespace ShipEngineSDK
             throw new ShipEngineException(message: "Unexpected null response", requestID: requestId, responseMessage: response);
         }
 
+        /// <summary>
+        /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
+        /// 429 rate limit exceeded errors and subsequent retry logic.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="method"></param>
+        /// <param name="path"></param>
+        /// <param name="jsonContent"></param>
+        /// <param name="client"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public virtual Task<T> SendHttpRequestAsync<T>(HttpMethod method, RequestOptions requestOptions,
+            HttpClient client, Config config) =>
+            SendHttpRequestAsync<T>(method, requestOptions.FullPath(), requestOptions.Data, client, config);
 
         /// <summary>
         /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling

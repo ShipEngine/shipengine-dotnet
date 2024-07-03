@@ -14,7 +14,7 @@ namespace ShipEngineSDK
     /// <summary>
     /// Interface for ShipEngine
     /// </summary>
-    public interface IShipEngine
+    public partial interface IShipEngine
     {
         /// <summary>
         /// Validates an address in nearly any country in the world.
@@ -375,7 +375,7 @@ namespace ShipEngineSDK
     /// <summary>
     /// Contains methods for interacting with the ShipEngine API.
     /// </summary>
-    public class ShipEngine : ShipEngineClient, IDisposable, IShipEngine
+    public partial class ShipEngine : ShipEngineClient, IDisposable, IShipEngine
     {
         /// <summary>
         /// Global HttpClient for ShipEngine instance.

@@ -11,8 +11,10 @@ namespace {{packageName}}.Client
     /// A container for generalized request inputs. This type allows consumers to extend the request functionality
     /// by abstracting away from the default (built-in) request framework (e.g. RestSharp).
     /// </summary>
-    public class RequestOptions
+    public class RequestOptions(string path)
     {
+        string _path = path;
+        
         /// <summary>
         /// Parameters to be bound to path parts of the Request's URL
         /// </summary>
