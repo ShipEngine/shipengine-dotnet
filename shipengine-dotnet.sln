@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipEngine", "ShipEngine\ShipEngine.csproj", "{913C6F69-889E-4B38-852C-5DCEC539152A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipEngineSDK", "ShipEngineSDK\ShipEngineSDK.csproj", "{913C6F69-889E-4B38-852C-5DCEC539152A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipEngine.Tests", "ShipEngine.Tests\ShipEngine.Tests.csproj", "{A875A01E-ACEA-4488-B90E-CC564A892557}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipEngineSDK.Tests", "ShipEngineSDK.Tests\ShipEngineSDK.Tests.csproj", "{A875A01E-ACEA-4488-B90E-CC564A892557}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

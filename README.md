@@ -82,7 +82,7 @@ Create a [fork](https://docs.github.com/en/get-started/quickstart/contributing-t
 
 Update the [Changelog](./CHANGELOG.md) with any relevant new features or bug fixes.
 
-In the `ShipEngine.csproj` file, update to the desired version (using [semantic versioning](https://semver.org/)) and push to your fork.
+In the `ShipEngineSDK.csproj` file, update to the desired version (using [semantic versioning](https://semver.org/)) and push to your fork.
 
 Run `dotnet format`
 
