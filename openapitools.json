@@ -11,6 +11,7 @@
         "templateDir": "./generation/templates",
         "skipValidateSpec": true,
         "packageName": "ShipEngineSDK",
+        "ignoreFileOverride": "./.openapi-generator-ignore",
         "additionalProperties": {
           "targetFramework": "netstandard2.0",
           "validatable": false,
