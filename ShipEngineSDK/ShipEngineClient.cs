@@ -154,14 +154,14 @@ namespace ShipEngineSDK
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="method"></param>
-        /// <param name="path"></param>
-        /// <param name="jsonContent"></param>
+        /// <param name="requestOptions">Options for the request</param>
         /// <param name="client"></param>
         /// <param name="config"></param>
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
         /// <returns></returns>
         public virtual Task<T> SendHttpRequestAsync<T>(HttpMethod method, RequestOptions requestOptions,
-            HttpClient client, Config config) =>
-            SendHttpRequestAsync<T>(method, requestOptions.FullPath(), requestOptions.Data, client, config);
+            HttpClient client, Config config, CancellationToken cancellationToken) =>
+            SendHttpRequestAsync<T>(method, requestOptions.FullPath(), requestOptions.Data, client, config, cancellationToken);
 
         /// <summary>
         /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
@@ -174,7 +174,22 @@ namespace ShipEngineSDK
         /// <param name="client"></param>
         /// <param name="config"></param>
         /// <returns></returns>
-        public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config)
+        public virtual Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config) =>
+            SendHttpRequestAsync<T>(method, path, jsonContent, client, config, CancellationToken);
+
+        /// <summary>
+        /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
+        /// 429 rate limit exceeded errors and subsequent retry logic.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="method"></param>
+        /// <param name="path"></param>
+        /// <param name="jsonContent"></param>
+        /// <param name="client"></param>
+        /// <param name="config"></param>
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        /// <returns></returns>
+        public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config, CancellationToken cancellationToken)
         {
             int retry = 0;
 
@@ -185,7 +200,7 @@ namespace ShipEngineSDK
                 try
                 {
                     var request = BuildRequest(method, path, jsonContent);
-                    response = await client.SendAsync(request, CancellationToken);
+                    response = await client.SendAsync(request, cancellationToken);
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
 

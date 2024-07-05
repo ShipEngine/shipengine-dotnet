@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Mime;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 {{#hasOAuthMethods}}using {{packageName}}.Client.Auth;
 {{/hasOAuthMethods}}
@@ -26,48 +27,48 @@ namespace {{packageName}};
     /// <summary>
     /// {{summary}} {{notes}}
     /// </summary>
-    /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="{{packageName}}.ShipEngineException">Thrown when fails to make API call</exception>
     {{#allParams}}
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
-    /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}});
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     /// <summary>
     /// {{summary}} {{notes}}
     /// </summary>
-    /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="{{packageName}}.ShipEngineException">Thrown when fails to make API call</exception>
     {{#allParams}}
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
-    /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig{{#allParams}}{{#-first}}, {{/-first}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}});
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     /// <summary>
     /// {{summary}} {{notes}}
     /// </summary>
-    /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="{{packageName}}.ShipEngineException">Thrown when fails to make API call</exception>
     {{#allParams}}
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
-    /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig{{#allParams}}{{#-first}}, {{/-first}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}});
-    
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+
     {{/operation}}
 }
 
@@ -80,54 +81,54 @@ namespace {{packageName}};
     /// <summary>
     /// {{summary}} {{notes}}
     /// </summary>
-    /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="{{packageName}}.ShipEngineException">Thrown when fails to make API call</exception>
     {{#allParams}}
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
-    /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
-        return {{operationId}}(_client, _config{{#allParams}}{{#-first}}, {{/-first}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});
+        return {{operationId}}(_client, _config, {{#allParams}}{{paramName}}, {{/allParams}}cancellationToken);
     }
 
     /// <summary>
     /// {{summary}} {{notes}}
     /// </summary>
-    /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="{{packageName}}.ShipEngineException">Thrown when fails to make API call</exception>
     {{#allParams}}
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
-    /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig{{#allParams}}{{#-first}}, {{/-first}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return {{operationId}}(methodClient, methodConfig{{#allParams}}{{#-first}}, {{/-first}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});
+        return await {{operationId}}(methodClient, methodConfig, {{#allParams}}{{paramName}}, {{/allParams}}cancellationToken);
     }
 
     /// <summary>
     /// {{summary}} {{notes}}
     /// </summary>
-    /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="{{packageName}}.ShipEngineException">Thrown when fails to make API call</exception>
     {{#allParams}}
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
-    /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig{{#allParams}}{{#-first}}, {{/-first}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         {{#allParams}}
         {{#required}}
@@ -135,7 +136,7 @@ namespace {{packageName}};
         // verify the required parameter '{{paramName}}' is set
         if ({{paramName}} == null)
         {
-            throw new {{packageName}}.Client.ApiException(400, "Missing required parameter '{{paramName}}' when calling {{classname}}->{{operationId}}");
+            throw new ArgumentNullException(nameof({{paramName}}));
         }
 
         {{/vendorExtensions.x-csharp-value-type}}
@@ -269,7 +270,7 @@ namespace {{packageName}};
 
         requestOptions.Operation = "{{classname}}.{{operationId}}";
 
-        var result = await SendHttpRequestAsync<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(HttpMethod.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}, requestOptions, methodClient, methodConfig);
+        var result = await SendHttpRequestAsync<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(HttpMethods.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}, requestOptions, methodClient, methodConfig, cancellationToken);
 
         return result;
     }

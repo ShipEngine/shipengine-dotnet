@@ -23,10 +23,12 @@
 #!docs/README.md
 
 *.sln
-#ShipEngineSDK/Client/*.cs
 **/*.csproj
 appveyor.yml
 git_push.sh
+ShipEngineSDK/Client/*.cs
+!ShipEngineSDK/Client/Multimap.cs
+!ShipEngineSDK/Client/ClientUtils.cs
 
 # We should re-enable these eventually
 README.md
