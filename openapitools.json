@@ -7,7 +7,7 @@
       "csharp": {
         "generatorName": "csharp",
         "output": ".",
-        "inputSpec": "./generation/swagger.json",
+        "inputSpec": "./generation/openapi.yaml",
         "templateDir": "./generation/templates",
         "skipValidateSpec": true,
         "packageName": "ShipEngineSDK",
