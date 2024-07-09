@@ -32,15 +32,15 @@ public partial class RateEstimateOptions
 {
 
     /// <summary>
-    /// Gets or Sets Confirmation
+    /// Gets or Sets Confirmation  CLOVUS
     /// </summary>
     [JsonPropertyName("confirmation")]
-    public string? Confirmation { get; set; }
+    public DeliveryConfirmation? Confirmation { get; set; }
     /// <summary>
-    /// Gets or Sets AddressResidentialIndicator
+    /// Gets or Sets AddressResidentialIndicator  CLOVUS
     /// </summary>
     [JsonPropertyName("address_residential_indicator")]
-    public string? AddressResidentialIndicator { get; set; }
+    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
     /// </summary>

@@ -32,11 +32,11 @@ public partial class BulkRate
 {
 
     /// <summary>
-    /// Gets or Sets Status
+    /// Gets or Sets Status  CLOVUS
     /// </summary>
     [JsonPropertyName("status")]
     [JsonRequired]
-    public string Status { get; set; } = ShipEngineSDK.Model.RateResponseStatus.DefaultValue;
+    public RateResponseStatus Status { get; set; } = new();
     
 
     /// <summary>

@@ -32,10 +32,10 @@ public partial class UpdateShipmentFields
 {
 
     /// <summary>
-    /// Gets or Sets ValidateAddress
+    /// Gets or Sets ValidateAddress  CLOVUS
     /// </summary>
     [JsonPropertyName("validate_address")]
-    public string? ValidateAddress { get; set; }
+    public ValidateAddress? ValidateAddress { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object

@@ -24,64 +24,78 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible package contents values
-    /// </summary>
-    /// <value>The possible package contents values</value>
-    public static class PackageContents
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "merchandise",
-            "documents",
-            "gift",
-            "returned_goods",
-            "sample",
-            "other",
-        };
+/// <summary>
+/// The possible package contents values
+/// </summary>
+/// <value>The possible package contents values</value>
+[JsonConverter(typeof(PackageContentsJsonConverter))]
+public class PackageContents
+{
+    private string _value;
 
-        public static string DefaultValue => Merchandise;
-        /// <summary>
-        /// Enum Merchandise for value: merchandise
-        /// </summary>
-        public static string Merchandise { get; } = "merchandise";
-
-
-        /// <summary>
-        /// Enum Documents for value: documents
-        /// </summary>
-        public static string Documents { get; } = "documents";
-
-
-        /// <summary>
-        /// Enum Gift for value: gift
-        /// </summary>
-        public static string Gift { get; } = "gift";
-
-
-        /// <summary>
-        /// Enum ReturnedGoods for value: returned_goods
-        /// </summary>
-        public static string ReturnedGoods { get; } = "returned_goods";
-
-
-        /// <summary>
-        /// Enum Sample for value: sample
-        /// </summary>
-        public static string Sample { get; } = "sample";
-
-
-        /// <summary>
-        /// Enum Other for value: other
-        /// </summary>
-        public static string Other { get; } = "other";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal PackageContents() {
+        _value = "merchandise";
     }
+
+    /// <summary>
+    /// Create a new instance of PackageContents with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the PackageContents</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public PackageContents(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Merchandise for value: merchandise
+    /// </summary>
+    public static PackageContents Merchandise { get; } = new("merchandise");
+
+
+    /// <summary>
+    /// Enum Documents for value: documents
+    /// </summary>
+    public static PackageContents Documents { get; } = new("documents");
+
+
+    /// <summary>
+    /// Enum Gift for value: gift
+    /// </summary>
+    public static PackageContents Gift { get; } = new("gift");
+
+
+    /// <summary>
+    /// Enum ReturnedGoods for value: returned_goods
+    /// </summary>
+    public static PackageContents ReturnedGoods { get; } = new("returned_goods");
+
+
+    /// <summary>
+    /// Enum Sample for value: sample
+    /// </summary>
+    public static PackageContents Sample { get; } = new("sample");
+
+
+    /// <summary>
+    /// Enum Other for value: other
+    /// </summary>
+    public static PackageContents Other { get; } = new("other");
+
+
+    public override string ToString() => _value;
+}
+
+internal class PackageContentsJsonConverter : JsonConverter<PackageContents>
+{
+    public override PackageContents? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new PackageContents(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, PackageContents value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(PackageContents);
+}

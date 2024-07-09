@@ -32,19 +32,19 @@ public partial class GetRateByIdResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets RateType
+    /// Gets or Sets RateType  CLOVUS
     /// </summary>
     [JsonPropertyName("rate_type")]
     [JsonRequired]
-    public string RateType { get; set; } = ShipEngineSDK.Model.RateType.DefaultValue;
+    public RateType RateType { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets ValidationStatus
+    /// Gets or Sets ValidationStatus  CLOVUS
     /// </summary>
     [JsonPropertyName("validation_status")]
     [JsonRequired]
-    public string ValidationStatus { get; set; } = ShipEngineSDK.Model.ValidationStatus.DefaultValue;
+    public ValidationStatus ValidationStatus { get; set; } = new();
     
 
     /// <summary>

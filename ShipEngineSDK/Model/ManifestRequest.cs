@@ -32,10 +32,10 @@ public partial class ManifestRequest
 {
 
     /// <summary>
-    /// Gets or Sets Status
+    /// Gets or Sets Status  CLOVUS
     /// </summary>
     [JsonPropertyName("status")]
-    public string? Status { get; set; }
+    public ManifestRequestStatus? Status { get; set; }
     /// <summary>
     /// A string that uniquely identifies a manifest request
     /// </summary>

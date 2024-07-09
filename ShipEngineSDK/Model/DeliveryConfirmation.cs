@@ -24,71 +24,84 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible delivery confirmation values
-    /// </summary>
-    /// <value>The possible delivery confirmation values</value>
-    public static class DeliveryConfirmation
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "none",
-            "delivery",
-            "signature",
-            "adult_signature",
-            "direct_signature",
-            "delivery_mailed",
-            "verbal_confirmation",
-        };
+/// <summary>
+/// The possible delivery confirmation values
+/// </summary>
+/// <value>The possible delivery confirmation values</value>
+[JsonConverter(typeof(DeliveryConfirmationJsonConverter))]
+public class DeliveryConfirmation
+{
+    private string _value;
 
-        public static string DefaultValue => None;
-        /// <summary>
-        /// Enum None for value: none
-        /// </summary>
-        public static string None { get; } = "none";
-
-
-        /// <summary>
-        /// Enum Delivery for value: delivery
-        /// </summary>
-        public static string Delivery { get; } = "delivery";
-
-
-        /// <summary>
-        /// Enum Signature for value: signature
-        /// </summary>
-        public static string Signature { get; } = "signature";
-
-
-        /// <summary>
-        /// Enum AdultSignature for value: adult_signature
-        /// </summary>
-        public static string AdultSignature { get; } = "adult_signature";
-
-
-        /// <summary>
-        /// Enum DirectSignature for value: direct_signature
-        /// </summary>
-        public static string DirectSignature { get; } = "direct_signature";
-
-
-        /// <summary>
-        /// Enum DeliveryMailed for value: delivery_mailed
-        /// </summary>
-        public static string DeliveryMailed { get; } = "delivery_mailed";
-
-
-        /// <summary>
-        /// Enum VerbalConfirmation for value: verbal_confirmation
-        /// </summary>
-        public static string VerbalConfirmation { get; } = "verbal_confirmation";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal DeliveryConfirmation() {
+        _value = "none";
     }
+
+    /// <summary>
+    /// Create a new instance of DeliveryConfirmation with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the DeliveryConfirmation</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public DeliveryConfirmation(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum None for value: none
+    /// </summary>
+    public static DeliveryConfirmation None { get; } = new("none");
+
+
+    /// <summary>
+    /// Enum Delivery for value: delivery
+    /// </summary>
+    public static DeliveryConfirmation Delivery { get; } = new("delivery");
+
+
+    /// <summary>
+    /// Enum Signature for value: signature
+    /// </summary>
+    public static DeliveryConfirmation Signature { get; } = new("signature");
+
+
+    /// <summary>
+    /// Enum AdultSignature for value: adult_signature
+    /// </summary>
+    public static DeliveryConfirmation AdultSignature { get; } = new("adult_signature");
+
+
+    /// <summary>
+    /// Enum DirectSignature for value: direct_signature
+    /// </summary>
+    public static DeliveryConfirmation DirectSignature { get; } = new("direct_signature");
+
+
+    /// <summary>
+    /// Enum DeliveryMailed for value: delivery_mailed
+    /// </summary>
+    public static DeliveryConfirmation DeliveryMailed { get; } = new("delivery_mailed");
+
+
+    /// <summary>
+    /// Enum VerbalConfirmation for value: verbal_confirmation
+    /// </summary>
+    public static DeliveryConfirmation VerbalConfirmation { get; } = new("verbal_confirmation");
+
+
+    public override string ToString() => _value;
+}
+
+internal class DeliveryConfirmationJsonConverter : JsonConverter<DeliveryConfirmation>
+{
+    public override DeliveryConfirmation? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new DeliveryConfirmation(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, DeliveryConfirmation value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(DeliveryConfirmation);
+}

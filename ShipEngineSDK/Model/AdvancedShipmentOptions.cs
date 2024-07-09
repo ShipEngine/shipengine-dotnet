@@ -32,16 +32,16 @@ public partial class AdvancedShipmentOptions
 {
 
     /// <summary>
-    /// Indicates whether to bill shipping costs to the recipient or to a third-party.  When billing to a third-party, the &#x60;bill_to_account&#x60;, &#x60;bill_to_country_code&#x60;, and &#x60;bill_to_postal_code&#x60; fields must also be set. 
+    /// Indicates whether to bill shipping costs to the recipient or to a third-party.  When billing to a third-party, the &#x60;bill_to_account&#x60;, &#x60;bill_to_country_code&#x60;, and &#x60;bill_to_postal_code&#x60; fields must also be set.   CLOVUS
     /// </summary>
     /// <value>Indicates whether to bill shipping costs to the recipient or to a third-party.  When billing to a third-party, the &#x60;bill_to_account&#x60;, &#x60;bill_to_country_code&#x60;, and &#x60;bill_to_postal_code&#x60; fields must also be set. </value>
     [JsonPropertyName("bill_to_party")]
-    public string? BillToParty { get; set; }
+    public BillToParty? BillToParty { get; set; }
     /// <summary>
-    /// Gets or Sets OriginType
+    /// Gets or Sets OriginType  CLOVUS
     /// </summary>
     [JsonPropertyName("origin_type")]
-    public string? OriginType { get; set; }
+    public OriginType? OriginType { get; set; }
     /// <summary>
     /// This field is used to [bill shipping costs to a third party](https://www.shipengine.com/docs/shipping/bill-to-third-party/).  This field must be used in conjunction with the &#x60;bill_to_country_code&#x60;, &#x60;bill_to_party&#x60;, and &#x60;bill_to_postal_code&#x60; fields. 
     /// </summary>

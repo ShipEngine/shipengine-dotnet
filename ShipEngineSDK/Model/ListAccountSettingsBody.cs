@@ -32,10 +32,10 @@ public partial class ListAccountSettingsBody
 {
 
     /// <summary>
-    /// Gets or Sets DefaultLabelLayout
+    /// Gets or Sets DefaultLabelLayout  CLOVUS
     /// </summary>
     [JsonPropertyName("default_label_layout")]
-    public string? DefaultLabelLayout { get; set; }
+    public DefaultLabelLayout? DefaultLabelLayout { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object

@@ -24,50 +24,66 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible address validation status values
-    /// </summary>
-    /// <value>The possible address validation status values</value>
-    public static class AddressValidationStatus
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "unverified",
-            "verified",
-            "warning",
-            "error",
-        };
+/// <summary>
+/// The possible address validation status values
+/// </summary>
+/// <value>The possible address validation status values</value>
+[JsonConverter(typeof(AddressValidationStatusJsonConverter))]
+public class AddressValidationStatus
+{
+    private string _value;
 
-        public static string DefaultValue => Unverified;
-        /// <summary>
-        /// Enum Unverified for value: unverified
-        /// </summary>
-        public static string Unverified { get; } = "unverified";
-
-
-        /// <summary>
-        /// Enum Verified for value: verified
-        /// </summary>
-        public static string Verified { get; } = "verified";
-
-
-        /// <summary>
-        /// Enum Warning for value: warning
-        /// </summary>
-        public static string Warning { get; } = "warning";
-
-
-        /// <summary>
-        /// Enum Error for value: error
-        /// </summary>
-        public static string Error { get; } = "error";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal AddressValidationStatus() {
+        _value = "unverified";
     }
+
+    /// <summary>
+    /// Create a new instance of AddressValidationStatus with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the AddressValidationStatus</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public AddressValidationStatus(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Unverified for value: unverified
+    /// </summary>
+    public static AddressValidationStatus Unverified { get; } = new("unverified");
+
+
+    /// <summary>
+    /// Enum Verified for value: verified
+    /// </summary>
+    public static AddressValidationStatus Verified { get; } = new("verified");
+
+
+    /// <summary>
+    /// Enum Warning for value: warning
+    /// </summary>
+    public static AddressValidationStatus Warning { get; } = new("warning");
+
+
+    /// <summary>
+    /// Enum Error for value: error
+    /// </summary>
+    public static AddressValidationStatus Error { get; } = new("error");
+
+
+    public override string ToString() => _value;
+}
+
+internal class AddressValidationStatusJsonConverter : JsonConverter<AddressValidationStatus>
+{
+    public override AddressValidationStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new AddressValidationStatus(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, AddressValidationStatus value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(AddressValidationStatus);
+}

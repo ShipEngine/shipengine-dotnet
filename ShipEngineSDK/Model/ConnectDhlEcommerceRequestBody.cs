@@ -32,10 +32,10 @@ public partial class ConnectDhlEcommerceRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets AncillaryEndorsement
+    /// Gets or Sets AncillaryEndorsement  CLOVUS
     /// </summary>
     [JsonPropertyName("ancillary_endorsement")]
-    public string? AncillaryEndorsement { get; set; }
+    public AncillaryServiceEndorsement? AncillaryEndorsement { get; set; }
     /// <summary>
     /// A nickname to help you identify this account
     /// </summary>

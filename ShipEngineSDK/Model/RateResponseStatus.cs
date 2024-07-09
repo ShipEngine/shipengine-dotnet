@@ -24,50 +24,66 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible rate response status values
-    /// </summary>
-    /// <value>The possible rate response status values</value>
-    public static class RateResponseStatus
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "working",
-            "completed",
-            "partial",
-            "error",
-        };
+/// <summary>
+/// The possible rate response status values
+/// </summary>
+/// <value>The possible rate response status values</value>
+[JsonConverter(typeof(RateResponseStatusJsonConverter))]
+public class RateResponseStatus
+{
+    private string _value;
 
-        public static string DefaultValue => Working;
-        /// <summary>
-        /// Enum Working for value: working
-        /// </summary>
-        public static string Working { get; } = "working";
-
-
-        /// <summary>
-        /// Enum Completed for value: completed
-        /// </summary>
-        public static string Completed { get; } = "completed";
-
-
-        /// <summary>
-        /// Enum Partial for value: partial
-        /// </summary>
-        public static string Partial { get; } = "partial";
-
-
-        /// <summary>
-        /// Enum Error for value: error
-        /// </summary>
-        public static string Error { get; } = "error";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal RateResponseStatus() {
+        _value = "working";
     }
+
+    /// <summary>
+    /// Create a new instance of RateResponseStatus with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the RateResponseStatus</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public RateResponseStatus(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Working for value: working
+    /// </summary>
+    public static RateResponseStatus Working { get; } = new("working");
+
+
+    /// <summary>
+    /// Enum Completed for value: completed
+    /// </summary>
+    public static RateResponseStatus Completed { get; } = new("completed");
+
+
+    /// <summary>
+    /// Enum Partial for value: partial
+    /// </summary>
+    public static RateResponseStatus Partial { get; } = new("partial");
+
+
+    /// <summary>
+    /// Enum Error for value: error
+    /// </summary>
+    public static RateResponseStatus Error { get; } = new("error");
+
+
+    public override string ToString() => _value;
+}
+
+internal class RateResponseStatusJsonConverter : JsonConverter<RateResponseStatus>
+{
+    public override RateResponseStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new RateResponseStatus(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, RateResponseStatus value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(RateResponseStatus);
+}

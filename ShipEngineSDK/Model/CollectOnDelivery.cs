@@ -32,10 +32,10 @@ public partial class CollectOnDelivery
 {
 
     /// <summary>
-    /// Gets or Sets PaymentType
+    /// Gets or Sets PaymentType  CLOVUS
     /// </summary>
     [JsonPropertyName("payment_type")]
-    public string? PaymentType { get; set; }
+    public CollectOnDeliveryPaymentType? PaymentType { get; set; }
     /// <summary>
     /// Gets or Sets PaymentAmount
     /// </summary>

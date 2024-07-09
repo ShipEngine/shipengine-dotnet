@@ -32,11 +32,11 @@ public partial class GetTrackingLogResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode
+    /// Gets or Sets StatusCode  CLOVUS
     /// </summary>
     [JsonPropertyName("status_code")]
     [JsonRequired]
-    public string StatusCode { get; set; } = ShipEngineSDK.Model.StatusCode.DefaultValue;
+    public StatusCode StatusCode { get; set; } = new();
     
 
     /// <summary>

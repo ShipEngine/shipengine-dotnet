@@ -32,25 +32,25 @@ public partial class DangerousGoods
 {
 
     /// <summary>
-    /// Gets or Sets PackagingGroup
+    /// Gets or Sets PackagingGroup  CLOVUS
     /// </summary>
     [JsonPropertyName("packaging_group")]
-    public string? PackagingGroup { get; set; }
+    public PackagingGroup? PackagingGroup { get; set; }
     /// <summary>
-    /// Gets or Sets PackagingInstructionSection
+    /// Gets or Sets PackagingInstructionSection  CLOVUS
     /// </summary>
     [JsonPropertyName("packaging_instruction_section")]
-    public string? PackagingInstructionSection { get; set; }
+    public PackagingInstructionSection? PackagingInstructionSection { get; set; }
     /// <summary>
-    /// Gets or Sets TransportMean
+    /// Gets or Sets TransportMean  CLOVUS
     /// </summary>
     [JsonPropertyName("transport_mean")]
-    public string? TransportMean { get; set; }
+    public TransportMean? TransportMean { get; set; }
     /// <summary>
-    /// Gets or Sets RegulationLevel
+    /// Gets or Sets RegulationLevel  CLOVUS
     /// </summary>
     [JsonPropertyName("regulation_level")]
-    public string? RegulationLevel { get; set; }
+    public RegulationLevel? RegulationLevel { get; set; }
     /// <summary>
     /// UN number to identify the dangerous goods.
     /// </summary>

@@ -32,10 +32,10 @@ public partial class Webhook
 {
 
     /// <summary>
-    /// Gets or Sets Event
+    /// Gets or Sets Event  CLOVUS
     /// </summary>
     [JsonPropertyName("event")]
-    public string? Event { get; set; }
+    public WebhookEvent? Event { get; set; }
     /// <summary>
     /// A string that uniquely identifies the webhook
     /// </summary>

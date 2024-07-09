@@ -1,43 +1,101 @@
-        {{^isContainer}}
-        /// <summary>
-        /// {{description}}{{^description}}Defines {{{name}}}{{/description}}
-        /// </summary>
-        {{#description}}
-        /// <value>{{.}}</value>
-        {{/description}}
-        {{>visibility}} static class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}
-        {
-            private static readonly HashSet<string> _values = new()
-            {
-                {{#allowableValues}}
-                {{#enumVars}}
-                "{{value}}",
-                {{/enumVars}}
-                {{/allowableValues}}
-            };
+//    {{^isContainer}}
+//    /// <summary>
+//    /// {{description}}{{^description}}Defines {{{name}}}{{/description}}
+//    /// </summary>
+//    {{#description}}
+//    /// <value>{{.}}</value>
+//    {{/description}}
+//    {{>visibility}} static class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}
+//    {
+//        private static readonly HashSet<string> _values = new()
+//        {
+//            {{#allowableValues}}
+//            {{#enumVars}}
+//            "{{value}}",
+//            {{/enumVars}}
+//            {{/allowableValues}}
+//        };
+//
+//        {{#allowableValues}}
+//        {{#enumVars}}
+//        {{#-first}}
+//        public static string DefaultValue => {{name}};
+//        {{/-first}}
+//        
+//        /// <summary>
+//        /// Enum {{name}} for value: {{value}}
+//        /// </summary>
+//        public static string {{name}} { get; } = "{{value}}";
+//        {{^-last}}
+//
+//        {{/-last}}
+//        {{/enumVars}}
+//        {{/allowableValues}}
+//
+//        /// <summary>
+//        /// Is the given value a valid {{datatypeWithEnum}}?
+//        /// </summary>
+//        public static bool IsValid(string value)
+//        {
+//            return _values.Contains(value);
+//        }
+//    }
+//    {{/isContainer}}
 
-            {{#allowableValues}}
-            {{#enumVars}}
-            {{#-first}}
-            public static string DefaultValue => {{name}};
-            {{/-first}}
-            
-            /// <summary>
-            /// Enum {{name}} for value: {{value}}
-            /// </summary>
-            public static string {{name}} { get; } = "{{value}}";
-            {{^-last}}
 
-            {{/-last}}
-            {{/enumVars}}
-            {{/allowableValues}}
 
-            /// <summary>
-            /// Is the given value a valid {{datatypeWithEnum}}?
-            /// </summary>
-            public static bool IsValid(string value)
-            {
-                return _values.Contains(value);
-            }
+
+    {{^isContainer}}
+    /// <summary>
+    /// {{description}}{{^description}}Defines {{{name}}}{{/description}}
+    /// </summary>
+    {{#description}}
+    /// <value>{{.}}</value>
+    {{/description}}
+    [JsonConverter(typeof({{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter))]
+    {{>visibility}} class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}
+    {
+        private string _value;
+
+        {{#allowableValues}}
+        {{#enumVars}}
+        {{#-first}}
+        internal {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}() {
+            _value = "{{value}}";
         }
-        {{/isContainer}}
+        {{/-first}}
+        {{/enumVars}}
+        {{/allowableValues}}
+
+        public {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(string value) {
+          
+        }
+
+        {{#allowableValues}}
+        {{#enumVars}}
+        /// <summary>
+        /// Enum {{name}} for value: {{value}}
+        /// </summary>
+        public static {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} {{name}} { get; } = new("{{value}}");
+
+        {{^-last}}
+
+        {{/-last}}
+        {{/enumVars}}
+        {{/allowableValues}}
+
+        public override string ToString() => _value;
+    }
+
+    internal class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter : JsonConverter<{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}>
+    {
+        public override {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+            reader.TokenType == JsonTokenType.String ? new {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(reader.GetString()) : null;
+
+        public override void Write(Utf8JsonWriter writer, {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} value, JsonSerializerOptions options) =>
+            writer.WriteStringValue(value.ToString());
+
+        public override bool CanConvert(Type typeToConvert) =>
+            typeToConvert == typeof({{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}});
+    }
+{{/isContainer}}

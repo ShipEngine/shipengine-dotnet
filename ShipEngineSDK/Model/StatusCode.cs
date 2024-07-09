@@ -24,71 +24,84 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;un&#x60; | Unknown |&#x60;ac&#x60; | Accepted |&#x60;it&#x60; | In Transit |&#x60;de&#x60; | Delivered |&#x60;ex&#x60; | Exception |&#x60;at&#x60; | Delivery Attempt |&#x60;ny&#x60; | Not Yet In System 
-    /// </summary>
-    /// <value>The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;un&#x60; | Unknown |&#x60;ac&#x60; | Accepted |&#x60;it&#x60; | In Transit |&#x60;de&#x60; | Delivered |&#x60;ex&#x60; | Exception |&#x60;at&#x60; | Delivery Attempt |&#x60;ny&#x60; | Not Yet In System </value>
-    public static class StatusCode
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "un",
-            "ac",
-            "it",
-            "de",
-            "ex",
-            "at",
-            "ny",
-        };
+/// <summary>
+/// The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;un&#x60; | Unknown |&#x60;ac&#x60; | Accepted |&#x60;it&#x60; | In Transit |&#x60;de&#x60; | Delivered |&#x60;ex&#x60; | Exception |&#x60;at&#x60; | Delivery Attempt |&#x60;ny&#x60; | Not Yet In System 
+/// </summary>
+/// <value>The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;un&#x60; | Unknown |&#x60;ac&#x60; | Accepted |&#x60;it&#x60; | In Transit |&#x60;de&#x60; | Delivered |&#x60;ex&#x60; | Exception |&#x60;at&#x60; | Delivery Attempt |&#x60;ny&#x60; | Not Yet In System </value>
+[JsonConverter(typeof(StatusCodeJsonConverter))]
+public class StatusCode
+{
+    private string _value;
 
-        public static string DefaultValue => Un;
-        /// <summary>
-        /// Enum Un for value: un
-        /// </summary>
-        public static string Un { get; } = "un";
-
-
-        /// <summary>
-        /// Enum Ac for value: ac
-        /// </summary>
-        public static string Ac { get; } = "ac";
-
-
-        /// <summary>
-        /// Enum It for value: it
-        /// </summary>
-        public static string It { get; } = "it";
-
-
-        /// <summary>
-        /// Enum De for value: de
-        /// </summary>
-        public static string De { get; } = "de";
-
-
-        /// <summary>
-        /// Enum Ex for value: ex
-        /// </summary>
-        public static string Ex { get; } = "ex";
-
-
-        /// <summary>
-        /// Enum At for value: at
-        /// </summary>
-        public static string At { get; } = "at";
-
-
-        /// <summary>
-        /// Enum Ny for value: ny
-        /// </summary>
-        public static string Ny { get; } = "ny";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal StatusCode() {
+        _value = "un";
     }
+
+    /// <summary>
+    /// Create a new instance of StatusCode with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the StatusCode</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public StatusCode(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Un for value: un
+    /// </summary>
+    public static StatusCode Un { get; } = new("un");
+
+
+    /// <summary>
+    /// Enum Ac for value: ac
+    /// </summary>
+    public static StatusCode Ac { get; } = new("ac");
+
+
+    /// <summary>
+    /// Enum It for value: it
+    /// </summary>
+    public static StatusCode It { get; } = new("it");
+
+
+    /// <summary>
+    /// Enum De for value: de
+    /// </summary>
+    public static StatusCode De { get; } = new("de");
+
+
+    /// <summary>
+    /// Enum Ex for value: ex
+    /// </summary>
+    public static StatusCode Ex { get; } = new("ex");
+
+
+    /// <summary>
+    /// Enum At for value: at
+    /// </summary>
+    public static StatusCode At { get; } = new("at");
+
+
+    /// <summary>
+    /// Enum Ny for value: ny
+    /// </summary>
+    public static StatusCode Ny { get; } = new("ny");
+
+
+    public override string ToString() => _value;
+}
+
+internal class StatusCodeJsonConverter : JsonConverter<StatusCode>
+{
+    public override StatusCode? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new StatusCode(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, StatusCode value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(StatusCode);
+}

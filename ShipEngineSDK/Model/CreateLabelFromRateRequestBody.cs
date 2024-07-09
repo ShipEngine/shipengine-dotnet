@@ -32,31 +32,31 @@ public partial class CreateLabelFromRateRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets ValidateAddress
+    /// Gets or Sets ValidateAddress  CLOVUS
     /// </summary>
     [JsonPropertyName("validate_address")]
-    public string? ValidateAddress { get; set; }
+    public ValidateAddress? ValidateAddress { get; set; }
     /// <summary>
-    /// Gets or Sets LabelLayout
+    /// Gets or Sets LabelLayout  CLOVUS
     /// </summary>
     [JsonPropertyName("label_layout")]
-    public string? LabelLayout { get; set; }
+    public LabelLayout? LabelLayout { get; set; }
     /// <summary>
-    /// Gets or Sets LabelFormat
+    /// Gets or Sets LabelFormat  CLOVUS
     /// </summary>
     [JsonPropertyName("label_format")]
-    public string? LabelFormat { get; set; }
+    public LabelFormat? LabelFormat { get; set; }
     /// <summary>
-    /// Gets or Sets LabelDownloadType
+    /// Gets or Sets LabelDownloadType  CLOVUS
     /// </summary>
     [JsonPropertyName("label_download_type")]
-    public string? LabelDownloadType { get; set; }
+    public LabelDownloadType? LabelDownloadType { get; set; }
     /// <summary>
-    /// The display format that the label should be shown in.
+    /// The display format that the label should be shown in.  CLOVUS
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
     [JsonPropertyName("display_scheme")]
-    public string? DisplayScheme { get; set; }
+    public DisplayScheme? DisplayScheme { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object

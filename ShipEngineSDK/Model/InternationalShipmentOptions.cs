@@ -32,29 +32,29 @@ public partial class InternationalShipmentOptions
 {
 
     /// <summary>
-    /// The type of contents in this shipment.  This may impact import duties or customs treatment.
+    /// The type of contents in this shipment.  This may impact import duties or customs treatment.  CLOVUS
     /// </summary>
     /// <value>The type of contents in this shipment.  This may impact import duties or customs treatment.</value>
     [JsonPropertyName("contents")]
     [JsonRequired]
-    public string Contents { get; set; } = ShipEngineSDK.Model.PackageContents.DefaultValue;
+    public PackageContents Contents { get; set; } = new();
     
 
     /// <summary>
-    /// Indicates what to do if a package is unable to be delivered.
+    /// Indicates what to do if a package is unable to be delivered.  CLOVUS
     /// </summary>
     /// <value>Indicates what to do if a package is unable to be delivered.</value>
     [JsonPropertyName("non_delivery")]
     [JsonRequired]
-    public string NonDelivery { get; set; } = ShipEngineSDK.Model.NonDelivery.DefaultValue;
+    public NonDelivery NonDelivery { get; set; } = new();
     
 
     /// <summary>
-    /// Specifies the supported terms of trade code (incoterms)
+    /// Specifies the supported terms of trade code (incoterms)  CLOVUS
     /// </summary>
     /// <value>Specifies the supported terms of trade code (incoterms)</value>
     [JsonPropertyName("terms_of_trade_code")]
-    public string? TermsOfTradeCode { get; set; }
+    public AllowedIncoterms? TermsOfTradeCode { get; set; }
     /// <summary>
     /// Explanation for contents (required if the &#x60;contents&#x60; is provided as &#x60;other&#x60;)
     /// </summary>

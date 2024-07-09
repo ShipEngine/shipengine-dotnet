@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible bill to party values
-    /// </summary>
-    /// <value>The possible bill to party values</value>
-    public static class BillToParty
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "recipient",
-            "third_party",
-        };
+/// <summary>
+/// The possible bill to party values
+/// </summary>
+/// <value>The possible bill to party values</value>
+[JsonConverter(typeof(BillToPartyJsonConverter))]
+public class BillToParty
+{
+    private string _value;
 
-        public static string DefaultValue => Recipient;
-        /// <summary>
-        /// Enum Recipient for value: recipient
-        /// </summary>
-        public static string Recipient { get; } = "recipient";
-
-
-        /// <summary>
-        /// Enum ThirdParty for value: third_party
-        /// </summary>
-        public static string ThirdParty { get; } = "third_party";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal BillToParty() {
+        _value = "recipient";
     }
+
+    /// <summary>
+    /// Create a new instance of BillToParty with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the BillToParty</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public BillToParty(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Recipient for value: recipient
+    /// </summary>
+    public static BillToParty Recipient { get; } = new("recipient");
+
+
+    /// <summary>
+    /// Enum ThirdParty for value: third_party
+    /// </summary>
+    public static BillToParty ThirdParty { get; } = new("third_party");
+
+
+    public override string ToString() => _value;
+}
+
+internal class BillToPartyJsonConverter : JsonConverter<BillToParty>
+{
+    public override BillToParty? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new BillToParty(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, BillToParty value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(BillToParty);
+}

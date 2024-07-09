@@ -32,20 +32,20 @@ public partial class UpdateFedexSettingsRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets PickupType
+    /// Gets or Sets PickupType  CLOVUS
     /// </summary>
     [JsonPropertyName("pickup_type")]
-    public string? PickupType { get; set; }
+    public FedexPickupType? PickupType { get; set; }
     /// <summary>
-    /// Gets or Sets SmartPostHub
+    /// Gets or Sets SmartPostHub  CLOVUS
     /// </summary>
     [JsonPropertyName("smart_post_hub")]
-    public string? SmartPostHub { get; set; }
+    public SmartPostHub? SmartPostHub { get; set; }
     /// <summary>
-    /// Gets or Sets SmartPostEndorsement
+    /// Gets or Sets SmartPostEndorsement  CLOVUS
     /// </summary>
     [JsonPropertyName("smart_post_endorsement")]
-    public string? SmartPostEndorsement { get; set; }
+    public AncillaryServiceEndorsement? SmartPostEndorsement { get; set; }
     /// <summary>
     /// Account nickname
     /// </summary>

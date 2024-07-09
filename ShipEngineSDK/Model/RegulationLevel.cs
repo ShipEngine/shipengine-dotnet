@@ -24,49 +24,65 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Defines regulation_level
-    /// </summary>
-    public static class RegulationLevel
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "lightly_regulated",
-            "fully_regulated",
-            "limited_quantities",
-            "excepted_quantity",
-        };
+/// <summary>
+/// Defines regulation_level
+/// </summary>
+[JsonConverter(typeof(RegulationLevelJsonConverter))]
+public class RegulationLevel
+{
+    private string _value;
 
-        public static string DefaultValue => LightlyRegulated;
-        /// <summary>
-        /// Enum LightlyRegulated for value: lightly_regulated
-        /// </summary>
-        public static string LightlyRegulated { get; } = "lightly_regulated";
-
-
-        /// <summary>
-        /// Enum FullyRegulated for value: fully_regulated
-        /// </summary>
-        public static string FullyRegulated { get; } = "fully_regulated";
-
-
-        /// <summary>
-        /// Enum LimitedQuantities for value: limited_quantities
-        /// </summary>
-        public static string LimitedQuantities { get; } = "limited_quantities";
-
-
-        /// <summary>
-        /// Enum ExceptedQuantity for value: excepted_quantity
-        /// </summary>
-        public static string ExceptedQuantity { get; } = "excepted_quantity";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal RegulationLevel() {
+        _value = "lightly_regulated";
     }
+
+    /// <summary>
+    /// Create a new instance of RegulationLevel with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the RegulationLevel</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public RegulationLevel(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum LightlyRegulated for value: lightly_regulated
+    /// </summary>
+    public static RegulationLevel LightlyRegulated { get; } = new("lightly_regulated");
+
+
+    /// <summary>
+    /// Enum FullyRegulated for value: fully_regulated
+    /// </summary>
+    public static RegulationLevel FullyRegulated { get; } = new("fully_regulated");
+
+
+    /// <summary>
+    /// Enum LimitedQuantities for value: limited_quantities
+    /// </summary>
+    public static RegulationLevel LimitedQuantities { get; } = new("limited_quantities");
+
+
+    /// <summary>
+    /// Enum ExceptedQuantity for value: excepted_quantity
+    /// </summary>
+    public static RegulationLevel ExceptedQuantity { get; } = new("excepted_quantity");
+
+
+    public override string ToString() => _value;
+}
+
+internal class RegulationLevelJsonConverter : JsonConverter<RegulationLevel>
+{
+    public override RegulationLevel? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new RegulationLevel(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, RegulationLevel value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(RegulationLevel);
+}

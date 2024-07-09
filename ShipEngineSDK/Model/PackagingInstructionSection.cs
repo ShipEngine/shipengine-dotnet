@@ -24,49 +24,65 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Defines packaging_instruction_section
-    /// </summary>
-    public static class PackagingInstructionSection
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "section_1",
-            "section_2",
-            "section_1a",
-            "section_1b",
-        };
+/// <summary>
+/// Defines packaging_instruction_section
+/// </summary>
+[JsonConverter(typeof(PackagingInstructionSectionJsonConverter))]
+public class PackagingInstructionSection
+{
+    private string _value;
 
-        public static string DefaultValue => _1;
-        /// <summary>
-        /// Enum _1 for value: section_1
-        /// </summary>
-        public static string _1 { get; } = "section_1";
-
-
-        /// <summary>
-        /// Enum _2 for value: section_2
-        /// </summary>
-        public static string _2 { get; } = "section_2";
-
-
-        /// <summary>
-        /// Enum _1a for value: section_1a
-        /// </summary>
-        public static string _1a { get; } = "section_1a";
-
-
-        /// <summary>
-        /// Enum _1b for value: section_1b
-        /// </summary>
-        public static string _1b { get; } = "section_1b";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal PackagingInstructionSection() {
+        _value = "section_1";
     }
+
+    /// <summary>
+    /// Create a new instance of PackagingInstructionSection with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the PackagingInstructionSection</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public PackagingInstructionSection(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum _1 for value: section_1
+    /// </summary>
+    public static PackagingInstructionSection _1 { get; } = new("section_1");
+
+
+    /// <summary>
+    /// Enum _2 for value: section_2
+    /// </summary>
+    public static PackagingInstructionSection _2 { get; } = new("section_2");
+
+
+    /// <summary>
+    /// Enum _1a for value: section_1a
+    /// </summary>
+    public static PackagingInstructionSection _1a { get; } = new("section_1a");
+
+
+    /// <summary>
+    /// Enum _1b for value: section_1b
+    /// </summary>
+    public static PackagingInstructionSection _1b { get; } = new("section_1b");
+
+
+    public override string ToString() => _value;
+}
+
+internal class PackagingInstructionSectionJsonConverter : JsonConverter<PackagingInstructionSection>
+{
+    public override PackagingInstructionSection? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new PackagingInstructionSection(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, PackagingInstructionSection value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(PackagingInstructionSection);
+}

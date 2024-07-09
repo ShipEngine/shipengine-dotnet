@@ -30,101 +30,266 @@ namespace ShipEngineSDK.Model;
 //[DataContract(Name = "get_service_point_by_id_response_body_service_point")]
 public partial class GetServicePointByIdResponseBodyServicePoint
 {
-        /// <summary>
-        /// Defines Features
-        /// </summary>
-        public static class FeaturesEnum
-        {
-            private static readonly HashSet<string> _values = new()
-            {
-                "drop_off_point",
-                "pickup_point",
-                "print_services",
-                "after_hours_locker",
-                "after_hours_dropbox",
-            };
+//    
+//    /// <summary>
+//    /// Defines Features
+//    /// </summary>
+//    
+//    public static class FeaturesEnum
+//    {
+//        private static readonly HashSet<string> _values = new()
+//        {
+//            
+//            
+//            "drop_off_point",
+//            
+//            "pickup_point",
+//            
+//            "print_services",
+//            
+//            "after_hours_locker",
+//            
+//            "after_hours_dropbox",
+//            
+//            
+//        };
+//
+//        
+//        
+//        
+//        public static string DefaultValue => DropOffPoint;
+//        
+//        
+//        /// <summary>
+//        /// Enum DropOffPoint for value: drop_off_point
+//        /// </summary>
+//        public static string DropOffPoint { get; } = "drop_off_point";
+//        
+//
+//        
+//        
+//        
+//        
+//        /// <summary>
+//        /// Enum PickupPoint for value: pickup_point
+//        /// </summary>
+//        public static string PickupPoint { get; } = "pickup_point";
+//        
+//
+//        
+//        
+//        
+//        
+//        /// <summary>
+//        /// Enum PrintServices for value: print_services
+//        /// </summary>
+//        public static string PrintServices { get; } = "print_services";
+//        
+//
+//        
+//        
+//        
+//        
+//        /// <summary>
+//        /// Enum AfterHoursLocker for value: after_hours_locker
+//        /// </summary>
+//        public static string AfterHoursLocker { get; } = "after_hours_locker";
+//        
+//
+//        
+//        
+//        
+//        
+//        /// <summary>
+//        /// Enum AfterHoursDropbox for value: after_hours_dropbox
+//        /// </summary>
+//        public static string AfterHoursDropbox { get; } = "after_hours_dropbox";
+//        
+//        
+//        
+//
+//        /// <summary>
+//        /// Is the given value a valid FeaturesEnum?
+//        /// </summary>
+//        public static bool IsValid(string value)
+//        {
+//            return _values.Contains(value);
+//        }
+//    }
+//    
 
-            public static string DefaultValue => DropOffPoint;
-            
-            /// <summary>
-            /// Enum DropOffPoint for value: drop_off_point
-            /// </summary>
-            public static string DropOffPoint { get; } = "drop_off_point";
 
-            
-            /// <summary>
-            /// Enum PickupPoint for value: pickup_point
-            /// </summary>
-            public static string PickupPoint { get; } = "pickup_point";
 
-            
-            /// <summary>
-            /// Enum PrintServices for value: print_services
-            /// </summary>
-            public static string PrintServices { get; } = "print_services";
 
-            
-            /// <summary>
-            /// Enum AfterHoursLocker for value: after_hours_locker
-            /// </summary>
-            public static string AfterHoursLocker { get; } = "after_hours_locker";
+    /// <summary>
+    /// Defines Features
+    /// </summary>
+    [JsonConverter(typeof(FeaturesEnumJsonConverter))]
+    public class FeaturesEnum
+    {
+        private string _value;
 
-            
-            /// <summary>
-            /// Enum AfterHoursDropbox for value: after_hours_dropbox
-            /// </summary>
-            public static string AfterHoursDropbox { get; } = "after_hours_dropbox";
+        internal FeaturesEnum() {
+            _value = "drop_off_point";
+        }
 
-            /// <summary>
-            /// Is the given value a valid FeaturesEnum?
-            /// </summary>
-            public static bool IsValid(string value)
-            {
-                return _values.Contains(value);
-            }
+        public FeaturesEnum(string value) {
+          
         }
 
         /// <summary>
-        /// Service point type
+        /// Enum DropOffPoint for value: drop_off_point
         /// </summary>
-        /// <value>Service point type</value>
-        public static class TypeEnum
-        {
-            private static readonly HashSet<string> _values = new()
-            {
-                "pudo",
-                "locker",
-            };
+        public static FeaturesEnum DropOffPoint { get; } = new("drop_off_point");
 
-            public static string DefaultValue => Pudo;
-            
-            /// <summary>
-            /// Enum Pudo for value: pudo
-            /// </summary>
-            public static string Pudo { get; } = "pudo";
 
-            
-            /// <summary>
-            /// Enum Locker for value: locker
-            /// </summary>
-            public static string Locker { get; } = "locker";
+        /// <summary>
+        /// Enum PickupPoint for value: pickup_point
+        /// </summary>
+        public static FeaturesEnum PickupPoint { get; } = new("pickup_point");
 
-            /// <summary>
-            /// Is the given value a valid TypeEnum?
-            /// </summary>
-            public static bool IsValid(string value)
-            {
-                return _values.Contains(value);
-            }
-        }
+
+        /// <summary>
+        /// Enum PrintServices for value: print_services
+        /// </summary>
+        public static FeaturesEnum PrintServices { get; } = new("print_services");
+
+
+        /// <summary>
+        /// Enum AfterHoursLocker for value: after_hours_locker
+        /// </summary>
+        public static FeaturesEnum AfterHoursLocker { get; } = new("after_hours_locker");
+
+
+        /// <summary>
+        /// Enum AfterHoursDropbox for value: after_hours_dropbox
+        /// </summary>
+        public static FeaturesEnum AfterHoursDropbox { get; } = new("after_hours_dropbox");
+
+
+        public override string ToString() => _value;
+    }
+
+    internal class FeaturesEnumJsonConverter : JsonConverter<FeaturesEnum>
+    {
+        public override FeaturesEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+            reader.TokenType == JsonTokenType.String ? new FeaturesEnum(reader.GetString()) : null;
+
+        public override void Write(Utf8JsonWriter writer, FeaturesEnum value, JsonSerializerOptions options) =>
+            writer.WriteStringValue(value.ToString());
+
+        public override bool CanConvert(Type typeToConvert) =>
+            typeToConvert == typeof(FeaturesEnum);
+    }
+
+//    
+//    /// <summary>
+//    /// Service point type
+//    /// </summary>
+//    
+//    /// <value>Service point type</value>
+//    
+//    public static class TypeEnum
+//    {
+//        private static readonly HashSet<string> _values = new()
+//        {
+//            
+//            
+//            "pudo",
+//            
+//            "locker",
+//            
+//            
+//        };
+//
+//        
+//        
+//        
+//        public static string DefaultValue => Pudo;
+//        
+//        
+//        /// <summary>
+//        /// Enum Pudo for value: pudo
+//        /// </summary>
+//        public static string Pudo { get; } = "pudo";
+//        
+//
+//        
+//        
+//        
+//        
+//        /// <summary>
+//        /// Enum Locker for value: locker
+//        /// </summary>
+//        public static string Locker { get; } = "locker";
+//        
+//        
+//        
+//
+//        /// <summary>
+//        /// Is the given value a valid TypeEnum?
+//        /// </summary>
+//        public static bool IsValid(string value)
+//        {
+//            return _values.Contains(value);
+//        }
+//    }
+//    
+
+
 
 
     /// <summary>
     /// Service point type
     /// </summary>
     /// <value>Service point type</value>
+    [JsonConverter(typeof(TypeEnumJsonConverter))]
+    public class TypeEnum
+    {
+        private string _value;
+
+        internal TypeEnum() {
+            _value = "pudo";
+        }
+
+        public TypeEnum(string value) {
+          
+        }
+
+        /// <summary>
+        /// Enum Pudo for value: pudo
+        /// </summary>
+        public static TypeEnum Pudo { get; } = new("pudo");
+
+
+        /// <summary>
+        /// Enum Locker for value: locker
+        /// </summary>
+        public static TypeEnum Locker { get; } = new("locker");
+
+
+        public override string ToString() => _value;
+    }
+
+    internal class TypeEnumJsonConverter : JsonConverter<TypeEnum>
+    {
+        public override TypeEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+            reader.TokenType == JsonTokenType.String ? new TypeEnum(reader.GetString()) : null;
+
+        public override void Write(Utf8JsonWriter writer, TypeEnum value, JsonSerializerOptions options) =>
+            writer.WriteStringValue(value.ToString());
+
+        public override bool CanConvert(Type typeToConvert) =>
+            typeToConvert == typeof(TypeEnum);
+    }
+
+
+    /// <summary>
+    /// Service point type  CLOVUS
+    /// </summary>
+    /// <value>Service point type</value>
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public TypeEnum? Type { get; set; }
     /// <summary>
     /// A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
     /// </summary>
@@ -252,7 +417,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// </summary>
     /// <value>Service features</value>
     [JsonPropertyName("features")]
-    public List<string> Features { get; set; }
+    public List<GetServicePointByIdResponseBodyServicePoint.FeaturesEnum> Features { get; set; }
 
 
     /// <summary>

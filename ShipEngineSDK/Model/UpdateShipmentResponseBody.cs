@@ -32,37 +32,37 @@ public partial class UpdateShipmentResponseBody
 {
 
     /// <summary>
-    /// The current status of the shipment
+    /// The current status of the shipment  CLOVUS
     /// </summary>
     /// <value>The current status of the shipment</value>
     [JsonPropertyName("shipment_status")]
     [JsonRequired]
-    public string ShipmentStatus { get; set; } = ShipEngineSDK.Model.ShipmentStatus.DefaultValue;
+    public ShipmentStatus ShipmentStatus { get; set; } = new();
     
 
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.
+    /// The type of delivery confirmation that is required for this shipment.  CLOVUS
     /// </summary>
     /// <value>The type of delivery confirmation that is required for this shipment.</value>
     [JsonPropertyName("confirmation")]
     [JsonRequired]
-    public string Confirmation { get; set; } = ShipEngineSDK.Model.DeliveryConfirmation.DefaultValue;
+    public DeliveryConfirmation Confirmation { get; set; } = new();
     
 
     /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment. 
+    /// The insurance provider to use for any insured packages in the shipment.   CLOVUS
     /// </summary>
     /// <value>The insurance provider to use for any insured packages in the shipment. </value>
     [JsonPropertyName("insurance_provider")]
     [JsonRequired]
-    public string InsuranceProvider { get; set; } = ShipEngineSDK.Model.InsuranceProvider.DefaultValue;
+    public InsuranceProvider InsuranceProvider { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets OrderSourceCode
+    /// Gets or Sets OrderSourceCode  CLOVUS
     /// </summary>
     [JsonPropertyName("order_source_code")]
-    public string? OrderSourceCode { get; set; }
+    public OrderSourceName? OrderSourceCode { get; set; }
     /// <summary>
     /// A string that uniquely identifies the shipment
     /// </summary>

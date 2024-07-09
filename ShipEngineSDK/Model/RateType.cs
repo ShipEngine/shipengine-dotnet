@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible rate type values
-    /// </summary>
-    /// <value>The possible rate type values</value>
-    public static class RateType
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "check",
-            "shipment",
-        };
+/// <summary>
+/// The possible rate type values
+/// </summary>
+/// <value>The possible rate type values</value>
+[JsonConverter(typeof(RateTypeJsonConverter))]
+public class RateType
+{
+    private string _value;
 
-        public static string DefaultValue => Check;
-        /// <summary>
-        /// Enum Check for value: check
-        /// </summary>
-        public static string Check { get; } = "check";
-
-
-        /// <summary>
-        /// Enum Shipment for value: shipment
-        /// </summary>
-        public static string Shipment { get; } = "shipment";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal RateType() {
+        _value = "check";
     }
+
+    /// <summary>
+    /// Create a new instance of RateType with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the RateType</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public RateType(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Check for value: check
+    /// </summary>
+    public static RateType Check { get; } = new("check");
+
+
+    /// <summary>
+    /// Enum Shipment for value: shipment
+    /// </summary>
+    public static RateType Shipment { get; } = new("shipment");
+
+
+    public override string ToString() => _value;
+}
+
+internal class RateTypeJsonConverter : JsonConverter<RateType>
+{
+    public override RateType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new RateType(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, RateType value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(RateType);
+}

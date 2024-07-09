@@ -32,28 +32,28 @@ public partial class GetBatchByExternalIdResponseBody
 {
 
     /// <summary>
-    /// label layout
+    /// label layout  CLOVUS
     /// </summary>
     /// <value>label layout</value>
     [JsonPropertyName("label_layout")]
     [JsonRequired]
-    public string LabelLayout { get; set; } = ShipEngineSDK.Model.LabelLayout.DefaultValue;
+    public LabelLayout LabelLayout { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets LabelFormat
+    /// Gets or Sets LabelFormat  CLOVUS
     /// </summary>
     [JsonPropertyName("label_format")]
     [JsonRequired]
-    public string LabelFormat { get; set; } = ShipEngineSDK.Model.LabelFormat.DefaultValue;
+    public LabelFormat LabelFormat { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets Status
+    /// Gets or Sets Status  CLOVUS
     /// </summary>
     [JsonPropertyName("status")]
     [JsonRequired]
-    public string Status { get; set; } = ShipEngineSDK.Model.BatchStatus.DefaultValue;
+    public BatchStatus Status { get; set; } = new();
     
 
     /// <summary>

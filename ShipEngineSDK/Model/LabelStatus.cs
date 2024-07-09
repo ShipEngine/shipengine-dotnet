@@ -24,50 +24,66 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible statuses that a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/) can be in.  |Status       |Description |:- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;processing&#x60; |When labels are created in a [batch](https://www.shipengine.com/docs/labels/bulk/), it may take a few minutes for all of the labels in the batch to be created.  During this period, they will be in &#x60;processing&#x60; status. |&#x60;completed&#x60;  |The label was successfully created |&#x60;error&#x60;      |The label could not be created due to an error, such as an invalid delivery address |&#x60;voided&#x60;     |The label has been [voided](https://www.shipengine.com/docs/labels/voiding/) 
-    /// </summary>
-    /// <value>The possible statuses that a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/) can be in.  |Status       |Description |:- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;processing&#x60; |When labels are created in a [batch](https://www.shipengine.com/docs/labels/bulk/), it may take a few minutes for all of the labels in the batch to be created.  During this period, they will be in &#x60;processing&#x60; status. |&#x60;completed&#x60;  |The label was successfully created |&#x60;error&#x60;      |The label could not be created due to an error, such as an invalid delivery address |&#x60;voided&#x60;     |The label has been [voided](https://www.shipengine.com/docs/labels/voiding/) </value>
-    public static class LabelStatus
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "processing",
-            "completed",
-            "error",
-            "voided",
-        };
+/// <summary>
+/// The possible statuses that a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/) can be in.  |Status       |Description |:- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;processing&#x60; |When labels are created in a [batch](https://www.shipengine.com/docs/labels/bulk/), it may take a few minutes for all of the labels in the batch to be created.  During this period, they will be in &#x60;processing&#x60; status. |&#x60;completed&#x60;  |The label was successfully created |&#x60;error&#x60;      |The label could not be created due to an error, such as an invalid delivery address |&#x60;voided&#x60;     |The label has been [voided](https://www.shipengine.com/docs/labels/voiding/) 
+/// </summary>
+/// <value>The possible statuses that a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/) can be in.  |Status       |Description |:- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;processing&#x60; |When labels are created in a [batch](https://www.shipengine.com/docs/labels/bulk/), it may take a few minutes for all of the labels in the batch to be created.  During this period, they will be in &#x60;processing&#x60; status. |&#x60;completed&#x60;  |The label was successfully created |&#x60;error&#x60;      |The label could not be created due to an error, such as an invalid delivery address |&#x60;voided&#x60;     |The label has been [voided](https://www.shipengine.com/docs/labels/voiding/) </value>
+[JsonConverter(typeof(LabelStatusJsonConverter))]
+public class LabelStatus
+{
+    private string _value;
 
-        public static string DefaultValue => Processing;
-        /// <summary>
-        /// Enum Processing for value: processing
-        /// </summary>
-        public static string Processing { get; } = "processing";
-
-
-        /// <summary>
-        /// Enum Completed for value: completed
-        /// </summary>
-        public static string Completed { get; } = "completed";
-
-
-        /// <summary>
-        /// Enum Error for value: error
-        /// </summary>
-        public static string Error { get; } = "error";
-
-
-        /// <summary>
-        /// Enum Voided for value: voided
-        /// </summary>
-        public static string Voided { get; } = "voided";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal LabelStatus() {
+        _value = "processing";
     }
+
+    /// <summary>
+    /// Create a new instance of LabelStatus with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the LabelStatus</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public LabelStatus(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Processing for value: processing
+    /// </summary>
+    public static LabelStatus Processing { get; } = new("processing");
+
+
+    /// <summary>
+    /// Enum Completed for value: completed
+    /// </summary>
+    public static LabelStatus Completed { get; } = new("completed");
+
+
+    /// <summary>
+    /// Enum Error for value: error
+    /// </summary>
+    public static LabelStatus Error { get; } = new("error");
+
+
+    /// <summary>
+    /// Enum Voided for value: voided
+    /// </summary>
+    public static LabelStatus Voided { get; } = new("voided");
+
+
+    public override string ToString() => _value;
+}
+
+internal class LabelStatusJsonConverter : JsonConverter<LabelStatus>
+{
+    public override LabelStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new LabelStatus(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, LabelStatus value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(LabelStatus);
+}

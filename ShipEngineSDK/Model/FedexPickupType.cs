@@ -24,64 +24,78 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Tax identifier type for customs declaration  |Pickup Type               |Description |- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;none&#x60;                    | Not specified |&#x60;regular_pickup&#x60;          | You already have a daily pickup scheduled with FedEx |&#x60;request_courier&#x60;         | You will call FedEx to request a courier |&#x60;drop_box&#x60;                | You will drop-off packages in a FedEx drop box |&#x60;business_service_center&#x60; | You will drop-off packages at an authorized FedEx business service center |&#x60;station&#x60;                 | You will drop-off the package at a FedEx Station 
-    /// </summary>
-    /// <value>Tax identifier type for customs declaration  |Pickup Type               |Description |- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;none&#x60;                    | Not specified |&#x60;regular_pickup&#x60;          | You already have a daily pickup scheduled with FedEx |&#x60;request_courier&#x60;         | You will call FedEx to request a courier |&#x60;drop_box&#x60;                | You will drop-off packages in a FedEx drop box |&#x60;business_service_center&#x60; | You will drop-off packages at an authorized FedEx business service center |&#x60;station&#x60;                 | You will drop-off the package at a FedEx Station </value>
-    public static class FedexPickupType
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "none",
-            "regular_pickup",
-            "request_courier",
-            "drop_box",
-            "business_service_center",
-            "station",
-        };
+/// <summary>
+/// Tax identifier type for customs declaration  |Pickup Type               |Description |- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;none&#x60;                    | Not specified |&#x60;regular_pickup&#x60;          | You already have a daily pickup scheduled with FedEx |&#x60;request_courier&#x60;         | You will call FedEx to request a courier |&#x60;drop_box&#x60;                | You will drop-off packages in a FedEx drop box |&#x60;business_service_center&#x60; | You will drop-off packages at an authorized FedEx business service center |&#x60;station&#x60;                 | You will drop-off the package at a FedEx Station 
+/// </summary>
+/// <value>Tax identifier type for customs declaration  |Pickup Type               |Description |- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;none&#x60;                    | Not specified |&#x60;regular_pickup&#x60;          | You already have a daily pickup scheduled with FedEx |&#x60;request_courier&#x60;         | You will call FedEx to request a courier |&#x60;drop_box&#x60;                | You will drop-off packages in a FedEx drop box |&#x60;business_service_center&#x60; | You will drop-off packages at an authorized FedEx business service center |&#x60;station&#x60;                 | You will drop-off the package at a FedEx Station </value>
+[JsonConverter(typeof(FedexPickupTypeJsonConverter))]
+public class FedexPickupType
+{
+    private string _value;
 
-        public static string DefaultValue => None;
-        /// <summary>
-        /// Enum None for value: none
-        /// </summary>
-        public static string None { get; } = "none";
-
-
-        /// <summary>
-        /// Enum RegularPickup for value: regular_pickup
-        /// </summary>
-        public static string RegularPickup { get; } = "regular_pickup";
-
-
-        /// <summary>
-        /// Enum RequestCourier for value: request_courier
-        /// </summary>
-        public static string RequestCourier { get; } = "request_courier";
-
-
-        /// <summary>
-        /// Enum DropBox for value: drop_box
-        /// </summary>
-        public static string DropBox { get; } = "drop_box";
-
-
-        /// <summary>
-        /// Enum BusinessServiceCenter for value: business_service_center
-        /// </summary>
-        public static string BusinessServiceCenter { get; } = "business_service_center";
-
-
-        /// <summary>
-        /// Enum Station for value: station
-        /// </summary>
-        public static string Station { get; } = "station";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal FedexPickupType() {
+        _value = "none";
     }
+
+    /// <summary>
+    /// Create a new instance of FedexPickupType with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the FedexPickupType</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public FedexPickupType(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum None for value: none
+    /// </summary>
+    public static FedexPickupType None { get; } = new("none");
+
+
+    /// <summary>
+    /// Enum RegularPickup for value: regular_pickup
+    /// </summary>
+    public static FedexPickupType RegularPickup { get; } = new("regular_pickup");
+
+
+    /// <summary>
+    /// Enum RequestCourier for value: request_courier
+    /// </summary>
+    public static FedexPickupType RequestCourier { get; } = new("request_courier");
+
+
+    /// <summary>
+    /// Enum DropBox for value: drop_box
+    /// </summary>
+    public static FedexPickupType DropBox { get; } = new("drop_box");
+
+
+    /// <summary>
+    /// Enum BusinessServiceCenter for value: business_service_center
+    /// </summary>
+    public static FedexPickupType BusinessServiceCenter { get; } = new("business_service_center");
+
+
+    /// <summary>
+    /// Enum Station for value: station
+    /// </summary>
+    public static FedexPickupType Station { get; } = new("station");
+
+
+    public override string ToString() => _value;
+}
+
+internal class FedexPickupTypeJsonConverter : JsonConverter<FedexPickupType>
+{
+    public override FedexPickupType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new FedexPickupType(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, FedexPickupType value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(FedexPickupType);
+}

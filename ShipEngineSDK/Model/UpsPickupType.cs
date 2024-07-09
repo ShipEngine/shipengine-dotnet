@@ -24,43 +24,60 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible ups pickup type values
-    /// </summary>
-    /// <value>The possible ups pickup type values</value>
-    public static class UpsPickupType
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "daily_pickup",
-            "occasional_pickup",
-            "customer_counter",
-        };
+/// <summary>
+/// The possible ups pickup type values
+/// </summary>
+/// <value>The possible ups pickup type values</value>
+[JsonConverter(typeof(UpsPickupTypeJsonConverter))]
+public class UpsPickupType
+{
+    private string _value;
 
-        public static string DefaultValue => DailyPickup;
-        /// <summary>
-        /// Enum DailyPickup for value: daily_pickup
-        /// </summary>
-        public static string DailyPickup { get; } = "daily_pickup";
-
-
-        /// <summary>
-        /// Enum OccasionalPickup for value: occasional_pickup
-        /// </summary>
-        public static string OccasionalPickup { get; } = "occasional_pickup";
-
-
-        /// <summary>
-        /// Enum CustomerCounter for value: customer_counter
-        /// </summary>
-        public static string CustomerCounter { get; } = "customer_counter";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal UpsPickupType() {
+        _value = "daily_pickup";
     }
+
+    /// <summary>
+    /// Create a new instance of UpsPickupType with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the UpsPickupType</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public UpsPickupType(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum DailyPickup for value: daily_pickup
+    /// </summary>
+    public static UpsPickupType DailyPickup { get; } = new("daily_pickup");
+
+
+    /// <summary>
+    /// Enum OccasionalPickup for value: occasional_pickup
+    /// </summary>
+    public static UpsPickupType OccasionalPickup { get; } = new("occasional_pickup");
+
+
+    /// <summary>
+    /// Enum CustomerCounter for value: customer_counter
+    /// </summary>
+    public static UpsPickupType CustomerCounter { get; } = new("customer_counter");
+
+
+    public override string ToString() => _value;
+}
+
+internal class UpsPickupTypeJsonConverter : JsonConverter<UpsPickupType>
+{
+    public override UpsPickupType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new UpsPickupType(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, UpsPickupType value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(UpsPickupType);
+}

@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible statuses of a manifest request
-    /// </summary>
-    /// <value>The possible statuses of a manifest request</value>
-    public static class ManifestRequestStatus
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "in_progress",
-            "completed",
-        };
+/// <summary>
+/// The possible statuses of a manifest request
+/// </summary>
+/// <value>The possible statuses of a manifest request</value>
+[JsonConverter(typeof(ManifestRequestStatusJsonConverter))]
+public class ManifestRequestStatus
+{
+    private string _value;
 
-        public static string DefaultValue => InProgress;
-        /// <summary>
-        /// Enum InProgress for value: in_progress
-        /// </summary>
-        public static string InProgress { get; } = "in_progress";
-
-
-        /// <summary>
-        /// Enum Completed for value: completed
-        /// </summary>
-        public static string Completed { get; } = "completed";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal ManifestRequestStatus() {
+        _value = "in_progress";
     }
+
+    /// <summary>
+    /// Create a new instance of ManifestRequestStatus with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the ManifestRequestStatus</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public ManifestRequestStatus(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum InProgress for value: in_progress
+    /// </summary>
+    public static ManifestRequestStatus InProgress { get; } = new("in_progress");
+
+
+    /// <summary>
+    /// Enum Completed for value: completed
+    /// </summary>
+    public static ManifestRequestStatus Completed { get; } = new("completed");
+
+
+    public override string ToString() => _value;
+}
+
+internal class ManifestRequestStatusJsonConverter : JsonConverter<ManifestRequestStatus>
+{
+    public override ManifestRequestStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new ManifestRequestStatus(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, ManifestRequestStatus value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(ManifestRequestStatus);
+}

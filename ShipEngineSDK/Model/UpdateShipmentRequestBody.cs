@@ -32,33 +32,33 @@ public partial class UpdateShipmentRequestBody
 {
 
     /// <summary>
-    /// The current status of the shipment
+    /// The current status of the shipment  CLOVUS
     /// </summary>
     /// <value>The current status of the shipment</value>
     [JsonPropertyName("shipment_status")]
-    public string? ShipmentStatus { get; set; }
+    public ShipmentStatus? ShipmentStatus { get; set; }
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.
+    /// The type of delivery confirmation that is required for this shipment.  CLOVUS
     /// </summary>
     /// <value>The type of delivery confirmation that is required for this shipment.</value>
     [JsonPropertyName("confirmation")]
-    public string? Confirmation { get; set; }
+    public DeliveryConfirmation? Confirmation { get; set; }
     /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment. 
+    /// The insurance provider to use for any insured packages in the shipment.   CLOVUS
     /// </summary>
     /// <value>The insurance provider to use for any insured packages in the shipment. </value>
     [JsonPropertyName("insurance_provider")]
-    public string? InsuranceProvider { get; set; }
+    public InsuranceProvider? InsuranceProvider { get; set; }
     /// <summary>
-    /// Gets or Sets OrderSourceCode
+    /// Gets or Sets OrderSourceCode  CLOVUS
     /// </summary>
     [JsonPropertyName("order_source_code")]
-    public string? OrderSourceCode { get; set; }
+    public OrderSourceName? OrderSourceCode { get; set; }
     /// <summary>
-    /// Gets or Sets ValidateAddress
+    /// Gets or Sets ValidateAddress  CLOVUS
     /// </summary>
     [JsonPropertyName("validate_address")]
-    public string? ValidateAddress { get; set; }
+    public ValidateAddress? ValidateAddress { get; set; }
     /// <summary>
     /// A string that uniquely identifies the shipment
     /// </summary>

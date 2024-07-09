@@ -24,64 +24,78 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The type of error 
-    /// </summary>
-    /// <value>The type of error </value>
-    public static class ErrorType
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "account_status",
-            "business_rules",
-            "validation",
-            "security",
-            "system",
-            "integrations",
-        };
+/// <summary>
+/// The type of error 
+/// </summary>
+/// <value>The type of error </value>
+[JsonConverter(typeof(ErrorTypeJsonConverter))]
+public class ErrorType
+{
+    private string _value;
 
-        public static string DefaultValue => AccountStatus;
-        /// <summary>
-        /// Enum AccountStatus for value: account_status
-        /// </summary>
-        public static string AccountStatus { get; } = "account_status";
-
-
-        /// <summary>
-        /// Enum BusinessRules for value: business_rules
-        /// </summary>
-        public static string BusinessRules { get; } = "business_rules";
-
-
-        /// <summary>
-        /// Enum Validation for value: validation
-        /// </summary>
-        public static string Validation { get; } = "validation";
-
-
-        /// <summary>
-        /// Enum Security for value: security
-        /// </summary>
-        public static string Security { get; } = "security";
-
-
-        /// <summary>
-        /// Enum System for value: system
-        /// </summary>
-        public static string System { get; } = "system";
-
-
-        /// <summary>
-        /// Enum Integrations for value: integrations
-        /// </summary>
-        public static string Integrations { get; } = "integrations";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal ErrorType() {
+        _value = "account_status";
     }
+
+    /// <summary>
+    /// Create a new instance of ErrorType with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the ErrorType</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public ErrorType(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum AccountStatus for value: account_status
+    /// </summary>
+    public static ErrorType AccountStatus { get; } = new("account_status");
+
+
+    /// <summary>
+    /// Enum BusinessRules for value: business_rules
+    /// </summary>
+    public static ErrorType BusinessRules { get; } = new("business_rules");
+
+
+    /// <summary>
+    /// Enum Validation for value: validation
+    /// </summary>
+    public static ErrorType Validation { get; } = new("validation");
+
+
+    /// <summary>
+    /// Enum Security for value: security
+    /// </summary>
+    public static ErrorType Security { get; } = new("security");
+
+
+    /// <summary>
+    /// Enum System for value: system
+    /// </summary>
+    public static ErrorType System { get; } = new("system");
+
+
+    /// <summary>
+    /// Enum Integrations for value: integrations
+    /// </summary>
+    public static ErrorType Integrations { get; } = new("integrations");
+
+
+    public override string ToString() => _value;
+}
+
+internal class ErrorTypeJsonConverter : JsonConverter<ErrorType>
+{
+    public override ErrorType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new ErrorType(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, ErrorType value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(ErrorType);
+}

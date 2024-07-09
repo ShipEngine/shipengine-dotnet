@@ -24,113 +24,120 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The error codes that can be returned by the address validation API
-    /// </summary>
-    /// <value>The error codes that can be returned by the address validation API</value>
-    public static class AddressValidationCode
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "a1000",
-            "a1001",
-            "a1002",
-            "a1003",
-            "a1004",
-            "a1005",
-            "a1006",
-            "a1007",
-            "a1008",
-            "r1000",
-            "r1001",
-            "r1002",
-            "r1003",
-        };
+/// <summary>
+/// The error codes that can be returned by the address validation API
+/// </summary>
+/// <value>The error codes that can be returned by the address validation API</value>
+[JsonConverter(typeof(AddressValidationCodeJsonConverter))]
+public class AddressValidationCode
+{
+    private string _value;
 
-        public static string DefaultValue => A1000;
-        /// <summary>
-        /// Enum A1000 for value: a1000
-        /// </summary>
-        public static string A1000 { get; } = "a1000";
-
-
-        /// <summary>
-        /// Enum A1001 for value: a1001
-        /// </summary>
-        public static string A1001 { get; } = "a1001";
-
-
-        /// <summary>
-        /// Enum A1002 for value: a1002
-        /// </summary>
-        public static string A1002 { get; } = "a1002";
-
-
-        /// <summary>
-        /// Enum A1003 for value: a1003
-        /// </summary>
-        public static string A1003 { get; } = "a1003";
-
-
-        /// <summary>
-        /// Enum A1004 for value: a1004
-        /// </summary>
-        public static string A1004 { get; } = "a1004";
-
-
-        /// <summary>
-        /// Enum A1005 for value: a1005
-        /// </summary>
-        public static string A1005 { get; } = "a1005";
-
-
-        /// <summary>
-        /// Enum A1006 for value: a1006
-        /// </summary>
-        public static string A1006 { get; } = "a1006";
-
-
-        /// <summary>
-        /// Enum A1007 for value: a1007
-        /// </summary>
-        public static string A1007 { get; } = "a1007";
-
-
-        /// <summary>
-        /// Enum A1008 for value: a1008
-        /// </summary>
-        public static string A1008 { get; } = "a1008";
-
-
-        /// <summary>
-        /// Enum R1000 for value: r1000
-        /// </summary>
-        public static string R1000 { get; } = "r1000";
-
-
-        /// <summary>
-        /// Enum R1001 for value: r1001
-        /// </summary>
-        public static string R1001 { get; } = "r1001";
-
-
-        /// <summary>
-        /// Enum R1002 for value: r1002
-        /// </summary>
-        public static string R1002 { get; } = "r1002";
-
-
-        /// <summary>
-        /// Enum R1003 for value: r1003
-        /// </summary>
-        public static string R1003 { get; } = "r1003";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal AddressValidationCode() {
+        _value = "a1000";
     }
+
+    /// <summary>
+    /// Create a new instance of AddressValidationCode with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the AddressValidationCode</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public AddressValidationCode(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum A1000 for value: a1000
+    /// </summary>
+    public static AddressValidationCode A1000 { get; } = new("a1000");
+
+
+    /// <summary>
+    /// Enum A1001 for value: a1001
+    /// </summary>
+    public static AddressValidationCode A1001 { get; } = new("a1001");
+
+
+    /// <summary>
+    /// Enum A1002 for value: a1002
+    /// </summary>
+    public static AddressValidationCode A1002 { get; } = new("a1002");
+
+
+    /// <summary>
+    /// Enum A1003 for value: a1003
+    /// </summary>
+    public static AddressValidationCode A1003 { get; } = new("a1003");
+
+
+    /// <summary>
+    /// Enum A1004 for value: a1004
+    /// </summary>
+    public static AddressValidationCode A1004 { get; } = new("a1004");
+
+
+    /// <summary>
+    /// Enum A1005 for value: a1005
+    /// </summary>
+    public static AddressValidationCode A1005 { get; } = new("a1005");
+
+
+    /// <summary>
+    /// Enum A1006 for value: a1006
+    /// </summary>
+    public static AddressValidationCode A1006 { get; } = new("a1006");
+
+
+    /// <summary>
+    /// Enum A1007 for value: a1007
+    /// </summary>
+    public static AddressValidationCode A1007 { get; } = new("a1007");
+
+
+    /// <summary>
+    /// Enum A1008 for value: a1008
+    /// </summary>
+    public static AddressValidationCode A1008 { get; } = new("a1008");
+
+
+    /// <summary>
+    /// Enum R1000 for value: r1000
+    /// </summary>
+    public static AddressValidationCode R1000 { get; } = new("r1000");
+
+
+    /// <summary>
+    /// Enum R1001 for value: r1001
+    /// </summary>
+    public static AddressValidationCode R1001 { get; } = new("r1001");
+
+
+    /// <summary>
+    /// Enum R1002 for value: r1002
+    /// </summary>
+    public static AddressValidationCode R1002 { get; } = new("r1002");
+
+
+    /// <summary>
+    /// Enum R1003 for value: r1003
+    /// </summary>
+    public static AddressValidationCode R1003 { get; } = new("r1003");
+
+
+    public override string ToString() => _value;
+}
+
+internal class AddressValidationCodeJsonConverter : JsonConverter<AddressValidationCode>
+{
+    public override AddressValidationCode? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new AddressValidationCode(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, AddressValidationCode value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(AddressValidationCode);
+}

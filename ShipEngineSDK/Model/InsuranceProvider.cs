@@ -24,50 +24,66 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible insurance provider values
-    /// </summary>
-    /// <value>The possible insurance provider values</value>
-    public static class InsuranceProvider
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "none",
-            "shipsurance",
-            "carrier",
-            "third_party",
-        };
+/// <summary>
+/// The possible insurance provider values
+/// </summary>
+/// <value>The possible insurance provider values</value>
+[JsonConverter(typeof(InsuranceProviderJsonConverter))]
+public class InsuranceProvider
+{
+    private string _value;
 
-        public static string DefaultValue => None;
-        /// <summary>
-        /// Enum None for value: none
-        /// </summary>
-        public static string None { get; } = "none";
-
-
-        /// <summary>
-        /// Enum Shipsurance for value: shipsurance
-        /// </summary>
-        public static string Shipsurance { get; } = "shipsurance";
-
-
-        /// <summary>
-        /// Enum Carrier for value: carrier
-        /// </summary>
-        public static string Carrier { get; } = "carrier";
-
-
-        /// <summary>
-        /// Enum ThirdParty for value: third_party
-        /// </summary>
-        public static string ThirdParty { get; } = "third_party";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal InsuranceProvider() {
+        _value = "none";
     }
+
+    /// <summary>
+    /// Create a new instance of InsuranceProvider with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the InsuranceProvider</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public InsuranceProvider(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum None for value: none
+    /// </summary>
+    public static InsuranceProvider None { get; } = new("none");
+
+
+    /// <summary>
+    /// Enum Shipsurance for value: shipsurance
+    /// </summary>
+    public static InsuranceProvider Shipsurance { get; } = new("shipsurance");
+
+
+    /// <summary>
+    /// Enum Carrier for value: carrier
+    /// </summary>
+    public static InsuranceProvider Carrier { get; } = new("carrier");
+
+
+    /// <summary>
+    /// Enum ThirdParty for value: third_party
+    /// </summary>
+    public static InsuranceProvider ThirdParty { get; } = new("third_party");
+
+
+    public override string ToString() => _value;
+}
+
+internal class InsuranceProviderJsonConverter : JsonConverter<InsuranceProvider>
+{
+    public override InsuranceProvider? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new InsuranceProvider(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, InsuranceProvider value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(InsuranceProvider);
+}

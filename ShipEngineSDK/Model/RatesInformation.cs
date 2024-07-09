@@ -32,10 +32,10 @@ public partial class RatesInformation
 {
 
     /// <summary>
-    /// Gets or Sets Status
+    /// Gets or Sets Status  CLOVUS
     /// </summary>
     [JsonPropertyName("status")]
-    public string? Status { get; set; }
+    public RateResponseStatus? Status { get; set; }
     /// <summary>
     /// An array of shipment rates
     /// </summary>

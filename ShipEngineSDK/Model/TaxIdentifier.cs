@@ -32,19 +32,19 @@ public partial class TaxIdentifier
 {
 
     /// <summary>
-    /// Gets or Sets TaxableEntityType
+    /// Gets or Sets TaxableEntityType  CLOVUS
     /// </summary>
     [JsonPropertyName("taxable_entity_type")]
     [JsonRequired]
-    public string TaxableEntityType { get; set; } = ShipEngineSDK.Model.TaxableEntityType.DefaultValue;
+    public TaxableEntityType TaxableEntityType { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets IdentifierType
+    /// Gets or Sets IdentifierType  CLOVUS
     /// </summary>
     [JsonPropertyName("identifier_type")]
     [JsonRequired]
-    public string IdentifierType { get; set; } = ShipEngineSDK.Model.IdentifierType.DefaultValue;
+    public IdentifierType IdentifierType { get; set; } = new();
     
 
     /// <summary>

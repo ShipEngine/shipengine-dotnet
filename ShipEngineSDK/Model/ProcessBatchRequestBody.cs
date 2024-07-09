@@ -32,21 +32,21 @@ public partial class ProcessBatchRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets LabelLayout
+    /// Gets or Sets LabelLayout  CLOVUS
     /// </summary>
     [JsonPropertyName("label_layout")]
-    public string? LabelLayout { get; set; }
+    public LabelLayout? LabelLayout { get; set; }
     /// <summary>
-    /// Gets or Sets LabelFormat
+    /// Gets or Sets LabelFormat  CLOVUS
     /// </summary>
     [JsonPropertyName("label_format")]
-    public string? LabelFormat { get; set; }
+    public LabelFormat? LabelFormat { get; set; }
     /// <summary>
-    /// The display format that the label should be shown in.
+    /// The display format that the label should be shown in.  CLOVUS
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
     [JsonPropertyName("display_scheme")]
-    public string? DisplayScheme { get; set; }
+    public DisplayScheme? DisplayScheme { get; set; }
     /// <summary>
     /// The Ship date the batch is being processed for
     /// </summary>

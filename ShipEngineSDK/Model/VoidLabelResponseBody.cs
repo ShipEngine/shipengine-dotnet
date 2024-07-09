@@ -32,11 +32,11 @@ public partial class VoidLabelResponseBody
 {
 
     /// <summary>
-    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. “unknown” codes may be specified later.
+    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. “unknown” codes may be specified later.  CLOVUS
     /// </summary>
     /// <value>Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. “unknown” codes may be specified later.</value>
     [JsonPropertyName("reason_code")]
-    public string? ReasonCode { get; set; }
+    public ReasonCode? ReasonCode { get; set; }
     /// <summary>
     /// Indicates whether the attempt to void the label was successful
     /// </summary>

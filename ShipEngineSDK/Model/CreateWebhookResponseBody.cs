@@ -32,11 +32,11 @@ public partial class CreateWebhookResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets Event
+    /// Gets or Sets Event  CLOVUS
     /// </summary>
     [JsonPropertyName("event")]
     [JsonRequired]
-    public string Event { get; set; } = ShipEngineSDK.Model.WebhookEvent.DefaultValue;
+    public WebhookEvent Event { get; set; } = new();
     
 
     /// <summary>

@@ -24,323 +24,300 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The error code specified for the failed API Call
-    /// </summary>
-    /// <value>The error code specified for the failed API Call</value>
-    public static class ErrorCode
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "auto_fund_not_supported",
-            "batch_cannot_be_modified",
-            "carrier_conflict",
-            "carrier_disconnected",
-            "carrier_not_connected",
-            "carrier_not_supported",
-            "confirmation_not_supported",
-            "default_warehouse_cannot_be_deleted",
-            "field_conflict",
-            "field_value_required",
-            "forbidden",
-            "identifier_conflict",
-            "identifiers_must_match",
-            "insufficient_funds",
-            "invalid_address",
-            "invalid_billing_plan",
-            "invalid_field_value",
-            "invalid_identifier",
-            "invalid_status",
-            "invalid_string_length",
-            "label_images_not_supported",
-            "meter_failure",
-            "order_source_not_active",
-            "rate_limit_exceeded",
-            "refresh_not_supported",
-            "request_body_required",
-            "return_label_not_supported",
-            "settings_not_supported",
-            "subscription_inactive",
-            "terms_not_accepted",
-            "tracking_not_supported",
-            "trial_expired",
-            "unauthorized",
-            "unknown",
-            "unspecified",
-            "verification_failure",
-            "warehouse_conflict",
-            "webhook_event_type_conflict",
-            "customs_items_required",
-            "incompatible_paired_labels",
-            "invalid_charge_event",
-            "invalid_object",
-            "no_rates_returned",
-        };
-
-        public static string DefaultValue => AutoFundNotSupported;
-        /// <summary>
-        /// Enum AutoFundNotSupported for value: auto_fund_not_supported
-        /// </summary>
-        public static string AutoFundNotSupported { get; } = "auto_fund_not_supported";
-
-
-        /// <summary>
-        /// Enum BatchCannotBeModified for value: batch_cannot_be_modified
-        /// </summary>
-        public static string BatchCannotBeModified { get; } = "batch_cannot_be_modified";
-
-
-        /// <summary>
-        /// Enum CarrierConflict for value: carrier_conflict
-        /// </summary>
-        public static string CarrierConflict { get; } = "carrier_conflict";
-
-
-        /// <summary>
-        /// Enum CarrierDisconnected for value: carrier_disconnected
-        /// </summary>
-        public static string CarrierDisconnected { get; } = "carrier_disconnected";
-
-
-        /// <summary>
-        /// Enum CarrierNotConnected for value: carrier_not_connected
-        /// </summary>
-        public static string CarrierNotConnected { get; } = "carrier_not_connected";
-
-
-        /// <summary>
-        /// Enum CarrierNotSupported for value: carrier_not_supported
-        /// </summary>
-        public static string CarrierNotSupported { get; } = "carrier_not_supported";
-
-
-        /// <summary>
-        /// Enum ConfirmationNotSupported for value: confirmation_not_supported
-        /// </summary>
-        public static string ConfirmationNotSupported { get; } = "confirmation_not_supported";
-
-
-        /// <summary>
-        /// Enum DefaultWarehouseCannotBeDeleted for value: default_warehouse_cannot_be_deleted
-        /// </summary>
-        public static string DefaultWarehouseCannotBeDeleted { get; } = "default_warehouse_cannot_be_deleted";
-
-
-        /// <summary>
-        /// Enum FieldConflict for value: field_conflict
-        /// </summary>
-        public static string FieldConflict { get; } = "field_conflict";
-
-
-        /// <summary>
-        /// Enum FieldValueRequired for value: field_value_required
-        /// </summary>
-        public static string FieldValueRequired { get; } = "field_value_required";
-
-
-        /// <summary>
-        /// Enum Forbidden for value: forbidden
-        /// </summary>
-        public static string Forbidden { get; } = "forbidden";
-
-
-        /// <summary>
-        /// Enum IdentifierConflict for value: identifier_conflict
-        /// </summary>
-        public static string IdentifierConflict { get; } = "identifier_conflict";
-
-
-        /// <summary>
-        /// Enum IdentifiersMustMatch for value: identifiers_must_match
-        /// </summary>
-        public static string IdentifiersMustMatch { get; } = "identifiers_must_match";
-
-
-        /// <summary>
-        /// Enum InsufficientFunds for value: insufficient_funds
-        /// </summary>
-        public static string InsufficientFunds { get; } = "insufficient_funds";
-
-
-        /// <summary>
-        /// Enum InvalidAddress for value: invalid_address
-        /// </summary>
-        public static string InvalidAddress { get; } = "invalid_address";
-
-
-        /// <summary>
-        /// Enum InvalidBillingPlan for value: invalid_billing_plan
-        /// </summary>
-        public static string InvalidBillingPlan { get; } = "invalid_billing_plan";
-
-
-        /// <summary>
-        /// Enum InvalidFieldValue for value: invalid_field_value
-        /// </summary>
-        public static string InvalidFieldValue { get; } = "invalid_field_value";
-
-
-        /// <summary>
-        /// Enum InvalidIdentifier for value: invalid_identifier
-        /// </summary>
-        public static string InvalidIdentifier { get; } = "invalid_identifier";
-
-
-        /// <summary>
-        /// Enum InvalidStatus for value: invalid_status
-        /// </summary>
-        public static string InvalidStatus { get; } = "invalid_status";
-
-
-        /// <summary>
-        /// Enum InvalidStringLength for value: invalid_string_length
-        /// </summary>
-        public static string InvalidStringLength { get; } = "invalid_string_length";
-
-
-        /// <summary>
-        /// Enum LabelImagesNotSupported for value: label_images_not_supported
-        /// </summary>
-        public static string LabelImagesNotSupported { get; } = "label_images_not_supported";
-
-
-        /// <summary>
-        /// Enum MeterFailure for value: meter_failure
-        /// </summary>
-        public static string MeterFailure { get; } = "meter_failure";
-
-
-        /// <summary>
-        /// Enum OrderSourceNotActive for value: order_source_not_active
-        /// </summary>
-        public static string OrderSourceNotActive { get; } = "order_source_not_active";
-
-
-        /// <summary>
-        /// Enum RateLimitExceeded for value: rate_limit_exceeded
-        /// </summary>
-        public static string RateLimitExceeded { get; } = "rate_limit_exceeded";
-
-
-        /// <summary>
-        /// Enum RefreshNotSupported for value: refresh_not_supported
-        /// </summary>
-        public static string RefreshNotSupported { get; } = "refresh_not_supported";
-
-
-        /// <summary>
-        /// Enum RequestBodyRequired for value: request_body_required
-        /// </summary>
-        public static string RequestBodyRequired { get; } = "request_body_required";
-
-
-        /// <summary>
-        /// Enum ReturnLabelNotSupported for value: return_label_not_supported
-        /// </summary>
-        public static string ReturnLabelNotSupported { get; } = "return_label_not_supported";
-
-
-        /// <summary>
-        /// Enum SettingsNotSupported for value: settings_not_supported
-        /// </summary>
-        public static string SettingsNotSupported { get; } = "settings_not_supported";
-
-
-        /// <summary>
-        /// Enum SubscriptionInactive for value: subscription_inactive
-        /// </summary>
-        public static string SubscriptionInactive { get; } = "subscription_inactive";
-
-
-        /// <summary>
-        /// Enum TermsNotAccepted for value: terms_not_accepted
-        /// </summary>
-        public static string TermsNotAccepted { get; } = "terms_not_accepted";
-
-
-        /// <summary>
-        /// Enum TrackingNotSupported for value: tracking_not_supported
-        /// </summary>
-        public static string TrackingNotSupported { get; } = "tracking_not_supported";
-
-
-        /// <summary>
-        /// Enum TrialExpired for value: trial_expired
-        /// </summary>
-        public static string TrialExpired { get; } = "trial_expired";
-
-
-        /// <summary>
-        /// Enum Unauthorized for value: unauthorized
-        /// </summary>
-        public static string Unauthorized { get; } = "unauthorized";
-
-
-        /// <summary>
-        /// Enum Unknown for value: unknown
-        /// </summary>
-        public static string Unknown { get; } = "unknown";
-
-
-        /// <summary>
-        /// Enum Unspecified for value: unspecified
-        /// </summary>
-        public static string Unspecified { get; } = "unspecified";
-
-
-        /// <summary>
-        /// Enum VerificationFailure for value: verification_failure
-        /// </summary>
-        public static string VerificationFailure { get; } = "verification_failure";
-
-
-        /// <summary>
-        /// Enum WarehouseConflict for value: warehouse_conflict
-        /// </summary>
-        public static string WarehouseConflict { get; } = "warehouse_conflict";
-
-
-        /// <summary>
-        /// Enum WebhookEventTypeConflict for value: webhook_event_type_conflict
-        /// </summary>
-        public static string WebhookEventTypeConflict { get; } = "webhook_event_type_conflict";
-
-
-        /// <summary>
-        /// Enum CustomsItemsRequired for value: customs_items_required
-        /// </summary>
-        public static string CustomsItemsRequired { get; } = "customs_items_required";
-
-
-        /// <summary>
-        /// Enum IncompatiblePairedLabels for value: incompatible_paired_labels
-        /// </summary>
-        public static string IncompatiblePairedLabels { get; } = "incompatible_paired_labels";
-
-
-        /// <summary>
-        /// Enum InvalidChargeEvent for value: invalid_charge_event
-        /// </summary>
-        public static string InvalidChargeEvent { get; } = "invalid_charge_event";
-
-
-        /// <summary>
-        /// Enum InvalidObject for value: invalid_object
-        /// </summary>
-        public static string InvalidObject { get; } = "invalid_object";
-
-
-        /// <summary>
-        /// Enum NoRatesReturned for value: no_rates_returned
-        /// </summary>
-        public static string NoRatesReturned { get; } = "no_rates_returned";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+/// <summary>
+/// The error code specified for the failed API Call
+/// </summary>
+/// <value>The error code specified for the failed API Call</value>
+[JsonConverter(typeof(ErrorCodeJsonConverter))]
+public class ErrorCode
+{
+    private string _value;
+
+    internal ErrorCode() {
+        _value = "auto_fund_not_supported";
     }
+
+    /// <summary>
+    /// Create a new instance of ErrorCode with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the ErrorCode</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public ErrorCode(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum AutoFundNotSupported for value: auto_fund_not_supported
+    /// </summary>
+    public static ErrorCode AutoFundNotSupported { get; } = new("auto_fund_not_supported");
+
+
+    /// <summary>
+    /// Enum BatchCannotBeModified for value: batch_cannot_be_modified
+    /// </summary>
+    public static ErrorCode BatchCannotBeModified { get; } = new("batch_cannot_be_modified");
+
+
+    /// <summary>
+    /// Enum CarrierConflict for value: carrier_conflict
+    /// </summary>
+    public static ErrorCode CarrierConflict { get; } = new("carrier_conflict");
+
+
+    /// <summary>
+    /// Enum CarrierDisconnected for value: carrier_disconnected
+    /// </summary>
+    public static ErrorCode CarrierDisconnected { get; } = new("carrier_disconnected");
+
+
+    /// <summary>
+    /// Enum CarrierNotConnected for value: carrier_not_connected
+    /// </summary>
+    public static ErrorCode CarrierNotConnected { get; } = new("carrier_not_connected");
+
+
+    /// <summary>
+    /// Enum CarrierNotSupported for value: carrier_not_supported
+    /// </summary>
+    public static ErrorCode CarrierNotSupported { get; } = new("carrier_not_supported");
+
+
+    /// <summary>
+    /// Enum ConfirmationNotSupported for value: confirmation_not_supported
+    /// </summary>
+    public static ErrorCode ConfirmationNotSupported { get; } = new("confirmation_not_supported");
+
+
+    /// <summary>
+    /// Enum DefaultWarehouseCannotBeDeleted for value: default_warehouse_cannot_be_deleted
+    /// </summary>
+    public static ErrorCode DefaultWarehouseCannotBeDeleted { get; } = new("default_warehouse_cannot_be_deleted");
+
+
+    /// <summary>
+    /// Enum FieldConflict for value: field_conflict
+    /// </summary>
+    public static ErrorCode FieldConflict { get; } = new("field_conflict");
+
+
+    /// <summary>
+    /// Enum FieldValueRequired for value: field_value_required
+    /// </summary>
+    public static ErrorCode FieldValueRequired { get; } = new("field_value_required");
+
+
+    /// <summary>
+    /// Enum Forbidden for value: forbidden
+    /// </summary>
+    public static ErrorCode Forbidden { get; } = new("forbidden");
+
+
+    /// <summary>
+    /// Enum IdentifierConflict for value: identifier_conflict
+    /// </summary>
+    public static ErrorCode IdentifierConflict { get; } = new("identifier_conflict");
+
+
+    /// <summary>
+    /// Enum IdentifiersMustMatch for value: identifiers_must_match
+    /// </summary>
+    public static ErrorCode IdentifiersMustMatch { get; } = new("identifiers_must_match");
+
+
+    /// <summary>
+    /// Enum InsufficientFunds for value: insufficient_funds
+    /// </summary>
+    public static ErrorCode InsufficientFunds { get; } = new("insufficient_funds");
+
+
+    /// <summary>
+    /// Enum InvalidAddress for value: invalid_address
+    /// </summary>
+    public static ErrorCode InvalidAddress { get; } = new("invalid_address");
+
+
+    /// <summary>
+    /// Enum InvalidBillingPlan for value: invalid_billing_plan
+    /// </summary>
+    public static ErrorCode InvalidBillingPlan { get; } = new("invalid_billing_plan");
+
+
+    /// <summary>
+    /// Enum InvalidFieldValue for value: invalid_field_value
+    /// </summary>
+    public static ErrorCode InvalidFieldValue { get; } = new("invalid_field_value");
+
+
+    /// <summary>
+    /// Enum InvalidIdentifier for value: invalid_identifier
+    /// </summary>
+    public static ErrorCode InvalidIdentifier { get; } = new("invalid_identifier");
+
+
+    /// <summary>
+    /// Enum InvalidStatus for value: invalid_status
+    /// </summary>
+    public static ErrorCode InvalidStatus { get; } = new("invalid_status");
+
+
+    /// <summary>
+    /// Enum InvalidStringLength for value: invalid_string_length
+    /// </summary>
+    public static ErrorCode InvalidStringLength { get; } = new("invalid_string_length");
+
+
+    /// <summary>
+    /// Enum LabelImagesNotSupported for value: label_images_not_supported
+    /// </summary>
+    public static ErrorCode LabelImagesNotSupported { get; } = new("label_images_not_supported");
+
+
+    /// <summary>
+    /// Enum MeterFailure for value: meter_failure
+    /// </summary>
+    public static ErrorCode MeterFailure { get; } = new("meter_failure");
+
+
+    /// <summary>
+    /// Enum OrderSourceNotActive for value: order_source_not_active
+    /// </summary>
+    public static ErrorCode OrderSourceNotActive { get; } = new("order_source_not_active");
+
+
+    /// <summary>
+    /// Enum RateLimitExceeded for value: rate_limit_exceeded
+    /// </summary>
+    public static ErrorCode RateLimitExceeded { get; } = new("rate_limit_exceeded");
+
+
+    /// <summary>
+    /// Enum RefreshNotSupported for value: refresh_not_supported
+    /// </summary>
+    public static ErrorCode RefreshNotSupported { get; } = new("refresh_not_supported");
+
+
+    /// <summary>
+    /// Enum RequestBodyRequired for value: request_body_required
+    /// </summary>
+    public static ErrorCode RequestBodyRequired { get; } = new("request_body_required");
+
+
+    /// <summary>
+    /// Enum ReturnLabelNotSupported for value: return_label_not_supported
+    /// </summary>
+    public static ErrorCode ReturnLabelNotSupported { get; } = new("return_label_not_supported");
+
+
+    /// <summary>
+    /// Enum SettingsNotSupported for value: settings_not_supported
+    /// </summary>
+    public static ErrorCode SettingsNotSupported { get; } = new("settings_not_supported");
+
+
+    /// <summary>
+    /// Enum SubscriptionInactive for value: subscription_inactive
+    /// </summary>
+    public static ErrorCode SubscriptionInactive { get; } = new("subscription_inactive");
+
+
+    /// <summary>
+    /// Enum TermsNotAccepted for value: terms_not_accepted
+    /// </summary>
+    public static ErrorCode TermsNotAccepted { get; } = new("terms_not_accepted");
+
+
+    /// <summary>
+    /// Enum TrackingNotSupported for value: tracking_not_supported
+    /// </summary>
+    public static ErrorCode TrackingNotSupported { get; } = new("tracking_not_supported");
+
+
+    /// <summary>
+    /// Enum TrialExpired for value: trial_expired
+    /// </summary>
+    public static ErrorCode TrialExpired { get; } = new("trial_expired");
+
+
+    /// <summary>
+    /// Enum Unauthorized for value: unauthorized
+    /// </summary>
+    public static ErrorCode Unauthorized { get; } = new("unauthorized");
+
+
+    /// <summary>
+    /// Enum Unknown for value: unknown
+    /// </summary>
+    public static ErrorCode Unknown { get; } = new("unknown");
+
+
+    /// <summary>
+    /// Enum Unspecified for value: unspecified
+    /// </summary>
+    public static ErrorCode Unspecified { get; } = new("unspecified");
+
+
+    /// <summary>
+    /// Enum VerificationFailure for value: verification_failure
+    /// </summary>
+    public static ErrorCode VerificationFailure { get; } = new("verification_failure");
+
+
+    /// <summary>
+    /// Enum WarehouseConflict for value: warehouse_conflict
+    /// </summary>
+    public static ErrorCode WarehouseConflict { get; } = new("warehouse_conflict");
+
+
+    /// <summary>
+    /// Enum WebhookEventTypeConflict for value: webhook_event_type_conflict
+    /// </summary>
+    public static ErrorCode WebhookEventTypeConflict { get; } = new("webhook_event_type_conflict");
+
+
+    /// <summary>
+    /// Enum CustomsItemsRequired for value: customs_items_required
+    /// </summary>
+    public static ErrorCode CustomsItemsRequired { get; } = new("customs_items_required");
+
+
+    /// <summary>
+    /// Enum IncompatiblePairedLabels for value: incompatible_paired_labels
+    /// </summary>
+    public static ErrorCode IncompatiblePairedLabels { get; } = new("incompatible_paired_labels");
+
+
+    /// <summary>
+    /// Enum InvalidChargeEvent for value: invalid_charge_event
+    /// </summary>
+    public static ErrorCode InvalidChargeEvent { get; } = new("invalid_charge_event");
+
+
+    /// <summary>
+    /// Enum InvalidObject for value: invalid_object
+    /// </summary>
+    public static ErrorCode InvalidObject { get; } = new("invalid_object");
+
+
+    /// <summary>
+    /// Enum NoRatesReturned for value: no_rates_returned
+    /// </summary>
+    public static ErrorCode NoRatesReturned { get; } = new("no_rates_returned");
+
+
+    public override string ToString() => _value;
+}
+
+internal class ErrorCodeJsonConverter : JsonConverter<ErrorCode>
+{
+    public override ErrorCode? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new ErrorCode(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, ErrorCode value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(ErrorCode);
+}

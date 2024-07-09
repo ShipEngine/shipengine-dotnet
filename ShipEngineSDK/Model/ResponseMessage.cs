@@ -32,27 +32,27 @@ public partial class ResponseMessage
 {
 
     /// <summary>
-    /// Gets or Sets Code
+    /// Gets or Sets Code  CLOVUS
     /// </summary>
     [JsonPropertyName("code")]
     [JsonRequired]
-    public string Code { get; set; } = ShipEngineSDK.Model.AddressValidationCode.DefaultValue;
+    public AddressValidationCode Code { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets Type
+    /// Gets or Sets Type  CLOVUS
     /// </summary>
     [JsonPropertyName("type")]
     [JsonRequired]
-    public string Type { get; set; } = ShipEngineSDK.Model.AddressValidationMessageType.DefaultValue;
+    public AddressValidationMessageType Type { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets DetailCode
+    /// Gets or Sets DetailCode  CLOVUS
     /// </summary>
     [JsonPropertyName("detail_code")]
     [JsonRequired]
-    public string DetailCode { get; set; } = ShipEngineSDK.Model.AddressValidationDetailCode.DefaultValue;
+    public AddressValidationDetailCode DetailCode { get; set; } = new();
     
 
     /// <summary>

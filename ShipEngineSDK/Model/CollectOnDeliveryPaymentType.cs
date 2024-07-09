@@ -24,50 +24,66 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Types of payment that are supported
-    /// </summary>
-    /// <value>Types of payment that are supported</value>
-    public static class CollectOnDeliveryPaymentType
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "any",
-            "cash",
-            "cash_equivalent",
-            "none",
-        };
+/// <summary>
+/// Types of payment that are supported
+/// </summary>
+/// <value>Types of payment that are supported</value>
+[JsonConverter(typeof(CollectOnDeliveryPaymentTypeJsonConverter))]
+public class CollectOnDeliveryPaymentType
+{
+    private string _value;
 
-        public static string DefaultValue => Any;
-        /// <summary>
-        /// Enum Any for value: any
-        /// </summary>
-        public static string Any { get; } = "any";
-
-
-        /// <summary>
-        /// Enum Cash for value: cash
-        /// </summary>
-        public static string Cash { get; } = "cash";
-
-
-        /// <summary>
-        /// Enum CashEquivalent for value: cash_equivalent
-        /// </summary>
-        public static string CashEquivalent { get; } = "cash_equivalent";
-
-
-        /// <summary>
-        /// Enum None for value: none
-        /// </summary>
-        public static string None { get; } = "none";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal CollectOnDeliveryPaymentType() {
+        _value = "any";
     }
+
+    /// <summary>
+    /// Create a new instance of CollectOnDeliveryPaymentType with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the CollectOnDeliveryPaymentType</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public CollectOnDeliveryPaymentType(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Any for value: any
+    /// </summary>
+    public static CollectOnDeliveryPaymentType Any { get; } = new("any");
+
+
+    /// <summary>
+    /// Enum Cash for value: cash
+    /// </summary>
+    public static CollectOnDeliveryPaymentType Cash { get; } = new("cash");
+
+
+    /// <summary>
+    /// Enum CashEquivalent for value: cash_equivalent
+    /// </summary>
+    public static CollectOnDeliveryPaymentType CashEquivalent { get; } = new("cash_equivalent");
+
+
+    /// <summary>
+    /// Enum None for value: none
+    /// </summary>
+    public static CollectOnDeliveryPaymentType None { get; } = new("none");
+
+
+    public override string ToString() => _value;
+}
+
+internal class CollectOnDeliveryPaymentTypeJsonConverter : JsonConverter<CollectOnDeliveryPaymentType>
+{
+    public override CollectOnDeliveryPaymentType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new CollectOnDeliveryPaymentType(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, CollectOnDeliveryPaymentType value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(CollectOnDeliveryPaymentType);
+}

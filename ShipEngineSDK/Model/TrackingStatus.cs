@@ -24,50 +24,66 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The different statuses that can apply to a shipment.
-    /// </summary>
-    /// <value>The different statuses that can apply to a shipment.</value>
-    public static class TrackingStatus
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "unknown",
-            "in_transit",
-            "error",
-            "delivered",
-        };
+/// <summary>
+/// The different statuses that can apply to a shipment.
+/// </summary>
+/// <value>The different statuses that can apply to a shipment.</value>
+[JsonConverter(typeof(TrackingStatusJsonConverter))]
+public class TrackingStatus
+{
+    private string _value;
 
-        public static string DefaultValue => Unknown;
-        /// <summary>
-        /// Enum Unknown for value: unknown
-        /// </summary>
-        public static string Unknown { get; } = "unknown";
-
-
-        /// <summary>
-        /// Enum InTransit for value: in_transit
-        /// </summary>
-        public static string InTransit { get; } = "in_transit";
-
-
-        /// <summary>
-        /// Enum Error for value: error
-        /// </summary>
-        public static string Error { get; } = "error";
-
-
-        /// <summary>
-        /// Enum Delivered for value: delivered
-        /// </summary>
-        public static string Delivered { get; } = "delivered";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal TrackingStatus() {
+        _value = "unknown";
     }
+
+    /// <summary>
+    /// Create a new instance of TrackingStatus with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the TrackingStatus</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public TrackingStatus(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Unknown for value: unknown
+    /// </summary>
+    public static TrackingStatus Unknown { get; } = new("unknown");
+
+
+    /// <summary>
+    /// Enum InTransit for value: in_transit
+    /// </summary>
+    public static TrackingStatus InTransit { get; } = new("in_transit");
+
+
+    /// <summary>
+    /// Enum Error for value: error
+    /// </summary>
+    public static TrackingStatus Error { get; } = new("error");
+
+
+    /// <summary>
+    /// Enum Delivered for value: delivered
+    /// </summary>
+    public static TrackingStatus Delivered { get; } = new("delivered");
+
+
+    public override string ToString() => _value;
+}
+
+internal class TrackingStatusJsonConverter : JsonConverter<TrackingStatus>
+{
+    public override TrackingStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new TrackingStatus(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, TrackingStatus value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(TrackingStatus);
+}

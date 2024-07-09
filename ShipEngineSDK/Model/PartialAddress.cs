@@ -32,11 +32,11 @@ public partial class PartialAddress
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.
+    /// Indicates whether this is a residential address.  CLOVUS
     /// </summary>
     /// <value>Indicates whether this is a residential address.</value>
     [JsonPropertyName("address_residential_indicator")]
-    public string? AddressResidentialIndicator { get; set; }
+    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     /// <summary>
     /// The name of a contact person at this address.  This field may be set instead of - or in addition to - the &#x60;company_name&#x60; field. 
     /// </summary>

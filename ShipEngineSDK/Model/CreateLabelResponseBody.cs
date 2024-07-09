@@ -32,66 +32,66 @@ public partial class CreateLabelResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets Status
+    /// Gets or Sets Status  CLOVUS
     /// </summary>
     [JsonPropertyName("status")]
     [JsonRequired]
-    public string Status { get; set; } = ShipEngineSDK.Model.LabelStatus.DefaultValue;
+    public LabelStatus Status { get; set; } = new();
     
 
     /// <summary>
-    /// The label charge event. 
+    /// The label charge event.   CLOVUS
     /// </summary>
     /// <value>The label charge event. </value>
     [JsonPropertyName("charge_event")]
     [JsonRequired]
-    public string ChargeEvent { get; set; } = ShipEngineSDK.Model.LabelChargeEvent.DefaultValue;
+    public LabelChargeEvent ChargeEvent { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets ValidateAddress
+    /// Gets or Sets ValidateAddress  CLOVUS
     /// </summary>
     [JsonPropertyName("validate_address")]
-    public string? ValidateAddress { get; set; }
+    public ValidateAddress? ValidateAddress { get; set; }
     /// <summary>
-    /// Gets or Sets LabelDownloadType
+    /// Gets or Sets LabelDownloadType  CLOVUS
     /// </summary>
     [JsonPropertyName("label_download_type")]
-    public string? LabelDownloadType { get; set; }
+    public LabelDownloadType? LabelDownloadType { get; set; }
     /// <summary>
-    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
+    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats.   CLOVUS
     /// </summary>
     /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
     [JsonPropertyName("label_format")]
     [JsonRequired]
-    public string LabelFormat { get; set; } = ShipEngineSDK.Model.LabelFormat.DefaultValue;
+    public LabelFormat LabelFormat { get; set; } = new();
     
 
     /// <summary>
-    /// The display format that the label should be shown in.
+    /// The display format that the label should be shown in.  CLOVUS
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
     [JsonPropertyName("display_scheme")]
     [JsonRequired]
-    public string DisplayScheme { get; set; } = ShipEngineSDK.Model.DisplayScheme.DefaultValue;
+    public DisplayScheme DisplayScheme { get; set; } = new();
     
 
     /// <summary>
-    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
+    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format.   CLOVUS
     /// </summary>
     /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
     [JsonPropertyName("label_layout")]
     [JsonRequired]
-    public string LabelLayout { get; set; } = ShipEngineSDK.Model.LabelLayout.DefaultValue;
+    public LabelLayout LabelLayout { get; set; } = new();
     
 
     /// <summary>
-    /// The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;
+    /// The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;  CLOVUS
     /// </summary>
     /// <value>The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;</value>
     [JsonPropertyName("tracking_status")]
     [JsonRequired]
-    public string TrackingStatus { get; set; } = ShipEngineSDK.Model.TrackingStatus.DefaultValue;
+    public TrackingStatus TrackingStatus { get; set; } = new();
     
 
     /// <summary>

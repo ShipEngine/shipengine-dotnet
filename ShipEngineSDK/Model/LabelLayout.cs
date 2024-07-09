@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The available layouts (sizes) in which shipping labels can be downloaded.  The label format determines which sizes are supported.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
-    /// </summary>
-    /// <value>The available layouts (sizes) in which shipping labels can be downloaded.  The label format determines which sizes are supported.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    public static class LabelLayout
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "4x6",
-            "letter",
-        };
+/// <summary>
+/// The available layouts (sizes) in which shipping labels can be downloaded.  The label format determines which sizes are supported.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
+/// </summary>
+/// <value>The available layouts (sizes) in which shipping labels can be downloaded.  The label format determines which sizes are supported.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
+[JsonConverter(typeof(LabelLayoutJsonConverter))]
+public class LabelLayout
+{
+    private string _value;
 
-        public static string DefaultValue => _4x6;
-        /// <summary>
-        /// Enum _4x6 for value: 4x6
-        /// </summary>
-        public static string _4x6 { get; } = "4x6";
-
-
-        /// <summary>
-        /// Enum Letter for value: letter
-        /// </summary>
-        public static string Letter { get; } = "letter";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal LabelLayout() {
+        _value = "4x6";
     }
+
+    /// <summary>
+    /// Create a new instance of LabelLayout with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the LabelLayout</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public LabelLayout(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum _4x6 for value: 4x6
+    /// </summary>
+    public static LabelLayout _4x6 { get; } = new("4x6");
+
+
+    /// <summary>
+    /// Enum Letter for value: letter
+    /// </summary>
+    public static LabelLayout Letter { get; } = new("letter");
+
+
+    public override string ToString() => _value;
+}
+
+internal class LabelLayoutJsonConverter : JsonConverter<LabelLayout>
+{
+    public override LabelLayout? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new LabelLayout(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, LabelLayout value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(LabelLayout);
+}

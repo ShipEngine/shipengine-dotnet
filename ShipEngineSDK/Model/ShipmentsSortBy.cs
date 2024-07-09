@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible shipments sort by values
-    /// </summary>
-    /// <value>The possible shipments sort by values</value>
-    public static class ShipmentsSortBy
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "modified_at",
-            "created_at",
-        };
+/// <summary>
+/// The possible shipments sort by values
+/// </summary>
+/// <value>The possible shipments sort by values</value>
+[JsonConverter(typeof(ShipmentsSortByJsonConverter))]
+public class ShipmentsSortBy
+{
+    private string _value;
 
-        public static string DefaultValue => ModifiedAt;
-        /// <summary>
-        /// Enum ModifiedAt for value: modified_at
-        /// </summary>
-        public static string ModifiedAt { get; } = "modified_at";
-
-
-        /// <summary>
-        /// Enum CreatedAt for value: created_at
-        /// </summary>
-        public static string CreatedAt { get; } = "created_at";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal ShipmentsSortBy() {
+        _value = "modified_at";
     }
+
+    /// <summary>
+    /// Create a new instance of ShipmentsSortBy with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the ShipmentsSortBy</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public ShipmentsSortBy(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum ModifiedAt for value: modified_at
+    /// </summary>
+    public static ShipmentsSortBy ModifiedAt { get; } = new("modified_at");
+
+
+    /// <summary>
+    /// Enum CreatedAt for value: created_at
+    /// </summary>
+    public static ShipmentsSortBy CreatedAt { get; } = new("created_at");
+
+
+    public override string ToString() => _value;
+}
+
+internal class ShipmentsSortByJsonConverter : JsonConverter<ShipmentsSortBy>
+{
+    public override ShipmentsSortBy? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new ShipmentsSortBy(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, ShipmentsSortBy value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(ShipmentsSortBy);
+}

@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Controls the sort order of queries  |Value     |Description |:- -- -- -- --|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;asc&#x60;     |Return results in ascending order |&#x60;desc&#x60;    |Return results in descending order 
-    /// </summary>
-    /// <value>Controls the sort order of queries  |Value     |Description |:- -- -- -- --|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;asc&#x60;     |Return results in ascending order |&#x60;desc&#x60;    |Return results in descending order </value>
-    public static class SortDir
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "asc",
-            "desc",
-        };
+/// <summary>
+/// Controls the sort order of queries  |Value     |Description |:- -- -- -- --|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;asc&#x60;     |Return results in ascending order |&#x60;desc&#x60;    |Return results in descending order 
+/// </summary>
+/// <value>Controls the sort order of queries  |Value     |Description |:- -- -- -- --|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;asc&#x60;     |Return results in ascending order |&#x60;desc&#x60;    |Return results in descending order </value>
+[JsonConverter(typeof(SortDirJsonConverter))]
+public class SortDir
+{
+    private string _value;
 
-        public static string DefaultValue => Asc;
-        /// <summary>
-        /// Enum Asc for value: asc
-        /// </summary>
-        public static string Asc { get; } = "asc";
-
-
-        /// <summary>
-        /// Enum Desc for value: desc
-        /// </summary>
-        public static string Desc { get; } = "desc";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal SortDir() {
+        _value = "asc";
     }
+
+    /// <summary>
+    /// Create a new instance of SortDir with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the SortDir</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public SortDir(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Asc for value: asc
+    /// </summary>
+    public static SortDir Asc { get; } = new("asc");
+
+
+    /// <summary>
+    /// Enum Desc for value: desc
+    /// </summary>
+    public static SortDir Desc { get; } = new("desc");
+
+
+    public override string ToString() => _value;
+}
+
+internal class SortDirJsonConverter : JsonConverter<SortDir>
+{
+    public override SortDir? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new SortDir(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, SortDir value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(SortDir);
+}

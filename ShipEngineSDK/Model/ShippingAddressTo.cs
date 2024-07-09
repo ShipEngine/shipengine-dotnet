@@ -32,12 +32,12 @@ public partial class ShippingAddressTo
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.
+    /// Indicates whether this is a residential address.  CLOVUS
     /// </summary>
     /// <value>Indicates whether this is a residential address.</value>
     [JsonPropertyName("address_residential_indicator")]
     [JsonRequired]
-    public string AddressResidentialIndicator { get; set; } = ShipEngineSDK.Model.AddressResidentialIndicator.DefaultValue;
+    public AddressResidentialIndicator AddressResidentialIndicator { get; set; } = new();
     
 
     /// <summary>

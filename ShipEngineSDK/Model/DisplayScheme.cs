@@ -24,57 +24,72 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The display format that the label should be shown in.
-    /// </summary>
-    /// <value>The display format that the label should be shown in.</value>
-    public static class DisplayScheme
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "label",
-            "qr_code",
-            "label_and_qr_code",
-            "paperless",
-            "label_and_paperless",
-        };
+/// <summary>
+/// The display format that the label should be shown in.
+/// </summary>
+/// <value>The display format that the label should be shown in.</value>
+[JsonConverter(typeof(DisplaySchemeJsonConverter))]
+public class DisplayScheme
+{
+    private string _value;
 
-        public static string DefaultValue => Label;
-        /// <summary>
-        /// Enum Label for value: label
-        /// </summary>
-        public static string Label { get; } = "label";
-
-
-        /// <summary>
-        /// Enum QrCode for value: qr_code
-        /// </summary>
-        public static string QrCode { get; } = "qr_code";
-
-
-        /// <summary>
-        /// Enum LabelAndQrCode for value: label_and_qr_code
-        /// </summary>
-        public static string LabelAndQrCode { get; } = "label_and_qr_code";
-
-
-        /// <summary>
-        /// Enum Paperless for value: paperless
-        /// </summary>
-        public static string Paperless { get; } = "paperless";
-
-
-        /// <summary>
-        /// Enum LabelAndPaperless for value: label_and_paperless
-        /// </summary>
-        public static string LabelAndPaperless { get; } = "label_and_paperless";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal DisplayScheme() {
+        _value = "label";
     }
+
+    /// <summary>
+    /// Create a new instance of DisplayScheme with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the DisplayScheme</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public DisplayScheme(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Label for value: label
+    /// </summary>
+    public static DisplayScheme Label { get; } = new("label");
+
+
+    /// <summary>
+    /// Enum QrCode for value: qr_code
+    /// </summary>
+    public static DisplayScheme QrCode { get; } = new("qr_code");
+
+
+    /// <summary>
+    /// Enum LabelAndQrCode for value: label_and_qr_code
+    /// </summary>
+    public static DisplayScheme LabelAndQrCode { get; } = new("label_and_qr_code");
+
+
+    /// <summary>
+    /// Enum Paperless for value: paperless
+    /// </summary>
+    public static DisplayScheme Paperless { get; } = new("paperless");
+
+
+    /// <summary>
+    /// Enum LabelAndPaperless for value: label_and_paperless
+    /// </summary>
+    public static DisplayScheme LabelAndPaperless { get; } = new("label_and_paperless");
+
+
+    public override string ToString() => _value;
+}
+
+internal class DisplaySchemeJsonConverter : JsonConverter<DisplayScheme>
+{
+    public override DisplayScheme? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new DisplayScheme(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, DisplayScheme value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(DisplayScheme);
+}

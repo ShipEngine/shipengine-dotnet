@@ -32,11 +32,11 @@ public partial class Dimensions
 {
 
     /// <summary>
-    /// Gets or Sets Unit
+    /// Gets or Sets Unit  CLOVUS
     /// </summary>
     [JsonPropertyName("unit")]
     [JsonRequired]
-    public string Unit { get; set; } = ShipEngineSDK.Model.DimensionUnit.DefaultValue;
+    public DimensionUnit Unit { get; set; } = new();
     
 
     /// <summary>

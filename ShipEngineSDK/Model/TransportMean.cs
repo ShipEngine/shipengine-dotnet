@@ -24,49 +24,65 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Defines transport_mean
-    /// </summary>
-    public static class TransportMean
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "ground",
-            "water",
-            "cargo_aircraft_only",
-            "passenger_aircraft",
-        };
+/// <summary>
+/// Defines transport_mean
+/// </summary>
+[JsonConverter(typeof(TransportMeanJsonConverter))]
+public class TransportMean
+{
+    private string _value;
 
-        public static string DefaultValue => Ground;
-        /// <summary>
-        /// Enum Ground for value: ground
-        /// </summary>
-        public static string Ground { get; } = "ground";
-
-
-        /// <summary>
-        /// Enum Water for value: water
-        /// </summary>
-        public static string Water { get; } = "water";
-
-
-        /// <summary>
-        /// Enum CargoAircraftOnly for value: cargo_aircraft_only
-        /// </summary>
-        public static string CargoAircraftOnly { get; } = "cargo_aircraft_only";
-
-
-        /// <summary>
-        /// Enum PassengerAircraft for value: passenger_aircraft
-        /// </summary>
-        public static string PassengerAircraft { get; } = "passenger_aircraft";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal TransportMean() {
+        _value = "ground";
     }
+
+    /// <summary>
+    /// Create a new instance of TransportMean with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the TransportMean</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public TransportMean(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Ground for value: ground
+    /// </summary>
+    public static TransportMean Ground { get; } = new("ground");
+
+
+    /// <summary>
+    /// Enum Water for value: water
+    /// </summary>
+    public static TransportMean Water { get; } = new("water");
+
+
+    /// <summary>
+    /// Enum CargoAircraftOnly for value: cargo_aircraft_only
+    /// </summary>
+    public static TransportMean CargoAircraftOnly { get; } = new("cargo_aircraft_only");
+
+
+    /// <summary>
+    /// Enum PassengerAircraft for value: passenger_aircraft
+    /// </summary>
+    public static TransportMean PassengerAircraft { get; } = new("passenger_aircraft");
+
+
+    public override string ToString() => _value;
+}
+
+internal class TransportMeanJsonConverter : JsonConverter<TransportMean>
+{
+    public override TransportMean? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new TransportMean(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, TransportMean value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(TransportMean);
+}

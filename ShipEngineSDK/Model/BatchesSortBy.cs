@@ -24,43 +24,60 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible batches sort by values
-    /// </summary>
-    /// <value>The possible batches sort by values</value>
-    public static class BatchesSortBy
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "ship_date",
-            "processed_at",
-            "created_at",
-        };
+/// <summary>
+/// The possible batches sort by values
+/// </summary>
+/// <value>The possible batches sort by values</value>
+[JsonConverter(typeof(BatchesSortByJsonConverter))]
+public class BatchesSortBy
+{
+    private string _value;
 
-        public static string DefaultValue => ShipDate;
-        /// <summary>
-        /// Enum ShipDate for value: ship_date
-        /// </summary>
-        public static string ShipDate { get; } = "ship_date";
-
-
-        /// <summary>
-        /// Enum ProcessedAt for value: processed_at
-        /// </summary>
-        public static string ProcessedAt { get; } = "processed_at";
-
-
-        /// <summary>
-        /// Enum CreatedAt for value: created_at
-        /// </summary>
-        public static string CreatedAt { get; } = "created_at";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal BatchesSortBy() {
+        _value = "ship_date";
     }
+
+    /// <summary>
+    /// Create a new instance of BatchesSortBy with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the BatchesSortBy</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public BatchesSortBy(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum ShipDate for value: ship_date
+    /// </summary>
+    public static BatchesSortBy ShipDate { get; } = new("ship_date");
+
+
+    /// <summary>
+    /// Enum ProcessedAt for value: processed_at
+    /// </summary>
+    public static BatchesSortBy ProcessedAt { get; } = new("processed_at");
+
+
+    /// <summary>
+    /// Enum CreatedAt for value: created_at
+    /// </summary>
+    public static BatchesSortBy CreatedAt { get; } = new("created_at");
+
+
+    public override string ToString() => _value;
+}
+
+internal class BatchesSortByJsonConverter : JsonConverter<BatchesSortBy>
+{
+    public override BatchesSortBy? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new BatchesSortBy(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, BatchesSortBy value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(BatchesSortBy);
+}

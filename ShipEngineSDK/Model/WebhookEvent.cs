@@ -24,71 +24,84 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible webook event values
-    /// </summary>
-    /// <value>The possible webook event values</value>
-    public static class WebhookEvent
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "batch",
-            "carrier_connected",
-            "order_source_refresh_complete",
-            "rate",
-            "report_complete",
-            "sales_orders_imported",
-            "track",
-        };
+/// <summary>
+/// The possible webook event values
+/// </summary>
+/// <value>The possible webook event values</value>
+[JsonConverter(typeof(WebhookEventJsonConverter))]
+public class WebhookEvent
+{
+    private string _value;
 
-        public static string DefaultValue => Batch;
-        /// <summary>
-        /// Enum Batch for value: batch
-        /// </summary>
-        public static string Batch { get; } = "batch";
-
-
-        /// <summary>
-        /// Enum CarrierConnected for value: carrier_connected
-        /// </summary>
-        public static string CarrierConnected { get; } = "carrier_connected";
-
-
-        /// <summary>
-        /// Enum OrderSourceRefreshComplete for value: order_source_refresh_complete
-        /// </summary>
-        public static string OrderSourceRefreshComplete { get; } = "order_source_refresh_complete";
-
-
-        /// <summary>
-        /// Enum Rate for value: rate
-        /// </summary>
-        public static string Rate { get; } = "rate";
-
-
-        /// <summary>
-        /// Enum ReportComplete for value: report_complete
-        /// </summary>
-        public static string ReportComplete { get; } = "report_complete";
-
-
-        /// <summary>
-        /// Enum SalesOrdersImported for value: sales_orders_imported
-        /// </summary>
-        public static string SalesOrdersImported { get; } = "sales_orders_imported";
-
-
-        /// <summary>
-        /// Enum Track for value: track
-        /// </summary>
-        public static string Track { get; } = "track";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal WebhookEvent() {
+        _value = "batch";
     }
+
+    /// <summary>
+    /// Create a new instance of WebhookEvent with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the WebhookEvent</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public WebhookEvent(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Batch for value: batch
+    /// </summary>
+    public static WebhookEvent Batch { get; } = new("batch");
+
+
+    /// <summary>
+    /// Enum CarrierConnected for value: carrier_connected
+    /// </summary>
+    public static WebhookEvent CarrierConnected { get; } = new("carrier_connected");
+
+
+    /// <summary>
+    /// Enum OrderSourceRefreshComplete for value: order_source_refresh_complete
+    /// </summary>
+    public static WebhookEvent OrderSourceRefreshComplete { get; } = new("order_source_refresh_complete");
+
+
+    /// <summary>
+    /// Enum Rate for value: rate
+    /// </summary>
+    public static WebhookEvent Rate { get; } = new("rate");
+
+
+    /// <summary>
+    /// Enum ReportComplete for value: report_complete
+    /// </summary>
+    public static WebhookEvent ReportComplete { get; } = new("report_complete");
+
+
+    /// <summary>
+    /// Enum SalesOrdersImported for value: sales_orders_imported
+    /// </summary>
+    public static WebhookEvent SalesOrdersImported { get; } = new("sales_orders_imported");
+
+
+    /// <summary>
+    /// Enum Track for value: track
+    /// </summary>
+    public static WebhookEvent Track { get; } = new("track");
+
+
+    public override string ToString() => _value;
+}
+
+internal class WebhookEventJsonConverter : JsonConverter<WebhookEvent>
+{
+    public override WebhookEvent? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new WebhookEvent(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, WebhookEvent value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(WebhookEvent);
+}

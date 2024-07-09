@@ -24,50 +24,66 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible shipment status values
-    /// </summary>
-    /// <value>The possible shipment status values</value>
-    public static class ShipmentStatus
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "pending",
-            "processing",
-            "label_purchased",
-            "cancelled",
-        };
+/// <summary>
+/// The possible shipment status values
+/// </summary>
+/// <value>The possible shipment status values</value>
+[JsonConverter(typeof(ShipmentStatusJsonConverter))]
+public class ShipmentStatus
+{
+    private string _value;
 
-        public static string DefaultValue => Pending;
-        /// <summary>
-        /// Enum Pending for value: pending
-        /// </summary>
-        public static string Pending { get; } = "pending";
-
-
-        /// <summary>
-        /// Enum Processing for value: processing
-        /// </summary>
-        public static string Processing { get; } = "processing";
-
-
-        /// <summary>
-        /// Enum LabelPurchased for value: label_purchased
-        /// </summary>
-        public static string LabelPurchased { get; } = "label_purchased";
-
-
-        /// <summary>
-        /// Enum Cancelled for value: cancelled
-        /// </summary>
-        public static string Cancelled { get; } = "cancelled";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal ShipmentStatus() {
+        _value = "pending";
     }
+
+    /// <summary>
+    /// Create a new instance of ShipmentStatus with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the ShipmentStatus</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public ShipmentStatus(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Pending for value: pending
+    /// </summary>
+    public static ShipmentStatus Pending { get; } = new("pending");
+
+
+    /// <summary>
+    /// Enum Processing for value: processing
+    /// </summary>
+    public static ShipmentStatus Processing { get; } = new("processing");
+
+
+    /// <summary>
+    /// Enum LabelPurchased for value: label_purchased
+    /// </summary>
+    public static ShipmentStatus LabelPurchased { get; } = new("label_purchased");
+
+
+    /// <summary>
+    /// Enum Cancelled for value: cancelled
+    /// </summary>
+    public static ShipmentStatus Cancelled { get; } = new("cancelled");
+
+
+    public override string ToString() => _value;
+}
+
+internal class ShipmentStatusJsonConverter : JsonConverter<ShipmentStatus>
+{
+    public override ShipmentStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new ShipmentStatus(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, ShipmentStatus value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(ShipmentStatus);
+}

@@ -44,7 +44,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public string{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = {{#items.isEnum}}{{#items}}{{#complexType}}{{packageName}}.{{modelPackage}}.{{complexType}}{{/complexType}}{{^complexType}}{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}{{/complexType}}{{/items}}{{/items.isEnum}}{{#isEnum}}{{#complexType}}{{packageName}}.{{modelPackage}}.{{complexType}}{{/complexType}}{{^complexType}}{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}{{/complexType}}{{/isEnum}}.DefaultValue;
+    public {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
     
     {{/required}}
     {{/isEnum}}
@@ -70,7 +70,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{#isContainer}}{{#items.isEnum}}{{baseType}}<string>{{/items.isEnum}}{{^items.isEnum}}{{{dataType}}}{{/items.isEnum}}{{/isContainer}}{{^isContainer}}{{{dataType}}}{{/isContainer}} {{name}} { get; {{#isReadOnly}}{{^required}}private {{/required}}{{/isReadOnly}}set; }
+    public {{{dataType}}} {{name}} { get; {{#isReadOnly}}{{^required}}private {{/required}}{{/isReadOnly}}set; }
 
     {{/isEnum}}
     {{/isInherited}}
@@ -360,7 +360,7 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
 
 {{#composedSchemas.allOf}}
         {{#allVars}}
-        new{{classname}}.{{name}} = JsonSerializer.Deserialize<{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}>(jsonDoc.RootElement.GetProperty("{{baseName}}"), DeserializingOptions);
+        new{{classname}}.{{name}} = JsonSerializer.Deserialize<{{#isEnum}}{{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}>(jsonDoc.RootElement.GetProperty("{{baseName}}"), DeserializingOptions);
         {{/allVars}}
 {{/composedSchemas.allOf}}
 

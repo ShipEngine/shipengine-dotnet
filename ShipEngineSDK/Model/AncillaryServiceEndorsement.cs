@@ -24,64 +24,78 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// [Ancillary service endorsements](https://pe.usps.com/text/qsg300/Q507.htm) are used by mailers to request an addressee&#39;s new address and to provide the carrier with instructions on how to handle packages that are undeliverable as addressed.  | Ancillary Service Endorsement  | Description |- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;none&#x60;                         | No ancillary service is requested. Depending on the carrier servive, the package may be forwarded, returned, or discarded. | &#x60;return_service_requested&#x60;     | The package is returned to the sender. If possible, notification of the new address is is included with the returned package. | &#x60;forwarding_service_requested&#x60; | Forward the package to the new address, if possible; otherwise, return it to the sender. | &#x60;address_service_requested&#x60;    | Forward the package to the new address, if possible; otherwise, return it to the sender. This is similar to &#x60;forwarding_service_requested&#x60;, but different restrictions and charges may apply. | &#x60;change_service_requested&#x60;     | The package is discarded. If possible, notification of the new address is sent to the sender. | &#x60;leave_if_no_response&#x60;         | 
-    /// </summary>
-    /// <value>[Ancillary service endorsements](https://pe.usps.com/text/qsg300/Q507.htm) are used by mailers to request an addressee&#39;s new address and to provide the carrier with instructions on how to handle packages that are undeliverable as addressed.  | Ancillary Service Endorsement  | Description |- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;none&#x60;                         | No ancillary service is requested. Depending on the carrier servive, the package may be forwarded, returned, or discarded. | &#x60;return_service_requested&#x60;     | The package is returned to the sender. If possible, notification of the new address is is included with the returned package. | &#x60;forwarding_service_requested&#x60; | Forward the package to the new address, if possible; otherwise, return it to the sender. | &#x60;address_service_requested&#x60;    | Forward the package to the new address, if possible; otherwise, return it to the sender. This is similar to &#x60;forwarding_service_requested&#x60;, but different restrictions and charges may apply. | &#x60;change_service_requested&#x60;     | The package is discarded. If possible, notification of the new address is sent to the sender. | &#x60;leave_if_no_response&#x60;         | </value>
-    public static class AncillaryServiceEndorsement
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "none",
-            "return_service_requested",
-            "forwarding_service_requested",
-            "address_service_requested",
-            "change_service_requested",
-            "leave_if_no_response",
-        };
+/// <summary>
+/// [Ancillary service endorsements](https://pe.usps.com/text/qsg300/Q507.htm) are used by mailers to request an addressee&#39;s new address and to provide the carrier with instructions on how to handle packages that are undeliverable as addressed.  | Ancillary Service Endorsement  | Description |- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;none&#x60;                         | No ancillary service is requested. Depending on the carrier servive, the package may be forwarded, returned, or discarded. | &#x60;return_service_requested&#x60;     | The package is returned to the sender. If possible, notification of the new address is is included with the returned package. | &#x60;forwarding_service_requested&#x60; | Forward the package to the new address, if possible; otherwise, return it to the sender. | &#x60;address_service_requested&#x60;    | Forward the package to the new address, if possible; otherwise, return it to the sender. This is similar to &#x60;forwarding_service_requested&#x60;, but different restrictions and charges may apply. | &#x60;change_service_requested&#x60;     | The package is discarded. If possible, notification of the new address is sent to the sender. | &#x60;leave_if_no_response&#x60;         | 
+/// </summary>
+/// <value>[Ancillary service endorsements](https://pe.usps.com/text/qsg300/Q507.htm) are used by mailers to request an addressee&#39;s new address and to provide the carrier with instructions on how to handle packages that are undeliverable as addressed.  | Ancillary Service Endorsement  | Description |- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -|- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;none&#x60;                         | No ancillary service is requested. Depending on the carrier servive, the package may be forwarded, returned, or discarded. | &#x60;return_service_requested&#x60;     | The package is returned to the sender. If possible, notification of the new address is is included with the returned package. | &#x60;forwarding_service_requested&#x60; | Forward the package to the new address, if possible; otherwise, return it to the sender. | &#x60;address_service_requested&#x60;    | Forward the package to the new address, if possible; otherwise, return it to the sender. This is similar to &#x60;forwarding_service_requested&#x60;, but different restrictions and charges may apply. | &#x60;change_service_requested&#x60;     | The package is discarded. If possible, notification of the new address is sent to the sender. | &#x60;leave_if_no_response&#x60;         | </value>
+[JsonConverter(typeof(AncillaryServiceEndorsementJsonConverter))]
+public class AncillaryServiceEndorsement
+{
+    private string _value;
 
-        public static string DefaultValue => None;
-        /// <summary>
-        /// Enum None for value: none
-        /// </summary>
-        public static string None { get; } = "none";
-
-
-        /// <summary>
-        /// Enum ReturnServiceRequested for value: return_service_requested
-        /// </summary>
-        public static string ReturnServiceRequested { get; } = "return_service_requested";
-
-
-        /// <summary>
-        /// Enum ForwardingServiceRequested for value: forwarding_service_requested
-        /// </summary>
-        public static string ForwardingServiceRequested { get; } = "forwarding_service_requested";
-
-
-        /// <summary>
-        /// Enum AddressServiceRequested for value: address_service_requested
-        /// </summary>
-        public static string AddressServiceRequested { get; } = "address_service_requested";
-
-
-        /// <summary>
-        /// Enum ChangeServiceRequested for value: change_service_requested
-        /// </summary>
-        public static string ChangeServiceRequested { get; } = "change_service_requested";
-
-
-        /// <summary>
-        /// Enum LeaveIfNoResponse for value: leave_if_no_response
-        /// </summary>
-        public static string LeaveIfNoResponse { get; } = "leave_if_no_response";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal AncillaryServiceEndorsement() {
+        _value = "none";
     }
+
+    /// <summary>
+    /// Create a new instance of AncillaryServiceEndorsement with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the AncillaryServiceEndorsement</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public AncillaryServiceEndorsement(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum None for value: none
+    /// </summary>
+    public static AncillaryServiceEndorsement None { get; } = new("none");
+
+
+    /// <summary>
+    /// Enum ReturnServiceRequested for value: return_service_requested
+    /// </summary>
+    public static AncillaryServiceEndorsement ReturnServiceRequested { get; } = new("return_service_requested");
+
+
+    /// <summary>
+    /// Enum ForwardingServiceRequested for value: forwarding_service_requested
+    /// </summary>
+    public static AncillaryServiceEndorsement ForwardingServiceRequested { get; } = new("forwarding_service_requested");
+
+
+    /// <summary>
+    /// Enum AddressServiceRequested for value: address_service_requested
+    /// </summary>
+    public static AncillaryServiceEndorsement AddressServiceRequested { get; } = new("address_service_requested");
+
+
+    /// <summary>
+    /// Enum ChangeServiceRequested for value: change_service_requested
+    /// </summary>
+    public static AncillaryServiceEndorsement ChangeServiceRequested { get; } = new("change_service_requested");
+
+
+    /// <summary>
+    /// Enum LeaveIfNoResponse for value: leave_if_no_response
+    /// </summary>
+    public static AncillaryServiceEndorsement LeaveIfNoResponse { get; } = new("leave_if_no_response");
+
+
+    public override string ToString() => _value;
+}
+
+internal class AncillaryServiceEndorsementJsonConverter : JsonConverter<AncillaryServiceEndorsement>
+{
+    public override AncillaryServiceEndorsement? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new AncillaryServiceEndorsement(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, AncillaryServiceEndorsement value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(AncillaryServiceEndorsement);
+}

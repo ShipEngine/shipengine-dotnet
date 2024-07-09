@@ -24,260 +24,246 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible smart post hub values
-    /// </summary>
-    /// <value>The possible smart post hub values</value>
-    public static class SmartPostHub
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "none",
-            "allentown_pa",
-            "atlanta_ga",
-            "baltimore_md",
-            "charlotte_nc",
-            "chino_ca",
-            "dallas_tx",
-            "denver_co",
-            "detroit_mi",
-            "edison_nj",
-            "grove_city_oh",
-            "groveport_oh",
-            "houston_tx",
-            "indianapolis_in",
-            "kansas_city_ks",
-            "los_angeles_ca",
-            "martinsburg_wv",
-            "memphis_tn",
-            "minneapolis_mn",
-            "new_berlin_wi",
-            "northborough_ma",
-            "orlando_fl",
-            "phoneix_az",
-            "pittsburgh_pa",
-            "reno_nv",
-            "sacramento_ca",
-            "salt_lake_city_ut",
-            "seattle_wa",
-            "st_louis_mo",
-            "windsor_ct",
-            "newark_ny",
-            "south_brunswick_nj",
-            "scranton_pa",
-            "wheeling_il",
-        };
-
-        public static string DefaultValue => None;
-        /// <summary>
-        /// Enum None for value: none
-        /// </summary>
-        public static string None { get; } = "none";
-
-
-        /// <summary>
-        /// Enum AllentownPa for value: allentown_pa
-        /// </summary>
-        public static string AllentownPa { get; } = "allentown_pa";
-
-
-        /// <summary>
-        /// Enum AtlantaGa for value: atlanta_ga
-        /// </summary>
-        public static string AtlantaGa { get; } = "atlanta_ga";
-
-
-        /// <summary>
-        /// Enum BaltimoreMd for value: baltimore_md
-        /// </summary>
-        public static string BaltimoreMd { get; } = "baltimore_md";
-
-
-        /// <summary>
-        /// Enum CharlotteNc for value: charlotte_nc
-        /// </summary>
-        public static string CharlotteNc { get; } = "charlotte_nc";
-
-
-        /// <summary>
-        /// Enum ChinoCa for value: chino_ca
-        /// </summary>
-        public static string ChinoCa { get; } = "chino_ca";
-
-
-        /// <summary>
-        /// Enum DallasTx for value: dallas_tx
-        /// </summary>
-        public static string DallasTx { get; } = "dallas_tx";
-
-
-        /// <summary>
-        /// Enum DenverCo for value: denver_co
-        /// </summary>
-        public static string DenverCo { get; } = "denver_co";
-
-
-        /// <summary>
-        /// Enum DetroitMi for value: detroit_mi
-        /// </summary>
-        public static string DetroitMi { get; } = "detroit_mi";
-
-
-        /// <summary>
-        /// Enum EdisonNj for value: edison_nj
-        /// </summary>
-        public static string EdisonNj { get; } = "edison_nj";
-
-
-        /// <summary>
-        /// Enum GroveCityOh for value: grove_city_oh
-        /// </summary>
-        public static string GroveCityOh { get; } = "grove_city_oh";
-
-
-        /// <summary>
-        /// Enum GroveportOh for value: groveport_oh
-        /// </summary>
-        public static string GroveportOh { get; } = "groveport_oh";
-
-
-        /// <summary>
-        /// Enum HoustonTx for value: houston_tx
-        /// </summary>
-        public static string HoustonTx { get; } = "houston_tx";
-
-
-        /// <summary>
-        /// Enum IndianapolisIn for value: indianapolis_in
-        /// </summary>
-        public static string IndianapolisIn { get; } = "indianapolis_in";
-
-
-        /// <summary>
-        /// Enum KansasCityKs for value: kansas_city_ks
-        /// </summary>
-        public static string KansasCityKs { get; } = "kansas_city_ks";
-
-
-        /// <summary>
-        /// Enum LosAngelesCa for value: los_angeles_ca
-        /// </summary>
-        public static string LosAngelesCa { get; } = "los_angeles_ca";
-
-
-        /// <summary>
-        /// Enum MartinsburgWv for value: martinsburg_wv
-        /// </summary>
-        public static string MartinsburgWv { get; } = "martinsburg_wv";
-
-
-        /// <summary>
-        /// Enum MemphisTn for value: memphis_tn
-        /// </summary>
-        public static string MemphisTn { get; } = "memphis_tn";
-
-
-        /// <summary>
-        /// Enum MinneapolisMn for value: minneapolis_mn
-        /// </summary>
-        public static string MinneapolisMn { get; } = "minneapolis_mn";
-
-
-        /// <summary>
-        /// Enum NewBerlinWi for value: new_berlin_wi
-        /// </summary>
-        public static string NewBerlinWi { get; } = "new_berlin_wi";
-
-
-        /// <summary>
-        /// Enum NorthboroughMa for value: northborough_ma
-        /// </summary>
-        public static string NorthboroughMa { get; } = "northborough_ma";
-
-
-        /// <summary>
-        /// Enum OrlandoFl for value: orlando_fl
-        /// </summary>
-        public static string OrlandoFl { get; } = "orlando_fl";
-
-
-        /// <summary>
-        /// Enum PhoneixAz for value: phoneix_az
-        /// </summary>
-        public static string PhoneixAz { get; } = "phoneix_az";
-
-
-        /// <summary>
-        /// Enum PittsburghPa for value: pittsburgh_pa
-        /// </summary>
-        public static string PittsburghPa { get; } = "pittsburgh_pa";
-
-
-        /// <summary>
-        /// Enum RenoNv for value: reno_nv
-        /// </summary>
-        public static string RenoNv { get; } = "reno_nv";
-
-
-        /// <summary>
-        /// Enum SacramentoCa for value: sacramento_ca
-        /// </summary>
-        public static string SacramentoCa { get; } = "sacramento_ca";
-
-
-        /// <summary>
-        /// Enum SaltLakeCityUt for value: salt_lake_city_ut
-        /// </summary>
-        public static string SaltLakeCityUt { get; } = "salt_lake_city_ut";
-
-
-        /// <summary>
-        /// Enum SeattleWa for value: seattle_wa
-        /// </summary>
-        public static string SeattleWa { get; } = "seattle_wa";
-
-
-        /// <summary>
-        /// Enum StLouisMo for value: st_louis_mo
-        /// </summary>
-        public static string StLouisMo { get; } = "st_louis_mo";
-
-
-        /// <summary>
-        /// Enum WindsorCt for value: windsor_ct
-        /// </summary>
-        public static string WindsorCt { get; } = "windsor_ct";
-
-
-        /// <summary>
-        /// Enum NewarkNy for value: newark_ny
-        /// </summary>
-        public static string NewarkNy { get; } = "newark_ny";
-
-
-        /// <summary>
-        /// Enum SouthBrunswickNj for value: south_brunswick_nj
-        /// </summary>
-        public static string SouthBrunswickNj { get; } = "south_brunswick_nj";
-
-
-        /// <summary>
-        /// Enum ScrantonPa for value: scranton_pa
-        /// </summary>
-        public static string ScrantonPa { get; } = "scranton_pa";
-
-
-        /// <summary>
-        /// Enum WheelingIl for value: wheeling_il
-        /// </summary>
-        public static string WheelingIl { get; } = "wheeling_il";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+/// <summary>
+/// The possible smart post hub values
+/// </summary>
+/// <value>The possible smart post hub values</value>
+[JsonConverter(typeof(SmartPostHubJsonConverter))]
+public class SmartPostHub
+{
+    private string _value;
+
+    internal SmartPostHub() {
+        _value = "none";
     }
+
+    /// <summary>
+    /// Create a new instance of SmartPostHub with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the SmartPostHub</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public SmartPostHub(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum None for value: none
+    /// </summary>
+    public static SmartPostHub None { get; } = new("none");
+
+
+    /// <summary>
+    /// Enum AllentownPa for value: allentown_pa
+    /// </summary>
+    public static SmartPostHub AllentownPa { get; } = new("allentown_pa");
+
+
+    /// <summary>
+    /// Enum AtlantaGa for value: atlanta_ga
+    /// </summary>
+    public static SmartPostHub AtlantaGa { get; } = new("atlanta_ga");
+
+
+    /// <summary>
+    /// Enum BaltimoreMd for value: baltimore_md
+    /// </summary>
+    public static SmartPostHub BaltimoreMd { get; } = new("baltimore_md");
+
+
+    /// <summary>
+    /// Enum CharlotteNc for value: charlotte_nc
+    /// </summary>
+    public static SmartPostHub CharlotteNc { get; } = new("charlotte_nc");
+
+
+    /// <summary>
+    /// Enum ChinoCa for value: chino_ca
+    /// </summary>
+    public static SmartPostHub ChinoCa { get; } = new("chino_ca");
+
+
+    /// <summary>
+    /// Enum DallasTx for value: dallas_tx
+    /// </summary>
+    public static SmartPostHub DallasTx { get; } = new("dallas_tx");
+
+
+    /// <summary>
+    /// Enum DenverCo for value: denver_co
+    /// </summary>
+    public static SmartPostHub DenverCo { get; } = new("denver_co");
+
+
+    /// <summary>
+    /// Enum DetroitMi for value: detroit_mi
+    /// </summary>
+    public static SmartPostHub DetroitMi { get; } = new("detroit_mi");
+
+
+    /// <summary>
+    /// Enum EdisonNj for value: edison_nj
+    /// </summary>
+    public static SmartPostHub EdisonNj { get; } = new("edison_nj");
+
+
+    /// <summary>
+    /// Enum GroveCityOh for value: grove_city_oh
+    /// </summary>
+    public static SmartPostHub GroveCityOh { get; } = new("grove_city_oh");
+
+
+    /// <summary>
+    /// Enum GroveportOh for value: groveport_oh
+    /// </summary>
+    public static SmartPostHub GroveportOh { get; } = new("groveport_oh");
+
+
+    /// <summary>
+    /// Enum HoustonTx for value: houston_tx
+    /// </summary>
+    public static SmartPostHub HoustonTx { get; } = new("houston_tx");
+
+
+    /// <summary>
+    /// Enum IndianapolisIn for value: indianapolis_in
+    /// </summary>
+    public static SmartPostHub IndianapolisIn { get; } = new("indianapolis_in");
+
+
+    /// <summary>
+    /// Enum KansasCityKs for value: kansas_city_ks
+    /// </summary>
+    public static SmartPostHub KansasCityKs { get; } = new("kansas_city_ks");
+
+
+    /// <summary>
+    /// Enum LosAngelesCa for value: los_angeles_ca
+    /// </summary>
+    public static SmartPostHub LosAngelesCa { get; } = new("los_angeles_ca");
+
+
+    /// <summary>
+    /// Enum MartinsburgWv for value: martinsburg_wv
+    /// </summary>
+    public static SmartPostHub MartinsburgWv { get; } = new("martinsburg_wv");
+
+
+    /// <summary>
+    /// Enum MemphisTn for value: memphis_tn
+    /// </summary>
+    public static SmartPostHub MemphisTn { get; } = new("memphis_tn");
+
+
+    /// <summary>
+    /// Enum MinneapolisMn for value: minneapolis_mn
+    /// </summary>
+    public static SmartPostHub MinneapolisMn { get; } = new("minneapolis_mn");
+
+
+    /// <summary>
+    /// Enum NewBerlinWi for value: new_berlin_wi
+    /// </summary>
+    public static SmartPostHub NewBerlinWi { get; } = new("new_berlin_wi");
+
+
+    /// <summary>
+    /// Enum NorthboroughMa for value: northborough_ma
+    /// </summary>
+    public static SmartPostHub NorthboroughMa { get; } = new("northborough_ma");
+
+
+    /// <summary>
+    /// Enum OrlandoFl for value: orlando_fl
+    /// </summary>
+    public static SmartPostHub OrlandoFl { get; } = new("orlando_fl");
+
+
+    /// <summary>
+    /// Enum PhoneixAz for value: phoneix_az
+    /// </summary>
+    public static SmartPostHub PhoneixAz { get; } = new("phoneix_az");
+
+
+    /// <summary>
+    /// Enum PittsburghPa for value: pittsburgh_pa
+    /// </summary>
+    public static SmartPostHub PittsburghPa { get; } = new("pittsburgh_pa");
+
+
+    /// <summary>
+    /// Enum RenoNv for value: reno_nv
+    /// </summary>
+    public static SmartPostHub RenoNv { get; } = new("reno_nv");
+
+
+    /// <summary>
+    /// Enum SacramentoCa for value: sacramento_ca
+    /// </summary>
+    public static SmartPostHub SacramentoCa { get; } = new("sacramento_ca");
+
+
+    /// <summary>
+    /// Enum SaltLakeCityUt for value: salt_lake_city_ut
+    /// </summary>
+    public static SmartPostHub SaltLakeCityUt { get; } = new("salt_lake_city_ut");
+
+
+    /// <summary>
+    /// Enum SeattleWa for value: seattle_wa
+    /// </summary>
+    public static SmartPostHub SeattleWa { get; } = new("seattle_wa");
+
+
+    /// <summary>
+    /// Enum StLouisMo for value: st_louis_mo
+    /// </summary>
+    public static SmartPostHub StLouisMo { get; } = new("st_louis_mo");
+
+
+    /// <summary>
+    /// Enum WindsorCt for value: windsor_ct
+    /// </summary>
+    public static SmartPostHub WindsorCt { get; } = new("windsor_ct");
+
+
+    /// <summary>
+    /// Enum NewarkNy for value: newark_ny
+    /// </summary>
+    public static SmartPostHub NewarkNy { get; } = new("newark_ny");
+
+
+    /// <summary>
+    /// Enum SouthBrunswickNj for value: south_brunswick_nj
+    /// </summary>
+    public static SmartPostHub SouthBrunswickNj { get; } = new("south_brunswick_nj");
+
+
+    /// <summary>
+    /// Enum ScrantonPa for value: scranton_pa
+    /// </summary>
+    public static SmartPostHub ScrantonPa { get; } = new("scranton_pa");
+
+
+    /// <summary>
+    /// Enum WheelingIl for value: wheeling_il
+    /// </summary>
+    public static SmartPostHub WheelingIl { get; } = new("wheeling_il");
+
+
+    public override string ToString() => _value;
+}
+
+internal class SmartPostHubJsonConverter : JsonConverter<SmartPostHub>
+{
+    public override SmartPostHub? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new SmartPostHub(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, SmartPostHub value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(SmartPostHub);
+}

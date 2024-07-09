@@ -32,10 +32,10 @@ public partial class ShipmentItem
 {
 
     /// <summary>
-    /// Gets or Sets OrderSourceCode
+    /// Gets or Sets OrderSourceCode  CLOVUS
     /// </summary>
     [JsonPropertyName("order_source_code")]
-    public string? OrderSourceCode { get; set; }
+    public OrderSourceName? OrderSourceCode { get; set; }
     /// <summary>
     /// item name
     /// </summary>

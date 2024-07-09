@@ -32,15 +32,15 @@ public partial class UpdateUpsSettingsRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets PickupType
+    /// Gets or Sets PickupType  CLOVUS
     /// </summary>
     [JsonPropertyName("pickup_type")]
-    public string? PickupType { get; set; }
+    public UpsPickupType? PickupType { get; set; }
     /// <summary>
-    /// Gets or Sets MailInnovationsEndorsement
+    /// Gets or Sets MailInnovationsEndorsement  CLOVUS
     /// </summary>
     [JsonPropertyName("mail_innovations_endorsement")]
-    public string? MailInnovationsEndorsement { get; set; }
+    public AncillaryServiceEndorsement? MailInnovationsEndorsement { get; set; }
     /// <summary>
     /// nickname
     /// </summary>

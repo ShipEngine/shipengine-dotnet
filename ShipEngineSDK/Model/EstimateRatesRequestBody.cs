@@ -37,12 +37,12 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// Gets or Sets Confirmation
     /// </summary>
     [JsonPropertyName("confirmation")]
-    public string? Confirmation { get; set; }
+    public DeliveryConfirmation? Confirmation { get; set; }
     /// <summary>
     /// Gets or Sets AddressResidentialIndicator
     /// </summary>
     [JsonPropertyName("address_residential_indicator")]
-    public string? AddressResidentialIndicator { get; set; }
+    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
     /// </summary>
@@ -420,8 +420,8 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         newEstimateRatesRequestBody.ToStateProvince = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_state_province"), DeserializingOptions);
         newEstimateRatesRequestBody.Weight = JsonSerializer.Deserialize<Weight>(jsonDoc.RootElement.GetProperty("weight"), DeserializingOptions);
         newEstimateRatesRequestBody.Dimensions = JsonSerializer.Deserialize<Dimensions>(jsonDoc.RootElement.GetProperty("dimensions"), DeserializingOptions);
-        newEstimateRatesRequestBody.Confirmation = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("confirmation"), DeserializingOptions);
-        newEstimateRatesRequestBody.AddressResidentialIndicator = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("address_residential_indicator"), DeserializingOptions);
+        newEstimateRatesRequestBody.Confirmation = JsonSerializer.Deserialize<DeliveryConfirmation>(jsonDoc.RootElement.GetProperty("confirmation"), DeserializingOptions);
+        newEstimateRatesRequestBody.AddressResidentialIndicator = JsonSerializer.Deserialize<AddressResidentialIndicator>(jsonDoc.RootElement.GetProperty("address_residential_indicator"), DeserializingOptions);
         newEstimateRatesRequestBody.ShipDate = JsonSerializer.Deserialize<DateTime>(jsonDoc.RootElement.GetProperty("ship_date"), DeserializingOptions);
 
         // deserialization is considered successful at this point if no exception has been thrown.

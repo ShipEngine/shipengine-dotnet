@@ -24,43 +24,60 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The source of the error, as indicated by the name this informs us if the API call failed because of the carrier, the order source, or the ShipEngine API itself. 
-    /// </summary>
-    /// <value>The source of the error, as indicated by the name this informs us if the API call failed because of the carrier, the order source, or the ShipEngine API itself. </value>
-    public static class ErrorSource
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "carrier",
-            "order_source",
-            "shipengine",
-        };
+/// <summary>
+/// The source of the error, as indicated by the name this informs us if the API call failed because of the carrier, the order source, or the ShipEngine API itself. 
+/// </summary>
+/// <value>The source of the error, as indicated by the name this informs us if the API call failed because of the carrier, the order source, or the ShipEngine API itself. </value>
+[JsonConverter(typeof(ErrorSourceJsonConverter))]
+public class ErrorSource
+{
+    private string _value;
 
-        public static string DefaultValue => Carrier;
-        /// <summary>
-        /// Enum Carrier for value: carrier
-        /// </summary>
-        public static string Carrier { get; } = "carrier";
-
-
-        /// <summary>
-        /// Enum OrderSource for value: order_source
-        /// </summary>
-        public static string OrderSource { get; } = "order_source";
-
-
-        /// <summary>
-        /// Enum Shipengine for value: shipengine
-        /// </summary>
-        public static string Shipengine { get; } = "shipengine";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal ErrorSource() {
+        _value = "carrier";
     }
+
+    /// <summary>
+    /// Create a new instance of ErrorSource with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the ErrorSource</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public ErrorSource(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Carrier for value: carrier
+    /// </summary>
+    public static ErrorSource Carrier { get; } = new("carrier");
+
+
+    /// <summary>
+    /// Enum OrderSource for value: order_source
+    /// </summary>
+    public static ErrorSource OrderSource { get; } = new("order_source");
+
+
+    /// <summary>
+    /// Enum Shipengine for value: shipengine
+    /// </summary>
+    public static ErrorSource Shipengine { get; } = new("shipengine");
+
+
+    public override string ToString() => _value;
+}
+
+internal class ErrorSourceJsonConverter : JsonConverter<ErrorSource>
+{
+    public override ErrorSource? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new ErrorSource(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, ErrorSource value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(ErrorSource);
+}

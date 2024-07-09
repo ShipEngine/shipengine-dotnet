@@ -32,11 +32,11 @@ public partial class Weight
 {
 
     /// <summary>
-    /// Gets or Sets Unit
+    /// Gets or Sets Unit  CLOVUS
     /// </summary>
     [JsonPropertyName("unit")]
     [JsonRequired]
-    public string Unit { get; set; } = ShipEngineSDK.Model.WeightUnit.DefaultValue;
+    public WeightUnit Unit { get; set; } = new();
     
 
     /// <summary>

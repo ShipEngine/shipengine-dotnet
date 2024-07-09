@@ -24,29 +24,48 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The resource to return a redirect URL to.
-    /// </summary>
-    /// <value>The resource to return a redirect URL to.</value>
-    public static class Redirect
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "shipengine-dashboard",
-        };
+/// <summary>
+/// The resource to return a redirect URL to.
+/// </summary>
+/// <value>The resource to return a redirect URL to.</value>
+[JsonConverter(typeof(RedirectJsonConverter))]
+public class Redirect
+{
+    private string _value;
 
-        public static string DefaultValue => ShipengineDashboard;
-        /// <summary>
-        /// Enum ShipengineDashboard for value: shipengine-dashboard
-        /// </summary>
-        public static string ShipengineDashboard { get; } = "shipengine-dashboard";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal Redirect() {
+        _value = "shipengine-dashboard";
     }
+
+    /// <summary>
+    /// Create a new instance of Redirect with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the Redirect</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public Redirect(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum ShipengineDashboard for value: shipengine-dashboard
+    /// </summary>
+    public static Redirect ShipengineDashboard { get; } = new("shipengine-dashboard");
+
+
+    public override string ToString() => _value;
+}
+
+internal class RedirectJsonConverter : JsonConverter<Redirect>
+{
+    public override Redirect? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new Redirect(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, Redirect value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(Redirect);
+}

@@ -24,42 +24,59 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Defines packaging_group
-    /// </summary>
-    public static class PackagingGroup
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "i",
-            "ii",
-            "iii",
-        };
+/// <summary>
+/// Defines packaging_group
+/// </summary>
+[JsonConverter(typeof(PackagingGroupJsonConverter))]
+public class PackagingGroup
+{
+    private string _value;
 
-        public static string DefaultValue => I;
-        /// <summary>
-        /// Enum I for value: i
-        /// </summary>
-        public static string I { get; } = "i";
-
-
-        /// <summary>
-        /// Enum Ii for value: ii
-        /// </summary>
-        public static string Ii { get; } = "ii";
-
-
-        /// <summary>
-        /// Enum Iii for value: iii
-        /// </summary>
-        public static string Iii { get; } = "iii";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal PackagingGroup() {
+        _value = "i";
     }
+
+    /// <summary>
+    /// Create a new instance of PackagingGroup with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the PackagingGroup</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public PackagingGroup(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum I for value: i
+    /// </summary>
+    public static PackagingGroup I { get; } = new("i");
+
+
+    /// <summary>
+    /// Enum Ii for value: ii
+    /// </summary>
+    public static PackagingGroup Ii { get; } = new("ii");
+
+
+    /// <summary>
+    /// Enum Iii for value: iii
+    /// </summary>
+    public static PackagingGroup Iii { get; } = new("iii");
+
+
+    public override string ToString() => _value;
+}
+
+internal class PackagingGroupJsonConverter : JsonConverter<PackagingGroup>
+{
+    public override PackagingGroup? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new PackagingGroup(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, PackagingGroup value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(PackagingGroup);
+}

@@ -24,43 +24,60 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible validate address values
-    /// </summary>
-    /// <value>The possible validate address values</value>
-    public static class ValidateAddress
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "no_validation",
-            "validate_only",
-            "validate_and_clean",
-        };
+/// <summary>
+/// The possible validate address values
+/// </summary>
+/// <value>The possible validate address values</value>
+[JsonConverter(typeof(ValidateAddressJsonConverter))]
+public class ValidateAddress
+{
+    private string _value;
 
-        public static string DefaultValue => NoValidation;
-        /// <summary>
-        /// Enum NoValidation for value: no_validation
-        /// </summary>
-        public static string NoValidation { get; } = "no_validation";
-
-
-        /// <summary>
-        /// Enum ValidateOnly for value: validate_only
-        /// </summary>
-        public static string ValidateOnly { get; } = "validate_only";
-
-
-        /// <summary>
-        /// Enum ValidateAndClean for value: validate_and_clean
-        /// </summary>
-        public static string ValidateAndClean { get; } = "validate_and_clean";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal ValidateAddress() {
+        _value = "no_validation";
     }
+
+    /// <summary>
+    /// Create a new instance of ValidateAddress with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the ValidateAddress</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public ValidateAddress(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum NoValidation for value: no_validation
+    /// </summary>
+    public static ValidateAddress NoValidation { get; } = new("no_validation");
+
+
+    /// <summary>
+    /// Enum ValidateOnly for value: validate_only
+    /// </summary>
+    public static ValidateAddress ValidateOnly { get; } = new("validate_only");
+
+
+    /// <summary>
+    /// Enum ValidateAndClean for value: validate_and_clean
+    /// </summary>
+    public static ValidateAddress ValidateAndClean { get; } = new("validate_and_clean");
+
+
+    public override string ToString() => _value;
+}
+
+internal class ValidateAddressJsonConverter : JsonConverter<ValidateAddress>
+{
+    public override ValidateAddress? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new ValidateAddress(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, ValidateAddress value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(ValidateAddress);
+}

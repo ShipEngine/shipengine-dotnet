@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The dimension units that are supported by ShipEngine.
-    /// </summary>
-    /// <value>The dimension units that are supported by ShipEngine.</value>
-    public static class DimensionUnit
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "inch",
-            "centimeter",
-        };
+/// <summary>
+/// The dimension units that are supported by ShipEngine.
+/// </summary>
+/// <value>The dimension units that are supported by ShipEngine.</value>
+[JsonConverter(typeof(DimensionUnitJsonConverter))]
+public class DimensionUnit
+{
+    private string _value;
 
-        public static string DefaultValue => Inch;
-        /// <summary>
-        /// Enum Inch for value: inch
-        /// </summary>
-        public static string Inch { get; } = "inch";
-
-
-        /// <summary>
-        /// Enum Centimeter for value: centimeter
-        /// </summary>
-        public static string Centimeter { get; } = "centimeter";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal DimensionUnit() {
+        _value = "inch";
     }
+
+    /// <summary>
+    /// Create a new instance of DimensionUnit with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the DimensionUnit</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public DimensionUnit(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Inch for value: inch
+    /// </summary>
+    public static DimensionUnit Inch { get; } = new("inch");
+
+
+    /// <summary>
+    /// Enum Centimeter for value: centimeter
+    /// </summary>
+    public static DimensionUnit Centimeter { get; } = new("centimeter");
+
+
+    public override string ToString() => _value;
+}
+
+internal class DimensionUnitJsonConverter : JsonConverter<DimensionUnit>
+{
+    public override DimensionUnit? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new DimensionUnit(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, DimensionUnit value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(DimensionUnit);
+}

@@ -32,27 +32,27 @@ public partial class Error
 {
 
     /// <summary>
-    /// Gets or Sets ErrorSource
+    /// Gets or Sets ErrorSource  CLOVUS
     /// </summary>
     [JsonPropertyName("error_source")]
     [JsonRequired]
-    public string ErrorSource { get; set; } = ShipEngineSDK.Model.ErrorSource.DefaultValue;
+    public ErrorSource ErrorSource { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets ErrorType
+    /// Gets or Sets ErrorType  CLOVUS
     /// </summary>
     [JsonPropertyName("error_type")]
     [JsonRequired]
-    public string ErrorType { get; set; } = ShipEngineSDK.Model.ErrorType.DefaultValue;
+    public ErrorType ErrorType { get; set; } = new();
     
 
     /// <summary>
-    /// Gets or Sets ErrorCode
+    /// Gets or Sets ErrorCode  CLOVUS
     /// </summary>
     [JsonPropertyName("error_code")]
     [JsonRequired]
-    public string ErrorCode { get; set; } = ShipEngineSDK.Model.ErrorCode.DefaultValue;
+    public ErrorCode ErrorCode { get; set; } = new();
     
 
     /// <summary>

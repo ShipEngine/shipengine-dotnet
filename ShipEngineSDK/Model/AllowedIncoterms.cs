@@ -24,126 +24,131 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// Defines Allowed incoterms
-    /// </summary>
-    public static class AllowedIncoterms
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "exw",
-            "fca",
-            "cpt",
-            "cip",
-            "dpu",
-            "dap",
-            "ddp",
-            "fas",
-            "fob",
-            "cfr",
-            "cif",
-            "ddu",
-            "daf",
-            "deq",
-            "des",
-        };
+/// <summary>
+/// Defines Allowed incoterms
+/// </summary>
+[JsonConverter(typeof(AllowedIncotermsJsonConverter))]
+public class AllowedIncoterms
+{
+    private string _value;
 
-        public static string DefaultValue => Exw;
-        /// <summary>
-        /// Enum Exw for value: exw
-        /// </summary>
-        public static string Exw { get; } = "exw";
-
-
-        /// <summary>
-        /// Enum Fca for value: fca
-        /// </summary>
-        public static string Fca { get; } = "fca";
-
-
-        /// <summary>
-        /// Enum Cpt for value: cpt
-        /// </summary>
-        public static string Cpt { get; } = "cpt";
-
-
-        /// <summary>
-        /// Enum Cip for value: cip
-        /// </summary>
-        public static string Cip { get; } = "cip";
-
-
-        /// <summary>
-        /// Enum Dpu for value: dpu
-        /// </summary>
-        public static string Dpu { get; } = "dpu";
-
-
-        /// <summary>
-        /// Enum Dap for value: dap
-        /// </summary>
-        public static string Dap { get; } = "dap";
-
-
-        /// <summary>
-        /// Enum Ddp for value: ddp
-        /// </summary>
-        public static string Ddp { get; } = "ddp";
-
-
-        /// <summary>
-        /// Enum Fas for value: fas
-        /// </summary>
-        public static string Fas { get; } = "fas";
-
-
-        /// <summary>
-        /// Enum Fob for value: fob
-        /// </summary>
-        public static string Fob { get; } = "fob";
-
-
-        /// <summary>
-        /// Enum Cfr for value: cfr
-        /// </summary>
-        public static string Cfr { get; } = "cfr";
-
-
-        /// <summary>
-        /// Enum Cif for value: cif
-        /// </summary>
-        public static string Cif { get; } = "cif";
-
-
-        /// <summary>
-        /// Enum Ddu for value: ddu
-        /// </summary>
-        public static string Ddu { get; } = "ddu";
-
-
-        /// <summary>
-        /// Enum Daf for value: daf
-        /// </summary>
-        public static string Daf { get; } = "daf";
-
-
-        /// <summary>
-        /// Enum Deq for value: deq
-        /// </summary>
-        public static string Deq { get; } = "deq";
-
-
-        /// <summary>
-        /// Enum Des for value: des
-        /// </summary>
-        public static string Des { get; } = "des";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal AllowedIncoterms() {
+        _value = "exw";
     }
+
+    /// <summary>
+    /// Create a new instance of AllowedIncoterms with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the AllowedIncoterms</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public AllowedIncoterms(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum Exw for value: exw
+    /// </summary>
+    public static AllowedIncoterms Exw { get; } = new("exw");
+
+
+    /// <summary>
+    /// Enum Fca for value: fca
+    /// </summary>
+    public static AllowedIncoterms Fca { get; } = new("fca");
+
+
+    /// <summary>
+    /// Enum Cpt for value: cpt
+    /// </summary>
+    public static AllowedIncoterms Cpt { get; } = new("cpt");
+
+
+    /// <summary>
+    /// Enum Cip for value: cip
+    /// </summary>
+    public static AllowedIncoterms Cip { get; } = new("cip");
+
+
+    /// <summary>
+    /// Enum Dpu for value: dpu
+    /// </summary>
+    public static AllowedIncoterms Dpu { get; } = new("dpu");
+
+
+    /// <summary>
+    /// Enum Dap for value: dap
+    /// </summary>
+    public static AllowedIncoterms Dap { get; } = new("dap");
+
+
+    /// <summary>
+    /// Enum Ddp for value: ddp
+    /// </summary>
+    public static AllowedIncoterms Ddp { get; } = new("ddp");
+
+
+    /// <summary>
+    /// Enum Fas for value: fas
+    /// </summary>
+    public static AllowedIncoterms Fas { get; } = new("fas");
+
+
+    /// <summary>
+    /// Enum Fob for value: fob
+    /// </summary>
+    public static AllowedIncoterms Fob { get; } = new("fob");
+
+
+    /// <summary>
+    /// Enum Cfr for value: cfr
+    /// </summary>
+    public static AllowedIncoterms Cfr { get; } = new("cfr");
+
+
+    /// <summary>
+    /// Enum Cif for value: cif
+    /// </summary>
+    public static AllowedIncoterms Cif { get; } = new("cif");
+
+
+    /// <summary>
+    /// Enum Ddu for value: ddu
+    /// </summary>
+    public static AllowedIncoterms Ddu { get; } = new("ddu");
+
+
+    /// <summary>
+    /// Enum Daf for value: daf
+    /// </summary>
+    public static AllowedIncoterms Daf { get; } = new("daf");
+
+
+    /// <summary>
+    /// Enum Deq for value: deq
+    /// </summary>
+    public static AllowedIncoterms Deq { get; } = new("deq");
+
+
+    /// <summary>
+    /// Enum Des for value: des
+    /// </summary>
+    public static AllowedIncoterms Des { get; } = new("des");
+
+
+    public override string ToString() => _value;
+}
+
+internal class AllowedIncotermsJsonConverter : JsonConverter<AllowedIncoterms>
+{
+    public override AllowedIncoterms? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new AllowedIncoterms(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, AllowedIncoterms value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(AllowedIncoterms);
+}

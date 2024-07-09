@@ -24,36 +24,54 @@ using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
 
-    /// <summary>
-    /// The possible non delivery values
-    /// </summary>
-    /// <value>The possible non delivery values</value>
-    public static class NonDelivery
-    {
-        private static readonly HashSet<string> _values = new()
-        {
-            "return_to_sender",
-            "treat_as_abandoned",
-        };
+/// <summary>
+/// The possible non delivery values
+/// </summary>
+/// <value>The possible non delivery values</value>
+[JsonConverter(typeof(NonDeliveryJsonConverter))]
+public class NonDelivery
+{
+    private string _value;
 
-        public static string DefaultValue => ReturnToSender;
-        /// <summary>
-        /// Enum ReturnToSender for value: return_to_sender
-        /// </summary>
-        public static string ReturnToSender { get; } = "return_to_sender";
-
-
-        /// <summary>
-        /// Enum TreatAsAbandoned for value: treat_as_abandoned
-        /// </summary>
-        public static string TreatAsAbandoned { get; } = "treat_as_abandoned";
-
-
-        /// <summary>
-        /// Is the given value a valid ?
-        /// </summary>
-        public static bool IsValid(string value)
-        {
-            return _values.Contains(value);
-        }
+    internal NonDelivery() {
+        _value = "return_to_sender";
     }
+
+    /// <summary>
+    /// Create a new instance of NonDelivery with a custom value.
+    /// </summary>
+    /// <param name="value">The value of the NonDelivery</param>
+    /// <remarks>
+    /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+    /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+    /// </remarks>
+    public NonDelivery(string value) {
+      _value = value;
+    }
+
+    /// <summary>
+    /// Enum ReturnToSender for value: return_to_sender
+    /// </summary>
+    public static NonDelivery ReturnToSender { get; } = new("return_to_sender");
+
+
+    /// <summary>
+    /// Enum TreatAsAbandoned for value: treat_as_abandoned
+    /// </summary>
+    public static NonDelivery TreatAsAbandoned { get; } = new("treat_as_abandoned");
+
+
+    public override string ToString() => _value;
+}
+
+internal class NonDeliveryJsonConverter : JsonConverter<NonDelivery>
+{
+    public override NonDelivery? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.TokenType == JsonTokenType.String ? new NonDelivery(reader.GetString()) : null;
+
+    public override void Write(Utf8JsonWriter writer, NonDelivery value, JsonSerializerOptions options) =>
+        writer.WriteStringValue(value.ToString());
+
+    public override bool CanConvert(Type typeToConvert) =>
+        typeToConvert == typeof(NonDelivery);
+}

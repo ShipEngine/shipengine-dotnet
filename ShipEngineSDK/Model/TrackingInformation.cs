@@ -32,10 +32,10 @@ public partial class TrackingInformation
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode
+    /// Gets or Sets StatusCode  CLOVUS
     /// </summary>
     [JsonPropertyName("status_code")]
-    public string? StatusCode { get; set; }
+    public StatusCode? StatusCode { get; set; }
     /// <summary>
     /// A tracking number for a package. The format depends on the carrier.
     /// </summary>
