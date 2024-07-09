@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -38,7 +38,7 @@ public partial class CreateBatchResponseBody
     [JsonPropertyName("label_layout")]
     [JsonRequired]
     public LabelLayout LabelLayout { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets LabelFormat  CLOVUS
@@ -46,7 +46,7 @@ public partial class CreateBatchResponseBody
     [JsonPropertyName("label_format")]
     [JsonRequired]
     public LabelFormat LabelFormat { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets Status  CLOVUS
@@ -54,7 +54,7 @@ public partial class CreateBatchResponseBody
     [JsonPropertyName("status")]
     [JsonRequired]
     public BatchStatus Status { get; set; } = new();
-    
+
 
     /// <summary>
     /// A string that uniquely identifies the batch
@@ -271,4 +271,3 @@ public partial class CreateBatchResponseBody
     }
 
 }
-

@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -38,7 +38,7 @@ public partial class InternationalShipmentOptions
     [JsonPropertyName("contents")]
     [JsonRequired]
     public PackageContents Contents { get; set; } = new();
-    
+
 
     /// <summary>
     /// Indicates what to do if a package is unable to be delivered.  CLOVUS
@@ -47,7 +47,7 @@ public partial class InternationalShipmentOptions
     [JsonPropertyName("non_delivery")]
     [JsonRequired]
     public NonDelivery NonDelivery { get; set; } = new();
-    
+
 
     /// <summary>
     /// Specifies the supported terms of trade code (incoterms)  CLOVUS
@@ -120,4 +120,3 @@ public partial class InternationalShipmentOptions
     }
 
 }
-

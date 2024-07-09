@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
-using System.Reflection;
 
 namespace ShipEngineSDK.Model;
 
@@ -49,7 +49,7 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
     public CalculateRatesRequestBody(ShipmentIdRequest actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -61,7 +61,7 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
     public CalculateRatesRequestBody(ShipmentRequest actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -192,12 +192,13 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
         {
-            if (prop.Value != null) {
-              writer.WritePropertyName(prop.Key);
-              prop.Value.WriteTo(writer, options);
+            if (prop.Value != null)
+            {
+                writer.WritePropertyName(prop.Key);
+                prop.Value.WriteTo(writer, options);
             }
         }
-        
+
         writer.WriteEndObject();
     }
 
@@ -224,7 +225,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         try
         {
             newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentIdRequest>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("ShipmentIdRequest");
             match++;
         }
@@ -237,7 +238,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         try
         {
             newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentRequest>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("ShipmentRequest");
             match++;
         }
@@ -251,7 +252,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        
+
         if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
@@ -273,4 +274,3 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         return typeof(CalculateRatesRequestBody).IsAssignableFrom(objectType);
     }
 }
-

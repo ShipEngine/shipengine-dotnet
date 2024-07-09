@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -396,7 +396,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateLabelResponseBody)</returns>
     public async Task<CreateLabelResponseBody> CreateLabel(HttpClient methodClient, Config methodConfig, CreateLabelRequestBody createLabelRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'createLabelRequestBody' is set
         if (createLabelRequestBody == null)
         {
@@ -455,7 +455,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateLabelFromRateResponseBody)</returns>
     public async Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(HttpClient methodClient, Config methodConfig, string rateId, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'rateId' is set
         if (rateId == null)
         {
@@ -521,7 +521,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateLabelFromShipmentResponseBody)</returns>
     public async Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(HttpClient methodClient, Config methodConfig, string shipmentId, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -587,7 +587,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateReturnLabelResponseBody)</returns>
     public async Task<CreateReturnLabelResponseBody> CreateReturnLabel(HttpClient methodClient, Config methodConfig, string labelId, CreateReturnLabelRequestBody createReturnLabelRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {
@@ -654,7 +654,7 @@ public partial class ShipEngine
     public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, Config methodConfig, string externalShipmentId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         labelDownloadType ??= "url";
-        
+
         // verify the required parameter 'externalShipmentId' is set
         if (externalShipmentId == null)
         {
@@ -718,7 +718,7 @@ public partial class ShipEngine
     public async Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, Config methodConfig, string labelId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         labelDownloadType ??= "url";
-        
+
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {
@@ -778,7 +778,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetTrackingLogFromLabelResponseBody)</returns>
     public async Task<GetTrackingLogFromLabelResponseBody> GetTrackingLogFromLabel(HttpClient methodClient, Config methodConfig, string labelId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {
@@ -876,7 +876,7 @@ public partial class ShipEngine
         labelStatus ??= "processing";
         sortDir ??= "asc";
         sortBy ??= "modified_at";
-        
+
 
         RequestOptions requestOptions = new("/v1/labels");
 
@@ -981,7 +981,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (VoidLabelResponseBody)</returns>
     public async Task<VoidLabelResponseBody> VoidLabel(HttpClient methodClient, Config methodConfig, string labelId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {

@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -255,7 +255,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateWarehouseResponseBody)</returns>
     public async Task<CreateWarehouseResponseBody> CreateWarehouse(HttpClient methodClient, Config methodConfig, CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'createWarehouseRequestBody' is set
         if (createWarehouseRequestBody == null)
         {
@@ -311,7 +311,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DeleteWarehouse(HttpClient methodClient, Config methodConfig, string warehouseId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
         {
@@ -367,7 +367,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetWarehouseByIdResponseBody)</returns>
     public async Task<GetWarehouseByIdResponseBody> GetWarehouseById(HttpClient methodClient, Config methodConfig, string warehouseId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
         {
@@ -420,7 +420,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListWarehousesResponseBody)</returns>
     public async Task<ListWarehousesResponseBody> ListWarehouses(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
-        
+
 
         RequestOptions requestOptions = new("/v1/warehouses");
 
@@ -472,7 +472,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdateWarehouse(HttpClient methodClient, Config methodConfig, string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
         {
@@ -538,7 +538,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdateWarehouseSettings(HttpClient methodClient, Config methodConfig, string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
         {

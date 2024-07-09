@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -38,7 +38,7 @@ public partial class Address
     [JsonPropertyName("address_residential_indicator")]
     [JsonRequired]
     public AddressResidentialIndicator AddressResidentialIndicator { get; set; } = new();
-    
+
 
     /// <summary>
     /// The name of a contact person at this address.  This field may be set instead of - or in addition to - the &#x60;company_name&#x60; field. 
@@ -192,4 +192,3 @@ public partial class Address
     }
 
 }
-

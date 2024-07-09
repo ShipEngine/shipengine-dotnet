@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Result = ShipEngineSDK.ValidateAddresses.Result;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Manifests;
 using System;
@@ -9,6 +8,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Result = ShipEngineSDK.ValidateAddresses.Result;
 
 [assembly: InternalsVisibleTo("ShipEngineSDK.Test")]
 

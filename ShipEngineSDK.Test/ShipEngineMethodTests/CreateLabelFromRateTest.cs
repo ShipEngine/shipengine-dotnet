@@ -1,8 +1,8 @@
 using Moq;
 using ShipEngineSDK;
-using ShipEngineSDK.Enums;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.CreateLabelFromRate;
+using ShipEngineSDK.Enums;
 using System;
 using System.IO;
 using System.Net.Http;

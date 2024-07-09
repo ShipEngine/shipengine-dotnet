@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -126,7 +126,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
     public async Task<System.IO.Stream> DownloadFile(HttpClient methodClient, Config methodConfig, string subdir, string filename, string dir, string download = default, int? rotation = default, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'subdir' is set
         if (subdir == null)
         {

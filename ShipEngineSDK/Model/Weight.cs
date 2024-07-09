@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class Weight
     [JsonPropertyName("unit")]
     [JsonRequired]
     public WeightUnit Unit { get; set; } = new();
-    
+
 
     /// <summary>
     /// The weight, in the specified unit
@@ -72,4 +72,3 @@ public partial class Weight
     }
 
 }
-

@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
-using System.Reflection;
 
 namespace ShipEngineSDK.Model;
 
@@ -50,7 +50,7 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
     public CompareBulkRatesRequestBody(RateRequestByShipmentIds actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -62,7 +62,7 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
     public CompareBulkRatesRequestBody(RateRequestByShipments actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -193,12 +193,13 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
         {
-            if (prop.Value != null) {
-              writer.WritePropertyName(prop.Key);
-              prop.Value.WriteTo(writer, options);
+            if (prop.Value != null)
+            {
+                writer.WritePropertyName(prop.Key);
+                prop.Value.WriteTo(writer, options);
             }
         }
-        
+
         writer.WriteEndObject();
     }
 
@@ -225,7 +226,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         try
         {
             newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipmentIds>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("RateRequestByShipmentIds");
             match++;
         }
@@ -238,7 +239,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         try
         {
             newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipments>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("RateRequestByShipments");
             match++;
         }
@@ -252,7 +253,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        
+
         if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
@@ -274,4 +275,3 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         return typeof(CompareBulkRatesRequestBody).IsAssignableFrom(objectType);
     }
 }
-

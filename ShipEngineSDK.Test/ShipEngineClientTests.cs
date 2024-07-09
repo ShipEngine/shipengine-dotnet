@@ -121,7 +121,7 @@ namespace ShipEngineTest
             );
 
             Assert.NotNull(ex.ResponseMessage);
-            Assert.Equal(404, (int) ex.ResponseMessage.StatusCode);
+            Assert.Equal(404, (int)ex.ResponseMessage.StatusCode);
             Assert.Equal(requestId, ex.RequestId);
         }
 
@@ -141,7 +141,7 @@ namespace ShipEngineTest
             );
 
             Assert.NotNull(ex.ResponseMessage);
-            Assert.Equal(502, (int) ex.ResponseMessage.StatusCode);
+            Assert.Equal(502, (int)ex.ResponseMessage.StatusCode);
             Assert.Equal(requestId, ex.RequestId);
         }
 

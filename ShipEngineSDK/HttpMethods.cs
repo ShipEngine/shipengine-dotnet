@@ -8,7 +8,8 @@ namespace ShipEngineSDK;
 /// <remarks>
 /// This is needed because the HttpMethod class does not have a PATCH method in the version of .NET that we are using.
 /// </remarks>
-internal static class HttpMethods {
+internal static class HttpMethods
+{
     public static HttpMethod Delete { get; } = HttpMethod.Delete;
     public static HttpMethod Get { get; } = HttpMethod.Get;
     public static HttpMethod Patch { get; } = new HttpMethod("PATCH");

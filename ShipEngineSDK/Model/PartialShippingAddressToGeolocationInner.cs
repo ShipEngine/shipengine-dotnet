@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -30,47 +30,47 @@ namespace ShipEngineSDK.Model;
 //[DataContract(Name = "partial_shipping_address_to_geolocation_inner")]
 public partial class PartialShippingAddressToGeolocationInner
 {
-//    
-//    /// <summary>
-//    /// Enum of available type of geolocation items:   - &#39;what3words&#39; functionality allows to specify a location by providing 3 words that have been assign to the specific location see [link](https://what3words.com/business) for more details. 
-//    /// </summary>
-//    
-//    /// <value>Enum of available type of geolocation items:   - &#39;what3words&#39; functionality allows to specify a location by providing 3 words that have been assign to the specific location see [link](https://what3words.com/business) for more details. </value>
-//    
-//    public static class TypeEnum
-//    {
-//        private static readonly HashSet<string> _values = new()
-//        {
-//            
-//            
-//            "what3words",
-//            
-//            
-//        };
-//
-//        
-//        
-//        
-//        public static string DefaultValue => What3words;
-//        
-//        
-//        /// <summary>
-//        /// Enum What3words for value: what3words
-//        /// </summary>
-//        public static string What3words { get; } = "what3words";
-//        
-//        
-//        
-//
-//        /// <summary>
-//        /// Is the given value a valid TypeEnum?
-//        /// </summary>
-//        public static bool IsValid(string value)
-//        {
-//            return _values.Contains(value);
-//        }
-//    }
-//    
+    //    
+    //    /// <summary>
+    //    /// Enum of available type of geolocation items:   - &#39;what3words&#39; functionality allows to specify a location by providing 3 words that have been assign to the specific location see [link](https://what3words.com/business) for more details. 
+    //    /// </summary>
+    //    
+    //    /// <value>Enum of available type of geolocation items:   - &#39;what3words&#39; functionality allows to specify a location by providing 3 words that have been assign to the specific location see [link](https://what3words.com/business) for more details. </value>
+    //    
+    //    public static class TypeEnum
+    //    {
+    //        private static readonly HashSet<string> _values = new()
+    //        {
+    //            
+    //            
+    //            "what3words",
+    //            
+    //            
+    //        };
+    //
+    //        
+    //        
+    //        
+    //        public static string DefaultValue => What3words;
+    //        
+    //        
+    //        /// <summary>
+    //        /// Enum What3words for value: what3words
+    //        /// </summary>
+    //        public static string What3words { get; } = "what3words";
+    //        
+    //        
+    //        
+    //
+    //        /// <summary>
+    //        /// Is the given value a valid TypeEnum?
+    //        /// </summary>
+    //        public static bool IsValid(string value)
+    //        {
+    //            return _values.Contains(value);
+    //        }
+    //    }
+    //    
 
 
 
@@ -84,12 +84,14 @@ public partial class PartialShippingAddressToGeolocationInner
     {
         private string _value;
 
-        internal TypeEnum() {
+        internal TypeEnum()
+        {
             _value = "what3words";
         }
 
-        public TypeEnum(string value) {
-          
+        public TypeEnum(string value)
+        {
+
         }
 
         /// <summary>
@@ -158,4 +160,3 @@ public partial class PartialShippingAddressToGeolocationInner
     }
 
 }
-

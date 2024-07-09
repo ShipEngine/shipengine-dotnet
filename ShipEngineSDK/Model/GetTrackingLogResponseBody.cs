@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class GetTrackingLogResponseBody
     [JsonPropertyName("status_code")]
     [JsonRequired]
     public StatusCode StatusCode { get; set; } = new();
-    
+
 
     /// <summary>
     /// A tracking number for a package. The format depends on the carrier.
@@ -208,4 +208,3 @@ public partial class GetTrackingLogResponseBody
     }
 
 }
-

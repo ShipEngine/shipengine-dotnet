@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class Rate
     [JsonPropertyName("rate_type")]
     [JsonRequired]
     public RateType RateType { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets ValidationStatus  CLOVUS
@@ -45,7 +45,7 @@ public partial class Rate
     [JsonPropertyName("validation_status")]
     [JsonRequired]
     public ValidationStatus ValidationStatus { get; set; } = new();
-    
+
 
     /// <summary>
     /// A string that uniquely identifies the rate
@@ -300,4 +300,3 @@ public partial class Rate
     }
 
 }
-

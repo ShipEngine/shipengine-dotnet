@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class Error
     [JsonPropertyName("error_source")]
     [JsonRequired]
     public ErrorSource ErrorSource { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets ErrorType  CLOVUS
@@ -45,7 +45,7 @@ public partial class Error
     [JsonPropertyName("error_type")]
     [JsonRequired]
     public ErrorType ErrorType { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets ErrorCode  CLOVUS
@@ -53,7 +53,7 @@ public partial class Error
     [JsonPropertyName("error_code")]
     [JsonRequired]
     public ErrorCode ErrorCode { get; set; } = new();
-    
+
 
     /// <summary>
     /// An error message associated with the failed API call
@@ -93,4 +93,3 @@ public partial class Error
     }
 
 }
-

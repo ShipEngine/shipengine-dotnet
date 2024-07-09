@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -249,7 +249,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
     public async Task<GetAccountSettingsImagesResponseBody> CreateAccountImage(HttpClient methodClient, Config methodConfig, CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'createAccountSettingsImageRequestBody' is set
         if (createAccountSettingsImageRequestBody == null)
         {
@@ -305,7 +305,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DeleteAccountImageById(HttpClient methodClient, Config methodConfig, string labelImageId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'labelImageId' is set
         if (labelImageId == null)
         {
@@ -361,7 +361,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
     public async Task<GetAccountSettingsImagesResponseBody> GetAccountSettingsImagesById(HttpClient methodClient, Config methodConfig, string labelImageId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'labelImageId' is set
         if (labelImageId == null)
         {
@@ -414,7 +414,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListAccountSettingsImagesResponseBody)</returns>
     public async Task<ListAccountSettingsImagesResponseBody> ListAccountImages(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
-        
+
 
         RequestOptions requestOptions = new("/v1/account/settings/images");
 
@@ -460,7 +460,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetAccountSettingsResponseBody)</returns>
     public async Task<GetAccountSettingsResponseBody> ListAccountSettings(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
-        
+
 
         RequestOptions requestOptions = new("/v1/account/settings");
 
@@ -512,7 +512,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdateAccountSettingsImagesById(HttpClient methodClient, Config methodConfig, string labelImageId, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'labelImageId' is set
         if (labelImageId == null)
         {

@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class ListShipmentRatesResponseBody
     [JsonPropertyName("status")]
     [JsonRequired]
     public RateResponseStatus Status { get; set; } = new();
-    
+
 
     /// <summary>
     /// An array of shipment rates
@@ -125,4 +125,3 @@ public partial class ListShipmentRatesResponseBody
     }
 
 }
-

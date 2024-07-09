@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -477,7 +477,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> CancelShipments(HttpClient methodClient, Config methodConfig, string shipmentId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -533,7 +533,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateShipmentsResponseBody)</returns>
     public async Task<CreateShipmentsResponseBody> CreateShipments(HttpClient methodClient, Config methodConfig, CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'createShipmentsRequestBody' is set
         if (createShipmentsRequestBody == null)
         {
@@ -589,7 +589,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetShipmentByExternalIdResponseBody)</returns>
     public async Task<GetShipmentByExternalIdResponseBody> GetShipmentByExternalId(HttpClient methodClient, Config methodConfig, string externalShipmentId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'externalShipmentId' is set
         if (externalShipmentId == null)
         {
@@ -645,7 +645,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetShipmentByIdResponseBody)</returns>
     public async Task<GetShipmentByIdResponseBody> GetShipmentById(HttpClient methodClient, Config methodConfig, string shipmentId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -704,7 +704,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
     public async Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, Config methodConfig, string shipmentId, DateTime? createdAtStart = default, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -800,7 +800,7 @@ public partial class ShipEngine
         shipmentStatus ??= "pending";
         sortDir ??= "asc";
         sortBy ??= "modified_at";
-        
+
 
         RequestOptions requestOptions = new("/v1/shipments");
 
@@ -897,7 +897,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ParseShipmentResponseBody)</returns>
     public async Task<ParseShipmentResponseBody> ParseShipment(HttpClient methodClient, Config methodConfig, ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'parseShipmentRequestBody' is set
         if (parseShipmentRequestBody == null)
         {
@@ -953,7 +953,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
     public async Task<TagShipmentResponseBody> ShipmentsListTags(HttpClient methodClient, Config methodConfig, string shipmentId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -1009,7 +1009,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse</returns>
     public async Task<Object> ShipmentsUpdateTags(HttpClient methodClient, Config methodConfig, UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'updateShipmentsTagsRequestBody' is set
         if (updateShipmentsTagsRequestBody == null)
         {
@@ -1068,7 +1068,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
     public async Task<TagShipmentResponseBody> TagShipment(HttpClient methodClient, Config methodConfig, string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -1134,7 +1134,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UntagShipment(HttpClient methodClient, Config methodConfig, string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -1200,7 +1200,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (UpdateShipmentResponseBody)</returns>
     public async Task<UpdateShipmentResponseBody> UpdateShipment(HttpClient methodClient, Config methodConfig, string shipmentId, UpdateShipmentRequestBody updateShipmentRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {

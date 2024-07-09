@@ -1,4 +1,5 @@
 using ShipEngineSDK.Common;
+using ShipEngineSDK.Enums;
 using System;
 using System.Linq;
 using System.Net;
@@ -8,7 +9,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Enums;
 
 namespace ShipEngineSDK
 {

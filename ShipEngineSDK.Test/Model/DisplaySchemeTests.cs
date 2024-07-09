@@ -9,17 +9,17 @@
  */
 
 
-using Xunit;
-using System;
-using System.Linq;
-using System.IO;
-using System.Collections.Generic;
-using System.Text.Json;
-using ShipEngineSDK.Model;
 using ShipEngineSDK.Client;
+using ShipEngineSDK.Model;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text.Json;
+using Xunit;
 
-namespace ShipEngineSDK.Test.Model 
+namespace ShipEngineSDK.Test.Model
 {
     /// <summary>
     ///  Class for testing DisplayScheme
@@ -71,7 +71,7 @@ namespace ShipEngineSDK.Test.Model
             var testModel = DisplayScheme.LabelAndPaperless;
             Assert.Equal("label_and_paperless", testModel.ToString());
         }
-        
+
 
         [Fact]
         public void CustomValueTest()

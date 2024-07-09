@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -132,7 +132,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ParseAddressResponseBody)</returns>
     public async Task<ParseAddressResponseBody> ParseAddress(HttpClient methodClient, Config methodConfig, ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'parseAddressRequestBody' is set
         if (parseAddressRequestBody == null)
         {
@@ -188,7 +188,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (List&lt;AddressValidationResult&gt;)</returns>
     public async Task<List<AddressValidationResult>> ValidateAddress(HttpClient methodClient, Config methodConfig, List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'addressToValidate' is set
         if (addressToValidate == null)
         {

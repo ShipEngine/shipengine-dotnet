@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class TaxIdentifier
     [JsonPropertyName("taxable_entity_type")]
     [JsonRequired]
     public TaxableEntityType TaxableEntityType { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets IdentifierType  CLOVUS
@@ -45,7 +45,7 @@ public partial class TaxIdentifier
     [JsonPropertyName("identifier_type")]
     [JsonRequired]
     public IdentifierType IdentifierType { get; set; } = new();
-    
+
 
     /// <summary>
     /// The authority that issued this tax. This must be a valid 2 character ISO 3166 Alpha 2 country code.
@@ -90,4 +90,3 @@ public partial class TaxIdentifier
     }
 
 }
-

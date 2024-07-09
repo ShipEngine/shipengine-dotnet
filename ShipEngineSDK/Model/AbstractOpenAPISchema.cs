@@ -30,16 +30,16 @@ public abstract partial class AbstractOpenAPISchema
         DictionaryKeyPolicy = JsonNamingPolicy.SnakeCaseLower
     };
 
-//    /// <summary>
-//    ///  Custom JSON serializer for objects with additional properties
-//    /// </summary>
-//    static public readonly JsonSerializerOptions AdditionalPropertiesSerializerSettings = new JsonSerializerOptions
-//    {
-//        // OpenAPI generated types generally hide default constructors.
-//        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-//        DictionaryKeyPolicy = JsonNamingPolicy.SnakeCaseLower
-//
-//    };
+    //    /// <summary>
+    //    ///  Custom JSON serializer for objects with additional properties
+    //    /// </summary>
+    //    static public readonly JsonSerializerOptions AdditionalPropertiesSerializerSettings = new JsonSerializerOptions
+    //    {
+    //        // OpenAPI generated types generally hide default constructors.
+    //        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+    //        DictionaryKeyPolicy = JsonNamingPolicy.SnakeCaseLower
+    //
+    //    };
 
     /// <summary>
     /// Gets or Sets the actual instance

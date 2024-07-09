@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class ResponseMessage
     [JsonPropertyName("code")]
     [JsonRequired]
     public AddressValidationCode Code { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets Type  CLOVUS
@@ -45,7 +45,7 @@ public partial class ResponseMessage
     [JsonPropertyName("type")]
     [JsonRequired]
     public AddressValidationMessageType Type { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets DetailCode  CLOVUS
@@ -53,7 +53,7 @@ public partial class ResponseMessage
     [JsonPropertyName("detail_code")]
     [JsonRequired]
     public AddressValidationDetailCode DetailCode { get; set; } = new();
-    
+
 
     /// <summary>
     /// Message explaining the address validation error
@@ -93,4 +93,3 @@ public partial class ResponseMessage
     }
 
 }
-

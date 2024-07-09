@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
-using System.Reflection;
 
 namespace ShipEngineSDK.Model;
 
@@ -41,7 +41,7 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     public UpdateCarrierSettingsRequestBody(UpdateDhlExpressSettingsRequestBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -53,7 +53,7 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     public UpdateCarrierSettingsRequestBody(UpdateFedexSettingsRequestBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -65,7 +65,7 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     public UpdateCarrierSettingsRequestBody(UpdateNewgisticsSettingsRequestBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -77,7 +77,7 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     public UpdateCarrierSettingsRequestBody(UpdateUpsSettingsRequestBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -89,7 +89,7 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     public UpdateCarrierSettingsRequestBody(UpdateAmazonBuyShippingRequestBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -259,12 +259,13 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
         {
-            if (prop.Value != null) {
-              writer.WritePropertyName(prop.Key);
-              prop.Value.WriteTo(writer, options);
+            if (prop.Value != null)
+            {
+                writer.WritePropertyName(prop.Key);
+                prop.Value.WriteTo(writer, options);
             }
         }
-        
+
         writer.WriteEndObject();
     }
 
@@ -291,7 +292,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         try
         {
             newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateDhlExpressSettingsRequestBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("UpdateDhlExpressSettingsRequestBody");
             match++;
         }
@@ -304,7 +305,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         try
         {
             newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateFedexSettingsRequestBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("UpdateFedexSettingsRequestBody");
             match++;
         }
@@ -317,7 +318,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         try
         {
             newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateNewgisticsSettingsRequestBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("UpdateNewgisticsSettingsRequestBody");
             match++;
         }
@@ -330,7 +331,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         try
         {
             newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateUpsSettingsRequestBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("UpdateUpsSettingsRequestBody");
             match++;
         }
@@ -343,7 +344,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         try
         {
             newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateAmazonBuyShippingRequestBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("UpdateAmazonBuyShippingRequestBody");
             match++;
         }
@@ -357,7 +358,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        
+
         if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
@@ -378,4 +379,3 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         return typeof(UpdateCarrierSettingsRequestBody).IsAssignableFrom(objectType);
     }
 }
-

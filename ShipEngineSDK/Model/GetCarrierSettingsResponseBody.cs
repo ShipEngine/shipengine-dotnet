@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
-using System.Reflection;
 
 namespace ShipEngineSDK.Model;
 
@@ -41,7 +41,7 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
     public GetCarrierSettingsResponseBody(DhlExpressSettingsResponseBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -53,7 +53,7 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
     public GetCarrierSettingsResponseBody(FedexSettingsResponseBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -65,7 +65,7 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
     public GetCarrierSettingsResponseBody(UpsSettingsResponseBody actualInstance)
     {
         this.IsNullable = false;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
@@ -207,12 +207,13 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
         {
-            if (prop.Value != null) {
-              writer.WritePropertyName(prop.Key);
-              prop.Value.WriteTo(writer, options);
+            if (prop.Value != null)
+            {
+                writer.WritePropertyName(prop.Key);
+                prop.Value.WriteTo(writer, options);
             }
         }
-        
+
         writer.WriteEndObject();
     }
 
@@ -239,7 +240,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         try
         {
             newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<DhlExpressSettingsResponseBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("DhlExpressSettingsResponseBody");
             match++;
         }
@@ -252,7 +253,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         try
         {
             newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<FedexSettingsResponseBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("FedexSettingsResponseBody");
             match++;
         }
@@ -265,7 +266,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         try
         {
             newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<UpsSettingsResponseBody>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("UpsSettingsResponseBody");
             match++;
         }
@@ -279,7 +280,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        
+
         if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
@@ -300,4 +301,3 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         return typeof(GetCarrierSettingsResponseBody).IsAssignableFrom(objectType);
     }
 }
-

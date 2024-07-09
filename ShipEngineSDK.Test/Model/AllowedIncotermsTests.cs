@@ -9,17 +9,17 @@
  */
 
 
-using Xunit;
-using System;
-using System.Linq;
-using System.IO;
-using System.Collections.Generic;
-using System.Text.Json;
-using ShipEngineSDK.Model;
 using ShipEngineSDK.Client;
+using ShipEngineSDK.Model;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text.Json;
+using Xunit;
 
-namespace ShipEngineSDK.Test.Model 
+namespace ShipEngineSDK.Test.Model
 {
     /// <summary>
     ///  Class for testing AllowedIncoterms
@@ -141,7 +141,7 @@ namespace ShipEngineSDK.Test.Model
             var testModel = AllowedIncoterms.Des;
             Assert.Equal("des", testModel.ToString());
         }
-        
+
 
         [Fact]
         public void CustomValueTest()

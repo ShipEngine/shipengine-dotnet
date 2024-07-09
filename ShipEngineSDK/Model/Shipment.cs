@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -38,7 +38,7 @@ public partial class Shipment
     [JsonPropertyName("shipment_status")]
     [JsonRequired]
     public ShipmentStatus ShipmentStatus { get; set; } = new();
-    
+
 
     /// <summary>
     /// The type of delivery confirmation that is required for this shipment.  CLOVUS
@@ -47,7 +47,7 @@ public partial class Shipment
     [JsonPropertyName("confirmation")]
     [JsonRequired]
     public DeliveryConfirmation Confirmation { get; set; } = new();
-    
+
 
     /// <summary>
     /// The insurance provider to use for any insured packages in the shipment.   CLOVUS
@@ -56,7 +56,7 @@ public partial class Shipment
     [JsonPropertyName("insurance_provider")]
     [JsonRequired]
     public InsuranceProvider InsuranceProvider { get; set; } = new();
-    
+
 
     /// <summary>
     /// Gets or Sets OrderSourceCode  CLOVUS
@@ -315,4 +315,3 @@ public partial class Shipment
     }
 
 }
-

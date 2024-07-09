@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class GetWebhookByIdResponseBody
     [JsonPropertyName("event")]
     [JsonRequired]
     public WebhookEvent Event { get; set; } = new();
-    
+
 
     /// <summary>
     /// A string that uniquely identifies the webhook
@@ -95,4 +95,3 @@ public partial class GetWebhookByIdResponseBody
     }
 
 }
-

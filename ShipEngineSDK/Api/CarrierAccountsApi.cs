@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -210,7 +210,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
     public async Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, Config methodConfig, string carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'connectCarrierRequestBody' is set
         if (connectCarrierRequestBody == null)
         {
@@ -270,7 +270,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DisconnectCarrier(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -330,7 +330,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
     public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -393,7 +393,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdateCarrierSettings(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {

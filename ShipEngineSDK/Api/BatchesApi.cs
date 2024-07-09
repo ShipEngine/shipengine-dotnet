@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -405,7 +405,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> AddToBatch(HttpClient methodClient, Config methodConfig, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -468,7 +468,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateBatchResponseBody)</returns>
     public async Task<CreateBatchResponseBody> CreateBatch(HttpClient methodClient, Config methodConfig, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'createBatchRequest' is set
         if (createBatchRequest == null)
         {
@@ -524,7 +524,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DeleteBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -580,7 +580,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetBatchByExternalIdResponseBody)</returns>
     public async Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(HttpClient methodClient, Config methodConfig, string externalBatchId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'externalBatchId' is set
         if (externalBatchId == null)
         {
@@ -636,7 +636,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetBatchByIdResponseBody)</returns>
     public async Task<GetBatchByIdResponseBody> GetBatchById(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -698,7 +698,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
     public async Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, Config methodConfig, string batchId, int? page = default, int? pagesize = default, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -780,7 +780,7 @@ public partial class ShipEngine
         status ??= "open";
         sortDir ??= "asc";
         sortBy ??= "ship_date";
-        
+
 
         RequestOptions requestOptions = new("/v1/batches");
 
@@ -856,7 +856,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> ProcessBatch(HttpClient methodClient, Config methodConfig, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -922,7 +922,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> RemoveFromBatch(HttpClient methodClient, Config methodConfig, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -985,7 +985,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdateBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {

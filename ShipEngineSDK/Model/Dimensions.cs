@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -37,7 +37,7 @@ public partial class Dimensions
     [JsonPropertyName("unit")]
     [JsonRequired]
     public DimensionUnit Unit { get; set; } = new();
-    
+
 
     /// <summary>
     /// The length of the package, in the specified unit
@@ -90,4 +90,3 @@ public partial class Dimensions
     }
 
 }
-

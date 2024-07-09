@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -192,7 +192,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CalculateRatesResponseBody)</returns>
     public async Task<CalculateRatesResponseBody> CalculateRates(HttpClient methodClient, Config methodConfig, CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'calculateRatesRequestBody' is set
         if (calculateRatesRequestBody == null)
         {
@@ -248,7 +248,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (List&lt;BulkRate&gt;)</returns>
     public async Task<List<BulkRate>> CompareBulkRates(HttpClient methodClient, Config methodConfig, CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'compareBulkRatesRequestBody' is set
         if (compareBulkRatesRequestBody == null)
         {
@@ -304,7 +304,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (List&lt;RateEstimate&gt;)</returns>
     public async Task<List<RateEstimate>> EstimateRates(HttpClient methodClient, Config methodConfig, EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'estimateRatesRequestBody' is set
         if (estimateRatesRequestBody == null)
         {
@@ -360,7 +360,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetRateByIdResponseBody)</returns>
     public async Task<GetRateByIdResponseBody> GetRateById(HttpClient methodClient, Config methodConfig, string rateId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'rateId' is set
         if (rateId == null)
         {

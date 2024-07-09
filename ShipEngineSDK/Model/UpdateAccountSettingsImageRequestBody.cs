@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -30,59 +30,59 @@ namespace ShipEngineSDK.Model;
 //[DataContract(Name = "update_account_settings_image_request_body")]
 public partial class UpdateAccountSettingsImageRequestBody
 {
-//    
-//    /// <summary>
-//    /// The image type
-//    /// </summary>
-//    
-//    /// <value>The image type</value>
-//    
-//    public static class ImageContentTypeEnum
-//    {
-//        private static readonly HashSet<string> _values = new()
-//        {
-//            
-//            
-//            "image/png",
-//            
-//            "image/jpeg",
-//            
-//            
-//        };
-//
-//        
-//        
-//        
-//        public static string DefaultValue => Png;
-//        
-//        
-//        /// <summary>
-//        /// Enum Png for value: image/png
-//        /// </summary>
-//        public static string Png { get; } = "image/png";
-//        
-//
-//        
-//        
-//        
-//        
-//        /// <summary>
-//        /// Enum Jpeg for value: image/jpeg
-//        /// </summary>
-//        public static string Jpeg { get; } = "image/jpeg";
-//        
-//        
-//        
-//
-//        /// <summary>
-//        /// Is the given value a valid ImageContentTypeEnum?
-//        /// </summary>
-//        public static bool IsValid(string value)
-//        {
-//            return _values.Contains(value);
-//        }
-//    }
-//    
+    //    
+    //    /// <summary>
+    //    /// The image type
+    //    /// </summary>
+    //    
+    //    /// <value>The image type</value>
+    //    
+    //    public static class ImageContentTypeEnum
+    //    {
+    //        private static readonly HashSet<string> _values = new()
+    //        {
+    //            
+    //            
+    //            "image/png",
+    //            
+    //            "image/jpeg",
+    //            
+    //            
+    //        };
+    //
+    //        
+    //        
+    //        
+    //        public static string DefaultValue => Png;
+    //        
+    //        
+    //        /// <summary>
+    //        /// Enum Png for value: image/png
+    //        /// </summary>
+    //        public static string Png { get; } = "image/png";
+    //        
+    //
+    //        
+    //        
+    //        
+    //        
+    //        /// <summary>
+    //        /// Enum Jpeg for value: image/jpeg
+    //        /// </summary>
+    //        public static string Jpeg { get; } = "image/jpeg";
+    //        
+    //        
+    //        
+    //
+    //        /// <summary>
+    //        /// Is the given value a valid ImageContentTypeEnum?
+    //        /// </summary>
+    //        public static bool IsValid(string value)
+    //        {
+    //            return _values.Contains(value);
+    //        }
+    //    }
+    //    
 
 
 
@@ -96,12 +96,14 @@ public partial class UpdateAccountSettingsImageRequestBody
     {
         private string _value;
 
-        internal ImageContentTypeEnum() {
+        internal ImageContentTypeEnum()
+        {
             _value = "image/png";
         }
 
-        public ImageContentTypeEnum(string value) {
-          
+        public ImageContentTypeEnum(string value)
+        {
+
         }
 
         /// <summary>
@@ -229,4 +231,3 @@ public partial class UpdateAccountSettingsImageRequestBody
     }
 
 }
-

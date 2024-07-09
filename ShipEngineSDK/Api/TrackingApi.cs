@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -174,7 +174,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
     public async Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, Config methodConfig, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
     {
-        
+
 
         RequestOptions requestOptions = new("/v1/tracking");
 
@@ -234,7 +234,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> StartTracking(HttpClient methodClient, Config methodConfig, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
     {
-        
+
 
         RequestOptions requestOptions = new("/v1/tracking/start");
 
@@ -294,7 +294,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> StopTracking(HttpClient methodClient, Config methodConfig, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
     {
-        
+
 
         RequestOptions requestOptions = new("/v1/tracking/stop");
 

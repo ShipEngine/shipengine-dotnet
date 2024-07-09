@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -103,7 +103,7 @@ public partial class ShipEngine
     public async Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(HttpClient methodClient, Config methodConfig, string? redirect = default, CancellationToken cancellationToken = default)
     {
         redirect ??= "shipengine-dashboard";
-        
+
 
         RequestOptions requestOptions = new("/v1/tokens/ephemeral");
 

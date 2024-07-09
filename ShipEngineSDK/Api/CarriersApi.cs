@@ -9,6 +9,7 @@
  */
 
 
+using ShipEngineSDK.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using ShipEngineSDK.Model;
 
 namespace ShipEngineSDK;
 
@@ -285,7 +285,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
     public async Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(HttpClient methodClient, Config methodConfig, string carrierId, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -348,7 +348,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DisconnectCarrierById(HttpClient methodClient, Config methodConfig, string carrierId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -404,7 +404,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetCarrierByIdResponseBody)</returns>
     public async Task<GetCarrierByIdResponseBody> GetCarrierById(HttpClient methodClient, Config methodConfig, string carrierId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -460,7 +460,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetCarrierOptionsResponseBody)</returns>
     public async Task<GetCarrierOptionsResponseBody> GetCarrierOptions(HttpClient methodClient, Config methodConfig, string carrierId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -516,7 +516,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListCarrierPackageTypesResponseBody)</returns>
     public async Task<ListCarrierPackageTypesResponseBody> ListCarrierPackageTypes(HttpClient methodClient, Config methodConfig, string carrierId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -572,7 +572,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListCarrierServicesResponseBody)</returns>
     public async Task<ListCarrierServicesResponseBody> ListCarrierServices(HttpClient methodClient, Config methodConfig, string carrierId, CancellationToken cancellationToken = default)
     {
-        
+
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -625,7 +625,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetCarriersResponseBody)</returns>
     public async Task<GetCarriersResponseBody> ListCarriers(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
-        
+
 
         RequestOptions requestOptions = new("/v1/carriers");
 

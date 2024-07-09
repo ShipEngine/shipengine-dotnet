@@ -13,8 +13,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
@@ -33,7 +33,8 @@ public class LabelStatus
 {
     private string _value;
 
-    internal LabelStatus() {
+    internal LabelStatus()
+    {
         _value = "processing";
     }
 
@@ -45,8 +46,9 @@ public class LabelStatus
     /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
     /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
     /// </remarks>
-    public LabelStatus(string value) {
-      _value = value;
+    public LabelStatus(string value)
+    {
+        _value = value;
     }
 
     /// <summary>
