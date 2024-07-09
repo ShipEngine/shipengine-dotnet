@@ -1,19 +1,5 @@
-{{>partial_header}}
-
-using Xunit;
-
-using System;
-using System.Linq;
-using System.IO;
-using System.Collections.Generic;
-using {{packageName}}.{{modelPackage}};
-using {{packageName}}.{{clientPackage}};
-using System.Reflection;
-
 {{#models}}
 {{#model}}
-namespace {{packageName}}.Test.Model 
-{
     /// <summary>
     ///  Class for testing {{classname}}
     /// </summary>
@@ -79,6 +65,5 @@ namespace {{packageName}}.Test.Model
         {{/lambda.trimLineBreaks}}
         {{/lambda.trimTrailingWithNewLine}}
     }
-}
 {{/model}}
 {{/models}}

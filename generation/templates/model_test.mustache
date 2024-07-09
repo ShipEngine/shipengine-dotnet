@@ -1,17 +1,20 @@
 {{>partial_header}}
 
 using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Text.Json;
 using {{packageName}}.{{modelPackage}};
 using {{packageName}}.{{clientPackage}};
 using System.Reflection;
 
+namespace {{packageName}}.Test.Model 
+{
 {{#models}}
 {{#model}}
 {{#isEnum}}{{>modelEnum_test}}{{/isEnum}}{{^isEnum}}{{#oneOf}}{{#-first}}{{>modelOneOf_test}}{{/-first}}{{/oneOf}}{{#anyOf}}{{#-first}}{{>modelAnyOf_test}}{{/-first}}{{/anyOf}}{{^oneOf}}{{^anyOf}}{{>modelGeneric_test}}{{/anyOf}}{{/oneOf}}{{/isEnum}}
 {{/model}}
 {{/models}}
+}

@@ -1,6 +1,7 @@
 using Moq;
 using ShipEngineSDK;
 using ShipEngineSDK.Common.Enums;
+using ShipEngineSDK.Enums;
 using ShipEngineSDK.TrackUsingLabelId;
 using System;
 using System.IO;

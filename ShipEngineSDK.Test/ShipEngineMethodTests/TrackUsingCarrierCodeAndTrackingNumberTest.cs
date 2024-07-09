@@ -2,6 +2,7 @@ using Moq;
 using Moq.Protected;
 using ShipEngineSDK;
 using ShipEngineSDK.Common.Enums;
+using ShipEngineSDK.Enums;
 using ShipEngineSDK.TrackUsingCarrierCodeAndTrackingNumber;
 using System;
 using System.IO;

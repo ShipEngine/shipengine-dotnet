@@ -1,4 +1,5 @@
 using ShipEngineSDK;
+using ShipEngineSDK.Enums;
 using Xunit;
 
 namespace ShipEngineTest

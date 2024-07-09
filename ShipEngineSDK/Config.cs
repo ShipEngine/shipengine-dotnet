@@ -1,4 +1,5 @@
 using System;
+using ShipEngineSDK.Enums;
 
 namespace ShipEngineSDK
 {

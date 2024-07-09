@@ -1,5 +1,6 @@
 using Moq;
 using ShipEngineSDK;
+using ShipEngineSDK.Enums;
 using ShipEngineSDK.VoidLabelWithLabelId;
 using System;
 using System.IO;

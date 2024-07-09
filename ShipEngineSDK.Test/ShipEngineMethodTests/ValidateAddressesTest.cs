@@ -2,6 +2,7 @@ using Moq;
 using ShipEngineSDK;
 using ShipEngineSDK.Common;
 using ShipEngineSDK.Common.Enums;
+using ShipEngineSDK.Enums;
 using ShipEngineSDK.ValidateAddresses;
 using System;
 using System.Collections.Generic;

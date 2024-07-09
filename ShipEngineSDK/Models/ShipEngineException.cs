@@ -2,6 +2,7 @@
 
 using System;
 using System.Net.Http;
+using ShipEngineSDK.Enums;
 
 namespace ShipEngineSDK
 {

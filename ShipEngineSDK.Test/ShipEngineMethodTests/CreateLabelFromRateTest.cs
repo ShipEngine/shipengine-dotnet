@@ -1,5 +1,6 @@
 using Moq;
 using ShipEngineSDK;
+using ShipEngineSDK.Enums;
 using ShipEngineSDK.Common.Enums;
 using ShipEngineSDK.CreateLabelFromRate;
 using System;

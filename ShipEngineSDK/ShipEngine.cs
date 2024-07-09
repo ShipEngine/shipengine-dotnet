@@ -6,8 +6,11 @@ using ShipEngineSDK.Manifests;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Tasks;
+
+[assembly: InternalsVisibleTo("ShipEngineSDK.Test")]
 
 namespace ShipEngineSDK
 {

@@ -1,6 +1,7 @@
 using Moq;
 using ShipEngineSDK;
 using ShipEngineSDK.ListCarriers;
+using ShipEngineSDK.Enums;
 using System;
 using System.IO;
 using System.Net.Http;

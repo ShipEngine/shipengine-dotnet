@@ -1,7 +1,7 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace ShipEngineSDK
+namespace ShipEngineSDK.Enums
 {
     /// <summary>
     /// Indicates the specific error that occurred.
@@ -60,7 +60,7 @@ namespace ShipEngineSDK
         /// <summary>
         /// When shipping internationally, you must add a customs declaration which outlines the items you are shipping.
         /// This is helpful to customs agents when your package enters it's destination country. This error arises when you
-        /// do not add a customs declaration to your shipment before attempting to create a shipping label for an 
+        /// do not add a customs declaration to your shipment before attempting to create a shipping label for an
         /// international shipment.
         /// </summary>
         [EnumMember(Value = "customs_items_required")]
