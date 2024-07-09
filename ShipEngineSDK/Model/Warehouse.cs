@@ -37,7 +37,7 @@ public partial class Warehouse
     /// se-28529731
     /// </example>
     [JsonPropertyName("warehouse_id")]
-    public string WarehouseId { get; private set; }
+    public string WarehouseId { get; set; }
 
     /// <summary>
     /// Designates which single warehouse is the default on the account
@@ -64,7 +64,7 @@ public partial class Warehouse
     /// 2019-06-25T18:12:35.583Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The origin address of the warehouse

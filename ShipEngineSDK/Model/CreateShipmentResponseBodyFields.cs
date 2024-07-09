@@ -35,7 +35,7 @@ public partial class CreateShipmentResponseBodyFields
     /// <value>An array of errors that occurred while creating shipment.</value>
     [JsonPropertyName("errors")]
     [Obsolete]
-    public List<string> Errors { get; private set; }
+    public List<string> Errors { get; set; }
 
     /// <summary>
     /// The address validation

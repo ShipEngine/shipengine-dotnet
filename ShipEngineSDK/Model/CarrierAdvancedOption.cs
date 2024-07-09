@@ -37,7 +37,7 @@ public partial class CarrierAdvancedOption
     /// contains_alcohol
     /// </example>
     [JsonPropertyName("name")]
-    public string Name { get; private set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// Default value of option
@@ -47,14 +47,14 @@ public partial class CarrierAdvancedOption
     /// false
     /// </example>
     [JsonPropertyName("default_value")]
-    public string DefaultValue { get; private set; }
+    public string DefaultValue { get; set; }
 
     /// <summary>
     /// Description of option
     /// </summary>
     /// <value>Description of option</value>
     [JsonPropertyName("description")]
-    public string Description { get; private set; }
+    public string Description { get; set; }
 
 
     /// <summary>

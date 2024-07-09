@@ -42,7 +42,7 @@ public partial class Webhook
     /// se-28529731
     /// </example>
     [JsonPropertyName("webhook_id")]
-    public string WebhookId { get; private set; }
+    public string WebhookId { get; set; }
 
     /// <summary>
     /// The url that the webhook sends the request to

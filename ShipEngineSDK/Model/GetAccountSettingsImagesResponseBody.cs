@@ -146,7 +146,7 @@ public partial class GetAccountSettingsImagesResponseBody
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
     [JsonPropertyName("label_image_id")]
-    public string LabelImageId { get; private set; }
+    public string LabelImageId { get; set; }
 
     /// <summary>
     /// A human readable name for the image. 
@@ -186,7 +186,7 @@ public partial class GetAccountSettingsImagesResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the image was modified in ShipEngine.
@@ -196,7 +196,7 @@ public partial class GetAccountSettingsImagesResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("modified_at")]
-    public DateTime ModifiedAt { get; private set; }
+    public DateTime ModifiedAt { get; set; }
 
 
     /// <summary>

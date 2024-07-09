@@ -39,14 +39,14 @@ public partial class RatesInformation
     /// </summary>
     /// <value>An array of shipment rates</value>
     [JsonPropertyName("rates")]
-    public List<Rate> Rates { get; private set; }
+    public List<Rate> Rates { get; set; }
 
     /// <summary>
     /// An array of invalid shipment rates
     /// </summary>
     /// <value>An array of invalid shipment rates</value>
     [JsonPropertyName("invalid_rates")]
-    public List<Rate> InvalidRates { get; private set; }
+    public List<Rate> InvalidRates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -56,7 +56,7 @@ public partial class RatesInformation
     /// se-28529731
     /// </example>
     [JsonPropertyName("rate_request_id")]
-    public string RateRequestId { get; private set; }
+    public string RateRequestId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -66,7 +66,7 @@ public partial class RatesInformation
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id")]
-    public string ShipmentId { get; private set; }
+    public string ShipmentId { get; set; }
 
     /// <summary>
     /// When the rate was created

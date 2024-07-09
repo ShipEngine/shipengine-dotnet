@@ -104,14 +104,14 @@ public partial class GetRateByIdResponseBody
     /// </summary>
     /// <value>The total shipping cost for the specified comparison_rate_type.</value>
     [JsonPropertyName("requested_comparison_amount")]
-    public MonetaryValue RequestedComparisonAmount { get; private set; }
+    public MonetaryValue RequestedComparisonAmount { get; set; }
 
     /// <summary>
     /// Tariff and additional taxes associated with an international shipment.
     /// </summary>
     /// <value>Tariff and additional taxes associated with an international shipment.</value>
     [JsonPropertyName("tax_amount")]
-    public MonetaryValue TaxAmount { get; private set; }
+    public MonetaryValue TaxAmount { get; set; }
 
     /// <summary>
     /// Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of custom zones that vary depending upon the ship_to and ship_from location 
@@ -143,7 +143,7 @@ public partial class GetRateByIdResponseBody
     /// 5
     /// </example>
     [JsonPropertyName("delivery_days")]
-    public int DeliveryDays { get; private set; }
+    public int DeliveryDays { get; set; }
 
     /// <summary>
     /// Indicates if the rate is guaranteed.
@@ -161,21 +161,21 @@ public partial class GetRateByIdResponseBody
     /// 2018-09-23T00:00Z
     /// </example>
     [JsonPropertyName("estimated_delivery_date")]
-    public DateTime EstimatedDeliveryDate { get; private set; }
+    public DateTime EstimatedDeliveryDate { get; set; }
 
     /// <summary>
     /// The carrier delivery days
     /// </summary>
     /// <value>The carrier delivery days</value>
     [JsonPropertyName("carrier_delivery_days")]
-    public string CarrierDeliveryDays { get; private set; }
+    public string CarrierDeliveryDays { get; set; }
 
     /// <summary>
     /// ship date
     /// </summary>
     /// <value>ship date</value>
     [JsonPropertyName("ship_date")]
-    public DateTime ShipDate { get; private set; }
+    public DateTime ShipDate { get; set; }
 
     /// <summary>
     /// Indicates if the rates been negotiated

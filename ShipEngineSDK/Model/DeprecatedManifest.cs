@@ -82,7 +82,7 @@ public partial class DeprecatedManifest
     /// </example>
     [JsonPropertyName("shipments")]
     [Obsolete]
-    public int Shipments { get; private set; }
+    public int Shipments { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -130,7 +130,7 @@ public partial class DeprecatedManifest
     /// <value>An array of the label ids used in this manifest.</value>
     [JsonPropertyName("label_ids")]
     [Obsolete]
-    public List<string> LabelIds { get; private set; }
+    public List<string> LabelIds { get; set; }
 
 
     /// <summary>

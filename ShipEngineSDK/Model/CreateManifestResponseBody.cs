@@ -153,7 +153,7 @@ public partial class CreateManifestResponseBody
     /// <value>An array of the label ids used in this manifest.</value>
     [JsonPropertyName("label_ids")]
     [Obsolete]
-    public List<string> LabelIds { get; private set; }
+    public List<string> LabelIds { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 

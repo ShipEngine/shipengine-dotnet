@@ -68,7 +68,7 @@ public class RequestOptions(string path)
 
     public string FullPath()
     {
-        var path = PathParameters.Aggregate(_path, (x, y) => x.Replace(y.Key, y.Value));
+        var path = PathParameters.Aggregate(_path, (x, y) => x.Replace("{" + y.Key + "}", y.Value));
         if (!QueryParameters.Any())
         {
             return path;

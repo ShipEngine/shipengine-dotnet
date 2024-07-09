@@ -66,7 +66,7 @@ public partial class TrackEvent
     /// Delivered, In/At Mailbox
     /// </example>
     [JsonPropertyName("description")]
-    public string Description { get; private set; }
+    public string Description { get; set; }
 
     /// <summary>
     /// City locality
@@ -119,14 +119,14 @@ public partial class TrackEvent
     /// Stamps.com
     /// </example>
     [JsonPropertyName("company_name")]
-    public string CompanyName { get; private set; }
+    public string CompanyName { get; set; }
 
     /// <summary>
     /// Signer information
     /// </summary>
     /// <value>Signer information</value>
     [JsonPropertyName("signer")]
-    public string Signer { get; private set; }
+    public string Signer { get; set; }
 
     /// <summary>
     /// Event Code

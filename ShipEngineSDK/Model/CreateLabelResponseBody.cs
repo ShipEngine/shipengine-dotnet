@@ -164,7 +164,7 @@ public partial class CreateLabelResponseBody
     /// </summary>
     /// <value>The total shipping cost for the specified comparison_rate_type. </value>
     [JsonPropertyName("requested_comparison_amount")]
-    public MonetaryValue RequestedComparisonAmount { get; private set; }
+    public MonetaryValue RequestedComparisonAmount { get; set; }
 
     /// <summary>
     /// The tracking number for the package. Tracking number formats vary across carriers.
@@ -356,7 +356,7 @@ public partial class CreateLabelResponseBody
     /// </summary>
     /// <value>Additional information some carriers may provide by which to identify a given label in their system.  </value>
     [JsonPropertyName("alternative_identifiers")]
-    public List<AlternativeIdentifier> AlternativeIdentifiers { get; private set; }
+    public List<AlternativeIdentifier> AlternativeIdentifiers { get; set; }
 
     /// <summary>
     /// The URL to track the package. This URL is provided by the carrier and is unique to the tracking number. 
@@ -366,7 +366,7 @@ public partial class CreateLabelResponseBody
     /// https://www.fedex.com/fedextrack/?action&#x3D;track&amp;trackingnumber&#x3D;1234
     /// </example>
     [JsonPropertyName("tracking_url")]
-    public string TrackingUrl { get; private set; }
+    public string TrackingUrl { get; set; }
 
 
     /// <summary>

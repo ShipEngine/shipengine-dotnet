@@ -168,7 +168,7 @@ public partial class UpdateShipmentResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("modified_at")]
-    public DateTime ModifiedAt { get; private set; }
+    public DateTime ModifiedAt { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address

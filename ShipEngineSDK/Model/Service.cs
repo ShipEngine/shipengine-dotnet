@@ -37,7 +37,7 @@ public partial class Service
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id")]
-    public string CarrierId { get; private set; }
+    public string CarrierId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.
@@ -57,7 +57,7 @@ public partial class Service
     /// usps_media_mail
     /// </example>
     [JsonPropertyName("service_code")]
-    public string ServiceCode { get; private set; }
+    public string ServiceCode { get; set; }
 
     /// <summary>
     /// User friendly service name
@@ -67,28 +67,28 @@ public partial class Service
     /// USPS First Class Mail
     /// </example>
     [JsonPropertyName("name")]
-    public string Name { get; private set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// Supports domestic shipping
     /// </summary>
     /// <value>Supports domestic shipping</value>
     [JsonPropertyName("domestic")]
-    public bool Domestic { get; private set; }
+    public bool Domestic { get; set; }
 
     /// <summary>
     /// Supports international shipping.
     /// </summary>
     /// <value>Supports international shipping.</value>
     [JsonPropertyName("international")]
-    public bool International { get; private set; }
+    public bool International { get; set; }
 
     /// <summary>
     /// Carrier supports multiple packages per shipment
     /// </summary>
     /// <value>Carrier supports multiple packages per shipment</value>
     [JsonPropertyName("is_multi_package_supported")]
-    public bool IsMultiPackageSupported { get; private set; }
+    public bool IsMultiPackageSupported { get; set; }
 
 
     /// <summary>

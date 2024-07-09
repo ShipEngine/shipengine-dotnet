@@ -37,7 +37,7 @@ public partial class Manifest
     /// se-28529731
     /// </example>
     [JsonPropertyName("manifest_id")]
-    public string ManifestId { get; private set; }
+    public string ManifestId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the form
@@ -47,7 +47,7 @@ public partial class Manifest
     /// se-28529731
     /// </example>
     [JsonPropertyName("form_id")]
-    public string FormId { get; private set; }
+    public string FormId { get; set; }
 
     /// <summary>
     /// The date-time that the manifest was created
@@ -57,7 +57,7 @@ public partial class Manifest
     /// 2019-07-12T13:37:39.050Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -67,7 +67,7 @@ public partial class Manifest
     /// 2019-07-12T13:37:39.050Z
     /// </example>
     [JsonPropertyName("ship_date")]
-    public DateTime ShipDate { get; private set; }
+    public DateTime ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest
@@ -77,14 +77,14 @@ public partial class Manifest
     /// 100
     /// </example>
     [JsonPropertyName("shipments")]
-    public int Shipments { get; private set; }
+    public int Shipments { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.
     /// </summary>
     /// <value>An array of the label ids used in this manifest.</value>
     [JsonPropertyName("label_ids")]
-    public List<string> LabelIds { get; private set; }
+    public List<string> LabelIds { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -94,7 +94,7 @@ public partial class Manifest
     /// se-28529731
     /// </example>
     [JsonPropertyName("warehouse_id")]
-    public string WarehouseId { get; private set; }
+    public string WarehouseId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
@@ -104,7 +104,7 @@ public partial class Manifest
     /// 9475711899564878915476
     /// </example>
     [JsonPropertyName("submission_id")]
-    public string SubmissionId { get; private set; }
+    public string SubmissionId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the carrier
@@ -114,13 +114,13 @@ public partial class Manifest
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id")]
-    public string CarrierId { get; private set; }
+    public string CarrierId { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
     /// </summary>
     [JsonPropertyName("manifest_download")]
-    public ManifestDownload ManifestDownload { get; private set; }
+    public ManifestDownload ManifestDownload { get; set; }
 
 
     /// <summary>

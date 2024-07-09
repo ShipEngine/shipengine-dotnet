@@ -67,7 +67,7 @@ public partial class GetPickupByIdResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("cancelled_at")]
-    public DateTime CancelledAt { get; private set; }
+    public DateTime CancelledAt { get; set; }
 
     /// <summary>
     /// The carrier_id associated with the pickup
@@ -135,7 +135,7 @@ public partial class GetPickupByIdResponseBody
     /// </summary>
     /// <value>An array of available pickup windows. Carriers can return multiple times that they will pickup packages. </value>
     [JsonPropertyName("pickup_windows")]
-    public List<PickupWindows> PickupWindows { get; private set; }
+    public List<PickupWindows> PickupWindows { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 

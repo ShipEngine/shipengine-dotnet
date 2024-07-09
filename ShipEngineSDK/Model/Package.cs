@@ -89,7 +89,7 @@ public partial class Package
     /// 1Z932R800392060079
     /// </example>
     [JsonPropertyName("tracking_number")]
-    public string TrackingNumber { get; private set; }
+    public string TrackingNumber { get; set; }
 
     /// <summary>
     /// Gets or Sets LabelMessages
@@ -109,28 +109,28 @@ public partial class Package
     /// </summary>
     /// <value>The label download for the package</value>
     [JsonPropertyName("label_download")]
-    public LabelDownload LabelDownload { get; private set; }
+    public LabelDownload LabelDownload { get; set; }
 
     /// <summary>
     /// The form download for any customs that are needed
     /// </summary>
     /// <value>The form download for any customs that are needed</value>
     [JsonPropertyName("form_download")]
-    public OptionalLink FormDownload { get; private set; }
+    public OptionalLink FormDownload { get; set; }
 
     /// <summary>
     /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.
     /// </summary>
     /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.</value>
     [JsonPropertyName("paperless_download")]
-    public PaperlessDownload PaperlessDownload { get; private set; }
+    public PaperlessDownload PaperlessDownload { get; set; }
 
     /// <summary>
     /// Package sequence
     /// </summary>
     /// <value>Package sequence</value>
     [JsonPropertyName("sequence")]
-    public int Sequence { get; private set; }
+    public int Sequence { get; set; }
 
     /// <summary>
     /// Details about products inside packages (Information provided would be used on custom documentation)

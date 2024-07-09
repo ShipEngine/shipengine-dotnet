@@ -37,7 +37,7 @@ public partial class SchedulePickupRequestBody
     /// pik_3YcKU5zdtJuCqoeNwyqqbW
     /// </example>
     [JsonPropertyName("pickup_id")]
-    public string PickupId { get; private set; }
+    public string PickupId { get; set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
@@ -55,7 +55,7 @@ public partial class SchedulePickupRequestBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the pickup was cancelled in ShipEngine.
@@ -65,7 +65,7 @@ public partial class SchedulePickupRequestBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("cancelled_at")]
-    public DateTime CancelledAt { get; private set; }
+    public DateTime CancelledAt { get; set; }
 
     /// <summary>
     /// The carrier_id associated with the pickup
@@ -75,7 +75,7 @@ public partial class SchedulePickupRequestBody
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id")]
-    public string CarrierId { get; private set; }
+    public string CarrierId { get; set; }
 
     /// <summary>
     /// The carrier confirmation number for the scheduled pickup.
@@ -85,7 +85,7 @@ public partial class SchedulePickupRequestBody
     /// 292513CL4A3
     /// </example>
     [JsonPropertyName("confirmation_number")]
-    public string ConfirmationNumber { get; private set; }
+    public string ConfirmationNumber { get; set; }
 
     /// <summary>
     /// The warehouse_id associated with the pickup
@@ -95,13 +95,13 @@ public partial class SchedulePickupRequestBody
     /// se-28529731
     /// </example>
     [JsonPropertyName("warehouse_id")]
-    public string WarehouseId { get; private set; }
+    public string WarehouseId { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupAddress
     /// </summary>
     [JsonPropertyName("pickup_address")]
-    public Address PickupAddress { get; private set; }
+    public Address PickupAddress { get; set; }
 
     /// <summary>
     /// Gets or Sets ContactDetails
@@ -129,7 +129,7 @@ public partial class SchedulePickupRequestBody
     /// </summary>
     /// <value>An array of available pickup windows. Carriers can return multiple times that they will pickup packages. </value>
     [JsonPropertyName("pickup_windows")]
-    public List<PickupWindows> PickupWindows { get; private set; }
+    public List<PickupWindows> PickupWindows { get; set; }
 
 
     /// <summary>

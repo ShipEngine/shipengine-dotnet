@@ -60,7 +60,7 @@ public partial class ListServicePointsResponseBody
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
-    public List<Error> Errors { get; private set; }
+    public List<Error> Errors { get; set; }
 
 
     /// <summary>

@@ -56,7 +56,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// https://www.fedex.com/fedextrack/?action&#x3D;track&amp;trackingnumber&#x3D;1234
     /// </example>
     [JsonPropertyName("tracking_url")]
-    public string TrackingUrl { get; private set; }
+    public string TrackingUrl { get; set; }
 
     /// <summary>
     /// A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
@@ -86,7 +86,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// Delivered
     /// </example>
     [JsonPropertyName("status_description")]
-    public string StatusDescription { get; private set; }
+    public string StatusDescription { get; set; }
 
     /// <summary>
     /// Carrier status code
@@ -107,7 +107,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// OT
     /// </example>
     [JsonPropertyName("carrier_detail_code")]
-    public string CarrierDetailCode { get; private set; }
+    public string CarrierDetailCode { get; set; }
 
     /// <summary>
     /// carrier status description
@@ -117,7 +117,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// Your item was delivered in or at the mailbox at 9:10 am on March
     /// </example>
     [JsonPropertyName("carrier_status_description")]
-    public string CarrierStatusDescription { get; private set; }
+    public string CarrierStatusDescription { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -155,7 +155,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// </summary>
     /// <value>Exception description</value>
     [JsonPropertyName("exception_description")]
-    public string ExceptionDescription { get; private set; }
+    public string ExceptionDescription { get; set; }
 
     /// <summary>
     /// The events that have occured during the lifetime of this tracking number.

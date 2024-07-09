@@ -152,7 +152,7 @@ public partial class AddressValidatingShipment
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created or last modified.
@@ -162,7 +162,7 @@ public partial class AddressValidatingShipment
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("modified_at")]
-    public DateTime ModifiedAt { get; private set; }
+    public DateTime ModifiedAt { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address
@@ -223,7 +223,7 @@ public partial class AddressValidatingShipment
     /// </summary>
     /// <value>Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. </value>
     [JsonPropertyName("tags")]
-    public List<Tag> Tags { get; private set; }
+    public List<Tag> Tags { get; set; }
 
     /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
@@ -237,7 +237,7 @@ public partial class AddressValidatingShipment
     /// </summary>
     /// <value>The combined weight of all packages in the shipment</value>
     [JsonPropertyName("total_weight")]
-    public Weight TotalWeight { get; private set; }
+    public Weight TotalWeight { get; set; }
 
     /// <summary>
     /// Calculate a rate for this shipment with the requested carrier using a ratecard that differs from the default.  Only supported for UPS and USPS.
