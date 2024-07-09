@@ -14,13 +14,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
 using Xunit;
-
 using ShipEngineSDK.Client;
-using ShipEngineSDK.Api;
 // uncomment below to import models
-//using ShipEngineSDK.Model;
+using ShipEngineSDK.Model;
+using ShipEngineTest;
 
 namespace ShipEngineSDK.Test.Api
 {
@@ -33,11 +31,13 @@ namespace ShipEngineSDK.Test.Api
     /// </remarks>
     public class ShipmentsApiTests : IDisposable
     {
-        private ShipmentsApi instance;
+        private ShipEngine instance;
 
         public ShipmentsApiTests()
         {
-            instance = new ShipmentsApi();
+            var config = new Config("test-key");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            instance = mockShipEngineFixture.ShipEngine;
         }
 
         public void Dispose()

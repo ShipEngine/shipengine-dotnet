@@ -7,12 +7,13 @@
       "csharp": {
         "generatorName": "csharp",
         "output": ".",
-        "inputSpec": "./generation/openapi.yaml",
+        "inputSpec": "./generation/swagger.json",
         "templateDir": "./generation/templates",
         "skipValidateSpec": true,
         "packageName": "ShipEngineSDK",
         "ignoreFileOverride": "./.openapi-generator-ignore",
         "additionalProperties": {
+          "packageVersion": "3.0.0",
           "targetFramework": "netstandard2.0",
           "validatable": false,
           "sourceFolder": "",

@@ -31,8 +31,8 @@ ShipEngineSDK/Client/*.cs
 !ShipEngineSDK/Client/ClientUtils.cs
 
 # We should re-enable these eventually
-README.md
-docs/*.md
+#README.md
+#docs/*.md
 api/**
 .gitignore
 .openapi-generator-ignore
