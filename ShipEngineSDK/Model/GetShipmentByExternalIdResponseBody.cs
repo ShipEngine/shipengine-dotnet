@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get shipment by external id response body
 /// </summary>
-//[DataContract(Name = "get_shipment_by_external_id_response_body")]
 public partial class GetShipmentByExternalIdResponseBody
 {
 

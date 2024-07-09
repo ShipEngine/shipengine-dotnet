@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A rate shipment response body
 /// </summary>
-//[DataContract(Name = "calculate_rates_response_body")]
 public partial class CalculateRatesResponseBody
 {
 

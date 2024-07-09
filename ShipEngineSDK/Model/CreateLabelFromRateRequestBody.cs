@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A purchase label without shipment request body
 /// </summary>
-//[DataContract(Name = "create_label_from_rate_request_body")]
 public partial class CreateLabelFromRateRequestBody
 {
 

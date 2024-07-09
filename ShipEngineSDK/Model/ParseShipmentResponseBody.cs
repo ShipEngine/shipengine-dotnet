@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The parsed shipment, as well as a confidence score and a list of all the shipping entities that were recognized in the text. 
 /// </summary>
-//[DataContract(Name = "parse_shipment_response_body")]
 public partial class ParseShipmentResponseBody
 {
 

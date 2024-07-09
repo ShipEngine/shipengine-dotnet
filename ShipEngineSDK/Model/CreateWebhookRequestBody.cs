@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create webhook request body
 /// </summary>
-//[DataContract(Name = "create_webhook_request_body")]
 public partial class CreateWebhookRequestBody
 {
 

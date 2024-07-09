@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A SEKO account information request body
 /// </summary>
-//[DataContract(Name = "connect_seko_request_body")]
 public partial class ConnectSekoRequestBody
 {
 

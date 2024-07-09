@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A reference to the manifest request
 /// </summary>
-//[DataContract(Name = "manifest_request")]
 public partial class ManifestRequest
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The weight of a package
 /// </summary>
-//[DataContract(Name = "weight")]
 public partial class Weight
 {
 

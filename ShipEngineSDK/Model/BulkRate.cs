@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A bulk rate
 /// </summary>
-//[DataContract(Name = "bulk_rate")]
 public partial class BulkRate
 {
 

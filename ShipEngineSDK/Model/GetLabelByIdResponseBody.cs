@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get label by id response body
 /// </summary>
-//[DataContract(Name = "get_label_by_id_response_body")]
 public partial class GetLabelByIdResponseBody
 {
 

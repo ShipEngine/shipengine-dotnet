@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// This model represents the amount of the dangerous goods..
 /// </summary>
-//[DataContract(Name = "dangerous_amount")]
 public partial class DangerousAmount
 {
 

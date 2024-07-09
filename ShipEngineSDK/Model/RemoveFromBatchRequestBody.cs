@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A modify batch request body
 /// </summary>
-//[DataContract(Name = "remove_from_batch_request_body")]
 public partial class RemoveFromBatchRequestBody
 {
 

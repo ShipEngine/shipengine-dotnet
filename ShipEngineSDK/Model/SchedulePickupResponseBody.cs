@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// SchedulePickupResponseBody
 /// </summary>
-//[DataContract(Name = "schedule_pickup_response_body")]
 public partial class SchedulePickupResponseBody
 {
 

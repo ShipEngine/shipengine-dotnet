@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get account images by id response body
 /// </summary>
-//[DataContract(Name = "get_account_settings_images_response_body")]
 public partial class GetAccountSettingsImagesResponseBody
 {
     //    

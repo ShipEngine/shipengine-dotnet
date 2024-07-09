@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A DHL Express account settings
 /// </summary>
-//[DataContract(Name = "dhl_express_account_settings")]
 public partial class DhlExpressAccountSettings
 {
 

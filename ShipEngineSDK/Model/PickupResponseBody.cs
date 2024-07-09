@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A pickup response body
 /// </summary>
-//[DataContract(Name = "pickup_response_body")]
 public partial class PickupResponseBody
 {
 

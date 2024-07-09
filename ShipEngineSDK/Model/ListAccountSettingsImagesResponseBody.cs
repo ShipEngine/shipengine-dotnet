@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// ListAccountSettingsImagesResponseBody
 /// </summary>
-//[DataContract(Name = "list_account_settings_images_response_body")]
 public partial class ListAccountSettingsImagesResponseBody
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Options for international shipments, such as customs declarations.
 /// </summary>
-//[DataContract(Name = "international_shipment_options")]
 public partial class InternationalShipmentOptions
 {
 

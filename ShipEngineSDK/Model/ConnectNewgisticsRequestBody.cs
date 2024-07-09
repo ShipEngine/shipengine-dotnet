@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Newgistics account information request body
 /// </summary>
-//[DataContract(Name = "connect_newgistics_request_body")]
 public partial class ConnectNewgisticsRequestBody
 {
 

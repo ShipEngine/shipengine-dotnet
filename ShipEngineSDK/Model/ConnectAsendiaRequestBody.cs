@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Asendia account information request body
 /// </summary>
-//[DataContract(Name = "connect_asendia_request_body")]
 public partial class ConnectAsendiaRequestBody
 {
 

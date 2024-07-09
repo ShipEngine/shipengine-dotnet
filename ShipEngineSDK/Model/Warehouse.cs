@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A warehouse
 /// </summary>
-//[DataContract(Name = "warehouse")]
 public partial class Warehouse
 {
 

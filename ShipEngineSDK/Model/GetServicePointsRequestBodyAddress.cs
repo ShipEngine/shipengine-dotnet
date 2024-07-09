@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Structured address to search by.
 /// </summary>
-//[DataContract(Name = "get_service_points_request_body_address")]
 public partial class GetServicePointsRequestBodyAddress
 {
 

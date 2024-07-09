@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The dimensions of a package
 /// </summary>
-//[DataContract(Name = "dimensions")]
 public partial class Dimensions
 {
 

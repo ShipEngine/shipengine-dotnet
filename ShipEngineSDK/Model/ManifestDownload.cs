@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Object containing the href link to download the manifest file
 /// </summary>
-//[DataContract(Name = "manifest_download")]
 public partial class ManifestDownload
 {
 

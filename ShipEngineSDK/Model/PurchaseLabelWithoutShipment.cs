@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A purchase label without shipment resource
 /// </summary>
-//[DataContract(Name = "purchase_label_without_shipment")]
 public partial class PurchaseLabelWithoutShipment
 {
 

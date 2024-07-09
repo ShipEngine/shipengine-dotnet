@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// GetCarriersResponseBody
 /// </summary>
-//[DataContract(Name = "get_carriers_response_body")]
 public partial class GetCarriersResponseBody
 {
 

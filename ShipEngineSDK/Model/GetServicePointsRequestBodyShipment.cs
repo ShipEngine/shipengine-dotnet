@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Shipment information to be used for service point selection
 /// </summary>
-//[DataContract(Name = "get_service_points_request_body_shipment")]
 public partial class GetServicePointsRequestBodyShipment
 {
 

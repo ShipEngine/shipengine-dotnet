@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An array of manifest resources
 /// </summary>
-//[DataContract(Name = "manifests")]
 public partial class Manifests
 {
 

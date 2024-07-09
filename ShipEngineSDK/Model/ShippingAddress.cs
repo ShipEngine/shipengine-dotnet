@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// ShippingAddress
 /// </summary>
-//[DataContract(Name = "shipping_address")]
 public partial class ShippingAddress
 {
 

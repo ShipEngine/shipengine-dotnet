@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A carrier object that represents a provider such as UPS, USPS, DHL, etc that has been tied to the current account. 
 /// </summary>
-//[DataContract(Name = "carrier")]
 public partial class Carrier
 {
 

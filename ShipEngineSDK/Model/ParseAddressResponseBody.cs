@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The parsed address, as well as a confidence score and a list of all the entities that were recognized in the text. 
 /// </summary>
-//[DataContract(Name = "parse_address_response_body")]
 public partial class ParseAddressResponseBody
 {
 

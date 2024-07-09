@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// LabelPackagesInner
 /// </summary>
-//[DataContract(Name = "label_packages_inner")]
 public partial class LabelPackagesInner
 {
 

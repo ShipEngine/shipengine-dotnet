@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get service point by ID response body
 /// </summary>
-//[DataContract(Name = "get_service_point_by_id_response_body")]
 public partial class GetServicePointByIdResponseBody
 {
 

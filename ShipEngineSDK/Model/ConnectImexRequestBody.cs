@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Imex account information request body
 /// </summary>
-//[DataContract(Name = "connect_imex_request_body")]
 public partial class ConnectImexRequestBody
 {
 

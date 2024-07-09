@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create and validate shipment resource
 /// </summary>
-//[DataContract(Name = "create_and_validate_shipment")]
 public partial class CreateAndValidateShipment
 {
 

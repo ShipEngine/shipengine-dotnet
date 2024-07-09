@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An update package type request body
 /// </summary>
-//[DataContract(Name = "update_package_type_request_body")]
 public partial class UpdatePackageTypeRequestBody
 {
 

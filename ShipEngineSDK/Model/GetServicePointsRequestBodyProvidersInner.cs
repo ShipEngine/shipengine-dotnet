@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// GetServicePointsRequestBodyProvidersInner
 /// </summary>
-//[DataContract(Name = "get_service_points_request_body_providers_inner")]
 public partial class GetServicePointsRequestBodyProvidersInner
 {
 

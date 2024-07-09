@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list label response body
 /// </summary>
-//[DataContract(Name = "list_labels_response_body")]
 public partial class ListLabelsResponseBody
 {
 

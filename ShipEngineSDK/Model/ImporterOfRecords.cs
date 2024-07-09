@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// importer of records address, anywhere in the world. 
 /// </summary>
-//[DataContract(Name = "importer_of_records")]
 public partial class ImporterOfRecords
 {
 

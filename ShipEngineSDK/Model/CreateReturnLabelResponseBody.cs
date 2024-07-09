@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create return label response body
 /// </summary>
-//[DataContract(Name = "create_return_label_response_body")]
 public partial class CreateReturnLabelResponseBody
 {
 

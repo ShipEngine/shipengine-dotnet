@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Any residential or business mailing address, anywhere in the world.  &gt; **Note:** Either &#x60;name&#x60; or &#x60;company_name&#x60; must be set. Both may be specified, if relevant. 
 /// </summary>
-//[DataContract(Name = "address")]
 public partial class Address
 {
 

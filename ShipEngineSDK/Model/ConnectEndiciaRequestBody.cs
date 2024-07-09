@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Endicia account information request body
 /// </summary>
-//[DataContract(Name = "connect_endicia_request_body")]
 public partial class ConnectEndiciaRequestBody
 {
 

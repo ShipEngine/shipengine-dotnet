@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Hours of operation
 /// </summary>
-//[DataContract(Name = "list_service_points_response_body_service_points_inner_hours_of_operation")]
 public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOperation
 {
 

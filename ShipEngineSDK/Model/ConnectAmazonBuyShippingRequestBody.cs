@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Amazon account information request body
 /// </summary>
-//[DataContract(Name = "connect_amazon_buy_shipping_request_body")]
 public partial class ConnectAmazonBuyShippingRequestBody
 {
 

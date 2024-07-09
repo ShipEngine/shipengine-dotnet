@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create shipsurance connection request body
 /// </summary>
-//[DataContract(Name = "connect_insurer_request_body")]
 public partial class ConnectInsurerRequestBody
 {
 

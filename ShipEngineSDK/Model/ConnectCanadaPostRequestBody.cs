@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Canada Post account information request body
 /// </summary>
-//[DataContract(Name = "connect_canada_post_request_body")]
 public partial class ConnectCanadaPostRequestBody
 {
 

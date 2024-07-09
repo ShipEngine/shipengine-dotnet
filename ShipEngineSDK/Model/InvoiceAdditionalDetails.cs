@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The additional information to put on commercial invoice  
 /// </summary>
-//[DataContract(Name = "invoice_additional_details")]
 public partial class InvoiceAdditionalDetails
 {
 

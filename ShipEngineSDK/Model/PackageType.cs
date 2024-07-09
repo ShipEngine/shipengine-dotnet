@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A package type that a carrier supports for shipment.
 /// </summary>
-//[DataContract(Name = "package_type")]
 public partial class PackageType
 {
 

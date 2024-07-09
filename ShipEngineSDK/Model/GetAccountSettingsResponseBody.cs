@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// GetAccountSettingsResponseBody
 /// </summary>
-//[DataContract(Name = "get_account_settings_response_body")]
 public partial class GetAccountSettingsResponseBody
 {
 

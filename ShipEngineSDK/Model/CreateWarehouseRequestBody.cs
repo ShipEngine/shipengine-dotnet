@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create warehouse request body
 /// </summary>
-//[DataContract(Name = "create_warehouse_request_body")]
 public partial class CreateWarehouseRequestBody
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list service points response body
 /// </summary>
-//[DataContract(Name = "list_service_points_response_body")]
 public partial class ListServicePointsResponseBody
 {
 

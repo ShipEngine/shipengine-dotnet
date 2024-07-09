@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Ontrac account information request body
 /// </summary>
-//[DataContract(Name = "connect_ontrac_request_body")]
 public partial class ConnectOntracRequestBody
 {
 

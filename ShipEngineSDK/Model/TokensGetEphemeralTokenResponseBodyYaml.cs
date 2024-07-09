@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// TokensGetEphemeralTokenResponseBodyYaml
 /// </summary>
-//[DataContract(Name = "tokens_get_ephemeral_token_response_body.yaml")]
 public partial class TokensGetEphemeralTokenResponseBodyYaml
 {
 

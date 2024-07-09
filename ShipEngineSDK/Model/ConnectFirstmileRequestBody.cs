@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A First Mile account information request body
 /// </summary>
-//[DataContract(Name = "connect_firstmile_request_body")]
 public partial class ConnectFirstmileRequestBody
 {
 

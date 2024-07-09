@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The error structure that gets returned with almost all failed API calls 
 /// </summary>
-//[DataContract(Name = "error")]
 public partial class Error
 {
 

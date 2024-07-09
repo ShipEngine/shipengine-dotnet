@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The information necessary to schedule a package pickup 
 /// </summary>
-//[DataContract(Name = "pickup")]
 public partial class Pickup
 {
 

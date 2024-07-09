@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// PaymentAmount
 /// </summary>
-//[DataContract(Name = "payment_amount")]
 public partial class PaymentAmount
 {
 

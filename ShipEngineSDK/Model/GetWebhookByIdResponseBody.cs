@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get webhook id response body
 /// </summary>
-//[DataContract(Name = "get_webhook_by_id_response_body")]
 public partial class GetWebhookByIdResponseBody
 {
 

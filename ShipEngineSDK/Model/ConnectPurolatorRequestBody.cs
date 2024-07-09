@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Purolator account information request body
 /// </summary>
-//[DataContract(Name = "connect_purolator_request_body")]
 public partial class ConnectPurolatorRequestBody
 {
 

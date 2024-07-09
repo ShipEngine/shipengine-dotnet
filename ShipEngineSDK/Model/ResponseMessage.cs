@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A response message that displays when additional info is needed for an address validation request.
 /// </summary>
-//[DataContract(Name = "response_message")]
 public partial class ResponseMessage
 {
 

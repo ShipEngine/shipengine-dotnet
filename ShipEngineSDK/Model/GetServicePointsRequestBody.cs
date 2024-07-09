@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get service points request body. Caller must provide exactly one of address_query, address, or lat / long pair.
 /// </summary>
-//[DataContract(Name = "get_service_points_request_body")]
 public partial class GetServicePointsRequestBody
 {
 

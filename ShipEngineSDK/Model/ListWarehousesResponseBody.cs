@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A warehouse list response body
 /// </summary>
-//[DataContract(Name = "list_warehouses_response_body")]
 public partial class ListWarehousesResponseBody
 {
 

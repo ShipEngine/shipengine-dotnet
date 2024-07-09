@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A DPD account information request body
 /// </summary>
-//[DataContract(Name = "connect_dpd_request_body")]
 public partial class ConnectDpdRequestBody
 {
 

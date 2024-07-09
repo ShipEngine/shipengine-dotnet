@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight. 
 /// </summary>
-//[DataContract(Name = "partial_shipment")]
 public partial class PartialShipment
 {
 

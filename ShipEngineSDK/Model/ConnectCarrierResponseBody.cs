@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A connect account response body
 /// </summary>
-//[DataContract(Name = "connect_carrier_response_body")]
 public partial class ConnectCarrierResponseBody
 {
 

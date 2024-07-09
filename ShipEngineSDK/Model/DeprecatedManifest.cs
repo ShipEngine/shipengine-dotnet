@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Deprecated manifest resource
 /// </summary>
-//[DataContract(Name = "deprecated_manifest")]
 public partial class DeprecatedManifest
 {
 

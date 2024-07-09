@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// UPS account settings
 /// </summary>
-//[DataContract(Name = "ups_account_settings")]
 public partial class UpsAccountSettings
 {
 

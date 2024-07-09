@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Reference to the various downloadable file formats for the generated label 
 /// </summary>
-//[DataContract(Name = "label_download")]
 public partial class LabelDownload
 {
 

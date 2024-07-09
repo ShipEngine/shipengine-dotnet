@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A ShipEngine account settings response body
 /// </summary>
-//[DataContract(Name = "account_settings")]
 public partial class AccountSettings
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An update warehouse settings request body
 /// </summary>
-//[DataContract(Name = "update_warehouse_settings_request_body")]
 public partial class UpdateWarehouseSettingsRequestBody
 {
 

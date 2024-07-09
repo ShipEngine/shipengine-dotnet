@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An update webhook request body
 /// </summary>
-//[DataContract(Name = "update_webhook_request_body")]
 public partial class UpdateWebhookRequestBody
 {
 

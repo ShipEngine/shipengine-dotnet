@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Defer payment until package is delivered, instead of when it is ordered.
 /// </summary>
-//[DataContract(Name = "collect_on_delivery")]
 public partial class CollectOnDelivery
 {
 

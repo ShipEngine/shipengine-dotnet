@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// GetPickupByIdResponseBody
 /// </summary>
-//[DataContract(Name = "get_pickup_by_id_response_body")]
 public partial class GetPickupByIdResponseBody
 {
 

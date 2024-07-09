@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A batch response error
 /// </summary>
-//[DataContract(Name = "batch_response_error")]
 public partial class BatchResponseError
 {
 

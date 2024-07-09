@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get insurance balance response body
 /// </summary>
-//[DataContract(Name = "get_insurance_balance_response_body")]
 public partial class GetInsuranceBalanceResponseBody
 {
 

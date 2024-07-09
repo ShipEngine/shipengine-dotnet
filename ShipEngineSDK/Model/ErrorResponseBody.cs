@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An error response body
 /// </summary>
-//[DataContract(Name = "error_response_body")]
 public partial class ErrorResponseBody
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Many ShipEngine endpoints return a paged list of items.  In addition to the returned items, these responses also include information about the total number of items, the number of pages of results, and URLs of other pages of results. 
 /// </summary>
-//[DataContract(Name = "paged_list_response_body")]
 public partial class PagedListResponseBody
 {
 

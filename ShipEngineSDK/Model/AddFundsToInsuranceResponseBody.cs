@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Add funds to insurance response body
 /// </summary>
-//[DataContract(Name = "add_funds_to_insurance_response_body")]
 public partial class AddFundsToInsuranceResponseBody
 {
 

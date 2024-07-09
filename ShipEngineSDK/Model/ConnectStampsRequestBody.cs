@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Stamps account information request body
 /// </summary>
-//[DataContract(Name = "connect_stamps_request_body")]
 public partial class ConnectStampsRequestBody
 {
 

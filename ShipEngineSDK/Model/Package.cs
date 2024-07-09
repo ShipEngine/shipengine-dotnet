@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A package associated with a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/) 
 /// </summary>
-//[DataContract(Name = "package")]
 public partial class Package
 {
 

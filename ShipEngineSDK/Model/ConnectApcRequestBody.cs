@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An APC account information request body
 /// </summary>
-//[DataContract(Name = "connect_apc_request_body")]
 public partial class ConnectApcRequestBody
 {
 

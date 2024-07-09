@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Advanced options that are specific to the carrier
 /// </summary>
-//[DataContract(Name = "carrier_advanced_option")]
 public partial class CarrierAdvancedOption
 {
 

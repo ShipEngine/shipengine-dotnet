@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The customs declaration for a single item in the shipment.
 /// </summary>
-//[DataContract(Name = "products")]
 public partial class Products
 {
 

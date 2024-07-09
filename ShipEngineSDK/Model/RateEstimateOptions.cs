@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// RateEstimateOptions
 /// </summary>
-//[DataContract(Name = "rate_estimate_options")]
 public partial class RateEstimateOptions
 {
 

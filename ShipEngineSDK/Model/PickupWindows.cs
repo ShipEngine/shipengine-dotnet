@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// PickupWindows
 /// </summary>
-//[DataContract(Name = "pickup_windows")]
 public partial class PickupWindows
 {
 

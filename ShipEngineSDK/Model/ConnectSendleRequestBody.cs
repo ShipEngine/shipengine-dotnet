@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Sendle account information request body
 /// </summary>
-//[DataContract(Name = "connect_sendle_request_body")]
 public partial class ConnectSendleRequestBody
 {
 

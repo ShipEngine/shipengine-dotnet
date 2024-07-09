@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight.  &gt; **Note:** Either &#x60;ship_from&#x60; or &#x60;warehouse_id&#x60; must be set. 
 /// </summary>
-//[DataContract(Name = "shipment")]
 public partial class Shipment
 {
 

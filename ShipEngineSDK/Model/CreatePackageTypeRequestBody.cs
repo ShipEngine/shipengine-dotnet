@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create package type request body
 /// </summary>
-//[DataContract(Name = "create_package_type_request_body")]
 public partial class CreatePackageTypeRequestBody
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A monetary value, such as the price of a shipping label, the insured value of a package, or an account balance. 
 /// </summary>
-//[DataContract(Name = "monetary_value")]
 public partial class MonetaryValue
 {
 

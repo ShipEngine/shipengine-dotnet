@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Lasership account information request body
 /// </summary>
-//[DataContract(Name = "connect_lasership_request_body")]
 public partial class ConnectLasershipRequestBody
 {
 

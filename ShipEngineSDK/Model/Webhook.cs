@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A webhook
 /// </summary>
-//[DataContract(Name = "webhook")]
 public partial class Webhook
 {
 

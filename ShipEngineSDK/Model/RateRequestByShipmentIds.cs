@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// RateRequestByShipmentIds
 /// </summary>
-//[DataContract(Name = "rate_request_by_shipment_ids")]
 public partial class RateRequestByShipmentIds
 {
 

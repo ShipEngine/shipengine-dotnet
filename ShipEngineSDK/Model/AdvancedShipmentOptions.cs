@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Advanced shipment options
 /// </summary>
-//[DataContract(Name = "advanced_shipment_options")]
 public partial class AdvancedShipmentOptions
 {
 

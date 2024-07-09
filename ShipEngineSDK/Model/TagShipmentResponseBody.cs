@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Get shipment tags response body
 /// </summary>
-//[DataContract(Name = "tag_shipment_response_body")]
 public partial class TagShipmentResponseBody
 {
 

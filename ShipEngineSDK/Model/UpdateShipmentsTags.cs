@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// UpdateShipmentsTags
 /// </summary>
-//[DataContract(Name = "update_shipments_tags")]
 public partial class UpdateShipmentsTags
 {
 

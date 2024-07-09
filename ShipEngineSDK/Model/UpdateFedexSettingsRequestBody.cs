@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An update Fedex settings request body
 /// </summary>
-//[DataContract(Name = "update_fedex_settings_request_body")]
 public partial class UpdateFedexSettingsRequestBody
 {
 

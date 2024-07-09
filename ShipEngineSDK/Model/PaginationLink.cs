@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Helpful links to other pages of results
 /// </summary>
-//[DataContract(Name = "pagination_link")]
 public partial class PaginationLink
 {
 

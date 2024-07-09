@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An address validating shipment
 /// </summary>
-//[DataContract(Name = "address_validating_shipment")]
 public partial class AddressValidatingShipment
 {
 

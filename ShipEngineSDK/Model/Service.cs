@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A service offered by the carrier
 /// </summary>
-//[DataContract(Name = "service")]
 public partial class Service
 {
 

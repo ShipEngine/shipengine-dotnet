@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A track event
 /// </summary>
-//[DataContract(Name = "track_event")]
 public partial class TrackEvent
 {
 

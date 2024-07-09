@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Australia Post account information request body
 /// </summary>
-//[DataContract(Name = "connect_australia_post_request_body")]
 public partial class ConnectAustraliaPostRequestBody
 {
 

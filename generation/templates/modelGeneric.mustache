@@ -7,7 +7,6 @@
 {{#vendorExtensions.x-com-visible}}
 [ComVisible({{{vendorExtensions.x-com-visible}}})]
 {{/vendorExtensions.x-com-visible}}
-//[DataContract(Name = "{{{name}}}")]
 {{^useUnityWebRequest}}
 {{#discriminator}}
 [JsonConverter(typeof(JsonSubtypes), "{{{discriminatorName}}}")]

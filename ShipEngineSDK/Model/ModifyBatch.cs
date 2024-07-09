@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A modify batch object
 /// </summary>
-//[DataContract(Name = "modify_batch")]
 public partial class ModifyBatch
 {
 

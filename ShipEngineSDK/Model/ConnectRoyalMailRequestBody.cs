@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Royal Mail account information request body
 /// </summary>
-//[DataContract(Name = "connect_royal_mail_request_body")]
 public partial class ConnectRoyalMailRequestBody
 {
 

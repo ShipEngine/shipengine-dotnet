@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Access Worldwide account information request body
 /// </summary>
-//[DataContract(Name = "connect_access_worldwide_request_body")]
 public partial class ConnectAccessWorldwideRequestBody
 {
 

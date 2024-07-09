@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get tracking log from label response body
 /// </summary>
-//[DataContract(Name = "get_tracking_log_from_label_response_body")]
 public partial class GetTrackingLogFromLabelResponseBody
 {
 

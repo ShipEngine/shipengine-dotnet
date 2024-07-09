@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A link to a related resource
 /// </summary>
-//[DataContract(Name = "link")]
 public partial class Link
 {
 

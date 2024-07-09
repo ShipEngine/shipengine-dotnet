@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get manifest by id response body
 /// </summary>
-//[DataContract(Name = "get_manifest_by_id_response_body")]
 public partial class GetManifestByIdResponseBody
 {
 

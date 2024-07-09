@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create shipments request body
 /// </summary>
-//[DataContract(Name = "create_shipments_request_body")]
 public partial class CreateShipmentsRequestBody
 {
 

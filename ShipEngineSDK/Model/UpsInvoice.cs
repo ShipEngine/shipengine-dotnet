@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// UPS invoice
 /// </summary>
-//[DataContract(Name = "ups_invoice")]
 public partial class UpsInvoice
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A ShipEngine account images body
 /// </summary>
-//[DataContract(Name = "account_settings_images")]
 public partial class AccountSettingsImages
 {
     //    

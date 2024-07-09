@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// ListServicePointsResponseBodyServicePointsInner
 /// </summary>
-//[DataContract(Name = "list_service_points_response_body_service_points_inner")]
 public partial class ListServicePointsResponseBodyServicePointsInner
 {
     //    

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A tracking information resource
 /// </summary>
-//[DataContract(Name = "tracking_information")]
 public partial class TrackingInformation
 {
 

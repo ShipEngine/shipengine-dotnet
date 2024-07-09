@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Response body for creating tags
 /// </summary>
-//[DataContract(Name = "create_tag_response_body")]
 public partial class CreateTagResponseBody
 {
 

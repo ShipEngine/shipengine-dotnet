@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// ValidateShipmentFields
 /// </summary>
-//[DataContract(Name = "validate_shipment_fields")]
 public partial class ValidateShipmentFields
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A delete scheduled pickup response body
 /// </summary>
-//[DataContract(Name = "delete_scheduled_pickup_response_body")]
 public partial class DeleteScheduledPickupResponseBody
 {
 

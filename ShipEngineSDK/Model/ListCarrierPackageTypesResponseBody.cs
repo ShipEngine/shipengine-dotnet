@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list carrier package types response body
 /// </summary>
-//[DataContract(Name = "list_carrier_package_types_response_body")]
 public partial class ListCarrierPackageTypesResponseBody
 {
 

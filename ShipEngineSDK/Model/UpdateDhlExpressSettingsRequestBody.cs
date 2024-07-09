@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An update dhl express settings request body
 /// </summary>
-//[DataContract(Name = "update_dhl_express_settings_request_body")]
 public partial class UpdateDhlExpressSettingsRequestBody
 {
 

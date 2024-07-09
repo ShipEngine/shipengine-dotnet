@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The current balance of the requested carrier account
 /// </summary>
-//[DataContract(Name = "add_funds_to_carrier_response_body")]
 public partial class AddFundsToCarrierResponseBody
 {
 

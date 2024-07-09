@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get warehouse by id response body
 /// </summary>
-//[DataContract(Name = "get_warehouse_by_id_response_body")]
 public partial class GetWarehouseByIdResponseBody
 {
 

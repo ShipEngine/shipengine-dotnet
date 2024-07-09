@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// PartialShippingAddressToGeolocationInner
 /// </summary>
-//[DataContract(Name = "partial_shipping_address_to_geolocation_inner")]
 public partial class PartialShippingAddressToGeolocationInner
 {
     //    

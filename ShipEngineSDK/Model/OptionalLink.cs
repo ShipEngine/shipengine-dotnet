@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A link to a related resource, or an empty object if there is no resource to link to
 /// </summary>
-//[DataContract(Name = "optional_link")]
 public partial class OptionalLink
 {
 

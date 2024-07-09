@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Optional header to be specified in webhook
 /// </summary>
-//[DataContract(Name = "webhook_header")]
 public partial class WebhookHeader
 {
 

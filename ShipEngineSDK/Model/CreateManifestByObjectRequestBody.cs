@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create manifest request body
 /// </summary>
-//[DataContract(Name = "create_manifest_by_object_request_body")]
 public partial class CreateManifestByObjectRequestBody
 {
 

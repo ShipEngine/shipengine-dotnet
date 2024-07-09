@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Response body from a successful GET /tags API call
 /// </summary>
-//[DataContract(Name = "list_tags_response_body")]
 public partial class ListTagsResponseBody
 {
 

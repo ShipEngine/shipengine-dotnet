@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// DeletePickupByIdResponseBody
 /// </summary>
-//[DataContract(Name = "delete_pickup_by_id_response_body")]
 public partial class DeletePickupByIdResponseBody
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The desired time range for the package pickup.
 /// </summary>
-//[DataContract(Name = "pickup_window")]
 public partial class PickupWindow
 {
 

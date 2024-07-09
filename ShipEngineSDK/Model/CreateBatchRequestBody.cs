@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create batch request body
 /// </summary>
-//[DataContract(Name = "create_batch_request_body")]
 public partial class CreateBatchRequestBody
 {
 

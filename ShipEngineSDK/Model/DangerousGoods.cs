@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Dangerous goods attribute associated with the product 
 /// </summary>
-//[DataContract(Name = "dangerous_goods")]
 public partial class DangerousGoods
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A DHL express account information request body
 /// </summary>
-//[DataContract(Name = "connect_dhl_express_request_body")]
 public partial class ConnectDhlExpressRequestBody
 {
 

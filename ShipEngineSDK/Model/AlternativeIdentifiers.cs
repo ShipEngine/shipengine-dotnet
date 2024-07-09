@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// AlternativeIdentifiers
 /// </summary>
-//[DataContract(Name = "alternative_identifiers")]
 public partial class AlternativeIdentifiers
 {
 

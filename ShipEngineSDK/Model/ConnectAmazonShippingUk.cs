@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An Amazon Shipping UK account information request body
 /// </summary>
-//[DataContract(Name = "connect_amazon_shipping_uk")]
 public partial class ConnectAmazonShippingUk
 {
 

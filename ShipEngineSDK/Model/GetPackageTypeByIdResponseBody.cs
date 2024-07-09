@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get package type by id response body
 /// </summary>
-//[DataContract(Name = "get_package_type_by_id_response_body")]
 public partial class GetPackageTypeByIdResponseBody
 {
 

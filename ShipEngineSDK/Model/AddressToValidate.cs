@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Any residential or business mailing address, anywhere in the world. 
 /// </summary>
-//[DataContract(Name = "address_to_validate")]
 public partial class AddressToValidate
 {
 

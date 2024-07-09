@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A UPS settings response body
 /// </summary>
-//[DataContract(Name = "ups_settings_response_body")]
 public partial class UpsSettingsResponseBody
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The information used to process the batch
 /// </summary>
-//[DataContract(Name = "create_and_process_batch_request_body_process_labels")]
 public partial class CreateAndProcessBatchRequestBodyProcessLabels
 {
 

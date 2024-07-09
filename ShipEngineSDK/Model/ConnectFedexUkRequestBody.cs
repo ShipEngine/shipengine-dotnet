@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A Fedex UK account information request body
 /// </summary>
-//[DataContract(Name = "connect_fedex_uk_request_body")]
 public partial class ConnectFedexUkRequestBody
 {
 

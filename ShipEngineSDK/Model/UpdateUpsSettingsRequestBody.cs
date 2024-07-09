@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An update UPS settings request body
 /// </summary>
-//[DataContract(Name = "update_ups_settings_request_body")]
 public partial class UpdateUpsSettingsRequestBody
 {
 

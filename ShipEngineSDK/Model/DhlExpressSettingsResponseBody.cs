@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A DHL Express response body
 /// </summary>
-//[DataContract(Name = "dhl_express_settings_response_body")]
 public partial class DhlExpressSettingsResponseBody
 {
 

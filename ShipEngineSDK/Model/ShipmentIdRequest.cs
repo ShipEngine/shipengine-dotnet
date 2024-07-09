@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// ShipmentIdRequest
 /// </summary>
-//[DataContract(Name = "shipment_id_request")]
 public partial class ShipmentIdRequest
 {
 

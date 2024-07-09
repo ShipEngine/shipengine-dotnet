@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// ContactDetails
 /// </summary>
-//[DataContract(Name = "contact_details")]
 public partial class ContactDetails
 {
 

@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Additional information some carriers may provide by which to identify a given label in their system.  
 /// </summary>
-//[DataContract(Name = "alternative_identifier")]
 public partial class AlternativeIdentifier
 {
 

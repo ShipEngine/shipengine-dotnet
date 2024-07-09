@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A void label response body
 /// </summary>
-//[DataContract(Name = "void_label_response_body")]
 public partial class VoidLabelResponseBody
 {
 

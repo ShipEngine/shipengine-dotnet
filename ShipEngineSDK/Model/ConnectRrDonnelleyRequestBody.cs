@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A RR Donnelley account information request body
 /// </summary>
-//[DataContract(Name = "connect_rr_donnelley_request_body")]
 public partial class ConnectRrDonnelleyRequestBody
 {
 

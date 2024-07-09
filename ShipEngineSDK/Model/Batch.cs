@@ -25,7 +25,6 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Batches are an advanced feature of ShipEngine designed for users who need to generate hundreds or thousands of labels at a time. 
 /// </summary>
-//[DataContract(Name = "batch")]
 public partial class Batch
 {
 
