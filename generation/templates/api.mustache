@@ -37,7 +37,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     /// <summary>
     /// {{summary}} {{notes}}
@@ -52,7 +52,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig, {{#allParams}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     /// <summary>
     /// {{summary}} {{notes}}
@@ -67,7 +67,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig, {{#allParams}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     {{/operation}}
 }
@@ -91,7 +91,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{#isEnum}}string{{^required}}?{{/required}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
+    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         return {{operationId}}(_client, _config, {{#allParams}}{{paramName}}, {{/allParams}}cancellationToken);
     }
@@ -109,7 +109,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig, {{#allParams}}{{#isEnum}}string{{^required}}?{{/required}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
+    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await {{operationId}}(methodClient, methodConfig, {{#allParams}}{{paramName}}, {{/allParams}}cancellationToken);
@@ -128,10 +128,8 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig, {{#allParams}}{{#isEnum}}string{{^required}}?{{/required}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
+    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, Config methodConfig, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
-        {{#allParams}}{{#isEnum}}{{^required}}{{#optionalMethodArgument}}{{paramName}} ??= "{{allowableValues.values.0}}";
-        {{/optionalMethodArgument}}{{/required}}{{/isEnum}}{{/allParams}}
         {{#allParams}}
         {{#required}}
         {{^vendorExtensions.x-csharp-value-type}}

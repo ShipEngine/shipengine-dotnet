@@ -198,7 +198,7 @@ public partial interface IShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    Task<ListShipmentsResponseBody> ListShipments(string shipmentStatus, string batchId, string tag, DateTime? createdAtStart, DateTime? createdAtEnd, DateTime? modifiedAtStart, DateTime? modifiedAtEnd, int? page, int? pageSize, string salesOrderId, string sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListShipmentsResponseBody> ListShipments(ShipmentStatus? shipmentStatus, string batchId, string tag, DateTime? createdAtStart, DateTime? createdAtEnd, DateTime? modifiedAtStart, DateTime? modifiedAtEnd, int? page, int? pageSize, string salesOrderId, SortDir? sortDir, ShipmentsSortBy? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Shipments Get list of Shipments
@@ -219,7 +219,7 @@ public partial interface IShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    Task<ListShipmentsResponseBody> ListShipments(Config methodConfig, string shipmentStatus, string batchId, string tag, DateTime? createdAtStart, DateTime? createdAtEnd, DateTime? modifiedAtStart, DateTime? modifiedAtEnd, int? page, int? pageSize, string salesOrderId, string sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListShipmentsResponseBody> ListShipments(Config methodConfig, ShipmentStatus? shipmentStatus, string batchId, string tag, DateTime? createdAtStart, DateTime? createdAtEnd, DateTime? modifiedAtStart, DateTime? modifiedAtEnd, int? page, int? pageSize, string salesOrderId, SortDir? sortDir, ShipmentsSortBy? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Shipments Get list of Shipments
@@ -240,7 +240,7 @@ public partial interface IShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, Config methodConfig, string shipmentStatus, string batchId, string tag, DateTime? createdAtStart, DateTime? createdAtEnd, DateTime? modifiedAtStart, DateTime? modifiedAtEnd, int? page, int? pageSize, string salesOrderId, string sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, Config methodConfig, ShipmentStatus? shipmentStatus, string batchId, string tag, DateTime? createdAtStart, DateTime? createdAtEnd, DateTime? modifiedAtStart, DateTime? modifiedAtEnd, int? page, int? pageSize, string salesOrderId, SortDir? sortDir, ShipmentsSortBy? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parse shipping info The shipment-recognition API makes it easy for you to extract shipping data from unstructured text, including people&#39;s names, addresses, package weights and dimensions, insurance and delivery requirements, and more.  Data often enters your system as unstructured text (for example: emails, SMS messages, support tickets, or other documents). ShipEngine&#39;s shipment-recognition API helps you extract meaningful, structured data from this unstructured text. The parsed shipment data is returned in the same structure that&#39;s used for other ShipEngine APIs, so you can easily use the parsed data to create a shipping label.  &gt; **Note:** Shipment recognition is currently supported for the United States, Canada, Australia, New Zealand, the United Kingdom, and Ireland. 
@@ -475,7 +475,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> CancelShipments(HttpClient methodClient, Config methodConfig, string shipmentId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -531,7 +530,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateShipmentsResponseBody)</returns>
     public async Task<CreateShipmentsResponseBody> CreateShipments(HttpClient methodClient, Config methodConfig, CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'createShipmentsRequestBody' is set
         if (createShipmentsRequestBody == null)
         {
@@ -587,7 +585,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetShipmentByExternalIdResponseBody)</returns>
     public async Task<GetShipmentByExternalIdResponseBody> GetShipmentByExternalId(HttpClient methodClient, Config methodConfig, string externalShipmentId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'externalShipmentId' is set
         if (externalShipmentId == null)
         {
@@ -643,7 +640,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetShipmentByIdResponseBody)</returns>
     public async Task<GetShipmentByIdResponseBody> GetShipmentById(HttpClient methodClient, Config methodConfig, string shipmentId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -702,7 +698,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
     public async Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, Config methodConfig, string shipmentId, DateTime? createdAtStart = default, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -744,7 +739,7 @@ public partial class ShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    public Task<ListShipmentsResponseBody> ListShipments(string? shipmentStatus = default, string batchId = default, string tag = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, DateTime? modifiedAtStart = default, DateTime? modifiedAtEnd = default, int? page = default, int? pageSize = default, string salesOrderId = default, string? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public Task<ListShipmentsResponseBody> ListShipments(ShipmentStatus? shipmentStatus = default, string batchId = default, string tag = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, DateTime? modifiedAtStart = default, DateTime? modifiedAtEnd = default, int? page = default, int? pageSize = default, string salesOrderId = default, SortDir? sortDir = default, ShipmentsSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
         return ListShipments(_client, _config, shipmentStatus, batchId, tag, createdAtStart, createdAtEnd, modifiedAtStart, modifiedAtEnd, page, pageSize, salesOrderId, sortDir, sortBy, cancellationToken);
     }
@@ -768,7 +763,7 @@ public partial class ShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    public async Task<ListShipmentsResponseBody> ListShipments(Config methodConfig, string? shipmentStatus = default, string batchId = default, string tag = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, DateTime? modifiedAtStart = default, DateTime? modifiedAtEnd = default, int? page = default, int? pageSize = default, string salesOrderId = default, string? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListShipmentsResponseBody> ListShipments(Config methodConfig, ShipmentStatus? shipmentStatus = default, string batchId = default, string tag = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, DateTime? modifiedAtStart = default, DateTime? modifiedAtEnd = default, int? page = default, int? pageSize = default, string salesOrderId = default, SortDir? sortDir = default, ShipmentsSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await ListShipments(methodClient, methodConfig, shipmentStatus, batchId, tag, createdAtStart, createdAtEnd, modifiedAtStart, modifiedAtEnd, page, pageSize, salesOrderId, sortDir, sortBy, cancellationToken);
@@ -793,12 +788,8 @@ public partial class ShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    public async Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, Config methodConfig, string? shipmentStatus = default, string batchId = default, string tag = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, DateTime? modifiedAtStart = default, DateTime? modifiedAtEnd = default, int? page = default, int? pageSize = default, string salesOrderId = default, string? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, Config methodConfig, ShipmentStatus? shipmentStatus = default, string batchId = default, string tag = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, DateTime? modifiedAtStart = default, DateTime? modifiedAtEnd = default, int? page = default, int? pageSize = default, string salesOrderId = default, SortDir? sortDir = default, ShipmentsSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
-        shipmentStatus ??= "pending";
-        sortDir ??= "asc";
-        sortBy ??= "modified_at";
-
 
         RequestOptions requestOptions = new("/v1/shipments");
 
@@ -895,7 +886,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ParseShipmentResponseBody)</returns>
     public async Task<ParseShipmentResponseBody> ParseShipment(HttpClient methodClient, Config methodConfig, ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'parseShipmentRequestBody' is set
         if (parseShipmentRequestBody == null)
         {
@@ -951,7 +941,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
     public async Task<TagShipmentResponseBody> ShipmentsListTags(HttpClient methodClient, Config methodConfig, string shipmentId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -1007,7 +996,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse</returns>
     public async Task<Object> ShipmentsUpdateTags(HttpClient methodClient, Config methodConfig, UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'updateShipmentsTagsRequestBody' is set
         if (updateShipmentsTagsRequestBody == null)
         {
@@ -1066,7 +1054,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
     public async Task<TagShipmentResponseBody> TagShipment(HttpClient methodClient, Config methodConfig, string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -1132,7 +1119,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UntagShipment(HttpClient methodClient, Config methodConfig, string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -1198,7 +1184,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (UpdateShipmentResponseBody)</returns>
     public async Task<UpdateShipmentResponseBody> UpdateShipment(HttpClient methodClient, Config methodConfig, string shipmentId, UpdateShipmentRequestBody updateShipmentRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {

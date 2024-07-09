@@ -124,7 +124,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
     public async Task<System.IO.Stream> DownloadFile(HttpClient methodClient, Config methodConfig, string subdir, string filename, string dir, string download = default, int? rotation = default, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'subdir' is set
         if (subdir == null)
         {

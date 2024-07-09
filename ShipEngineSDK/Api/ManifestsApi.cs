@@ -214,7 +214,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
     public async Task<CreateManifestResponseBody> CreateManifest(HttpClient methodClient, Config methodConfig, CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'createManifestRequestBody' is set
         if (createManifestRequestBody == null)
         {
@@ -270,7 +269,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetManifestByIdResponseBody)</returns>
     public async Task<GetManifestByIdResponseBody> GetManifestById(HttpClient methodClient, Config methodConfig, string manifestId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'manifestId' is set
         if (manifestId == null)
         {
@@ -326,7 +324,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
     public async Task<CreateManifestResponseBody> GetManifestRequestById(HttpClient methodClient, Config methodConfig, string manifestRequestId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'manifestRequestId' is set
         if (manifestRequestId == null)
         {
@@ -406,7 +403,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
     public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, Config methodConfig, string warehouseId = default, DateTime? shipDateStart = default, DateTime? shipDateEnd = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, string carrierId = default, int? page = default, int? pageSize = default, List<string> labelIds = default, CancellationToken cancellationToken = default)
     {
-
 
         RequestOptions requestOptions = new("/v1/manifests");
 

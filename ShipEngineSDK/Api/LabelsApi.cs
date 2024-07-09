@@ -164,7 +164,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, string labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By External Shipment ID Find a label by using the external shipment id that was used during label creation 
@@ -175,7 +175,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(Config methodConfig, string externalShipmentId, string labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(Config methodConfig, string externalShipmentId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By External Shipment ID Find a label by using the external shipment id that was used during label creation 
@@ -186,7 +186,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, Config methodConfig, string externalShipmentId, string labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, Config methodConfig, string externalShipmentId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By ID Retrieve information for individual labels.
@@ -197,7 +197,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    Task<GetLabelByIdResponseBody> GetLabelById(string labelId, string labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By ID Retrieve information for individual labels.
@@ -208,7 +208,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    Task<GetLabelByIdResponseBody> GetLabelById(Config methodConfig, string labelId, string labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByIdResponseBody> GetLabelById(Config methodConfig, string labelId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By ID Retrieve information for individual labels.
@@ -219,7 +219,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, Config methodConfig, string labelId, string labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, Config methodConfig, string labelId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label Tracking Information Retrieve the label&#39;s tracking information
@@ -272,7 +272,7 @@ public partial interface IShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(string labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, string sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List labels This endpoint returns a list of labels that you&#39;ve [created](https://www.shipengine.com/docs/labels/create-a-label/). You can optionally filter the results as well as control their sort order and the number of results returned at a time.  By default, all labels are returned, 25 at a time, starting with the most recently created ones.  You can combine multiple filter options to narrow-down the results.  For example, if you only want to get your UPS labels for your east coast warehouse you could query by both &#x60;warehouse_id&#x60; and &#x60;carrier_id&#x60; 
@@ -295,7 +295,7 @@ public partial interface IShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(Config methodConfig, string labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, string sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(Config methodConfig, LabelStatus? labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List labels This endpoint returns a list of labels that you&#39;ve [created](https://www.shipengine.com/docs/labels/create-a-label/). You can optionally filter the results as well as control their sort order and the number of results returned at a time.  By default, all labels are returned, 25 at a time, starting with the most recently created ones.  You can combine multiple filter options to narrow-down the results.  For example, if you only want to get your UPS labels for your east coast warehouse you could query by both &#x60;warehouse_id&#x60; and &#x60;carrier_id&#x60; 
@@ -318,7 +318,7 @@ public partial interface IShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, Config methodConfig, string labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, string sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, Config methodConfig, LabelStatus? labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Void a Label By ID Void a label by ID to get a refund.
@@ -394,7 +394,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateLabelResponseBody)</returns>
     public async Task<CreateLabelResponseBody> CreateLabel(HttpClient methodClient, Config methodConfig, CreateLabelRequestBody createLabelRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'createLabelRequestBody' is set
         if (createLabelRequestBody == null)
         {
@@ -453,7 +452,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateLabelFromRateResponseBody)</returns>
     public async Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(HttpClient methodClient, Config methodConfig, string rateId, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'rateId' is set
         if (rateId == null)
         {
@@ -519,7 +517,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateLabelFromShipmentResponseBody)</returns>
     public async Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(HttpClient methodClient, Config methodConfig, string shipmentId, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
         {
@@ -585,7 +582,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateReturnLabelResponseBody)</returns>
     public async Task<CreateReturnLabelResponseBody> CreateReturnLabel(HttpClient methodClient, Config methodConfig, string labelId, CreateReturnLabelRequestBody createReturnLabelRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {
@@ -620,7 +616,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    public Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         return GetLabelByExternalShipmentId(_client, _config, externalShipmentId, labelDownloadType, cancellationToken);
     }
@@ -634,7 +630,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(Config methodConfig, string externalShipmentId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(Config methodConfig, string externalShipmentId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await GetLabelByExternalShipmentId(methodClient, methodConfig, externalShipmentId, labelDownloadType, cancellationToken);
@@ -649,10 +645,8 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, Config methodConfig, string externalShipmentId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, Config methodConfig, string externalShipmentId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
-        labelDownloadType ??= "url";
-
         // verify the required parameter 'externalShipmentId' is set
         if (externalShipmentId == null)
         {
@@ -684,7 +678,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    public Task<GetLabelByIdResponseBody> GetLabelById(string labelId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         return GetLabelById(_client, _config, labelId, labelDownloadType, cancellationToken);
     }
@@ -698,7 +692,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    public async Task<GetLabelByIdResponseBody> GetLabelById(Config methodConfig, string labelId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByIdResponseBody> GetLabelById(Config methodConfig, string labelId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await GetLabelById(methodClient, methodConfig, labelId, labelDownloadType, cancellationToken);
@@ -713,10 +707,8 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    public async Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, Config methodConfig, string labelId, string? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, Config methodConfig, string labelId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
-        labelDownloadType ??= "url";
-
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {
@@ -776,7 +768,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetTrackingLogFromLabelResponseBody)</returns>
     public async Task<GetTrackingLogFromLabelResponseBody> GetTrackingLogFromLabel(HttpClient methodClient, Config methodConfig, string labelId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {
@@ -816,7 +807,7 @@ public partial class ShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public Task<ListLabelsResponseBody> ListLabels(string? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, string? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string sortBy = default, CancellationToken cancellationToken = default)
     {
         return ListLabels(_client, _config, labelStatus, serviceCode, carrierId, trackingNumber, batchId, rateId, shipmentId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, sortDir, sortBy, cancellationToken);
     }
@@ -842,7 +833,7 @@ public partial class ShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public async Task<ListLabelsResponseBody> ListLabels(Config methodConfig, string? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, string? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListLabelsResponseBody> ListLabels(Config methodConfig, LabelStatus? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string sortBy = default, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await ListLabels(methodClient, methodConfig, labelStatus, serviceCode, carrierId, trackingNumber, batchId, rateId, shipmentId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, sortDir, sortBy, cancellationToken);
@@ -869,12 +860,8 @@ public partial class ShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, Config methodConfig, string? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, string? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, Config methodConfig, LabelStatus? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string sortBy = default, CancellationToken cancellationToken = default)
     {
-        labelStatus ??= "processing";
-        sortDir ??= "asc";
-        sortBy ??= "modified_at";
-
 
         RequestOptions requestOptions = new("/v1/labels");
 
@@ -979,7 +966,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (VoidLabelResponseBody)</returns>
     public async Task<VoidLabelResponseBody> VoidLabel(HttpClient methodClient, Config methodConfig, string labelId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'labelId' is set
         if (labelId == null)
         {

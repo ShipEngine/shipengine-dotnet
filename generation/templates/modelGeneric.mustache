@@ -58,6 +58,34 @@
     {{#vars}}
     {{^isInherited}}
     {{^isEnum}}
+    {{#items.vars}}
+    {{#-first}}
+    public class {{classname}}Item 
+    {
+    {{/-first}}
+        /// <summary>
+        /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
+        /// </summary>{{#description}}
+        /// <value>{{.}}</value>{{/description}}
+        {{#example}}
+        /// <example>
+        /// {{.}}
+        /// </example>
+        {{/example}}
+        [JsonPropertyName("{{baseName}}")]{{#required}}
+        [JsonRequired]{{/required}}
+        {{#isDate}}
+        [JsonConverter(typeof(DateJsonConverter))]
+        {{/isDate}}
+        {{#deprecated}}
+        [Obsolete]
+        {{/deprecated}}
+        public {{{dataType}}}{{#isNullable}}?{{/isNullable}} {{name}} { get; set; }
+
+    {{#-last}}
+    }
+    {{/-last}}
+    {{/items.vars}}
     /// <summary>
     /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
     /// </summary>{{#description}}
@@ -75,7 +103,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{{dataType}}} {{name}} { get; set; }
+    public {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}} {{name}} { get; set; }
 
     {{/isEnum}}
     {{/isInherited}}

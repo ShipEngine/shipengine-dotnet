@@ -184,7 +184,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (AddFundsToInsuranceResponseBody)</returns>
     public async Task<AddFundsToInsuranceResponseBody> AddFundsToInsurance(HttpClient methodClient, Config methodConfig, AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'addFundsToInsuranceRequestBody' is set
         if (addFundsToInsuranceRequestBody == null)
         {
@@ -240,7 +239,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (Object)</returns>
     public async Task<Object> ConnectInsurer(HttpClient methodClient, Config methodConfig, ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'connectInsurerRequestBody' is set
         if (connectInsurerRequestBody == null)
         {
@@ -294,7 +292,6 @@ public partial class ShipEngine
     public async Task<Object> DisconnectInsurer(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
 
-
         RequestOptions requestOptions = new("/v1/connections/insurance/shipsurance");
 
 
@@ -339,7 +336,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetInsuranceBalanceResponseBody)</returns>
     public async Task<GetInsuranceBalanceResponseBody> GetInsuranceBalance(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
-
 
         RequestOptions requestOptions = new("/v1/insurance/shipsurance/balance");
 

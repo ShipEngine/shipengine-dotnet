@@ -228,7 +228,7 @@ public partial interface IShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    Task<ListBatchesResponseBody> ListBatches(string status, int? page, int? pageSize, string sortDir, string batchNumber, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListBatchesResponseBody> ListBatches(BatchStatus? status, int? page, int? pageSize, SortDir? sortDir, string batchNumber, BatchesSortBy? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Batches List Batches associated with your Shipengine account
@@ -243,7 +243,7 @@ public partial interface IShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    Task<ListBatchesResponseBody> ListBatches(Config methodConfig, string status, int? page, int? pageSize, string sortDir, string batchNumber, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListBatchesResponseBody> ListBatches(Config methodConfig, BatchStatus? status, int? page, int? pageSize, SortDir? sortDir, string batchNumber, BatchesSortBy? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Batches List Batches associated with your Shipengine account
@@ -258,7 +258,7 @@ public partial interface IShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, Config methodConfig, string status, int? page, int? pageSize, string sortDir, string batchNumber, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, Config methodConfig, BatchStatus? status, int? page, int? pageSize, SortDir? sortDir, string batchNumber, BatchesSortBy? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Process Batch ID Labels Process Batch ID Labels
@@ -403,7 +403,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> AddToBatch(HttpClient methodClient, Config methodConfig, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -466,7 +465,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateBatchResponseBody)</returns>
     public async Task<CreateBatchResponseBody> CreateBatch(HttpClient methodClient, Config methodConfig, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'createBatchRequest' is set
         if (createBatchRequest == null)
         {
@@ -522,7 +520,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DeleteBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -578,7 +575,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetBatchByExternalIdResponseBody)</returns>
     public async Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(HttpClient methodClient, Config methodConfig, string externalBatchId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'externalBatchId' is set
         if (externalBatchId == null)
         {
@@ -634,7 +630,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetBatchByIdResponseBody)</returns>
     public async Task<GetBatchByIdResponseBody> GetBatchById(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -696,7 +691,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
     public async Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, Config methodConfig, string batchId, int? page = default, int? pagesize = default, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -736,7 +730,7 @@ public partial class ShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    public Task<ListBatchesResponseBody> ListBatches(string? status = default, int? page = default, int? pageSize = default, string? sortDir = default, string batchNumber = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public Task<ListBatchesResponseBody> ListBatches(BatchStatus? status = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string batchNumber = default, BatchesSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
         return ListBatches(_client, _config, status, page, pageSize, sortDir, batchNumber, sortBy, cancellationToken);
     }
@@ -754,7 +748,7 @@ public partial class ShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    public async Task<ListBatchesResponseBody> ListBatches(Config methodConfig, string? status = default, int? page = default, int? pageSize = default, string? sortDir = default, string batchNumber = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListBatchesResponseBody> ListBatches(Config methodConfig, BatchStatus? status = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string batchNumber = default, BatchesSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await ListBatches(methodClient, methodConfig, status, page, pageSize, sortDir, batchNumber, sortBy, cancellationToken);
@@ -773,12 +767,8 @@ public partial class ShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    public async Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, Config methodConfig, string? status = default, int? page = default, int? pageSize = default, string? sortDir = default, string batchNumber = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, Config methodConfig, BatchStatus? status = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string batchNumber = default, BatchesSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
-        status ??= "open";
-        sortDir ??= "asc";
-        sortBy ??= "ship_date";
-
 
         RequestOptions requestOptions = new("/v1/batches");
 
@@ -854,7 +844,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> ProcessBatch(HttpClient methodClient, Config methodConfig, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -920,7 +909,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> RemoveFromBatch(HttpClient methodClient, Config methodConfig, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {
@@ -983,7 +971,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdateBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'batchId' is set
         if (batchId == null)
         {

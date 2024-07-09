@@ -220,7 +220,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreatePackageTypeResponseBody)</returns>
     public async Task<CreatePackageTypeResponseBody> CreatePackageType(HttpClient methodClient, Config methodConfig, CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'createPackageTypeRequestBody' is set
         if (createPackageTypeRequestBody == null)
         {
@@ -276,7 +275,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DeletePackageType(HttpClient methodClient, Config methodConfig, string packageId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'packageId' is set
         if (packageId == null)
         {
@@ -332,7 +330,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetPackageTypeByIdResponseBody)</returns>
     public async Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(HttpClient methodClient, Config methodConfig, string packageId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'packageId' is set
         if (packageId == null)
         {
@@ -386,7 +383,6 @@ public partial class ShipEngine
     public async Task<ListPackageTypesResponseBody> ListPackageTypes(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
 
-
         RequestOptions requestOptions = new("/v1/packages");
 
 
@@ -437,7 +433,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdatePackageType(HttpClient methodClient, Config methodConfig, string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'packageId' is set
         if (packageId == null)
         {

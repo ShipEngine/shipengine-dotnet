@@ -173,7 +173,6 @@ public partial class ShipEngine
     public async Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, Config methodConfig, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
-
         RequestOptions requestOptions = new("/v1/tracking");
 
         if (carrierCode != null)
@@ -233,7 +232,6 @@ public partial class ShipEngine
     public async Task<string> StartTracking(HttpClient methodClient, Config methodConfig, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
-
         RequestOptions requestOptions = new("/v1/tracking/start");
 
         if (carrierCode != null)
@@ -292,7 +290,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> StopTracking(HttpClient methodClient, Config methodConfig, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
     {
-
 
         RequestOptions requestOptions = new("/v1/tracking/stop");
 

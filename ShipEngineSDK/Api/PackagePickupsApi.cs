@@ -205,7 +205,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (DeletePickupByIdResponseBody)</returns>
     public async Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(HttpClient methodClient, Config methodConfig, string pickupId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'pickupId' is set
         if (pickupId == null)
         {
@@ -261,7 +260,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetPickupByIdResponseBody)</returns>
     public async Task<GetPickupByIdResponseBody> GetPickupById(HttpClient methodClient, Config methodConfig, string pickupId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'pickupId' is set
         if (pickupId == null)
         {
@@ -332,7 +330,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
     public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, Config methodConfig, string carrierId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
-
 
         RequestOptions requestOptions = new("/v1/pickups");
 
@@ -405,7 +402,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (SchedulePickupResponseBody)</returns>
     public async Task<SchedulePickupResponseBody> SchedulePickup(HttpClient methodClient, Config methodConfig, SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'schedulePickupRequestBody' is set
         if (schedulePickupRequestBody == null)
         {

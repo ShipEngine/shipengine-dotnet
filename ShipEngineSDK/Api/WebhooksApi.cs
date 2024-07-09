@@ -220,7 +220,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateWebhookResponseBody)</returns>
     public async Task<CreateWebhookResponseBody> CreateWebhook(HttpClient methodClient, Config methodConfig, CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'createWebhookRequestBody' is set
         if (createWebhookRequestBody == null)
         {
@@ -276,7 +275,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DeleteWebhook(HttpClient methodClient, Config methodConfig, string webhookId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'webhookId' is set
         if (webhookId == null)
         {
@@ -332,7 +330,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetWebhookByIdResponseBody)</returns>
     public async Task<GetWebhookByIdResponseBody> GetWebhookById(HttpClient methodClient, Config methodConfig, string webhookId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'webhookId' is set
         if (webhookId == null)
         {
@@ -386,7 +383,6 @@ public partial class ShipEngine
     public async Task<List<Webhook>> ListWebhooks(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
 
-
         RequestOptions requestOptions = new("/v1/environment/webhooks");
 
 
@@ -437,7 +433,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> UpdateWebhook(HttpClient methodClient, Config methodConfig, string webhookId, UpdateWebhookRequestBody updateWebhookRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'webhookId' is set
         if (webhookId == null)
         {

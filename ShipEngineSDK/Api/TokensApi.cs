@@ -34,7 +34,7 @@ public partial interface IShipEngine
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(string redirect, CancellationToken cancellationToken = default);
+    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Redirect? redirect, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Ephemeral Token This endpoint returns a token that can be passed to an application for authorized access.  The lifetime of this token is 10 seconds.
@@ -44,7 +44,7 @@ public partial interface IShipEngine
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Config methodConfig, string redirect, CancellationToken cancellationToken = default);
+    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Config methodConfig, Redirect? redirect, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Ephemeral Token This endpoint returns a token that can be passed to an application for authorized access.  The lifetime of this token is 10 seconds.
@@ -54,7 +54,7 @@ public partial interface IShipEngine
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(HttpClient methodClient, Config methodConfig, string redirect, CancellationToken cancellationToken = default);
+    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(HttpClient methodClient, Config methodConfig, Redirect? redirect, CancellationToken cancellationToken = default);
 
 }
 
@@ -71,7 +71,7 @@ public partial class ShipEngine
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    public Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(string? redirect = default, CancellationToken cancellationToken = default)
+    public Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Redirect? redirect = default, CancellationToken cancellationToken = default)
     {
         return TokensGetEphemeralToken(_client, _config, redirect, cancellationToken);
     }
@@ -84,7 +84,7 @@ public partial class ShipEngine
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    public async Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Config methodConfig, string? redirect = default, CancellationToken cancellationToken = default)
+    public async Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Config methodConfig, Redirect? redirect = default, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await TokensGetEphemeralToken(methodClient, methodConfig, redirect, cancellationToken);
@@ -98,10 +98,8 @@ public partial class ShipEngine
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    public async Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(HttpClient methodClient, Config methodConfig, string? redirect = default, CancellationToken cancellationToken = default)
+    public async Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(HttpClient methodClient, Config methodConfig, Redirect? redirect = default, CancellationToken cancellationToken = default)
     {
-        redirect ??= "shipengine-dashboard";
-
 
         RequestOptions requestOptions = new("/v1/tokens/ephemeral");
 

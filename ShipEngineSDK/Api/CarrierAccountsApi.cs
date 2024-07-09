@@ -35,7 +35,7 @@ public partial interface IShipEngine
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    Task<ConnectCarrierResponseBody> ConnectCarrier(string carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
+    Task<ConnectCarrierResponseBody> ConnectCarrier(CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Connect a carrier account Connect a carrier account
@@ -46,7 +46,7 @@ public partial interface IShipEngine
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    Task<ConnectCarrierResponseBody> ConnectCarrier(Config methodConfig, string carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
+    Task<ConnectCarrierResponseBody> ConnectCarrier(Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Connect a carrier account Connect a carrier account
@@ -57,7 +57,7 @@ public partial interface IShipEngine
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, Config methodConfig, string carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
+    Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect a carrier Disconnect a carrier
@@ -68,7 +68,7 @@ public partial interface IShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DisconnectCarrier(string carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<string> DisconnectCarrier(CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect a carrier Disconnect a carrier
@@ -79,7 +79,7 @@ public partial interface IShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DisconnectCarrier(Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<string> DisconnectCarrier(Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect a carrier Disconnect a carrier
@@ -90,7 +90,7 @@ public partial interface IShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DisconnectCarrier(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<string> DisconnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get carrier settings Get carrier settings
@@ -101,7 +101,7 @@ public partial interface IShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(string carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get carrier settings Get carrier settings
@@ -112,7 +112,7 @@ public partial interface IShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get carrier settings Get carrier settings
@@ -123,7 +123,7 @@ public partial interface IShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update carrier settings Update carrier settings
@@ -135,7 +135,7 @@ public partial interface IShipEngine
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateCarrierSettings(string carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateCarrierSettings(CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update carrier settings Update carrier settings
@@ -147,7 +147,7 @@ public partial interface IShipEngine
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateCarrierSettings(Config methodConfig, string carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update carrier settings Update carrier settings
@@ -159,7 +159,7 @@ public partial interface IShipEngine
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateCarrierSettings(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
 
 }
 
@@ -177,7 +177,7 @@ public partial class ShipEngine
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    public Task<ConnectCarrierResponseBody> ConnectCarrier(string carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
+    public Task<ConnectCarrierResponseBody> ConnectCarrier(CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
     {
         return ConnectCarrier(_client, _config, carrierName, connectCarrierRequestBody, cancellationToken);
     }
@@ -191,7 +191,7 @@ public partial class ShipEngine
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    public async Task<ConnectCarrierResponseBody> ConnectCarrier(Config methodConfig, string carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
+    public async Task<ConnectCarrierResponseBody> ConnectCarrier(Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await ConnectCarrier(methodClient, methodConfig, carrierName, connectCarrierRequestBody, cancellationToken);
@@ -206,9 +206,8 @@ public partial class ShipEngine
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    public async Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, Config methodConfig, string carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
+    public async Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'connectCarrierRequestBody' is set
         if (connectCarrierRequestBody == null)
         {
@@ -237,7 +236,7 @@ public partial class ShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> DisconnectCarrier(string carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public Task<string> DisconnectCarrier(CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
         return DisconnectCarrier(_client, _config, carrierName, carrierId, cancellationToken);
     }
@@ -251,7 +250,7 @@ public partial class ShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DisconnectCarrier(Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public async Task<string> DisconnectCarrier(Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await DisconnectCarrier(methodClient, methodConfig, carrierName, carrierId, cancellationToken);
@@ -266,9 +265,8 @@ public partial class ShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DisconnectCarrier(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public async Task<string> DisconnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -297,7 +295,7 @@ public partial class ShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    public Task<GetCarrierSettingsResponseBody> GetCarrierSettings(string carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public Task<GetCarrierSettingsResponseBody> GetCarrierSettings(CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
         return GetCarrierSettings(_client, _config, carrierName, carrierId, cancellationToken);
     }
@@ -311,7 +309,7 @@ public partial class ShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await GetCarrierSettings(methodClient, methodConfig, carrierName, carrierId, cancellationToken);
@@ -326,9 +324,8 @@ public partial class ShipEngine
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {
@@ -358,7 +355,7 @@ public partial class ShipEngine
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> UpdateCarrierSettings(string carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
+    public Task<string> UpdateCarrierSettings(CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
     {
         return UpdateCarrierSettings(_client, _config, carrierName, carrierId, updateCarrierSettingsRequestBody, cancellationToken);
     }
@@ -373,7 +370,7 @@ public partial class ShipEngine
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateCarrierSettings(Config methodConfig, string carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
     {
         using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
         return await UpdateCarrierSettings(methodClient, methodConfig, carrierName, carrierId, updateCarrierSettingsRequestBody, cancellationToken);
@@ -389,9 +386,8 @@ public partial class ShipEngine
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateCarrierSettings(HttpClient methodClient, Config methodConfig, string carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
         {

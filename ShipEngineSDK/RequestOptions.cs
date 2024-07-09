@@ -75,7 +75,7 @@ public class RequestOptions(string path)
         }
 
         var queryString = String.Join("&",
-            QueryParameters.Select(x => $"{x.Key}=${String.Join(",", x.Value)}"));
+            QueryParameters.Select(x => $"{x.Key}={Uri.EscapeDataString(String.Join(",", x.Value))}"));
 
         return $"{path}?{queryString}";
     }

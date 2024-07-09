@@ -190,7 +190,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
     public async Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, Config methodConfig, string tagName, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'tagName' is set
         if (tagName == null)
         {
@@ -246,7 +245,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> DeleteTag(HttpClient methodClient, Config methodConfig, string tagName, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'tagName' is set
         if (tagName == null)
         {
@@ -300,7 +298,6 @@ public partial class ShipEngine
     public async Task<ListTagsResponseBody> ListTags(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
     {
 
-
         RequestOptions requestOptions = new("/v1/tags");
 
 
@@ -351,7 +348,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public async Task<string> RenameTag(HttpClient methodClient, Config methodConfig, string tagName, string newTagName, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'tagName' is set
         if (tagName == null)
         {

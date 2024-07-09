@@ -142,7 +142,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetServicePointByIdResponseBody)</returns>
     public async Task<GetServicePointByIdResponseBody> ServicePointsGetById(HttpClient methodClient, Config methodConfig, string carrierCode, string countryCode, string servicePointId, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'carrierCode' is set
         if (carrierCode == null)
         {
@@ -212,7 +211,6 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListServicePointsResponseBody)</returns>
     public async Task<ListServicePointsResponseBody> ServicePointsList(HttpClient methodClient, Config methodConfig, GetServicePointsRequest getServicePointsRequest, CancellationToken cancellationToken = default)
     {
-
         // verify the required parameter 'getServicePointsRequest' is set
         if (getServicePointsRequest == null)
         {
