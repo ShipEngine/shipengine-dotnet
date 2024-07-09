@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// DeletePickupByIdResponseBody
 /// </summary>
-[DataContract(Name = "delete_pickup_by_id_response_body")]
+//[DataContract(Name = "delete_pickup_by_id_response_body")]
 public partial class DeletePickupByIdResponseBody
 {
 
@@ -47,7 +48,7 @@ public partial class DeletePickupByIdResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; private set; }
+    public List<Error> Errors { get; set; }
 
     /// <summary>
     /// Pickup Resource ID

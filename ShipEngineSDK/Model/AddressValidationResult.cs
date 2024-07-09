@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An address validation result
 /// </summary>
-[DataContract(Name = "address_validation_result")]
+//[DataContract(Name = "address_validation_result")]
 public partial class AddressValidationResult
 {
 
@@ -52,7 +53,7 @@ public partial class AddressValidationResult
     /// <value>The matched address found by the Shipengine API</value>
     [JsonPropertyName("matched_address")]
     [JsonRequired]
-    public Address MatchedAddress { get; private set; }
+    public Address MatchedAddress { get; set; }
 
     /// <summary>
     /// The list of messages that were generated during the address validation request.
@@ -60,7 +61,7 @@ public partial class AddressValidationResult
     /// <value>The list of messages that were generated during the address validation request.</value>
     [JsonPropertyName("messages")]
     [JsonRequired]
-    public List<ResponseMessage> Messages { get; private set; }
+    public List<ResponseMessage> Messages { get; set; }
 
 
     /// <summary>

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A track event
 /// </summary>
-[DataContract(Name = "track_event")]
+//[DataContract(Name = "track_event")]
 public partial class TrackEvent
 {
 
@@ -78,7 +79,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("city_locality")]
     [JsonRequired]
-    public string CityLocality { get; private set; }
+    public string CityLocality { get; set; }
 
     /// <summary>
     /// State province
@@ -89,7 +90,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("state_province")]
     [JsonRequired]
-    public string StateProvince { get; private set; }
+    public string StateProvince { get; set; }
 
     /// <summary>
     /// Postal code
@@ -100,7 +101,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("postal_code")]
     [JsonRequired]
-    public string PostalCode { get; private set; }
+    public string PostalCode { get; set; }
 
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -145,7 +146,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("carrier_detail_code")]
     [JsonRequired]
-    public string CarrierDetailCode { get; private set; }
+    public string CarrierDetailCode { get; set; }
 
     /// <summary>
     /// Event Status Description
@@ -156,7 +157,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("status_description")]
     [JsonRequired]
-    public string StatusDescription { get; private set; }
+    public string StatusDescription { get; set; }
 
     /// <summary>
     /// Carrier status code
@@ -167,7 +168,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("carrier_status_code")]
     [JsonRequired]
-    public string CarrierStatusCode { get; private set; }
+    public string CarrierStatusCode { get; set; }
 
     /// <summary>
     /// carrier status description
@@ -178,7 +179,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("carrier_status_description")]
     [JsonRequired]
-    public string CarrierStatusDescription { get; private set; }
+    public string CarrierStatusDescription { get; set; }
 
     /// <summary>
     /// Latitude coordinate of tracking event.

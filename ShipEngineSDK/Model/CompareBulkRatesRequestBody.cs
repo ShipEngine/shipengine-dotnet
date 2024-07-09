@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ namespace ShipEngineSDK.Model;
 /// A rate shipments request body
 /// </summary>
 [JsonConverter(typeof(CompareBulkRatesRequestBodyJsonConverter))]
-[DataContract(Name = "compare_bulk_rates_request_body")]
+//[DataContract(Name = "compare_bulk_rates_request_body")]
 public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
 {
 
@@ -145,6 +146,37 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBulkRatesRequestBody>
 {
+    private static HashSet<Type> OneOfTypes = [typeof(RateRequestByShipmentIds), typeof(RateRequestByShipments)];
+    private static HashSet<string> MandatoryFields = ["RateOptions"];
+    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    {
+        TypeInfoResolver = new DefaultJsonTypeInfoResolver
+        {
+            Modifiers =
+            {
+                static typeInfo =>
+                {
+                    if (typeInfo.Kind != JsonTypeInfoKind.Object)
+                        return;
+
+                    foreach (JsonPropertyInfo propertyInfo in typeInfo.Properties)
+                    {
+                        // Strip IsRequired constraint from every property except those which define the underlying type
+                        if (OneOfTypes.Contains(typeInfo.Type))
+                        {
+                            var underlyingPropertyName = (propertyInfo.AttributeProvider as MemberInfo)?.Name;
+                            propertyInfo.IsRequired = underlyingPropertyName != null && MandatoryFields.Contains(underlyingPropertyName);
+                        }
+                        else
+                        {
+                            propertyInfo.IsRequired = false;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     /// <summary>
     /// To write the JSON string
     /// </summary>
@@ -179,7 +211,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
     /// <returns>The object converted from the JSON string</returns>
     public override CompareBulkRatesRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if(reader.TokenType == JsonTokenType.Null)
+        if (reader.TokenType == JsonTokenType.Null)
         {
             return null;
         }
@@ -188,19 +220,12 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         CompareBulkRatesRequestBody newCompareBulkRatesRequestBody = null;
 
         int match = 0;
-        List<string> matchedTypes = new List<string>();
+        var matchedTypes = new List<string>();
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(RateRequestByShipmentIds).GetProperty("AdditionalProperties") == null)
-            {
-                newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipmentIds>(jsonDoc, CompareBulkRatesRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipmentIds>(jsonDoc, CompareBulkRatesRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipmentIds>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("RateRequestByShipmentIds");
             match++;
         }
@@ -212,15 +237,8 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(RateRequestByShipments).GetProperty("AdditionalProperties") == null)
-            {
-                newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipments>(jsonDoc, CompareBulkRatesRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipments>(jsonDoc, CompareBulkRatesRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipments>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("RateRequestByShipments");
             match++;
         }
@@ -234,12 +252,13 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        else if (match > 1)
+        
+        if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
 
-        newCompareBulkRatesRequestBody.RateOptions = JsonSerializer.Deserialize<RateRequestBody>(jsonDoc.RootElement.GetProperty("rate_options"), CompareBulkRatesRequestBody.SerializerSettings);
+        newCompareBulkRatesRequestBody.RateOptions = JsonSerializer.Deserialize<RateRequestBody>(jsonDoc.RootElement.GetProperty("rate_options"), DeserializingOptions);
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newCompareBulkRatesRequestBody;
@@ -252,7 +271,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
     /// <returns>True if the object can be converted</returns>
     public override bool CanConvert(Type objectType)
     {
-        return false;
+        return typeof(CompareBulkRatesRequestBody).IsAssignableFrom(objectType);
     }
 }
 

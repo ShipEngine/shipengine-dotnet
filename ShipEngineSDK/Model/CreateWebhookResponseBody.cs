@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A webhook response body
 /// </summary>
-[DataContract(Name = "create_webhook_response_body")]
+//[DataContract(Name = "create_webhook_response_body")]
 public partial class CreateWebhookResponseBody
 {
 
@@ -47,7 +48,7 @@ public partial class CreateWebhookResponseBody
     /// </example>
     [JsonPropertyName("webhook_id")]
     [JsonRequired]
-    public string WebhookId { get; private set; }
+    public string WebhookId { get; set; }
 
     /// <summary>
     /// The url that the webhook sends the request to

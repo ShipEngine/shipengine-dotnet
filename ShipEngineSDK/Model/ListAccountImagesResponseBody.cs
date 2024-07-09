@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list account images response body
 /// </summary>
-[DataContract(Name = "list_account_images_response_body")]
+//[DataContract(Name = "list_account_images_response_body")]
 public partial class ListAccountImagesResponseBody
 {
 
@@ -36,7 +37,7 @@ public partial class ListAccountImagesResponseBody
     /// <value>Image List</value>
     [JsonPropertyName("images")]
     [JsonRequired]
-    public List<Object> Images { get; private set; }
+    public List<Object> Images { get; set; }
 
     /// <summary>
     /// The total number of items across all pages of results

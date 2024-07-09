@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight.  &gt; **Note:** Either &#x60;ship_from&#x60; or &#x60;warehouse_id&#x60; must be set. 
 /// </summary>
-[DataContract(Name = "shipment")]
+//[DataContract(Name = "shipment")]
 public partial class Shipment
 {
 
@@ -71,7 +72,7 @@ public partial class Shipment
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; private set; }
+    public string ShipmentId { get; set; }
 
     /// <summary>
     /// The carrier account that is billed for the shipping charges
@@ -159,7 +160,7 @@ public partial class Shipment
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created or last modified.
@@ -170,7 +171,7 @@ public partial class Shipment
     /// </example>
     [JsonPropertyName("modified_at")]
     [JsonRequired]
-    public DateTime ModifiedAt { get; private set; }
+    public DateTime ModifiedAt { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address
@@ -236,7 +237,7 @@ public partial class Shipment
     /// <value>Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. </value>
     [JsonPropertyName("tags")]
     [JsonRequired]
-    public List<Tag> Tags { get; private set; }
+    public List<Tag> Tags { get; set; }
 
     /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
@@ -252,7 +253,7 @@ public partial class Shipment
     /// <value>The combined weight of all packages in the shipment</value>
     [JsonPropertyName("total_weight")]
     [JsonRequired]
-    public Weight TotalWeight { get; private set; }
+    public Weight TotalWeight { get; set; }
 
     /// <summary>
     /// Calculate a rate for this shipment with the requested carrier using a ratecard that differs from the default.  Only supported for UPS and USPS.

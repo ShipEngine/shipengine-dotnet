@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Any residential or business mailing address, anywhere in the world.  &gt; **Note:** Either &#x60;name&#x60; or &#x60;company_name&#x60; must be set. Both may be specified, if relevant. 
 /// </summary>
-[DataContract(Name = "address")]
+//[DataContract(Name = "address")]
 public partial class Address
 {
 

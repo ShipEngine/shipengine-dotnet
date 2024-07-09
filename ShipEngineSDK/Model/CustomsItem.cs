@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The customs declaration for a single item in the shipment.
 /// </summary>
-[DataContract(Name = "customs_item")]
+//[DataContract(Name = "customs_item")]
 public partial class CustomsItem
 {
 
@@ -39,7 +40,7 @@ public partial class CustomsItem
     /// </example>
     [JsonPropertyName("customs_item_id")]
     [JsonRequired]
-    public string CustomsItemId { get; private set; }
+    public string CustomsItemId { get; set; }
 
     /// <summary>
     /// A description of the item

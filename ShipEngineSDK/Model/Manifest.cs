@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Used for combining packages into one scannable form that a carrier can use when picking up a large  number of shipments 
 /// </summary>
-[DataContract(Name = "manifest")]
+//[DataContract(Name = "manifest")]
 public partial class Manifest
 {
 

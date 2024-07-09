@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A purchase label without shipment resource
 /// </summary>
-[DataContract(Name = "purchase_label_without_shipment")]
+//[DataContract(Name = "purchase_label_without_shipment")]
 public partial class PurchaseLabelWithoutShipment
 {
 

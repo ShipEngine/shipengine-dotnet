@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// GetServicePointByIdResponseBodyServicePoint
 /// </summary>
-[DataContract(Name = "get_service_point_by_id_response_body_service_point")]
+//[DataContract(Name = "get_service_point_by_id_response_body_service_point")]
 public partial class GetServicePointByIdResponseBodyServicePoint
 {
         /// <summary>

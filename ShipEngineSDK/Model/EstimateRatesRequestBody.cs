@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ namespace ShipEngineSDK.Model;
 /// A rate estimate request body
 /// </summary>
 [JsonConverter(typeof(EstimateRatesRequestBodyJsonConverter))]
-[DataContract(Name = "estimate_rates_request_body")]
+//[DataContract(Name = "estimate_rates_request_body")]
 public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
 {
 
@@ -273,6 +274,37 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRatesRequestBody>
 {
+    private static HashSet<Type> OneOfTypes = [typeof(RateEstimateByCarrierId), typeof(RateEstimateByCarrierIds)];
+    private static HashSet<string> MandatoryFields = ["FromCityLocality", "FromCountryCode", "FromPostalCode", "FromStateProvince", "ShipDate", "ToCityLocality", "ToCountryCode", "ToPostalCode", "ToStateProvince", "Weight"];
+    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    {
+        TypeInfoResolver = new DefaultJsonTypeInfoResolver
+        {
+            Modifiers =
+            {
+                static typeInfo =>
+                {
+                    if (typeInfo.Kind != JsonTypeInfoKind.Object)
+                        return;
+
+                    foreach (JsonPropertyInfo propertyInfo in typeInfo.Properties)
+                    {
+                        // Strip IsRequired constraint from every property except those which define the underlying type
+                        if (OneOfTypes.Contains(typeInfo.Type))
+                        {
+                            var underlyingPropertyName = (propertyInfo.AttributeProvider as MemberInfo)?.Name;
+                            propertyInfo.IsRequired = underlyingPropertyName != null && MandatoryFields.Contains(underlyingPropertyName);
+                        }
+                        else
+                        {
+                            propertyInfo.IsRequired = false;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     /// <summary>
     /// To write the JSON string
     /// </summary>
@@ -331,7 +363,7 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
     /// <returns>The object converted from the JSON string</returns>
     public override EstimateRatesRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if(reader.TokenType == JsonTokenType.Null)
+        if (reader.TokenType == JsonTokenType.Null)
         {
             return null;
         }
@@ -340,19 +372,12 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         EstimateRatesRequestBody newEstimateRatesRequestBody = null;
 
         int match = 0;
-        List<string> matchedTypes = new List<string>();
+        var matchedTypes = new List<string>();
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(RateEstimateByCarrierId).GetProperty("AdditionalProperties") == null)
-            {
-                newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierId>(jsonDoc, EstimateRatesRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierId>(jsonDoc, EstimateRatesRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierId>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("RateEstimateByCarrierId");
             match++;
         }
@@ -364,15 +389,8 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(RateEstimateByCarrierIds).GetProperty("AdditionalProperties") == null)
-            {
-                newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierIds>(jsonDoc, EstimateRatesRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierIds>(jsonDoc, EstimateRatesRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierIds>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("RateEstimateByCarrierIds");
             match++;
         }
@@ -386,24 +404,25 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        else if (match > 1)
+        
+        if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
 
-        newEstimateRatesRequestBody.FromCountryCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_country_code"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.FromPostalCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_postal_code"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.FromCityLocality = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_city_locality"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.FromStateProvince = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_state_province"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.ToCountryCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_country_code"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.ToPostalCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_postal_code"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.ToCityLocality = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_city_locality"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.ToStateProvince = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_state_province"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.Weight = JsonSerializer.Deserialize<Weight>(jsonDoc.RootElement.GetProperty("weight"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.Dimensions = JsonSerializer.Deserialize<Dimensions>(jsonDoc.RootElement.GetProperty("dimensions"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.Confirmation = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("confirmation"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.AddressResidentialIndicator = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("address_residential_indicator"), EstimateRatesRequestBody.SerializerSettings);
-        newEstimateRatesRequestBody.ShipDate = JsonSerializer.Deserialize<DateTime>(jsonDoc.RootElement.GetProperty("ship_date"), EstimateRatesRequestBody.SerializerSettings);
+        newEstimateRatesRequestBody.FromCountryCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_country_code"), DeserializingOptions);
+        newEstimateRatesRequestBody.FromPostalCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_postal_code"), DeserializingOptions);
+        newEstimateRatesRequestBody.FromCityLocality = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_city_locality"), DeserializingOptions);
+        newEstimateRatesRequestBody.FromStateProvince = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_state_province"), DeserializingOptions);
+        newEstimateRatesRequestBody.ToCountryCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_country_code"), DeserializingOptions);
+        newEstimateRatesRequestBody.ToPostalCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_postal_code"), DeserializingOptions);
+        newEstimateRatesRequestBody.ToCityLocality = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_city_locality"), DeserializingOptions);
+        newEstimateRatesRequestBody.ToStateProvince = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_state_province"), DeserializingOptions);
+        newEstimateRatesRequestBody.Weight = JsonSerializer.Deserialize<Weight>(jsonDoc.RootElement.GetProperty("weight"), DeserializingOptions);
+        newEstimateRatesRequestBody.Dimensions = JsonSerializer.Deserialize<Dimensions>(jsonDoc.RootElement.GetProperty("dimensions"), DeserializingOptions);
+        newEstimateRatesRequestBody.Confirmation = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("confirmation"), DeserializingOptions);
+        newEstimateRatesRequestBody.AddressResidentialIndicator = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("address_residential_indicator"), DeserializingOptions);
+        newEstimateRatesRequestBody.ShipDate = JsonSerializer.Deserialize<DateTime>(jsonDoc.RootElement.GetProperty("ship_date"), DeserializingOptions);
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newEstimateRatesRequestBody;
@@ -416,7 +435,7 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
     /// <returns>True if the object can be converted</returns>
     public override bool CanConvert(Type objectType)
     {
-        return false;
+        return typeof(EstimateRatesRequestBody).IsAssignableFrom(objectType);
     }
 }
 

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// GetPickupByIdResponseBody
 /// </summary>
-[DataContract(Name = "get_pickup_by_id_response_body")]
+//[DataContract(Name = "get_pickup_by_id_response_body")]
 public partial class GetPickupByIdResponseBody
 {
 
@@ -39,7 +40,7 @@ public partial class GetPickupByIdResponseBody
     /// </example>
     [JsonPropertyName("pickup_id")]
     [JsonRequired]
-    public string PickupId { get; private set; }
+    public string PickupId { get; set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
@@ -58,7 +59,7 @@ public partial class GetPickupByIdResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the pickup was cancelled in ShipEngine.
@@ -79,7 +80,7 @@ public partial class GetPickupByIdResponseBody
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; private set; }
+    public string CarrierId { get; set; }
 
     /// <summary>
     /// The carrier confirmation number for the scheduled pickup.
@@ -90,7 +91,7 @@ public partial class GetPickupByIdResponseBody
     /// </example>
     [JsonPropertyName("confirmation_number")]
     [JsonRequired]
-    public string ConfirmationNumber { get; private set; }
+    public string ConfirmationNumber { get; set; }
 
     /// <summary>
     /// The warehouse_id associated with the pickup
@@ -101,14 +102,14 @@ public partial class GetPickupByIdResponseBody
     /// </example>
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
-    public string WarehouseId { get; private set; }
+    public string WarehouseId { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupAddress
     /// </summary>
     [JsonPropertyName("pickup_address")]
     [JsonRequired]
-    public Address PickupAddress { get; private set; }
+    public Address PickupAddress { get; set; }
 
     /// <summary>
     /// Gets or Sets ContactDetails
@@ -155,7 +156,7 @@ public partial class GetPickupByIdResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; private set; }
+    public List<Error> Errors { get; set; }
 
 
     /// <summary>

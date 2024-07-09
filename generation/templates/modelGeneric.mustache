@@ -7,7 +7,7 @@
 {{#vendorExtensions.x-com-visible}}
 [ComVisible({{{vendorExtensions.x-com-visible}}})]
 {{/vendorExtensions.x-com-visible}}
-[DataContract(Name = "{{{name}}}")]
+//[DataContract(Name = "{{{name}}}")]
 {{^useUnityWebRequest}}
 {{#discriminator}}
 [JsonConverter(typeof(JsonSubtypes), "{{{discriminatorName}}}")]
@@ -75,7 +75,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{#isContainer}}{{#items.isEnum}}{{baseType}}<string>{{/items.isEnum}}{{^items.isEnum}}{{{dataType}}}{{/items.isEnum}}{{/isContainer}}{{^isContainer}}{{{dataType}}}{{/isContainer}} {{name}} { get; {{#isReadOnly}}private {{/isReadOnly}}set; }
+    public {{#isContainer}}{{#items.isEnum}}{{baseType}}<string>{{/items.isEnum}}{{^items.isEnum}}{{{dataType}}}{{/items.isEnum}}{{/isContainer}}{{^isContainer}}{{{dataType}}}{{/isContainer}} {{name}} { get; {{#isReadOnly}}{{^required}}private {{/required}}{{/isReadOnly}}set; }
 
     {{/isEnum}}
     {{/isInherited}}

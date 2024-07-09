@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list shipment rates response body
 /// </summary>
-[DataContract(Name = "list_shipment_rates_response_body")]
+//[DataContract(Name = "list_shipment_rates_response_body")]
 public partial class ListShipmentRatesResponseBody
 {
 
@@ -44,7 +45,7 @@ public partial class ListShipmentRatesResponseBody
     /// <value>An array of shipment rates</value>
     [JsonPropertyName("rates")]
     [JsonRequired]
-    public List<Rate> Rates { get; private set; }
+    public List<Rate> Rates { get; set; }
 
     /// <summary>
     /// An array of invalid shipment rates
@@ -52,7 +53,7 @@ public partial class ListShipmentRatesResponseBody
     /// <value>An array of invalid shipment rates</value>
     [JsonPropertyName("invalid_rates")]
     [JsonRequired]
-    public List<Rate> InvalidRates { get; private set; }
+    public List<Rate> InvalidRates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -63,7 +64,7 @@ public partial class ListShipmentRatesResponseBody
     /// </example>
     [JsonPropertyName("rate_request_id")]
     [JsonRequired]
-    public string RateRequestId { get; private set; }
+    public string RateRequestId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -74,7 +75,7 @@ public partial class ListShipmentRatesResponseBody
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; private set; }
+    public string ShipmentId { get; set; }
 
     /// <summary>
     /// When the rate was created

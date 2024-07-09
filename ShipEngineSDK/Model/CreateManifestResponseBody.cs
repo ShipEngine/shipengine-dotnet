@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A create manifest response body
 /// </summary>
-[DataContract(Name = "create_manifest_response_body")]
+//[DataContract(Name = "create_manifest_response_body")]
 public partial class CreateManifestResponseBody
 {
 
@@ -102,7 +103,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("shipments")]
     [JsonRequired]
     [Obsolete]
-    public int Shipments { get; private set; }
+    public int Shipments { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -173,7 +174,7 @@ public partial class CreateManifestResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; private set; }
+    public List<Error> Errors { get; set; }
 
 
     /// <summary>

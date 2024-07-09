@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner
 /// </summary>
-[DataContract(Name = "list_service_points_response_body_service_points_inner_hours_of_operation_monday_inner")]
+//[DataContract(Name = "list_service_points_response_body_service_points_inner_hours_of_operation_monday_inner")]
 public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner
 {
 

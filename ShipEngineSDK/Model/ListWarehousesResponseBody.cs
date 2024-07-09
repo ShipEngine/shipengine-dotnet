@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A warehouse list response body
 /// </summary>
-[DataContract(Name = "list_warehouses_response_body")]
+//[DataContract(Name = "list_warehouses_response_body")]
 public partial class ListWarehousesResponseBody
 {
 
@@ -36,7 +37,7 @@ public partial class ListWarehousesResponseBody
     /// <value>The array of warehouses returned by the API call</value>
     [JsonPropertyName("warehouses")]
     [JsonRequired]
-    public List<Warehouse> Warehouses { get; private set; }
+    public List<Warehouse> Warehouses { get; set; }
 
 
     /// <summary>

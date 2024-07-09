@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A ShipEngine account settings response body
 /// </summary>
-[DataContract(Name = "account_settings")]
+//[DataContract(Name = "account_settings")]
 public partial class AccountSettings
 {
 

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A bulk rate
 /// </summary>
-[DataContract(Name = "bulk_rate")]
+//[DataContract(Name = "bulk_rate")]
 public partial class BulkRate
 {
 
@@ -47,7 +48,7 @@ public partial class BulkRate
     /// </example>
     [JsonPropertyName("rate_request_id")]
     [JsonRequired]
-    public string RateRequestId { get; private set; }
+    public string RateRequestId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -58,7 +59,7 @@ public partial class BulkRate
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; private set; }
+    public string ShipmentId { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -69,7 +70,7 @@ public partial class BulkRate
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// An array of errors that were returned while retrieving the bulk rate
@@ -77,7 +78,7 @@ public partial class BulkRate
     /// <value>An array of errors that were returned while retrieving the bulk rate</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; private set; }
+    public List<Error> Errors { get; set; }
 
 
     /// <summary>

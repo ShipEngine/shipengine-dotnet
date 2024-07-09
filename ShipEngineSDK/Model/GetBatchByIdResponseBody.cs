@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get batch by id response body
 /// </summary>
-[DataContract(Name = "get_batch_by_id_response_body")]
+//[DataContract(Name = "get_batch_by_id_response_body")]
 public partial class GetBatchByIdResponseBody
 {
 
@@ -64,7 +65,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("batch_id")]
     [JsonRequired]
-    public string BatchId { get; private set; }
+    public string BatchId { get; set; }
 
     /// <summary>
     /// The batch number.
@@ -72,7 +73,7 @@ public partial class GetBatchByIdResponseBody
     /// <value>The batch number.</value>
     [JsonPropertyName("batch_number")]
     [JsonRequired]
-    public string BatchNumber { get; private set; }
+    public string BatchNumber { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the external batch
@@ -80,7 +81,7 @@ public partial class GetBatchByIdResponseBody
     /// <value>A string that uniquely identifies the external batch</value>
     [JsonPropertyName("external_batch_id")]
     [JsonRequired]
-    public string ExternalBatchId { get; private set; }
+    public string ExternalBatchId { get; set; }
 
     /// <summary>
     /// Custom notes you can add for each created batch
@@ -91,7 +92,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("batch_notes")]
     [JsonRequired]
-    public string BatchNotes { get; private set; }
+    public string BatchNotes { get; set; }
 
     /// <summary>
     /// The date and time the batch was created in ShipEngine
@@ -102,7 +103,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time the batch was processed in ShipEngine
@@ -113,7 +114,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("processed_at")]
     [JsonRequired]
-    public DateTime ProcessedAt { get; private set; }
+    public DateTime ProcessedAt { get; set; }
 
     /// <summary>
     /// The number of errors that occurred while generating the batch
@@ -124,7 +125,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public int Errors { get; private set; }
+    public int Errors { get; set; }
 
     /// <summary>
     /// The errors associated with the failed API call
@@ -132,7 +133,7 @@ public partial class GetBatchByIdResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("process_errors")]
     [JsonRequired]
-    public List<Error> ProcessErrors { get; private set; }
+    public List<Error> ProcessErrors { get; set; }
 
     /// <summary>
     /// The number of warnings that occurred while generating the batch
@@ -143,7 +144,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("warnings")]
     [JsonRequired]
-    public int Warnings { get; private set; }
+    public int Warnings { get; set; }
 
     /// <summary>
     /// The number of labels generated in the batch
@@ -154,7 +155,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("completed")]
     [JsonRequired]
-    public int Completed { get; private set; }
+    public int Completed { get; set; }
 
     /// <summary>
     /// The number of forms for customs that are available for download
@@ -165,7 +166,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("forms")]
     [JsonRequired]
-    public int Forms { get; private set; }
+    public int Forms { get; set; }
 
     /// <summary>
     /// The total of errors, warnings, and completed properties
@@ -176,7 +177,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("count")]
     [JsonRequired]
-    public int Count { get; private set; }
+    public int Count { get; set; }
 
     /// <summary>
     /// The batch shipments endpoint
@@ -200,7 +201,7 @@ public partial class GetBatchByIdResponseBody
     /// <value>Link to batch errors endpoint</value>
     [JsonPropertyName("batch_errors_url")]
     [JsonRequired]
-    public OptionalLink BatchErrorsUrl { get; private set; }
+    public OptionalLink BatchErrorsUrl { get; set; }
 
     /// <summary>
     /// The label download for the batch
@@ -208,7 +209,7 @@ public partial class GetBatchByIdResponseBody
     /// <value>The label download for the batch</value>
     [JsonPropertyName("label_download")]
     [JsonRequired]
-    public LabelDownload LabelDownload { get; private set; }
+    public LabelDownload LabelDownload { get; set; }
 
     /// <summary>
     /// The form download for any customs that are needed
@@ -216,7 +217,7 @@ public partial class GetBatchByIdResponseBody
     /// <value>The form download for any customs that are needed</value>
     [JsonPropertyName("form_download")]
     [JsonRequired]
-    public OptionalLink FormDownload { get; private set; }
+    public OptionalLink FormDownload { get; set; }
 
     /// <summary>
     /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.
@@ -224,7 +225,7 @@ public partial class GetBatchByIdResponseBody
     /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.</value>
     [JsonPropertyName("paperless_download")]
     [JsonRequired]
-    public PaperlessDownload PaperlessDownload { get; private set; }
+    public PaperlessDownload PaperlessDownload { get; set; }
 
 
     /// <summary>

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight. 
 /// </summary>
-[DataContract(Name = "partial_shipment")]
+//[DataContract(Name = "partial_shipment")]
 public partial class PartialShipment
 {
 

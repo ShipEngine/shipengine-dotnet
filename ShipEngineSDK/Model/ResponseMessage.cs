@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A response message that displays when additional info is needed for an address validation request.
 /// </summary>
-[DataContract(Name = "response_message")]
+//[DataContract(Name = "response_message")]
 public partial class ResponseMessage
 {
 
@@ -63,7 +64,7 @@ public partial class ResponseMessage
     /// </example>
     [JsonPropertyName("message")]
     [JsonRequired]
-    public string Message { get; private set; }
+    public string Message { get; set; }
 
 
     /// <summary>

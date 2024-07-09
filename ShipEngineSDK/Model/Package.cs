@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A package associated with a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/) 
 /// </summary>
-[DataContract(Name = "package")]
+//[DataContract(Name = "package")]
 public partial class Package
 {
 

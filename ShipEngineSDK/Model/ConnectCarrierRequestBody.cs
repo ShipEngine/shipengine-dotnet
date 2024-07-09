@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ namespace ShipEngineSDK.Model;
 /// ConnectCarrierRequestBody
 /// </summary>
 [JsonConverter(typeof(ConnectCarrierRequestBodyJsonConverter))]
-[DataContract(Name = "connect_carrier_request_body")]
+//[DataContract(Name = "connect_carrier_request_body")]
 public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
 {
 
@@ -811,6 +812,37 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarrierRequestBody>
 {
+    private static HashSet<Type> OneOfTypes = [typeof(ConnectAccessWorldwideRequestBody), typeof(ConnectAmazonBuyShippingRequestBody), typeof(ConnectAmazonShippingUk), typeof(ConnectApcRequestBody), typeof(ConnectAsendiaRequestBody), typeof(ConnectAustraliaPostRequestBody), typeof(ConnectCanadaPostRequestBody), typeof(ConnectDhlEcommerceRequestBody), typeof(ConnectDhlExpressRequestBody), typeof(ConnectDhlExpressAuRequestBody), typeof(ConnectDhlExpressCaRequestBody), typeof(ConnectDhlExpressUkRequestBody), typeof(ConnectDpdRequestBody), typeof(ConnectEndiciaRequestBody), typeof(ConnectFedexRequestBody), typeof(ConnectFedexUkRequestBody), typeof(ConnectFirstmileRequestBody), typeof(ConnectImexRequestBody), typeof(ConnectLasershipRequestBody), typeof(ConnectNewgisticsRequestBody), typeof(ConnectOntracRequestBody), typeof(ConnectPurolatorRequestBody), typeof(ConnectRoyalMailRequestBody), typeof(ConnectRrDonnelleyRequestBody), typeof(ConnectSekoRequestBody), typeof(ConnectSendleRequestBody), typeof(ConnectStampsRequestBody), typeof(ConnectUpsRequestBody)];
+    private static HashSet<string> MandatoryFields = ["AccessKey", "Account", "AccountNumber", "ActivationKey", "Address", "Address1", "AgreeToEula", "ApiKey", "ApiSecret", "AuthCode", "City", "ClientId", "ContactName", "ContractId", "CountryCode", "CustomerBranch", "DistributionCenter", "Email", "FirstName", "FtpPassword", "FtpUsername", "InductionSite", "LasershipCriticalEntryTime", "LasershipCriticalPullTime", "LastName", "MailerId", "MerchantSellerId", "MwsAuthToken", "Nickname", "Passphrase", "Password", "Phone", "PickupNumber", "PostalCode", "SendleId", "SiteId", "State", "Username", "WebServicesId", "WebServicesKey"];
+    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    {
+        TypeInfoResolver = new DefaultJsonTypeInfoResolver
+        {
+            Modifiers =
+            {
+                static typeInfo =>
+                {
+                    if (typeInfo.Kind != JsonTypeInfoKind.Object)
+                        return;
+
+                    foreach (JsonPropertyInfo propertyInfo in typeInfo.Properties)
+                    {
+                        // Strip IsRequired constraint from every property except those which define the underlying type
+                        if (OneOfTypes.Contains(typeInfo.Type))
+                        {
+                            var underlyingPropertyName = (propertyInfo.AttributeProvider as MemberInfo)?.Name;
+                            propertyInfo.IsRequired = underlyingPropertyName != null && MandatoryFields.Contains(underlyingPropertyName);
+                        }
+                        else
+                        {
+                            propertyInfo.IsRequired = false;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     /// <summary>
     /// To write the JSON string
     /// </summary>
@@ -843,7 +875,7 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
     /// <returns>The object converted from the JSON string</returns>
     public override ConnectCarrierRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if(reader.TokenType == JsonTokenType.Null)
+        if (reader.TokenType == JsonTokenType.Null)
         {
             return null;
         }
@@ -852,19 +884,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         ConnectCarrierRequestBody newConnectCarrierRequestBody = null;
 
         int match = 0;
-        List<string> matchedTypes = new List<string>();
+        var matchedTypes = new List<string>();
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectAccessWorldwideRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAccessWorldwideRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAccessWorldwideRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAccessWorldwideRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectAccessWorldwideRequestBody");
             match++;
         }
@@ -876,15 +901,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectAmazonBuyShippingRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonBuyShippingRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonBuyShippingRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonBuyShippingRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectAmazonBuyShippingRequestBody");
             match++;
         }
@@ -896,15 +914,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectAmazonShippingUk).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonShippingUk>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonShippingUk>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonShippingUk>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectAmazonShippingUk");
             match++;
         }
@@ -916,15 +927,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectApcRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectApcRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectApcRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectApcRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectApcRequestBody");
             match++;
         }
@@ -936,15 +940,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectAsendiaRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAsendiaRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAsendiaRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAsendiaRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectAsendiaRequestBody");
             match++;
         }
@@ -956,15 +953,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectAustraliaPostRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAustraliaPostRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAustraliaPostRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAustraliaPostRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectAustraliaPostRequestBody");
             match++;
         }
@@ -976,15 +966,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectCanadaPostRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectCanadaPostRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectCanadaPostRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectCanadaPostRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectCanadaPostRequestBody");
             match++;
         }
@@ -996,15 +979,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectDhlEcommerceRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlEcommerceRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlEcommerceRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlEcommerceRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectDhlEcommerceRequestBody");
             match++;
         }
@@ -1016,15 +992,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectDhlExpressRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectDhlExpressRequestBody");
             match++;
         }
@@ -1036,15 +1005,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectDhlExpressAuRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressAuRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressAuRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressAuRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectDhlExpressAuRequestBody");
             match++;
         }
@@ -1056,15 +1018,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectDhlExpressCaRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressCaRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressCaRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressCaRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectDhlExpressCaRequestBody");
             match++;
         }
@@ -1076,15 +1031,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectDhlExpressUkRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressUkRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressUkRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressUkRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectDhlExpressUkRequestBody");
             match++;
         }
@@ -1096,15 +1044,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectDpdRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDpdRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDpdRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDpdRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectDpdRequestBody");
             match++;
         }
@@ -1116,15 +1057,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectEndiciaRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectEndiciaRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectEndiciaRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectEndiciaRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectEndiciaRequestBody");
             match++;
         }
@@ -1136,15 +1070,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectFedexRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectFedexRequestBody");
             match++;
         }
@@ -1156,15 +1083,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectFedexUkRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexUkRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexUkRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexUkRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectFedexUkRequestBody");
             match++;
         }
@@ -1176,15 +1096,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectFirstmileRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFirstmileRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFirstmileRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFirstmileRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectFirstmileRequestBody");
             match++;
         }
@@ -1196,15 +1109,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectImexRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectImexRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectImexRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectImexRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectImexRequestBody");
             match++;
         }
@@ -1216,15 +1122,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectLasershipRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectLasershipRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectLasershipRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectLasershipRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectLasershipRequestBody");
             match++;
         }
@@ -1236,15 +1135,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectNewgisticsRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectNewgisticsRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectNewgisticsRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectNewgisticsRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectNewgisticsRequestBody");
             match++;
         }
@@ -1256,15 +1148,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectOntracRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectOntracRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectOntracRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectOntracRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectOntracRequestBody");
             match++;
         }
@@ -1276,15 +1161,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectPurolatorRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectPurolatorRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectPurolatorRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectPurolatorRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectPurolatorRequestBody");
             match++;
         }
@@ -1296,15 +1174,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectRoyalMailRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRoyalMailRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRoyalMailRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRoyalMailRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectRoyalMailRequestBody");
             match++;
         }
@@ -1316,15 +1187,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectRrDonnelleyRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRrDonnelleyRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRrDonnelleyRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRrDonnelleyRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectRrDonnelleyRequestBody");
             match++;
         }
@@ -1336,15 +1200,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectSekoRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSekoRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSekoRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSekoRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectSekoRequestBody");
             match++;
         }
@@ -1356,15 +1213,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectSendleRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSendleRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSendleRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSendleRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectSendleRequestBody");
             match++;
         }
@@ -1376,15 +1226,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectStampsRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectStampsRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectStampsRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectStampsRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectStampsRequestBody");
             match++;
         }
@@ -1396,15 +1239,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ConnectUpsRequestBody).GetProperty("AdditionalProperties") == null)
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectUpsRequestBody>(jsonDoc, ConnectCarrierRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectUpsRequestBody>(jsonDoc, ConnectCarrierRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectUpsRequestBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ConnectUpsRequestBody");
             match++;
         }
@@ -1418,7 +1254,8 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        else if (match > 1)
+        
+        if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
@@ -1435,7 +1272,7 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
     /// <returns>True if the object can be converted</returns>
     public override bool CanConvert(Type objectType)
     {
-        return false;
+        return typeof(ConnectCarrierRequestBody).IsAssignableFrom(objectType);
     }
 }
 

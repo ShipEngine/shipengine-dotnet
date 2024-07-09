@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get warehouse by id response body
 /// </summary>
-[DataContract(Name = "get_warehouse_by_id_response_body")]
+//[DataContract(Name = "get_warehouse_by_id_response_body")]
 public partial class GetWarehouseByIdResponseBody
 {
 
@@ -39,7 +40,7 @@ public partial class GetWarehouseByIdResponseBody
     /// </example>
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
-    public string WarehouseId { get; private set; }
+    public string WarehouseId { get; set; }
 
     /// <summary>
     /// Designates which single warehouse is the default on the account
@@ -68,7 +69,7 @@ public partial class GetWarehouseByIdResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The origin address of the warehouse

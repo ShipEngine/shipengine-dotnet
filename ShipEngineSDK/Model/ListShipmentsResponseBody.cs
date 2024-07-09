@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list shipment response body
 /// </summary>
-[DataContract(Name = "list_shipments_response_body")]
+//[DataContract(Name = "list_shipments_response_body")]
 public partial class ListShipmentsResponseBody
 {
 
@@ -36,7 +37,7 @@ public partial class ListShipmentsResponseBody
     /// <value>The list of shipments returned by the api call</value>
     [JsonPropertyName("shipments")]
     [JsonRequired]
-    public List<Shipment> Shipments { get; private set; }
+    public List<Shipment> Shipments { get; set; }
 
     /// <summary>
     /// Total number of shipments returned by the api call
@@ -47,28 +48,28 @@ public partial class ListShipmentsResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; private set; }
+    public long Total { get; set; }
 
     /// <summary>
     /// Gets or Sets Page
     /// </summary>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; private set; }
+    public int Page { get; set; }
 
     /// <summary>
     /// Gets or Sets Pages
     /// </summary>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; private set; }
+    public int Pages { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; private set; }
+    public PaginationLink Links { get; set; }
 
 
     /// <summary>

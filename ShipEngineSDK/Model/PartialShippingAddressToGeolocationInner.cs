@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// PartialShippingAddressToGeolocationInner
 /// </summary>
-[DataContract(Name = "partial_shipping_address_to_geolocation_inner")]
+//[DataContract(Name = "partial_shipping_address_to_geolocation_inner")]
 public partial class PartialShippingAddressToGeolocationInner
 {
         /// <summary>

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A monetary value, such as the price of a shipping label, the insured value of a package, or an account balance. 
 /// </summary>
-[DataContract(Name = "monetary_value")]
+//[DataContract(Name = "monetary_value")]
 public partial class MonetaryValue
 {
 

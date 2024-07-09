@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Shipment information to be used for service point selection
 /// </summary>
-[DataContract(Name = "get_service_points_request_body_shipment")]
+//[DataContract(Name = "get_service_points_request_body_shipment")]
 public partial class GetServicePointsRequestBodyShipment
 {
 

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get tracking log from label response body
 /// </summary>
-[DataContract(Name = "get_tracking_log_from_label_response_body")]
+//[DataContract(Name = "get_tracking_log_from_label_response_body")]
 public partial class GetTrackingLogFromLabelResponseBody
 {
 
@@ -98,7 +99,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// </example>
     [JsonPropertyName("carrier_status_code")]
     [JsonRequired]
-    public string CarrierStatusCode { get; private set; }
+    public string CarrierStatusCode { get; set; }
 
     /// <summary>
     /// Carrier detail code
@@ -164,7 +165,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <value>The events that have occured during the lifetime of this tracking number.</value>
     [JsonPropertyName("events")]
     [JsonRequired]
-    public List<TrackEvent> Events { get; private set; }
+    public List<TrackEvent> Events { get; set; }
 
 
     /// <summary>

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A batch errors response body
 /// </summary>
-[DataContract(Name = "list_batch_errors_response_body")]
+//[DataContract(Name = "list_batch_errors_response_body")]
 public partial class ListBatchErrorsResponseBody
 {
 
@@ -36,14 +37,14 @@ public partial class ListBatchErrorsResponseBody
     /// <value>The errors currently associated with the batch</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<BatchResponseError> Errors { get; private set; }
+    public List<BatchResponseError> Errors { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; private set; }
+    public PaginationLink Links { get; set; }
 
 
     /// <summary>

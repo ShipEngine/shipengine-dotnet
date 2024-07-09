@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A tax identifier object
 /// </summary>
-[DataContract(Name = "tax_identifier")]
+//[DataContract(Name = "tax_identifier")]
 public partial class TaxIdentifier
 {
 

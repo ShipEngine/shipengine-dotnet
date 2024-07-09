@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list batch response body
 /// </summary>
-[DataContract(Name = "list_batches_response_body")]
+//[DataContract(Name = "list_batches_response_body")]
 public partial class ListBatchesResponseBody
 {
 
@@ -36,7 +37,7 @@ public partial class ListBatchesResponseBody
     /// <value>Batch List</value>
     [JsonPropertyName("batches")]
     [JsonRequired]
-    public List<Batch> Batches { get; private set; }
+    public List<Batch> Batches { get; set; }
 
     /// <summary>
     /// The total number of batches the API call returned
@@ -47,7 +48,7 @@ public partial class ListBatchesResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; private set; }
+    public long Total { get; set; }
 
     /// <summary>
     /// The page that is currently being read
@@ -58,7 +59,7 @@ public partial class ListBatchesResponseBody
     /// </example>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; private set; }
+    public int Page { get; set; }
 
     /// <summary>
     /// The total number of batch pages the API call returned
@@ -69,14 +70,14 @@ public partial class ListBatchesResponseBody
     /// </example>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; private set; }
+    public int Pages { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; private set; }
+    public PaginationLink Links { get; set; }
 
 
     /// <summary>

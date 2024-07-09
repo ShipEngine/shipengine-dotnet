@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A void label response body
 /// </summary>
-[DataContract(Name = "void_label_response_body")]
+//[DataContract(Name = "void_label_response_body")]
 public partial class VoidLabelResponseBody
 {
 
@@ -45,7 +46,7 @@ public partial class VoidLabelResponseBody
     /// </example>
     [JsonPropertyName("approved")]
     [JsonRequired]
-    public bool Approved { get; private set; }
+    public bool Approved { get; set; }
 
     /// <summary>
     /// Gets or Sets Message
@@ -55,7 +56,7 @@ public partial class VoidLabelResponseBody
     /// </example>
     [JsonPropertyName("message")]
     [JsonRequired]
-    public string Message { get; private set; }
+    public string Message { get; set; }
 
 
     /// <summary>

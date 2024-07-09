@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An update warehouse settings request body
 /// </summary>
-[DataContract(Name = "update_warehouse_settings_request_body")]
+//[DataContract(Name = "update_warehouse_settings_request_body")]
 public partial class UpdateWarehouseSettingsRequestBody
 {
 

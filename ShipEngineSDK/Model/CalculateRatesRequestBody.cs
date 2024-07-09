@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ namespace ShipEngineSDK.Model;
 /// A rate shipment request body
 /// </summary>
 [JsonConverter(typeof(CalculateRatesRequestBodyJsonConverter))]
-[DataContract(Name = "calculate_rates_request_body")]
+//[DataContract(Name = "calculate_rates_request_body")]
 public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
 {
 
@@ -144,6 +145,37 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRatesRequestBody>
 {
+    private static HashSet<Type> OneOfTypes = [typeof(ShipmentIdRequest), typeof(ShipmentRequest)];
+    private static HashSet<string> MandatoryFields = ["Shipment", "ShipmentId"];
+    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    {
+        TypeInfoResolver = new DefaultJsonTypeInfoResolver
+        {
+            Modifiers =
+            {
+                static typeInfo =>
+                {
+                    if (typeInfo.Kind != JsonTypeInfoKind.Object)
+                        return;
+
+                    foreach (JsonPropertyInfo propertyInfo in typeInfo.Properties)
+                    {
+                        // Strip IsRequired constraint from every property except those which define the underlying type
+                        if (OneOfTypes.Contains(typeInfo.Type))
+                        {
+                            var underlyingPropertyName = (propertyInfo.AttributeProvider as MemberInfo)?.Name;
+                            propertyInfo.IsRequired = underlyingPropertyName != null && MandatoryFields.Contains(underlyingPropertyName);
+                        }
+                        else
+                        {
+                            propertyInfo.IsRequired = false;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     /// <summary>
     /// To write the JSON string
     /// </summary>
@@ -178,7 +210,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
     /// <returns>The object converted from the JSON string</returns>
     public override CalculateRatesRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if(reader.TokenType == JsonTokenType.Null)
+        if (reader.TokenType == JsonTokenType.Null)
         {
             return null;
         }
@@ -187,19 +219,12 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         CalculateRatesRequestBody newCalculateRatesRequestBody = null;
 
         int match = 0;
-        List<string> matchedTypes = new List<string>();
+        var matchedTypes = new List<string>();
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ShipmentIdRequest).GetProperty("AdditionalProperties") == null)
-            {
-                newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentIdRequest>(jsonDoc, CalculateRatesRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentIdRequest>(jsonDoc, CalculateRatesRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentIdRequest>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ShipmentIdRequest");
             match++;
         }
@@ -211,15 +236,8 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(ShipmentRequest).GetProperty("AdditionalProperties") == null)
-            {
-                newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentRequest>(jsonDoc, CalculateRatesRequestBody.SerializerSettings));
-            }
-            else
-            {
-                newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentRequest>(jsonDoc, CalculateRatesRequestBody.AdditionalPropertiesSerializerSettings));
-            }
+            newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentRequest>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("ShipmentRequest");
             match++;
         }
@@ -233,12 +251,13 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        else if (match > 1)
+        
+        if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
 
-        newCalculateRatesRequestBody.RateOptions = JsonSerializer.Deserialize<RateRequestBody>(jsonDoc.RootElement.GetProperty("rate_options"), CalculateRatesRequestBody.SerializerSettings);
+        newCalculateRatesRequestBody.RateOptions = JsonSerializer.Deserialize<RateRequestBody>(jsonDoc.RootElement.GetProperty("rate_options"), DeserializingOptions);
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newCalculateRatesRequestBody;
@@ -251,7 +270,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
     /// <returns>True if the object can be converted</returns>
     public override bool CanConvert(Type objectType)
     {
-        return false;
+        return typeof(CalculateRatesRequestBody).IsAssignableFrom(objectType);
     }
 }
 

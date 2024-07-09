@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An array of manifest requests
 /// </summary>
-[DataContract(Name = "manifests_requests")]
+//[DataContract(Name = "manifests_requests")]
 public partial class ManifestsRequests
 {
 

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Provide details for the Fedex freight service
 /// </summary>
-[DataContract(Name = "advanced_shipment_options_fedex_freight")]
+//[DataContract(Name = "advanced_shipment_options_fedex_freight")]
 public partial class AdvancedShipmentOptionsFedexFreight
 {
 

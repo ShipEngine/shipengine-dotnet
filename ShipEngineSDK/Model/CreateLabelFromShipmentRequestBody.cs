@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A purchase label without shipment request body
 /// </summary>
-[DataContract(Name = "create_label_from_shipment_request_body")]
+//[DataContract(Name = "create_label_from_shipment_request_body")]
 public partial class CreateLabelFromShipmentRequestBody
 {
 

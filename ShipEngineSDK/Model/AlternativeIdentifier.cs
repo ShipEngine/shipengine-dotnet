@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Additional information some carriers may provide by which to identify a given label in their system.  
 /// </summary>
-[DataContract(Name = "alternative_identifier")]
+//[DataContract(Name = "alternative_identifier")]
 public partial class AlternativeIdentifier
 {
 

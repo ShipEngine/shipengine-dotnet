@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Contact information for Dangerous goods
 /// </summary>
-[DataContract(Name = "advanced_shipment_options_dangerous_goods_contact")]
+//[DataContract(Name = "advanced_shipment_options_dangerous_goods_contact")]
 public partial class AdvancedShipmentOptionsDangerousGoodsContact
 {
 

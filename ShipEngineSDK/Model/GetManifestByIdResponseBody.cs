@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A get manifest by id response body
 /// </summary>
-[DataContract(Name = "get_manifest_by_id_response_body")]
+//[DataContract(Name = "get_manifest_by_id_response_body")]
 public partial class GetManifestByIdResponseBody
 {
 
@@ -39,7 +40,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("manifest_id")]
     [JsonRequired]
-    public string ManifestId { get; private set; }
+    public string ManifestId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the form
@@ -50,7 +51,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("form_id")]
     [JsonRequired]
-    public string FormId { get; private set; }
+    public string FormId { get; set; }
 
     /// <summary>
     /// The date-time that the manifest was created
@@ -61,7 +62,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -72,7 +73,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("ship_date")]
     [JsonRequired]
-    public DateTime ShipDate { get; private set; }
+    public DateTime ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest
@@ -83,7 +84,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("shipments")]
     [JsonRequired]
-    public int Shipments { get; private set; }
+    public int Shipments { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.
@@ -91,7 +92,7 @@ public partial class GetManifestByIdResponseBody
     /// <value>An array of the label ids used in this manifest.</value>
     [JsonPropertyName("label_ids")]
     [JsonRequired]
-    public List<string> LabelIds { get; private set; }
+    public List<string> LabelIds { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -102,7 +103,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
-    public string WarehouseId { get; private set; }
+    public string WarehouseId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
@@ -113,7 +114,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("submission_id")]
     [JsonRequired]
-    public string SubmissionId { get; private set; }
+    public string SubmissionId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the carrier
@@ -124,14 +125,14 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; private set; }
+    public string CarrierId { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
     /// </summary>
     [JsonPropertyName("manifest_download")]
     [JsonRequired]
-    public ManifestDownload ManifestDownload { get; private set; }
+    public ManifestDownload ManifestDownload { get; set; }
 
 
     /// <summary>

@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A list manifests response body
 /// </summary>
-[DataContract(Name = "list_manifests_response_body")]
+//[DataContract(Name = "list_manifests_response_body")]
 public partial class ListManifestsResponseBody
 {
 
@@ -36,7 +37,7 @@ public partial class ListManifestsResponseBody
     /// <value>The list of available manifests</value>
     [JsonPropertyName("manifests")]
     [JsonRequired]
-    public List<Manifest> Manifests { get; private set; }
+    public List<Manifest> Manifests { get; set; }
 
     /// <summary>
     /// The total number of manifests returned
@@ -47,7 +48,7 @@ public partial class ListManifestsResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; private set; }
+    public long Total { get; set; }
 
     /// <summary>
     /// Current page of the list manifests results
@@ -58,7 +59,7 @@ public partial class ListManifestsResponseBody
     /// </example>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; private set; }
+    public int Page { get; set; }
 
     /// <summary>
     /// Total number of pages for list manifests results
@@ -69,7 +70,7 @@ public partial class ListManifestsResponseBody
     /// </example>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; private set; }
+    public int Pages { get; set; }
 
     /// <summary>
     /// Helpful links to other pages of results
@@ -77,7 +78,7 @@ public partial class ListManifestsResponseBody
     /// <value>Helpful links to other pages of results</value>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; private set; }
+    public PaginationLink Links { get; set; }
 
 
     /// <summary>

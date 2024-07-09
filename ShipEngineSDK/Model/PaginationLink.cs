@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// Helpful links to other pages of results
 /// </summary>
-[DataContract(Name = "pagination_link")]
+//[DataContract(Name = "pagination_link")]
 public partial class PaginationLink
 {
 

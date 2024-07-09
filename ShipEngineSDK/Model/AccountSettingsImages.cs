@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// A ShipEngine account images body
 /// </summary>
-[DataContract(Name = "account_settings_images")]
+//[DataContract(Name = "account_settings_images")]
 public partial class AccountSettingsImages
 {
         /// <summary>

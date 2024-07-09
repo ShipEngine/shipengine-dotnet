@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The current balance of the requested carrier account
 /// </summary>
-[DataContract(Name = "add_funds_to_carrier_response_body")]
+//[DataContract(Name = "add_funds_to_carrier_response_body")]
 public partial class AddFundsToCarrierResponseBody
 {
 
@@ -36,7 +37,7 @@ public partial class AddFundsToCarrierResponseBody
     /// <value>The current balance of the account</value>
     [JsonPropertyName("balance")]
     [JsonRequired]
-    public MonetaryValue Balance { get; private set; }
+    public MonetaryValue Balance { get; set; }
 
 
     /// <summary>

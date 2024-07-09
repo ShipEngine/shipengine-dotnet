@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ namespace ShipEngineSDK.Model;
 /// GetCarrierSettingsResponseBody
 /// </summary>
 [JsonConverter(typeof(GetCarrierSettingsResponseBodyJsonConverter))]
-[DataContract(Name = "get_carrier_settings_response_body")]
+//[DataContract(Name = "get_carrier_settings_response_body")]
 public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
 {
 
@@ -161,6 +162,37 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
 /// </summary>
 public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarrierSettingsResponseBody>
 {
+    private static HashSet<Type> OneOfTypes = [typeof(DhlExpressSettingsResponseBody), typeof(FedexSettingsResponseBody), typeof(UpsSettingsResponseBody)];
+    private static HashSet<string> MandatoryFields = [];
+    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    {
+        TypeInfoResolver = new DefaultJsonTypeInfoResolver
+        {
+            Modifiers =
+            {
+                static typeInfo =>
+                {
+                    if (typeInfo.Kind != JsonTypeInfoKind.Object)
+                        return;
+
+                    foreach (JsonPropertyInfo propertyInfo in typeInfo.Properties)
+                    {
+                        // Strip IsRequired constraint from every property except those which define the underlying type
+                        if (OneOfTypes.Contains(typeInfo.Type))
+                        {
+                            var underlyingPropertyName = (propertyInfo.AttributeProvider as MemberInfo)?.Name;
+                            propertyInfo.IsRequired = underlyingPropertyName != null && MandatoryFields.Contains(underlyingPropertyName);
+                        }
+                        else
+                        {
+                            propertyInfo.IsRequired = false;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     /// <summary>
     /// To write the JSON string
     /// </summary>
@@ -193,7 +225,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
     /// <returns>The object converted from the JSON string</returns>
     public override GetCarrierSettingsResponseBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if(reader.TokenType == JsonTokenType.Null)
+        if (reader.TokenType == JsonTokenType.Null)
         {
             return null;
         }
@@ -202,19 +234,12 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         GetCarrierSettingsResponseBody newGetCarrierSettingsResponseBody = null;
 
         int match = 0;
-        List<string> matchedTypes = new List<string>();
+        var matchedTypes = new List<string>();
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(DhlExpressSettingsResponseBody).GetProperty("AdditionalProperties") == null)
-            {
-                newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<DhlExpressSettingsResponseBody>(jsonDoc, GetCarrierSettingsResponseBody.SerializerSettings));
-            }
-            else
-            {
-                newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<DhlExpressSettingsResponseBody>(jsonDoc, GetCarrierSettingsResponseBody.AdditionalPropertiesSerializerSettings));
-            }
+            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<DhlExpressSettingsResponseBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("DhlExpressSettingsResponseBody");
             match++;
         }
@@ -226,15 +251,8 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(FedexSettingsResponseBody).GetProperty("AdditionalProperties") == null)
-            {
-                newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<FedexSettingsResponseBody>(jsonDoc, GetCarrierSettingsResponseBody.SerializerSettings));
-            }
-            else
-            {
-                newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<FedexSettingsResponseBody>(jsonDoc, GetCarrierSettingsResponseBody.AdditionalPropertiesSerializerSettings));
-            }
+            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<FedexSettingsResponseBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("FedexSettingsResponseBody");
             match++;
         }
@@ -246,15 +264,8 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
 
         try
         {
-            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-            if (typeof(UpsSettingsResponseBody).GetProperty("AdditionalProperties") == null)
-            {
-                newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<UpsSettingsResponseBody>(jsonDoc, GetCarrierSettingsResponseBody.SerializerSettings));
-            }
-            else
-            {
-                newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<UpsSettingsResponseBody>(jsonDoc, GetCarrierSettingsResponseBody.AdditionalPropertiesSerializerSettings));
-            }
+            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<UpsSettingsResponseBody>(jsonDoc, DeserializingOptions));
+            
             matchedTypes.Add("UpsSettingsResponseBody");
             match++;
         }
@@ -268,7 +279,8 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        else if (match > 1)
+        
+        if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
@@ -285,7 +297,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
     /// <returns>True if the object can be converted</returns>
     public override bool CanConvert(Type objectType)
     {
-        return false;
+        return typeof(GetCarrierSettingsResponseBody).IsAssignableFrom(objectType);
     }
 }
 

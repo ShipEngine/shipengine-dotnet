@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// An address validating shipment
 /// </summary>
-[DataContract(Name = "address_validating_shipment")]
+//[DataContract(Name = "address_validating_shipment")]
 public partial class AddressValidatingShipment
 {
 
@@ -67,7 +68,7 @@ public partial class AddressValidatingShipment
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; private set; }
+    public string ShipmentId { get; set; }
 
     /// <summary>
     /// The carrier account that is billed for the shipping charges

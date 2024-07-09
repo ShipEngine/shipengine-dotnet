@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// The error structure that gets returned with almost all failed API calls 
 /// </summary>
-[DataContract(Name = "error")]
+//[DataContract(Name = "error")]
 public partial class Error
 {
 
@@ -63,7 +64,7 @@ public partial class Error
     /// </example>
     [JsonPropertyName("message")]
     [JsonRequired]
-    public string Message { get; private set; }
+    public string Message { get; set; }
 
 
     /// <summary>

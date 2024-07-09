@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// RateRequestByShipmentIds
 /// </summary>
-[DataContract(Name = "rate_request_by_shipment_ids")]
+//[DataContract(Name = "rate_request_by_shipment_ids")]
 public partial class RateRequestByShipmentIds
 {
 

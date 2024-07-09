@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 namespace ShipEngineSDK.Model;
@@ -26,7 +27,7 @@ namespace ShipEngineSDK.Model;
 /// <summary>
 /// GetPickupsResponseBody
 /// </summary>
-[DataContract(Name = "get_pickups_response_body")]
+//[DataContract(Name = "get_pickups_response_body")]
 public partial class GetPickupsResponseBody
 {
 
@@ -47,7 +48,7 @@ public partial class GetPickupsResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; private set; }
+    public long Total { get; set; }
 
     /// <summary>
     /// Current page of the list pickups results
@@ -58,7 +59,7 @@ public partial class GetPickupsResponseBody
     /// </example>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; private set; }
+    public int Page { get; set; }
 
     /// <summary>
     /// Total number of pages for list pickups results
@@ -69,7 +70,7 @@ public partial class GetPickupsResponseBody
     /// </example>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; private set; }
+    public int Pages { get; set; }
 
     /// <summary>
     /// Helpful links to other pages of results
@@ -77,7 +78,7 @@ public partial class GetPickupsResponseBody
     /// <value>Helpful links to other pages of results</value>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; private set; }
+    public PaginationLink Links { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -96,7 +97,7 @@ public partial class GetPickupsResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; private set; }
+    public List<Error> Errors { get; set; }
 
 
     /// <summary>
