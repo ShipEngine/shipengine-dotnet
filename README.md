@@ -70,6 +70,13 @@ To build the project locally on your computer:
    By default, the test project targets all supported frameworks, if your environment only supports a subset then you can specify in the CLI. <br><br>
    `dotnet test -f net5.0`
 
+### Generating from OpenAPI
+
+The templates for autogeneration were extracted using the command:
+```bash
+npx @openapitools/openapi-generator-cli author template -g csharp -o generation/templates
+```
+
 ## Release
 Create a [fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for your changes.
 
