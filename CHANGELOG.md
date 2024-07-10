@@ -139,3 +139,9 @@ Impoved handling of unexpected HTTP responses
 
 - Allow setting alternate base address on HTTP Client
 - Moved the SDK version to static fields so they are only determined once at startup.
+
+## 2.0.5
+
+### Changed
+
+Updated nuget package dependencies
