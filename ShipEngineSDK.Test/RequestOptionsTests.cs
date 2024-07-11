@@ -21,6 +21,14 @@ namespace ShipEngineTest
         }
 
         [Fact]
+        public void FullPathReturnsPathWithParametersReplacedAndEscaped()
+        {
+            var result = new RequestOptions("/v1/foo/{id}");
+            result.PathParameters.Add("id", "foo bar");
+            Assert.Equal("/v1/foo/foo%20bar", result.FullPath());
+        }
+
+        [Fact]
         public void FullPathReturnsQueryParameters()
         {
             var result = new RequestOptions("/v1/foo");
