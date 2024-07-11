@@ -41,20 +41,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createWarehouseRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateWarehouseResponseBody)</returns>
-    Task<CreateWarehouseResponseBody> CreateWarehouse(Config methodConfig, CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Create Warehouse Create a warehouse location that you can use to create shipping items by simply passing in the generated warehouse id. If the return address is not supplied in the request body then it is assumed that the origin address is the return address as well 
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createWarehouseRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateWarehouseResponseBody)</returns>
-    Task<CreateWarehouseResponseBody> CreateWarehouse(HttpClient methodClient, Config methodConfig, CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateWarehouseResponseBody> CreateWarehouse(HttpClient methodClient, CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Warehouse By ID Delete a warehouse by ID
@@ -71,20 +62,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteWarehouse(Config methodConfig, string warehouseId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Delete Warehouse By ID Delete a warehouse by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteWarehouse(HttpClient methodClient, Config methodConfig, string warehouseId, CancellationToken cancellationToken = default);
+    Task<string> DeleteWarehouse(HttpClient methodClient, string warehouseId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Warehouse By Id Retrieve warehouse data based on the warehouse ID
@@ -101,20 +83,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetWarehouseByIdResponseBody)</returns>
-    Task<GetWarehouseByIdResponseBody> GetWarehouseById(Config methodConfig, string warehouseId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Warehouse By Id Retrieve warehouse data based on the warehouse ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetWarehouseByIdResponseBody)</returns>
-    Task<GetWarehouseByIdResponseBody> GetWarehouseById(HttpClient methodClient, Config methodConfig, string warehouseId, CancellationToken cancellationToken = default);
+    Task<GetWarehouseByIdResponseBody> GetWarehouseById(HttpClient methodClient, string warehouseId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Warehouses Retrieve a list of warehouses associated with this account.
@@ -130,18 +103,10 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListWarehousesResponseBody)</returns>
-    Task<ListWarehousesResponseBody> ListWarehouses(Config methodConfig, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// List Warehouses Retrieve a list of warehouses associated with this account.
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListWarehousesResponseBody)</returns>
-    Task<ListWarehousesResponseBody> ListWarehouses(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default);
+    Task<ListWarehousesResponseBody> ListWarehouses(HttpClient methodClient, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Warehouse By Id Update Warehouse object information
@@ -159,22 +124,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="updateWarehouseRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWarehouse(Config methodConfig, string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Update Warehouse By Id Update Warehouse object information
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="updateWarehouseRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWarehouse(HttpClient methodClient, Config methodConfig, string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateWarehouse(HttpClient methodClient, string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Warehouse Settings Update Warehouse settings object information
@@ -192,22 +147,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="updateWarehouseSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWarehouseSettings(Config methodConfig, string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Update Warehouse Settings Update Warehouse settings object information
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="updateWarehouseSettingsRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWarehouseSettings(HttpClient methodClient, Config methodConfig, string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateWarehouseSettings(HttpClient methodClient, string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default);
 
 }
 
@@ -226,7 +171,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateWarehouseResponseBody)</returns>
     public Task<CreateWarehouseResponseBody> CreateWarehouse(CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default)
     {
-        return CreateWarehouse(_client, _config, createWarehouseRequestBody, cancellationToken);
+        return CreateWarehouse(_client, createWarehouseRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -234,24 +179,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createWarehouseRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateWarehouseResponseBody)</returns>
-    public async Task<CreateWarehouseResponseBody> CreateWarehouse(Config methodConfig, CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await CreateWarehouse(methodClient, methodConfig, createWarehouseRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Create Warehouse Create a warehouse location that you can use to create shipping items by simply passing in the generated warehouse id. If the return address is not supplied in the request body then it is assumed that the origin address is the return address as well 
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createWarehouseRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateWarehouseResponseBody)</returns>
-    public async Task<CreateWarehouseResponseBody> CreateWarehouse(HttpClient methodClient, Config methodConfig, CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default)
+    public async Task<CreateWarehouseResponseBody> CreateWarehouse(HttpClient methodClient, CreateWarehouseRequestBody createWarehouseRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'createWarehouseRequestBody' is set
         if (createWarehouseRequestBody == null)
@@ -266,7 +198,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.CreateWarehouse";
 
-        var result = await SendHttpRequestAsync<CreateWarehouseResponseBody>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<CreateWarehouseResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -281,7 +213,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> DeleteWarehouse(string warehouseId, CancellationToken cancellationToken = default)
     {
-        return DeleteWarehouse(_client, _config, warehouseId, cancellationToken);
+        return DeleteWarehouse(_client, warehouseId, cancellationToken);
     }
 
     /// <summary>
@@ -289,24 +221,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteWarehouse(Config methodConfig, string warehouseId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await DeleteWarehouse(methodClient, methodConfig, warehouseId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Delete Warehouse By ID Delete a warehouse by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteWarehouse(HttpClient methodClient, Config methodConfig, string warehouseId, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteWarehouse(HttpClient methodClient, string warehouseId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
@@ -321,7 +240,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.DeleteWarehouse";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -336,7 +255,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetWarehouseByIdResponseBody)</returns>
     public Task<GetWarehouseByIdResponseBody> GetWarehouseById(string warehouseId, CancellationToken cancellationToken = default)
     {
-        return GetWarehouseById(_client, _config, warehouseId, cancellationToken);
+        return GetWarehouseById(_client, warehouseId, cancellationToken);
     }
 
     /// <summary>
@@ -344,24 +263,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetWarehouseByIdResponseBody)</returns>
-    public async Task<GetWarehouseByIdResponseBody> GetWarehouseById(Config methodConfig, string warehouseId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetWarehouseById(methodClient, methodConfig, warehouseId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Warehouse By Id Retrieve warehouse data based on the warehouse ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetWarehouseByIdResponseBody)</returns>
-    public async Task<GetWarehouseByIdResponseBody> GetWarehouseById(HttpClient methodClient, Config methodConfig, string warehouseId, CancellationToken cancellationToken = default)
+    public async Task<GetWarehouseByIdResponseBody> GetWarehouseById(HttpClient methodClient, string warehouseId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
@@ -376,7 +282,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.GetWarehouseById";
 
-        var result = await SendHttpRequestAsync<GetWarehouseByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetWarehouseByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -390,7 +296,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListWarehousesResponseBody)</returns>
     public Task<ListWarehousesResponseBody> ListWarehouses(CancellationToken cancellationToken = default)
     {
-        return ListWarehouses(_client, _config, cancellationToken);
+        return ListWarehouses(_client, cancellationToken);
     }
 
     /// <summary>
@@ -398,22 +304,10 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListWarehousesResponseBody)</returns>
-    public async Task<ListWarehousesResponseBody> ListWarehouses(Config methodConfig, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ListWarehouses(methodClient, methodConfig, cancellationToken);
-    }
-
-    /// <summary>
-    /// List Warehouses Retrieve a list of warehouses associated with this account.
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListWarehousesResponseBody)</returns>
-    public async Task<ListWarehousesResponseBody> ListWarehouses(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
+    public async Task<ListWarehousesResponseBody> ListWarehouses(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/warehouses");
@@ -421,7 +315,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.ListWarehouses";
 
-        var result = await SendHttpRequestAsync<ListWarehousesResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<ListWarehousesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -437,7 +331,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> UpdateWarehouse(string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default)
     {
-        return UpdateWarehouse(_client, _config, warehouseId, updateWarehouseRequestBody, cancellationToken);
+        return UpdateWarehouse(_client, warehouseId, updateWarehouseRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -445,26 +339,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="updateWarehouseRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateWarehouse(Config methodConfig, string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await UpdateWarehouse(methodClient, methodConfig, warehouseId, updateWarehouseRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Update Warehouse By Id Update Warehouse object information
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="updateWarehouseRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateWarehouse(HttpClient methodClient, Config methodConfig, string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateWarehouse(HttpClient methodClient, string warehouseId, UpdateWarehouseRequestBody updateWarehouseRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
@@ -486,7 +366,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.UpdateWarehouse";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -502,7 +382,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> UpdateWarehouseSettings(string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default)
     {
-        return UpdateWarehouseSettings(_client, _config, warehouseId, updateWarehouseSettingsRequestBody, cancellationToken);
+        return UpdateWarehouseSettings(_client, warehouseId, updateWarehouseSettingsRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -510,26 +390,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID</param>
     /// <param name="updateWarehouseSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateWarehouseSettings(Config methodConfig, string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await UpdateWarehouseSettings(methodClient, methodConfig, warehouseId, updateWarehouseSettingsRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Update Warehouse Settings Update Warehouse settings object information
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID</param>
-    /// <param name="updateWarehouseSettingsRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateWarehouseSettings(HttpClient methodClient, Config methodConfig, string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateWarehouseSettings(HttpClient methodClient, string warehouseId, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'warehouseId' is set
         if (warehouseId == null)
@@ -551,7 +417,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.UpdateWarehouseSettings";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }

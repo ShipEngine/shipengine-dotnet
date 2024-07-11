@@ -42,22 +42,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="addToBatchRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> AddToBatch(Config methodConfig, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Add to a Batch Add a Shipment or Rate to a Batch
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="addToBatchRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> AddToBatch(HttpClient methodClient, Config methodConfig, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default);
+    Task<string> AddToBatch(HttpClient methodClient, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create A Batch Create a Batch
@@ -74,20 +64,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createBatchRequest"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateBatchResponseBody)</returns>
-    Task<CreateBatchResponseBody> CreateBatch(Config methodConfig, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Create A Batch Create a Batch
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createBatchRequest"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateBatchResponseBody)</returns>
-    Task<CreateBatchResponseBody> CreateBatch(HttpClient methodClient, Config methodConfig, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default);
+    Task<CreateBatchResponseBody> CreateBatch(HttpClient methodClient, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Batch By Id Delete Batch By Id
@@ -104,20 +85,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteBatch(Config methodConfig, string batchId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Delete Batch By Id Delete Batch By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default);
+    Task<string> DeleteBatch(HttpClient methodClient, string batchId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Batch By External ID Get Batch By External ID
@@ -134,20 +106,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="externalBatchId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetBatchByExternalIdResponseBody)</returns>
-    Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(Config methodConfig, string externalBatchId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Batch By External ID Get Batch By External ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="externalBatchId"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetBatchByExternalIdResponseBody)</returns>
-    Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(HttpClient methodClient, Config methodConfig, string externalBatchId, CancellationToken cancellationToken = default);
+    Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(HttpClient methodClient, string externalBatchId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Batch By ID Get Batch By ID
@@ -164,20 +127,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetBatchByIdResponseBody)</returns>
-    Task<GetBatchByIdResponseBody> GetBatchById(Config methodConfig, string batchId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Batch By ID Get Batch By ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetBatchByIdResponseBody)</returns>
-    Task<GetBatchByIdResponseBody> GetBatchById(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default);
+    Task<GetBatchByIdResponseBody> GetBatchById(HttpClient methodClient, string batchId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Batch Errors Error handling in batches are handled differently than in a single synchronous request. You must retrieve the status of your batch by [getting a batch](https://www.shipengine.com/docs/reference/get-batch-by-id/) and getting an overview of the statuses or you can list errors directly here below to get detailed information about the errors. 
@@ -196,24 +150,13 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pagesize"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    Task<ListBatchErrorsResponseBody> ListBatchErrors(Config methodConfig, string batchId, int? page, int? pagesize, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Batch Errors Error handling in batches are handled differently than in a single synchronous request. You must retrieve the status of your batch by [getting a batch](https://www.shipengine.com/docs/reference/get-batch-by-id/) and getting an overview of the statuses or you can list errors directly here below to get detailed information about the errors. 
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pagesize"> (optional)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, Config methodConfig, string batchId, int? page, int? pagesize, CancellationToken cancellationToken = default);
+    Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, string batchId, int? page, int? pagesize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Batches List Batches associated with your Shipengine account
@@ -235,6 +178,7 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="status"> (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
@@ -243,22 +187,7 @@ public partial interface IShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    Task<ListBatchesResponseBody> ListBatches(Config methodConfig, BatchStatus? status, int? page, int? pageSize, SortDir? sortDir, string batchNumber, BatchesSortBy? sortBy, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// List Batches List Batches associated with your Shipengine account
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="status"> (optional)</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
-    /// <param name="batchNumber">Batch Number (optional)</param>
-    /// <param name="sortBy"> (optional)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, Config methodConfig, BatchStatus? status, int? page, int? pageSize, SortDir? sortDir, string batchNumber, BatchesSortBy? sortBy, CancellationToken cancellationToken = default);
+    Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, BatchStatus? status, int? page, int? pageSize, SortDir? sortDir, string batchNumber, BatchesSortBy? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Process Batch ID Labels Process Batch ID Labels
@@ -276,22 +205,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="processBatchRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> ProcessBatch(Config methodConfig, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Process Batch ID Labels Process Batch ID Labels
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="processBatchRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> ProcessBatch(HttpClient methodClient, Config methodConfig, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default);
+    Task<string> ProcessBatch(HttpClient methodClient, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Remove From Batch Remove a shipment or rate from a batch
@@ -309,22 +228,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="removeFromBatchRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> RemoveFromBatch(Config methodConfig, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Remove From Batch Remove a shipment or rate from a batch
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="removeFromBatchRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> RemoveFromBatch(HttpClient methodClient, Config methodConfig, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default);
+    Task<string> RemoveFromBatch(HttpClient methodClient, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Batch By Id Update Batch By Id
@@ -341,20 +250,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateBatch(Config methodConfig, string batchId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Update Batch By Id Update Batch By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default);
+    Task<string> UpdateBatch(HttpClient methodClient, string batchId, CancellationToken cancellationToken = default);
 
 }
 
@@ -374,7 +274,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> AddToBatch(string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default)
     {
-        return AddToBatch(_client, _config, batchId, addToBatchRequestBody, cancellationToken);
+        return AddToBatch(_client, batchId, addToBatchRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -382,26 +282,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="addToBatchRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> AddToBatch(Config methodConfig, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await AddToBatch(methodClient, methodConfig, batchId, addToBatchRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Add to a Batch Add a Shipment or Rate to a Batch
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="addToBatchRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> AddToBatch(HttpClient methodClient, Config methodConfig, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> AddToBatch(HttpClient methodClient, string batchId, AddToBatchRequestBody addToBatchRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -423,7 +309,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.AddToBatch";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -438,7 +324,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateBatchResponseBody)</returns>
     public Task<CreateBatchResponseBody> CreateBatch(CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default)
     {
-        return CreateBatch(_client, _config, createBatchRequest, cancellationToken);
+        return CreateBatch(_client, createBatchRequest, cancellationToken);
     }
 
     /// <summary>
@@ -446,24 +332,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createBatchRequest"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateBatchResponseBody)</returns>
-    public async Task<CreateBatchResponseBody> CreateBatch(Config methodConfig, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await CreateBatch(methodClient, methodConfig, createBatchRequest, cancellationToken);
-    }
-
-    /// <summary>
-    /// Create A Batch Create a Batch
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createBatchRequest"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateBatchResponseBody)</returns>
-    public async Task<CreateBatchResponseBody> CreateBatch(HttpClient methodClient, Config methodConfig, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default)
+    public async Task<CreateBatchResponseBody> CreateBatch(HttpClient methodClient, CreateBatchRequest createBatchRequest, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'createBatchRequest' is set
         if (createBatchRequest == null)
@@ -478,7 +351,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.CreateBatch";
 
-        var result = await SendHttpRequestAsync<CreateBatchResponseBody>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<CreateBatchResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -493,7 +366,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> DeleteBatch(string batchId, CancellationToken cancellationToken = default)
     {
-        return DeleteBatch(_client, _config, batchId, cancellationToken);
+        return DeleteBatch(_client, batchId, cancellationToken);
     }
 
     /// <summary>
@@ -501,24 +374,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteBatch(Config methodConfig, string batchId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await DeleteBatch(methodClient, methodConfig, batchId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Delete Batch By Id Delete Batch By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteBatch(HttpClient methodClient, string batchId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -533,7 +393,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.DeleteBatch";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -548,7 +408,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetBatchByExternalIdResponseBody)</returns>
     public Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(string externalBatchId, CancellationToken cancellationToken = default)
     {
-        return GetBatchByExternalId(_client, _config, externalBatchId, cancellationToken);
+        return GetBatchByExternalId(_client, externalBatchId, cancellationToken);
     }
 
     /// <summary>
@@ -556,24 +416,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="externalBatchId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetBatchByExternalIdResponseBody)</returns>
-    public async Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(Config methodConfig, string externalBatchId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetBatchByExternalId(methodClient, methodConfig, externalBatchId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Batch By External ID Get Batch By External ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="externalBatchId"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetBatchByExternalIdResponseBody)</returns>
-    public async Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(HttpClient methodClient, Config methodConfig, string externalBatchId, CancellationToken cancellationToken = default)
+    public async Task<GetBatchByExternalIdResponseBody> GetBatchByExternalId(HttpClient methodClient, string externalBatchId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'externalBatchId' is set
         if (externalBatchId == null)
@@ -588,7 +435,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.GetBatchByExternalId";
 
-        var result = await SendHttpRequestAsync<GetBatchByExternalIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetBatchByExternalIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -603,7 +450,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetBatchByIdResponseBody)</returns>
     public Task<GetBatchByIdResponseBody> GetBatchById(string batchId, CancellationToken cancellationToken = default)
     {
-        return GetBatchById(_client, _config, batchId, cancellationToken);
+        return GetBatchById(_client, batchId, cancellationToken);
     }
 
     /// <summary>
@@ -611,24 +458,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetBatchByIdResponseBody)</returns>
-    public async Task<GetBatchByIdResponseBody> GetBatchById(Config methodConfig, string batchId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetBatchById(methodClient, methodConfig, batchId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Batch By ID Get Batch By ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetBatchByIdResponseBody)</returns>
-    public async Task<GetBatchByIdResponseBody> GetBatchById(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
+    public async Task<GetBatchByIdResponseBody> GetBatchById(HttpClient methodClient, string batchId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -643,7 +477,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.GetBatchById";
 
-        var result = await SendHttpRequestAsync<GetBatchByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetBatchByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -660,7 +494,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
     public Task<ListBatchErrorsResponseBody> ListBatchErrors(string batchId, int? page = default, int? pagesize = default, CancellationToken cancellationToken = default)
     {
-        return ListBatchErrors(_client, _config, batchId, page, pagesize, cancellationToken);
+        return ListBatchErrors(_client, batchId, page, pagesize, cancellationToken);
     }
 
     /// <summary>
@@ -668,28 +502,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pagesize"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    public async Task<ListBatchErrorsResponseBody> ListBatchErrors(Config methodConfig, string batchId, int? page = default, int? pagesize = default, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ListBatchErrors(methodClient, methodConfig, batchId, page, pagesize, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Batch Errors Error handling in batches are handled differently than in a single synchronous request. You must retrieve the status of your batch by [getting a batch](https://www.shipengine.com/docs/reference/get-batch-by-id/) and getting an overview of the statuses or you can list errors directly here below to get detailed information about the errors. 
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pagesize"> (optional)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    public async Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, Config methodConfig, string batchId, int? page = default, int? pagesize = default, CancellationToken cancellationToken = default)
+    public async Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, string batchId, int? page = default, int? pagesize = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -712,7 +531,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.ListBatchErrors";
 
-        var result = await SendHttpRequestAsync<ListBatchErrorsResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<ListBatchErrorsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -732,7 +551,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
     public Task<ListBatchesResponseBody> ListBatches(BatchStatus? status = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string batchNumber = default, BatchesSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
-        return ListBatches(_client, _config, status, page, pageSize, sortDir, batchNumber, sortBy, cancellationToken);
+        return ListBatches(_client, status, page, pageSize, sortDir, batchNumber, sortBy, cancellationToken);
     }
 
     /// <summary>
@@ -740,6 +559,7 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="status"> (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
@@ -748,26 +568,7 @@ public partial class ShipEngine
     /// <param name="sortBy"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    public async Task<ListBatchesResponseBody> ListBatches(Config methodConfig, BatchStatus? status = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string batchNumber = default, BatchesSortBy? sortBy = default, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ListBatches(methodClient, methodConfig, status, page, pageSize, sortDir, batchNumber, sortBy, cancellationToken);
-    }
-
-    /// <summary>
-    /// List Batches List Batches associated with your Shipengine account
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="status"> (optional)</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
-    /// <param name="batchNumber">Batch Number (optional)</param>
-    /// <param name="sortBy"> (optional)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    public async Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, Config methodConfig, BatchStatus? status = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string batchNumber = default, BatchesSortBy? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, BatchStatus? status = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string batchNumber = default, BatchesSortBy? sortBy = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/batches");
@@ -799,7 +600,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.ListBatches";
 
-        var result = await SendHttpRequestAsync<ListBatchesResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<ListBatchesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -815,7 +616,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> ProcessBatch(string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default)
     {
-        return ProcessBatch(_client, _config, batchId, processBatchRequestBody, cancellationToken);
+        return ProcessBatch(_client, batchId, processBatchRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -823,26 +624,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="processBatchRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> ProcessBatch(Config methodConfig, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ProcessBatch(methodClient, methodConfig, batchId, processBatchRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Process Batch ID Labels Process Batch ID Labels
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="processBatchRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> ProcessBatch(HttpClient methodClient, Config methodConfig, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> ProcessBatch(HttpClient methodClient, string batchId, ProcessBatchRequestBody processBatchRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -864,7 +651,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.ProcessBatch";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -880,7 +667,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> RemoveFromBatch(string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default)
     {
-        return RemoveFromBatch(_client, _config, batchId, removeFromBatchRequestBody, cancellationToken);
+        return RemoveFromBatch(_client, batchId, removeFromBatchRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -888,26 +675,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="removeFromBatchRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> RemoveFromBatch(Config methodConfig, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await RemoveFromBatch(methodClient, methodConfig, batchId, removeFromBatchRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Remove From Batch Remove a shipment or rate from a batch
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="removeFromBatchRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> RemoveFromBatch(HttpClient methodClient, Config methodConfig, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> RemoveFromBatch(HttpClient methodClient, string batchId, RemoveFromBatchRequestBody removeFromBatchRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -929,7 +702,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.RemoveFromBatch";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -944,7 +717,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> UpdateBatch(string batchId, CancellationToken cancellationToken = default)
     {
-        return UpdateBatch(_client, _config, batchId, cancellationToken);
+        return UpdateBatch(_client, batchId, cancellationToken);
     }
 
     /// <summary>
@@ -952,24 +725,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="batchId">Batch ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateBatch(Config methodConfig, string batchId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await UpdateBatch(methodClient, methodConfig, batchId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Update Batch By Id Update Batch By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="batchId">Batch ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateBatch(HttpClient methodClient, Config methodConfig, string batchId, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateBatch(HttpClient methodClient, string batchId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -984,7 +744,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.UpdateBatch";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }

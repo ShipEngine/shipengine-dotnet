@@ -42,22 +42,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    Task<ConnectCarrierResponseBody> ConnectCarrier(Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Connect a carrier account Connect a carrier account
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="connectCarrierRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
+    Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect a carrier Disconnect a carrier
@@ -75,22 +65,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DisconnectCarrier(Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Disconnect a carrier Disconnect a carrier
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="carrierId">Carrier ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DisconnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<string> DisconnectCarrier(HttpClient methodClient, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get carrier settings Get carrier settings
@@ -108,22 +88,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get carrier settings Get carrier settings
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="carrierId">Carrier ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default);
+    Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update carrier settings Update carrier settings
@@ -142,24 +112,13 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Update carrier settings Update carrier settings
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="carrierId">Carrier ID</param>
-    /// <param name="updateCarrierSettingsRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateCarrierSettings(HttpClient methodClient, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default);
 
 }
 
@@ -179,7 +138,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
     public Task<ConnectCarrierResponseBody> ConnectCarrier(CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
     {
-        return ConnectCarrier(_client, _config, carrierName, connectCarrierRequestBody, cancellationToken);
+        return ConnectCarrier(_client, carrierName, connectCarrierRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -187,26 +146,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="connectCarrierRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    public async Task<ConnectCarrierResponseBody> ConnectCarrier(Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ConnectCarrier(methodClient, methodConfig, carrierName, connectCarrierRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Connect a carrier account Connect a carrier account
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="connectCarrierRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ConnectCarrierResponseBody)</returns>
-    public async Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
+    public async Task<ConnectCarrierResponseBody> ConnectCarrier(HttpClient methodClient, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'connectCarrierRequestBody' is set
         if (connectCarrierRequestBody == null)
@@ -222,7 +167,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.ConnectCarrier";
 
-        var result = await SendHttpRequestAsync<ConnectCarrierResponseBody>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<ConnectCarrierResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -238,7 +183,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> DisconnectCarrier(CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
-        return DisconnectCarrier(_client, _config, carrierName, carrierId, cancellationToken);
+        return DisconnectCarrier(_client, carrierName, carrierId, cancellationToken);
     }
 
     /// <summary>
@@ -246,26 +191,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DisconnectCarrier(Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await DisconnectCarrier(methodClient, methodConfig, carrierName, carrierId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Disconnect a carrier Disconnect a carrier
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="carrierId">Carrier ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DisconnectCarrier(HttpClient methodClient, Config methodConfig, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public async Task<string> DisconnectCarrier(HttpClient methodClient, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -281,7 +212,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.DisconnectCarrier";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -297,7 +228,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
     public Task<GetCarrierSettingsResponseBody> GetCarrierSettings(CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
-        return GetCarrierSettings(_client, _config, carrierName, carrierId, cancellationToken);
+        return GetCarrierSettings(_client, carrierName, carrierId, cancellationToken);
     }
 
     /// <summary>
@@ -305,26 +236,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetCarrierSettings(methodClient, methodConfig, carrierName, carrierId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get carrier settings Get carrier settings
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="carrierId">Carrier ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierSettingsResponseBody)</returns>
-    public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
+    public async Task<GetCarrierSettingsResponseBody> GetCarrierSettings(HttpClient methodClient, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -340,7 +257,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.GetCarrierSettings";
 
-        var result = await SendHttpRequestAsync<GetCarrierSettingsResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetCarrierSettingsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -357,7 +274,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> UpdateCarrierSettings(CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
     {
-        return UpdateCarrierSettings(_client, _config, carrierName, carrierId, updateCarrierSettingsRequestBody, cancellationToken);
+        return UpdateCarrierSettings(_client, carrierName, carrierId, updateCarrierSettingsRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -365,28 +282,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="updateCarrierSettingsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateCarrierSettings(Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await UpdateCarrierSettings(methodClient, methodConfig, carrierName, carrierId, updateCarrierSettingsRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Update carrier settings Update carrier settings
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierName">The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;.</param>
-    /// <param name="carrierId">Carrier ID</param>
-    /// <param name="updateCarrierSettingsRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateCarrierSettings(HttpClient methodClient, Config methodConfig, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateCarrierSettings(HttpClient methodClient, CarrierNameWithSettings carrierName, string carrierId, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -409,7 +311,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.UpdateCarrierSettings";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }

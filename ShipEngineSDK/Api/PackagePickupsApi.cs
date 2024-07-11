@@ -41,20 +41,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="pickupId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (DeletePickupByIdResponseBody)</returns>
-    Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(Config methodConfig, string pickupId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Delete a Scheduled Pickup Delete a previously-scheduled pickup by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="pickupId"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (DeletePickupByIdResponseBody)</returns>
-    Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(HttpClient methodClient, Config methodConfig, string pickupId, CancellationToken cancellationToken = default);
+    Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(HttpClient methodClient, string pickupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Pickup By ID Get Pickup By ID
@@ -71,20 +62,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="pickupId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupByIdResponseBody)</returns>
-    Task<GetPickupByIdResponseBody> GetPickupById(Config methodConfig, string pickupId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Pickup By ID Get Pickup By ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="pickupId"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetPickupByIdResponseBody)</returns>
-    Task<GetPickupByIdResponseBody> GetPickupById(HttpClient methodClient, Config methodConfig, string pickupId, CancellationToken cancellationToken = default);
+    Task<GetPickupByIdResponseBody> GetPickupById(HttpClient methodClient, string pickupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Scheduled Pickups List all pickups that have been scheduled for this carrier
@@ -106,6 +88,7 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID (optional)</param>
     /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
@@ -114,22 +97,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(Config methodConfig, string carrierId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// List Scheduled Pickups List all pickups that have been scheduled for this carrier
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
-    /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
-    /// <param name="createdAtEnd">Only return scheduled pickups that were created on or before a specific date/time (optional)</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, Config methodConfig, string carrierId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
+    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string carrierId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Schedule a Pickup Schedule a package pickup with a carrier
@@ -146,20 +114,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="schedulePickupRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (SchedulePickupResponseBody)</returns>
-    Task<SchedulePickupResponseBody> SchedulePickup(Config methodConfig, SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Schedule a Pickup Schedule a package pickup with a carrier
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="schedulePickupRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (SchedulePickupResponseBody)</returns>
-    Task<SchedulePickupResponseBody> SchedulePickup(HttpClient methodClient, Config methodConfig, SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default);
+    Task<SchedulePickupResponseBody> SchedulePickup(HttpClient methodClient, SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default);
 
 }
 
@@ -178,7 +137,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (DeletePickupByIdResponseBody)</returns>
     public Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(string pickupId, CancellationToken cancellationToken = default)
     {
-        return DeleteScheduledPickup(_client, _config, pickupId, cancellationToken);
+        return DeleteScheduledPickup(_client, pickupId, cancellationToken);
     }
 
     /// <summary>
@@ -186,24 +145,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="pickupId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (DeletePickupByIdResponseBody)</returns>
-    public async Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(Config methodConfig, string pickupId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await DeleteScheduledPickup(methodClient, methodConfig, pickupId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Delete a Scheduled Pickup Delete a previously-scheduled pickup by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="pickupId"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (DeletePickupByIdResponseBody)</returns>
-    public async Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(HttpClient methodClient, Config methodConfig, string pickupId, CancellationToken cancellationToken = default)
+    public async Task<DeletePickupByIdResponseBody> DeleteScheduledPickup(HttpClient methodClient, string pickupId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'pickupId' is set
         if (pickupId == null)
@@ -218,7 +164,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.DeleteScheduledPickup";
 
-        var result = await SendHttpRequestAsync<DeletePickupByIdResponseBody>(HttpMethods.Delete, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<DeletePickupByIdResponseBody>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -233,7 +179,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetPickupByIdResponseBody)</returns>
     public Task<GetPickupByIdResponseBody> GetPickupById(string pickupId, CancellationToken cancellationToken = default)
     {
-        return GetPickupById(_client, _config, pickupId, cancellationToken);
+        return GetPickupById(_client, pickupId, cancellationToken);
     }
 
     /// <summary>
@@ -241,24 +187,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="pickupId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupByIdResponseBody)</returns>
-    public async Task<GetPickupByIdResponseBody> GetPickupById(Config methodConfig, string pickupId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetPickupById(methodClient, methodConfig, pickupId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Pickup By ID Get Pickup By ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="pickupId"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetPickupByIdResponseBody)</returns>
-    public async Task<GetPickupByIdResponseBody> GetPickupById(HttpClient methodClient, Config methodConfig, string pickupId, CancellationToken cancellationToken = default)
+    public async Task<GetPickupByIdResponseBody> GetPickupById(HttpClient methodClient, string pickupId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'pickupId' is set
         if (pickupId == null)
@@ -273,7 +206,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.GetPickupById";
 
-        var result = await SendHttpRequestAsync<GetPickupByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetPickupByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -293,7 +226,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
     public Task<GetPickupsResponseBody> ListScheduledPickups(string carrierId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
-        return ListScheduledPickups(_client, _config, carrierId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, cancellationToken);
+        return ListScheduledPickups(_client, carrierId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, cancellationToken);
     }
 
     /// <summary>
@@ -301,6 +234,7 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID (optional)</param>
     /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
@@ -309,26 +243,7 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public async Task<GetPickupsResponseBody> ListScheduledPickups(Config methodConfig, string carrierId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ListScheduledPickups(methodClient, methodConfig, carrierId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, cancellationToken);
-    }
-
-    /// <summary>
-    /// List Scheduled Pickups List all pickups that have been scheduled for this carrier
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
-    /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
-    /// <param name="createdAtEnd">Only return scheduled pickups that were created on or before a specific date/time (optional)</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, Config methodConfig, string carrierId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
+    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string carrierId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/pickups");
@@ -360,7 +275,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.ListScheduledPickups";
 
-        var result = await SendHttpRequestAsync<GetPickupsResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetPickupsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -375,7 +290,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (SchedulePickupResponseBody)</returns>
     public Task<SchedulePickupResponseBody> SchedulePickup(SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default)
     {
-        return SchedulePickup(_client, _config, schedulePickupRequestBody, cancellationToken);
+        return SchedulePickup(_client, schedulePickupRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -383,24 +298,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="schedulePickupRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (SchedulePickupResponseBody)</returns>
-    public async Task<SchedulePickupResponseBody> SchedulePickup(Config methodConfig, SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await SchedulePickup(methodClient, methodConfig, schedulePickupRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Schedule a Pickup Schedule a package pickup with a carrier
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="schedulePickupRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (SchedulePickupResponseBody)</returns>
-    public async Task<SchedulePickupResponseBody> SchedulePickup(HttpClient methodClient, Config methodConfig, SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default)
+    public async Task<SchedulePickupResponseBody> SchedulePickup(HttpClient methodClient, SchedulePickupRequestBody schedulePickupRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'schedulePickupRequestBody' is set
         if (schedulePickupRequestBody == null)
@@ -415,7 +317,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.SchedulePickup";
 
-        var result = await SendHttpRequestAsync<SchedulePickupResponseBody>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<SchedulePickupResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }

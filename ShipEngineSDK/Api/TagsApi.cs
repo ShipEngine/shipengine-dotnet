@@ -41,20 +41,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    Task<CreateTagResponseBody> CreateTag(Config methodConfig, string tagName, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Create a New Tag Create a new Tag for customizing how you track your shipments
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="tagName"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, Config methodConfig, string tagName, CancellationToken cancellationToken = default);
+    Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Tag Delete a tag that is no longer needed
@@ -71,20 +62,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteTag(Config methodConfig, string tagName, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Delete Tag Delete a tag that is no longer needed
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="tagName"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteTag(HttpClient methodClient, Config methodConfig, string tagName, CancellationToken cancellationToken = default);
+    Task<string> DeleteTag(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Tags Get a list of all tags associated with an account.
@@ -100,18 +82,10 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListTagsResponseBody)</returns>
-    Task<ListTagsResponseBody> ListTags(Config methodConfig, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Tags Get a list of all tags associated with an account.
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListTagsResponseBody)</returns>
-    Task<ListTagsResponseBody> ListTags(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default);
+    Task<ListTagsResponseBody> ListTags(HttpClient methodClient, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Tag Name Change a tag name while still keeping the relevant shipments attached to it
@@ -129,22 +103,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="tagName"></param>
     /// <param name="newTagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> RenameTag(Config methodConfig, string tagName, string newTagName, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Update Tag Name Change a tag name while still keeping the relevant shipments attached to it
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="tagName"></param>
-    /// <param name="newTagName"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> RenameTag(HttpClient methodClient, Config methodConfig, string tagName, string newTagName, CancellationToken cancellationToken = default);
+    Task<string> RenameTag(HttpClient methodClient, string tagName, string newTagName, CancellationToken cancellationToken = default);
 
 }
 
@@ -163,7 +127,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
     public Task<CreateTagResponseBody> CreateTag(string tagName, CancellationToken cancellationToken = default)
     {
-        return CreateTag(_client, _config, tagName, cancellationToken);
+        return CreateTag(_client, tagName, cancellationToken);
     }
 
     /// <summary>
@@ -171,24 +135,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    public async Task<CreateTagResponseBody> CreateTag(Config methodConfig, string tagName, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await CreateTag(methodClient, methodConfig, tagName, cancellationToken);
-    }
-
-    /// <summary>
-    /// Create a New Tag Create a new Tag for customizing how you track your shipments
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="tagName"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    public async Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, Config methodConfig, string tagName, CancellationToken cancellationToken = default)
+    public async Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'tagName' is set
         if (tagName == null)
@@ -203,7 +154,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TagsApi.CreateTag";
 
-        var result = await SendHttpRequestAsync<CreateTagResponseBody>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<CreateTagResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -218,7 +169,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> DeleteTag(string tagName, CancellationToken cancellationToken = default)
     {
-        return DeleteTag(_client, _config, tagName, cancellationToken);
+        return DeleteTag(_client, tagName, cancellationToken);
     }
 
     /// <summary>
@@ -226,24 +177,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteTag(Config methodConfig, string tagName, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await DeleteTag(methodClient, methodConfig, tagName, cancellationToken);
-    }
-
-    /// <summary>
-    /// Delete Tag Delete a tag that is no longer needed
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="tagName"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteTag(HttpClient methodClient, Config methodConfig, string tagName, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteTag(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'tagName' is set
         if (tagName == null)
@@ -258,7 +196,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TagsApi.DeleteTag";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -272,7 +210,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListTagsResponseBody)</returns>
     public Task<ListTagsResponseBody> ListTags(CancellationToken cancellationToken = default)
     {
-        return ListTags(_client, _config, cancellationToken);
+        return ListTags(_client, cancellationToken);
     }
 
     /// <summary>
@@ -280,22 +218,10 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListTagsResponseBody)</returns>
-    public async Task<ListTagsResponseBody> ListTags(Config methodConfig, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ListTags(methodClient, methodConfig, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Tags Get a list of all tags associated with an account.
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListTagsResponseBody)</returns>
-    public async Task<ListTagsResponseBody> ListTags(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
+    public async Task<ListTagsResponseBody> ListTags(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tags");
@@ -303,7 +229,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TagsApi.ListTags";
 
-        var result = await SendHttpRequestAsync<ListTagsResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<ListTagsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -319,7 +245,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> RenameTag(string tagName, string newTagName, CancellationToken cancellationToken = default)
     {
-        return RenameTag(_client, _config, tagName, newTagName, cancellationToken);
+        return RenameTag(_client, tagName, newTagName, cancellationToken);
     }
 
     /// <summary>
@@ -327,26 +253,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="tagName"></param>
     /// <param name="newTagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> RenameTag(Config methodConfig, string tagName, string newTagName, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await RenameTag(methodClient, methodConfig, tagName, newTagName, cancellationToken);
-    }
-
-    /// <summary>
-    /// Update Tag Name Change a tag name while still keeping the relevant shipments attached to it
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="tagName"></param>
-    /// <param name="newTagName"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> RenameTag(HttpClient methodClient, Config methodConfig, string tagName, string newTagName, CancellationToken cancellationToken = default)
+    public async Task<string> RenameTag(HttpClient methodClient, string tagName, string newTagName, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'tagName' is set
         if (tagName == null)
@@ -368,7 +280,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TagsApi.RenameTag";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }

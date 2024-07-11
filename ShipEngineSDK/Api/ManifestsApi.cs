@@ -41,20 +41,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createManifestRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    Task<CreateManifestResponseBody> CreateManifest(Config methodConfig, CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Create Manifest Each ShipEngine manifest is created for a specific warehouse, so you&#39;ll need to provide the warehouse_id rather than the ship_from address. You can create a warehouse for each location that you want to create manifests for. 
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createManifestRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    Task<CreateManifestResponseBody> CreateManifest(HttpClient methodClient, Config methodConfig, CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateManifestResponseBody> CreateManifest(HttpClient methodClient, CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Manifest By Id Get Manifest By Id
@@ -71,20 +62,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="manifestId">The Manifest Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetManifestByIdResponseBody)</returns>
-    Task<GetManifestByIdResponseBody> GetManifestById(Config methodConfig, string manifestId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Manifest By Id Get Manifest By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="manifestId">The Manifest Id</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetManifestByIdResponseBody)</returns>
-    Task<GetManifestByIdResponseBody> GetManifestById(HttpClient methodClient, Config methodConfig, string manifestId, CancellationToken cancellationToken = default);
+    Task<GetManifestByIdResponseBody> GetManifestById(HttpClient methodClient, string manifestId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Manifest Request By Id Get Manifest Request By Id
@@ -101,20 +83,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="manifestRequestId">The Manifest Request Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    Task<CreateManifestResponseBody> GetManifestRequestById(Config methodConfig, string manifestRequestId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Manifest Request By Id Get Manifest Request By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="manifestRequestId">The Manifest Request Id</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    Task<CreateManifestResponseBody> GetManifestRequestById(HttpClient methodClient, Config methodConfig, string manifestRequestId, CancellationToken cancellationToken = default);
+    Task<CreateManifestResponseBody> GetManifestRequestById(HttpClient methodClient, string manifestRequestId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Manifests Similar to querying shipments, we allow you to query manifests since there will likely be a large number over a long period of time.
@@ -139,6 +112,7 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="shipDateStart">ship date start range (optional)</param>
     /// <param name="shipDateEnd">ship date end range (optional)</param>
@@ -150,25 +124,7 @@ public partial interface IShipEngine
     /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(Config methodConfig, string warehouseId, DateTime? shipDateStart, DateTime? shipDateEnd, DateTime? createdAtStart, DateTime? createdAtEnd, string carrierId, int? page, int? pageSize, List<string> labelIds, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// List Manifests Similar to querying shipments, we allow you to query manifests since there will likely be a large number over a long period of time.
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
-    /// <param name="shipDateStart">ship date start range (optional)</param>
-    /// <param name="shipDateEnd">ship date end range (optional)</param>
-    /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
-    /// <param name="createdAtEnd">Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time) (optional)</param>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="labelIds"> (optional)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, Config methodConfig, string warehouseId, DateTime? shipDateStart, DateTime? shipDateEnd, DateTime? createdAtStart, DateTime? createdAtEnd, string carrierId, int? page, int? pageSize, List<string> labelIds, CancellationToken cancellationToken = default);
+    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string warehouseId, DateTime? shipDateStart, DateTime? shipDateEnd, DateTime? createdAtStart, DateTime? createdAtEnd, string carrierId, int? page, int? pageSize, List<string> labelIds, CancellationToken cancellationToken = default);
 
 }
 
@@ -187,7 +143,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
     public Task<CreateManifestResponseBody> CreateManifest(CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default)
     {
-        return CreateManifest(_client, _config, createManifestRequestBody, cancellationToken);
+        return CreateManifest(_client, createManifestRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -195,24 +151,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createManifestRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    public async Task<CreateManifestResponseBody> CreateManifest(Config methodConfig, CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await CreateManifest(methodClient, methodConfig, createManifestRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Create Manifest Each ShipEngine manifest is created for a specific warehouse, so you&#39;ll need to provide the warehouse_id rather than the ship_from address. You can create a warehouse for each location that you want to create manifests for. 
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createManifestRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    public async Task<CreateManifestResponseBody> CreateManifest(HttpClient methodClient, Config methodConfig, CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default)
+    public async Task<CreateManifestResponseBody> CreateManifest(HttpClient methodClient, CreateManifestRequestBody createManifestRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'createManifestRequestBody' is set
         if (createManifestRequestBody == null)
@@ -227,7 +170,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.CreateManifest";
 
-        var result = await SendHttpRequestAsync<CreateManifestResponseBody>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<CreateManifestResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -242,7 +185,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetManifestByIdResponseBody)</returns>
     public Task<GetManifestByIdResponseBody> GetManifestById(string manifestId, CancellationToken cancellationToken = default)
     {
-        return GetManifestById(_client, _config, manifestId, cancellationToken);
+        return GetManifestById(_client, manifestId, cancellationToken);
     }
 
     /// <summary>
@@ -250,24 +193,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="manifestId">The Manifest Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetManifestByIdResponseBody)</returns>
-    public async Task<GetManifestByIdResponseBody> GetManifestById(Config methodConfig, string manifestId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetManifestById(methodClient, methodConfig, manifestId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Manifest By Id Get Manifest By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="manifestId">The Manifest Id</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetManifestByIdResponseBody)</returns>
-    public async Task<GetManifestByIdResponseBody> GetManifestById(HttpClient methodClient, Config methodConfig, string manifestId, CancellationToken cancellationToken = default)
+    public async Task<GetManifestByIdResponseBody> GetManifestById(HttpClient methodClient, string manifestId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'manifestId' is set
         if (manifestId == null)
@@ -282,7 +212,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.GetManifestById";
 
-        var result = await SendHttpRequestAsync<GetManifestByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetManifestByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -297,7 +227,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
     public Task<CreateManifestResponseBody> GetManifestRequestById(string manifestRequestId, CancellationToken cancellationToken = default)
     {
-        return GetManifestRequestById(_client, _config, manifestRequestId, cancellationToken);
+        return GetManifestRequestById(_client, manifestRequestId, cancellationToken);
     }
 
     /// <summary>
@@ -305,24 +235,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="manifestRequestId">The Manifest Request Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    public async Task<CreateManifestResponseBody> GetManifestRequestById(Config methodConfig, string manifestRequestId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetManifestRequestById(methodClient, methodConfig, manifestRequestId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Manifest Request By Id Get Manifest Request By Id
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="manifestRequestId">The Manifest Request Id</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateManifestResponseBody)</returns>
-    public async Task<CreateManifestResponseBody> GetManifestRequestById(HttpClient methodClient, Config methodConfig, string manifestRequestId, CancellationToken cancellationToken = default)
+    public async Task<CreateManifestResponseBody> GetManifestRequestById(HttpClient methodClient, string manifestRequestId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'manifestRequestId' is set
         if (manifestRequestId == null)
@@ -337,7 +254,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.GetManifestRequestById";
 
-        var result = await SendHttpRequestAsync<CreateManifestResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<CreateManifestResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -360,7 +277,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
     public Task<ListManifestsResponseBody> ListManifests(string warehouseId = default, DateTime? shipDateStart = default, DateTime? shipDateEnd = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, string carrierId = default, int? page = default, int? pageSize = default, List<string> labelIds = default, CancellationToken cancellationToken = default)
     {
-        return ListManifests(_client, _config, warehouseId, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, carrierId, page, pageSize, labelIds, cancellationToken);
+        return ListManifests(_client, warehouseId, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, carrierId, page, pageSize, labelIds, cancellationToken);
     }
 
     /// <summary>
@@ -368,6 +285,7 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="shipDateStart">ship date start range (optional)</param>
     /// <param name="shipDateEnd">ship date end range (optional)</param>
@@ -379,29 +297,7 @@ public partial class ShipEngine
     /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public async Task<ListManifestsResponseBody> ListManifests(Config methodConfig, string warehouseId = default, DateTime? shipDateStart = default, DateTime? shipDateEnd = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, string carrierId = default, int? page = default, int? pageSize = default, List<string> labelIds = default, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ListManifests(methodClient, methodConfig, warehouseId, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, carrierId, page, pageSize, labelIds, cancellationToken);
-    }
-
-    /// <summary>
-    /// List Manifests Similar to querying shipments, we allow you to query manifests since there will likely be a large number over a long period of time.
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
-    /// <param name="shipDateStart">ship date start range (optional)</param>
-    /// <param name="shipDateEnd">ship date end range (optional)</param>
-    /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
-    /// <param name="createdAtEnd">Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time) (optional)</param>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
-    /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="labelIds"> (optional)</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, Config methodConfig, string warehouseId = default, DateTime? shipDateStart = default, DateTime? shipDateEnd = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, string carrierId = default, int? page = default, int? pageSize = default, List<string> labelIds = default, CancellationToken cancellationToken = default)
+    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string warehouseId = default, DateTime? shipDateStart = default, DateTime? shipDateEnd = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, string carrierId = default, int? page = default, int? pageSize = default, List<string> labelIds = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/manifests");
@@ -445,7 +341,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.ListManifests";
 
-        var result = await SendHttpRequestAsync<ListManifestsResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<ListManifestsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }

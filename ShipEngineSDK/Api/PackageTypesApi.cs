@@ -41,20 +41,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createPackageTypeRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreatePackageTypeResponseBody)</returns>
-    Task<CreatePackageTypeResponseBody> CreatePackageType(Config methodConfig, CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Create Custom Package Type Create a custom package type to better assist in getting accurate rate estimates
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createPackageTypeRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreatePackageTypeResponseBody)</returns>
-    Task<CreatePackageTypeResponseBody> CreatePackageType(HttpClient methodClient, Config methodConfig, CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default);
+    Task<CreatePackageTypeResponseBody> CreatePackageType(HttpClient methodClient, CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete A Custom Package By ID Delete a custom package using the ID
@@ -71,20 +62,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="packageId">Package ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeletePackageType(Config methodConfig, string packageId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Delete A Custom Package By ID Delete a custom package using the ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="packageId">Package ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeletePackageType(HttpClient methodClient, Config methodConfig, string packageId, CancellationToken cancellationToken = default);
+    Task<string> DeletePackageType(HttpClient methodClient, string packageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Custom Package Type By ID Get Custom Package Type by ID
@@ -101,20 +83,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="packageId">Package ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPackageTypeByIdResponseBody)</returns>
-    Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(Config methodConfig, string packageId, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Get Custom Package Type By ID Get Custom Package Type by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="packageId">Package ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetPackageTypeByIdResponseBody)</returns>
-    Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(HttpClient methodClient, Config methodConfig, string packageId, CancellationToken cancellationToken = default);
+    Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(HttpClient methodClient, string packageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Custom Package Types List the custom package types associated with the account
@@ -130,18 +103,10 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListPackageTypesResponseBody)</returns>
-    Task<ListPackageTypesResponseBody> ListPackageTypes(Config methodConfig, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// List Custom Package Types List the custom package types associated with the account
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListPackageTypesResponseBody)</returns>
-    Task<ListPackageTypesResponseBody> ListPackageTypes(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default);
+    Task<ListPackageTypesResponseBody> ListPackageTypes(HttpClient methodClient, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Custom Package Type By ID Update the custom package type object by ID
@@ -159,22 +124,12 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="packageId">Package ID</param>
     /// <param name="updatePackageTypeRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdatePackageType(Config methodConfig, string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Update Custom Package Type By ID Update the custom package type object by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="packageId">Package ID</param>
-    /// <param name="updatePackageTypeRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdatePackageType(HttpClient methodClient, Config methodConfig, string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdatePackageType(HttpClient methodClient, string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default);
 
 }
 
@@ -193,7 +148,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (CreatePackageTypeResponseBody)</returns>
     public Task<CreatePackageTypeResponseBody> CreatePackageType(CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default)
     {
-        return CreatePackageType(_client, _config, createPackageTypeRequestBody, cancellationToken);
+        return CreatePackageType(_client, createPackageTypeRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -201,24 +156,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createPackageTypeRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreatePackageTypeResponseBody)</returns>
-    public async Task<CreatePackageTypeResponseBody> CreatePackageType(Config methodConfig, CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await CreatePackageType(methodClient, methodConfig, createPackageTypeRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Create Custom Package Type Create a custom package type to better assist in getting accurate rate estimates
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="createPackageTypeRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreatePackageTypeResponseBody)</returns>
-    public async Task<CreatePackageTypeResponseBody> CreatePackageType(HttpClient methodClient, Config methodConfig, CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default)
+    public async Task<CreatePackageTypeResponseBody> CreatePackageType(HttpClient methodClient, CreatePackageTypeRequestBody createPackageTypeRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'createPackageTypeRequestBody' is set
         if (createPackageTypeRequestBody == null)
@@ -233,7 +175,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.CreatePackageType";
 
-        var result = await SendHttpRequestAsync<CreatePackageTypeResponseBody>(HttpMethods.Post, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<CreatePackageTypeResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -248,7 +190,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> DeletePackageType(string packageId, CancellationToken cancellationToken = default)
     {
-        return DeletePackageType(_client, _config, packageId, cancellationToken);
+        return DeletePackageType(_client, packageId, cancellationToken);
     }
 
     /// <summary>
@@ -256,24 +198,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="packageId">Package ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeletePackageType(Config methodConfig, string packageId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await DeletePackageType(methodClient, methodConfig, packageId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Delete A Custom Package By ID Delete a custom package using the ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="packageId">Package ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeletePackageType(HttpClient methodClient, Config methodConfig, string packageId, CancellationToken cancellationToken = default)
+    public async Task<string> DeletePackageType(HttpClient methodClient, string packageId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'packageId' is set
         if (packageId == null)
@@ -288,7 +217,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.DeletePackageType";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -303,7 +232,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (GetPackageTypeByIdResponseBody)</returns>
     public Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(string packageId, CancellationToken cancellationToken = default)
     {
-        return GetPackageTypeById(_client, _config, packageId, cancellationToken);
+        return GetPackageTypeById(_client, packageId, cancellationToken);
     }
 
     /// <summary>
@@ -311,24 +240,11 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="packageId">Package ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPackageTypeByIdResponseBody)</returns>
-    public async Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(Config methodConfig, string packageId, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await GetPackageTypeById(methodClient, methodConfig, packageId, cancellationToken);
-    }
-
-    /// <summary>
-    /// Get Custom Package Type By ID Get Custom Package Type by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="packageId">Package ID</param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetPackageTypeByIdResponseBody)</returns>
-    public async Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(HttpClient methodClient, Config methodConfig, string packageId, CancellationToken cancellationToken = default)
+    public async Task<GetPackageTypeByIdResponseBody> GetPackageTypeById(HttpClient methodClient, string packageId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'packageId' is set
         if (packageId == null)
@@ -343,7 +259,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.GetPackageTypeById";
 
-        var result = await SendHttpRequestAsync<GetPackageTypeByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<GetPackageTypeByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -357,7 +273,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (ListPackageTypesResponseBody)</returns>
     public Task<ListPackageTypesResponseBody> ListPackageTypes(CancellationToken cancellationToken = default)
     {
-        return ListPackageTypes(_client, _config, cancellationToken);
+        return ListPackageTypes(_client, cancellationToken);
     }
 
     /// <summary>
@@ -365,22 +281,10 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListPackageTypesResponseBody)</returns>
-    public async Task<ListPackageTypesResponseBody> ListPackageTypes(Config methodConfig, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await ListPackageTypes(methodClient, methodConfig, cancellationToken);
-    }
-
-    /// <summary>
-    /// List Custom Package Types List the custom package types associated with the account
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListPackageTypesResponseBody)</returns>
-    public async Task<ListPackageTypesResponseBody> ListPackageTypes(HttpClient methodClient, Config methodConfig, CancellationToken cancellationToken = default)
+    public async Task<ListPackageTypesResponseBody> ListPackageTypes(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/packages");
@@ -388,7 +292,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.ListPackageTypes";
 
-        var result = await SendHttpRequestAsync<ListPackageTypesResponseBody>(HttpMethods.Get, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<ListPackageTypesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
@@ -404,7 +308,7 @@ public partial class ShipEngine
     /// <returns>Task of ApiResponse (string)</returns>
     public Task<string> UpdatePackageType(string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default)
     {
-        return UpdatePackageType(_client, _config, packageId, updatePackageTypeRequestBody, cancellationToken);
+        return UpdatePackageType(_client, packageId, updatePackageTypeRequestBody, cancellationToken);
     }
 
     /// <summary>
@@ -412,26 +316,12 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="packageId">Package ID</param>
     /// <param name="updatePackageTypeRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdatePackageType(Config methodConfig, string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default)
-    {
-        using var methodClient = ConfigureHttpClient(methodConfig, new HttpClient());
-        return await UpdatePackageType(methodClient, methodConfig, packageId, updatePackageTypeRequestBody, cancellationToken);
-    }
-
-    /// <summary>
-    /// Update Custom Package Type By ID Update the custom package type object by ID
-    /// </summary>
-    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
-    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="packageId">Package ID</param>
-    /// <param name="updatePackageTypeRequestBody"></param>
-    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdatePackageType(HttpClient methodClient, Config methodConfig, string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdatePackageType(HttpClient methodClient, string packageId, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'packageId' is set
         if (packageId == null)
@@ -453,7 +343,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.UpdatePackageType";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, methodConfig, cancellationToken);
+        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
 
         return result;
     }
