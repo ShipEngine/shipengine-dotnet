@@ -33,7 +33,7 @@ ShipEngineSDK/Client/*.cs
 # We should re-enable these eventually
 README.md
 docs/*.md
-ShipEngineSDK/Client/*.cs
+ShipEngineSDK.Test/*/*.cs
 api/**
 .gitignore
 .openapi-generator-ignore
