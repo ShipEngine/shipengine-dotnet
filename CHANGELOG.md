@@ -140,8 +140,8 @@ Impoved handling of unexpected HTTP responses
 - Allow setting alternate base address on HTTP Client
 - Moved the SDK version to static fields so they are only determined once at startup.
 
-## 3.0.0
+## 2.1.0
 
 ### Added
 
-- Auto-generate the SDK for the entire API and deprecate the existing hand-written methods
+- Created new SDK methods for the entire API that sit next to the pre-existing methods.  The pre-existing methods will be deprecated eventually.
