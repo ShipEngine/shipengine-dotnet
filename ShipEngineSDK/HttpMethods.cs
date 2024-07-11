@@ -10,9 +10,9 @@ namespace ShipEngineSDK;
 /// </remarks>
 internal static class HttpMethods
 {
-    public static HttpMethod Delete { get; } = HttpMethod.Delete;
-    public static HttpMethod Get { get; } = HttpMethod.Get;
-    public static HttpMethod Patch { get; } = new HttpMethod("PATCH");
-    public static HttpMethod Post { get; } = HttpMethod.Post;
-    public static HttpMethod Put { get; } = HttpMethod.Put;
+    public static HttpMethod Delete => HttpMethod.Delete;
+    public static HttpMethod Get => HttpMethod.Get;
+    public static HttpMethod Patch => new("PATCH");
+    public static HttpMethod Post => HttpMethod.Post;
+    public static HttpMethod Put => HttpMethod.Put;
 }
