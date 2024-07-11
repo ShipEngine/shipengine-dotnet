@@ -484,7 +484,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/cancel");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.CancelShipments";
 
@@ -594,7 +594,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/external_shipment_id/{external_shipment_id}");
 
-        requestOptions.PathParameters.Add("external_shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(externalShipmentId)); // path parameter
+        requestOptions.PathParameters.Add("external_shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(externalShipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.GetShipmentByExternalId";
 
@@ -649,7 +649,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.GetShipmentById";
 
@@ -707,10 +707,10 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/rates");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
 
         requestOptions.Operation = "ShipmentsApi.ListShipmentRates";
@@ -795,51 +795,51 @@ public partial class ShipEngine
 
         if (shipmentStatus != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "shipment_status", shipmentStatus));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "shipment_status", shipmentStatus));
         }
         if (batchId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
         }
         if (tag != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "tag", tag));
         }
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (modifiedAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "modified_at_start", modifiedAtStart));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "modified_at_start", modifiedAtStart));
         }
         if (modifiedAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "modified_at_end", modifiedAtEnd));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "modified_at_end", modifiedAtEnd));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
         if (salesOrderId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "sales_order_id", salesOrderId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sales_order_id", salesOrderId));
         }
         if (sortDir != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (sortBy != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
         }
 
         requestOptions.Operation = "ShipmentsApi.ListShipments";
@@ -950,7 +950,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/tags");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.ShipmentsListTags";
 
@@ -1069,8 +1069,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/tags/{tag_name}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
-        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.Client.ClientUtils.ParameterToString(tagName)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.ClientUtils.ParameterToString(tagName)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.TagShipment";
 
@@ -1134,8 +1134,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/tags/{tag_name}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
-        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.Client.ClientUtils.ParameterToString(tagName)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.ClientUtils.ParameterToString(tagName)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.UntagShipment";
 
@@ -1199,7 +1199,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updateShipmentRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "ShipmentsApi.UpdateShipment";

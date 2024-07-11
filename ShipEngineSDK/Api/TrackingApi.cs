@@ -177,11 +177,11 @@ public partial class ShipEngine
 
         if (carrierCode != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "carrier_code", carrierCode));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_code", carrierCode));
         }
         if (trackingNumber != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
         }
 
         requestOptions.Operation = "TrackingApi.GetTrackingLog";
@@ -236,11 +236,11 @@ public partial class ShipEngine
 
         if (carrierCode != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "carrier_code", carrierCode));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_code", carrierCode));
         }
         if (trackingNumber != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
         }
 
         requestOptions.Operation = "TrackingApi.StartTracking";
@@ -295,11 +295,11 @@ public partial class ShipEngine
 
         if (carrierCode != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "carrier_code", carrierCode));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_code", carrierCode));
         }
         if (trackingNumber != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
         }
 
         requestOptions.Operation = "TrackingApi.StopTracking";

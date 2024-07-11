@@ -49,7 +49,7 @@
     [Obsolete]
     {{/deprecated}}
     public {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
-    
+
     {{/required}}
     {{/isEnum}}
     {{/vars}}
@@ -59,7 +59,7 @@
     {{^isEnum}}
     {{#items.vars}}
     {{#-first}}
-    public class {{classname}}Item 
+    public class {{classname}}Item
     {
     {{/-first}}
         /// <summary>

@@ -24,7 +24,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
         /// <returns>An address validation result object</returns>
-        [Obsolete("Use ValidateAddress(List<AddressToValidate> addressToValidate) instead")]
         Task<List<ValidateAddresses.Result>> ValidateAddresses(List<Address> addresses);
 
         /// <summary>
@@ -33,14 +32,12 @@ namespace ShipEngineSDK
         /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>An address validation result object</returns>
-        [Obsolete("Use ValidateAddress(List<AddressToValidate> addressToValidate, methodConfig) instead")]
         Task<List<ValidateAddresses.Result>> ValidateAddresses(List<Address> addresses, Config methodConfig);
 
         /// <summary>
         /// Retrieve a list of all carriers that have been added to this account
         /// </summary>
         /// <returns>A list of carriers</returns>
-        [Obsolete]
         Task<ListCarriers.Result> ListCarriers();
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
         /// <returns>A list of carriers</returns>
-        [Obsolete]
         Task<ListCarriers.Result> ListCarriers(Config methodConfig);
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="manifestParams">The details of the manifest you want to create.</param>
         /// <returns></returns>
-        [Obsolete]
         Task<Manifests.Result> CreateManifest(Manifests.Params manifestParams);
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
         /// <param name="manifestParams">The details of the manifest you want to create.</param>
         /// <returns></returns>
-        [Obsolete]
         Task<Manifests.Result> CreateManifest(Config methodConfig, Manifests.Params manifestParams);
 
         /// <summary>
@@ -73,7 +67,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="labelId">The id of the label to void</param>
         /// <returns>Result object indicating the success of the void label attempt</returns>
-        [Obsolete]
         Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId);
 
         /// <summary>
@@ -82,7 +75,6 @@ namespace ShipEngineSDK
         /// <param name="labelId">The id of the label to void</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Result object indicating the success of the void label attempt</returns>
-        [Obsolete]
         Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId, Config methodConfig);
 
         /// <summary>
@@ -90,7 +82,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="labelId">The label id associated with the shipment</param>
         /// <returns>An object that contains the label id tracking information</returns>
-        [Obsolete]
         Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId);
 
         /// <summary>
@@ -99,7 +90,6 @@ namespace ShipEngineSDK
         /// <param name="labelId">The label id associated with the shipment</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>An object that contains the label id tracking information</returns>
-        [Obsolete]
         Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId, Config methodConfig);
 
         /// <summary>
@@ -108,7 +98,6 @@ namespace ShipEngineSDK
         /// <param name="trackingNumber">The tracking number of the package you wish to track.</param>
         /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
         /// <returns></returns>
-        [Obsolete]
         Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode);
 
         /// <summary>
@@ -118,7 +107,6 @@ namespace ShipEngineSDK
         /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns></returns>
-        [Obsolete]
         Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode, Config methodConfig);
 
         /// <summary>
@@ -126,7 +114,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="labelParams">Details of the label that you want to create</param>
         /// <returns>Object containing the created label information</returns>
-        [Obsolete]
         Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams);
 
         /// <summary>
@@ -135,7 +122,6 @@ namespace ShipEngineSDK
         /// <param name="labelParams">Details of the label that you want to create</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the created label information</returns>
-        [Obsolete]
         Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams, Config methodConfig);
 
         /// <summary>
@@ -143,7 +129,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
         /// <returns>Object containing the created label information</returns>
-        [Obsolete]
         Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams);
 
         /// <summary>
@@ -152,7 +137,6 @@ namespace ShipEngineSDK
         /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the created label information</returns>
-        [Obsolete]
         Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams, Config methodConfig);
 
         /// <summary>
@@ -160,7 +144,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <param name="rateParams"></param>
         /// <returns>The rates result</returns>
-        [Obsolete]
         Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams);
 
         /// <summary>
@@ -169,7 +152,6 @@ namespace ShipEngineSDK
         /// <param name="rateParams"></param>
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>The rates result</returns>
-        [Obsolete]
         Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams, Config methodConfig);
     }
 
@@ -257,7 +239,6 @@ namespace ShipEngineSDK
         /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
         /// <returns>An address validation result object</returns>
 
-        [Obsolete]
         public async Task<List<ValidateAddresses.Result>> ValidateAddresses(List<Address> addresses)
         {
 
@@ -277,7 +258,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
         /// <returns>An address validation result object</returns>
 
-        [Obsolete]
         public async Task<List<ValidateAddresses.Result>> ValidateAddresses(List<Address> addresses, Config methodConfig)
         {
 
@@ -299,7 +279,6 @@ namespace ShipEngineSDK
         /// </summary>
         /// <returns>A list of carriers</returns>
 
-        [Obsolete]
         public async Task<ListCarriers.Result> ListCarriers()
         {
             var path = "v1/carriers";
@@ -315,7 +294,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call.</param>
         /// <returns>A list of carriers</returns>
 
-        [Obsolete]
         public async Task<ListCarriers.Result> ListCarriers(Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
@@ -336,7 +314,6 @@ namespace ShipEngineSDK
         /// <param name="manifestParams">The details of the manifest you want to create.</param>
         /// <returns></returns>
 
-        [Obsolete]
         public async Task<Manifests.Result> CreateManifest(Manifests.Params manifestParams)
         {
             var path = "v1/manifests";
@@ -355,7 +332,6 @@ namespace ShipEngineSDK
         /// <param name="manifestParams">The details of the manifest you want to create.</param>
         /// <returns></returns>
 
-        [Obsolete]
         public async Task<Manifests.Result> CreateManifest(Config methodConfig, Manifests.Params manifestParams)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
@@ -375,7 +351,6 @@ namespace ShipEngineSDK
         /// <param name="labelId">The id of the label to void</param>
         /// <returns>Result object indicating the success of the void label attempt</returns>
 
-        [Obsolete]
         public async Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId)
         {
             var path = $"v1/labels/{labelId}/void";
@@ -392,7 +367,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Result object indicating the success of the void label attempt</returns>
 
-        [Obsolete]
         public async Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
@@ -412,7 +386,6 @@ namespace ShipEngineSDK
         /// <param name="labelId">The label id associated with the shipment</param>
         /// <returns>An object that contains the label id tracking information</returns>
 
-        [Obsolete]
         public async Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId)
         {
             var path = $"/v1/labels/{labelId}/track";
@@ -429,7 +402,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>An object that contains the label id tracking information</returns>
 
-        [Obsolete]
         public async Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
@@ -450,7 +422,6 @@ namespace ShipEngineSDK
         /// <param name="carrierCode">The carrierCode for the trackingNumber you are using to track the package.</param>
         /// <returns></returns>
 
-        [Obsolete]
         public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode)
         {
             var path = $"/v1/tracking?tracking_number={trackingNumber}&carrier_code={carrierCode}";
@@ -468,7 +439,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns></returns>
 
-        [Obsolete]
         public async Task<TrackUsingCarrierCodeAndTrackingNumber.Result> TrackUsingCarrierCodeAndTrackingNumber(string trackingNumber, string carrierCode, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
@@ -488,7 +458,6 @@ namespace ShipEngineSDK
         /// <param name="labelParams">Details of the label that you want to create</param>
         /// <returns>Object containing the created label information</returns>
 
-        [Obsolete]
         public async Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams)
         {
 
@@ -508,7 +477,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the created label information</returns>
 
-        [Obsolete]
         public async Task<CreateLabelFromShipmentDetails.Result> CreateLabelFromShipmentDetails(CreateLabelFromShipmentDetails.Params labelParams, Config methodConfig)
         {
 
@@ -531,7 +499,6 @@ namespace ShipEngineSDK
         /// <param name="createLabelFromRateParams">The details of the rate that you want to use to purchase a label</param>
         /// <returns>Object containing the created label information</returns>
 
-        [Obsolete]
         public async Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams)
         {
             var path = $"/v1/labels/rates/{createLabelFromRateParams.RateId}";
@@ -550,7 +517,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>Object containing the created label information</returns>
 
-        [Obsolete]
         public async Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams, Config methodConfig)
         {
 
@@ -573,7 +539,6 @@ namespace ShipEngineSDK
         /// <param name="rateParams"></param>
         /// <returns>The rates result</returns>
 
-        [Obsolete]
         public async Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams)
         {
             var path = "/v1/rates";
@@ -592,7 +557,6 @@ namespace ShipEngineSDK
         /// <param name="methodConfig">Configuration object that overrides the global config for this method call</param>
         /// <returns>The rates result</returns>
 
-        [Obsolete]
         public async Task<GetRatesWithShipmentDetails.Result> GetRatesWithShipmentDetails(GetRatesWithShipmentDetails.Params rateParams, Config methodConfig)
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());

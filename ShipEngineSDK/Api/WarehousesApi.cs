@@ -317,7 +317,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/warehouses/{warehouse_id}");
 
-        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(warehouseId)); // path parameter
+        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.ClientUtils.ParameterToString(warehouseId)); // path parameter
 
         requestOptions.Operation = "WarehousesApi.DeleteWarehouse";
 
@@ -372,7 +372,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/warehouses/{warehouse_id}");
 
-        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(warehouseId)); // path parameter
+        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.ClientUtils.ParameterToString(warehouseId)); // path parameter
 
         requestOptions.Operation = "WarehousesApi.GetWarehouseById";
 
@@ -481,7 +481,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/warehouses/{warehouse_id}");
 
-        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(warehouseId)); // path parameter
+        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.ClientUtils.ParameterToString(warehouseId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updateWarehouseRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "WarehousesApi.UpdateWarehouse";
@@ -546,7 +546,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/warehouses/{warehouse_id}/settings");
 
-        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(warehouseId)); // path parameter
+        requestOptions.PathParameters.Add("warehouse_id", ShipEngineSDK.ClientUtils.ParameterToString(warehouseId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updateWarehouseSettingsRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "WarehousesApi.UpdateWarehouseSettings";

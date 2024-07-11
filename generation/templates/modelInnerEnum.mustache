@@ -1,50 +1,3 @@
-//    {{^isContainer}}
-//    /// <summary>
-//    /// {{description}}{{^description}}Defines {{{name}}}{{/description}}
-//    /// </summary>
-//    {{#description}}
-//    /// <value>{{.}}</value>
-//    {{/description}}
-//    {{>visibility}} static class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}
-//    {
-//        private static readonly HashSet<string> _values = new()
-//        {
-//            {{#allowableValues}}
-//            {{#enumVars}}
-//            "{{value}}",
-//            {{/enumVars}}
-//            {{/allowableValues}}
-//        };
-//
-//        {{#allowableValues}}
-//        {{#enumVars}}
-//        {{#-first}}
-//        public static string DefaultValue => {{name}};
-//        {{/-first}}
-//        
-//        /// <summary>
-//        /// Enum {{name}} for value: {{value}}
-//        /// </summary>
-//        public static string {{name}} { get; } = "{{value}}";
-//        {{^-last}}
-//
-//        {{/-last}}
-//        {{/enumVars}}
-//        {{/allowableValues}}
-//
-//        /// <summary>
-//        /// Is the given value a valid {{datatypeWithEnum}}?
-//        /// </summary>
-//        public static bool IsValid(string value)
-//        {
-//            return _values.Contains(value);
-//        }
-//    }
-//    {{/isContainer}}
-
-
-
-
     {{^isContainer}}
     /// <summary>
     /// {{description}}{{^description}}Defines {{{name}}}{{/description}}
@@ -60,15 +13,17 @@
         {{#allowableValues}}
         {{#enumVars}}
         {{#-first}}
-        internal {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}() {
+        internal {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}()
+        {
             _value = "{{value}}";
         }
         {{/-first}}
         {{/enumVars}}
         {{/allowableValues}}
 
-        public {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(string value) {
-          
+        public {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(string value)
+        {
+
         }
 
         {{#allowableValues}}

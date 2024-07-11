@@ -27,46 +27,46 @@ public class RequestOptions(string path)
     /// <summary>
     /// Parameters to be bound to path parts of the Request's URL
     /// </summary>
-    public Dictionary<string, string> PathParameters { get; } = new();
+    internal Dictionary<string, string> PathParameters { get; } = new();
 
     /// <summary>
     /// Query parameters to be applied to the request.
     /// Keys may have 1 or more values associated.
     /// </summary>
-    public Client.Multimap<string, string> QueryParameters { get; } = new();
+    internal Multimap<string, string> QueryParameters { get; } = new();
 
     /// <summary>
     /// Header parameters to be applied to the request.
     /// Keys may have 1 or more values associated.
     /// </summary>
-    public Client.Multimap<string, string> HeaderParameters { get; } = new();
+    internal Multimap<string, string> HeaderParameters { get; } = new();
 
     /// <summary>
     /// Form parameters to be sent along with the request.
     /// </summary>
-    public Dictionary<string, string> FormParameters { get; } = new();
+    internal Dictionary<string, string> FormParameters { get; } = new();
 
     /// <summary>
     /// File parameters to be sent along with the request.
     /// </summary>
-    public Client.Multimap<string, Stream> FileParameters { get; } = new();
+    internal Multimap<string, Stream> FileParameters { get; } = new();
 
     /// <summary>
     /// Cookies to be sent along with the request.
     /// </summary>
-    public List<Cookie> Cookies { get; set; } = new();
+    internal List<Cookie> Cookies { get; set; } = new();
 
     /// <summary>
     /// Operation associated with the request path.
     /// </summary>
-    public string Operation { get; set; }
+    internal string Operation { get; set; }
 
     /// <summary>
     /// Any data associated with a request body.
     /// </summary>
-    public string Data { get; set; }
+    internal string Data { get; set; }
 
-    public string FullPath()
+    internal string FullPath()
     {
         var path = PathParameters.Aggregate(_path, (x, y) => x.Replace("{" + y.Key + "}", y.Value));
         if (!QueryParameters.Any())

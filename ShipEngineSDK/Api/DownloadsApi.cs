@@ -145,16 +145,16 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/downloads/{dir}/{subdir}/{filename}");
 
-        requestOptions.PathParameters.Add("subdir", ShipEngineSDK.Client.ClientUtils.ParameterToString(subdir)); // path parameter
-        requestOptions.PathParameters.Add("filename", ShipEngineSDK.Client.ClientUtils.ParameterToString(filename)); // path parameter
-        requestOptions.PathParameters.Add("dir", ShipEngineSDK.Client.ClientUtils.ParameterToString(dir)); // path parameter
+        requestOptions.PathParameters.Add("subdir", ShipEngineSDK.ClientUtils.ParameterToString(subdir)); // path parameter
+        requestOptions.PathParameters.Add("filename", ShipEngineSDK.ClientUtils.ParameterToString(filename)); // path parameter
+        requestOptions.PathParameters.Add("dir", ShipEngineSDK.ClientUtils.ParameterToString(dir)); // path parameter
         if (download != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "download", download));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "download", download));
         }
         if (rotation != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "rotation", rotation));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "rotation", rotation));
         }
 
         requestOptions.Operation = "DownloadsApi.DownloadFile";

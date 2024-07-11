@@ -418,7 +418,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/add");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(addToBatchRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "BatchesApi.AddToBatch";
@@ -529,7 +529,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.DeleteBatch";
 
@@ -584,7 +584,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/external_batch_id/{external_batch_id}");
 
-        requestOptions.PathParameters.Add("external_batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(externalBatchId)); // path parameter
+        requestOptions.PathParameters.Add("external_batch_id", ShipEngineSDK.ClientUtils.ParameterToString(externalBatchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.GetBatchByExternalId";
 
@@ -639,7 +639,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.GetBatchById";
 
@@ -700,14 +700,14 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/errors");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pagesize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "pagesize", pagesize));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "pagesize", pagesize));
         }
 
         requestOptions.Operation = "BatchesApi.ListBatchErrors";
@@ -774,27 +774,27 @@ public partial class ShipEngine
 
         if (status != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "status", status));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
         if (sortDir != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (batchNumber != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "batch_number", batchNumber));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "batch_number", batchNumber));
         }
         if (sortBy != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
         }
 
         requestOptions.Operation = "BatchesApi.ListBatches";
@@ -859,7 +859,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/process/labels");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(processBatchRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "BatchesApi.ProcessBatch";
@@ -924,7 +924,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/remove");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(removeFromBatchRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "BatchesApi.RemoveFromBatch";
@@ -980,7 +980,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.UpdateBatch";
 

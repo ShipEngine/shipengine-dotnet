@@ -11,14 +11,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ShipEngineSDK.Client
+namespace ShipEngineSDK
 {
     /// <summary>
     /// A dictionary in which one key has many associated values.
     /// </summary>
     /// <typeparam name="TKey">The type of the key</typeparam>
     /// <typeparam name="TValue">The type of the value associated with the key.</typeparam>
-    public class Multimap<TKey, TValue> : IDictionary<TKey, IList<TValue>>
+    internal class Multimap<TKey, TValue> : IDictionary<TKey, IList<TValue>>
     {
         #region Private Fields
 

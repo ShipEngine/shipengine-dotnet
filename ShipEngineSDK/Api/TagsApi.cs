@@ -199,7 +199,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/tags/{tag_name}");
 
-        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.Client.ClientUtils.ParameterToString(tagName)); // path parameter
+        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.ClientUtils.ParameterToString(tagName)); // path parameter
 
         requestOptions.Operation = "TagsApi.CreateTag";
 
@@ -254,7 +254,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/tags/{tag_name}");
 
-        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.Client.ClientUtils.ParameterToString(tagName)); // path parameter
+        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.ClientUtils.ParameterToString(tagName)); // path parameter
 
         requestOptions.Operation = "TagsApi.DeleteTag";
 
@@ -363,8 +363,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/tags/{tag_name}/{new_tag_name}");
 
-        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.Client.ClientUtils.ParameterToString(tagName)); // path parameter
-        requestOptions.PathParameters.Add("new_tag_name", ShipEngineSDK.Client.ClientUtils.ParameterToString(newTagName)); // path parameter
+        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.ClientUtils.ParameterToString(tagName)); // path parameter
+        requestOptions.PathParameters.Add("new_tag_name", ShipEngineSDK.ClientUtils.ParameterToString(newTagName)); // path parameter
 
         requestOptions.Operation = "TagsApi.RenameTag";
 

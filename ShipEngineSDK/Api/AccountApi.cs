@@ -311,7 +311,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/account/settings/images/{label_image_id}");
 
-        requestOptions.PathParameters.Add("label_image_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(labelImageId)); // path parameter
+        requestOptions.PathParameters.Add("label_image_id", ShipEngineSDK.ClientUtils.ParameterToString(labelImageId)); // path parameter
 
         requestOptions.Operation = "AccountApi.DeleteAccountImageById";
 
@@ -366,7 +366,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/account/settings/images/{label_image_id}");
 
-        requestOptions.PathParameters.Add("label_image_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(labelImageId)); // path parameter
+        requestOptions.PathParameters.Add("label_image_id", ShipEngineSDK.ClientUtils.ParameterToString(labelImageId)); // path parameter
 
         requestOptions.Operation = "AccountApi.GetAccountSettingsImagesById";
 
@@ -520,7 +520,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/account/settings/images/{label_image_id}");
 
-        requestOptions.PathParameters.Add("label_image_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(labelImageId)); // path parameter
+        requestOptions.PathParameters.Add("label_image_id", ShipEngineSDK.ClientUtils.ParameterToString(labelImageId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updateAccountSettingsImageRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "AccountApi.UpdateAccountSettingsImagesById";

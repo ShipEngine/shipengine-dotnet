@@ -214,7 +214,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/pickups/{pickup_id}");
 
-        requestOptions.PathParameters.Add("pickup_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(pickupId)); // path parameter
+        requestOptions.PathParameters.Add("pickup_id", ShipEngineSDK.ClientUtils.ParameterToString(pickupId)); // path parameter
 
         requestOptions.Operation = "PackagePickupsApi.DeleteScheduledPickup";
 
@@ -269,7 +269,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/pickups/{pickup_id}");
 
-        requestOptions.PathParameters.Add("pickup_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(pickupId)); // path parameter
+        requestOptions.PathParameters.Add("pickup_id", ShipEngineSDK.ClientUtils.ParameterToString(pickupId)); // path parameter
 
         requestOptions.Operation = "PackagePickupsApi.GetPickupById";
 
@@ -335,27 +335,27 @@ public partial class ShipEngine
 
         if (carrierId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
         }
         if (warehouseId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
 
         requestOptions.Operation = "PackagePickupsApi.ListScheduledPickups";

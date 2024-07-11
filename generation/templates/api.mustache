@@ -1,5 +1,9 @@
 {{>partial_header}}
 
+{{#hasOAuthMethods}}using {{packageName}}.Client.Auth;
+{{/hasOAuthMethods}}
+{{#hasImport}}using {{packageName}}.{{modelPackage}};
+{{/hasImport}}
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,10 +14,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-{{#hasOAuthMethods}}using {{packageName}}.Client.Auth;
-{{/hasOAuthMethods}}
-{{#hasImport}}using {{packageName}}.{{modelPackage}};
-{{/hasImport}}
 
 namespace {{packageName}};
 
@@ -148,38 +148,38 @@ namespace {{packageName}};
         {{#constantParams}}
         {{#isPathParam}}
         // Set client side default value of Path Param "{{baseName}}".
-        requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant path parameter
+        requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant path parameter
         {{/isPathParam}}
         {{/constantParams}}
         {{#pathParams}}
         {{#required}}
-        requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}})); // path parameter
+        requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // path parameter
         {{/required}}
         {{^required}}
         if ({{paramName}} != null)
         {
-            requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}})); // path parameter
+            requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // path parameter
         }
         {{/required}}
         {{/pathParams}}
         {{#constantParams}}
         {{#isQueryParam}}
         // Set client side default value of Query Param "{{baseName}}".
-        requestOptions.QueryParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant query parameter
+        requestOptions.QueryParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant query parameter
         {{/isQueryParam}}
         {{/constantParams}}
         {{#queryParams}}
         {{#required}}
         {{#isDeepObject}}
         {{#items.vars}}
-        requestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}.{{name}}));
+        requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}.{{name}}));
         {{/items.vars}}
         {{^items}}
-        requestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
+        requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
         {{/items}}
         {{/isDeepObject}}
         {{^isDeepObject}}
-        requestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
+        requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
         {{/isDeepObject}}
         {{/required}}
         {{^required}}
@@ -189,15 +189,15 @@ namespace {{packageName}};
             {{#items.vars}}
             if ({{paramName}}.{{name}} != null)
             {
-                requestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{paramName}}[{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}]", {{paramName}}.{{name}}));
+                requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{paramName}}[{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}]", {{paramName}}.{{name}}));
             }
             {{/items.vars}}
             {{^items}}
-            requestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
+            requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
             {{/items}}
             {{/isDeepObject}}
             {{^isDeepObject}}
-            requestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
+            requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
             {{/isDeepObject}}
         }
         {{/required}}
@@ -205,17 +205,17 @@ namespace {{packageName}};
         {{#constantParams}}
         {{#isHeaderParam}}
         // Set client side default value of Header Param "{{baseName}}".
-        requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant header parameter
+        requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant header parameter
         {{/isHeaderParam}}
         {{/constantParams}}
         {{#headerParams}}
         {{#required}}
-        requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}})); // header parameter
+        requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // header parameter
         {{/required}}
         {{^required}}
         if ({{paramName}} != null)
         {
-            requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}})); // header parameter
+            requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // header parameter
         }
         {{/required}}
         {{/headerParams}}
@@ -237,7 +237,7 @@ namespace {{packageName}};
         {{/isArray}}
         {{/isFile}}
         {{^isFile}}
-        requestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
+        requestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
         {{/isFile}}
         {{/required}}
         {{^required}}
@@ -259,7 +259,7 @@ namespace {{packageName}};
             {{/isArray}}
             {{/isFile}}
             {{^isFile}}
-            requestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
+            requestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
             {{/isFile}}
         }
         {{/required}}
@@ -276,5 +276,4 @@ namespace {{packageName}};
     }
 
     {{/operation}}
-}
-{{/operations}}
+}{{/operations}}

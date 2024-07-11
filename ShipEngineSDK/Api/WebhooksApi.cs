@@ -284,7 +284,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/environment/webhooks/{webhook_id}");
 
-        requestOptions.PathParameters.Add("webhook_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(webhookId)); // path parameter
+        requestOptions.PathParameters.Add("webhook_id", ShipEngineSDK.ClientUtils.ParameterToString(webhookId)); // path parameter
 
         requestOptions.Operation = "WebhooksApi.DeleteWebhook";
 
@@ -339,7 +339,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/environment/webhooks/{webhook_id}");
 
-        requestOptions.PathParameters.Add("webhook_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(webhookId)); // path parameter
+        requestOptions.PathParameters.Add("webhook_id", ShipEngineSDK.ClientUtils.ParameterToString(webhookId)); // path parameter
 
         requestOptions.Operation = "WebhooksApi.GetWebhookById";
 
@@ -448,7 +448,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/environment/webhooks/{webhook_id}");
 
-        requestOptions.PathParameters.Add("webhook_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(webhookId)); // path parameter
+        requestOptions.PathParameters.Add("webhook_id", ShipEngineSDK.ClientUtils.ParameterToString(webhookId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updateWebhookRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "WebhooksApi.UpdateWebhook";

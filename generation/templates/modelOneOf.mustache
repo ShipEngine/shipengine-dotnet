@@ -92,7 +92,7 @@
     public {{classname}}()
     {
         this.IsNullable = true;
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
     }
 
     {{/isNullable}}
@@ -107,7 +107,7 @@
     public {{classname}}({{{dataType}}} actualInstance)
     {
         this.IsNullable = {{#model.isNullable}}true{{/model.isNullable}}{{^model.isNullable}}false{{/model.isNullable}};
-        this.SchemaType= "oneOf";
+        this.SchemaType = "oneOf";
         this.ActualInstance = actualInstance{{^model.isNullable}}{{^isPrimitiveType}} ?? throw new ArgumentException("Invalid instance found. Must not be null."){{/isPrimitiveType}}{{#isPrimitiveType}}{{#isArray}} ?? throw new ArgumentException("Invalid instance found. Must not be null."){{/isArray}}{{/isPrimitiveType}}{{#isPrimitiveType}}{{#isFreeFormObject}} ?? throw new ArgumentException("Invalid instance found. Must not be null."){{/isFreeFormObject}}{{/isPrimitiveType}}{{#isPrimitiveType}}{{#isString}} ?? throw new ArgumentException("Invalid instance found. Must not be null."){{/isString}}{{/isPrimitiveType}}{{/model.isNullable}};
     }
 
@@ -304,12 +304,13 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
         {
-            if (prop.Value != null) {
-              writer.WritePropertyName(prop.Key);
-              prop.Value.WriteTo(writer, options);
+            if (prop.Value != null)
+            {
+                writer.WritePropertyName(prop.Key);
+                prop.Value.WriteTo(writer, options);
             }
         }
-        
+
         writer.WriteEndObject();
     }
 
@@ -337,7 +338,7 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
         try
         {
             new{{classname}} = new {{classname}}(JsonSerializer.Deserialize<{{{dataType}}}>(jsonDoc, DeserializingOptions));
-            
+
             matchedTypes.Add("{{{dataType}}}");
             match++;
         }
@@ -352,7 +353,7 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
-        
+
         if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
@@ -377,5 +378,4 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
     {
         return typeof({{classname}}).IsAssignableFrom(objectType);
     }
-}
-{{/model}}
+}{{/model}}

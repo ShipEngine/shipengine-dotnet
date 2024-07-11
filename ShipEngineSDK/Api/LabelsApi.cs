@@ -467,7 +467,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/rates/{rate_id}");
 
-        requestOptions.PathParameters.Add("rate_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(rateId)); // path parameter
+        requestOptions.PathParameters.Add("rate_id", ShipEngineSDK.ClientUtils.ParameterToString(rateId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(createLabelFromRateRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "LabelsApi.CreateLabelFromRate";
@@ -532,7 +532,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/shipment/{shipment_id}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(createLabelFromShipmentRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "LabelsApi.CreateLabelFromShipment";
@@ -597,7 +597,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}/return");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(createReturnLabelRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "LabelsApi.CreateReturnLabel";
@@ -656,10 +656,10 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/external_shipment_id/{external_shipment_id}");
 
-        requestOptions.PathParameters.Add("external_shipment_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(externalShipmentId)); // path parameter
+        requestOptions.PathParameters.Add("external_shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(externalShipmentId)); // path parameter
         if (labelDownloadType != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
         }
 
         requestOptions.Operation = "LabelsApi.GetLabelByExternalShipmentId";
@@ -718,10 +718,10 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
         if (labelDownloadType != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
         }
 
         requestOptions.Operation = "LabelsApi.GetLabelById";
@@ -777,7 +777,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}/track");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
 
         requestOptions.Operation = "LabelsApi.GetTrackingLogFromLabel";
 
@@ -867,59 +867,59 @@ public partial class ShipEngine
 
         if (labelStatus != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "label_status", labelStatus));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "label_status", labelStatus));
         }
         if (serviceCode != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "service_code", serviceCode));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "service_code", serviceCode));
         }
         if (carrierId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
         }
         if (trackingNumber != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
         }
         if (batchId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
         }
         if (rateId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "rate_id", rateId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "rate_id", rateId));
         }
         if (shipmentId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "shipment_id", shipmentId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "shipment_id", shipmentId));
         }
         if (warehouseId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
         if (sortDir != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (sortBy != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
         }
 
         requestOptions.Operation = "LabelsApi.ListLabels";
@@ -975,7 +975,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}/void");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
 
         requestOptions.Operation = "LabelsApi.VoidLabel";
 

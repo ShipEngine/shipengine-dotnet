@@ -27,63 +27,6 @@ namespace ShipEngineSDK.Model;
 /// </summary>
 public partial class AccountSettingsImages
 {
-    //    
-    //    /// <summary>
-    //    /// The image type
-    //    /// </summary>
-    //    
-    //    /// <value>The image type</value>
-    //    
-    //    public static class ImageContentTypeEnum
-    //    {
-    //        private static readonly HashSet<string> _values = new()
-    //        {
-    //            
-    //            
-    //            "image/png",
-    //            
-    //            "image/jpeg",
-    //            
-    //            
-    //        };
-    //
-    //        
-    //        
-    //        
-    //        public static string DefaultValue => Png;
-    //        
-    //        
-    //        /// <summary>
-    //        /// Enum Png for value: image/png
-    //        /// </summary>
-    //        public static string Png { get; } = "image/png";
-    //        
-    //
-    //        
-    //        
-    //        
-    //        
-    //        /// <summary>
-    //        /// Enum Jpeg for value: image/jpeg
-    //        /// </summary>
-    //        public static string Jpeg { get; } = "image/jpeg";
-    //        
-    //        
-    //        
-    //
-    //        /// <summary>
-    //        /// Is the given value a valid ImageContentTypeEnum?
-    //        /// </summary>
-    //        public static bool IsValid(string value)
-    //        {
-    //            return _values.Contains(value);
-    //        }
-    //    }
-    //    
-
-
-
-
     /// <summary>
     /// The image type
     /// </summary>

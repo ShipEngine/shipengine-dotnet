@@ -278,7 +278,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/manifests/{manifest_id}");
 
-        requestOptions.PathParameters.Add("manifest_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(manifestId)); // path parameter
+        requestOptions.PathParameters.Add("manifest_id", ShipEngineSDK.ClientUtils.ParameterToString(manifestId)); // path parameter
 
         requestOptions.Operation = "ManifestsApi.GetManifestById";
 
@@ -333,7 +333,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/manifests/requests/{manifest_request_id}");
 
-        requestOptions.PathParameters.Add("manifest_request_id", ShipEngineSDK.Client.ClientUtils.ParameterToString(manifestRequestId)); // path parameter
+        requestOptions.PathParameters.Add("manifest_request_id", ShipEngineSDK.ClientUtils.ParameterToString(manifestRequestId)); // path parameter
 
         requestOptions.Operation = "ManifestsApi.GetManifestRequestById";
 
@@ -408,39 +408,39 @@ public partial class ShipEngine
 
         if (warehouseId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
         if (shipDateStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "ship_date_start", shipDateStart));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "ship_date_start", shipDateStart));
         }
         if (shipDateEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "ship_date_end", shipDateEnd));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "ship_date_end", shipDateEnd));
         }
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (carrierId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
         if (labelIds != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("multi", "label_ids", labelIds));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("multi", "label_ids", labelIds));
         }
 
         requestOptions.Operation = "ManifestsApi.ListManifests";

@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
-    using Client;
     using HttpMethod = System.Net.Http.HttpMethod;
 
     /// <summary>

@@ -6,8 +6,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.IO;
+using System.Linq;
+{{#oneOf}}
+{{#-first}}
+using System.Reflection;
+{{/-first}}
+{{/oneOf}}
+{{#anyOf}}
+{{#-first}}
+using System.Reflection;
+{{/-first}}
+{{/anyOf}}
 {{#vendorExtensions.x-com-visible}}
 using System.Runtime.InteropServices;
 {{/vendorExtensions.x-com-visible}}
@@ -30,19 +40,7 @@ using OpenAPIClientUtils = {{packageName}}.Client.ClientUtils;
 {{/useCompareNetObjects}}
 {{#models}}
 {{#model}}
-{{#oneOf}}
-{{#-first}}
-using System.Reflection;
-{{/-first}}
-{{/oneOf}}
-{{#anyOf}}
-{{#-first}}
-using System.Reflection;
-{{/-first}}
-{{/anyOf}}
 
 namespace {{packageName}}.{{modelPackage}};
 
-{{#isEnum}}{{>modelEnum}}{{/isEnum}}{{^isEnum}}{{#oneOf}}{{#-first}}{{>modelOneOf}}{{/-first}}{{/oneOf}}{{#anyOf}}{{#-first}}{{>modelAnyOf}}{{/-first}}{{/anyOf}}{{^oneOf}}{{^anyOf}}{{>modelGeneric}}{{/anyOf}}{{/oneOf}}{{/isEnum}}
-{{/model}}
-{{/models}}
+{{#isEnum}}{{>modelEnum}}{{/isEnum}}{{^isEnum}}{{#oneOf}}{{#-first}}{{>modelOneOf}}{{/-first}}{{/oneOf}}{{#anyOf}}{{#-first}}{{>modelAnyOf}}{{/-first}}{{/anyOf}}{{^oneOf}}{{^anyOf}}{{>modelGeneric}}{{/anyOf}}{{/oneOf}}{{/isEnum}}{{/model}}{{/models}}

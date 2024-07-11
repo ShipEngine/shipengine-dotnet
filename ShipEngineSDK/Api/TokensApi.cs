@@ -105,7 +105,7 @@ public partial class ShipEngine
 
         if (redirect != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.Client.ClientUtils.ParameterToMultiMap("", "redirect", redirect));
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "redirect", redirect));
         }
 
         requestOptions.Operation = "TokensApi.TokensGetEphemeralToken";
