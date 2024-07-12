@@ -72,6 +72,9 @@ To build the project locally on your computer:
 
 ### Generating from OpenAPI
 
+To regenerate the SDK from the OpenAPI spec, you will first need to get the latest version of the spec.  It can be downloaded from the [online documentation](https://shipengine.github.io/shipengine-openapi/)
+and should be saved to `./generation/swagger.json`.  Then run `npm run generate` from the command line.  This will regenerate all the API calls and models, but not docs or tests.
+
 The templates for autogeneration were extracted using the command:
 ```bash
 npx @openapitools/openapi-generator-cli author template -g csharp -o generation/templates
@@ -80,7 +83,7 @@ npx @openapitools/openapi-generator-cli author template -g csharp -o generation/
 ## Release
 Create a [fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for your changes.
 
-Update the [Changelog](./CHANGELOG.md) with any relevant new features or bug fixes.
+Update the [Changelog](./CHANGELOG.md) with any relevant new features or bug fixes and modify the `packageVersion` property in the `.openapitools.json` file to match the new version.
 
 In the `ShipEngine.csproj` file, update to the desired version (using [semantic versioning](https://semver.org/)) and push to your fork.
 

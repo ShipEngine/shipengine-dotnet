@@ -16,3 +16,6 @@ TestResults
 .gitmodules
 dockerfile
 docker-compose.*
+
+node_modules
+out

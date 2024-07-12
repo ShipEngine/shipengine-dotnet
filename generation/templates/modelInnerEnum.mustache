@@ -1,99 +1,56 @@
-        {{^isContainer}}
-        /// <summary>
-        /// {{description}}{{^description}}Defines {{{name}}}{{/description}}
-        /// </summary>
-        {{#description}}
-        /// <value>{{.}}</value>
-        {{/description}}
-        {{#isString}}
-        {{^useGenericHost}}
-        [JsonConverter(typeof(StringEnumConverter))]
-        {{/useGenericHost}}
-        {{/isString}}
-        {{>visibility}} enum {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}{{#vendorExtensions.x-enum-byte}}: byte{{/vendorExtensions.x-enum-byte}}
-        {
-            {{#allowableValues}}
-            {{#enumVars}}
-            /// <summary>
-            /// Enum {{name}} for value: {{value}}
-            /// </summary>
-            {{^useGenericHost}}
-            {{#isString}}
-            [EnumMember(Value = "{{{value}}}")]
-            {{/isString}}
-            {{/useGenericHost}}
-            {{name}}{{^isString}} = {{{value}}}{{/isString}}{{#isString}}{{^vendorExtensions.x-zero-based-enum}} = {{-index}}{{/vendorExtensions.x-zero-based-enum}}{{/isString}}{{^-last}},{{/-last}}
-            {{^-last}}
+    {{^isContainer}}
+    /// <summary>
+    /// {{description}}{{^description}}Defines {{{name}}}{{/description}}
+    /// </summary>
+    {{#description}}
+    /// <value>{{.}}</value>
+    {{/description}}
+    [JsonConverter(typeof({{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter))]
+    {{>visibility}} class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}
+    {
+        private string _value;
 
-            {{/-last}}
-            {{/enumVars}}
-            {{/allowableValues}}
+        {{#allowableValues}}
+        {{#enumVars}}
+        {{#-first}}
+        internal {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}()
+        {
+            _value = "{{value}}";
         }
-        {{#useGenericHost}}
+        {{/-first}}
+        {{/enumVars}}
+        {{/allowableValues}}
 
-        /// <summary>
-        /// Returns a <see cref="{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}"/>
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public static {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}FromString(string value)
+        public {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(string value)
         {
-            {{#allowableValues}}
-            {{#enumVars}}
-            if (value.Equals({{^isString}}({{{value}}}).ToString(){{/isString}}{{#isString}}"{{{value}}}"{{/isString}}))
-                return {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.{{name}};
 
-            {{/enumVars}}
-            {{/allowableValues}}
-            throw new NotImplementedException($"Could not convert value to type {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}: '{value}'");
         }
 
+        {{#allowableValues}}
+        {{#enumVars}}
         /// <summary>
-        /// Returns a <see cref="{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}"/>
+        /// Enum {{name}} for value: {{value}}
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}? {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}FromStringOrDefault(string value)
-        {
-            {{#allowableValues}}
-            {{#enumVars}}
-            if (value.Equals({{^isString}}({{{value}}}).ToString(){{/isString}}{{#isString}}"{{{value}}}"{{/isString}}))
-                return {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.{{name}};
+        public static {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} {{name}} { get; } = new("{{value}}");
 
-            {{/enumVars}}
-            {{/allowableValues}}
-            return null;
-        }
+        {{^-last}}
 
-        /// <summary>
-        /// Converts the <see cref="{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}"/> to the json value
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        {{#isString}}
-        /// <exception cref="NotImplementedException"></exception>
-        {{/isString}}
-        public static {{>EnumValueDataType}}{{#lambda.first}}{{#nrt}}{{#isString}}{{#isNullable}}{{nrt?}}  {{^nrt}}{{#vendorExtensions.x-is-value-type}}?  {{/vendorExtensions.x-is-value-type}}{{/nrt}}{{/isNullable}}{{/isString}}{{/nrt}}{{/lambda.first}} {{datatypeWithEnum}}ToJsonValue({{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}{{#isString}}{{>NullConditionalProperty}}{{/isString}} value)
-        {
-            {{^isString}}
-            return ({{>EnumValueDataType}}) value;
-            {{/isString}}
-            {{#isString}}
-            {{#isNullable}}
-            if (value == null)
-                return null;
+        {{/-last}}
+        {{/enumVars}}
+        {{/allowableValues}}
 
-            {{/isNullable}}
-            {{#allowableValues}}
-            {{#enumVars}}
-            if (value == {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.{{name}})
-                return {{^isNumeric}}"{{/isNumeric}}{{{value}}}{{^isNumeric}}"{{/isNumeric}};
+        public override string ToString() => _value;
+    }
 
-            {{/enumVars}}
-            {{/allowableValues}}
-            throw new NotImplementedException($"Value could not be handled: '{value}'");
-            {{/isString}}
-        }
-        {{/useGenericHost}}
-        {{/isContainer}}
+    internal class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter : JsonConverter<{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}>
+    {
+        public override {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+            reader.TokenType == JsonTokenType.String ? new {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(reader.GetString()) : null;
+
+        public override void Write(Utf8JsonWriter writer, {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} value, JsonSerializerOptions options) =>
+            writer.WriteStringValue(value.ToString());
+
+        public override bool CanConvert(Type typeToConvert) =>
+            typeToConvert == typeof({{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}});
+    }
+{{/isContainer}}

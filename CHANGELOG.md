@@ -145,3 +145,9 @@ Impoved handling of unexpected HTTP responses
 ### Changed
 
 Updated nuget package dependencies
+
+## 2.1.0
+
+### Added
+
+- Created new SDK methods for the entire API that sit next to the pre-existing methods.  The pre-existing methods will be deprecated eventually.

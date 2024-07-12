@@ -28,51 +28,16 @@ using System.Diagnostics;
 {{#useHttpClient}}
 using System.Net.Http;
 {{/useHttpClient}}
-using {{packageName}}.{{apiPackage}};
-using {{packageName}}.Client;
+using {{packageName}};
 using {{packageName}}.{{modelPackage}};
 
 namespace Example
 {
     public class {{operationId}}Example
     {
-        public static void Main()
+        public static async Task Main()
         {
-            Configuration config = new Configuration();
-            config.BasePath = "{{{basePath}}}";
-            {{#hasAuthMethods}}
-            {{#authMethods}}
-            {{#isBasicBasic}}
-            // Configure HTTP basic authorization: {{{name}}}
-            config.Username = "YOUR_USERNAME";
-            config.Password = "YOUR_PASSWORD";
-            {{/isBasicBasic}}
-            {{#isBasicBearer}}
-            // Configure Bearer token for authorization: {{{name}}}
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-            {{/isBasicBearer}}
-            {{#isApiKey}}
-            // Configure API key authorization: {{{name}}}
-            config.AddApiKey("{{{keyParamName}}}", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("{{{keyParamName}}}", "Bearer");
-            {{/isApiKey}}
-            {{#isOAuth}}
-            // Configure OAuth2 access token for authorization: {{{name}}}
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-            {{/isOAuth}}
-            {{/authMethods}}
-
-            {{/hasAuthMethods}}
-            {{#useHttpClient}}
-            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
-            HttpClient httpClient = new HttpClient();
-            HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new {{classname}}(httpClient, config, httpClientHandler);
-            {{/useHttpClient}}
-            {{^useHttpClient}}
-            var apiInstance = new {{classname}}(config);
-            {{/useHttpClient}}
+            var shipEngine = new ShipEngine("api_key");
             {{#allParams}}
             {{#isPrimitiveType}}
             var {{paramName}} = {{{example}}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
@@ -87,10 +52,10 @@ namespace Example
                 {{#summary}}
                 // {{{.}}}
                 {{/summary}}
-                {{#returnType}}{{{.}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
+                {{#returnType}}{{{.}}} result = await {{/returnType}}shipEngine.{{{operationId}}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
                 Debug.WriteLine(result);{{/returnType}}
             }
-            catch (ApiException  e)
+            catch (ShipEngineException e)
             {
                 Debug.Print("Exception when calling {{classname}}.{{operationId}}: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
@@ -98,28 +63,6 @@ namespace Example
             }
         }
     }
-}
-```
-
-#### Using the {{operationId}}WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    {{#summary}}
-    // {{{.}}}
-    {{/summary}}
-    {{#returnType}}ApiResponse<{{{.}}}> response = {{/returnType}}apiInstance.{{{operationId}}}WithHttpInfo({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);{{/returnType}}
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling {{classname}}.{{operationId}}WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
 }
 ```
 

@@ -5,17 +5,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-{{#useRestSharp}}
-using RestSharp;
-{{/useRestSharp}}
 using Xunit;
-
 using {{packageName}}.Client;
-using {{packageName}}.{{apiPackage}};
 {{#hasImport}}
 // uncomment below to import models
-//using {{packageName}}.{{modelPackage}};
+using {{packageName}}.{{modelPackage}};
 {{/hasImport}}
+using ShipEngineTest;
 
 namespace {{packageName}}.Test.Api
 {
@@ -29,13 +25,15 @@ namespace {{packageName}}.Test.Api
     public class {{classname}}Tests : IDisposable
     {
         {{^nonPublicApi}}
-        private {{classname}} instance;
+        private ShipEngine instance;
 
         {{/nonPublicApi}}
         public {{classname}}Tests()
         {
             {{^nonPublicApi}}
-            instance = new {{classname}}();
+            var config = new Config("test-key");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            instance = mockShipEngineFixture.ShipEngine;
             {{/nonPublicApi}}
         }
 
