@@ -121,7 +121,7 @@ public partial class TrackingInformation
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("ship_date")]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -131,7 +131,7 @@ public partial class TrackingInformation
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("estimated_delivery_date")]
-    public DateTime EstimatedDeliveryDate { get; set; }
+    public DateTimeOffset EstimatedDeliveryDate { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -141,7 +141,7 @@ public partial class TrackingInformation
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("actual_delivery_date")]
-    public DateTime ActualDeliveryDate { get; set; }
+    public DateTimeOffset ActualDeliveryDate { get; set; }
 
     /// <summary>
     /// Exception description

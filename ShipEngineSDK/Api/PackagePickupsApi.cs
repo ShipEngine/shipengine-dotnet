@@ -81,7 +81,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(string carrierId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
+    Task<GetPickupsResponseBody> ListScheduledPickups(string? carrierId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Scheduled Pickups List all pickups that have been scheduled for this carrier
@@ -97,7 +97,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string carrierId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
+    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string? carrierId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Schedule a Pickup Schedule a package pickup with a carrier
@@ -224,7 +224,7 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public Task<GetPickupsResponseBody> ListScheduledPickups(string carrierId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
+    public Task<GetPickupsResponseBody> ListScheduledPickups(string? carrierId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
         return ListScheduledPickups(_client, carrierId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, cancellationToken);
     }
@@ -243,7 +243,7 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string carrierId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
+    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string? carrierId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/pickups");

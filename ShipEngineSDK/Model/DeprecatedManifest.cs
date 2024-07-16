@@ -59,7 +59,7 @@ public partial class DeprecatedManifest
     /// </example>
     [JsonPropertyName("created_at")]
     [Obsolete]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -70,7 +70,7 @@ public partial class DeprecatedManifest
     /// </example>
     [JsonPropertyName("ship_date")]
     [Obsolete]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest

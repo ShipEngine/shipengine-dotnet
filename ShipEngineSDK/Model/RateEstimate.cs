@@ -142,7 +142,7 @@ public partial class RateEstimate
     /// 2018-09-23T00:00Z
     /// </example>
     [JsonPropertyName("estimated_delivery_date")]
-    public DateTime EstimatedDeliveryDate { get; set; }
+    public DateTimeOffset EstimatedDeliveryDate { get; set; }
 
     /// <summary>
     /// The carrier delivery days
@@ -156,7 +156,7 @@ public partial class RateEstimate
     /// </summary>
     /// <value>ship date</value>
     [JsonPropertyName("ship_date")]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// Indicates if the rates been negotiated

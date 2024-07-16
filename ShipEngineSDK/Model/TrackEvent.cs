@@ -45,7 +45,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("occurred_at")]
     [JsonRequired]
-    public DateTime OccurredAt { get; set; }
+    public DateTimeOffset OccurredAt { get; set; }
 
     /// <summary>
     /// Carrier timestamp for the event, it is assumed to be the local time of where the event occurred.
@@ -55,7 +55,7 @@ public partial class TrackEvent
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("carrier_occurred_at")]
-    public DateTime CarrierOccurredAt { get; set; }
+    public DateTimeOffset CarrierOccurredAt { get; set; }
 
     /// <summary>
     /// Event description

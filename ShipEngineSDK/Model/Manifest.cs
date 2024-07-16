@@ -56,7 +56,7 @@ public partial class Manifest
     /// 2019-07-12T13:37:39.050Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -66,7 +66,7 @@ public partial class Manifest
     /// 2019-07-12T13:37:39.050Z
     /// </example>
     [JsonPropertyName("ship_date")]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest

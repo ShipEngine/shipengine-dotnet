@@ -204,7 +204,7 @@ public partial interface IShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus, string? serviceCode, string? carrierId, string? trackingNumber, string? batchId, string? rateId, string? shipmentId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List labels This endpoint returns a list of labels that you&#39;ve [created](https://www.shipengine.com/docs/labels/create-a-label/). You can optionally filter the results as well as control their sort order and the number of results returned at a time.  By default, all labels are returned, 25 at a time, starting with the most recently created ones.  You can combine multiple filter options to narrow-down the results.  For example, if you only want to get your UPS labels for your east coast warehouse you could query by both &#x60;warehouse_id&#x60; and &#x60;carrier_id&#x60; 
@@ -228,7 +228,7 @@ public partial interface IShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, LabelStatus? labelStatus, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, DateTime? createdAtStart, DateTime? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, LabelStatus? labelStatus, string? serviceCode, string? carrierId, string? trackingNumber, string? batchId, string? rateId, string? shipmentId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Void a Label By ID Void a label by ID to get a refund.
@@ -612,7 +612,7 @@ public partial class ShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string sortBy = default, CancellationToken cancellationToken = default)
+    public Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus = default, string? serviceCode = default, string? carrierId = default, string? trackingNumber = default, string? batchId = default, string? rateId = default, string? shipmentId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
     {
         return ListLabels(_client, labelStatus, serviceCode, carrierId, trackingNumber, batchId, rateId, shipmentId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, sortDir, sortBy, cancellationToken);
     }
@@ -639,7 +639,7 @@ public partial class ShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, LabelStatus? labelStatus = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, LabelStatus? labelStatus = default, string? serviceCode = default, string? carrierId = default, string? trackingNumber = default, string? batchId = default, string? rateId = default, string? shipmentId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/labels");

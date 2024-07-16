@@ -38,7 +38,7 @@ public partial interface IShipEngine
     /// <param name="rotation"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, string download, int? rotation, CancellationToken cancellationToken = default);
+    Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, string? download, int? rotation, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Download File Get File
@@ -53,7 +53,7 @@ public partial interface IShipEngine
     /// <param name="rotation"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, string download, int? rotation, CancellationToken cancellationToken = default);
+    Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, string? download, int? rotation, CancellationToken cancellationToken = default);
 
 }
 
@@ -74,7 +74,7 @@ public partial class ShipEngine
     /// <param name="rotation"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    public Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, string download = default, int? rotation = default, CancellationToken cancellationToken = default)
+    public Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, string? download = default, int? rotation = default, CancellationToken cancellationToken = default)
     {
         return DownloadFile(_client, subdir, filename, dir, download, rotation, cancellationToken);
     }
@@ -92,7 +92,7 @@ public partial class ShipEngine
     /// <param name="rotation"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    public async Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, string download = default, int? rotation = default, CancellationToken cancellationToken = default)
+    public async Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, string? download = default, int? rotation = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'subdir' is set
         if (subdir == null)

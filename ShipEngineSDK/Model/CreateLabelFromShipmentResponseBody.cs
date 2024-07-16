@@ -108,7 +108,7 @@ public partial class CreateLabelFromShipmentResponseBody
     /// 2018-09-23T00:00Z
     /// </example>
     [JsonPropertyName("ship_date")]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// The date and time that the label was created in ShipEngine.
@@ -118,7 +118,7 @@ public partial class CreateLabelFromShipmentResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs. 
@@ -245,7 +245,7 @@ public partial class CreateLabelFromShipmentResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("voided_at")]
-    public DateTime VoidedAt { get; set; }
+    public DateTimeOffset VoidedAt { get; set; }
 
     /// <summary>
     /// Indicates whether the shipment is trackable, in which case the &#x60;tracking_status&#x60; field will reflect the current status and each package will have a &#x60;tracking_number&#x60;. 

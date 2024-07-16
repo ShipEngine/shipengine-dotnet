@@ -128,7 +128,7 @@ public partial class AccountSettingsImages
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the image was modified in ShipEngine.
@@ -138,7 +138,7 @@ public partial class AccountSettingsImages
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("modified_at")]
-    public DateTime ModifiedAt { get; set; }
+    public DateTimeOffset ModifiedAt { get; set; }
 
 
     /// <summary>

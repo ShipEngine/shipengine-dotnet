@@ -35,7 +35,7 @@ public partial interface IShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    Task<GetTrackingLogResponseBody> GetTrackingLog(string carrierCode, string trackingNumber, CancellationToken cancellationToken = default);
+    Task<GetTrackingLogResponseBody> GetTrackingLog(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Tracking Information Retrieve package tracking information
@@ -47,7 +47,7 @@ public partial interface IShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, string carrierCode, string trackingNumber, CancellationToken cancellationToken = default);
+    Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Start Tracking a Package Allows you to subscribe to tracking updates for a package. You specify the carrier_code and tracking_number of the package, and receive notifications via webhooks whenever the shipping status changes. 
@@ -58,7 +58,7 @@ public partial interface IShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StartTracking(string carrierCode, string trackingNumber, CancellationToken cancellationToken = default);
+    Task<string> StartTracking(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Start Tracking a Package Allows you to subscribe to tracking updates for a package. You specify the carrier_code and tracking_number of the package, and receive notifications via webhooks whenever the shipping status changes. 
@@ -70,7 +70,7 @@ public partial interface IShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StartTracking(HttpClient methodClient, string carrierCode, string trackingNumber, CancellationToken cancellationToken = default);
+    Task<string> StartTracking(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Stop Tracking a Package Unsubscribe from tracking updates for a package.
@@ -81,7 +81,7 @@ public partial interface IShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StopTracking(string carrierCode, string trackingNumber, CancellationToken cancellationToken = default);
+    Task<string> StopTracking(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Stop Tracking a Package Unsubscribe from tracking updates for a package.
@@ -93,7 +93,7 @@ public partial interface IShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StopTracking(HttpClient methodClient, string carrierCode, string trackingNumber, CancellationToken cancellationToken = default);
+    Task<string> StopTracking(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
 }
 
@@ -111,7 +111,7 @@ public partial class ShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    public Task<GetTrackingLogResponseBody> GetTrackingLog(string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
+    public Task<GetTrackingLogResponseBody> GetTrackingLog(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
         return GetTrackingLog(_client, carrierCode, trackingNumber, cancellationToken);
     }
@@ -126,7 +126,7 @@ public partial class ShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    public async Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
+    public async Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tracking");
@@ -156,7 +156,7 @@ public partial class ShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> StartTracking(string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
+    public Task<string> StartTracking(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
         return StartTracking(_client, carrierCode, trackingNumber, cancellationToken);
     }
@@ -171,7 +171,7 @@ public partial class ShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> StartTracking(HttpClient methodClient, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
+    public async Task<string> StartTracking(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tracking/start");
@@ -201,7 +201,7 @@ public partial class ShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> StopTracking(string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
+    public Task<string> StopTracking(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
         return StopTracking(_client, carrierCode, trackingNumber, cancellationToken);
     }
@@ -216,7 +216,7 @@ public partial class ShipEngine
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> StopTracking(HttpClient methodClient, string carrierCode = default, string trackingNumber = default, CancellationToken cancellationToken = default)
+    public async Task<string> StopTracking(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tracking/stop");

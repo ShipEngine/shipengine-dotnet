@@ -100,7 +100,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time the batch was processed in ShipEngine
@@ -111,7 +111,7 @@ public partial class GetBatchByIdResponseBody
     /// </example>
     [JsonPropertyName("processed_at")]
     [JsonRequired]
-    public DateTime ProcessedAt { get; set; }
+    public DateTimeOffset ProcessedAt { get; set; }
 
     /// <summary>
     /// The number of errors that occurred while generating the batch

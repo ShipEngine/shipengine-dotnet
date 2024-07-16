@@ -153,7 +153,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// </example>
     [JsonPropertyName("ship_date")]
     [JsonRequired]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
 
     /// <summary>
@@ -421,7 +421,7 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         newEstimateRatesRequestBody.Dimensions = JsonSerializer.Deserialize<Dimensions>(jsonDoc.RootElement.GetProperty("dimensions"), DeserializingOptions);
         newEstimateRatesRequestBody.Confirmation = JsonSerializer.Deserialize<DeliveryConfirmation>(jsonDoc.RootElement.GetProperty("confirmation"), DeserializingOptions);
         newEstimateRatesRequestBody.AddressResidentialIndicator = JsonSerializer.Deserialize<AddressResidentialIndicator>(jsonDoc.RootElement.GetProperty("address_residential_indicator"), DeserializingOptions);
-        newEstimateRatesRequestBody.ShipDate = JsonSerializer.Deserialize<DateTime>(jsonDoc.RootElement.GetProperty("ship_date"), DeserializingOptions);
+        newEstimateRatesRequestBody.ShipDate = JsonSerializer.Deserialize<DateTimeOffset>(jsonDoc.RootElement.GetProperty("ship_date"), DeserializingOptions);
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newEstimateRatesRequestBody;

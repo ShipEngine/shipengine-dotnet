@@ -71,7 +71,7 @@ public partial class ListLabelsResponseBody
         /// 2018-09-23T00:00Z
         /// </example>
         [JsonPropertyName("ship_date")]
-        public DateTime ShipDate { get; set; }
+        public DateTimeOffset ShipDate { get; set; }
 
         /// <summary>
         /// The date and time that the label was created in ShipEngine.
@@ -81,7 +81,7 @@ public partial class ListLabelsResponseBody
         /// 2018-09-23T15:00Z
         /// </example>
         [JsonPropertyName("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
         /// The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs. 
@@ -221,7 +221,7 @@ public partial class ListLabelsResponseBody
         /// 2018-09-23T15:00Z
         /// </example>
         [JsonPropertyName("voided_at")]
-        public DateTime? VoidedAt { get; set; }
+        public DateTimeOffset? VoidedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets LabelDownloadType

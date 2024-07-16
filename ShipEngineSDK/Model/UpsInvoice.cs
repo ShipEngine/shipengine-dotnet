@@ -33,7 +33,7 @@ public partial class UpsInvoice
     /// </summary>
     /// <value>invoice date</value>
     [JsonPropertyName("invoice_date")]
-    public DateTime InvoiceDate { get; set; }
+    public DateTimeOffset InvoiceDate { get; set; }
 
     /// <summary>
     /// invoice number

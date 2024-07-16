@@ -67,7 +67,7 @@ public partial class BulkRate
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// An array of errors that were returned while retrieving the bulk rate

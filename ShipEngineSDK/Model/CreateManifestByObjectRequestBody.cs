@@ -73,7 +73,7 @@ public partial class CreateManifestByObjectRequestBody
     /// </example>
     [JsonPropertyName("ship_date")]
     [JsonRequired]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
 
     /// <summary>

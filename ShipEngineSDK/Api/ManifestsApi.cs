@@ -105,7 +105,7 @@ public partial interface IShipEngine
     /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(string warehouseId, DateTime? shipDateStart, DateTime? shipDateEnd, DateTime? createdAtStart, DateTime? createdAtEnd, string carrierId, int? page, int? pageSize, List<string> labelIds, CancellationToken cancellationToken = default);
+    Task<ListManifestsResponseBody> ListManifests(string? warehouseId, DateTimeOffset? shipDateStart, DateTimeOffset? shipDateEnd, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, string? carrierId, int? page, int? pageSize, List<string>? labelIds, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Manifests Similar to querying shipments, we allow you to query manifests since there will likely be a large number over a long period of time.
@@ -124,7 +124,7 @@ public partial interface IShipEngine
     /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string warehouseId, DateTime? shipDateStart, DateTime? shipDateEnd, DateTime? createdAtStart, DateTime? createdAtEnd, string carrierId, int? page, int? pageSize, List<string> labelIds, CancellationToken cancellationToken = default);
+    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string? warehouseId, DateTimeOffset? shipDateStart, DateTimeOffset? shipDateEnd, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, string? carrierId, int? page, int? pageSize, List<string>? labelIds, CancellationToken cancellationToken = default);
 
 }
 
@@ -275,7 +275,7 @@ public partial class ShipEngine
     /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public Task<ListManifestsResponseBody> ListManifests(string warehouseId = default, DateTime? shipDateStart = default, DateTime? shipDateEnd = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, string carrierId = default, int? page = default, int? pageSize = default, List<string> labelIds = default, CancellationToken cancellationToken = default)
+    public Task<ListManifestsResponseBody> ListManifests(string? warehouseId = default, DateTimeOffset? shipDateStart = default, DateTimeOffset? shipDateEnd = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, string? carrierId = default, int? page = default, int? pageSize = default, List<string>? labelIds = default, CancellationToken cancellationToken = default)
     {
         return ListManifests(_client, warehouseId, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, carrierId, page, pageSize, labelIds, cancellationToken);
     }
@@ -297,7 +297,7 @@ public partial class ShipEngine
     /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string warehouseId = default, DateTime? shipDateStart = default, DateTime? shipDateEnd = default, DateTime? createdAtStart = default, DateTime? createdAtEnd = default, string carrierId = default, int? page = default, int? pageSize = default, List<string> labelIds = default, CancellationToken cancellationToken = default)
+    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string? warehouseId = default, DateTimeOffset? shipDateStart = default, DateTimeOffset? shipDateEnd = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, string? carrierId = default, int? page = default, int? pageSize = default, List<string>? labelIds = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/manifests");

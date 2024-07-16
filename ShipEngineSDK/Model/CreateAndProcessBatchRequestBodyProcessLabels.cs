@@ -59,7 +59,7 @@ public partial class CreateAndProcessBatchRequestBodyProcessLabels
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("ship_date")]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
 
     /// <summary>

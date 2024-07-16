@@ -64,7 +64,7 @@ public partial class UpdateWarehouseRequestBody
     /// 2019-06-25T18:12:35.583Z
     /// </example>
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The origin address of the warehouse

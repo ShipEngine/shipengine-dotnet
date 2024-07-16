@@ -146,7 +146,7 @@ public partial class UpdateShipmentResponseBody
     /// </example>
     [JsonPropertyName("ship_date")]
     [JsonRequired]
-    public DateTime ShipDate { get; set; }
+    public DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created in ShipEngine.
@@ -157,7 +157,7 @@ public partial class UpdateShipmentResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created or last modified.
@@ -167,7 +167,7 @@ public partial class UpdateShipmentResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("modified_at")]
-    public DateTime ModifiedAt { get; set; }
+    public DateTimeOffset ModifiedAt { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address

@@ -56,7 +56,7 @@ public partial class PickupResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTime CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the pickup was cancelled in ShipEngine.
@@ -66,7 +66,7 @@ public partial class PickupResponseBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("cancelled_at")]
-    public DateTime CancelledAt { get; set; }
+    public DateTimeOffset CancelledAt { get; set; }
 
     /// <summary>
     /// The carrier_id associated with the pickup
