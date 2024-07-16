@@ -86,6 +86,9 @@ public partial class ListServicePointsResponseBodyServicePointsInner
         public static FeaturesEnum AfterHoursDropbox { get; } = new("after_hours_dropbox");
 
 
+        /// <summary>
+        /// Get a string representation of the current value
+        /// </summary>
         public override string ToString() => _value;
     }
 
@@ -143,6 +146,9 @@ public partial class ListServicePointsResponseBodyServicePointsInner
         public static TypeEnum Locker { get; } = new("locker");
 
 
+        /// <summary>
+        /// Get a string representation of the current value
+        /// </summary>
         public override string ToString() => _value;
     }
 

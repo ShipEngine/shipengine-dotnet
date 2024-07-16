@@ -168,7 +168,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/connections/carriers/{carrier_name}");
 
-        requestOptions.PathParameters.Add("carrier_name", ShipEngineSDK.ClientUtils.ParameterToString(carrierName)); // path parameter
+        requestOptions.PathParameters.Add("carrier_name", ClientUtils.ParameterToString(carrierName)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(connectCarrierRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "CarrierAccountsApi.ConnectCarrier";
@@ -219,8 +219,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/connections/carriers/{carrier_name}/{carrier_id}");
 
-        requestOptions.PathParameters.Add("carrier_name", ShipEngineSDK.ClientUtils.ParameterToString(carrierName)); // path parameter
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_name", ClientUtils.ParameterToString(carrierName)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
 
         requestOptions.Operation = "CarrierAccountsApi.DisconnectCarrier";
 
@@ -270,8 +270,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/connections/carriers/{carrier_name}/{carrier_id}/settings");
 
-        requestOptions.PathParameters.Add("carrier_name", ShipEngineSDK.ClientUtils.ParameterToString(carrierName)); // path parameter
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_name", ClientUtils.ParameterToString(carrierName)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
 
         requestOptions.Operation = "CarrierAccountsApi.GetCarrierSettings";
 
@@ -329,8 +329,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/connections/carriers/{carrier_name}/{carrier_id}/settings");
 
-        requestOptions.PathParameters.Add("carrier_name", ShipEngineSDK.ClientUtils.ParameterToString(carrierName)); // path parameter
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_name", ClientUtils.ParameterToString(carrierName)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updateCarrierSettingsRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "CarrierAccountsApi.UpdateCarrierSettings";

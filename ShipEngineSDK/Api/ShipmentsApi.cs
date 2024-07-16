@@ -119,7 +119,7 @@ public partial interface IShipEngine
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    Task<ListShipmentRatesResponseBody> ListShipmentRates(string shipmentId, DateTimeOffset createdAtStart, CancellationToken cancellationToken = default);
+    Task<ListShipmentRatesResponseBody> ListShipmentRates(string shipmentId, DateTimeOffset? createdAtStart, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment Rates Get Rates for the shipment information associated with the shipment ID
@@ -131,7 +131,7 @@ public partial interface IShipEngine
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset createdAtStart, CancellationToken cancellationToken = default);
+    Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset? createdAtStart, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Shipments Get list of Shipments
@@ -152,7 +152,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    Task<ListShipmentsResponseBody> ListShipments(DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, DateTimeOffset modifiedAtStart, DateTimeOffset modifiedAtEnd, ShipmentStatus shipmentStatus, ShipmentsSortBy sortBy, SortDir sortDir, string batchId, string tag, string salesOrderId, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<ListShipmentsResponseBody> ListShipments(DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, DateTimeOffset? modifiedAtStart, DateTimeOffset? modifiedAtEnd, ShipmentStatus? shipmentStatus, ShipmentsSortBy? sortBy, SortDir? sortDir, string? batchId, string? tag, string? salesOrderId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Shipments Get list of Shipments
@@ -174,7 +174,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, DateTimeOffset modifiedAtStart, DateTimeOffset modifiedAtEnd, ShipmentStatus shipmentStatus, ShipmentsSortBy sortBy, SortDir sortDir, string batchId, string tag, string salesOrderId, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, DateTimeOffset? modifiedAtStart, DateTimeOffset? modifiedAtEnd, ShipmentStatus? shipmentStatus, ShipmentsSortBy? sortBy, SortDir? sortDir, string? batchId, string? tag, string? salesOrderId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parse shipping info The shipment-recognition API makes it easy for you to extract shipping data from unstructured text, including people&#39;s names, addresses, package weights and dimensions, insurance and delivery requirements, and more.  Data often enters your system as unstructured text (for example: emails, SMS messages, support tickets, or other documents). ShipEngine&#39;s shipment-recognition API helps you extract meaningful, structured data from this unstructured text. The parsed shipment data is returned in the same structure that&#39;s used for other ShipEngine APIs, so you can easily use the parsed data to create a shipping label.  &gt; **Note:** Shipment recognition is currently supported for the United States, Canada, Australia, New Zealand, the United Kingdom, and Ireland. 
@@ -348,7 +348,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/cancel");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.CancelShipments";
 
@@ -432,7 +432,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/external_shipment_id/{external_shipment_id}");
 
-        requestOptions.PathParameters.Add("external_shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(externalShipmentId)); // path parameter
+        requestOptions.PathParameters.Add("external_shipment_id", ClientUtils.ParameterToString(externalShipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.GetShipmentByExternalId";
 
@@ -474,7 +474,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.GetShipmentById";
 
@@ -492,7 +492,7 @@ public partial class ShipEngine
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    public Task<ListShipmentRatesResponseBody> ListShipmentRates(string shipmentId, DateTimeOffset createdAtStart = default, CancellationToken cancellationToken = default)
+    public Task<ListShipmentRatesResponseBody> ListShipmentRates(string shipmentId, DateTimeOffset? createdAtStart = default, CancellationToken cancellationToken = default)
     {
         return ListShipmentRates(_client, shipmentId, createdAtStart, cancellationToken);
     }
@@ -507,7 +507,7 @@ public partial class ShipEngine
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    public async Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset createdAtStart = default, CancellationToken cancellationToken = default)
+    public async Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset? createdAtStart = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
@@ -518,10 +518,10 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/rates");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
 
         requestOptions.Operation = "ShipmentsApi.ListShipmentRates";
@@ -550,7 +550,7 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    public Task<ListShipmentsResponseBody> ListShipments(DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, DateTimeOffset modifiedAtStart = default, DateTimeOffset modifiedAtEnd = default, ShipmentStatus shipmentStatus = default, ShipmentsSortBy sortBy = default, SortDir sortDir = default, string batchId = default, string tag = default, string salesOrderId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public Task<ListShipmentsResponseBody> ListShipments(DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, DateTimeOffset? modifiedAtStart = default, DateTimeOffset? modifiedAtEnd = default, ShipmentStatus? shipmentStatus = default, ShipmentsSortBy? sortBy = default, SortDir? sortDir = default, string? batchId = default, string? tag = default, string? salesOrderId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
         return ListShipments(_client, createdAtStart, createdAtEnd, modifiedAtStart, modifiedAtEnd, shipmentStatus, sortBy, sortDir, batchId, tag, salesOrderId, page, pageSize, cancellationToken);
     }
@@ -575,58 +575,58 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    public async Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, DateTimeOffset modifiedAtStart = default, DateTimeOffset modifiedAtEnd = default, ShipmentStatus shipmentStatus = default, ShipmentsSortBy sortBy = default, SortDir sortDir = default, string batchId = default, string tag = default, string salesOrderId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public async Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, DateTimeOffset? modifiedAtStart = default, DateTimeOffset? modifiedAtEnd = default, ShipmentStatus? shipmentStatus = default, ShipmentsSortBy? sortBy = default, SortDir? sortDir = default, string? batchId = default, string? tag = default, string? salesOrderId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/shipments");
 
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (modifiedAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "modified_at_start", modifiedAtStart));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "modified_at_start", modifiedAtStart));
         }
         if (modifiedAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "modified_at_end", modifiedAtEnd));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "modified_at_end", modifiedAtEnd));
         }
         if (shipmentStatus != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "shipment_status", shipmentStatus));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "shipment_status", shipmentStatus));
         }
         if (sortBy != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
         }
         if (sortDir != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (batchId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
         }
         if (tag != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "tag", tag));
         }
         if (salesOrderId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sales_order_id", salesOrderId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sales_order_id", salesOrderId));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
 
         requestOptions.Operation = "ShipmentsApi.ListShipments";
@@ -711,7 +711,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/tags");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.ShipmentsListTags";
 
@@ -803,8 +803,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/tags/{tag_name}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
-        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.ClientUtils.ParameterToString(tagName)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("tag_name", ClientUtils.ParameterToString(tagName)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.TagShipment";
 
@@ -854,8 +854,8 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}/tags/{tag_name}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
-        requestOptions.PathParameters.Add("tag_name", ShipEngineSDK.ClientUtils.ParameterToString(tagName)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("tag_name", ClientUtils.ParameterToString(tagName)); // path parameter
 
         requestOptions.Operation = "ShipmentsApi.UntagShipment";
 
@@ -905,7 +905,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/shipments/{shipment_id}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updateShipmentRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "ShipmentsApi.UpdateShipment";

@@ -63,6 +63,9 @@ public partial class PartialShippingAddressToGeolocationInner
         public static TypeEnum What3words { get; } = new("what3words");
 
 
+        /// <summary>
+        /// Get a string representation of the current value
+        /// </summary>
         public override string ToString() => _value;
     }
 

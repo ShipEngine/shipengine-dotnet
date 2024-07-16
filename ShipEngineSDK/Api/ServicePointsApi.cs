@@ -128,9 +128,9 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/service_points/{carrier_code}/{country_code}/{service_point_id}");
 
-        requestOptions.PathParameters.Add("carrier_code", ShipEngineSDK.ClientUtils.ParameterToString(carrierCode)); // path parameter
-        requestOptions.PathParameters.Add("country_code", ShipEngineSDK.ClientUtils.ParameterToString(countryCode)); // path parameter
-        requestOptions.PathParameters.Add("service_point_id", ShipEngineSDK.ClientUtils.ParameterToString(servicePointId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_code", ClientUtils.ParameterToString(carrierCode)); // path parameter
+        requestOptions.PathParameters.Add("country_code", ClientUtils.ParameterToString(countryCode)); // path parameter
+        requestOptions.PathParameters.Add("service_point_id", ClientUtils.ParameterToString(servicePointId)); // path parameter
 
         requestOptions.Operation = "ServicePointsApi.ServicePointsGetById";
 

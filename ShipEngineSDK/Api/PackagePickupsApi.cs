@@ -81,7 +81,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, string carrierId, string warehouseId, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<GetPickupsResponseBody> ListScheduledPickups(DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, string? carrierId, string? warehouseId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Scheduled Pickups List all pickups that have been scheduled for this carrier
@@ -97,7 +97,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, string carrierId, string warehouseId, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, string? carrierId, string? warehouseId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Schedule a Pickup Schedule a package pickup with a carrier
@@ -160,7 +160,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/pickups/{pickup_id}");
 
-        requestOptions.PathParameters.Add("pickup_id", ShipEngineSDK.ClientUtils.ParameterToString(pickupId)); // path parameter
+        requestOptions.PathParameters.Add("pickup_id", ClientUtils.ParameterToString(pickupId)); // path parameter
 
         requestOptions.Operation = "PackagePickupsApi.DeleteScheduledPickup";
 
@@ -202,7 +202,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/pickups/{pickup_id}");
 
-        requestOptions.PathParameters.Add("pickup_id", ShipEngineSDK.ClientUtils.ParameterToString(pickupId)); // path parameter
+        requestOptions.PathParameters.Add("pickup_id", ClientUtils.ParameterToString(pickupId)); // path parameter
 
         requestOptions.Operation = "PackagePickupsApi.GetPickupById";
 
@@ -224,7 +224,7 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public Task<GetPickupsResponseBody> ListScheduledPickups(DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, string carrierId = default, string warehouseId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public Task<GetPickupsResponseBody> ListScheduledPickups(DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, string? carrierId = default, string? warehouseId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
         return ListScheduledPickups(_client, createdAtStart, createdAtEnd, carrierId, warehouseId, page, pageSize, cancellationToken);
     }
@@ -243,34 +243,34 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, string carrierId = default, string warehouseId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, string? carrierId = default, string? warehouseId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/pickups");
 
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (carrierId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
         }
         if (warehouseId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
 
         requestOptions.Operation = "PackagePickupsApi.ListScheduledPickups";

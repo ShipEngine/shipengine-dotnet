@@ -143,7 +143,7 @@ public partial interface IShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    Task<ListBatchErrorsResponseBody> ListBatchErrors(string batchId, int pagesize, int page, CancellationToken cancellationToken = default);
+    Task<ListBatchErrorsResponseBody> ListBatchErrors(string batchId, int? pagesize, int? page, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Batch Errors Error handling in batches are handled differently than in a single synchronous request. You must retrieve the status of your batch by [getting a batch](https://www.shipengine.com/docs/reference/get-batch-by-id/) and getting an overview of the statuses or you can list errors directly here below to get detailed information about the errors. 
@@ -156,7 +156,7 @@ public partial interface IShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, string batchId, int pagesize, int page, CancellationToken cancellationToken = default);
+    Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, string batchId, int? pagesize, int? page, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Batches List Batches associated with your Shipengine account
@@ -171,7 +171,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    Task<ListBatchesResponseBody> ListBatches(BatchStatus status, BatchesSortBy sortBy, SortDir sortDir, string batchNumber, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<ListBatchesResponseBody> ListBatches(BatchStatus? status, BatchesSortBy? sortBy, SortDir? sortDir, string? batchNumber, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Batches List Batches associated with your Shipengine account
@@ -187,7 +187,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, BatchStatus status, BatchesSortBy sortBy, SortDir sortDir, string batchNumber, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, BatchStatus? status, BatchesSortBy? sortBy, SortDir? sortDir, string? batchNumber, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Process Batch ID Labels Process Batch ID Labels
@@ -304,7 +304,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/add");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ClientUtils.ParameterToString(batchId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(addToBatchRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "BatchesApi.AddToBatch";
@@ -389,7 +389,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ClientUtils.ParameterToString(batchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.DeleteBatch";
 
@@ -431,7 +431,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/external_batch_id/{external_batch_id}");
 
-        requestOptions.PathParameters.Add("external_batch_id", ShipEngineSDK.ClientUtils.ParameterToString(externalBatchId)); // path parameter
+        requestOptions.PathParameters.Add("external_batch_id", ClientUtils.ParameterToString(externalBatchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.GetBatchByExternalId";
 
@@ -473,7 +473,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ClientUtils.ParameterToString(batchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.GetBatchById";
 
@@ -492,7 +492,7 @@ public partial class ShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    public Task<ListBatchErrorsResponseBody> ListBatchErrors(string batchId, int pagesize = default, int page = default, CancellationToken cancellationToken = default)
+    public Task<ListBatchErrorsResponseBody> ListBatchErrors(string batchId, int? pagesize = default, int? page = default, CancellationToken cancellationToken = default)
     {
         return ListBatchErrors(_client, batchId, pagesize, page, cancellationToken);
     }
@@ -508,7 +508,7 @@ public partial class ShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchErrorsResponseBody)</returns>
-    public async Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, string batchId, int pagesize = default, int page = default, CancellationToken cancellationToken = default)
+    public async Task<ListBatchErrorsResponseBody> ListBatchErrors(HttpClient methodClient, string batchId, int? pagesize = default, int? page = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'batchId' is set
         if (batchId == null)
@@ -519,14 +519,14 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/errors");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ClientUtils.ParameterToString(batchId)); // path parameter
         if (pagesize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "pagesize", pagesize));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pagesize", pagesize));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page", page));
         }
 
         requestOptions.Operation = "BatchesApi.ListBatchErrors";
@@ -549,7 +549,7 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    public Task<ListBatchesResponseBody> ListBatches(BatchStatus status = default, BatchesSortBy sortBy = default, SortDir sortDir = default, string batchNumber = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public Task<ListBatchesResponseBody> ListBatches(BatchStatus? status = default, BatchesSortBy? sortBy = default, SortDir? sortDir = default, string? batchNumber = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
         return ListBatches(_client, status, sortBy, sortDir, batchNumber, page, pageSize, cancellationToken);
     }
@@ -568,34 +568,34 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListBatchesResponseBody)</returns>
-    public async Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, BatchStatus status = default, BatchesSortBy sortBy = default, SortDir sortDir = default, string batchNumber = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public async Task<ListBatchesResponseBody> ListBatches(HttpClient methodClient, BatchStatus? status = default, BatchesSortBy? sortBy = default, SortDir? sortDir = default, string? batchNumber = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/batches");
 
         if (status != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "status", status));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "status", status));
         }
         if (sortBy != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
         }
         if (sortDir != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (batchNumber != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "batch_number", batchNumber));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "batch_number", batchNumber));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
 
         requestOptions.Operation = "BatchesApi.ListBatches";
@@ -646,7 +646,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/process/labels");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ClientUtils.ParameterToString(batchId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(processBatchRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "BatchesApi.ProcessBatch";
@@ -697,7 +697,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}/remove");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ClientUtils.ParameterToString(batchId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(removeFromBatchRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "BatchesApi.RemoveFromBatch";
@@ -740,7 +740,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/batches/{batch_id}");
 
-        requestOptions.PathParameters.Add("batch_id", ShipEngineSDK.ClientUtils.ParameterToString(batchId)); // path parameter
+        requestOptions.PathParameters.Add("batch_id", ClientUtils.ParameterToString(batchId)); // path parameter
 
         requestOptions.Operation = "BatchesApi.UpdateBatch";
 

@@ -221,7 +221,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/carriers/{carrier_id}/add_funds");
 
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(addFundsToCarrierRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "CarriersApi.AddFundsToCarrier";
@@ -264,7 +264,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/carriers/{carrier_id}");
 
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
 
         requestOptions.Operation = "CarriersApi.DisconnectCarrierById";
 
@@ -306,7 +306,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/carriers/{carrier_id}");
 
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
 
         requestOptions.Operation = "CarriersApi.GetCarrierById";
 
@@ -348,7 +348,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/carriers/{carrier_id}/options");
 
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
 
         requestOptions.Operation = "CarriersApi.GetCarrierOptions";
 
@@ -390,7 +390,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/carriers/{carrier_id}/packages");
 
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
 
         requestOptions.Operation = "CarriersApi.ListCarrierPackageTypes";
 
@@ -432,7 +432,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/carriers/{carrier_id}/services");
 
-        requestOptions.PathParameters.Add("carrier_id", ShipEngineSDK.ClientUtils.ParameterToString(carrierId)); // path parameter
+        requestOptions.PathParameters.Add("carrier_id", ClientUtils.ParameterToString(carrierId)); // path parameter
 
         requestOptions.Operation = "CarriersApi.ListCarrierServices";
 

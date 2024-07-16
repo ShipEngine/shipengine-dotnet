@@ -72,7 +72,7 @@ public partial class PagedListResponseBody
     /// Gets or Sets additional properties
     /// </summary>
     [JsonExtensionData]
-    public IDictionary<string, object> AdditionalProperties { get; set; }
+    public IDictionary<string, object> AdditionalProperties { get; set; } = new Dictionary<string, object>();
 
 
     /// <summary>

@@ -276,7 +276,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/rates/{rate_id}");
 
-        requestOptions.PathParameters.Add("rate_id", ShipEngineSDK.ClientUtils.ParameterToString(rateId)); // path parameter
+        requestOptions.PathParameters.Add("rate_id", ClientUtils.ParameterToString(rateId)); // path parameter
 
         requestOptions.Operation = "RatesApi.GetRateById";
 

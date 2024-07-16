@@ -259,7 +259,6 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
 
-
         if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);

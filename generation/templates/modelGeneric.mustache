@@ -59,6 +59,9 @@
     {{^isEnum}}
     {{#items.vars}}
     {{#-first}}
+    /// <summary>
+    /// Type of data of the elements in the list
+    /// </summary>
     public class {{classname}}Item
     {
     {{/-first}}
@@ -79,7 +82,7 @@
         {{#deprecated}}
         [Obsolete]
         {{/deprecated}}
-        public{{#required}} required{{/required}} {{{dataType}}}{{#isNullable}}?{{/isNullable}} {{name}} { get; set; }
+        public{{#required}} required{{/required}} {{{dataType}}}{{^required}}?{{/required}} {{name}} { get; set; }
 
     {{#-last}}
     }
@@ -112,7 +115,7 @@
     /// Gets or Sets additional properties
     /// </summary>
     [JsonExtensionData]
-    public IDictionary<string, object> AdditionalProperties { get; set; }
+    public IDictionary<string, object> AdditionalProperties { get; set; } = new Dictionary<string, object>();
 
     {{/isAdditionalPropertiesTrue}}
 

@@ -213,7 +213,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/packages/{package_id}");
 
-        requestOptions.PathParameters.Add("package_id", ShipEngineSDK.ClientUtils.ParameterToString(packageId)); // path parameter
+        requestOptions.PathParameters.Add("package_id", ClientUtils.ParameterToString(packageId)); // path parameter
 
         requestOptions.Operation = "PackageTypesApi.DeletePackageType";
 
@@ -255,7 +255,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/packages/{package_id}");
 
-        requestOptions.PathParameters.Add("package_id", ShipEngineSDK.ClientUtils.ParameterToString(packageId)); // path parameter
+        requestOptions.PathParameters.Add("package_id", ClientUtils.ParameterToString(packageId)); // path parameter
 
         requestOptions.Operation = "PackageTypesApi.GetPackageTypeById";
 
@@ -338,7 +338,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/packages/{package_id}");
 
-        requestOptions.PathParameters.Add("package_id", ShipEngineSDK.ClientUtils.ParameterToString(packageId)); // path parameter
+        requestOptions.PathParameters.Add("package_id", ClientUtils.ParameterToString(packageId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(updatePackageTypeRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "PackageTypesApi.UpdatePackageType";

@@ -69,6 +69,9 @@ public partial class CreateAccountSettingsImageRequestBody
         public static ImageContentTypeEnum Jpeg { get; } = new("image/jpeg");
 
 
+        /// <summary>
+        /// Get a string representation of the current value
+        /// </summary>
         public override string ToString() => _value;
     }
 

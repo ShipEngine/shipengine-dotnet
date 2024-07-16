@@ -105,7 +105,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(DateTimeOffset shipDateStart, DateTimeOffset shipDateEnd, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, List<string> labelIds, string warehouseId, string carrierId, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<ListManifestsResponseBody> ListManifests(DateTimeOffset? shipDateStart, DateTimeOffset? shipDateEnd, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, List<string>? labelIds, string? warehouseId, string? carrierId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Manifests Similar to querying shipments, we allow you to query manifests since there will likely be a large number over a long period of time.
@@ -124,7 +124,7 @@ public partial interface IShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, DateTimeOffset shipDateStart, DateTimeOffset shipDateEnd, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, List<string> labelIds, string warehouseId, string carrierId, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, DateTimeOffset? shipDateStart, DateTimeOffset? shipDateEnd, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, List<string>? labelIds, string? warehouseId, string? carrierId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
 }
 
@@ -208,7 +208,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/manifests/{manifest_id}");
 
-        requestOptions.PathParameters.Add("manifest_id", ShipEngineSDK.ClientUtils.ParameterToString(manifestId)); // path parameter
+        requestOptions.PathParameters.Add("manifest_id", ClientUtils.ParameterToString(manifestId)); // path parameter
 
         requestOptions.Operation = "ManifestsApi.GetManifestById";
 
@@ -250,7 +250,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/manifests/requests/{manifest_request_id}");
 
-        requestOptions.PathParameters.Add("manifest_request_id", ShipEngineSDK.ClientUtils.ParameterToString(manifestRequestId)); // path parameter
+        requestOptions.PathParameters.Add("manifest_request_id", ClientUtils.ParameterToString(manifestRequestId)); // path parameter
 
         requestOptions.Operation = "ManifestsApi.GetManifestRequestById";
 
@@ -275,7 +275,7 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public Task<ListManifestsResponseBody> ListManifests(DateTimeOffset shipDateStart = default, DateTimeOffset shipDateEnd = default, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, List<string> labelIds = default, string warehouseId = default, string carrierId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public Task<ListManifestsResponseBody> ListManifests(DateTimeOffset? shipDateStart = default, DateTimeOffset? shipDateEnd = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, List<string>? labelIds = default, string? warehouseId = default, string? carrierId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
         return ListManifests(_client, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, labelIds, warehouseId, carrierId, page, pageSize, cancellationToken);
     }
@@ -297,46 +297,46 @@ public partial class ShipEngine
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, DateTimeOffset shipDateStart = default, DateTimeOffset shipDateEnd = default, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, List<string> labelIds = default, string warehouseId = default, string carrierId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
+    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, DateTimeOffset? shipDateStart = default, DateTimeOffset? shipDateEnd = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, List<string>? labelIds = default, string? warehouseId = default, string? carrierId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/manifests");
 
         if (shipDateStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "ship_date_start", shipDateStart));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "ship_date_start", shipDateStart));
         }
         if (shipDateEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "ship_date_end", shipDateEnd));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "ship_date_end", shipDateEnd));
         }
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (labelIds != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("multi", "label_ids", labelIds));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("multi", "label_ids", labelIds));
         }
         if (warehouseId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
         if (carrierId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
 
         requestOptions.Operation = "ManifestsApi.ListManifests";

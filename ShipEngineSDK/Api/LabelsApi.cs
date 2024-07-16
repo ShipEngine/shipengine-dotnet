@@ -125,7 +125,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By External Shipment ID Find a label by using the external shipment id that was used during label creation 
@@ -137,7 +137,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By ID Retrieve information for individual labels.
@@ -148,7 +148,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By ID Retrieve information for individual labels.
@@ -160,7 +160,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label Tracking Information Retrieve the label&#39;s tracking information
@@ -204,7 +204,7 @@ public partial interface IShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, LabelStatus labelStatus, SortDir sortDir, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, int page, int pageSize, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, LabelStatus? labelStatus, SortDir? sortDir, string? serviceCode, string? carrierId, string? trackingNumber, string? batchId, string? rateId, string? shipmentId, string? warehouseId, int? page, int? pageSize, string? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List labels This endpoint returns a list of labels that you&#39;ve [created](https://www.shipengine.com/docs/labels/create-a-label/). You can optionally filter the results as well as control their sort order and the number of results returned at a time.  By default, all labels are returned, 25 at a time, starting with the most recently created ones.  You can combine multiple filter options to narrow-down the results.  For example, if you only want to get your UPS labels for your east coast warehouse you could query by both &#x60;warehouse_id&#x60; and &#x60;carrier_id&#x60; 
@@ -228,7 +228,7 @@ public partial interface IShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, LabelStatus labelStatus, SortDir sortDir, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, int page, int pageSize, string sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, LabelStatus? labelStatus, SortDir? sortDir, string? serviceCode, string? carrierId, string? trackingNumber, string? batchId, string? rateId, string? shipmentId, string? warehouseId, int? page, int? pageSize, string? sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Void a Label By ID Void a label by ID to get a refund.
@@ -341,7 +341,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/rates/{rate_id}");
 
-        requestOptions.PathParameters.Add("rate_id", ShipEngineSDK.ClientUtils.ParameterToString(rateId)); // path parameter
+        requestOptions.PathParameters.Add("rate_id", ClientUtils.ParameterToString(rateId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(createLabelFromRateRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "LabelsApi.CreateLabelFromRate";
@@ -392,7 +392,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/shipment/{shipment_id}");
 
-        requestOptions.PathParameters.Add("shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(shipmentId)); // path parameter
+        requestOptions.PathParameters.Add("shipment_id", ClientUtils.ParameterToString(shipmentId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(createLabelFromShipmentRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "LabelsApi.CreateLabelFromShipment";
@@ -443,7 +443,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}/return");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ClientUtils.ParameterToString(labelId)); // path parameter
         requestOptions.Data = JsonSerializer.Serialize(createReturnLabelRequestBody, JsonSerializerOptions);
 
         requestOptions.Operation = "LabelsApi.CreateReturnLabel";
@@ -462,7 +462,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    public Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
+    public Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         return GetLabelByExternalShipmentId(_client, externalShipmentId, labelDownloadType, cancellationToken);
     }
@@ -477,7 +477,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'externalShipmentId' is set
         if (externalShipmentId == null)
@@ -488,10 +488,10 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/external_shipment_id/{external_shipment_id}");
 
-        requestOptions.PathParameters.Add("external_shipment_id", ShipEngineSDK.ClientUtils.ParameterToString(externalShipmentId)); // path parameter
+        requestOptions.PathParameters.Add("external_shipment_id", ClientUtils.ParameterToString(externalShipmentId)); // path parameter
         if (labelDownloadType != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
         }
 
         requestOptions.Operation = "LabelsApi.GetLabelByExternalShipmentId";
@@ -510,7 +510,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    public Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
+    public Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         return GetLabelById(_client, labelId, labelDownloadType, cancellationToken);
     }
@@ -525,7 +525,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    public async Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'labelId' is set
         if (labelId == null)
@@ -536,10 +536,10 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ClientUtils.ParameterToString(labelId)); // path parameter
         if (labelDownloadType != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "label_download_type", labelDownloadType));
         }
 
         requestOptions.Operation = "LabelsApi.GetLabelById";
@@ -582,7 +582,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}/track");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ClientUtils.ParameterToString(labelId)); // path parameter
 
         requestOptions.Operation = "LabelsApi.GetTrackingLogFromLabel";
 
@@ -612,7 +612,7 @@ public partial class ShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public Task<ListLabelsResponseBody> ListLabels(DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, LabelStatus labelStatus = default, SortDir sortDir = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, int page = default, int pageSize = default, string sortBy = default, CancellationToken cancellationToken = default)
+    public Task<ListLabelsResponseBody> ListLabels(DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, LabelStatus? labelStatus = default, SortDir? sortDir = default, string? serviceCode = default, string? carrierId = default, string? trackingNumber = default, string? batchId = default, string? rateId = default, string? shipmentId = default, string? warehouseId = default, int? page = default, int? pageSize = default, string? sortBy = default, CancellationToken cancellationToken = default)
     {
         return ListLabels(_client, createdAtStart, createdAtEnd, labelStatus, sortDir, serviceCode, carrierId, trackingNumber, batchId, rateId, shipmentId, warehouseId, page, pageSize, sortBy, cancellationToken);
     }
@@ -639,66 +639,66 @@ public partial class ShipEngine
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, LabelStatus labelStatus = default, SortDir sortDir = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, int page = default, int pageSize = default, string sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, LabelStatus? labelStatus = default, SortDir? sortDir = default, string? serviceCode = default, string? carrierId = default, string? trackingNumber = default, string? batchId = default, string? rateId = default, string? shipmentId = default, string? warehouseId = default, int? page = default, int? pageSize = default, string? sortBy = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/labels");
 
         if (createdAtStart != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
         }
         if (createdAtEnd != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
         if (labelStatus != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "label_status", labelStatus));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "label_status", labelStatus));
         }
         if (sortDir != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (serviceCode != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "service_code", serviceCode));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "service_code", serviceCode));
         }
         if (carrierId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
         }
         if (trackingNumber != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "tracking_number", trackingNumber));
         }
         if (batchId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "batch_id", batchId));
         }
         if (rateId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "rate_id", rateId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "rate_id", rateId));
         }
         if (shipmentId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "shipment_id", shipmentId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "shipment_id", shipmentId));
         }
         if (warehouseId != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
         if (page != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page", page));
         }
         if (pageSize != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
         }
         if (sortBy != null)
         {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
         }
 
         requestOptions.Operation = "LabelsApi.ListLabels";
@@ -741,7 +741,7 @@ public partial class ShipEngine
 
         RequestOptions requestOptions = new("/v1/labels/{label_id}/void");
 
-        requestOptions.PathParameters.Add("label_id", ShipEngineSDK.ClientUtils.ParameterToString(labelId)); // path parameter
+        requestOptions.PathParameters.Add("label_id", ClientUtils.ParameterToString(labelId)); // path parameter
 
         requestOptions.Operation = "LabelsApi.VoidLabel";
 
