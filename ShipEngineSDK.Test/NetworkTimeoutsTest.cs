@@ -1,6 +1,5 @@
 using Moq.Protected;
 using ShipEngineSDK;
-using ShipEngineSDK.Enums;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
