@@ -46,13 +46,16 @@
     {{/enumVars}}
     {{/allowableValues}}
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter : JsonConverter<{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}>
 {
     public override {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

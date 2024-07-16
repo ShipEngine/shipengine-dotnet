@@ -91,13 +91,16 @@ public class ReasonCode
     public static ReasonCode ContactCarrier { get; } = new("contact_carrier");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class ReasonCodeJsonConverter : JsonConverter<ReasonCode>
 {
     public override ReasonCode? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new ReasonCode(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new ReasonCode(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, ReasonCode value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

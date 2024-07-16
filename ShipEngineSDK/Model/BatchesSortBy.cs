@@ -67,13 +67,16 @@ public class BatchesSortBy
     public static BatchesSortBy CreatedAt { get; } = new("created_at");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class BatchesSortByJsonConverter : JsonConverter<BatchesSortBy>
 {
     public override BatchesSortBy? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new BatchesSortBy(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new BatchesSortBy(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, BatchesSortBy value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

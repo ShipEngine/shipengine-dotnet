@@ -91,13 +91,16 @@ public class DeliveryConfirmation
     public static DeliveryConfirmation VerbalConfirmation { get; } = new("verbal_confirmation");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class DeliveryConfirmationJsonConverter : JsonConverter<DeliveryConfirmation>
 {
     public override DeliveryConfirmation? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new DeliveryConfirmation(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new DeliveryConfirmation(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, DeliveryConfirmation value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

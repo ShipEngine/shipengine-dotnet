@@ -67,13 +67,16 @@ public class TaxableEntityType
     public static TaxableEntityType Ior { get; } = new("ior");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class TaxableEntityTypeJsonConverter : JsonConverter<TaxableEntityType>
 {
     public override TaxableEntityType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new TaxableEntityType(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new TaxableEntityType(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, TaxableEntityType value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

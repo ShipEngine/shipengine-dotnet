@@ -67,13 +67,16 @@ public class LabelFormat
     public static LabelFormat Zpl { get; } = new("zpl");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class LabelFormatJsonConverter : JsonConverter<LabelFormat>
 {
     public override LabelFormat? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new LabelFormat(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new LabelFormat(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, LabelFormat value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

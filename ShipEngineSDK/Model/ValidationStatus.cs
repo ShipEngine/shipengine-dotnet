@@ -73,13 +73,16 @@ public class ValidationStatus
     public static ValidationStatus Unknown { get; } = new("unknown");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class ValidationStatusJsonConverter : JsonConverter<ValidationStatus>
 {
     public override ValidationStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new ValidationStatus(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new ValidationStatus(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, ValidationStatus value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

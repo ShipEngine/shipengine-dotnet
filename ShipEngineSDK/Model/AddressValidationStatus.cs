@@ -73,13 +73,16 @@ public class AddressValidationStatus
     public static AddressValidationStatus Error { get; } = new("error");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class AddressValidationStatusJsonConverter : JsonConverter<AddressValidationStatus>
 {
     public override AddressValidationStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new AddressValidationStatus(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new AddressValidationStatus(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, AddressValidationStatus value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

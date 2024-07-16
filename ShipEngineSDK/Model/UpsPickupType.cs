@@ -67,13 +67,16 @@ public class UpsPickupType
     public static UpsPickupType CustomerCounter { get; } = new("customer_counter");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class UpsPickupTypeJsonConverter : JsonConverter<UpsPickupType>
 {
     public override UpsPickupType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new UpsPickupType(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new UpsPickupType(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, UpsPickupType value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

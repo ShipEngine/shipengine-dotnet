@@ -85,13 +85,16 @@ public class PackageContents
     public static PackageContents Other { get; } = new("other");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class PackageContentsJsonConverter : JsonConverter<PackageContents>
 {
     public override PackageContents? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new PackageContents(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new PackageContents(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, PackageContents value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

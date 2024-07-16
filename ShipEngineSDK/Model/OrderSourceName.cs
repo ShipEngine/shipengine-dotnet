@@ -169,13 +169,16 @@ public class OrderSourceName
     public static OrderSourceName Volusion { get; } = new("volusion");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class OrderSourceNameJsonConverter : JsonConverter<OrderSourceName>
 {
     public override OrderSourceName? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new OrderSourceName(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new OrderSourceName(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, OrderSourceName value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

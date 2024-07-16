@@ -72,13 +72,16 @@ public class TransportMean
     public static TransportMean PassengerAircraft { get; } = new("passenger_aircraft");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class TransportMeanJsonConverter : JsonConverter<TransportMean>
 {
     public override TransportMean? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new TransportMean(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new TransportMean(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, TransportMean value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

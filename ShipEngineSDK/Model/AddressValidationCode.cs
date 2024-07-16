@@ -127,13 +127,16 @@ public class AddressValidationCode
     public static AddressValidationCode R1003 { get; } = new("r1003");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class AddressValidationCodeJsonConverter : JsonConverter<AddressValidationCode>
 {
     public override AddressValidationCode? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new AddressValidationCode(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new AddressValidationCode(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, AddressValidationCode value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

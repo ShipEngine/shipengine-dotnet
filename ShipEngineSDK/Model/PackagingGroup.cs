@@ -66,13 +66,16 @@ public class PackagingGroup
     public static PackagingGroup Iii { get; } = new("iii");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class PackagingGroupJsonConverter : JsonConverter<PackagingGroup>
 {
     public override PackagingGroup? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new PackagingGroup(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new PackagingGroup(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, PackagingGroup value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

@@ -81,7 +81,7 @@ public partial class ListServicePointsResponseBodyServicePointsInner
     internal class FeaturesEnumJsonConverter : JsonConverter<FeaturesEnum>
     {
         public override FeaturesEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-            reader.TokenType == JsonTokenType.String ? new FeaturesEnum(reader.GetString()) : null;
+            reader.TokenType == JsonTokenType.String ? new FeaturesEnum(reader.GetString()!) : null;
 
         public override void Write(Utf8JsonWriter writer, FeaturesEnum value, JsonSerializerOptions options) =>
             writer.WriteStringValue(value.ToString());
@@ -127,7 +127,7 @@ public partial class ListServicePointsResponseBodyServicePointsInner
     internal class TypeEnumJsonConverter : JsonConverter<TypeEnum>
     {
         public override TypeEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-            reader.TokenType == JsonTokenType.String ? new TypeEnum(reader.GetString()) : null;
+            reader.TokenType == JsonTokenType.String ? new TypeEnum(reader.GetString()!) : null;
 
         public override void Write(Utf8JsonWriter writer, TypeEnum value, JsonSerializerOptions options) =>
             writer.WriteStringValue(value.ToString());

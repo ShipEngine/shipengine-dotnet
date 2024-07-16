@@ -217,13 +217,16 @@ public class CarrierName
     public static CarrierName Lasership { get; } = new("lasership");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class CarrierNameJsonConverter : JsonConverter<CarrierName>
 {
     public override CarrierName? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new CarrierName(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new CarrierName(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, CarrierName value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

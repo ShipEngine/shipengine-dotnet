@@ -58,7 +58,7 @@ public partial class PartialShippingAddressToGeolocationInner
     internal class TypeEnumJsonConverter : JsonConverter<TypeEnum>
     {
         public override TypeEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-            reader.TokenType == JsonTokenType.String ? new TypeEnum(reader.GetString()) : null;
+            reader.TokenType == JsonTokenType.String ? new TypeEnum(reader.GetString()!) : null;
 
         public override void Write(Utf8JsonWriter writer, TypeEnum value, JsonSerializerOptions options) =>
             writer.WriteStringValue(value.ToString());

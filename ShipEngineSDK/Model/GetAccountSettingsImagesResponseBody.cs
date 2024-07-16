@@ -64,7 +64,7 @@ public partial class GetAccountSettingsImagesResponseBody
     internal class ImageContentTypeEnumJsonConverter : JsonConverter<ImageContentTypeEnum>
     {
         public override ImageContentTypeEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-            reader.TokenType == JsonTokenType.String ? new ImageContentTypeEnum(reader.GetString()) : null;
+            reader.TokenType == JsonTokenType.String ? new ImageContentTypeEnum(reader.GetString()!) : null;
 
         public override void Write(Utf8JsonWriter writer, ImageContentTypeEnum value, JsonSerializerOptions options) =>
             writer.WriteStringValue(value.ToString());

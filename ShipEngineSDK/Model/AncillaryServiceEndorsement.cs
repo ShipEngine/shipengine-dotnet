@@ -85,13 +85,16 @@ public class AncillaryServiceEndorsement
     public static AncillaryServiceEndorsement LeaveIfNoResponse { get; } = new("leave_if_no_response");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class AncillaryServiceEndorsementJsonConverter : JsonConverter<AncillaryServiceEndorsement>
 {
     public override AncillaryServiceEndorsement? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new AncillaryServiceEndorsement(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new AncillaryServiceEndorsement(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, AncillaryServiceEndorsement value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

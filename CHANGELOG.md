@@ -161,4 +161,12 @@ Updated nuget package dependencies
 
 ## 3.0.0-beta.1
 
+## Added
+
 - Created new SDK methods for the entire API that sit next to the pre-existing methods.  The pre-existing methods will be deprecated eventually.
+
+## 3.0.0-beta.2
+
+## Changed
+
+- Add more explicit nullable reference types

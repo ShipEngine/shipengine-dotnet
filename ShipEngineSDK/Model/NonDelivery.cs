@@ -61,13 +61,16 @@ public class NonDelivery
     public static NonDelivery TreatAsAbandoned { get; } = new("treat_as_abandoned");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class NonDeliveryJsonConverter : JsonConverter<NonDelivery>
 {
     public override NonDelivery? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new NonDelivery(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new NonDelivery(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, NonDelivery value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

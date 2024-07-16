@@ -67,13 +67,16 @@ public class AddressResidentialIndicator
     public static AddressResidentialIndicator No { get; } = new("no");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class AddressResidentialIndicatorJsonConverter : JsonConverter<AddressResidentialIndicator>
 {
     public override AddressResidentialIndicator? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new AddressResidentialIndicator(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new AddressResidentialIndicator(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, AddressResidentialIndicator value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

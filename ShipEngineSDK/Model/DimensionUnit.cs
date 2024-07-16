@@ -61,13 +61,16 @@ public class DimensionUnit
     public static DimensionUnit Centimeter { get; } = new("centimeter");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class DimensionUnitJsonConverter : JsonConverter<DimensionUnit>
 {
     public override DimensionUnit? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new DimensionUnit(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new DimensionUnit(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, DimensionUnit value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());

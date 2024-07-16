@@ -73,13 +73,16 @@ public class RateResponseStatus
     public static RateResponseStatus Error { get; } = new("error");
 
 
+    /// <summary>
+    /// Get a string representation of the current value
+    /// </summary>
     public override string ToString() => _value;
 }
 
 internal class RateResponseStatusJsonConverter : JsonConverter<RateResponseStatus>
 {
     public override RateResponseStatus? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.TokenType == JsonTokenType.String ? new RateResponseStatus(reader.GetString()) : null;
+        reader.TokenType == JsonTokenType.String ? new RateResponseStatus(reader.GetString()!) : null;
 
     public override void Write(Utf8JsonWriter writer, RateResponseStatus value, JsonSerializerOptions options) =>
         writer.WriteStringValue(value.ToString());
