@@ -32,13 +32,13 @@ public partial class UpdateShipmentsTagsShipmentsTagsInner
     /// Gets or Sets ShipmentId
     /// </summary>
     [JsonPropertyName("shipment_id")]
-    public string ShipmentId { get; set; }
+    public string? ShipmentId { get; set; }
 
     /// <summary>
     /// Gets or Sets Tags
     /// </summary>
     [JsonPropertyName("tags")]
-    public List<string> Tags { get; set; }
+    public List<string>? Tags { get; set; }
 
 
     /// <summary>

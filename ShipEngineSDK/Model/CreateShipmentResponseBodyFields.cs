@@ -29,19 +29,19 @@ public partial class CreateShipmentResponseBodyFields
 {
 
     /// <summary>
+    /// The address validation
+    /// </summary>
+    /// <value>The address validation</value>
+    [JsonPropertyName("address_validation")]
+    public AddressValidationResult? AddressValidation { get; set; }
+
+    /// <summary>
     /// An array of errors that occurred while creating shipment.
     /// </summary>
     /// <value>An array of errors that occurred while creating shipment.</value>
     [JsonPropertyName("errors")]
     [Obsolete]
-    public List<string> Errors { get; set; }
-
-    /// <summary>
-    /// The address validation
-    /// </summary>
-    /// <value>The address validation</value>
-    [JsonPropertyName("address_validation")]
-    public AddressValidationResult AddressValidation { get; set; }
+    public List<string>? Errors { get; set; }
 
 
     /// <summary>
@@ -53,8 +53,8 @@ public partial class CreateShipmentResponseBodyFields
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateShipmentResponseBodyFields {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Errors: ").Append(Errors).Append("\n");
         sb.Append("  AddressValidation: ").Append(AddressValidation).Append("\n");
+        sb.Append("  Errors: ").Append(Errors).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

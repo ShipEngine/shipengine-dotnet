@@ -33,7 +33,7 @@ public partial class RateRequestOptions
     /// </summary>
     /// <value>The rate options</value>
     [JsonPropertyName("rate_options")]
-    public RateRequestBody RateOptions { get; set; }
+    public RateRequestBody? RateOptions { get; set; }
 
 
     /// <summary>

@@ -32,13 +32,13 @@ public partial class UpdateNewgisticsSettingsRequestBody
     /// Gets or Sets IncludeBarcodeWithOrderNumber
     /// </summary>
     [JsonPropertyName("include_barcode_with_order_number")]
-    public bool IncludeBarcodeWithOrderNumber { get; set; }
+    public bool? IncludeBarcodeWithOrderNumber { get; set; }
 
     /// <summary>
     /// Gets or Sets ReceiveEmailOnManifestProcessing
     /// </summary>
     [JsonPropertyName("receive_email_on_manifest_processing")]
-    public bool ReceiveEmailOnManifestProcessing { get; set; }
+    public bool? ReceiveEmailOnManifestProcessing { get; set; }
 
 
     /// <summary>

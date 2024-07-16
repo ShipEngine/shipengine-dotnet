@@ -73,15 +73,15 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
     /// <param name="createdAtEnd">Only return scheduled pickups that were created on or before a specific date/time (optional)</param>
+    /// <param name="carrierId">Carrier ID (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(string? carrierId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
+    Task<GetPickupsResponseBody> ListScheduledPickups(DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, string carrierId, string warehouseId, int page, int pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Scheduled Pickups List all pickups that have been scheduled for this carrier
@@ -89,15 +89,15 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
     /// <param name="createdAtEnd">Only return scheduled pickups that were created on or before a specific date/time (optional)</param>
+    /// <param name="carrierId">Carrier ID (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string? carrierId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, CancellationToken cancellationToken = default);
+    Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, string carrierId, string warehouseId, int page, int pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Schedule a Pickup Schedule a package pickup with a carrier
@@ -216,17 +216,17 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
     /// <param name="createdAtEnd">Only return scheduled pickups that were created on or before a specific date/time (optional)</param>
+    /// <param name="carrierId">Carrier ID (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public Task<GetPickupsResponseBody> ListScheduledPickups(string? carrierId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
+    public Task<GetPickupsResponseBody> ListScheduledPickups(DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, string carrierId = default, string warehouseId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
     {
-        return ListScheduledPickups(_client, carrierId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, cancellationToken);
+        return ListScheduledPickups(_client, createdAtStart, createdAtEnd, carrierId, warehouseId, page, pageSize, cancellationToken);
     }
 
     /// <summary>
@@ -235,27 +235,19 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="carrierId">Carrier ID (optional)</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="createdAtStart">Only return scheduled pickups that were created on or after a specific date/time (optional)</param>
     /// <param name="createdAtEnd">Only return scheduled pickups that were created on or before a specific date/time (optional)</param>
+    /// <param name="carrierId">Carrier ID (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetPickupsResponseBody)</returns>
-    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, string? carrierId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
+    public async Task<GetPickupsResponseBody> ListScheduledPickups(HttpClient methodClient, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, string carrierId = default, string warehouseId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/pickups");
 
-        if (carrierId != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
-        }
-        if (warehouseId != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
-        }
         if (createdAtStart != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
@@ -263,6 +255,14 @@ public partial class ShipEngine
         if (createdAtEnd != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+        }
+        if (carrierId != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
+        }
+        if (warehouseId != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
         if (page != null)
         {

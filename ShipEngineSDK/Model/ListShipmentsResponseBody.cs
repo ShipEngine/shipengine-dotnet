@@ -29,6 +29,27 @@ public partial class ListShipmentsResponseBody
 {
 
     /// <summary>
+    /// Gets or Sets Links
+    /// </summary>
+    [JsonPropertyName("links")]
+    [JsonRequired]
+    public PaginationLink Links { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Page
+    /// </summary>
+    [JsonPropertyName("page")]
+    [JsonRequired]
+    public int Page { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Pages
+    /// </summary>
+    [JsonPropertyName("pages")]
+    [JsonRequired]
+    public int Pages { get; set; }
+
+    /// <summary>
     /// The list of shipments returned by the api call
     /// </summary>
     /// <value>The list of shipments returned by the api call</value>
@@ -47,27 +68,6 @@ public partial class ListShipmentsResponseBody
     [JsonRequired]
     public long Total { get; set; }
 
-    /// <summary>
-    /// Gets or Sets Page
-    /// </summary>
-    [JsonPropertyName("page")]
-    [JsonRequired]
-    public int Page { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Pages
-    /// </summary>
-    [JsonPropertyName("pages")]
-    [JsonRequired]
-    public int Pages { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Links
-    /// </summary>
-    [JsonPropertyName("links")]
-    [JsonRequired]
-    public PaginationLink Links { get; set; }
-
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -78,11 +78,11 @@ public partial class ListShipmentsResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListShipmentsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Shipments: ").Append(Shipments).Append("\n");
-        sb.Append("  Total: ").Append(Total).Append("\n");
+        sb.Append("  Links: ").Append(Links).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
         sb.Append("  Pages: ").Append(Pages).Append("\n");
-        sb.Append("  Links: ").Append(Links).Append("\n");
+        sb.Append("  Shipments: ").Append(Shipments).Append("\n");
+        sb.Append("  Total: ").Append(Total).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -29,23 +29,20 @@ public partial class ListManifestsResponseBody
 {
 
     /// <summary>
+    /// Helpful links to other pages of results
+    /// </summary>
+    /// <value>Helpful links to other pages of results</value>
+    [JsonPropertyName("links")]
+    [JsonRequired]
+    public PaginationLink Links { get; set; }
+
+    /// <summary>
     /// The list of available manifests
     /// </summary>
     /// <value>The list of available manifests</value>
     [JsonPropertyName("manifests")]
     [JsonRequired]
     public List<Manifest> Manifests { get; set; }
-
-    /// <summary>
-    /// The total number of manifests returned
-    /// </summary>
-    /// <value>The total number of manifests returned</value>
-    /// <example>
-    /// 3
-    /// </example>
-    [JsonPropertyName("total")]
-    [JsonRequired]
-    public long Total { get; set; }
 
     /// <summary>
     /// Current page of the list manifests results
@@ -70,12 +67,15 @@ public partial class ListManifestsResponseBody
     public int Pages { get; set; }
 
     /// <summary>
-    /// Helpful links to other pages of results
+    /// The total number of manifests returned
     /// </summary>
-    /// <value>Helpful links to other pages of results</value>
-    [JsonPropertyName("links")]
+    /// <value>The total number of manifests returned</value>
+    /// <example>
+    /// 3
+    /// </example>
+    [JsonPropertyName("total")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public long Total { get; set; }
 
 
     /// <summary>
@@ -87,11 +87,11 @@ public partial class ListManifestsResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListManifestsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  Links: ").Append(Links).Append("\n");
         sb.Append("  Manifests: ").Append(Manifests).Append("\n");
-        sb.Append("  Total: ").Append(Total).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
         sb.Append("  Pages: ").Append(Pages).Append("\n");
-        sb.Append("  Links: ").Append(Links).Append("\n");
+        sb.Append("  Total: ").Append(Total).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

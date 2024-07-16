@@ -32,15 +32,26 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
 {
 
     /// <summary>
+    /// Gets or Sets AddressResidentialIndicator
+    /// </summary>
+    [JsonPropertyName("address_residential_indicator")]
+    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
+    /// <summary>
     /// Gets or Sets Confirmation
     /// </summary>
     [JsonPropertyName("confirmation")]
     public DeliveryConfirmation? Confirmation { get; set; }
     /// <summary>
-    /// Gets or Sets AddressResidentialIndicator
+    /// from postal code
     /// </summary>
-    [JsonPropertyName("address_residential_indicator")]
-    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
+    /// <value>from postal code</value>
+    /// <example>
+    /// Austin
+    /// </example>
+    [JsonPropertyName("from_city_locality")]
+    [JsonRequired]
+    public string FromCityLocality { get; set; }
+
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
     /// </summary>
@@ -64,17 +75,6 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     public string FromPostalCode { get; set; }
 
     /// <summary>
-    /// from postal code
-    /// </summary>
-    /// <value>from postal code</value>
-    /// <example>
-    /// Austin
-    /// </example>
-    [JsonPropertyName("from_city_locality")]
-    [JsonRequired]
-    public string FromCityLocality { get; set; }
-
-    /// <summary>
     /// From state province
     /// </summary>
     /// <value>From state province</value>
@@ -84,6 +84,28 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     [JsonPropertyName("from_state_province")]
     [JsonRequired]
     public string FromStateProvince { get; set; }
+
+    /// <summary>
+    /// ship date
+    /// </summary>
+    /// <value>ship date</value>
+    /// <example>
+    /// 2018-09-23T15:00Z
+    /// </example>
+    [JsonPropertyName("ship_date")]
+    [JsonRequired]
+    public DateTimeOffset ShipDate { get; set; }
+
+    /// <summary>
+    /// The city locality the package is being shipped to
+    /// </summary>
+    /// <value>The city locality the package is being shipped to</value>
+    /// <example>
+    /// Austin
+    /// </example>
+    [JsonPropertyName("to_city_locality")]
+    [JsonRequired]
+    public string ToCityLocality { get; set; }
 
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -106,17 +128,6 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     [JsonPropertyName("to_postal_code")]
     [JsonRequired]
     public string ToPostalCode { get; set; }
-
-    /// <summary>
-    /// The city locality the package is being shipped to
-    /// </summary>
-    /// <value>The city locality the package is being shipped to</value>
-    /// <example>
-    /// Austin
-    /// </example>
-    [JsonPropertyName("to_city_locality")]
-    [JsonRequired]
-    public string ToCityLocality { get; set; }
 
     /// <summary>
     /// To state province
@@ -142,18 +153,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// </summary>
     /// <value>The dimensions of the package</value>
     [JsonPropertyName("dimensions")]
-    public Dimensions Dimensions { get; set; }
-
-    /// <summary>
-    /// ship date
-    /// </summary>
-    /// <value>ship date</value>
-    /// <example>
-    /// 2018-09-23T15:00Z
-    /// </example>
-    [JsonPropertyName("ship_date")]
-    [JsonRequired]
-    public DateTimeOffset ShipDate { get; set; }
+    public Dimensions? Dimensions { get; set; }
 
 
     /// <summary>
@@ -237,19 +237,19 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
         sb.Append("class EstimateRatesRequestBody {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
 
+        sb.Append("  FromCityLocality: ").Append(this.FromCityLocality).Append("\n");
         sb.Append("  FromCountryCode: ").Append(this.FromCountryCode).Append("\n");
         sb.Append("  FromPostalCode: ").Append(this.FromPostalCode).Append("\n");
-        sb.Append("  FromCityLocality: ").Append(this.FromCityLocality).Append("\n");
         sb.Append("  FromStateProvince: ").Append(this.FromStateProvince).Append("\n");
+        sb.Append("  ShipDate: ").Append(this.ShipDate).Append("\n");
+        sb.Append("  ToCityLocality: ").Append(this.ToCityLocality).Append("\n");
         sb.Append("  ToCountryCode: ").Append(this.ToCountryCode).Append("\n");
         sb.Append("  ToPostalCode: ").Append(this.ToPostalCode).Append("\n");
-        sb.Append("  ToCityLocality: ").Append(this.ToCityLocality).Append("\n");
         sb.Append("  ToStateProvince: ").Append(this.ToStateProvince).Append("\n");
         sb.Append("  Weight: ").Append(this.Weight).Append("\n");
-        sb.Append("  Dimensions: ").Append(this.Dimensions).Append("\n");
-        sb.Append("  Confirmation: ").Append(this.Confirmation).Append("\n");
         sb.Append("  AddressResidentialIndicator: ").Append(this.AddressResidentialIndicator).Append("\n");
-        sb.Append("  ShipDate: ").Append(this.ShipDate).Append("\n");
+        sb.Append("  Confirmation: ").Append(this.Confirmation).Append("\n");
+        sb.Append("  Dimensions: ").Append(this.Dimensions).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }
@@ -311,32 +311,32 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
     {
         writer.WriteStartObject();
 
+        writer.WritePropertyName("from_city_locality");
+        JsonSerializer.Serialize(writer, value.FromCityLocality, options);
         writer.WritePropertyName("from_country_code");
         JsonSerializer.Serialize(writer, value.FromCountryCode, options);
         writer.WritePropertyName("from_postal_code");
         JsonSerializer.Serialize(writer, value.FromPostalCode, options);
-        writer.WritePropertyName("from_city_locality");
-        JsonSerializer.Serialize(writer, value.FromCityLocality, options);
         writer.WritePropertyName("from_state_province");
         JsonSerializer.Serialize(writer, value.FromStateProvince, options);
+        writer.WritePropertyName("ship_date");
+        JsonSerializer.Serialize(writer, value.ShipDate, options);
+        writer.WritePropertyName("to_city_locality");
+        JsonSerializer.Serialize(writer, value.ToCityLocality, options);
         writer.WritePropertyName("to_country_code");
         JsonSerializer.Serialize(writer, value.ToCountryCode, options);
         writer.WritePropertyName("to_postal_code");
         JsonSerializer.Serialize(writer, value.ToPostalCode, options);
-        writer.WritePropertyName("to_city_locality");
-        JsonSerializer.Serialize(writer, value.ToCityLocality, options);
         writer.WritePropertyName("to_state_province");
         JsonSerializer.Serialize(writer, value.ToStateProvince, options);
         writer.WritePropertyName("weight");
         JsonSerializer.Serialize(writer, value.Weight, options);
-        writer.WritePropertyName("dimensions");
-        JsonSerializer.Serialize(writer, value.Dimensions, options);
-        writer.WritePropertyName("confirmation");
-        JsonSerializer.Serialize(writer, value.Confirmation, options);
         writer.WritePropertyName("address_residential_indicator");
         JsonSerializer.Serialize(writer, value.AddressResidentialIndicator, options);
-        writer.WritePropertyName("ship_date");
-        JsonSerializer.Serialize(writer, value.ShipDate, options);
+        writer.WritePropertyName("confirmation");
+        JsonSerializer.Serialize(writer, value.Confirmation, options);
+        writer.WritePropertyName("dimensions");
+        JsonSerializer.Serialize(writer, value.Dimensions, options);
 
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
@@ -407,19 +407,19 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
 
+        newEstimateRatesRequestBody!.FromCityLocality = jsonDoc.RootElement.GetProperty("from_city_locality").Deserialize<string>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.FromCountryCode = jsonDoc.RootElement.GetProperty("from_country_code").Deserialize<string>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.FromPostalCode = jsonDoc.RootElement.GetProperty("from_postal_code").Deserialize<string>(DeserializingOptions)!;
-        newEstimateRatesRequestBody!.FromCityLocality = jsonDoc.RootElement.GetProperty("from_city_locality").Deserialize<string>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.FromStateProvince = jsonDoc.RootElement.GetProperty("from_state_province").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.ShipDate = jsonDoc.RootElement.GetProperty("ship_date").Deserialize<DateTimeOffset>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.ToCityLocality = jsonDoc.RootElement.GetProperty("to_city_locality").Deserialize<string>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.ToCountryCode = jsonDoc.RootElement.GetProperty("to_country_code").Deserialize<string>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.ToPostalCode = jsonDoc.RootElement.GetProperty("to_postal_code").Deserialize<string>(DeserializingOptions)!;
-        newEstimateRatesRequestBody!.ToCityLocality = jsonDoc.RootElement.GetProperty("to_city_locality").Deserialize<string>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.ToStateProvince = jsonDoc.RootElement.GetProperty("to_state_province").Deserialize<string>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.Weight = jsonDoc.RootElement.GetProperty("weight").Deserialize<Weight>(DeserializingOptions)!;
-        newEstimateRatesRequestBody!.Dimensions = jsonDoc.RootElement.GetProperty("dimensions").Deserialize<Dimensions>(DeserializingOptions)!;
-        newEstimateRatesRequestBody!.Confirmation = jsonDoc.RootElement.GetProperty("confirmation").Deserialize<DeliveryConfirmation>(DeserializingOptions)!;
         newEstimateRatesRequestBody!.AddressResidentialIndicator = jsonDoc.RootElement.GetProperty("address_residential_indicator").Deserialize<AddressResidentialIndicator>(DeserializingOptions)!;
-        newEstimateRatesRequestBody!.ShipDate = jsonDoc.RootElement.GetProperty("ship_date").Deserialize<DateTimeOffset>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.Confirmation = jsonDoc.RootElement.GetProperty("confirmation").Deserialize<DeliveryConfirmation>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.Dimensions = jsonDoc.RootElement.GetProperty("dimensions").Deserialize<Dimensions>(DeserializingOptions)!;
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newEstimateRatesRequestBody;

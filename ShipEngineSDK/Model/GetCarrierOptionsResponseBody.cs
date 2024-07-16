@@ -33,7 +33,7 @@ public partial class GetCarrierOptionsResponseBody
     /// </summary>
     /// <value>AN array of carrier options</value>
     [JsonPropertyName("options")]
-    public List<CarrierAdvancedOption> Options { get; set; }
+    public List<CarrierAdvancedOption>? Options { get; set; }
 
 
     /// <summary>

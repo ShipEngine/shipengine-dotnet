@@ -29,16 +29,6 @@ public partial class CreateAndProcessBatchRequestBody
 {
 
     /// <summary>
-    /// A string that uniquely identifies the external batch
-    /// </summary>
-    /// <value>A string that uniquely identifies the external batch</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("external_batch_id")]
-    public string ExternalBatchId { get; set; }
-
-    /// <summary>
     /// Add custom messages for a particular batch
     /// </summary>
     /// <value>Add custom messages for a particular batch</value>
@@ -46,27 +36,37 @@ public partial class CreateAndProcessBatchRequestBody
     /// This is my batch
     /// </example>
     [JsonPropertyName("batch_notes")]
-    public string BatchNotes { get; set; }
+    public string? BatchNotes { get; set; }
 
     /// <summary>
-    /// Array of shipment IDs used in the batch
+    /// A string that uniquely identifies the external batch
     /// </summary>
-    /// <value>Array of shipment IDs used in the batch</value>
-    [JsonPropertyName("shipment_ids")]
-    public List<string> ShipmentIds { get; set; }
+    /// <value>A string that uniquely identifies the external batch</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("external_batch_id")]
+    public string? ExternalBatchId { get; set; }
+
+    /// <summary>
+    /// Gets or Sets ProcessLabels
+    /// </summary>
+    [JsonPropertyName("process_labels")]
+    public CreateAndProcessBatchRequestBodyProcessLabels? ProcessLabels { get; set; }
 
     /// <summary>
     /// Array of rate IDs used in the batch
     /// </summary>
     /// <value>Array of rate IDs used in the batch</value>
     [JsonPropertyName("rate_ids")]
-    public List<string> RateIds { get; set; }
+    public List<string>? RateIds { get; set; }
 
     /// <summary>
-    /// Gets or Sets ProcessLabels
+    /// Array of shipment IDs used in the batch
     /// </summary>
-    [JsonPropertyName("process_labels")]
-    public CreateAndProcessBatchRequestBodyProcessLabels ProcessLabels { get; set; }
+    /// <value>Array of shipment IDs used in the batch</value>
+    [JsonPropertyName("shipment_ids")]
+    public List<string>? ShipmentIds { get; set; }
 
 
     /// <summary>
@@ -78,11 +78,11 @@ public partial class CreateAndProcessBatchRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateAndProcessBatchRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  ExternalBatchId: ").Append(ExternalBatchId).Append("\n");
         sb.Append("  BatchNotes: ").Append(BatchNotes).Append("\n");
-        sb.Append("  ShipmentIds: ").Append(ShipmentIds).Append("\n");
-        sb.Append("  RateIds: ").Append(RateIds).Append("\n");
+        sb.Append("  ExternalBatchId: ").Append(ExternalBatchId).Append("\n");
         sb.Append("  ProcessLabels: ").Append(ProcessLabels).Append("\n");
+        sb.Append("  RateIds: ").Append(RateIds).Append("\n");
+        sb.Append("  ShipmentIds: ").Append(ShipmentIds).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

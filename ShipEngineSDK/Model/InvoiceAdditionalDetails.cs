@@ -29,39 +29,39 @@ public partial class InvoiceAdditionalDetails
 {
 
     /// <summary>
+    /// Discount for shipment.
+    /// </summary>
+    /// <value>Discount for shipment.</value>
+    [JsonPropertyName("discount")]
+    public MonetaryValue? Discount { get; set; }
+
+    /// <summary>
     /// Freight Charge for shipment.
     /// </summary>
     /// <value>Freight Charge for shipment.</value>
     [JsonPropertyName("freight_charge")]
-    public MonetaryValue FreightCharge { get; set; }
+    public MonetaryValue? FreightCharge { get; set; }
 
     /// <summary>
     /// Insurance Charge for shipment.
     /// </summary>
     /// <value>Insurance Charge for shipment.</value>
     [JsonPropertyName("insurance_charge")]
-    public MonetaryValue InsuranceCharge { get; set; }
-
-    /// <summary>
-    /// Discount for shipment.
-    /// </summary>
-    /// <value>Discount for shipment.</value>
-    [JsonPropertyName("discount")]
-    public MonetaryValue Discount { get; set; }
+    public MonetaryValue? InsuranceCharge { get; set; }
 
     /// <summary>
     /// Other charge for shipment.
     /// </summary>
     /// <value>Other charge for shipment.</value>
     [JsonPropertyName("other_charge")]
-    public MonetaryValue OtherCharge { get; set; }
+    public MonetaryValue? OtherCharge { get; set; }
 
     /// <summary>
     /// Description for the other charge (if provided).
     /// </summary>
     /// <value>Description for the other charge (if provided).</value>
     [JsonPropertyName("other_charge_description")]
-    public string OtherChargeDescription { get; set; }
+    public string? OtherChargeDescription { get; set; }
 
 
     /// <summary>
@@ -73,9 +73,9 @@ public partial class InvoiceAdditionalDetails
         StringBuilder sb = new StringBuilder();
         sb.Append("class InvoiceAdditionalDetails {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  Discount: ").Append(Discount).Append("\n");
         sb.Append("  FreightCharge: ").Append(FreightCharge).Append("\n");
         sb.Append("  InsuranceCharge: ").Append(InsuranceCharge).Append("\n");
-        sb.Append("  Discount: ").Append(Discount).Append("\n");
         sb.Append("  OtherCharge: ").Append(OtherCharge).Append("\n");
         sb.Append("  OtherChargeDescription: ").Append(OtherChargeDescription).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete

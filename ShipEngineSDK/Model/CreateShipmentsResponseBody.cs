@@ -29,20 +29,20 @@ public partial class CreateShipmentsResponseBody
 {
 
     /// <summary>
-    /// Indicates if errors occured while creating the shipments
-    /// </summary>
-    /// <value>Indicates if errors occured while creating the shipments</value>
-    [JsonPropertyName("has_errors")]
-    [JsonRequired]
-    public bool HasErrors { get; set; }
-
-    /// <summary>
     /// An array of shipments that were created.
     /// </summary>
     /// <value>An array of shipments that were created.</value>
     [JsonPropertyName("shipments")]
     [JsonRequired]
     public List<CreateAndValidateShipment> Shipments { get; set; }
+
+    /// <summary>
+    /// Indicates if errors occured while creating the shipments
+    /// </summary>
+    /// <value>Indicates if errors occured while creating the shipments</value>
+    [JsonPropertyName("has_errors")]
+    [JsonRequired]
+    public bool HasErrors { get; set; }
 
 
     /// <summary>
@@ -54,8 +54,8 @@ public partial class CreateShipmentsResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateShipmentsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  HasErrors: ").Append(HasErrors).Append("\n");
         sb.Append("  Shipments: ").Append(Shipments).Append("\n");
+        sb.Append("  HasErrors: ").Append(HasErrors).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

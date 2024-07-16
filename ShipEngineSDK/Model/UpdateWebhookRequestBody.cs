@@ -29,6 +29,13 @@ public partial class UpdateWebhookRequestBody
 {
 
     /// <summary>
+    /// Array of custom webhook headers
+    /// </summary>
+    /// <value>Array of custom webhook headers</value>
+    [JsonPropertyName("headers")]
+    public List<WebhookHeader>? Headers { get; set; }
+
+    /// <summary>
     /// The url that the wehbook sends the request
     /// </summary>
     /// <value>The url that the wehbook sends the request</value>
@@ -36,14 +43,7 @@ public partial class UpdateWebhookRequestBody
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
     [JsonPropertyName("url")]
-    public string Url { get; set; }
-
-    /// <summary>
-    /// Array of custom webhook headers
-    /// </summary>
-    /// <value>Array of custom webhook headers</value>
-    [JsonPropertyName("headers")]
-    public List<WebhookHeader> Headers { get; set; }
+    public string? Url { get; set; }
 
 
     /// <summary>
@@ -55,8 +55,8 @@ public partial class UpdateWebhookRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpdateWebhookRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Url: ").Append(Url).Append("\n");
         sb.Append("  Headers: ").Append(Headers).Append("\n");
+        sb.Append("  Url: ").Append(Url).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

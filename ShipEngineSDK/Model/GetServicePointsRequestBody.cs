@@ -29,6 +29,20 @@ public partial class GetServicePointsRequestBody
 {
 
     /// <summary>
+    /// An array of shipping service providers and service codes
+    /// </summary>
+    /// <value>An array of shipping service providers and service codes</value>
+    [JsonPropertyName("providers")]
+    [JsonRequired]
+    public List<GetServicePointsRequestBodyProvidersInner> Providers { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Address
+    /// </summary>
+    [JsonPropertyName("address")]
+    public GetServicePointsRequestBodyAddress? Address { get; set; }
+
+    /// <summary>
     /// Unstructured text to search for service points by.
     /// </summary>
     /// <value>Unstructured text to search for service points by.</value>
@@ -36,21 +50,7 @@ public partial class GetServicePointsRequestBody
     /// 177A Bleecker Street New York
     /// </example>
     [JsonPropertyName("address_query")]
-    public string AddressQuery { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Address
-    /// </summary>
-    [JsonPropertyName("address")]
-    public GetServicePointsRequestBodyAddress Address { get; set; }
-
-    /// <summary>
-    /// An array of shipping service providers and service codes
-    /// </summary>
-    /// <value>An array of shipping service providers and service codes</value>
-    [JsonPropertyName("providers")]
-    [JsonRequired]
-    public List<GetServicePointsRequestBodyProvidersInner> Providers { get; set; }
+    public string? AddressQuery { get; set; }
 
     /// <summary>
     /// The latitude of the point. Represented as signed degrees. Required if long is provided. http://www.geomidpoint.com/latlon.html
@@ -60,7 +60,7 @@ public partial class GetServicePointsRequestBody
     /// 48.874518928233094
     /// </example>
     [JsonPropertyName("lat")]
-    public double Lat { get; set; }
+    public double? Lat { get; set; }
 
     /// <summary>
     /// The longitude of the point. Represented as signed degrees. Required if lat is provided. http://www.geomidpoint.com/latlon.html
@@ -70,17 +70,7 @@ public partial class GetServicePointsRequestBody
     /// 2.3591775711639404
     /// </example>
     [JsonPropertyName("long")]
-    public double Long { get; set; }
-
-    /// <summary>
-    /// Search radius in kilometers
-    /// </summary>
-    /// <value>Search radius in kilometers</value>
-    /// <example>
-    /// 500
-    /// </example>
-    [JsonPropertyName("radius")]
-    public int Radius { get; set; }
+    public double? Long { get; set; }
 
     /// <summary>
     /// The maximum number of service points to return
@@ -90,13 +80,23 @@ public partial class GetServicePointsRequestBody
     /// 25
     /// </example>
     [JsonPropertyName("max_results")]
-    public int MaxResults { get; set; }
+    public int? MaxResults { get; set; }
+
+    /// <summary>
+    /// Search radius in kilometers
+    /// </summary>
+    /// <value>Search radius in kilometers</value>
+    /// <example>
+    /// 500
+    /// </example>
+    [JsonPropertyName("radius")]
+    public int? Radius { get; set; }
 
     /// <summary>
     /// Gets or Sets Shipment
     /// </summary>
     [JsonPropertyName("shipment")]
-    public GetServicePointsRequestBodyShipment Shipment { get; set; }
+    public GetServicePointsRequestBodyShipment? Shipment { get; set; }
 
 
     /// <summary>
@@ -108,13 +108,13 @@ public partial class GetServicePointsRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetServicePointsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  AddressQuery: ").Append(AddressQuery).Append("\n");
-        sb.Append("  Address: ").Append(Address).Append("\n");
         sb.Append("  Providers: ").Append(Providers).Append("\n");
+        sb.Append("  Address: ").Append(Address).Append("\n");
+        sb.Append("  AddressQuery: ").Append(AddressQuery).Append("\n");
         sb.Append("  Lat: ").Append(Lat).Append("\n");
         sb.Append("  Long: ").Append(Long).Append("\n");
-        sb.Append("  Radius: ").Append(Radius).Append("\n");
         sb.Append("  MaxResults: ").Append(MaxResults).Append("\n");
+        sb.Append("  Radius: ").Append(Radius).Append("\n");
         sb.Append("  Shipment: ").Append(Shipment).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

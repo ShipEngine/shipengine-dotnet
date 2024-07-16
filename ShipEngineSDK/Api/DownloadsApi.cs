@@ -34,11 +34,11 @@ public partial interface IShipEngine
     /// <param name="subdir"></param>
     /// <param name="filename"></param>
     /// <param name="dir"></param>
-    /// <param name="download"> (optional)</param>
     /// <param name="rotation"> (optional)</param>
+    /// <param name="download"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, string? download, int? rotation, CancellationToken cancellationToken = default);
+    Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, int rotation, string download, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Download File Get File
@@ -49,11 +49,11 @@ public partial interface IShipEngine
     /// <param name="subdir"></param>
     /// <param name="filename"></param>
     /// <param name="dir"></param>
-    /// <param name="download"> (optional)</param>
     /// <param name="rotation"> (optional)</param>
+    /// <param name="download"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, string? download, int? rotation, CancellationToken cancellationToken = default);
+    Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, int rotation, string download, CancellationToken cancellationToken = default);
 
 }
 
@@ -70,13 +70,13 @@ public partial class ShipEngine
     /// <param name="subdir"></param>
     /// <param name="filename"></param>
     /// <param name="dir"></param>
-    /// <param name="download"> (optional)</param>
     /// <param name="rotation"> (optional)</param>
+    /// <param name="download"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    public Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, string? download = default, int? rotation = default, CancellationToken cancellationToken = default)
+    public Task<System.IO.Stream> DownloadFile(string subdir, string filename, string dir, int rotation = default, string download = default, CancellationToken cancellationToken = default)
     {
-        return DownloadFile(_client, subdir, filename, dir, download, rotation, cancellationToken);
+        return DownloadFile(_client, subdir, filename, dir, rotation, download, cancellationToken);
     }
 
     /// <summary>
@@ -88,11 +88,11 @@ public partial class ShipEngine
     /// <param name="subdir"></param>
     /// <param name="filename"></param>
     /// <param name="dir"></param>
-    /// <param name="download"> (optional)</param>
     /// <param name="rotation"> (optional)</param>
+    /// <param name="download"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-    public async Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, string? download = default, int? rotation = default, CancellationToken cancellationToken = default)
+    public async Task<System.IO.Stream> DownloadFile(HttpClient methodClient, string subdir, string filename, string dir, int rotation = default, string download = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'subdir' is set
         if (subdir == null)
@@ -118,13 +118,13 @@ public partial class ShipEngine
         requestOptions.PathParameters.Add("subdir", ShipEngineSDK.ClientUtils.ParameterToString(subdir)); // path parameter
         requestOptions.PathParameters.Add("filename", ShipEngineSDK.ClientUtils.ParameterToString(filename)); // path parameter
         requestOptions.PathParameters.Add("dir", ShipEngineSDK.ClientUtils.ParameterToString(dir)); // path parameter
-        if (download != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "download", download));
-        }
         if (rotation != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "rotation", rotation));
+        }
+        if (download != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "download", download));
         }
 
         requestOptions.Operation = "DownloadsApi.DownloadFile";

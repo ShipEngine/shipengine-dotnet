@@ -37,7 +37,7 @@ public partial class CollectOnDelivery
     /// Gets or Sets PaymentAmount
     /// </summary>
     [JsonPropertyName("payment_amount")]
-    public PaymentAmount PaymentAmount { get; set; }
+    public PaymentAmount? PaymentAmount { get; set; }
 
 
     /// <summary>
@@ -49,8 +49,8 @@ public partial class CollectOnDelivery
         StringBuilder sb = new StringBuilder();
         sb.Append("class CollectOnDelivery {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  PaymentType: ").Append(PaymentType).Append("\n");
         sb.Append("  PaymentAmount: ").Append(PaymentAmount).Append("\n");
+        sb.Append("  PaymentType: ").Append(PaymentType).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

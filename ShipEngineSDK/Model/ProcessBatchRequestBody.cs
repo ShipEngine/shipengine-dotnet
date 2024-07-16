@@ -29,21 +29,21 @@ public partial class ProcessBatchRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets LabelLayout  CLOVUS
+    /// The display format that the label should be shown in.  CLOVUS
     /// </summary>
-    [JsonPropertyName("label_layout")]
-    public LabelLayout? LabelLayout { get; set; }
+    /// <value>The display format that the label should be shown in.</value>
+    [JsonPropertyName("display_scheme")]
+    public DisplayScheme? DisplayScheme { get; set; }
     /// <summary>
     /// Gets or Sets LabelFormat  CLOVUS
     /// </summary>
     [JsonPropertyName("label_format")]
     public LabelFormat? LabelFormat { get; set; }
     /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
+    /// Gets or Sets LabelLayout  CLOVUS
     /// </summary>
-    /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
-    public DisplayScheme? DisplayScheme { get; set; }
+    [JsonPropertyName("label_layout")]
+    public LabelLayout? LabelLayout { get; set; }
     /// <summary>
     /// The Ship date the batch is being processed for
     /// </summary>
@@ -52,7 +52,7 @@ public partial class ProcessBatchRequestBody
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("ship_date")]
-    public DateTimeOffset ShipDate { get; set; }
+    public DateTimeOffset? ShipDate { get; set; }
 
 
     /// <summary>
@@ -64,10 +64,10 @@ public partial class ProcessBatchRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ProcessBatchRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
-        sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
-        sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
+        sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
+        sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
+        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

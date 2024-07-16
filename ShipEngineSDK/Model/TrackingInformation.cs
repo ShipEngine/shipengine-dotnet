@@ -34,24 +34,14 @@ public partial class TrackingInformation
     [JsonPropertyName("status_code")]
     public StatusCode? StatusCode { get; set; }
     /// <summary>
-    /// A tracking number for a package. The format depends on the carrier.
+    /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
     /// </summary>
-    /// <value>A tracking number for a package. The format depends on the carrier.</value>
+    /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
     /// <example>
-    /// 1Z932R800392060079
+    /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("tracking_number")]
-    public string TrackingNumber { get; set; }
-
-    /// <summary>
-    /// Carrier Tracking Url, if available
-    /// </summary>
-    /// <value>Carrier Tracking Url, if available</value>
-    /// <example>
-    /// https://www.fedex.com/fedextrack/?action&#x3D;track&amp;trackingnumber&#x3D;1234
-    /// </example>
-    [JsonPropertyName("tracking_url")]
-    public string TrackingUrl { get; set; }
+    [JsonPropertyName("actual_delivery_date")]
+    public DateTimeOffset? ActualDeliveryDate { get; set; }
 
     /// <summary>
     /// A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
@@ -61,37 +51,7 @@ public partial class TrackingInformation
     /// dhl_express
     /// </example>
     [JsonPropertyName("carrier_code")]
-    public string CarrierCode { get; set; }
-
-    /// <summary>
-    /// A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.
-    /// </summary>
-    /// <value>A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("carrier_id")]
-    public string CarrierId { get; set; }
-
-    /// <summary>
-    /// Status description
-    /// </summary>
-    /// <value>Status description</value>
-    /// <example>
-    /// Delivered
-    /// </example>
-    [JsonPropertyName("status_description")]
-    public string StatusDescription { get; set; }
-
-    /// <summary>
-    /// Carrier status code
-    /// </summary>
-    /// <value>Carrier status code</value>
-    /// <example>
-    /// 1
-    /// </example>
-    [JsonPropertyName("carrier_status_code")]
-    public string CarrierStatusCode { get; set; }
+    public string? CarrierCode { get; set; }
 
     /// <summary>
     /// Carrier detail code
@@ -101,7 +61,27 @@ public partial class TrackingInformation
     /// OT
     /// </example>
     [JsonPropertyName("carrier_detail_code")]
-    public string CarrierDetailCode { get; set; }
+    public string? CarrierDetailCode { get; set; }
+
+    /// <summary>
+    /// A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.
+    /// </summary>
+    /// <value>A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("carrier_id")]
+    public string? CarrierId { get; set; }
+
+    /// <summary>
+    /// Carrier status code
+    /// </summary>
+    /// <value>Carrier status code</value>
+    /// <example>
+    /// 1
+    /// </example>
+    [JsonPropertyName("carrier_status_code")]
+    public string? CarrierStatusCode { get; set; }
 
     /// <summary>
     /// carrier status description
@@ -111,17 +91,7 @@ public partial class TrackingInformation
     /// Your item was delivered in or at the mailbox at 9:10 am on March
     /// </example>
     [JsonPropertyName("carrier_status_description")]
-    public string CarrierStatusDescription { get; set; }
-
-    /// <summary>
-    /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
-    /// </summary>
-    /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
-    /// <example>
-    /// 2018-09-23T15:00Z
-    /// </example>
-    [JsonPropertyName("ship_date")]
-    public DateTimeOffset ShipDate { get; set; }
+    public string? CarrierStatusDescription { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -131,7 +101,21 @@ public partial class TrackingInformation
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("estimated_delivery_date")]
-    public DateTimeOffset EstimatedDeliveryDate { get; set; }
+    public DateTimeOffset? EstimatedDeliveryDate { get; set; }
+
+    /// <summary>
+    /// The events that have occured during the lifetime of this tracking number.
+    /// </summary>
+    /// <value>The events that have occured during the lifetime of this tracking number.</value>
+    [JsonPropertyName("events")]
+    public List<TrackEvent>? Events { get; set; }
+
+    /// <summary>
+    /// Exception description
+    /// </summary>
+    /// <value>Exception description</value>
+    [JsonPropertyName("exception_description")]
+    public string? ExceptionDescription { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -140,22 +124,38 @@ public partial class TrackingInformation
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("actual_delivery_date")]
-    public DateTimeOffset ActualDeliveryDate { get; set; }
+    [JsonPropertyName("ship_date")]
+    public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
-    /// Exception description
+    /// Status description
     /// </summary>
-    /// <value>Exception description</value>
-    [JsonPropertyName("exception_description")]
-    public string ExceptionDescription { get; set; }
+    /// <value>Status description</value>
+    /// <example>
+    /// Delivered
+    /// </example>
+    [JsonPropertyName("status_description")]
+    public string? StatusDescription { get; set; }
 
     /// <summary>
-    /// The events that have occured during the lifetime of this tracking number.
+    /// A tracking number for a package. The format depends on the carrier.
     /// </summary>
-    /// <value>The events that have occured during the lifetime of this tracking number.</value>
-    [JsonPropertyName("events")]
-    public List<TrackEvent> Events { get; set; }
+    /// <value>A tracking number for a package. The format depends on the carrier.</value>
+    /// <example>
+    /// 1Z932R800392060079
+    /// </example>
+    [JsonPropertyName("tracking_number")]
+    public string? TrackingNumber { get; set; }
+
+    /// <summary>
+    /// Carrier Tracking Url, if available
+    /// </summary>
+    /// <value>Carrier Tracking Url, if available</value>
+    /// <example>
+    /// https://www.fedex.com/fedextrack/?action&#x3D;track&amp;trackingnumber&#x3D;1234
+    /// </example>
+    [JsonPropertyName("tracking_url")]
+    public string? TrackingUrl { get; set; }
 
 
     /// <summary>
@@ -167,20 +167,20 @@ public partial class TrackingInformation
         StringBuilder sb = new StringBuilder();
         sb.Append("class TrackingInformation {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  ActualDeliveryDate: ").Append(ActualDeliveryDate).Append("\n");
+        sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
+        sb.Append("  CarrierDetailCode: ").Append(CarrierDetailCode).Append("\n");
+        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
+        sb.Append("  CarrierStatusCode: ").Append(CarrierStatusCode).Append("\n");
+        sb.Append("  CarrierStatusDescription: ").Append(CarrierStatusDescription).Append("\n");
+        sb.Append("  EstimatedDeliveryDate: ").Append(EstimatedDeliveryDate).Append("\n");
+        sb.Append("  Events: ").Append(Events).Append("\n");
+        sb.Append("  ExceptionDescription: ").Append(ExceptionDescription).Append("\n");
+        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
+        sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
+        sb.Append("  StatusDescription: ").Append(StatusDescription).Append("\n");
         sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
         sb.Append("  TrackingUrl: ").Append(TrackingUrl).Append("\n");
-        sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
-        sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
-        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
-        sb.Append("  StatusDescription: ").Append(StatusDescription).Append("\n");
-        sb.Append("  CarrierStatusCode: ").Append(CarrierStatusCode).Append("\n");
-        sb.Append("  CarrierDetailCode: ").Append(CarrierDetailCode).Append("\n");
-        sb.Append("  CarrierStatusDescription: ").Append(CarrierStatusDescription).Append("\n");
-        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
-        sb.Append("  EstimatedDeliveryDate: ").Append(EstimatedDeliveryDate).Append("\n");
-        sb.Append("  ActualDeliveryDate: ").Append(ActualDeliveryDate).Append("\n");
-        sb.Append("  ExceptionDescription: ").Append(ExceptionDescription).Append("\n");
-        sb.Append("  Events: ").Append(Events).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

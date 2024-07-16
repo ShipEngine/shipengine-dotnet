@@ -45,20 +45,20 @@ public partial class PaginationLink
     public Link Last { get; set; }
 
     /// <summary>
-    /// The link to the previous page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is 2 or greater. 
-    /// </summary>
-    /// <value>The link to the previous page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is 2 or greater. </value>
-    [JsonPropertyName("prev")]
-    [JsonRequired]
-    public OptionalLink Prev { get; set; }
-
-    /// <summary>
     /// The link to the next page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is less than &#x60;pages&#x60;. 
     /// </summary>
     /// <value>The link to the next page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is less than &#x60;pages&#x60;. </value>
     [JsonPropertyName("next")]
     [JsonRequired]
     public OptionalLink Next { get; set; }
+
+    /// <summary>
+    /// The link to the previous page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is 2 or greater. 
+    /// </summary>
+    /// <value>The link to the previous page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is 2 or greater. </value>
+    [JsonPropertyName("prev")]
+    [JsonRequired]
+    public OptionalLink Prev { get; set; }
 
 
     /// <summary>
@@ -72,8 +72,8 @@ public partial class PaginationLink
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  First: ").Append(First).Append("\n");
         sb.Append("  Last: ").Append(Last).Append("\n");
-        sb.Append("  Prev: ").Append(Prev).Append("\n");
         sb.Append("  Next: ").Append(Next).Append("\n");
+        sb.Append("  Prev: ").Append(Prev).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

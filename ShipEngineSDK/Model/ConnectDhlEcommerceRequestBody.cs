@@ -34,14 +34,6 @@ public partial class ConnectDhlEcommerceRequestBody
     [JsonPropertyName("ancillary_endorsement")]
     public AncillaryServiceEndorsement? AncillaryEndorsement { get; set; }
     /// <summary>
-    /// A nickname to help you identify this account
-    /// </summary>
-    /// <value>A nickname to help you identify this account</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
-    public string Nickname { get; set; }
-
-    /// <summary>
     /// The client id
     /// </summary>
     /// <value>The client id</value>
@@ -50,12 +42,20 @@ public partial class ConnectDhlEcommerceRequestBody
     public string ClientId { get; set; }
 
     /// <summary>
-    /// The account username
+    /// The distribution center
     /// </summary>
-    /// <value>The account username</value>
-    [JsonPropertyName("username")]
+    /// <value>The distribution center</value>
+    [JsonPropertyName("distribution_center")]
     [JsonRequired]
-    public string Username { get; set; }
+    public string DistributionCenter { get; set; }
+
+    /// <summary>
+    /// A nickname to help you identify this account
+    /// </summary>
+    /// <value>A nickname to help you identify this account</value>
+    [JsonPropertyName("nickname")]
+    [JsonRequired]
+    public string Nickname { get; set; }
 
     /// <summary>
     /// The account password
@@ -74,26 +74,12 @@ public partial class ConnectDhlEcommerceRequestBody
     public string PickupNumber { get; set; }
 
     /// <summary>
-    /// The distribution center
+    /// The account username
     /// </summary>
-    /// <value>The distribution center</value>
-    [JsonPropertyName("distribution_center")]
+    /// <value>The account username</value>
+    [JsonPropertyName("username")]
     [JsonRequired]
-    public string DistributionCenter { get; set; }
-
-    /// <summary>
-    /// The DHL E-Commerce API key. This field is optional, but if not set you will not be able to get rates for this account. 
-    /// </summary>
-    /// <value>The DHL E-Commerce API key. This field is optional, but if not set you will not be able to get rates for this account. </value>
-    [JsonPropertyName("api_key")]
-    public string ApiKey { get; set; }
-
-    /// <summary>
-    /// The DHL E-Commerce API secret. This field is optional, but if not set you will not be able to get rates for this account. 
-    /// </summary>
-    /// <value>The DHL E-Commerce API secret. This field is optional, but if not set you will not be able to get rates for this account. </value>
-    [JsonPropertyName("api_secret")]
-    public string ApiSecret { get; set; }
+    public string Username { get; set; }
 
     /// <summary>
     /// Account number
@@ -101,15 +87,21 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>Account number</value>
     [JsonPropertyName("account_number")]
     [Obsolete]
-    public string AccountNumber { get; set; }
+    public string? AccountNumber { get; set; }
 
     /// <summary>
-    /// FTP username
+    /// The DHL E-Commerce API key. This field is optional, but if not set you will not be able to get rates for this account. 
     /// </summary>
-    /// <value>FTP username</value>
-    [JsonPropertyName("ftp_username")]
-    [Obsolete]
-    public string FtpUsername { get; set; }
+    /// <value>The DHL E-Commerce API key. This field is optional, but if not set you will not be able to get rates for this account. </value>
+    [JsonPropertyName("api_key")]
+    public string? ApiKey { get; set; }
+
+    /// <summary>
+    /// The DHL E-Commerce API secret. This field is optional, but if not set you will not be able to get rates for this account. 
+    /// </summary>
+    /// <value>The DHL E-Commerce API secret. This field is optional, but if not set you will not be able to get rates for this account. </value>
+    [JsonPropertyName("api_secret")]
+    public string? ApiSecret { get; set; }
 
     /// <summary>
     /// FTP password
@@ -117,26 +109,34 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>FTP password</value>
     [JsonPropertyName("ftp_password")]
     [Obsolete]
-    public string FtpPassword { get; set; }
+    public string? FtpPassword { get; set; }
+
+    /// <summary>
+    /// FTP username
+    /// </summary>
+    /// <value>FTP username</value>
+    [JsonPropertyName("ftp_username")]
+    [Obsolete]
+    public string? FtpUsername { get; set; }
+
+    /// <summary>
+    /// Gets or Sets RegistrationId
+    /// </summary>
+    [JsonPropertyName("registration_id")]
+    public string? RegistrationId { get; set; }
+
+    /// <summary>
+    /// Gets or Sets SoftwareName
+    /// </summary>
+    [JsonPropertyName("software_name")]
+    public string? SoftwareName { get; set; }
 
     /// <summary>
     /// Sold To field
     /// </summary>
     /// <value>Sold To field</value>
     [JsonPropertyName("sold_to")]
-    public string SoldTo { get; set; }
-
-    /// <summary>
-    /// Gets or Sets RegistrationId
-    /// </summary>
-    [JsonPropertyName("registration_id")]
-    public string RegistrationId { get; set; }
-
-    /// <summary>
-    /// Gets or Sets SoftwareName
-    /// </summary>
-    [JsonPropertyName("software_name")]
-    public string SoftwareName { get; set; }
+    public string? SoldTo { get; set; }
 
 
     /// <summary>
@@ -148,21 +148,21 @@ public partial class ConnectDhlEcommerceRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectDhlEcommerceRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  DistributionCenter: ").Append(DistributionCenter).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  Password: ").Append(Password).Append("\n");
         sb.Append("  PickupNumber: ").Append(PickupNumber).Append("\n");
-        sb.Append("  DistributionCenter: ").Append(DistributionCenter).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+        sb.Append("  AncillaryEndorsement: ").Append(AncillaryEndorsement).Append("\n");
         sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
         sb.Append("  ApiSecret: ").Append(ApiSecret).Append("\n");
-        sb.Append("  AncillaryEndorsement: ").Append(AncillaryEndorsement).Append("\n");
-        sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-        sb.Append("  FtpUsername: ").Append(FtpUsername).Append("\n");
         sb.Append("  FtpPassword: ").Append(FtpPassword).Append("\n");
-        sb.Append("  SoldTo: ").Append(SoldTo).Append("\n");
+        sb.Append("  FtpUsername: ").Append(FtpUsername).Append("\n");
         sb.Append("  RegistrationId: ").Append(RegistrationId).Append("\n");
         sb.Append("  SoftwareName: ").Append(SoftwareName).Append("\n");
+        sb.Append("  SoldTo: ").Append(SoldTo).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

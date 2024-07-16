@@ -33,7 +33,7 @@ public partial class ShipmentRequest
     /// </summary>
     /// <value>The shipment object</value>
     [JsonPropertyName("shipment")]
-    public AddressValidatingShipment Shipment { get; set; }
+    public AddressValidatingShipment? Shipment { get; set; }
 
 
     /// <summary>

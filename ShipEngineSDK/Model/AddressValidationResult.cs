@@ -37,6 +37,14 @@ public partial class AddressValidationResult
 
 
     /// <summary>
+    /// The list of messages that were generated during the address validation request.
+    /// </summary>
+    /// <value>The list of messages that were generated during the address validation request.</value>
+    [JsonPropertyName("messages")]
+    [JsonRequired]
+    public List<ResponseMessage> Messages { get; set; }
+
+    /// <summary>
     /// The original address that was sent for validation
     /// </summary>
     /// <value>The original address that was sent for validation</value>
@@ -52,14 +60,6 @@ public partial class AddressValidationResult
     [JsonRequired]
     public Address MatchedAddress { get; set; }
 
-    /// <summary>
-    /// The list of messages that were generated during the address validation request.
-    /// </summary>
-    /// <value>The list of messages that were generated during the address validation request.</value>
-    [JsonPropertyName("messages")]
-    [JsonRequired]
-    public List<ResponseMessage> Messages { get; set; }
-
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -70,10 +70,10 @@ public partial class AddressValidationResult
         StringBuilder sb = new StringBuilder();
         sb.Append("class AddressValidationResult {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Status: ").Append(Status).Append("\n");
-        sb.Append("  OriginalAddress: ").Append(OriginalAddress).Append("\n");
-        sb.Append("  MatchedAddress: ").Append(MatchedAddress).Append("\n");
         sb.Append("  Messages: ").Append(Messages).Append("\n");
+        sb.Append("  OriginalAddress: ").Append(OriginalAddress).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  MatchedAddress: ").Append(MatchedAddress).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

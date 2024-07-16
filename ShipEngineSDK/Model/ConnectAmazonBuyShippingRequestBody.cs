@@ -29,15 +29,15 @@ public partial class ConnectAmazonBuyShippingRequestBody
 {
 
     /// <summary>
-    /// Nickname to be associated with the account connection
+    /// An email address.
     /// </summary>
-    /// <value>Nickname to be associated with the account connection</value>
+    /// <value>An email address.</value>
     /// <example>
-    /// Test Amazon Buy Shipping
+    /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("nickname")]
+    [JsonPropertyName("email")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets MerchantSellerId
@@ -54,15 +54,15 @@ public partial class ConnectAmazonBuyShippingRequestBody
     public string MwsAuthToken { get; set; }
 
     /// <summary>
-    /// An email address.
+    /// Nickname to be associated with the account connection
     /// </summary>
-    /// <value>An email address.</value>
+    /// <value>Nickname to be associated with the account connection</value>
     /// <example>
-    /// john.doe@example.com
+    /// Test Amazon Buy Shipping
     /// </example>
-    [JsonPropertyName("email")]
+    [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Email { get; set; }
+    public string Nickname { get; set; }
 
 
     /// <summary>
@@ -74,10 +74,10 @@ public partial class ConnectAmazonBuyShippingRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectAmazonBuyShippingRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+        sb.Append("  Email: ").Append(Email).Append("\n");
         sb.Append("  MerchantSellerId: ").Append(MerchantSellerId).Append("\n");
         sb.Append("  MwsAuthToken: ").Append(MwsAuthToken).Append("\n");
-        sb.Append("  Email: ").Append(Email).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

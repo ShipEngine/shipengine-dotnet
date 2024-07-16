@@ -29,16 +29,6 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
 {
 
     /// <summary>
-    /// Opening time
-    /// </summary>
-    /// <value>Opening time</value>
-    /// <example>
-    /// 09:15
-    /// </example>
-    [JsonPropertyName("open")]
-    public string Open { get; set; }
-
-    /// <summary>
     /// Closing time
     /// </summary>
     /// <value>Closing time</value>
@@ -46,7 +36,17 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
     /// 12:00
     /// </example>
     [JsonPropertyName("close")]
-    public string Close { get; set; }
+    public string? Close { get; set; }
+
+    /// <summary>
+    /// Opening time
+    /// </summary>
+    /// <value>Opening time</value>
+    /// <example>
+    /// 09:15
+    /// </example>
+    [JsonPropertyName("open")]
+    public string? Open { get; set; }
 
 
     /// <summary>
@@ -58,8 +58,8 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Open: ").Append(Open).Append("\n");
         sb.Append("  Close: ").Append(Close).Append("\n");
+        sb.Append("  Open: ").Append(Open).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

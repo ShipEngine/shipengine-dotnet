@@ -96,7 +96,7 @@ public partial class PartialShippingAddressToGeolocationInner
     /// cats.with.thumbs
     /// </example>
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 
 
     /// <summary>

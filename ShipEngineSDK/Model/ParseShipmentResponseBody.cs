@@ -29,6 +29,14 @@ public partial class ParseShipmentResponseBody
 {
 
     /// <summary>
+    /// All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, a carrier name, or a package weight.  Each entity includes the original text and the parsed value. 
+    /// </summary>
+    /// <value>All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, a carrier name, or a package weight.  Each entity includes the original text and the parsed value. </value>
+    [JsonPropertyName("entities")]
+    [JsonRequired]
+    public List<RecognizedEntity> Entities { get; set; }
+
+    /// <summary>
     /// A confidence score between zero and one that indicates how certain the API is that it understood the text. 
     /// </summary>
     /// <value>A confidence score between zero and one that indicates how certain the API is that it understood the text. </value>
@@ -44,14 +52,6 @@ public partial class ParseShipmentResponseBody
     [JsonRequired]
     public PartialShipment Shipment { get; set; }
 
-    /// <summary>
-    /// All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, a carrier name, or a package weight.  Each entity includes the original text and the parsed value. 
-    /// </summary>
-    /// <value>All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, a carrier name, or a package weight.  Each entity includes the original text and the parsed value. </value>
-    [JsonPropertyName("entities")]
-    [JsonRequired]
-    public List<RecognizedEntity> Entities { get; set; }
-
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -62,9 +62,9 @@ public partial class ParseShipmentResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ParseShipmentResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  Entities: ").Append(Entities).Append("\n");
         sb.Append("  Score: ").Append(Score).Append("\n");
         sb.Append("  Shipment: ").Append(Shipment).Append("\n");
-        sb.Append("  Entities: ").Append(Entities).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

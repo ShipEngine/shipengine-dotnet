@@ -29,20 +29,6 @@ public partial class UpsInvoice
 {
 
     /// <summary>
-    /// invoice date
-    /// </summary>
-    /// <value>invoice date</value>
-    [JsonPropertyName("invoice_date")]
-    public DateTimeOffset InvoiceDate { get; set; }
-
-    /// <summary>
-    /// invoice number
-    /// </summary>
-    /// <value>invoice number</value>
-    [JsonPropertyName("invoice_number")]
-    public string InvoiceNumber { get; set; }
-
-    /// <summary>
     /// A string that uniquely identifies the control
     /// </summary>
     /// <value>A string that uniquely identifies the control</value>
@@ -50,19 +36,33 @@ public partial class UpsInvoice
     /// se-28529731
     /// </example>
     [JsonPropertyName("control_id")]
-    public string ControlId { get; set; }
+    public string? ControlId { get; set; }
 
     /// <summary>
     /// Gets or Sets InvoiceAmount
     /// </summary>
     [JsonPropertyName("invoice_amount")]
-    public double InvoiceAmount { get; set; }
+    public double? InvoiceAmount { get; set; }
 
     /// <summary>
     /// Gets or Sets InvoiceCurrencyCode
     /// </summary>
     [JsonPropertyName("invoice_currency_code")]
-    public string InvoiceCurrencyCode { get; set; }
+    public string? InvoiceCurrencyCode { get; set; }
+
+    /// <summary>
+    /// invoice date
+    /// </summary>
+    /// <value>invoice date</value>
+    [JsonPropertyName("invoice_date")]
+    public DateTimeOffset? InvoiceDate { get; set; }
+
+    /// <summary>
+    /// invoice number
+    /// </summary>
+    /// <value>invoice number</value>
+    [JsonPropertyName("invoice_number")]
+    public string? InvoiceNumber { get; set; }
 
 
     /// <summary>
@@ -74,11 +74,11 @@ public partial class UpsInvoice
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpsInvoice {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  InvoiceDate: ").Append(InvoiceDate).Append("\n");
-        sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
         sb.Append("  ControlId: ").Append(ControlId).Append("\n");
         sb.Append("  InvoiceAmount: ").Append(InvoiceAmount).Append("\n");
         sb.Append("  InvoiceCurrencyCode: ").Append(InvoiceCurrencyCode).Append("\n");
+        sb.Append("  InvoiceDate: ").Append(InvoiceDate).Append("\n");
+        sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

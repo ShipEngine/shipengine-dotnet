@@ -29,20 +29,20 @@ public partial class MonetaryValue
 {
 
     /// <summary>
-    /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
-    /// </summary>
-    /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
-    [JsonPropertyName("currency")]
-    [JsonRequired]
-    public string Currency { get; set; }
-
-    /// <summary>
     /// The monetary amount, in the specified currency.
     /// </summary>
     /// <value>The monetary amount, in the specified currency.</value>
     [JsonPropertyName("amount")]
     [JsonRequired]
     public double Amount { get; set; }
+
+    /// <summary>
+    /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
+    /// </summary>
+    /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
+    [JsonPropertyName("currency")]
+    [JsonRequired]
+    public string Currency { get; set; }
 
 
     /// <summary>
@@ -54,8 +54,8 @@ public partial class MonetaryValue
         StringBuilder sb = new StringBuilder();
         sb.Append("class MonetaryValue {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Currency: ").Append(Currency).Append("\n");
         sb.Append("  Amount: ").Append(Amount).Append("\n");
+        sb.Append("  Currency: ").Append(Currency).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

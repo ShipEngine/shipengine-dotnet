@@ -34,14 +34,11 @@ public partial class Webhook
     [JsonPropertyName("event")]
     public WebhookEvent? Event { get; set; }
     /// <summary>
-    /// A string that uniquely identifies the webhook
+    /// Array of custom webhook headers
     /// </summary>
-    /// <value>A string that uniquely identifies the webhook</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("webhook_id")]
-    public string WebhookId { get; set; }
+    /// <value>Array of custom webhook headers</value>
+    [JsonPropertyName("headers")]
+    public List<WebhookHeader>? Headers { get; set; }
 
     /// <summary>
     /// The url that the webhook sends the request to
@@ -51,14 +48,17 @@ public partial class Webhook
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
     [JsonPropertyName("url")]
-    public string Url { get; set; }
+    public string? Url { get; set; }
 
     /// <summary>
-    /// Array of custom webhook headers
+    /// A string that uniquely identifies the webhook
     /// </summary>
-    /// <value>Array of custom webhook headers</value>
-    [JsonPropertyName("headers")]
-    public List<WebhookHeader> Headers { get; set; }
+    /// <value>A string that uniquely identifies the webhook</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("webhook_id")]
+    public string? WebhookId { get; set; }
 
 
     /// <summary>
@@ -70,10 +70,10 @@ public partial class Webhook
         StringBuilder sb = new StringBuilder();
         sb.Append("class Webhook {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  WebhookId: ").Append(WebhookId).Append("\n");
-        sb.Append("  Url: ").Append(Url).Append("\n");
         sb.Append("  Event: ").Append(Event).Append("\n");
         sb.Append("  Headers: ").Append(Headers).Append("\n");
+        sb.Append("  Url: ").Append(Url).Append("\n");
+        sb.Append("  WebhookId: ").Append(WebhookId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -52,11 +52,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="rateId">Rate ID</param>
     /// <param name="createLabelFromRateRequestBody"></param>
+    /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromRateResponseBody)</returns>
-    Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(string rateId, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(CreateLabelFromRateRequestBody createLabelFromRateRequestBody, string rateId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Purchase Label with Rate ID When retrieving rates for shipments using the &#x60;/rates&#x60; endpoint, the returned information contains a &#x60;rate_id&#x60; property that can be used to generate a label without having to refill in the shipment information repeatedly. 
@@ -64,22 +64,22 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="rateId">Rate ID</param>
     /// <param name="createLabelFromRateRequestBody"></param>
+    /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromRateResponseBody)</returns>
-    Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(HttpClient methodClient, string rateId, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(HttpClient methodClient, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, string rateId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Purchase Label with Shipment ID Purchase a label using a shipment ID that has already been created with the desired address and package info. 
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createLabelFromShipmentRequestBody"></param>
+    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromShipmentResponseBody)</returns>
-    Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(string shipmentId, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Purchase Label with Shipment ID Purchase a label using a shipment ID that has already been created with the desired address and package info. 
@@ -87,22 +87,22 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createLabelFromShipmentRequestBody"></param>
+    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromShipmentResponseBody)</returns>
-    Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(HttpClient methodClient, string shipmentId, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(HttpClient methodClient, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create a return label Create a return label
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="labelId">Label ID</param>
     /// <param name="createReturnLabelRequestBody"></param>
+    /// <param name="labelId">Label ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateReturnLabelResponseBody)</returns>
-    Task<CreateReturnLabelResponseBody> CreateReturnLabel(string labelId, CreateReturnLabelRequestBody createReturnLabelRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateReturnLabelResponseBody> CreateReturnLabel(CreateReturnLabelRequestBody createReturnLabelRequestBody, string labelId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create a return label Create a return label
@@ -110,11 +110,11 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="labelId">Label ID</param>
     /// <param name="createReturnLabelRequestBody"></param>
+    /// <param name="labelId">Label ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateReturnLabelResponseBody)</returns>
-    Task<CreateReturnLabelResponseBody> CreateReturnLabel(HttpClient methodClient, string labelId, CreateReturnLabelRequestBody createReturnLabelRequestBody, CancellationToken cancellationToken = default);
+    Task<CreateReturnLabelResponseBody> CreateReturnLabel(HttpClient methodClient, CreateReturnLabelRequestBody createReturnLabelRequestBody, string labelId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By External Shipment ID Find a label by using the external shipment id that was used during label creation 
@@ -125,7 +125,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By External Shipment ID Find a label by using the external shipment id that was used during label creation 
@@ -137,7 +137,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By ID Retrieve information for individual labels.
@@ -148,7 +148,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label By ID Retrieve information for individual labels.
@@ -160,7 +160,7 @@ public partial interface IShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType? labelDownloadType, CancellationToken cancellationToken = default);
+    Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType labelDownloadType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Label Tracking Information Retrieve the label&#39;s tracking information
@@ -188,7 +188,10 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
+    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="labelStatus">Only return labels that are currently in the specified status (optional)</param>
+    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="serviceCode">Only return labels for a specific [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) (optional)</param>
     /// <param name="carrierId">Only return labels for a specific [carrier account](https://www.shipengine.com/docs/carriers/setup/) (optional)</param>
     /// <param name="trackingNumber">Only return labels with a specific tracking number (optional)</param>
@@ -196,15 +199,12 @@ public partial interface IShipEngine
     /// <param name="rateId">Rate ID (optional)</param>
     /// <param name="shipmentId">Shipment ID (optional)</param>
     /// <param name="warehouseId">Only return labels that originate from a specific [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) (optional)</param>
-    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
-    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus, string? serviceCode, string? carrierId, string? trackingNumber, string? batchId, string? rateId, string? shipmentId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string? sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, LabelStatus labelStatus, SortDir sortDir, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, int page, int pageSize, string sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List labels This endpoint returns a list of labels that you&#39;ve [created](https://www.shipengine.com/docs/labels/create-a-label/). You can optionally filter the results as well as control their sort order and the number of results returned at a time.  By default, all labels are returned, 25 at a time, starting with the most recently created ones.  You can combine multiple filter options to narrow-down the results.  For example, if you only want to get your UPS labels for your east coast warehouse you could query by both &#x60;warehouse_id&#x60; and &#x60;carrier_id&#x60; 
@@ -212,7 +212,10 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
+    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="labelStatus">Only return labels that are currently in the specified status (optional)</param>
+    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="serviceCode">Only return labels for a specific [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) (optional)</param>
     /// <param name="carrierId">Only return labels for a specific [carrier account](https://www.shipengine.com/docs/carriers/setup/) (optional)</param>
     /// <param name="trackingNumber">Only return labels with a specific tracking number (optional)</param>
@@ -220,15 +223,12 @@ public partial interface IShipEngine
     /// <param name="rateId">Rate ID (optional)</param>
     /// <param name="shipmentId">Shipment ID (optional)</param>
     /// <param name="warehouseId">Only return labels that originate from a specific [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) (optional)</param>
-    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
-    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, LabelStatus? labelStatus, string? serviceCode, string? carrierId, string? trackingNumber, string? batchId, string? rateId, string? shipmentId, string? warehouseId, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, int? page, int? pageSize, SortDir? sortDir, string? sortBy, CancellationToken cancellationToken = default);
+    Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, LabelStatus labelStatus, SortDir sortDir, string serviceCode, string carrierId, string trackingNumber, string batchId, string rateId, string shipmentId, string warehouseId, int page, int pageSize, string sortBy, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Void a Label By ID Void a label by ID to get a refund.
@@ -305,13 +305,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="rateId">Rate ID</param>
     /// <param name="createLabelFromRateRequestBody"></param>
+    /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromRateResponseBody)</returns>
-    public Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(string rateId, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, CancellationToken cancellationToken = default)
+    public Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(CreateLabelFromRateRequestBody createLabelFromRateRequestBody, string rateId, CancellationToken cancellationToken = default)
     {
-        return CreateLabelFromRate(_client, rateId, createLabelFromRateRequestBody, cancellationToken);
+        return CreateLabelFromRate(_client, createLabelFromRateRequestBody, rateId, cancellationToken);
     }
 
     /// <summary>
@@ -320,22 +320,22 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="rateId">Rate ID</param>
     /// <param name="createLabelFromRateRequestBody"></param>
+    /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromRateResponseBody)</returns>
-    public async Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(HttpClient methodClient, string rateId, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, CancellationToken cancellationToken = default)
+    public async Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(HttpClient methodClient, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, string rateId, CancellationToken cancellationToken = default)
     {
-        // verify the required parameter 'rateId' is set
-        if (rateId == null)
-        {
-            throw new ArgumentNullException(nameof(rateId));
-        }
-
         // verify the required parameter 'createLabelFromRateRequestBody' is set
         if (createLabelFromRateRequestBody == null)
         {
             throw new ArgumentNullException(nameof(createLabelFromRateRequestBody));
+        }
+
+        // verify the required parameter 'rateId' is set
+        if (rateId == null)
+        {
+            throw new ArgumentNullException(nameof(rateId));
         }
 
 
@@ -356,13 +356,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createLabelFromShipmentRequestBody"></param>
+    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromShipmentResponseBody)</returns>
-    public Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(string shipmentId, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, CancellationToken cancellationToken = default)
+    public Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
     {
-        return CreateLabelFromShipment(_client, shipmentId, createLabelFromShipmentRequestBody, cancellationToken);
+        return CreateLabelFromShipment(_client, createLabelFromShipmentRequestBody, shipmentId, cancellationToken);
     }
 
     /// <summary>
@@ -371,22 +371,22 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createLabelFromShipmentRequestBody"></param>
+    /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateLabelFromShipmentResponseBody)</returns>
-    public async Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(HttpClient methodClient, string shipmentId, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, CancellationToken cancellationToken = default)
+    public async Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(HttpClient methodClient, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
     {
-        // verify the required parameter 'shipmentId' is set
-        if (shipmentId == null)
-        {
-            throw new ArgumentNullException(nameof(shipmentId));
-        }
-
         // verify the required parameter 'createLabelFromShipmentRequestBody' is set
         if (createLabelFromShipmentRequestBody == null)
         {
             throw new ArgumentNullException(nameof(createLabelFromShipmentRequestBody));
+        }
+
+        // verify the required parameter 'shipmentId' is set
+        if (shipmentId == null)
+        {
+            throw new ArgumentNullException(nameof(shipmentId));
         }
 
 
@@ -407,13 +407,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="labelId">Label ID</param>
     /// <param name="createReturnLabelRequestBody"></param>
+    /// <param name="labelId">Label ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateReturnLabelResponseBody)</returns>
-    public Task<CreateReturnLabelResponseBody> CreateReturnLabel(string labelId, CreateReturnLabelRequestBody createReturnLabelRequestBody, CancellationToken cancellationToken = default)
+    public Task<CreateReturnLabelResponseBody> CreateReturnLabel(CreateReturnLabelRequestBody createReturnLabelRequestBody, string labelId, CancellationToken cancellationToken = default)
     {
-        return CreateReturnLabel(_client, labelId, createReturnLabelRequestBody, cancellationToken);
+        return CreateReturnLabel(_client, createReturnLabelRequestBody, labelId, cancellationToken);
     }
 
     /// <summary>
@@ -422,22 +422,22 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="labelId">Label ID</param>
     /// <param name="createReturnLabelRequestBody"></param>
+    /// <param name="labelId">Label ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateReturnLabelResponseBody)</returns>
-    public async Task<CreateReturnLabelResponseBody> CreateReturnLabel(HttpClient methodClient, string labelId, CreateReturnLabelRequestBody createReturnLabelRequestBody, CancellationToken cancellationToken = default)
+    public async Task<CreateReturnLabelResponseBody> CreateReturnLabel(HttpClient methodClient, CreateReturnLabelRequestBody createReturnLabelRequestBody, string labelId, CancellationToken cancellationToken = default)
     {
-        // verify the required parameter 'labelId' is set
-        if (labelId == null)
-        {
-            throw new ArgumentNullException(nameof(labelId));
-        }
-
         // verify the required parameter 'createReturnLabelRequestBody' is set
         if (createReturnLabelRequestBody == null)
         {
             throw new ArgumentNullException(nameof(createReturnLabelRequestBody));
+        }
+
+        // verify the required parameter 'labelId' is set
+        if (labelId == null)
+        {
+            throw new ArgumentNullException(nameof(labelId));
         }
 
 
@@ -462,7 +462,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    public Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(string externalShipmentId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         return GetLabelByExternalShipmentId(_client, externalShipmentId, labelDownloadType, cancellationToken);
     }
@@ -477,7 +477,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByExternalShipmentIdResponseBody)</returns>
-    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByExternalShipmentIdResponseBody> GetLabelByExternalShipmentId(HttpClient methodClient, string externalShipmentId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'externalShipmentId' is set
         if (externalShipmentId == null)
@@ -510,7 +510,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    public Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public Task<GetLabelByIdResponseBody> GetLabelById(string labelId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         return GetLabelById(_client, labelId, labelDownloadType, cancellationToken);
     }
@@ -525,7 +525,7 @@ public partial class ShipEngine
     /// <param name="labelDownloadType"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetLabelByIdResponseBody)</returns>
-    public async Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType? labelDownloadType = default, CancellationToken cancellationToken = default)
+    public async Task<GetLabelByIdResponseBody> GetLabelById(HttpClient methodClient, string labelId, LabelDownloadType labelDownloadType = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'labelId' is set
         if (labelId == null)
@@ -596,7 +596,10 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
+    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="labelStatus">Only return labels that are currently in the specified status (optional)</param>
+    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="serviceCode">Only return labels for a specific [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) (optional)</param>
     /// <param name="carrierId">Only return labels for a specific [carrier account](https://www.shipengine.com/docs/carriers/setup/) (optional)</param>
     /// <param name="trackingNumber">Only return labels with a specific tracking number (optional)</param>
@@ -604,17 +607,14 @@ public partial class ShipEngine
     /// <param name="rateId">Rate ID (optional)</param>
     /// <param name="shipmentId">Shipment ID (optional)</param>
     /// <param name="warehouseId">Only return labels that originate from a specific [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) (optional)</param>
-    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
-    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public Task<ListLabelsResponseBody> ListLabels(LabelStatus? labelStatus = default, string? serviceCode = default, string? carrierId = default, string? trackingNumber = default, string? batchId = default, string? rateId = default, string? shipmentId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public Task<ListLabelsResponseBody> ListLabels(DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, LabelStatus labelStatus = default, SortDir sortDir = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, int page = default, int pageSize = default, string sortBy = default, CancellationToken cancellationToken = default)
     {
-        return ListLabels(_client, labelStatus, serviceCode, carrierId, trackingNumber, batchId, rateId, shipmentId, warehouseId, createdAtStart, createdAtEnd, page, pageSize, sortDir, sortBy, cancellationToken);
+        return ListLabels(_client, createdAtStart, createdAtEnd, labelStatus, sortDir, serviceCode, carrierId, trackingNumber, batchId, rateId, shipmentId, warehouseId, page, pageSize, sortBy, cancellationToken);
     }
 
     /// <summary>
@@ -623,7 +623,10 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
+    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="labelStatus">Only return labels that are currently in the specified status (optional)</param>
+    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="serviceCode">Only return labels for a specific [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) (optional)</param>
     /// <param name="carrierId">Only return labels for a specific [carrier account](https://www.shipengine.com/docs/carriers/setup/) (optional)</param>
     /// <param name="trackingNumber">Only return labels with a specific tracking number (optional)</param>
@@ -631,22 +634,31 @@ public partial class ShipEngine
     /// <param name="rateId">Rate ID (optional)</param>
     /// <param name="shipmentId">Shipment ID (optional)</param>
     /// <param name="warehouseId">Only return labels that originate from a specific [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) (optional)</param>
-    /// <param name="createdAtStart">Only return labels that were created on or after a specific date/time (optional)</param>
-    /// <param name="createdAtEnd">Only return labels that were created on or before a specific date/time (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="sortDir">Controls the sort order of the query. (optional)</param>
     /// <param name="sortBy">Controls which field the query is sorted by. (optional, default to created_at)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListLabelsResponseBody)</returns>
-    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, LabelStatus? labelStatus = default, string? serviceCode = default, string? carrierId = default, string? trackingNumber = default, string? batchId = default, string? rateId = default, string? shipmentId = default, string? warehouseId = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, int? page = default, int? pageSize = default, SortDir? sortDir = default, string? sortBy = default, CancellationToken cancellationToken = default)
+    public async Task<ListLabelsResponseBody> ListLabels(HttpClient methodClient, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, LabelStatus labelStatus = default, SortDir sortDir = default, string serviceCode = default, string carrierId = default, string trackingNumber = default, string batchId = default, string rateId = default, string shipmentId = default, string warehouseId = default, int page = default, int pageSize = default, string sortBy = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/labels");
 
+        if (createdAtStart != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
+        }
+        if (createdAtEnd != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
+        }
         if (labelStatus != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "label_status", labelStatus));
+        }
+        if (sortDir != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (serviceCode != null)
         {
@@ -676,14 +688,6 @@ public partial class ShipEngine
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
         }
-        if (createdAtStart != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_start", createdAtStart));
-        }
-        if (createdAtEnd != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
-        }
         if (page != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -691,10 +695,6 @@ public partial class ShipEngine
         if (pageSize != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
-        }
-        if (sortDir != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "sort_dir", sortDir));
         }
         if (sortBy != null)
         {

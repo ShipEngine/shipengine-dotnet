@@ -29,16 +29,6 @@ public partial class CarrierAdvancedOption
 {
 
     /// <summary>
-    /// Name of advanced option
-    /// </summary>
-    /// <value>Name of advanced option</value>
-    /// <example>
-    /// contains_alcohol
-    /// </example>
-    [JsonPropertyName("name")]
-    public string Name { get; set; }
-
-    /// <summary>
     /// Default value of option
     /// </summary>
     /// <value>Default value of option</value>
@@ -46,14 +36,24 @@ public partial class CarrierAdvancedOption
     /// false
     /// </example>
     [JsonPropertyName("default_value")]
-    public string DefaultValue { get; set; }
+    public string? DefaultValue { get; set; }
 
     /// <summary>
     /// Description of option
     /// </summary>
     /// <value>Description of option</value>
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
+
+    /// <summary>
+    /// Name of advanced option
+    /// </summary>
+    /// <value>Name of advanced option</value>
+    /// <example>
+    /// contains_alcohol
+    /// </example>
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 
 
     /// <summary>
@@ -65,9 +65,9 @@ public partial class CarrierAdvancedOption
         StringBuilder sb = new StringBuilder();
         sb.Append("class CarrierAdvancedOption {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  DefaultValue: ").Append(DefaultValue).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

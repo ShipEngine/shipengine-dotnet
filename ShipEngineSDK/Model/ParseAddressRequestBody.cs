@@ -44,7 +44,7 @@ public partial class ParseAddressRequestBody
     /// </summary>
     /// <value>You can optionally provide any already-known address values. For example, you may already know the recipient&#39;s name, city, and country, and only want to parse the street address into separate lines. </value>
     [JsonPropertyName("address")]
-    public PartialAddress Address { get; set; }
+    public PartialAddress? Address { get; set; }
 
 
     /// <summary>

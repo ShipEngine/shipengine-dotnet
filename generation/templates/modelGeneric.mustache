@@ -102,7 +102,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}} {{name}} { get; set; }
+    public {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}}{{^required}}?{{/required}} {{name}} { get; set; }
 
     {{/isEnum}}
     {{/isInherited}}

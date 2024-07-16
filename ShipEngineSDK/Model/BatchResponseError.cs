@@ -36,7 +36,14 @@ public partial class BatchResponseError
     /// Recipient address has not been verified.
     /// </example>
     [JsonPropertyName("error")]
-    public string Error { get; set; }
+    public string? Error { get; set; }
+
+    /// <summary>
+    /// An external shipment id associated with the shipment
+    /// </summary>
+    /// <value>An external shipment id associated with the shipment</value>
+    [JsonPropertyName("external_shipment_id")]
+    public string? ExternalShipmentId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -46,14 +53,7 @@ public partial class BatchResponseError
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id")]
-    public string ShipmentId { get; set; }
-
-    /// <summary>
-    /// An external shipment id associated with the shipment
-    /// </summary>
-    /// <value>An external shipment id associated with the shipment</value>
-    [JsonPropertyName("external_shipment_id")]
-    public string ExternalShipmentId { get; set; }
+    public string? ShipmentId { get; set; }
 
 
     /// <summary>
@@ -66,8 +66,8 @@ public partial class BatchResponseError
         sb.Append("class BatchResponseError {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Error: ").Append(Error).Append("\n");
-        sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
         sb.Append("  ExternalShipmentId: ").Append(ExternalShipmentId).Append("\n");
+        sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -29,14 +29,14 @@ public partial class UpdatePackageTypeRequestBody
 {
 
     /// <summary>
-    /// A string that uniquely identifies the package.
+    /// Gets or Sets Name
     /// </summary>
-    /// <value>A string that uniquely identifies the package.</value>
     /// <example>
-    /// se-28529731
+    /// laptop_box
     /// </example>
-    [JsonPropertyName("package_id")]
-    public string PackageId { get; set; }
+    [JsonPropertyName("name")]
+    [JsonRequired]
+    public string Name { get; set; }
 
     /// <summary>
     /// A [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/), such as &#x60;thick_envelope&#x60;, &#x60;small_flat_rate_box&#x60;, &#x60;large_package&#x60;, etc.  Use the code &#x60;package&#x60; for custom or unknown package types. 
@@ -50,23 +50,6 @@ public partial class UpdatePackageTypeRequestBody
     public string PackageCode { get; set; }
 
     /// <summary>
-    /// Gets or Sets Name
-    /// </summary>
-    /// <example>
-    /// laptop_box
-    /// </example>
-    [JsonPropertyName("name")]
-    [JsonRequired]
-    public string Name { get; set; }
-
-    /// <summary>
-    /// The custom dimensions for the package.
-    /// </summary>
-    /// <value>The custom dimensions for the package.</value>
-    [JsonPropertyName("dimensions")]
-    public Dimensions Dimensions { get; set; }
-
-    /// <summary>
     /// Provides a helpful description for the custom package.
     /// </summary>
     /// <value>Provides a helpful description for the custom package.</value>
@@ -74,7 +57,24 @@ public partial class UpdatePackageTypeRequestBody
     /// Packaging for laptops
     /// </example>
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
+
+    /// <summary>
+    /// The custom dimensions for the package.
+    /// </summary>
+    /// <value>The custom dimensions for the package.</value>
+    [JsonPropertyName("dimensions")]
+    public Dimensions? Dimensions { get; set; }
+
+    /// <summary>
+    /// A string that uniquely identifies the package.
+    /// </summary>
+    /// <value>A string that uniquely identifies the package.</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("package_id")]
+    public string? PackageId { get; set; }
 
 
     /// <summary>
@@ -86,11 +86,11 @@ public partial class UpdatePackageTypeRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpdatePackageTypeRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  PackageId: ").Append(PackageId).Append("\n");
-        sb.Append("  PackageCode: ").Append(PackageCode).Append("\n");
         sb.Append("  Name: ").Append(Name).Append("\n");
-        sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
+        sb.Append("  PackageCode: ").Append(PackageCode).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
+        sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
+        sb.Append("  PackageId: ").Append(PackageId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -37,14 +37,12 @@ public partial class ConnectRoyalMailRequestBody
     public string AccountNumber { get; set; }
 
     /// <summary>
-    /// The oba email address
+    /// City
     /// </summary>
-    /// <value>The oba email address</value>
-    /// <example>
-    /// john.doe@example.com
-    /// </example>
-    [JsonPropertyName("oba_email")]
-    public string ObaEmail { get; set; }
+    /// <value>City</value>
+    [JsonPropertyName("city")]
+    [JsonRequired]
+    public string City { get; set; }
 
     /// <summary>
     /// Contact name
@@ -55,50 +53,12 @@ public partial class ConnectRoyalMailRequestBody
     public string ContactName { get; set; }
 
     /// <summary>
-    /// The email address
+    /// Nickname
     /// </summary>
-    /// <value>The email address</value>
-    /// <example>
-    /// john.doe@example.com
-    /// </example>
-    [JsonPropertyName("email")]
-    public string Email { get; set; }
-
-    /// <summary>
-    /// Company name
-    /// </summary>
-    /// <value>Company name</value>
-    [JsonPropertyName("company_name")]
-    public string CompanyName { get; set; }
-
-    /// <summary>
-    /// Street line1
-    /// </summary>
-    /// <value>Street line1</value>
-    [JsonPropertyName("street_line1")]
-    public string StreetLine1 { get; set; }
-
-    /// <summary>
-    /// Street line2
-    /// </summary>
-    /// <value>Street line2</value>
-    [JsonPropertyName("street_line2")]
-    public string StreetLine2 { get; set; }
-
-    /// <summary>
-    /// Street line3
-    /// </summary>
-    /// <value>Street line3</value>
-    [JsonPropertyName("street_line3")]
-    public string StreetLine3 { get; set; }
-
-    /// <summary>
-    /// City
-    /// </summary>
-    /// <value>City</value>
-    [JsonPropertyName("city")]
+    /// <value>Nickname</value>
+    [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string City { get; set; }
+    public string Nickname { get; set; }
 
     /// <summary>
     /// Postal code
@@ -109,19 +69,59 @@ public partial class ConnectRoyalMailRequestBody
     public string PostalCode { get; set; }
 
     /// <summary>
+    /// Company name
+    /// </summary>
+    /// <value>Company name</value>
+    [JsonPropertyName("company_name")]
+    public string? CompanyName { get; set; }
+
+    /// <summary>
+    /// The email address
+    /// </summary>
+    /// <value>The email address</value>
+    /// <example>
+    /// john.doe@example.com
+    /// </example>
+    [JsonPropertyName("email")]
+    public string? Email { get; set; }
+
+    /// <summary>
+    /// The oba email address
+    /// </summary>
+    /// <value>The oba email address</value>
+    /// <example>
+    /// john.doe@example.com
+    /// </example>
+    [JsonPropertyName("oba_email")]
+    public string? ObaEmail { get; set; }
+
+    /// <summary>
     /// Phone
     /// </summary>
     /// <value>Phone</value>
     [JsonPropertyName("phone")]
-    public string Phone { get; set; }
+    public string? Phone { get; set; }
 
     /// <summary>
-    /// Nickname
+    /// Street line1
     /// </summary>
-    /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
-    public string Nickname { get; set; }
+    /// <value>Street line1</value>
+    [JsonPropertyName("street_line1")]
+    public string? StreetLine1 { get; set; }
+
+    /// <summary>
+    /// Street line2
+    /// </summary>
+    /// <value>Street line2</value>
+    [JsonPropertyName("street_line2")]
+    public string? StreetLine2 { get; set; }
+
+    /// <summary>
+    /// Street line3
+    /// </summary>
+    /// <value>Street line3</value>
+    [JsonPropertyName("street_line3")]
+    public string? StreetLine3 { get; set; }
 
 
     /// <summary>
@@ -134,17 +134,17 @@ public partial class ConnectRoyalMailRequestBody
         sb.Append("class ConnectRoyalMailRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-        sb.Append("  ObaEmail: ").Append(ObaEmail).Append("\n");
+        sb.Append("  City: ").Append(City).Append("\n");
         sb.Append("  ContactName: ").Append(ContactName).Append("\n");
-        sb.Append("  Email: ").Append(Email).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+        sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
         sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
+        sb.Append("  Email: ").Append(Email).Append("\n");
+        sb.Append("  ObaEmail: ").Append(ObaEmail).Append("\n");
+        sb.Append("  Phone: ").Append(Phone).Append("\n");
         sb.Append("  StreetLine1: ").Append(StreetLine1).Append("\n");
         sb.Append("  StreetLine2: ").Append(StreetLine2).Append("\n");
         sb.Append("  StreetLine3: ").Append(StreetLine3).Append("\n");
-        sb.Append("  City: ").Append(City).Append("\n");
-        sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
-        sb.Append("  Phone: ").Append(Phone).Append("\n");
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

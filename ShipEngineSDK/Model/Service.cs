@@ -29,16 +29,6 @@ public partial class Service
 {
 
     /// <summary>
-    /// A string that uniquely identifies the carrier
-    /// </summary>
-    /// <value>A string that uniquely identifies the carrier</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("carrier_id")]
-    public string CarrierId { get; set; }
-
-    /// <summary>
     /// A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.
     /// </summary>
     /// <value>A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.</value>
@@ -46,17 +36,38 @@ public partial class Service
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_code")]
-    public string CarrierCode { get; set; }
+    public string? CarrierCode { get; set; }
 
     /// <summary>
-    /// service code
+    /// A string that uniquely identifies the carrier
     /// </summary>
-    /// <value>service code</value>
+    /// <value>A string that uniquely identifies the carrier</value>
     /// <example>
-    /// usps_media_mail
+    /// se-28529731
     /// </example>
-    [JsonPropertyName("service_code")]
-    public string ServiceCode { get; set; }
+    [JsonPropertyName("carrier_id")]
+    public string? CarrierId { get; set; }
+
+    /// <summary>
+    /// Supports domestic shipping
+    /// </summary>
+    /// <value>Supports domestic shipping</value>
+    [JsonPropertyName("domestic")]
+    public bool? Domestic { get; set; }
+
+    /// <summary>
+    /// Supports international shipping.
+    /// </summary>
+    /// <value>Supports international shipping.</value>
+    [JsonPropertyName("international")]
+    public bool? International { get; set; }
+
+    /// <summary>
+    /// Carrier supports multiple packages per shipment
+    /// </summary>
+    /// <value>Carrier supports multiple packages per shipment</value>
+    [JsonPropertyName("is_multi_package_supported")]
+    public bool? IsMultiPackageSupported { get; set; }
 
     /// <summary>
     /// User friendly service name
@@ -66,28 +77,17 @@ public partial class Service
     /// USPS First Class Mail
     /// </example>
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
-    /// Supports domestic shipping
+    /// service code
     /// </summary>
-    /// <value>Supports domestic shipping</value>
-    [JsonPropertyName("domestic")]
-    public bool Domestic { get; set; }
-
-    /// <summary>
-    /// Supports international shipping.
-    /// </summary>
-    /// <value>Supports international shipping.</value>
-    [JsonPropertyName("international")]
-    public bool International { get; set; }
-
-    /// <summary>
-    /// Carrier supports multiple packages per shipment
-    /// </summary>
-    /// <value>Carrier supports multiple packages per shipment</value>
-    [JsonPropertyName("is_multi_package_supported")]
-    public bool IsMultiPackageSupported { get; set; }
+    /// <value>service code</value>
+    /// <example>
+    /// usps_media_mail
+    /// </example>
+    [JsonPropertyName("service_code")]
+    public string? ServiceCode { get; set; }
 
 
     /// <summary>
@@ -99,13 +99,13 @@ public partial class Service
         StringBuilder sb = new StringBuilder();
         sb.Append("class Service {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
-        sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
-        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  Domestic: ").Append(Domestic).Append("\n");
         sb.Append("  International: ").Append(International).Append("\n");
         sb.Append("  IsMultiPackageSupported: ").Append(IsMultiPackageSupported).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -29,23 +29,20 @@ public partial class GetPickupsResponseBody
 {
 
     /// <summary>
-    /// An array of pickups associated with the user&#39;s account.
+    /// The errors associated with the failed API call
     /// </summary>
-    /// <value>An array of pickups associated with the user&#39;s account.</value>
-    [JsonPropertyName("pickups")]
+    /// <value>The errors associated with the failed API call</value>
+    [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Pickup> Pickups { get; set; }
+    public List<Error> Errors { get; set; }
 
     /// <summary>
-    /// The total number of pickups returned
+    /// Helpful links to other pages of results
     /// </summary>
-    /// <value>The total number of pickups returned</value>
-    /// <example>
-    /// 3
-    /// </example>
-    [JsonPropertyName("total")]
+    /// <value>Helpful links to other pages of results</value>
+    [JsonPropertyName("links")]
     [JsonRequired]
-    public long Total { get; set; }
+    public PaginationLink Links { get; set; }
 
     /// <summary>
     /// Current page of the list pickups results
@@ -70,12 +67,12 @@ public partial class GetPickupsResponseBody
     public int Pages { get; set; }
 
     /// <summary>
-    /// Helpful links to other pages of results
+    /// An array of pickups associated with the user&#39;s account.
     /// </summary>
-    /// <value>Helpful links to other pages of results</value>
-    [JsonPropertyName("links")]
+    /// <value>An array of pickups associated with the user&#39;s account.</value>
+    [JsonPropertyName("pickups")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public List<Pickup> Pickups { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -89,12 +86,15 @@ public partial class GetPickupsResponseBody
     public Guid RequestId { get; set; }
 
     /// <summary>
-    /// The errors associated with the failed API call
+    /// The total number of pickups returned
     /// </summary>
-    /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
+    /// <value>The total number of pickups returned</value>
+    /// <example>
+    /// 3
+    /// </example>
+    [JsonPropertyName("total")]
     [JsonRequired]
-    public List<Error> Errors { get; set; }
+    public long Total { get; set; }
 
 
     /// <summary>
@@ -106,13 +106,13 @@ public partial class GetPickupsResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetPickupsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Pickups: ").Append(Pickups).Append("\n");
-        sb.Append("  Total: ").Append(Total).Append("\n");
+        sb.Append("  Errors: ").Append(Errors).Append("\n");
+        sb.Append("  Links: ").Append(Links).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
         sb.Append("  Pages: ").Append(Pages).Append("\n");
-        sb.Append("  Links: ").Append(Links).Append("\n");
+        sb.Append("  Pickups: ").Append(Pickups).Append("\n");
         sb.Append("  RequestId: ").Append(RequestId).Append("\n");
-        sb.Append("  Errors: ").Append(Errors).Append("\n");
+        sb.Append("  Total: ").Append(Total).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

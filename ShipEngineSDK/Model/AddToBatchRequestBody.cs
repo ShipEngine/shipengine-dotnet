@@ -29,18 +29,18 @@ public partial class AddToBatchRequestBody
 {
 
     /// <summary>
-    /// The Shipment Ids to be modified on the batch
-    /// </summary>
-    /// <value>The Shipment Ids to be modified on the batch</value>
-    [JsonPropertyName("shipment_ids")]
-    public List<string> ShipmentIds { get; set; }
-
-    /// <summary>
     /// Array of Rate IDs to be modifed on the batch
     /// </summary>
     /// <value>Array of Rate IDs to be modifed on the batch</value>
     [JsonPropertyName("rate_ids")]
-    public List<string> RateIds { get; set; }
+    public List<string>? RateIds { get; set; }
+
+    /// <summary>
+    /// The Shipment Ids to be modified on the batch
+    /// </summary>
+    /// <value>The Shipment Ids to be modified on the batch</value>
+    [JsonPropertyName("shipment_ids")]
+    public List<string>? ShipmentIds { get; set; }
 
 
     /// <summary>
@@ -52,8 +52,8 @@ public partial class AddToBatchRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class AddToBatchRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  ShipmentIds: ").Append(ShipmentIds).Append("\n");
         sb.Append("  RateIds: ").Append(RateIds).Append("\n");
+        sb.Append("  ShipmentIds: ").Append(ShipmentIds).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -33,14 +33,14 @@ public partial class AdvancedShipmentOptionsDangerousGoodsContact
     /// </summary>
     /// <value>Name of the contact</value>
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Phone number of the contact
     /// </summary>
     /// <value>Phone number of the contact</value>
     [JsonPropertyName("phone")]
-    public string Phone { get; set; }
+    public string? Phone { get; set; }
 
 
     /// <summary>

@@ -29,26 +29,15 @@ public partial class DeprecatedManifest
 {
 
     /// <summary>
-    /// A string that uniquely identifies the manifest
+    /// A string that uniquely identifies the carrier
     /// </summary>
-    /// <value>A string that uniquely identifies the manifest</value>
+    /// <value>A string that uniquely identifies the carrier</value>
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("manifest_id")]
+    [JsonPropertyName("carrier_id")]
     [Obsolete]
-    public string ManifestId { get; set; }
-
-    /// <summary>
-    /// A string that uniquely identifies the form
-    /// </summary>
-    /// <value>A string that uniquely identifies the form</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("form_id")]
-    [Obsolete]
-    public string FormId { get; set; }
+    public string? CarrierId { get; set; }
 
     /// <summary>
     /// The date-time that the manifest was created
@@ -59,7 +48,44 @@ public partial class DeprecatedManifest
     /// </example>
     [JsonPropertyName("created_at")]
     [Obsolete]
-    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset? CreatedAt { get; set; }
+
+    /// <summary>
+    /// A string that uniquely identifies the form
+    /// </summary>
+    /// <value>A string that uniquely identifies the form</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("form_id")]
+    [Obsolete]
+    public string? FormId { get; set; }
+
+    /// <summary>
+    /// An array of the label ids used in this manifest.
+    /// </summary>
+    /// <value>An array of the label ids used in this manifest.</value>
+    [JsonPropertyName("label_ids")]
+    [Obsolete]
+    public List<string>? LabelIds { get; set; }
+
+    /// <summary>
+    /// Gets or Sets ManifestDownload
+    /// </summary>
+    [JsonPropertyName("manifest_download")]
+    [Obsolete]
+    public ManifestDownload? ManifestDownload { get; set; }
+
+    /// <summary>
+    /// A string that uniquely identifies the manifest
+    /// </summary>
+    /// <value>A string that uniquely identifies the manifest</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("manifest_id")]
+    [Obsolete]
+    public string? ManifestId { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -70,7 +96,7 @@ public partial class DeprecatedManifest
     /// </example>
     [JsonPropertyName("ship_date")]
     [Obsolete]
-    public DateTimeOffset ShipDate { get; set; }
+    public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest
@@ -81,18 +107,7 @@ public partial class DeprecatedManifest
     /// </example>
     [JsonPropertyName("shipments")]
     [Obsolete]
-    public int Shipments { get; set; }
-
-    /// <summary>
-    /// A string that uniquely identifies the warehouse
-    /// </summary>
-    /// <value>A string that uniquely identifies the warehouse</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("warehouse_id")]
-    [Obsolete]
-    public string WarehouseId { get; set; }
+    public int? Shipments { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
@@ -103,33 +118,18 @@ public partial class DeprecatedManifest
     /// </example>
     [JsonPropertyName("submission_id")]
     [Obsolete]
-    public string SubmissionId { get; set; }
+    public string? SubmissionId { get; set; }
 
     /// <summary>
-    /// A string that uniquely identifies the carrier
+    /// A string that uniquely identifies the warehouse
     /// </summary>
-    /// <value>A string that uniquely identifies the carrier</value>
+    /// <value>A string that uniquely identifies the warehouse</value>
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
+    [JsonPropertyName("warehouse_id")]
     [Obsolete]
-    public string CarrierId { get; set; }
-
-    /// <summary>
-    /// Gets or Sets ManifestDownload
-    /// </summary>
-    [JsonPropertyName("manifest_download")]
-    [Obsolete]
-    public ManifestDownload ManifestDownload { get; set; }
-
-    /// <summary>
-    /// An array of the label ids used in this manifest.
-    /// </summary>
-    /// <value>An array of the label ids used in this manifest.</value>
-    [JsonPropertyName("label_ids")]
-    [Obsolete]
-    public List<string> LabelIds { get; set; }
+    public string? WarehouseId { get; set; }
 
 
     /// <summary>
@@ -141,16 +141,16 @@ public partial class DeprecatedManifest
         StringBuilder sb = new StringBuilder();
         sb.Append("class DeprecatedManifest {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  ManifestId: ").Append(ManifestId).Append("\n");
-        sb.Append("  FormId: ").Append(FormId).Append("\n");
+        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+        sb.Append("  FormId: ").Append(FormId).Append("\n");
+        sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
+        sb.Append("  ManifestDownload: ").Append(ManifestDownload).Append("\n");
+        sb.Append("  ManifestId: ").Append(ManifestId).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  Shipments: ").Append(Shipments).Append("\n");
-        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
         sb.Append("  SubmissionId: ").Append(SubmissionId).Append("\n");
-        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
-        sb.Append("  ManifestDownload: ").Append(ManifestDownload).Append("\n");
-        sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
+        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

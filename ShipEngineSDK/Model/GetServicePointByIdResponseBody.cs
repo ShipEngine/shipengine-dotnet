@@ -32,7 +32,7 @@ public partial class GetServicePointByIdResponseBody
     /// Gets or Sets ServicePoint
     /// </summary>
     [JsonPropertyName("service_point")]
-    public GetServicePointByIdResponseBodyServicePoint ServicePoint { get; set; }
+    public GetServicePointByIdResponseBodyServicePoint? ServicePoint { get; set; }
 
 
     /// <summary>

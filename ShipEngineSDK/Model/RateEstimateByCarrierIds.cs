@@ -33,7 +33,7 @@ public partial class RateEstimateByCarrierIds
     /// </summary>
     /// <value>Array of Carrier Ids</value>
     [JsonPropertyName("carrier_ids")]
-    public List<string> CarrierIds { get; set; }
+    public List<string>? CarrierIds { get; set; }
 
 
     /// <summary>

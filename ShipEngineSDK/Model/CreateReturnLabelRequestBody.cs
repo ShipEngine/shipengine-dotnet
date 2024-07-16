@@ -35,11 +35,16 @@ public partial class CreateReturnLabelRequestBody
     [JsonPropertyName("charge_event")]
     public LabelChargeEvent? ChargeEvent { get; set; }
     /// <summary>
-    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format.   CLOVUS
+    /// The display format that the label should be shown in.  CLOVUS
     /// </summary>
-    /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    [JsonPropertyName("label_layout")]
-    public LabelLayout? LabelLayout { get; set; }
+    /// <value>The display format that the label should be shown in.</value>
+    [JsonPropertyName("display_scheme")]
+    public DisplayScheme? DisplayScheme { get; set; }
+    /// <summary>
+    /// Gets or Sets LabelDownloadType  CLOVUS
+    /// </summary>
+    [JsonPropertyName("label_download_type")]
+    public LabelDownloadType? LabelDownloadType { get; set; }
     /// <summary>
     /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats.   CLOVUS
     /// </summary>
@@ -47,16 +52,11 @@ public partial class CreateReturnLabelRequestBody
     [JsonPropertyName("label_format")]
     public LabelFormat? LabelFormat { get; set; }
     /// <summary>
-    /// Gets or Sets LabelDownloadType  CLOVUS
+    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format.   CLOVUS
     /// </summary>
-    [JsonPropertyName("label_download_type")]
-    public LabelDownloadType? LabelDownloadType { get; set; }
-    /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
-    /// </summary>
-    /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
-    public DisplayScheme? DisplayScheme { get; set; }
+    /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
+    [JsonPropertyName("label_layout")]
+    public LabelLayout? LabelLayout { get; set; }
     /// <summary>
     /// The label image resource that was used to create a custom label image.
     /// </summary>
@@ -65,7 +65,7 @@ public partial class CreateReturnLabelRequestBody
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
     [JsonPropertyName("label_image_id")]
-    public string LabelImageId { get; set; }
+    public string? LabelImageId { get; set; }
 
 
     /// <summary>
@@ -78,11 +78,11 @@ public partial class CreateReturnLabelRequestBody
         sb.Append("class CreateReturnLabelRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ChargeEvent: ").Append(ChargeEvent).Append("\n");
-        sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
-        sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
-        sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
+        sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");
+        sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  LabelImageId: ").Append(LabelImageId).Append("\n");
+        sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

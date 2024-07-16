@@ -34,39 +34,39 @@ public partial class FedexSettingsResponseBody
     [JsonPropertyName("pickup_type")]
     public FedexPickupType? PickupType { get; set; }
     /// <summary>
-    /// Gets or Sets SmartPostHub  CLOVUS
-    /// </summary>
-    [JsonPropertyName("smart_post_hub")]
-    public SmartPostHub? SmartPostHub { get; set; }
-    /// <summary>
     /// Gets or Sets SmartPostEndorsement  CLOVUS
     /// </summary>
     [JsonPropertyName("smart_post_endorsement")]
     public AncillaryServiceEndorsement? SmartPostEndorsement { get; set; }
     /// <summary>
-    /// Account nickname
+    /// Gets or Sets SmartPostHub  CLOVUS
     /// </summary>
-    /// <value>Account nickname</value>
-    [JsonPropertyName("nickname")]
-    public string Nickname { get; set; }
-
+    [JsonPropertyName("smart_post_hub")]
+    public SmartPostHub? SmartPostHub { get; set; }
     /// <summary>
     /// Gets or Sets IsPrimaryAccount
     /// </summary>
     [JsonPropertyName("is_primary_account")]
-    public bool IsPrimaryAccount { get; set; }
-
-    /// <summary>
-    /// Gets or Sets SignatureImage
-    /// </summary>
-    [JsonPropertyName("signature_image")]
-    public string SignatureImage { get; set; }
+    public bool? IsPrimaryAccount { get; set; }
 
     /// <summary>
     /// Gets or Sets LetterheadImage
     /// </summary>
     [JsonPropertyName("letterhead_image")]
-    public string LetterheadImage { get; set; }
+    public string? LetterheadImage { get; set; }
+
+    /// <summary>
+    /// Account nickname
+    /// </summary>
+    /// <value>Account nickname</value>
+    [JsonPropertyName("nickname")]
+    public string? Nickname { get; set; }
+
+    /// <summary>
+    /// Gets or Sets SignatureImage
+    /// </summary>
+    [JsonPropertyName("signature_image")]
+    public string? SignatureImage { get; set; }
 
 
     /// <summary>
@@ -78,13 +78,13 @@ public partial class FedexSettingsResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class FedexSettingsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  IsPrimaryAccount: ").Append(IsPrimaryAccount).Append("\n");
+        sb.Append("  LetterheadImage: ").Append(LetterheadImage).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  PickupType: ").Append(PickupType).Append("\n");
-        sb.Append("  SmartPostHub: ").Append(SmartPostHub).Append("\n");
-        sb.Append("  SmartPostEndorsement: ").Append(SmartPostEndorsement).Append("\n");
-        sb.Append("  IsPrimaryAccount: ").Append(IsPrimaryAccount).Append("\n");
         sb.Append("  SignatureImage: ").Append(SignatureImage).Append("\n");
-        sb.Append("  LetterheadImage: ").Append(LetterheadImage).Append("\n");
+        sb.Append("  SmartPostEndorsement: ").Append(SmartPostEndorsement).Append("\n");
+        sb.Append("  SmartPostHub: ").Append(SmartPostHub).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

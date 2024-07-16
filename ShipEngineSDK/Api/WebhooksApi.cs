@@ -113,11 +113,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="webhookId">Webhook ID</param>
     /// <param name="updateWebhookRequestBody"></param>
+    /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWebhook(string webhookId, UpdateWebhookRequestBody updateWebhookRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateWebhook(UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update a Webhook Update the webhook url property
@@ -125,11 +125,11 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="webhookId">Webhook ID</param>
     /// <param name="updateWebhookRequestBody"></param>
+    /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWebhook(HttpClient methodClient, string webhookId, UpdateWebhookRequestBody updateWebhookRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateWebhook(HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default);
 
 }
 
@@ -302,13 +302,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="webhookId">Webhook ID</param>
     /// <param name="updateWebhookRequestBody"></param>
+    /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> UpdateWebhook(string webhookId, UpdateWebhookRequestBody updateWebhookRequestBody, CancellationToken cancellationToken = default)
+    public Task<string> UpdateWebhook(UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
     {
-        return UpdateWebhook(_client, webhookId, updateWebhookRequestBody, cancellationToken);
+        return UpdateWebhook(_client, updateWebhookRequestBody, webhookId, cancellationToken);
     }
 
     /// <summary>
@@ -317,22 +317,22 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="webhookId">Webhook ID</param>
     /// <param name="updateWebhookRequestBody"></param>
+    /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateWebhook(HttpClient methodClient, string webhookId, UpdateWebhookRequestBody updateWebhookRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateWebhook(HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
     {
-        // verify the required parameter 'webhookId' is set
-        if (webhookId == null)
-        {
-            throw new ArgumentNullException(nameof(webhookId));
-        }
-
         // verify the required parameter 'updateWebhookRequestBody' is set
         if (updateWebhookRequestBody == null)
         {
             throw new ArgumentNullException(nameof(updateWebhookRequestBody));
+        }
+
+        // verify the required parameter 'webhookId' is set
+        if (webhookId == null)
+        {
+            throw new ArgumentNullException(nameof(webhookId));
         }
 
 

@@ -33,7 +33,7 @@ public partial class ListTagsResponseBody
     /// </summary>
     /// <value>The array of tags returned by the API call</value>
     [JsonPropertyName("tags")]
-    public List<Tag> Tags { get; set; }
+    public List<Tag>? Tags { get; set; }
 
 
     /// <summary>

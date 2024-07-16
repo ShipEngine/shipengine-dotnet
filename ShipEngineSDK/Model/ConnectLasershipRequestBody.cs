@@ -29,12 +29,68 @@ public partial class ConnectLasershipRequestBody
 {
 
     /// <summary>
+    /// Address
+    /// </summary>
+    /// <value>Address</value>
+    [JsonPropertyName("Address")]
+    [JsonRequired]
+    public string Address { get; set; }
+
+    /// <summary>
+    /// City
+    /// </summary>
+    /// <value>City</value>
+    [JsonPropertyName("City")]
+    [JsonRequired]
+    public string City { get; set; }
+
+    /// <summary>
+    /// Customer Branch
+    /// </summary>
+    /// <value>Customer Branch</value>
+    [JsonPropertyName("customer_branch")]
+    [JsonRequired]
+    public string CustomerBranch { get; set; }
+
+    /// <summary>
+    /// Critical Entry Time (local time)
+    /// </summary>
+    /// <value>Critical Entry Time (local time)</value>
+    [JsonPropertyName("lasership_critical_entry_time")]
+    [JsonRequired]
+    public string LasershipCriticalEntryTime { get; set; }
+
+    /// <summary>
+    /// Critical Pull Time (local time)
+    /// </summary>
+    /// <value>Critical Pull Time (local time)</value>
+    [JsonPropertyName("lasership_critical_pull_time")]
+    [JsonRequired]
+    public string LasershipCriticalPullTime { get; set; }
+
+    /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
     public string Nickname { get; set; }
+
+    /// <summary>
+    /// PostalCode
+    /// </summary>
+    /// <value>PostalCode</value>
+    [JsonPropertyName("PostalCode")]
+    [JsonRequired]
+    public string PostalCode { get; set; }
+
+    /// <summary>
+    /// State
+    /// </summary>
+    /// <value>State</value>
+    [JsonPropertyName("State")]
+    [JsonRequired]
+    public string State { get; set; }
 
     /// <summary>
     /// Web Service ID (WSID)
@@ -53,172 +109,116 @@ public partial class ConnectLasershipRequestBody
     public string WebServicesKey { get; set; }
 
     /// <summary>
-    /// Customer Branch
-    /// </summary>
-    /// <value>Customer Branch</value>
-    [JsonPropertyName("customer_branch")]
-    [JsonRequired]
-    public string CustomerBranch { get; set; }
-
-    /// <summary>
-    /// Address
-    /// </summary>
-    /// <value>Address</value>
-    [JsonPropertyName("Address")]
-    [JsonRequired]
-    public String Address { get; set; }
-
-    /// <summary>
     /// Address2
     /// </summary>
     /// <value>Address2</value>
     [JsonPropertyName("Address2")]
-    public String Address2 { get; set; }
-
-    /// <summary>
-    /// PostalCode
-    /// </summary>
-    /// <value>PostalCode</value>
-    [JsonPropertyName("PostalCode")]
-    [JsonRequired]
-    public String PostalCode { get; set; }
-
-    /// <summary>
-    /// City
-    /// </summary>
-    /// <value>City</value>
-    [JsonPropertyName("City")]
-    [JsonRequired]
-    public String City { get; set; }
-
-    /// <summary>
-    /// State
-    /// </summary>
-    /// <value>State</value>
-    [JsonPropertyName("State")]
-    [JsonRequired]
-    public String State { get; set; }
-
-    /// <summary>
-    /// Country
-    /// </summary>
-    /// <value>Country</value>
-    [JsonPropertyName("country")]
-    public String Country { get; set; }
-
-    /// <summary>
-    /// Phone
-    /// </summary>
-    /// <value>Phone</value>
-    [JsonPropertyName("Phone")]
-    public String Phone { get; set; }
-
-    /// <summary>
-    /// Email
-    /// </summary>
-    /// <value>Email</value>
-    [JsonPropertyName("Email")]
-    public String Email { get; set; }
-
-    /// <summary>
-    /// Instructions
-    /// </summary>
-    /// <value>Instructions</value>
-    [JsonPropertyName("instructions")]
-    public String Instructions { get; set; }
-
-    /// <summary>
-    /// Facility Code
-    /// </summary>
-    /// <value>Facility Code</value>
-    [JsonPropertyName("facility_code")]
-    public String FacilityCode { get; set; }
-
-    /// <summary>
-    /// Critical Pull Time (local time)
-    /// </summary>
-    /// <value>Critical Pull Time (local time)</value>
-    [JsonPropertyName("lasership_critical_pull_time")]
-    [JsonRequired]
-    public String LasershipCriticalPullTime { get; set; }
-
-    /// <summary>
-    /// Critical Entry Time (local time)
-    /// </summary>
-    /// <value>Critical Entry Time (local time)</value>
-    [JsonPropertyName("lasership_critical_entry_time")]
-    [JsonRequired]
-    public String LasershipCriticalEntryTime { get; set; }
-
-    /// <summary>
-    /// Declare piece attributes separately for every shipment, overrides individual attribute below.
-    /// </summary>
-    /// <value>Declare piece attributes separately for every shipment, overrides individual attribute below.</value>
-    [JsonPropertyName("declare_piece_attributes_separately_for_every_shipment")]
-    public Boolean DeclarePieceAttributesSeparatelyForEveryShipment { get; set; }
+    public string? Address2 { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Alcohol
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Alcohol</value>
     [JsonPropertyName("AttrAlcohol")]
-    public Boolean AttrAlcohol { get; set; }
-
-    /// <summary>
-    /// Set this to true if your shipments will always contain DryIce
-    /// </summary>
-    /// <value>Set this to true if your shipments will always contain DryIce</value>
-    [JsonPropertyName("AttrDryIce")]
-    public Boolean AttrDryIce { get; set; }
-
-    /// <summary>
-    /// Set this to true if your shipments will always contain Hazmat
-    /// </summary>
-    /// <value>Set this to true if your shipments will always contain Hazmat</value>
-    [JsonPropertyName("AttrHazmat")]
-    public Boolean AttrHazmat { get; set; }
-
-    /// <summary>
-    /// Set this to true if your shipments will always require Two Persons
-    /// </summary>
-    /// <value>Set this to true if your shipments will always require Two Persons</value>
-    [JsonPropertyName("AttrTwoPersons")]
-    public Boolean AttrTwoPersons { get; set; }
-
-    /// <summary>
-    /// Set this to true if your shipments will always contain Explosives
-    /// </summary>
-    /// <value>Set this to true if your shipments will always contain Explosives</value>
-    [JsonPropertyName("AttrExplosive")]
-    public Boolean AttrExplosive { get; set; }
+    public bool? AttrAlcohol { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Controlled Substances
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Controlled Substances</value>
     [JsonPropertyName("AttrControlledSubstance")]
-    public Boolean AttrControlledSubstance { get; set; }
+    public bool? AttrControlledSubstance { get; set; }
 
     /// <summary>
-    /// Set this to true if your shipments will always require Refrigeration
+    /// Set this to true if your shipments will always contain DryIce
     /// </summary>
-    /// <value>Set this to true if your shipments will always require Refrigeration</value>
-    [JsonPropertyName("AttrRefrigerated")]
-    public Boolean AttrRefrigerated { get; set; }
+    /// <value>Set this to true if your shipments will always contain DryIce</value>
+    [JsonPropertyName("AttrDryIce")]
+    public bool? AttrDryIce { get; set; }
 
     /// <summary>
-    /// Set this to true if your shipments will always be Perishable
+    /// Set this to true if your shipments will always contain Explosives
     /// </summary>
-    /// <value>Set this to true if your shipments will always be Perishable</value>
-    [JsonPropertyName("AttrPerishable")]
-    public Boolean AttrPerishable { get; set; }
+    /// <value>Set this to true if your shipments will always contain Explosives</value>
+    [JsonPropertyName("AttrExplosive")]
+    public bool? AttrExplosive { get; set; }
+
+    /// <summary>
+    /// Set this to true if your shipments will always contain Hazmat
+    /// </summary>
+    /// <value>Set this to true if your shipments will always contain Hazmat</value>
+    [JsonPropertyName("AttrHazmat")]
+    public bool? AttrHazmat { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always use \&quot;No Return To Sender\&quot;
     /// </summary>
     /// <value>Set this to true if your shipments will always use \&quot;No Return To Sender\&quot;</value>
     [JsonPropertyName("AttrNoRTS")]
-    public Boolean AttrNoRTS { get; set; }
+    public bool? AttrNoRTS { get; set; }
+
+    /// <summary>
+    /// Set this to true if your shipments will always be Perishable
+    /// </summary>
+    /// <value>Set this to true if your shipments will always be Perishable</value>
+    [JsonPropertyName("AttrPerishable")]
+    public bool? AttrPerishable { get; set; }
+
+    /// <summary>
+    /// Set this to true if your shipments will always require Refrigeration
+    /// </summary>
+    /// <value>Set this to true if your shipments will always require Refrigeration</value>
+    [JsonPropertyName("AttrRefrigerated")]
+    public bool? AttrRefrigerated { get; set; }
+
+    /// <summary>
+    /// Set this to true if your shipments will always require Two Persons
+    /// </summary>
+    /// <value>Set this to true if your shipments will always require Two Persons</value>
+    [JsonPropertyName("AttrTwoPersons")]
+    public bool? AttrTwoPersons { get; set; }
+
+    /// <summary>
+    /// Country
+    /// </summary>
+    /// <value>Country</value>
+    [JsonPropertyName("country")]
+    public string? Country { get; set; }
+
+    /// <summary>
+    /// Declare piece attributes separately for every shipment, overrides individual attribute below.
+    /// </summary>
+    /// <value>Declare piece attributes separately for every shipment, overrides individual attribute below.</value>
+    [JsonPropertyName("declare_piece_attributes_separately_for_every_shipment")]
+    public bool? DeclarePieceAttributesSeparatelyForEveryShipment { get; set; }
+
+    /// <summary>
+    /// Email
+    /// </summary>
+    /// <value>Email</value>
+    [JsonPropertyName("Email")]
+    public string? Email { get; set; }
+
+    /// <summary>
+    /// Facility Code
+    /// </summary>
+    /// <value>Facility Code</value>
+    [JsonPropertyName("facility_code")]
+    public string? FacilityCode { get; set; }
+
+    /// <summary>
+    /// Instructions
+    /// </summary>
+    /// <value>Instructions</value>
+    [JsonPropertyName("instructions")]
+    public string? Instructions { get; set; }
+
+    /// <summary>
+    /// Phone
+    /// </summary>
+    /// <value>Phone</value>
+    [JsonPropertyName("Phone")]
+    public string? Phone { get; set; }
 
 
     /// <summary>
@@ -230,32 +230,32 @@ public partial class ConnectLasershipRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectLasershipRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  Address: ").Append(Address).Append("\n");
+        sb.Append("  City: ").Append(City).Append("\n");
+        sb.Append("  CustomerBranch: ").Append(CustomerBranch).Append("\n");
+        sb.Append("  LasershipCriticalEntryTime: ").Append(LasershipCriticalEntryTime).Append("\n");
+        sb.Append("  LasershipCriticalPullTime: ").Append(LasershipCriticalPullTime).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+        sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
+        sb.Append("  State: ").Append(State).Append("\n");
         sb.Append("  WebServicesId: ").Append(WebServicesId).Append("\n");
         sb.Append("  WebServicesKey: ").Append(WebServicesKey).Append("\n");
-        sb.Append("  CustomerBranch: ").Append(CustomerBranch).Append("\n");
-        sb.Append("  Address: ").Append(Address).Append("\n");
         sb.Append("  Address2: ").Append(Address2).Append("\n");
-        sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
-        sb.Append("  City: ").Append(City).Append("\n");
-        sb.Append("  State: ").Append(State).Append("\n");
-        sb.Append("  Country: ").Append(Country).Append("\n");
-        sb.Append("  Phone: ").Append(Phone).Append("\n");
-        sb.Append("  Email: ").Append(Email).Append("\n");
-        sb.Append("  Instructions: ").Append(Instructions).Append("\n");
-        sb.Append("  FacilityCode: ").Append(FacilityCode).Append("\n");
-        sb.Append("  LasershipCriticalPullTime: ").Append(LasershipCriticalPullTime).Append("\n");
-        sb.Append("  LasershipCriticalEntryTime: ").Append(LasershipCriticalEntryTime).Append("\n");
-        sb.Append("  DeclarePieceAttributesSeparatelyForEveryShipment: ").Append(DeclarePieceAttributesSeparatelyForEveryShipment).Append("\n");
         sb.Append("  AttrAlcohol: ").Append(AttrAlcohol).Append("\n");
-        sb.Append("  AttrDryIce: ").Append(AttrDryIce).Append("\n");
-        sb.Append("  AttrHazmat: ").Append(AttrHazmat).Append("\n");
-        sb.Append("  AttrTwoPersons: ").Append(AttrTwoPersons).Append("\n");
-        sb.Append("  AttrExplosive: ").Append(AttrExplosive).Append("\n");
         sb.Append("  AttrControlledSubstance: ").Append(AttrControlledSubstance).Append("\n");
-        sb.Append("  AttrRefrigerated: ").Append(AttrRefrigerated).Append("\n");
-        sb.Append("  AttrPerishable: ").Append(AttrPerishable).Append("\n");
+        sb.Append("  AttrDryIce: ").Append(AttrDryIce).Append("\n");
+        sb.Append("  AttrExplosive: ").Append(AttrExplosive).Append("\n");
+        sb.Append("  AttrHazmat: ").Append(AttrHazmat).Append("\n");
         sb.Append("  AttrNoRTS: ").Append(AttrNoRTS).Append("\n");
+        sb.Append("  AttrPerishable: ").Append(AttrPerishable).Append("\n");
+        sb.Append("  AttrRefrigerated: ").Append(AttrRefrigerated).Append("\n");
+        sb.Append("  AttrTwoPersons: ").Append(AttrTwoPersons).Append("\n");
+        sb.Append("  Country: ").Append(Country).Append("\n");
+        sb.Append("  DeclarePieceAttributesSeparatelyForEveryShipment: ").Append(DeclarePieceAttributesSeparatelyForEveryShipment).Append("\n");
+        sb.Append("  Email: ").Append(Email).Append("\n");
+        sb.Append("  FacilityCode: ").Append(FacilityCode).Append("\n");
+        sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+        sb.Append("  Phone: ").Append(Phone).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

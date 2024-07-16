@@ -37,6 +37,14 @@ public partial class Dimensions
 
 
     /// <summary>
+    /// The height of the package, in the specified unit
+    /// </summary>
+    /// <value>The height of the package, in the specified unit</value>
+    [JsonPropertyName("height")]
+    [JsonRequired]
+    public double Height { get; set; }
+
+    /// <summary>
     /// The length of the package, in the specified unit
     /// </summary>
     /// <value>The length of the package, in the specified unit</value>
@@ -52,14 +60,6 @@ public partial class Dimensions
     [JsonRequired]
     public double Width { get; set; }
 
-    /// <summary>
-    /// The height of the package, in the specified unit
-    /// </summary>
-    /// <value>The height of the package, in the specified unit</value>
-    [JsonPropertyName("height")]
-    [JsonRequired]
-    public double Height { get; set; }
-
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -71,9 +71,9 @@ public partial class Dimensions
         sb.Append("class Dimensions {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Unit: ").Append(Unit).Append("\n");
+        sb.Append("  Height: ").Append(Height).Append("\n");
         sb.Append("  Length: ").Append(Length).Append("\n");
         sb.Append("  Width: ").Append(Width).Append("\n");
-        sb.Append("  Height: ").Append(Height).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

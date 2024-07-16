@@ -29,6 +29,13 @@ public partial class PaperlessDownload
 {
 
     /// <summary>
+    /// The handoff code for the paperless download. 
+    /// </summary>
+    /// <value>The handoff code for the paperless download. </value>
+    [JsonPropertyName("handoff_code")]
+    public string? HandoffCode { get; set; }
+
+    /// <summary>
     /// The URL of the linked resource, if any
     /// </summary>
     /// <value>The URL of the linked resource, if any</value>
@@ -36,21 +43,14 @@ public partial class PaperlessDownload
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
     [JsonPropertyName("href")]
-    public string Href { get; set; }
+    public string? Href { get; set; }
 
     /// <summary>
     /// The instructions for the paperless download. 
     /// </summary>
     /// <value>The instructions for the paperless download. </value>
     [JsonPropertyName("instructions")]
-    public string Instructions { get; set; }
-
-    /// <summary>
-    /// The handoff code for the paperless download. 
-    /// </summary>
-    /// <value>The handoff code for the paperless download. </value>
-    [JsonPropertyName("handoff_code")]
-    public string HandoffCode { get; set; }
+    public string? Instructions { get; set; }
 
 
     /// <summary>
@@ -62,9 +62,9 @@ public partial class PaperlessDownload
         StringBuilder sb = new StringBuilder();
         sb.Append("class PaperlessDownload {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  HandoffCode: ").Append(HandoffCode).Append("\n");
         sb.Append("  Href: ").Append(Href).Append("\n");
         sb.Append("  Instructions: ").Append(Instructions).Append("\n");
-        sb.Append("  HandoffCode: ").Append(HandoffCode).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

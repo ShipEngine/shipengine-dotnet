@@ -29,6 +29,14 @@ public partial class ConnectSendleRequestBody
 {
 
     /// <summary>
+    /// API key
+    /// </summary>
+    /// <value>API key</value>
+    [JsonPropertyName("api_key")]
+    [JsonRequired]
+    public string ApiKey { get; set; }
+
+    /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
@@ -47,14 +55,6 @@ public partial class ConnectSendleRequestBody
     [JsonRequired]
     public string SendleId { get; set; }
 
-    /// <summary>
-    /// API key
-    /// </summary>
-    /// <value>API key</value>
-    [JsonPropertyName("api_key")]
-    [JsonRequired]
-    public string ApiKey { get; set; }
-
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -65,9 +65,9 @@ public partial class ConnectSendleRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectSendleRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  SendleId: ").Append(SendleId).Append("\n");
-        sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

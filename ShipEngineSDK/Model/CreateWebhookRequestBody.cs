@@ -52,7 +52,7 @@ public partial class CreateWebhookRequestBody
     /// </summary>
     /// <value>Array of custom webhook headers</value>
     [JsonPropertyName("headers")]
-    public List<WebhookHeader> Headers { get; set; }
+    public List<WebhookHeader>? Headers { get; set; }
 
 
     /// <summary>

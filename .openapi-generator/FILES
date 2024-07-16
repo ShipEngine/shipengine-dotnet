@@ -17,7 +17,6 @@ ShipEngineSDK/Api/TokensApi.cs
 ShipEngineSDK/Api/TrackingApi.cs
 ShipEngineSDK/Api/WarehousesApi.cs
 ShipEngineSDK/Api/WebhooksApi.cs
-ShipEngineSDK/Model/AbstractOpenAPISchema.cs
 ShipEngineSDK/Model/AccountSettings.cs
 ShipEngineSDK/Model/AccountSettingsImages.cs
 ShipEngineSDK/Model/AddFundsToCarrierRequestBody.cs

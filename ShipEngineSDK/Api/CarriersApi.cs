@@ -31,11 +31,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierId">Carrier ID</param>
     /// <param name="addFundsToCarrierRequestBody"></param>
+    /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(string carrierId, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, CancellationToken cancellationToken = default);
+    Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Add Funds To Carrier Add Funds To A Carrier
@@ -43,11 +43,11 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="carrierId">Carrier ID</param>
     /// <param name="addFundsToCarrierRequestBody"></param>
+    /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(HttpClient methodClient, string carrierId, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, CancellationToken cancellationToken = default);
+    Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect Carrier by ID Disconnect a Carrier of the given ID from the account
@@ -185,13 +185,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="carrierId">Carrier ID</param>
     /// <param name="addFundsToCarrierRequestBody"></param>
+    /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    public Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(string carrierId, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, CancellationToken cancellationToken = default)
+    public Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
     {
-        return AddFundsToCarrier(_client, carrierId, addFundsToCarrierRequestBody, cancellationToken);
+        return AddFundsToCarrier(_client, addFundsToCarrierRequestBody, carrierId, cancellationToken);
     }
 
     /// <summary>
@@ -200,22 +200,22 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="carrierId">Carrier ID</param>
     /// <param name="addFundsToCarrierRequestBody"></param>
+    /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    public async Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(HttpClient methodClient, string carrierId, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, CancellationToken cancellationToken = default)
+    public async Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
     {
-        // verify the required parameter 'carrierId' is set
-        if (carrierId == null)
-        {
-            throw new ArgumentNullException(nameof(carrierId));
-        }
-
         // verify the required parameter 'addFundsToCarrierRequestBody' is set
         if (addFundsToCarrierRequestBody == null)
         {
             throw new ArgumentNullException(nameof(addFundsToCarrierRequestBody));
+        }
+
+        // verify the required parameter 'carrierId' is set
+        if (carrierId == null)
+        {
+            throw new ArgumentNullException(nameof(carrierId));
         }
 
 

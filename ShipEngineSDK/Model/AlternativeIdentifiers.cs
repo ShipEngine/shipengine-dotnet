@@ -33,7 +33,7 @@ public partial class AlternativeIdentifiers
     /// </summary>
     /// <value>Alternative identifiers associated with this package. </value>
     [JsonPropertyName("alternative_identifiers")]
-    public List<AlternativeIdentifier> VarAlternativeIdentifiers { get; set; }
+    public List<AlternativeIdentifier>? VarAlternativeIdentifiers { get; set; }
 
 
     /// <summary>

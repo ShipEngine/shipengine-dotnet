@@ -45,11 +45,12 @@ public partial class ConnectFedexRequestBody
     public string Address1 { get; set; }
 
     /// <summary>
-    /// Address
+    /// Boolean signaling agreement to the Fedex End User License Agreement
     /// </summary>
-    /// <value>Address</value>
-    [JsonPropertyName("address2")]
-    public string Address2 { get; set; }
+    /// <value>Boolean signaling agreement to the Fedex End User License Agreement</value>
+    [JsonPropertyName("agree_to_eula")]
+    [JsonRequired]
+    public bool AgreeToEula { get; set; }
 
     /// <summary>
     /// The city
@@ -58,13 +59,6 @@ public partial class ConnectFedexRequestBody
     [JsonPropertyName("city")]
     [JsonRequired]
     public string City { get; set; }
-
-    /// <summary>
-    /// The company
-    /// </summary>
-    /// <value>The company</value>
-    [JsonPropertyName("company")]
-    public string Company { get; set; }
 
     /// <summary>
     /// Country code
@@ -102,6 +96,14 @@ public partial class ConnectFedexRequestBody
     public string LastName { get; set; }
 
     /// <summary>
+    /// Nickname
+    /// </summary>
+    /// <value>Nickname</value>
+    [JsonPropertyName("nickname")]
+    [JsonRequired]
+    public string Nickname { get; set; }
+
+    /// <summary>
     /// Phone number
     /// </summary>
     /// <value>Phone number</value>
@@ -126,27 +128,25 @@ public partial class ConnectFedexRequestBody
     public string State { get; set; }
 
     /// <summary>
-    /// Nickname
+    /// Address
     /// </summary>
-    /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
-    public string Nickname { get; set; }
+    /// <value>Address</value>
+    [JsonPropertyName("address2")]
+    public string? Address2 { get; set; }
 
     /// <summary>
-    /// Boolean signaling agreement to the Fedex End User License Agreement
+    /// The company
     /// </summary>
-    /// <value>Boolean signaling agreement to the Fedex End User License Agreement</value>
-    [JsonPropertyName("agree_to_eula")]
-    [JsonRequired]
-    public bool AgreeToEula { get; set; }
+    /// <value>The company</value>
+    [JsonPropertyName("company")]
+    public string? Company { get; set; }
 
     /// <summary>
     /// Meter number
     /// </summary>
     /// <value>Meter number</value>
     [JsonPropertyName("meter_number")]
-    public string MeterNumber { get; set; }
+    public string? MeterNumber { get; set; }
 
 
     /// <summary>
@@ -160,18 +160,18 @@ public partial class ConnectFedexRequestBody
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  Address1: ").Append(Address1).Append("\n");
-        sb.Append("  Address2: ").Append(Address2).Append("\n");
+        sb.Append("  AgreeToEula: ").Append(AgreeToEula).Append("\n");
         sb.Append("  City: ").Append(City).Append("\n");
-        sb.Append("  Company: ").Append(Company).Append("\n");
         sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
         sb.Append("  Email: ").Append(Email).Append("\n");
         sb.Append("  FirstName: ").Append(FirstName).Append("\n");
         sb.Append("  LastName: ").Append(LastName).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  Phone: ").Append(Phone).Append("\n");
         sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
         sb.Append("  State: ").Append(State).Append("\n");
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
-        sb.Append("  AgreeToEula: ").Append(AgreeToEula).Append("\n");
+        sb.Append("  Address2: ").Append(Address2).Append("\n");
+        sb.Append("  Company: ").Append(Company).Append("\n");
         sb.Append("  MeterNumber: ").Append(MeterNumber).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

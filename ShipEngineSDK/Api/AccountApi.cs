@@ -132,11 +132,11 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="updateAccountSettingsImageRequestBody"></param>
+    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateAccountSettingsImagesById(string labelImageId, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateAccountSettingsImagesById(UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Account Image By ID Update information for an account image.
@@ -144,11 +144,11 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="updateAccountSettingsImageRequestBody"></param>
+    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateAccountSettingsImagesById(HttpClient methodClient, string labelImageId, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, CancellationToken cancellationToken = default);
+    Task<string> UpdateAccountSettingsImagesById(HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default);
 
 }
 
@@ -354,13 +354,13 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="updateAccountSettingsImageRequestBody"></param>
+    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> UpdateAccountSettingsImagesById(string labelImageId, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
+    public Task<string> UpdateAccountSettingsImagesById(UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
     {
-        return UpdateAccountSettingsImagesById(_client, labelImageId, updateAccountSettingsImageRequestBody, cancellationToken);
+        return UpdateAccountSettingsImagesById(_client, updateAccountSettingsImageRequestBody, labelImageId, cancellationToken);
     }
 
     /// <summary>
@@ -369,22 +369,22 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="updateAccountSettingsImageRequestBody"></param>
+    /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateAccountSettingsImagesById(HttpClient methodClient, string labelImageId, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateAccountSettingsImagesById(HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
     {
-        // verify the required parameter 'labelImageId' is set
-        if (labelImageId == null)
-        {
-            throw new ArgumentNullException(nameof(labelImageId));
-        }
-
         // verify the required parameter 'updateAccountSettingsImageRequestBody' is set
         if (updateAccountSettingsImageRequestBody == null)
         {
             throw new ArgumentNullException(nameof(updateAccountSettingsImageRequestBody));
+        }
+
+        // verify the required parameter 'labelImageId' is set
+        if (labelImageId == null)
+        {
+            throw new ArgumentNullException(nameof(labelImageId));
         }
 
 

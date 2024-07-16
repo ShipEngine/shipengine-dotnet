@@ -40,17 +40,6 @@ public partial class ConnectApcRequestBody
     public string Nickname { get; set; }
 
     /// <summary>
-    /// The username for the APC account
-    /// </summary>
-    /// <value>The username for the APC account</value>
-    /// <example>
-    /// john_doe
-    /// </example>
-    [JsonPropertyName("username")]
-    [JsonRequired]
-    public string Username { get; set; }
-
-    /// <summary>
     /// The password for the APC account
     /// </summary>
     /// <value>The password for the APC account</value>
@@ -60,6 +49,17 @@ public partial class ConnectApcRequestBody
     [JsonPropertyName("password")]
     [JsonRequired]
     public string Password { get; set; }
+
+    /// <summary>
+    /// The username for the APC account
+    /// </summary>
+    /// <value>The username for the APC account</value>
+    /// <example>
+    /// john_doe
+    /// </example>
+    [JsonPropertyName("username")]
+    [JsonRequired]
+    public string Username { get; set; }
 
 
     /// <summary>
@@ -72,8 +72,8 @@ public partial class ConnectApcRequestBody
         sb.Append("class ConnectApcRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
-        sb.Append("  Username: ").Append(Username).Append("\n");
         sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

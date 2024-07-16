@@ -34,18 +34,27 @@ public partial class RatesInformation
     [JsonPropertyName("status")]
     public RateResponseStatus? Status { get; set; }
     /// <summary>
-    /// An array of shipment rates
+    /// When the rate was created
     /// </summary>
-    /// <value>An array of shipment rates</value>
-    [JsonPropertyName("rates")]
-    public List<Rate> Rates { get; set; }
+    /// <value>When the rate was created</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("created_at")]
+    public string? CreatedAt { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Errors
+    /// </summary>
+    [JsonPropertyName("errors")]
+    public List<Error>? Errors { get; set; }
 
     /// <summary>
     /// An array of invalid shipment rates
     /// </summary>
     /// <value>An array of invalid shipment rates</value>
     [JsonPropertyName("invalid_rates")]
-    public List<Rate> InvalidRates { get; set; }
+    public List<Rate>? InvalidRates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -55,7 +64,14 @@ public partial class RatesInformation
     /// se-28529731
     /// </example>
     [JsonPropertyName("rate_request_id")]
-    public string RateRequestId { get; set; }
+    public string? RateRequestId { get; set; }
+
+    /// <summary>
+    /// An array of shipment rates
+    /// </summary>
+    /// <value>An array of shipment rates</value>
+    [JsonPropertyName("rates")]
+    public List<Rate>? Rates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -65,23 +81,7 @@ public partial class RatesInformation
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id")]
-    public string ShipmentId { get; set; }
-
-    /// <summary>
-    /// When the rate was created
-    /// </summary>
-    /// <value>When the rate was created</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("created_at")]
-    public string CreatedAt { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Errors
-    /// </summary>
-    [JsonPropertyName("errors")]
-    public List<Error> Errors { get; set; }
+    public string? ShipmentId { get; set; }
 
 
     /// <summary>
@@ -93,13 +93,13 @@ public partial class RatesInformation
         StringBuilder sb = new StringBuilder();
         sb.Append("class RatesInformation {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Rates: ").Append(Rates).Append("\n");
+        sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+        sb.Append("  Errors: ").Append(Errors).Append("\n");
         sb.Append("  InvalidRates: ").Append(InvalidRates).Append("\n");
         sb.Append("  RateRequestId: ").Append(RateRequestId).Append("\n");
+        sb.Append("  Rates: ").Append(Rates).Append("\n");
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
-        sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
         sb.Append("  Status: ").Append(Status).Append("\n");
-        sb.Append("  Errors: ").Append(Errors).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

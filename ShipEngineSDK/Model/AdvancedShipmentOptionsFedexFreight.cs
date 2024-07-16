@@ -29,16 +29,16 @@ public partial class AdvancedShipmentOptionsFedexFreight
 {
 
     /// <summary>
-    /// Gets or Sets ShipperLoadAndCount
-    /// </summary>
-    [JsonPropertyName("shipper_load_and_count")]
-    public string ShipperLoadAndCount { get; set; }
-
-    /// <summary>
     /// Gets or Sets BookingConfirmation
     /// </summary>
     [JsonPropertyName("booking_confirmation")]
-    public string BookingConfirmation { get; set; }
+    public string? BookingConfirmation { get; set; }
+
+    /// <summary>
+    /// Gets or Sets ShipperLoadAndCount
+    /// </summary>
+    [JsonPropertyName("shipper_load_and_count")]
+    public string? ShipperLoadAndCount { get; set; }
 
 
     /// <summary>
@@ -50,8 +50,8 @@ public partial class AdvancedShipmentOptionsFedexFreight
         StringBuilder sb = new StringBuilder();
         sb.Append("class AdvancedShipmentOptionsFedexFreight {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  ShipperLoadAndCount: ").Append(ShipperLoadAndCount).Append("\n");
         sb.Append("  BookingConfirmation: ").Append(BookingConfirmation).Append("\n");
+        sb.Append("  ShipperLoadAndCount: ").Append(ShipperLoadAndCount).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

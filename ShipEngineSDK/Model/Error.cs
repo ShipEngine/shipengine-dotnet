@@ -29,6 +29,14 @@ public partial class Error
 {
 
     /// <summary>
+    /// Gets or Sets ErrorCode  CLOVUS
+    /// </summary>
+    [JsonPropertyName("error_code")]
+    [JsonRequired]
+    public ErrorCode ErrorCode { get; set; } = new();
+
+
+    /// <summary>
     /// Gets or Sets ErrorSource  CLOVUS
     /// </summary>
     [JsonPropertyName("error_source")]
@@ -42,14 +50,6 @@ public partial class Error
     [JsonPropertyName("error_type")]
     [JsonRequired]
     public ErrorType ErrorType { get; set; } = new();
-
-
-    /// <summary>
-    /// Gets or Sets ErrorCode  CLOVUS
-    /// </summary>
-    [JsonPropertyName("error_code")]
-    [JsonRequired]
-    public ErrorCode ErrorCode { get; set; } = new();
 
 
     /// <summary>
@@ -73,9 +73,9 @@ public partial class Error
         StringBuilder sb = new StringBuilder();
         sb.Append("class Error {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
         sb.Append("  ErrorSource: ").Append(ErrorSource).Append("\n");
         sb.Append("  ErrorType: ").Append(ErrorType).Append("\n");
-        sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
         sb.Append("  Message: ").Append(Message).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

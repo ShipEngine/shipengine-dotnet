@@ -29,30 +29,36 @@ public partial class CreateManifestResponseBody
 {
 
     /// <summary>
-    /// Resulting Manifests
+    /// A string that uniquely identifies the carrier
     /// </summary>
-    /// <value>Resulting Manifests</value>
-    [JsonPropertyName("manifests")]
-    public List<Manifest> Manifests { get; set; }
-
-    /// <summary>
-    /// Resulting manifest requests with statuses
-    /// </summary>
-    /// <value>Resulting manifest requests with statuses</value>
-    [JsonPropertyName("manifest_requests")]
-    public List<ManifestRequest> ManifestRequests { get; set; }
-
-    /// <summary>
-    /// A string that uniquely identifies the manifest
-    /// </summary>
-    /// <value>A string that uniquely identifies the manifest</value>
+    /// <value>A string that uniquely identifies the carrier</value>
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("manifest_id")]
+    [JsonPropertyName("carrier_id")]
     [JsonRequired]
     [Obsolete]
-    public string ManifestId { get; set; }
+    public string CarrierId { get; set; }
+
+    /// <summary>
+    /// The date-time that the manifest was created
+    /// </summary>
+    /// <value>The date-time that the manifest was created</value>
+    /// <example>
+    /// 2019-07-12T13:37:39.050Z
+    /// </example>
+    [JsonPropertyName("created_at")]
+    [JsonRequired]
+    [Obsolete]
+    public DateTimeOffset CreatedAt { get; set; }
+
+    /// <summary>
+    /// The errors associated with the failed API call
+    /// </summary>
+    /// <value>The errors associated with the failed API call</value>
+    [JsonPropertyName("errors")]
+    [JsonRequired]
+    public List<Error> Errors { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the form
@@ -67,16 +73,35 @@ public partial class CreateManifestResponseBody
     public string FormId { get; set; }
 
     /// <summary>
-    /// The date-time that the manifest was created
+    /// Gets or Sets ManifestDownload
     /// </summary>
-    /// <value>The date-time that the manifest was created</value>
-    /// <example>
-    /// 2019-07-12T13:37:39.050Z
-    /// </example>
-    [JsonPropertyName("created_at")]
+    [JsonPropertyName("manifest_download")]
     [JsonRequired]
     [Obsolete]
-    public DateTimeOffset CreatedAt { get; set; }
+    public ManifestDownload ManifestDownload { get; set; }
+
+    /// <summary>
+    /// A string that uniquely identifies the manifest
+    /// </summary>
+    /// <value>A string that uniquely identifies the manifest</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("manifest_id")]
+    [JsonRequired]
+    [Obsolete]
+    public string ManifestId { get; set; }
+
+    /// <summary>
+    /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
+    /// </summary>
+    /// <value>A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur </value>
+    /// <example>
+    /// aa3d8e8e-462b-4476-9618-72db7f7b7009
+    /// </example>
+    [JsonPropertyName("request_id")]
+    [JsonRequired]
+    public Guid RequestId { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -103,18 +128,6 @@ public partial class CreateManifestResponseBody
     public int Shipments { get; set; }
 
     /// <summary>
-    /// A string that uniquely identifies the warehouse
-    /// </summary>
-    /// <value>A string that uniquely identifies the warehouse</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("warehouse_id")]
-    [JsonRequired]
-    [Obsolete]
-    public string WarehouseId { get; set; }
-
-    /// <summary>
     /// A string that uniquely identifies the submission
     /// </summary>
     /// <value>A string that uniquely identifies the submission</value>
@@ -127,24 +140,16 @@ public partial class CreateManifestResponseBody
     public string SubmissionId { get; set; }
 
     /// <summary>
-    /// A string that uniquely identifies the carrier
+    /// A string that uniquely identifies the warehouse
     /// </summary>
-    /// <value>A string that uniquely identifies the carrier</value>
+    /// <value>A string that uniquely identifies the warehouse</value>
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
+    [JsonPropertyName("warehouse_id")]
     [JsonRequired]
     [Obsolete]
-    public string CarrierId { get; set; }
-
-    /// <summary>
-    /// Gets or Sets ManifestDownload
-    /// </summary>
-    [JsonPropertyName("manifest_download")]
-    [JsonRequired]
-    [Obsolete]
-    public ManifestDownload ManifestDownload { get; set; }
+    public string WarehouseId { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.
@@ -152,26 +157,21 @@ public partial class CreateManifestResponseBody
     /// <value>An array of the label ids used in this manifest.</value>
     [JsonPropertyName("label_ids")]
     [Obsolete]
-    public List<string> LabelIds { get; set; }
+    public List<string>? LabelIds { get; set; }
 
     /// <summary>
-    /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
+    /// Resulting manifest requests with statuses
     /// </summary>
-    /// <value>A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur </value>
-    /// <example>
-    /// aa3d8e8e-462b-4476-9618-72db7f7b7009
-    /// </example>
-    [JsonPropertyName("request_id")]
-    [JsonRequired]
-    public Guid RequestId { get; set; }
+    /// <value>Resulting manifest requests with statuses</value>
+    [JsonPropertyName("manifest_requests")]
+    public List<ManifestRequest>? ManifestRequests { get; set; }
 
     /// <summary>
-    /// The errors associated with the failed API call
+    /// Resulting Manifests
     /// </summary>
-    /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public List<Error> Errors { get; set; }
+    /// <value>Resulting Manifests</value>
+    [JsonPropertyName("manifests")]
+    public List<Manifest>? Manifests { get; set; }
 
 
     /// <summary>
@@ -183,20 +183,20 @@ public partial class CreateManifestResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateManifestResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Manifests: ").Append(Manifests).Append("\n");
-        sb.Append("  ManifestRequests: ").Append(ManifestRequests).Append("\n");
-        sb.Append("  ManifestId: ").Append(ManifestId).Append("\n");
-        sb.Append("  FormId: ").Append(FormId).Append("\n");
+        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+        sb.Append("  Errors: ").Append(Errors).Append("\n");
+        sb.Append("  FormId: ").Append(FormId).Append("\n");
+        sb.Append("  ManifestDownload: ").Append(ManifestDownload).Append("\n");
+        sb.Append("  ManifestId: ").Append(ManifestId).Append("\n");
+        sb.Append("  RequestId: ").Append(RequestId).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  Shipments: ").Append(Shipments).Append("\n");
-        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
         sb.Append("  SubmissionId: ").Append(SubmissionId).Append("\n");
-        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
-        sb.Append("  ManifestDownload: ").Append(ManifestDownload).Append("\n");
+        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
-        sb.Append("  RequestId: ").Append(RequestId).Append("\n");
-        sb.Append("  Errors: ").Append(Errors).Append("\n");
+        sb.Append("  ManifestRequests: ").Append(ManifestRequests).Append("\n");
+        sb.Append("  Manifests: ").Append(Manifests).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

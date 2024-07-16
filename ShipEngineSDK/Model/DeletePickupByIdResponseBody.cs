@@ -29,17 +29,6 @@ public partial class DeletePickupByIdResponseBody
 {
 
     /// <summary>
-    /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
-    /// </summary>
-    /// <value>A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur </value>
-    /// <example>
-    /// aa3d8e8e-462b-4476-9618-72db7f7b7009
-    /// </example>
-    [JsonPropertyName("request_id")]
-    [JsonRequired]
-    public Guid RequestId { get; set; }
-
-    /// <summary>
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
@@ -58,6 +47,17 @@ public partial class DeletePickupByIdResponseBody
     [JsonRequired]
     public string PickupId { get; set; }
 
+    /// <summary>
+    /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
+    /// </summary>
+    /// <value>A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur </value>
+    /// <example>
+    /// aa3d8e8e-462b-4476-9618-72db7f7b7009
+    /// </example>
+    [JsonPropertyName("request_id")]
+    [JsonRequired]
+    public Guid RequestId { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -68,9 +68,9 @@ public partial class DeletePickupByIdResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class DeletePickupByIdResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  RequestId: ").Append(RequestId).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
         sb.Append("  PickupId: ").Append(PickupId).Append("\n");
+        sb.Append("  RequestId: ").Append(RequestId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

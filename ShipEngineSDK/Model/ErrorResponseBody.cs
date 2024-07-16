@@ -29,6 +29,14 @@ public partial class ErrorResponseBody
 {
 
     /// <summary>
+    /// The errors associated with the failed API call
+    /// </summary>
+    /// <value>The errors associated with the failed API call</value>
+    [JsonPropertyName("errors")]
+    [JsonRequired]
+    public List<Error> Errors { get; set; }
+
+    /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
     /// </summary>
     /// <value>A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur </value>
@@ -38,14 +46,6 @@ public partial class ErrorResponseBody
     [JsonPropertyName("request_id")]
     [JsonRequired]
     public Guid RequestId { get; set; }
-
-    /// <summary>
-    /// The errors associated with the failed API call
-    /// </summary>
-    /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public List<Error> Errors { get; set; }
 
 
     /// <summary>
@@ -57,8 +57,8 @@ public partial class ErrorResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ErrorResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  RequestId: ").Append(RequestId).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
+        sb.Append("  RequestId: ").Append(RequestId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

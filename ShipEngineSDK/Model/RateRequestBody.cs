@@ -37,37 +37,37 @@ public partial class RateRequestBody
     public List<string> CarrierIds { get; set; }
 
     /// <summary>
-    /// Gets or Sets PackageTypes
-    /// </summary>
-    [JsonPropertyName("package_types")]
-    public List<string> PackageTypes { get; set; }
-
-    /// <summary>
-    /// Gets or Sets ServiceCodes
-    /// </summary>
-    [JsonPropertyName("service_codes")]
-    public List<string> ServiceCodes { get; set; }
-
-    /// <summary>
     /// Calculate the duties and tariffs for cross border shipments.
     /// </summary>
     /// <value>Calculate the duties and tariffs for cross border shipments.</value>
     [JsonPropertyName("calculate_tax_amount")]
-    public bool CalculateTaxAmount { get; set; }
-
-    /// <summary>
-    /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
-    /// </summary>
-    /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
-    [JsonPropertyName("preferred_currency")]
-    public string PreferredCurrency { get; set; }
+    public bool? CalculateTaxAmount { get; set; }
 
     /// <summary>
     /// Indicate if it&#39;s a return shipment
     /// </summary>
     /// <value>Indicate if it&#39;s a return shipment</value>
     [JsonPropertyName("is_return")]
-    public bool IsReturn { get; set; }
+    public bool? IsReturn { get; set; }
+
+    /// <summary>
+    /// Gets or Sets PackageTypes
+    /// </summary>
+    [JsonPropertyName("package_types")]
+    public List<string>? PackageTypes { get; set; }
+
+    /// <summary>
+    /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
+    /// </summary>
+    /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
+    [JsonPropertyName("preferred_currency")]
+    public string? PreferredCurrency { get; set; }
+
+    /// <summary>
+    /// Gets or Sets ServiceCodes
+    /// </summary>
+    [JsonPropertyName("service_codes")]
+    public List<string>? ServiceCodes { get; set; }
 
 
     /// <summary>
@@ -80,11 +80,11 @@ public partial class RateRequestBody
         sb.Append("class RateRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierIds: ").Append(CarrierIds).Append("\n");
-        sb.Append("  PackageTypes: ").Append(PackageTypes).Append("\n");
-        sb.Append("  ServiceCodes: ").Append(ServiceCodes).Append("\n");
         sb.Append("  CalculateTaxAmount: ").Append(CalculateTaxAmount).Append("\n");
-        sb.Append("  PreferredCurrency: ").Append(PreferredCurrency).Append("\n");
         sb.Append("  IsReturn: ").Append(IsReturn).Append("\n");
+        sb.Append("  PackageTypes: ").Append(PackageTypes).Append("\n");
+        sb.Append("  PreferredCurrency: ").Append(PreferredCurrency).Append("\n");
+        sb.Append("  ServiceCodes: ").Append(ServiceCodes).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

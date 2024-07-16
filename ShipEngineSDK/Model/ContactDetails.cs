@@ -29,13 +29,6 @@ public partial class ContactDetails
 {
 
     /// <summary>
-    /// Gets or Sets Name
-    /// </summary>
-    [JsonPropertyName("name")]
-    [JsonRequired]
-    public string Name { get; set; }
-
-    /// <summary>
     /// An email address.
     /// </summary>
     /// <value>An email address.</value>
@@ -45,6 +38,13 @@ public partial class ContactDetails
     [JsonPropertyName("email")]
     [JsonRequired]
     public string Email { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Name
+    /// </summary>
+    [JsonPropertyName("name")]
+    [JsonRequired]
+    public string Name { get; set; }
 
     /// <summary>
     /// Phone number associated
@@ -64,8 +64,8 @@ public partial class ContactDetails
         StringBuilder sb = new StringBuilder();
         sb.Append("class ContactDetails {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  Email: ").Append(Email).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  Phone: ").Append(Phone).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

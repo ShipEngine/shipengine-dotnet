@@ -32,7 +32,7 @@ public partial class UpdateShipmentsTagsRequestBody
     /// Gets or Sets ShipmentsTags
     /// </summary>
     [JsonPropertyName("shipments_tags")]
-    public List<UpdateShipmentsTagsShipmentsTagsInner> ShipmentsTags { get; set; }
+    public List<UpdateShipmentsTagsShipmentsTagsInner>? ShipmentsTags { get; set; }
 
 
     /// <summary>

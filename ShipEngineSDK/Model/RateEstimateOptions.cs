@@ -29,34 +29,21 @@ public partial class RateEstimateOptions
 {
 
     /// <summary>
-    /// Gets or Sets Confirmation  CLOVUS
-    /// </summary>
-    [JsonPropertyName("confirmation")]
-    public DeliveryConfirmation? Confirmation { get; set; }
-    /// <summary>
     /// Gets or Sets AddressResidentialIndicator  CLOVUS
     /// </summary>
     [JsonPropertyName("address_residential_indicator")]
     public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     /// <summary>
-    /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
+    /// Gets or Sets Confirmation  CLOVUS
     /// </summary>
-    /// <value>A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) </value>
-    /// <example>
-    /// CA
-    /// </example>
-    [JsonPropertyName("from_country_code")]
-    public string FromCountryCode { get; set; }
-
+    [JsonPropertyName("confirmation")]
+    public DeliveryConfirmation? Confirmation { get; set; }
     /// <summary>
-    /// postal code
+    /// The dimensions of the package
     /// </summary>
-    /// <value>postal code</value>
-    /// <example>
-    /// 78756-3717
-    /// </example>
-    [JsonPropertyName("from_postal_code")]
-    public string FromPostalCode { get; set; }
+    /// <value>The dimensions of the package</value>
+    [JsonPropertyName("dimensions")]
+    public Dimensions? Dimensions { get; set; }
 
     /// <summary>
     /// from postal code
@@ -66,7 +53,27 @@ public partial class RateEstimateOptions
     /// Austin
     /// </example>
     [JsonPropertyName("from_city_locality")]
-    public string FromCityLocality { get; set; }
+    public string? FromCityLocality { get; set; }
+
+    /// <summary>
+    /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
+    /// </summary>
+    /// <value>A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) </value>
+    /// <example>
+    /// CA
+    /// </example>
+    [JsonPropertyName("from_country_code")]
+    public string? FromCountryCode { get; set; }
+
+    /// <summary>
+    /// postal code
+    /// </summary>
+    /// <value>postal code</value>
+    /// <example>
+    /// 78756-3717
+    /// </example>
+    [JsonPropertyName("from_postal_code")]
+    public string? FromPostalCode { get; set; }
 
     /// <summary>
     /// From state province
@@ -76,61 +83,7 @@ public partial class RateEstimateOptions
     /// Austin
     /// </example>
     [JsonPropertyName("from_state_province")]
-    public string FromStateProvince { get; set; }
-
-    /// <summary>
-    /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
-    /// </summary>
-    /// <value>A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) </value>
-    /// <example>
-    /// CA
-    /// </example>
-    [JsonPropertyName("to_country_code")]
-    public string ToCountryCode { get; set; }
-
-    /// <summary>
-    /// postal code
-    /// </summary>
-    /// <value>postal code</value>
-    /// <example>
-    /// 78756-3717
-    /// </example>
-    [JsonPropertyName("to_postal_code")]
-    public string ToPostalCode { get; set; }
-
-    /// <summary>
-    /// The city locality the package is being shipped to
-    /// </summary>
-    /// <value>The city locality the package is being shipped to</value>
-    /// <example>
-    /// Austin
-    /// </example>
-    [JsonPropertyName("to_city_locality")]
-    public string ToCityLocality { get; set; }
-
-    /// <summary>
-    /// To state province
-    /// </summary>
-    /// <value>To state province</value>
-    /// <example>
-    /// Houston
-    /// </example>
-    [JsonPropertyName("to_state_province")]
-    public string ToStateProvince { get; set; }
-
-    /// <summary>
-    /// The weight of the package
-    /// </summary>
-    /// <value>The weight of the package</value>
-    [JsonPropertyName("weight")]
-    public Weight Weight { get; set; }
-
-    /// <summary>
-    /// The dimensions of the package
-    /// </summary>
-    /// <value>The dimensions of the package</value>
-    [JsonPropertyName("dimensions")]
-    public Dimensions Dimensions { get; set; }
+    public string? FromStateProvince { get; set; }
 
     /// <summary>
     /// ship date
@@ -140,7 +93,54 @@ public partial class RateEstimateOptions
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("ship_date")]
-    public DateTimeOffset ShipDate { get; set; }
+    public DateTimeOffset? ShipDate { get; set; }
+
+    /// <summary>
+    /// The city locality the package is being shipped to
+    /// </summary>
+    /// <value>The city locality the package is being shipped to</value>
+    /// <example>
+    /// Austin
+    /// </example>
+    [JsonPropertyName("to_city_locality")]
+    public string? ToCityLocality { get; set; }
+
+    /// <summary>
+    /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
+    /// </summary>
+    /// <value>A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) </value>
+    /// <example>
+    /// CA
+    /// </example>
+    [JsonPropertyName("to_country_code")]
+    public string? ToCountryCode { get; set; }
+
+    /// <summary>
+    /// postal code
+    /// </summary>
+    /// <value>postal code</value>
+    /// <example>
+    /// 78756-3717
+    /// </example>
+    [JsonPropertyName("to_postal_code")]
+    public string? ToPostalCode { get; set; }
+
+    /// <summary>
+    /// To state province
+    /// </summary>
+    /// <value>To state province</value>
+    /// <example>
+    /// Houston
+    /// </example>
+    [JsonPropertyName("to_state_province")]
+    public string? ToStateProvince { get; set; }
+
+    /// <summary>
+    /// The weight of the package
+    /// </summary>
+    /// <value>The weight of the package</value>
+    [JsonPropertyName("weight")]
+    public Weight? Weight { get; set; }
 
 
     /// <summary>
@@ -152,19 +152,19 @@ public partial class RateEstimateOptions
         StringBuilder sb = new StringBuilder();
         sb.Append("class RateEstimateOptions {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  AddressResidentialIndicator: ").Append(AddressResidentialIndicator).Append("\n");
+        sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
+        sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
+        sb.Append("  FromCityLocality: ").Append(FromCityLocality).Append("\n");
         sb.Append("  FromCountryCode: ").Append(FromCountryCode).Append("\n");
         sb.Append("  FromPostalCode: ").Append(FromPostalCode).Append("\n");
-        sb.Append("  FromCityLocality: ").Append(FromCityLocality).Append("\n");
         sb.Append("  FromStateProvince: ").Append(FromStateProvince).Append("\n");
+        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
+        sb.Append("  ToCityLocality: ").Append(ToCityLocality).Append("\n");
         sb.Append("  ToCountryCode: ").Append(ToCountryCode).Append("\n");
         sb.Append("  ToPostalCode: ").Append(ToPostalCode).Append("\n");
-        sb.Append("  ToCityLocality: ").Append(ToCityLocality).Append("\n");
         sb.Append("  ToStateProvince: ").Append(ToStateProvince).Append("\n");
         sb.Append("  Weight: ").Append(Weight).Append("\n");
-        sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
-        sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
-        sb.Append("  AddressResidentialIndicator: ").Append(AddressResidentialIndicator).Append("\n");
-        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

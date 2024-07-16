@@ -44,7 +44,7 @@ public partial class Link
     /// </summary>
     /// <value>The type of resource, or the type of relationship to the parent resource</value>
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
 
     /// <summary>

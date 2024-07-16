@@ -33,7 +33,7 @@ public partial class PartialShippingAddress
     /// </summary>
     /// <value>Additional text about how to handle the shipment at this address. </value>
     [JsonPropertyName("instructions")]
-    public string Instructions { get; set; }
+    public string? Instructions { get; set; }
 
 
     /// <summary>

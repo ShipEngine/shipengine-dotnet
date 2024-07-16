@@ -29,23 +29,6 @@ public partial class CreateWarehouseRequestBody
 {
 
     /// <summary>
-    /// A string that uniquely identifies the warehouse
-    /// </summary>
-    /// <value>A string that uniquely identifies the warehouse</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("warehouse_id")]
-    public string WarehouseId { get; set; }
-
-    /// <summary>
-    /// Designates which single warehouse is the default on the account
-    /// </summary>
-    /// <value>Designates which single warehouse is the default on the account</value>
-    [JsonPropertyName("is_default")]
-    public bool? IsDefault { get; set; }
-
-    /// <summary>
     /// Name of the warehouse
     /// </summary>
     /// <value>Name of the warehouse</value>
@@ -57,16 +40,6 @@ public partial class CreateWarehouseRequestBody
     public string Name { get; set; }
 
     /// <summary>
-    /// Timestamp that indicates when the warehouse was created
-    /// </summary>
-    /// <value>Timestamp that indicates when the warehouse was created</value>
-    /// <example>
-    /// 2019-06-25T18:12:35.583Z
-    /// </example>
-    [JsonPropertyName("created_at")]
-    public DateTimeOffset CreatedAt { get; set; }
-
-    /// <summary>
     /// The origin address of the warehouse
     /// </summary>
     /// <value>The origin address of the warehouse</value>
@@ -75,11 +48,38 @@ public partial class CreateWarehouseRequestBody
     public Address OriginAddress { get; set; }
 
     /// <summary>
+    /// Timestamp that indicates when the warehouse was created
+    /// </summary>
+    /// <value>Timestamp that indicates when the warehouse was created</value>
+    /// <example>
+    /// 2019-06-25T18:12:35.583Z
+    /// </example>
+    [JsonPropertyName("created_at")]
+    public DateTimeOffset? CreatedAt { get; set; }
+
+    /// <summary>
+    /// Designates which single warehouse is the default on the account
+    /// </summary>
+    /// <value>Designates which single warehouse is the default on the account</value>
+    [JsonPropertyName("is_default")]
+    public bool? IsDefault { get; set; }
+
+    /// <summary>
     /// The return address associated with the warehouse
     /// </summary>
     /// <value>The return address associated with the warehouse</value>
     [JsonPropertyName("return_address")]
-    public Address ReturnAddress { get; set; }
+    public Address? ReturnAddress { get; set; }
+
+    /// <summary>
+    /// A string that uniquely identifies the warehouse
+    /// </summary>
+    /// <value>A string that uniquely identifies the warehouse</value>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("warehouse_id")]
+    public string? WarehouseId { get; set; }
 
 
     /// <summary>
@@ -91,12 +91,12 @@ public partial class CreateWarehouseRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateWarehouseRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
-        sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
         sb.Append("  Name: ").Append(Name).Append("\n");
-        sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
         sb.Append("  OriginAddress: ").Append(OriginAddress).Append("\n");
+        sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+        sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
         sb.Append("  ReturnAddress: ").Append(ReturnAddress).Append("\n");
+        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

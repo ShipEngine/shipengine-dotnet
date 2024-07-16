@@ -345,15 +345,11 @@ public partial class ListLabelsResponseBody
     public List<ListLabelsResponseBodyItem> Labels { get; set; }
 
     /// <summary>
-    /// The total number of items across all pages of results
+    /// Gets or Sets Links
     /// </summary>
-    /// <value>The total number of items across all pages of results</value>
-    /// <example>
-    /// 2750
-    /// </example>
-    [JsonPropertyName("total")]
+    [JsonPropertyName("links")]
     [JsonRequired]
-    public int Total { get; set; }
+    public PaginationLink Links { get; set; }
 
     /// <summary>
     /// The current page number of results.  For example, if there are 80 results, and the page size is 25, then &#x60;page&#x60; could be 1, 2, 3, or 4.  The first three pages would contain 25 items each, and the fourth page would contain the five remaining items.
@@ -378,11 +374,15 @@ public partial class ListLabelsResponseBody
     public int Pages { get; set; }
 
     /// <summary>
-    /// Gets or Sets Links
+    /// The total number of items across all pages of results
     /// </summary>
-    [JsonPropertyName("links")]
+    /// <value>The total number of items across all pages of results</value>
+    /// <example>
+    /// 2750
+    /// </example>
+    [JsonPropertyName("total")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public int Total { get; set; }
 
 
     /// <summary>
@@ -395,10 +395,10 @@ public partial class ListLabelsResponseBody
         sb.Append("class ListLabelsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Labels: ").Append(Labels).Append("\n");
-        sb.Append("  Total: ").Append(Total).Append("\n");
+        sb.Append("  Links: ").Append(Links).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
         sb.Append("  Pages: ").Append(Pages).Append("\n");
-        sb.Append("  Links: ").Append(Links).Append("\n");
+        sb.Append("  Total: ").Append(Total).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -37,6 +37,25 @@ public partial class BulkRate
 
 
     /// <summary>
+    /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
+    /// </summary>
+    /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
+    /// <example>
+    /// 2018-09-23T15:00Z
+    /// </example>
+    [JsonPropertyName("created_at")]
+    [JsonRequired]
+    public DateTimeOffset CreatedAt { get; set; }
+
+    /// <summary>
+    /// An array of errors that were returned while retrieving the bulk rate
+    /// </summary>
+    /// <value>An array of errors that were returned while retrieving the bulk rate</value>
+    [JsonPropertyName("errors")]
+    [JsonRequired]
+    public List<Error> Errors { get; set; }
+
+    /// <summary>
     /// A string that uniquely identifies the rate request
     /// </summary>
     /// <value>A string that uniquely identifies the rate request</value>
@@ -58,25 +77,6 @@ public partial class BulkRate
     [JsonRequired]
     public string ShipmentId { get; set; }
 
-    /// <summary>
-    /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
-    /// </summary>
-    /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
-    /// <example>
-    /// 2018-09-23T15:00Z
-    /// </example>
-    [JsonPropertyName("created_at")]
-    [JsonRequired]
-    public DateTimeOffset CreatedAt { get; set; }
-
-    /// <summary>
-    /// An array of errors that were returned while retrieving the bulk rate
-    /// </summary>
-    /// <value>An array of errors that were returned while retrieving the bulk rate</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public List<Error> Errors { get; set; }
-
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -87,11 +87,11 @@ public partial class BulkRate
         StringBuilder sb = new StringBuilder();
         sb.Append("class BulkRate {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+        sb.Append("  Errors: ").Append(Errors).Append("\n");
         sb.Append("  RateRequestId: ").Append(RateRequestId).Append("\n");
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
-        sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
         sb.Append("  Status: ").Append(Status).Append("\n");
-        sb.Append("  Errors: ").Append(Errors).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

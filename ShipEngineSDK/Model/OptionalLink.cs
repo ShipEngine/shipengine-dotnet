@@ -36,14 +36,14 @@ public partial class OptionalLink
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
     [JsonPropertyName("href")]
-    public string Href { get; set; }
+    public string? Href { get; set; }
 
     /// <summary>
     /// The type of resource, or the type of relationship to the parent resource
     /// </summary>
     /// <value>The type of resource, or the type of relationship to the parent resource</value>
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
 
     /// <summary>

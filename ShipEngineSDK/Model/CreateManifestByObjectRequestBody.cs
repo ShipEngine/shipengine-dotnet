@@ -40,18 +40,15 @@ public partial class CreateManifestByObjectRequestBody
     public string CarrierId { get; set; }
 
     /// <summary>
-    /// The list of label ids to exclude from the manifest
+    /// The ship date that the shipment will be sent out on
     /// </summary>
-    /// <value>The list of label ids to exclude from the manifest</value>
-    [JsonPropertyName("excluded_label_ids")]
-    public List<string> ExcludedLabelIds { get; set; }
-
-    /// <summary>
-    /// The list of label ids to include for the manifest
-    /// </summary>
-    /// <value>The list of label ids to include for the manifest</value>
-    [JsonPropertyName("label_ids")]
-    public List<string> LabelIds { get; set; }
+    /// <value>The ship date that the shipment will be sent out on</value>
+    /// <example>
+    /// 2018-09-23T15:00Z
+    /// </example>
+    [JsonPropertyName("ship_date")]
+    [JsonRequired]
+    public DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -65,15 +62,18 @@ public partial class CreateManifestByObjectRequestBody
     public string WarehouseId { get; set; }
 
     /// <summary>
-    /// The ship date that the shipment will be sent out on
+    /// The list of label ids to exclude from the manifest
     /// </summary>
-    /// <value>The ship date that the shipment will be sent out on</value>
-    /// <example>
-    /// 2018-09-23T15:00Z
-    /// </example>
-    [JsonPropertyName("ship_date")]
-    [JsonRequired]
-    public DateTimeOffset ShipDate { get; set; }
+    /// <value>The list of label ids to exclude from the manifest</value>
+    [JsonPropertyName("excluded_label_ids")]
+    public List<string>? ExcludedLabelIds { get; set; }
+
+    /// <summary>
+    /// The list of label ids to include for the manifest
+    /// </summary>
+    /// <value>The list of label ids to include for the manifest</value>
+    [JsonPropertyName("label_ids")]
+    public List<string>? LabelIds { get; set; }
 
 
     /// <summary>
@@ -86,10 +86,10 @@ public partial class CreateManifestByObjectRequestBody
         sb.Append("class CreateManifestByObjectRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
+        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
+        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
         sb.Append("  ExcludedLabelIds: ").Append(ExcludedLabelIds).Append("\n");
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
-        sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
-        sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

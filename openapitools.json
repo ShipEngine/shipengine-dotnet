@@ -12,6 +12,7 @@
         "skipValidateSpec": true,
         "packageName": "ShipEngineSDK",
         "ignoreFileOverride": "./.openapi-generator-ignore",
+        "library": "generichost",
         "additionalProperties": {
           "packageVersion": "3.0.0-beta.2",
           "targetFramework": "netstandard2.0",
@@ -19,7 +20,8 @@
           "sourceFolder": "",
           "optionalProjectFile": false,
           "nullableReferenceTypes": true,
-          "useDateTimeOffset": true
+          "useDateTimeOffset": true,
+          "modelPropertySorting": "alphabetical"
         }
       }
     }

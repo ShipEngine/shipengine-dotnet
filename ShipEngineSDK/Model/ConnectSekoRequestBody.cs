@@ -29,20 +29,20 @@ public partial class ConnectSekoRequestBody
 {
 
     /// <summary>
-    /// Nickname
-    /// </summary>
-    /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
-    public string Nickname { get; set; }
-
-    /// <summary>
     /// Seko Account Access Key
     /// </summary>
     /// <value>Seko Account Access Key</value>
     [JsonPropertyName("access_key")]
     [JsonRequired]
     public string AccessKey { get; set; }
+
+    /// <summary>
+    /// Nickname
+    /// </summary>
+    /// <value>Nickname</value>
+    [JsonPropertyName("nickname")]
+    [JsonRequired]
+    public string Nickname { get; set; }
 
 
     /// <summary>
@@ -54,8 +54,8 @@ public partial class ConnectSekoRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectSekoRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

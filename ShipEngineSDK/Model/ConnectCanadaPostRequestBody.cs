@@ -29,12 +29,12 @@ public partial class ConnectCanadaPostRequestBody
 {
 
     /// <summary>
-    /// Nickname
+    /// Canada Post Account Number
     /// </summary>
-    /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
+    /// <value>Canada Post Account Number</value>
+    [JsonPropertyName("account_number")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public string AccountNumber { get; set; }
 
     /// <summary>
     /// Canada Post Account API Key
@@ -53,20 +53,20 @@ public partial class ConnectCanadaPostRequestBody
     public string ApiSecret { get; set; }
 
     /// <summary>
-    /// Canada Post Account Number
-    /// </summary>
-    /// <value>Canada Post Account Number</value>
-    [JsonPropertyName("account_number")]
-    [JsonRequired]
-    public string AccountNumber { get; set; }
-
-    /// <summary>
     /// Canada Post Account Contract ID
     /// </summary>
     /// <value>Canada Post Account Contract ID</value>
     [JsonPropertyName("contract_id")]
     [JsonRequired]
     public string ContractId { get; set; }
+
+    /// <summary>
+    /// Nickname
+    /// </summary>
+    /// <value>Nickname</value>
+    [JsonPropertyName("nickname")]
+    [JsonRequired]
+    public string Nickname { get; set; }
 
 
     /// <summary>
@@ -78,11 +78,11 @@ public partial class ConnectCanadaPostRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectCanadaPostRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+        sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
         sb.Append("  ApiSecret: ").Append(ApiSecret).Append("\n");
-        sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  ContractId: ").Append(ContractId).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

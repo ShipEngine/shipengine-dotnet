@@ -29,14 +29,6 @@ public partial class ConnectDhlExpressRequestBody
 {
 
     /// <summary>
-    /// Nickname
-    /// </summary>
-    /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
-    public string Nickname { get; set; }
-
-    /// <summary>
     /// Account number
     /// </summary>
     /// <value>Account number</value>
@@ -45,18 +37,12 @@ public partial class ConnectDhlExpressRequestBody
     public string AccountNumber { get; set; }
 
     /// <summary>
-    /// Required if password is provided
+    /// Nickname
     /// </summary>
-    /// <value>Required if password is provided</value>
-    [JsonPropertyName("site_id")]
-    public string SiteId { get; set; }
-
-    /// <summary>
-    /// Required if site id is provided
-    /// </summary>
-    /// <value>Required if site id is provided</value>
-    [JsonPropertyName("password")]
-    public string Password { get; set; }
+    /// <value>Nickname</value>
+    [JsonPropertyName("nickname")]
+    [JsonRequired]
+    public string Nickname { get; set; }
 
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -66,7 +52,21 @@ public partial class ConnectDhlExpressRequestBody
     /// CA
     /// </example>
     [JsonPropertyName("country_code")]
-    public string CountryCode { get; set; }
+    public string? CountryCode { get; set; }
+
+    /// <summary>
+    /// Required if site id is provided
+    /// </summary>
+    /// <value>Required if site id is provided</value>
+    [JsonPropertyName("password")]
+    public string? Password { get; set; }
+
+    /// <summary>
+    /// Required if password is provided
+    /// </summary>
+    /// <value>Required if password is provided</value>
+    [JsonPropertyName("site_id")]
+    public string? SiteId { get; set; }
 
 
     /// <summary>
@@ -78,11 +78,11 @@ public partial class ConnectDhlExpressRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectDhlExpressRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-        sb.Append("  SiteId: ").Append(SiteId).Append("\n");
-        sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+        sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  SiteId: ").Append(SiteId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -29,14 +29,6 @@ public partial class ConnectFirstmileRequestBody
 {
 
     /// <summary>
-    /// Nickname
-    /// </summary>
-    /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
-    public string Nickname { get; set; }
-
-    /// <summary>
     /// A string that uniquely identifies the mailer
     /// </summary>
     /// <value>A string that uniquely identifies the mailer</value>
@@ -48,11 +40,12 @@ public partial class ConnectFirstmileRequestBody
     public string MailerId { get; set; }
 
     /// <summary>
-    /// Profile name
+    /// Nickname
     /// </summary>
-    /// <value>Profile name</value>
-    [JsonPropertyName("profile_name")]
-    public string ProfileName { get; set; }
+    /// <value>Nickname</value>
+    [JsonPropertyName("nickname")]
+    [JsonRequired]
+    public string Nickname { get; set; }
 
     /// <summary>
     /// Password
@@ -61,6 +54,13 @@ public partial class ConnectFirstmileRequestBody
     [JsonPropertyName("password")]
     [JsonRequired]
     public string Password { get; set; }
+
+    /// <summary>
+    /// Profile name
+    /// </summary>
+    /// <value>Profile name</value>
+    [JsonPropertyName("profile_name")]
+    public string? ProfileName { get; set; }
 
 
     /// <summary>
@@ -72,10 +72,10 @@ public partial class ConnectFirstmileRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectFirstmileRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  MailerId: ").Append(MailerId).Append("\n");
-        sb.Append("  ProfileName: ").Append(ProfileName).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  ProfileName: ").Append(ProfileName).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

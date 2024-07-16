@@ -94,18 +94,18 @@ public partial interface IShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="shipDateStart">ship date start range (optional)</param>
     /// <param name="shipDateEnd">ship date end range (optional)</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="createdAtEnd">Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time) (optional)</param>
+    /// <param name="labelIds"> (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="carrierId">Carrier ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(string? warehouseId, DateTimeOffset? shipDateStart, DateTimeOffset? shipDateEnd, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, string? carrierId, int? page, int? pageSize, List<string>? labelIds, CancellationToken cancellationToken = default);
+    Task<ListManifestsResponseBody> ListManifests(DateTimeOffset shipDateStart, DateTimeOffset shipDateEnd, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, List<string> labelIds, string warehouseId, string carrierId, int page, int pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Manifests Similar to querying shipments, we allow you to query manifests since there will likely be a large number over a long period of time.
@@ -113,18 +113,18 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="shipDateStart">ship date start range (optional)</param>
     /// <param name="shipDateEnd">ship date end range (optional)</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="createdAtEnd">Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time) (optional)</param>
+    /// <param name="labelIds"> (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="carrierId">Carrier ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string? warehouseId, DateTimeOffset? shipDateStart, DateTimeOffset? shipDateEnd, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, string? carrierId, int? page, int? pageSize, List<string>? labelIds, CancellationToken cancellationToken = default);
+    Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, DateTimeOffset shipDateStart, DateTimeOffset shipDateEnd, DateTimeOffset createdAtStart, DateTimeOffset createdAtEnd, List<string> labelIds, string warehouseId, string carrierId, int page, int pageSize, CancellationToken cancellationToken = default);
 
 }
 
@@ -264,20 +264,20 @@ public partial class ShipEngine
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="shipDateStart">ship date start range (optional)</param>
     /// <param name="shipDateEnd">ship date end range (optional)</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="createdAtEnd">Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time) (optional)</param>
+    /// <param name="labelIds"> (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="carrierId">Carrier ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public Task<ListManifestsResponseBody> ListManifests(string? warehouseId = default, DateTimeOffset? shipDateStart = default, DateTimeOffset? shipDateEnd = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, string? carrierId = default, int? page = default, int? pageSize = default, List<string>? labelIds = default, CancellationToken cancellationToken = default)
+    public Task<ListManifestsResponseBody> ListManifests(DateTimeOffset shipDateStart = default, DateTimeOffset shipDateEnd = default, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, List<string> labelIds = default, string warehouseId = default, string carrierId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
     {
-        return ListManifests(_client, warehouseId, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, carrierId, page, pageSize, labelIds, cancellationToken);
+        return ListManifests(_client, shipDateStart, shipDateEnd, createdAtStart, createdAtEnd, labelIds, warehouseId, carrierId, page, pageSize, cancellationToken);
     }
 
     /// <summary>
@@ -286,26 +286,22 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
-    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="shipDateStart">ship date start range (optional)</param>
     /// <param name="shipDateEnd">ship date end range (optional)</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="createdAtEnd">Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time) (optional)</param>
+    /// <param name="labelIds"> (optional)</param>
+    /// <param name="warehouseId">Warehouse ID (optional)</param>
     /// <param name="carrierId">Carrier ID (optional)</param>
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
-    /// <param name="labelIds"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListManifestsResponseBody)</returns>
-    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, string? warehouseId = default, DateTimeOffset? shipDateStart = default, DateTimeOffset? shipDateEnd = default, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, string? carrierId = default, int? page = default, int? pageSize = default, List<string>? labelIds = default, CancellationToken cancellationToken = default)
+    public async Task<ListManifestsResponseBody> ListManifests(HttpClient methodClient, DateTimeOffset shipDateStart = default, DateTimeOffset shipDateEnd = default, DateTimeOffset createdAtStart = default, DateTimeOffset createdAtEnd = default, List<string> labelIds = default, string warehouseId = default, string carrierId = default, int page = default, int pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/manifests");
 
-        if (warehouseId != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
-        }
         if (shipDateStart != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "ship_date_start", shipDateStart));
@@ -322,6 +318,14 @@ public partial class ShipEngine
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "created_at_end", createdAtEnd));
         }
+        if (labelIds != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("multi", "label_ids", labelIds));
+        }
+        if (warehouseId != null)
+        {
+            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "warehouse_id", warehouseId));
+        }
         if (carrierId != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "carrier_id", carrierId));
@@ -333,10 +337,6 @@ public partial class ShipEngine
         if (pageSize != null)
         {
             requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
-        }
-        if (labelIds != null)
-        {
-            requestOptions.QueryParameters.Add(ShipEngineSDK.ClientUtils.ParameterToMultiMap("multi", "label_ids", labelIds));
         }
 
         requestOptions.Operation = "ManifestsApi.ListManifests";

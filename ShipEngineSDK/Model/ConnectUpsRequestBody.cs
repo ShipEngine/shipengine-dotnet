@@ -29,20 +29,20 @@ public partial class ConnectUpsRequestBody
 {
 
     /// <summary>
-    /// Nickname
-    /// </summary>
-    /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
-    public string Nickname { get; set; }
-
-    /// <summary>
     /// Account number
     /// </summary>
     /// <value>Account number</value>
     [JsonPropertyName("account_number")]
     [JsonRequired]
     public string AccountNumber { get; set; }
+
+    /// <summary>
+    /// Nickname
+    /// </summary>
+    /// <value>Nickname</value>
+    [JsonPropertyName("nickname")]
+    [JsonRequired]
+    public string Nickname { get; set; }
 
 
     /// <summary>
@@ -54,8 +54,8 @@ public partial class ConnectUpsRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectUpsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

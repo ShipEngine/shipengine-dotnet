@@ -33,7 +33,7 @@ public partial class ListCarrierPackageTypesResponseBody
     /// </summary>
     /// <value>An array of custom package types</value>
     [JsonPropertyName("packages")]
-    public List<PackageType> Packages { get; set; }
+    public List<PackageType>? Packages { get; set; }
 
 
     /// <summary>

@@ -29,46 +29,46 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
 {
 
     /// <summary>
-    /// Gets or Sets Monday
-    /// </summary>
-    [JsonPropertyName("monday")]
-    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner> Monday { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Tuesday
-    /// </summary>
-    [JsonPropertyName("tuesday")]
-    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner> Tuesday { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Wednesday
-    /// </summary>
-    [JsonPropertyName("wednesday")]
-    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner> Wednesday { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Thursday
-    /// </summary>
-    [JsonPropertyName("thursday")]
-    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner> Thursday { get; set; }
-
-    /// <summary>
     /// Gets or Sets Friday
     /// </summary>
     [JsonPropertyName("friday")]
-    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner> Friday { get; set; }
+    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Friday { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Monday
+    /// </summary>
+    [JsonPropertyName("monday")]
+    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Monday { get; set; }
 
     /// <summary>
     /// Gets or Sets Saturday
     /// </summary>
     [JsonPropertyName("saturday")]
-    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner> Saturday { get; set; }
+    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Saturday { get; set; }
 
     /// <summary>
     /// Gets or Sets Sunday
     /// </summary>
     [JsonPropertyName("sunday")]
-    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner> Sunday { get; set; }
+    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Sunday { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Thursday
+    /// </summary>
+    [JsonPropertyName("thursday")]
+    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Thursday { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Tuesday
+    /// </summary>
+    [JsonPropertyName("tuesday")]
+    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Tuesday { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Wednesday
+    /// </summary>
+    [JsonPropertyName("wednesday")]
+    public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Wednesday { get; set; }
 
 
     /// <summary>
@@ -80,13 +80,13 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListServicePointsResponseBodyServicePointsInnerHoursOfOperation {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Monday: ").Append(Monday).Append("\n");
-        sb.Append("  Tuesday: ").Append(Tuesday).Append("\n");
-        sb.Append("  Wednesday: ").Append(Wednesday).Append("\n");
-        sb.Append("  Thursday: ").Append(Thursday).Append("\n");
         sb.Append("  Friday: ").Append(Friday).Append("\n");
+        sb.Append("  Monday: ").Append(Monday).Append("\n");
         sb.Append("  Saturday: ").Append(Saturday).Append("\n");
         sb.Append("  Sunday: ").Append(Sunday).Append("\n");
+        sb.Append("  Thursday: ").Append(Thursday).Append("\n");
+        sb.Append("  Tuesday: ").Append(Tuesday).Append("\n");
+        sb.Append("  Wednesday: ").Append(Wednesday).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

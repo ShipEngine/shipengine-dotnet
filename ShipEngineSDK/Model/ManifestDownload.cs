@@ -36,7 +36,7 @@ public partial class ManifestDownload
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
     [JsonPropertyName("href")]
-    public string Href { get; set; }
+    public string? Href { get; set; }
 
 
     /// <summary>

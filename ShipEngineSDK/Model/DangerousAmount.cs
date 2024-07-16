@@ -33,14 +33,14 @@ public partial class DangerousAmount
     /// </summary>
     /// <value>The amount of dangerous goods.</value>
     [JsonPropertyName("amount")]
-    public double Amount { get; set; }
+    public double? Amount { get; set; }
 
     /// <summary>
     /// The unit of dangerous goods.
     /// </summary>
     /// <value>The unit of dangerous goods.</value>
     [JsonPropertyName("unit")]
-    public string Unit { get; set; }
+    public string? Unit { get; set; }
 
 
     /// <summary>

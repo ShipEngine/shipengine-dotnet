@@ -34,55 +34,6 @@ public partial class ShipmentItem
     [JsonPropertyName("order_source_code")]
     public OrderSourceName? OrderSourceCode { get; set; }
     /// <summary>
-    /// item name
-    /// </summary>
-    /// <value>item name</value>
-    [JsonPropertyName("name")]
-    public string Name { get; set; }
-
-    /// <summary>
-    /// sales order id
-    /// </summary>
-    /// <value>sales order id</value>
-    [JsonPropertyName("sales_order_id")]
-    public string SalesOrderId { get; set; }
-
-    /// <summary>
-    /// sales order item id
-    /// </summary>
-    /// <value>sales order item id</value>
-    [JsonPropertyName("sales_order_item_id")]
-    public string SalesOrderItemId { get; set; }
-
-    /// <summary>
-    /// The quantity of this item included in the shipment
-    /// </summary>
-    /// <value>The quantity of this item included in the shipment</value>
-    [JsonPropertyName("quantity")]
-    public int Quantity { get; set; }
-
-    /// <summary>
-    /// Item Stock Keeping Unit
-    /// </summary>
-    /// <value>Item Stock Keeping Unit</value>
-    [JsonPropertyName("sku")]
-    public string Sku { get; set; }
-
-    /// <summary>
-    /// external order id
-    /// </summary>
-    /// <value>external order id</value>
-    [JsonPropertyName("external_order_id")]
-    public string ExternalOrderId { get; set; }
-
-    /// <summary>
-    /// external order item id
-    /// </summary>
-    /// <value>external order item id</value>
-    [JsonPropertyName("external_order_item_id")]
-    public string ExternalOrderItemId { get; set; }
-
-    /// <summary>
     /// Amazon Standard Identification Number
     /// </summary>
     /// <value>Amazon Standard Identification Number</value>
@@ -90,7 +41,56 @@ public partial class ShipmentItem
     /// B00005N5PF
     /// </example>
     [JsonPropertyName("asin")]
-    public string Asin { get; set; }
+    public string? Asin { get; set; }
+
+    /// <summary>
+    /// external order id
+    /// </summary>
+    /// <value>external order id</value>
+    [JsonPropertyName("external_order_id")]
+    public string? ExternalOrderId { get; set; }
+
+    /// <summary>
+    /// external order item id
+    /// </summary>
+    /// <value>external order item id</value>
+    [JsonPropertyName("external_order_item_id")]
+    public string? ExternalOrderItemId { get; set; }
+
+    /// <summary>
+    /// item name
+    /// </summary>
+    /// <value>item name</value>
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// The quantity of this item included in the shipment
+    /// </summary>
+    /// <value>The quantity of this item included in the shipment</value>
+    [JsonPropertyName("quantity")]
+    public int? Quantity { get; set; }
+
+    /// <summary>
+    /// sales order id
+    /// </summary>
+    /// <value>sales order id</value>
+    [JsonPropertyName("sales_order_id")]
+    public string? SalesOrderId { get; set; }
+
+    /// <summary>
+    /// sales order item id
+    /// </summary>
+    /// <value>sales order item id</value>
+    [JsonPropertyName("sales_order_item_id")]
+    public string? SalesOrderItemId { get; set; }
+
+    /// <summary>
+    /// Item Stock Keeping Unit
+    /// </summary>
+    /// <value>Item Stock Keeping Unit</value>
+    [JsonPropertyName("sku")]
+    public string? Sku { get; set; }
 
 
     /// <summary>
@@ -102,15 +102,15 @@ public partial class ShipmentItem
         StringBuilder sb = new StringBuilder();
         sb.Append("class ShipmentItem {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Name: ").Append(Name).Append("\n");
-        sb.Append("  SalesOrderId: ").Append(SalesOrderId).Append("\n");
-        sb.Append("  SalesOrderItemId: ").Append(SalesOrderItemId).Append("\n");
-        sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-        sb.Append("  Sku: ").Append(Sku).Append("\n");
+        sb.Append("  Asin: ").Append(Asin).Append("\n");
         sb.Append("  ExternalOrderId: ").Append(ExternalOrderId).Append("\n");
         sb.Append("  ExternalOrderItemId: ").Append(ExternalOrderItemId).Append("\n");
-        sb.Append("  Asin: ").Append(Asin).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  OrderSourceCode: ").Append(OrderSourceCode).Append("\n");
+        sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+        sb.Append("  SalesOrderId: ").Append(SalesOrderId).Append("\n");
+        sb.Append("  SalesOrderItemId: ").Append(SalesOrderItemId).Append("\n");
+        sb.Append("  Sku: ").Append(Sku).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

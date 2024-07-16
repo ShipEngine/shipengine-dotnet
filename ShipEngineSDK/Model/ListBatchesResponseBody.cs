@@ -37,15 +37,11 @@ public partial class ListBatchesResponseBody
     public List<Batch> Batches { get; set; }
 
     /// <summary>
-    /// The total number of batches the API call returned
+    /// Gets or Sets Links
     /// </summary>
-    /// <value>The total number of batches the API call returned</value>
-    /// <example>
-    /// 10
-    /// </example>
-    [JsonPropertyName("total")]
+    [JsonPropertyName("links")]
     [JsonRequired]
-    public long Total { get; set; }
+    public PaginationLink Links { get; set; }
 
     /// <summary>
     /// The page that is currently being read
@@ -70,11 +66,15 @@ public partial class ListBatchesResponseBody
     public int Pages { get; set; }
 
     /// <summary>
-    /// Gets or Sets Links
+    /// The total number of batches the API call returned
     /// </summary>
-    [JsonPropertyName("links")]
+    /// <value>The total number of batches the API call returned</value>
+    /// <example>
+    /// 10
+    /// </example>
+    [JsonPropertyName("total")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public long Total { get; set; }
 
 
     /// <summary>
@@ -87,10 +87,10 @@ public partial class ListBatchesResponseBody
         sb.Append("class ListBatchesResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Batches: ").Append(Batches).Append("\n");
-        sb.Append("  Total: ").Append(Total).Append("\n");
+        sb.Append("  Links: ").Append(Links).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
         sb.Append("  Pages: ").Append(Pages).Append("\n");
-        sb.Append("  Links: ").Append(Links).Append("\n");
+        sb.Append("  Total: ").Append(Total).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

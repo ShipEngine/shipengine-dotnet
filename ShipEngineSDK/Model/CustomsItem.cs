@@ -40,39 +40,21 @@ public partial class CustomsItem
     public string CustomsItemId { get; set; }
 
     /// <summary>
+    /// The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) where this item originated 
+    /// </summary>
+    /// <value>The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) where this item originated </value>
+    /// <example>
+    /// CA
+    /// </example>
+    [JsonPropertyName("country_of_origin")]
+    public string? CountryOfOrigin { get; set; }
+
+    /// <summary>
     /// A description of the item
     /// </summary>
     /// <value>A description of the item</value>
     [JsonPropertyName("description")]
-    public string Description { get; set; }
-
-    /// <summary>
-    /// The quantity of this item in the shipment.
-    /// </summary>
-    /// <value>The quantity of this item in the shipment.</value>
-    [JsonPropertyName("quantity")]
-    public int Quantity { get; set; }
-
-    /// <summary>
-    /// The monetary amount, in the specified currency.
-    /// </summary>
-    /// <value>The monetary amount, in the specified currency.</value>
-    [JsonPropertyName("value")]
-    public double Value { get; set; }
-
-    /// <summary>
-    /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
-    /// </summary>
-    /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
-    [JsonPropertyName("value_currency")]
-    public string ValueCurrency { get; set; }
-
-    /// <summary>
-    /// The item weight
-    /// </summary>
-    /// <value>The item weight</value>
-    [JsonPropertyName("weight")]
-    public Weight Weight { get; set; }
+    public string? Description { get; set; }
 
     /// <summary>
     /// The [Harmonized Tariff Code](https://en.wikipedia.org/wiki/Harmonized_System) of this item.
@@ -82,37 +64,55 @@ public partial class CustomsItem
     /// 3926.1
     /// </example>
     [JsonPropertyName("harmonized_tariff_code")]
-    public string HarmonizedTariffCode { get; set; }
+    public string? HarmonizedTariffCode { get; set; }
 
     /// <summary>
-    /// The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) where this item originated 
+    /// The quantity of this item in the shipment.
     /// </summary>
-    /// <value>The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) where this item originated </value>
-    /// <example>
-    /// CA
-    /// </example>
-    [JsonPropertyName("country_of_origin")]
-    public string CountryOfOrigin { get; set; }
-
-    /// <summary>
-    /// Gets or Sets UnitOfMeasure
-    /// </summary>
-    [JsonPropertyName("unit_of_measure")]
-    public string UnitOfMeasure { get; set; }
+    /// <value>The quantity of this item in the shipment.</value>
+    [JsonPropertyName("quantity")]
+    public int? Quantity { get; set; }
 
     /// <summary>
     /// The SKU (Stock Keeping Unit) of the customs item
     /// </summary>
     /// <value>The SKU (Stock Keeping Unit) of the customs item</value>
     [JsonPropertyName("sku")]
-    public string Sku { get; set; }
+    public string? Sku { get; set; }
 
     /// <summary>
     /// Description of the Custom Item&#39;s SKU
     /// </summary>
     /// <value>Description of the Custom Item&#39;s SKU</value>
     [JsonPropertyName("sku_description")]
-    public string SkuDescription { get; set; }
+    public string? SkuDescription { get; set; }
+
+    /// <summary>
+    /// Gets or Sets UnitOfMeasure
+    /// </summary>
+    [JsonPropertyName("unit_of_measure")]
+    public string? UnitOfMeasure { get; set; }
+
+    /// <summary>
+    /// The monetary amount, in the specified currency.
+    /// </summary>
+    /// <value>The monetary amount, in the specified currency.</value>
+    [JsonPropertyName("value")]
+    public double? Value { get; set; }
+
+    /// <summary>
+    /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
+    /// </summary>
+    /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
+    [JsonPropertyName("value_currency")]
+    public string? ValueCurrency { get; set; }
+
+    /// <summary>
+    /// The item weight
+    /// </summary>
+    /// <value>The item weight</value>
+    [JsonPropertyName("weight")]
+    public Weight? Weight { get; set; }
 
 
     /// <summary>
@@ -125,16 +125,16 @@ public partial class CustomsItem
         sb.Append("class CustomsItem {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CustomsItemId: ").Append(CustomsItemId).Append("\n");
+        sb.Append("  CountryOfOrigin: ").Append(CountryOfOrigin).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
+        sb.Append("  HarmonizedTariffCode: ").Append(HarmonizedTariffCode).Append("\n");
         sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+        sb.Append("  Sku: ").Append(Sku).Append("\n");
+        sb.Append("  SkuDescription: ").Append(SkuDescription).Append("\n");
+        sb.Append("  UnitOfMeasure: ").Append(UnitOfMeasure).Append("\n");
         sb.Append("  Value: ").Append(Value).Append("\n");
         sb.Append("  ValueCurrency: ").Append(ValueCurrency).Append("\n");
         sb.Append("  Weight: ").Append(Weight).Append("\n");
-        sb.Append("  HarmonizedTariffCode: ").Append(HarmonizedTariffCode).Append("\n");
-        sb.Append("  CountryOfOrigin: ").Append(CountryOfOrigin).Append("\n");
-        sb.Append("  UnitOfMeasure: ").Append(UnitOfMeasure).Append("\n");
-        sb.Append("  Sku: ").Append(Sku).Append("\n");
-        sb.Append("  SkuDescription: ").Append(SkuDescription).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

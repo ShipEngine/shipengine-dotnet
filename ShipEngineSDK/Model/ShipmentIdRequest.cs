@@ -36,7 +36,7 @@ public partial class ShipmentIdRequest
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id")]
-    public string ShipmentId { get; set; }
+    public string? ShipmentId { get; set; }
 
 
     /// <summary>

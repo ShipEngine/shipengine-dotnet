@@ -40,20 +40,20 @@ public partial class ConnectAccessWorldwideRequestBody
     public string Nickname { get; set; }
 
     /// <summary>
-    /// Access Worldwide Username
-    /// </summary>
-    /// <value>Access Worldwide Username</value>
-    [JsonPropertyName("username")]
-    [JsonRequired]
-    public string Username { get; set; }
-
-    /// <summary>
     /// Access Worldwide Password
     /// </summary>
     /// <value>Access Worldwide Password</value>
     [JsonPropertyName("password")]
     [JsonRequired]
     public string Password { get; set; }
+
+    /// <summary>
+    /// Access Worldwide Username
+    /// </summary>
+    /// <value>Access Worldwide Username</value>
+    [JsonPropertyName("username")]
+    [JsonRequired]
+    public string Username { get; set; }
 
 
     /// <summary>
@@ -66,8 +66,8 @@ public partial class ConnectAccessWorldwideRequestBody
         sb.Append("class ConnectAccessWorldwideRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
-        sb.Append("  Username: ").Append(Username).Append("\n");
         sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

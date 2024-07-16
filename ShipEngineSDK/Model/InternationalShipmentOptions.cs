@@ -57,26 +57,7 @@ public partial class InternationalShipmentOptions
     /// </summary>
     /// <value>Explanation for contents (required if the &#x60;contents&#x60; is provided as &#x60;other&#x60;)</value>
     [JsonPropertyName("contents_explanation")]
-    public string ContentsExplanation { get; set; }
-
-    /// <summary>
-    /// Declaration statement to be placed on the commercial invoice
-    /// </summary>
-    /// <value>Declaration statement to be placed on the commercial invoice</value>
-    [JsonPropertyName("declaration")]
-    public string Declaration { get; set; }
-
-    /// <summary>
-    /// Gets or Sets InvoiceAdditionalDetails
-    /// </summary>
-    [JsonPropertyName("invoice_additional_details")]
-    public InvoiceAdditionalDetails InvoiceAdditionalDetails { get; set; }
-
-    /// <summary>
-    /// Gets or Sets ImporterOfRecord
-    /// </summary>
-    [JsonPropertyName("importer_of_record")]
-    public ImporterOfRecords ImporterOfRecord { get; set; }
+    public string? ContentsExplanation { get; set; }
 
     /// <summary>
     /// Customs declarations for each item in the shipment. (Please provide this information under &#x60;products&#x60; inside &#x60;packages&#x60;)
@@ -84,7 +65,26 @@ public partial class InternationalShipmentOptions
     /// <value>Customs declarations for each item in the shipment. (Please provide this information under &#x60;products&#x60; inside &#x60;packages&#x60;)</value>
     [JsonPropertyName("customs_items")]
     [Obsolete]
-    public List<CustomsItem> CustomsItems { get; set; }
+    public List<CustomsItem>? CustomsItems { get; set; }
+
+    /// <summary>
+    /// Declaration statement to be placed on the commercial invoice
+    /// </summary>
+    /// <value>Declaration statement to be placed on the commercial invoice</value>
+    [JsonPropertyName("declaration")]
+    public string? Declaration { get; set; }
+
+    /// <summary>
+    /// Gets or Sets ImporterOfRecord
+    /// </summary>
+    [JsonPropertyName("importer_of_record")]
+    public ImporterOfRecords? ImporterOfRecord { get; set; }
+
+    /// <summary>
+    /// Gets or Sets InvoiceAdditionalDetails
+    /// </summary>
+    [JsonPropertyName("invoice_additional_details")]
+    public InvoiceAdditionalDetails? InvoiceAdditionalDetails { get; set; }
 
 
     /// <summary>
@@ -97,13 +97,13 @@ public partial class InternationalShipmentOptions
         sb.Append("class InternationalShipmentOptions {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Contents: ").Append(Contents).Append("\n");
-        sb.Append("  ContentsExplanation: ").Append(ContentsExplanation).Append("\n");
         sb.Append("  NonDelivery: ").Append(NonDelivery).Append("\n");
-        sb.Append("  TermsOfTradeCode: ").Append(TermsOfTradeCode).Append("\n");
-        sb.Append("  Declaration: ").Append(Declaration).Append("\n");
-        sb.Append("  InvoiceAdditionalDetails: ").Append(InvoiceAdditionalDetails).Append("\n");
-        sb.Append("  ImporterOfRecord: ").Append(ImporterOfRecord).Append("\n");
+        sb.Append("  ContentsExplanation: ").Append(ContentsExplanation).Append("\n");
         sb.Append("  CustomsItems: ").Append(CustomsItems).Append("\n");
+        sb.Append("  Declaration: ").Append(Declaration).Append("\n");
+        sb.Append("  ImporterOfRecord: ").Append(ImporterOfRecord).Append("\n");
+        sb.Append("  InvoiceAdditionalDetails: ").Append(InvoiceAdditionalDetails).Append("\n");
+        sb.Append("  TermsOfTradeCode: ").Append(TermsOfTradeCode).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

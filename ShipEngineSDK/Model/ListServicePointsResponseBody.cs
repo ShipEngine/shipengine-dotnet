@@ -29,6 +29,13 @@ public partial class ListServicePointsResponseBody
 {
 
     /// <summary>
+    /// The errors associated with the failed API call
+    /// </summary>
+    /// <value>The errors associated with the failed API call</value>
+    [JsonPropertyName("errors")]
+    public List<Error>? Errors { get; set; }
+
+    /// <summary>
     /// The latitude of the point. Represented as signed degrees. Required if long is provided. http://www.geomidpoint.com/latlon.html
     /// </summary>
     /// <value>The latitude of the point. Represented as signed degrees. Required if long is provided. http://www.geomidpoint.com/latlon.html</value>
@@ -36,7 +43,7 @@ public partial class ListServicePointsResponseBody
     /// 48.842608
     /// </example>
     [JsonPropertyName("lat")]
-    public double Lat { get; set; }
+    public double? Lat { get; set; }
 
     /// <summary>
     /// The longitude of the point. Represented as signed degrees. Required if lat is provided. http://www.geomidpoint.com/latlon.html
@@ -46,20 +53,13 @@ public partial class ListServicePointsResponseBody
     /// 0.032875
     /// </example>
     [JsonPropertyName("long")]
-    public double Long { get; set; }
+    public double? Long { get; set; }
 
     /// <summary>
     /// Gets or Sets ServicePoints
     /// </summary>
     [JsonPropertyName("service_points")]
-    public List<ListServicePointsResponseBodyServicePointsInner> ServicePoints { get; set; }
-
-    /// <summary>
-    /// The errors associated with the failed API call
-    /// </summary>
-    /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    public List<Error> Errors { get; set; }
+    public List<ListServicePointsResponseBodyServicePointsInner>? ServicePoints { get; set; }
 
 
     /// <summary>
@@ -71,10 +71,10 @@ public partial class ListServicePointsResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListServicePointsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  Errors: ").Append(Errors).Append("\n");
         sb.Append("  Lat: ").Append(Lat).Append("\n");
         sb.Append("  Long: ").Append(Long).Append("\n");
         sb.Append("  ServicePoints: ").Append(ServicePoints).Append("\n");
-        sb.Append("  Errors: ").Append(Errors).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

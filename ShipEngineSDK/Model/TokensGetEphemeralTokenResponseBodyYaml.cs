@@ -29,18 +29,18 @@ public partial class TokensGetEphemeralTokenResponseBodyYaml
 {
 
     /// <summary>
-    /// The requested token that expires in 10 seconds.
-    /// </summary>
-    /// <value>The requested token that expires in 10 seconds.</value>
-    [JsonPropertyName("token")]
-    public string Token { get; set; }
-
-    /// <summary>
     /// The redirect url formatted with the requested token.
     /// </summary>
     /// <value>The redirect url formatted with the requested token.</value>
     [JsonPropertyName("redirect_url")]
-    public string RedirectUrl { get; set; }
+    public string? RedirectUrl { get; set; }
+
+    /// <summary>
+    /// The requested token that expires in 10 seconds.
+    /// </summary>
+    /// <value>The requested token that expires in 10 seconds.</value>
+    [JsonPropertyName("token")]
+    public string? Token { get; set; }
 
 
     /// <summary>
@@ -52,8 +52,8 @@ public partial class TokensGetEphemeralTokenResponseBodyYaml
         StringBuilder sb = new StringBuilder();
         sb.Append("class TokensGetEphemeralTokenResponseBodyYaml {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Token: ").Append(Token).Append("\n");
         sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
+        sb.Append("  Token: ").Append(Token).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

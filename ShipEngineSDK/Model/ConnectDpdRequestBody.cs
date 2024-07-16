@@ -37,20 +37,20 @@ public partial class ConnectDpdRequestBody
     public string AccountNumber { get; set; }
 
     /// <summary>
-    /// Password
-    /// </summary>
-    /// <value>Password</value>
-    [JsonPropertyName("password")]
-    [JsonRequired]
-    public string Password { get; set; }
-
-    /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
     public string Nickname { get; set; }
+
+    /// <summary>
+    /// Password
+    /// </summary>
+    /// <value>Password</value>
+    [JsonPropertyName("password")]
+    [JsonRequired]
+    public string Password { get; set; }
 
 
     /// <summary>
@@ -63,8 +63,8 @@ public partial class ConnectDpdRequestBody
         sb.Append("class ConnectDpdRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-        sb.Append("  Password: ").Append(Password).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+        sb.Append("  Password: ").Append(Password).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

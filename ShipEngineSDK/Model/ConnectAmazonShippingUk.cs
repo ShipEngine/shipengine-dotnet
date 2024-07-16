@@ -29,6 +29,14 @@ public partial class ConnectAmazonShippingUk
 {
 
     /// <summary>
+    /// Amazon UK Shipping auth code.
+    /// </summary>
+    /// <value>Amazon UK Shipping auth code.</value>
+    [JsonPropertyName("auth_code")]
+    [JsonRequired]
+    public string AuthCode { get; set; }
+
+    /// <summary>
     /// The nickname associated with the carrier connection
     /// </summary>
     /// <value>The nickname associated with the carrier connection</value>
@@ -38,14 +46,6 @@ public partial class ConnectAmazonShippingUk
     [JsonPropertyName("nickname")]
     [JsonRequired]
     public string Nickname { get; set; }
-
-    /// <summary>
-    /// Amazon UK Shipping auth code.
-    /// </summary>
-    /// <value>Amazon UK Shipping auth code.</value>
-    [JsonPropertyName("auth_code")]
-    [JsonRequired]
-    public string AuthCode { get; set; }
 
 
     /// <summary>
@@ -57,8 +57,8 @@ public partial class ConnectAmazonShippingUk
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectAmazonShippingUk {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  AuthCode: ").Append(AuthCode).Append("\n");
+        sb.Append("  Nickname: ").Append(Nickname).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

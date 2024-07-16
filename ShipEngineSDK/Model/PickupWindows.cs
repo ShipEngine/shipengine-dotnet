@@ -35,8 +35,8 @@ public partial class PickupWindows
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("start_at")]
-    public DateTimeOffset StartAt { get; set; }
+    [JsonPropertyName("end_at")]
+    public DateTimeOffset? EndAt { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -45,8 +45,8 @@ public partial class PickupWindows
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("end_at")]
-    public DateTimeOffset EndAt { get; set; }
+    [JsonPropertyName("start_at")]
+    public DateTimeOffset? StartAt { get; set; }
 
 
     /// <summary>
@@ -58,8 +58,8 @@ public partial class PickupWindows
         StringBuilder sb = new StringBuilder();
         sb.Append("class PickupWindows {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  StartAt: ").Append(StartAt).Append("\n");
         sb.Append("  EndAt: ").Append(EndAt).Append("\n");
+        sb.Append("  StartAt: ").Append(StartAt).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

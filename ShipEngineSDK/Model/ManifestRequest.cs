@@ -41,7 +41,7 @@ public partial class ManifestRequest
     /// se-28529731
     /// </example>
     [JsonPropertyName("manifest_request_id")]
-    public string ManifestRequestId { get; set; }
+    public string? ManifestRequestId { get; set; }
 
 
     /// <summary>

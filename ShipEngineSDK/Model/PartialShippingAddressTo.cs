@@ -29,17 +29,17 @@ public partial class PartialShippingAddressTo
 {
 
     /// <summary>
+    /// Gets or Sets Geolocation
+    /// </summary>
+    [JsonPropertyName("geolocation")]
+    public List<PartialShippingAddressToGeolocationInner>? Geolocation { get; set; }
+
+    /// <summary>
     /// Additional text about how to handle the shipment at this address. 
     /// </summary>
     /// <value>Additional text about how to handle the shipment at this address. </value>
     [JsonPropertyName("instructions")]
-    public string Instructions { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Geolocation
-    /// </summary>
-    [JsonPropertyName("geolocation")]
-    public List<PartialShippingAddressToGeolocationInner> Geolocation { get; set; }
+    public string? Instructions { get; set; }
 
 
     /// <summary>
@@ -51,8 +51,8 @@ public partial class PartialShippingAddressTo
         StringBuilder sb = new StringBuilder();
         sb.Append("class PartialShippingAddressTo {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Instructions: ").Append(Instructions).Append("\n");
         sb.Append("  Geolocation: ").Append(Geolocation).Append("\n");
+        sb.Append("  Instructions: ").Append(Instructions).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

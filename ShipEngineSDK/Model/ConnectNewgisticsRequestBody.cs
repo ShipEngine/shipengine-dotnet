@@ -29,20 +29,6 @@ public partial class ConnectNewgisticsRequestBody
 {
 
     /// <summary>
-    /// Merchant id
-    /// </summary>
-    /// <value>Merchant id</value>
-    [JsonPropertyName("merchant_id")]
-    public int MerchantId { get; set; }
-
-    /// <summary>
-    /// Mailer id
-    /// </summary>
-    /// <value>Mailer id</value>
-    [JsonPropertyName("mailer_id")]
-    public int MailerId { get; set; }
-
-    /// <summary>
     /// Induction site
     /// </summary>
     /// <value>Induction site</value>
@@ -58,6 +44,20 @@ public partial class ConnectNewgisticsRequestBody
     [JsonRequired]
     public string Nickname { get; set; }
 
+    /// <summary>
+    /// Mailer id
+    /// </summary>
+    /// <value>Mailer id</value>
+    [JsonPropertyName("mailer_id")]
+    public int? MailerId { get; set; }
+
+    /// <summary>
+    /// Merchant id
+    /// </summary>
+    /// <value>Merchant id</value>
+    [JsonPropertyName("merchant_id")]
+    public int? MerchantId { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -68,10 +68,10 @@ public partial class ConnectNewgisticsRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectNewgisticsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
-        sb.Append("  MailerId: ").Append(MailerId).Append("\n");
         sb.Append("  InductionSite: ").Append(InductionSite).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+        sb.Append("  MailerId: ").Append(MailerId).Append("\n");
+        sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

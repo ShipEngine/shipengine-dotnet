@@ -29,23 +29,12 @@ public partial class ListPickupResponseBody
 {
 
     /// <summary>
-    /// An array of pickups associated with the user&#39;s account.
+    /// Helpful links to other pages of results
     /// </summary>
-    /// <value>An array of pickups associated with the user&#39;s account.</value>
-    [JsonPropertyName("pickups")]
+    /// <value>Helpful links to other pages of results</value>
+    [JsonPropertyName("links")]
     [JsonRequired]
-    public List<Pickup> Pickups { get; set; }
-
-    /// <summary>
-    /// The total number of pickups returned
-    /// </summary>
-    /// <value>The total number of pickups returned</value>
-    /// <example>
-    /// 3
-    /// </example>
-    [JsonPropertyName("total")]
-    [JsonRequired]
-    public long Total { get; set; }
+    public PaginationLink Links { get; set; }
 
     /// <summary>
     /// Current page of the list pickups results
@@ -70,12 +59,23 @@ public partial class ListPickupResponseBody
     public int Pages { get; set; }
 
     /// <summary>
-    /// Helpful links to other pages of results
+    /// An array of pickups associated with the user&#39;s account.
     /// </summary>
-    /// <value>Helpful links to other pages of results</value>
-    [JsonPropertyName("links")]
+    /// <value>An array of pickups associated with the user&#39;s account.</value>
+    [JsonPropertyName("pickups")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public List<Pickup> Pickups { get; set; }
+
+    /// <summary>
+    /// The total number of pickups returned
+    /// </summary>
+    /// <value>The total number of pickups returned</value>
+    /// <example>
+    /// 3
+    /// </example>
+    [JsonPropertyName("total")]
+    [JsonRequired]
+    public long Total { get; set; }
 
 
     /// <summary>
@@ -87,11 +87,11 @@ public partial class ListPickupResponseBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListPickupResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Pickups: ").Append(Pickups).Append("\n");
-        sb.Append("  Total: ").Append(Total).Append("\n");
+        sb.Append("  Links: ").Append(Links).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
         sb.Append("  Pages: ").Append(Pages).Append("\n");
-        sb.Append("  Links: ").Append(Links).Append("\n");
+        sb.Append("  Pickups: ").Append(Pickups).Append("\n");
+        sb.Append("  Total: ").Append(Total).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

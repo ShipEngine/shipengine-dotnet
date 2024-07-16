@@ -29,31 +29,31 @@ public partial class CreateLabelFromRateRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets ValidateAddress  CLOVUS
+    /// The display format that the label should be shown in.  CLOVUS
     /// </summary>
-    [JsonPropertyName("validate_address")]
-    public ValidateAddress? ValidateAddress { get; set; }
-    /// <summary>
-    /// Gets or Sets LabelLayout  CLOVUS
-    /// </summary>
-    [JsonPropertyName("label_layout")]
-    public LabelLayout? LabelLayout { get; set; }
-    /// <summary>
-    /// Gets or Sets LabelFormat  CLOVUS
-    /// </summary>
-    [JsonPropertyName("label_format")]
-    public LabelFormat? LabelFormat { get; set; }
+    /// <value>The display format that the label should be shown in.</value>
+    [JsonPropertyName("display_scheme")]
+    public DisplayScheme? DisplayScheme { get; set; }
     /// <summary>
     /// Gets or Sets LabelDownloadType  CLOVUS
     /// </summary>
     [JsonPropertyName("label_download_type")]
     public LabelDownloadType? LabelDownloadType { get; set; }
     /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
+    /// Gets or Sets LabelFormat  CLOVUS
     /// </summary>
-    /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
-    public DisplayScheme? DisplayScheme { get; set; }
+    [JsonPropertyName("label_format")]
+    public LabelFormat? LabelFormat { get; set; }
+    /// <summary>
+    /// Gets or Sets LabelLayout  CLOVUS
+    /// </summary>
+    [JsonPropertyName("label_layout")]
+    public LabelLayout? LabelLayout { get; set; }
+    /// <summary>
+    /// Gets or Sets ValidateAddress  CLOVUS
+    /// </summary>
+    [JsonPropertyName("validate_address")]
+    public ValidateAddress? ValidateAddress { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -64,11 +64,11 @@ public partial class CreateLabelFromRateRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateLabelFromRateRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  ValidateAddress: ").Append(ValidateAddress).Append("\n");
-        sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
-        sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
-        sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
+        sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");
+        sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
+        sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
+        sb.Append("  ValidateAddress: ").Append(ValidateAddress).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

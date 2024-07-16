@@ -29,25 +29,25 @@ public partial class UpdateDhlExpressSettingsRequestBody
 {
 
     /// <summary>
+    /// Indicates if this is primary account
+    /// </summary>
+    /// <value>Indicates if this is primary account</value>
+    [JsonPropertyName("is_primary_account")]
+    public bool? IsPrimaryAccount { get; set; }
+
+    /// <summary>
     /// Account nickname
     /// </summary>
     /// <value>Account nickname</value>
     [JsonPropertyName("nickname")]
-    public string Nickname { get; set; }
+    public string? Nickname { get; set; }
 
     /// <summary>
     /// Indicates if the account number should be hidden on the archive documentation
     /// </summary>
     /// <value>Indicates if the account number should be hidden on the archive documentation</value>
     [JsonPropertyName("should_hide_account_number_on_archive_doc")]
-    public bool ShouldHideAccountNumberOnArchiveDoc { get; set; }
-
-    /// <summary>
-    /// Indicates if this is primary account
-    /// </summary>
-    /// <value>Indicates if this is primary account</value>
-    [JsonPropertyName("is_primary_account")]
-    public bool IsPrimaryAccount { get; set; }
+    public bool? ShouldHideAccountNumberOnArchiveDoc { get; set; }
 
 
     /// <summary>
@@ -59,9 +59,9 @@ public partial class UpdateDhlExpressSettingsRequestBody
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpdateDhlExpressSettingsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  IsPrimaryAccount: ").Append(IsPrimaryAccount).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  ShouldHideAccountNumberOnArchiveDoc: ").Append(ShouldHideAccountNumberOnArchiveDoc).Append("\n");
-        sb.Append("  IsPrimaryAccount: ").Append(IsPrimaryAccount).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
