@@ -73,11 +73,13 @@ public partial class UpsInvoice
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpsInvoice {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  InvoiceDate: ").Append(InvoiceDate).Append("\n");
         sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
         sb.Append("  ControlId: ").Append(ControlId).Append("\n");
         sb.Append("  InvoiceAmount: ").Append(InvoiceAmount).Append("\n");
         sb.Append("  InvoiceCurrencyCode: ").Append(InvoiceCurrencyCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

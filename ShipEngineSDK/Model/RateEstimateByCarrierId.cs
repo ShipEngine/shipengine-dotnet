@@ -48,7 +48,9 @@ public partial class RateEstimateByCarrierId
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class RateEstimateByCarrierId {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

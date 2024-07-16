@@ -31,6 +31,9 @@ public class PackageContents
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of PackageContents with a predefined value.
+    /// </summary>
     internal PackageContents()
     {
         _value = "merchandise";

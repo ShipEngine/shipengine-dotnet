@@ -31,6 +31,9 @@ public class OrderSourceName
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of OrderSourceName with a predefined value.
+    /// </summary>
     internal OrderSourceName()
     {
         _value = "amazon_ca";

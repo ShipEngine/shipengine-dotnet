@@ -44,7 +44,9 @@ public partial class RateResponse
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class RateResponse {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  VarRateResponse: ").Append(VarRateResponse).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

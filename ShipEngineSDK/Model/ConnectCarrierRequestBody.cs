@@ -36,11 +36,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectAccessWorldwideRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectAccessWorldwideRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectAccessWorldwideRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectAccessWorldwideRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -48,11 +47,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectAmazonBuyShippingRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectAmazonBuyShippingRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectAmazonBuyShippingRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectAmazonBuyShippingRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -60,11 +58,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectAmazonShippingUk" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectAmazonShippingUk.</param>
-    public ConnectCarrierRequestBody(ConnectAmazonShippingUk actualInstance)
+    public ConnectCarrierRequestBody(ConnectAmazonShippingUk actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -72,11 +69,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectApcRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectApcRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectApcRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectApcRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -84,11 +80,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectAsendiaRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectAsendiaRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectAsendiaRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectAsendiaRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -96,11 +91,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectAustraliaPostRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectAustraliaPostRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectAustraliaPostRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectAustraliaPostRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -108,11 +102,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectCanadaPostRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectCanadaPostRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectCanadaPostRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectCanadaPostRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -120,11 +113,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectDhlEcommerceRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectDhlEcommerceRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectDhlEcommerceRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectDhlEcommerceRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -132,11 +124,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectDhlExpressRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectDhlExpressRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectDhlExpressRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectDhlExpressRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -144,11 +135,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectDhlExpressAuRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectDhlExpressAuRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectDhlExpressAuRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectDhlExpressAuRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -156,11 +146,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectDhlExpressCaRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectDhlExpressCaRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectDhlExpressCaRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectDhlExpressCaRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -168,11 +157,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectDhlExpressUkRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectDhlExpressUkRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectDhlExpressUkRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectDhlExpressUkRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -180,11 +168,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectDpdRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectDpdRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectDpdRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectDpdRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -192,11 +179,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectEndiciaRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectEndiciaRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectEndiciaRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectEndiciaRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -204,11 +190,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectFedexRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectFedexRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectFedexRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectFedexRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -216,11 +201,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectFedexUkRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectFedexUkRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectFedexUkRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectFedexUkRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -228,11 +212,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectFirstmileRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectFirstmileRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectFirstmileRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectFirstmileRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -240,11 +223,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectImexRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectImexRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectImexRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectImexRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -252,11 +234,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectLasershipRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectLasershipRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectLasershipRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectLasershipRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -264,11 +245,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectNewgisticsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectNewgisticsRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectNewgisticsRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectNewgisticsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -276,11 +256,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectOntracRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectOntracRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectOntracRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectOntracRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -288,11 +267,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectPurolatorRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectPurolatorRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectPurolatorRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectPurolatorRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -300,11 +278,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectRoyalMailRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectRoyalMailRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectRoyalMailRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectRoyalMailRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -312,11 +289,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectRrDonnelleyRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectRrDonnelleyRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectRrDonnelleyRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectRrDonnelleyRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -324,11 +300,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectSekoRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectSekoRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectSekoRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectSekoRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -336,11 +311,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectSendleRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectSendleRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectSendleRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectSendleRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -348,11 +322,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectStampsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectStampsRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectStampsRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectStampsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -360,11 +333,10 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ConnectUpsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ConnectUpsRequestBody.</param>
-    public ConnectCarrierRequestBody(ConnectUpsRequestBody actualInstance)
+    public ConnectCarrierRequestBody(ConnectUpsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -810,9 +782,9 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarrierRequestBody>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(ConnectAccessWorldwideRequestBody), typeof(ConnectAmazonBuyShippingRequestBody), typeof(ConnectAmazonShippingUk), typeof(ConnectApcRequestBody), typeof(ConnectAsendiaRequestBody), typeof(ConnectAustraliaPostRequestBody), typeof(ConnectCanadaPostRequestBody), typeof(ConnectDhlEcommerceRequestBody), typeof(ConnectDhlExpressRequestBody), typeof(ConnectDhlExpressAuRequestBody), typeof(ConnectDhlExpressCaRequestBody), typeof(ConnectDhlExpressUkRequestBody), typeof(ConnectDpdRequestBody), typeof(ConnectEndiciaRequestBody), typeof(ConnectFedexRequestBody), typeof(ConnectFedexUkRequestBody), typeof(ConnectFirstmileRequestBody), typeof(ConnectImexRequestBody), typeof(ConnectLasershipRequestBody), typeof(ConnectNewgisticsRequestBody), typeof(ConnectOntracRequestBody), typeof(ConnectPurolatorRequestBody), typeof(ConnectRoyalMailRequestBody), typeof(ConnectRrDonnelleyRequestBody), typeof(ConnectSekoRequestBody), typeof(ConnectSendleRequestBody), typeof(ConnectStampsRequestBody), typeof(ConnectUpsRequestBody)];
-    private static HashSet<string> MandatoryFields = ["AccessKey", "Account", "AccountNumber", "ActivationKey", "Address", "Address1", "AgreeToEula", "ApiKey", "ApiSecret", "AuthCode", "City", "ClientId", "ContactName", "ContractId", "CountryCode", "CustomerBranch", "DistributionCenter", "Email", "FirstName", "FtpPassword", "FtpUsername", "InductionSite", "LasershipCriticalEntryTime", "LasershipCriticalPullTime", "LastName", "MailerId", "MerchantSellerId", "MwsAuthToken", "Nickname", "Passphrase", "Password", "Phone", "PickupNumber", "PostalCode", "SendleId", "SiteId", "State", "Username", "WebServicesId", "WebServicesKey"];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(ConnectAccessWorldwideRequestBody), typeof(ConnectAmazonBuyShippingRequestBody), typeof(ConnectAmazonShippingUk), typeof(ConnectApcRequestBody), typeof(ConnectAsendiaRequestBody), typeof(ConnectAustraliaPostRequestBody), typeof(ConnectCanadaPostRequestBody), typeof(ConnectDhlEcommerceRequestBody), typeof(ConnectDhlExpressRequestBody), typeof(ConnectDhlExpressAuRequestBody), typeof(ConnectDhlExpressCaRequestBody), typeof(ConnectDhlExpressUkRequestBody), typeof(ConnectDpdRequestBody), typeof(ConnectEndiciaRequestBody), typeof(ConnectFedexRequestBody), typeof(ConnectFedexUkRequestBody), typeof(ConnectFirstmileRequestBody), typeof(ConnectImexRequestBody), typeof(ConnectLasershipRequestBody), typeof(ConnectNewgisticsRequestBody), typeof(ConnectOntracRequestBody), typeof(ConnectPurolatorRequestBody), typeof(ConnectRoyalMailRequestBody), typeof(ConnectRrDonnelleyRequestBody), typeof(ConnectSekoRequestBody), typeof(ConnectSendleRequestBody), typeof(ConnectStampsRequestBody), typeof(ConnectUpsRequestBody)];
+    private static readonly HashSet<string> MandatoryFields = ["AccessKey", "Account", "AccountNumber", "ActivationKey", "Address", "Address1", "AgreeToEula", "ApiKey", "ApiSecret", "AuthCode", "City", "ClientId", "ContactName", "ContractId", "CountryCode", "CustomerBranch", "DistributionCenter", "Email", "FirstName", "FtpPassword", "FtpUsername", "InductionSite", "LasershipCriticalEntryTime", "LasershipCriticalPullTime", "LastName", "MailerId", "MerchantSellerId", "MwsAuthToken", "Nickname", "Passphrase", "Password", "Phone", "PickupNumber", "PostalCode", "SendleId", "SiteId", "State", "Username", "WebServicesId", "WebServicesKey"];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -872,7 +844,7 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override ConnectCarrierRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override ConnectCarrierRequestBody? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -880,14 +852,14 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        ConnectCarrierRequestBody newConnectCarrierRequestBody = null;
+        ConnectCarrierRequestBody? newConnectCarrierRequestBody = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAccessWorldwideRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectAccessWorldwideRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectAccessWorldwideRequestBody");
             match++;
@@ -895,12 +867,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectAccessWorldwideRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectAccessWorldwideRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonBuyShippingRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectAmazonBuyShippingRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectAmazonBuyShippingRequestBody");
             match++;
@@ -908,12 +880,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectAmazonBuyShippingRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectAmazonBuyShippingRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAmazonShippingUk>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectAmazonShippingUk>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectAmazonShippingUk");
             match++;
@@ -921,12 +893,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectAmazonShippingUk: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectAmazonShippingUk: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectApcRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectApcRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectApcRequestBody");
             match++;
@@ -934,12 +906,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectApcRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectApcRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAsendiaRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectAsendiaRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectAsendiaRequestBody");
             match++;
@@ -947,12 +919,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectAsendiaRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectAsendiaRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectAustraliaPostRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectAustraliaPostRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectAustraliaPostRequestBody");
             match++;
@@ -960,12 +932,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectAustraliaPostRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectAustraliaPostRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectCanadaPostRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectCanadaPostRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectCanadaPostRequestBody");
             match++;
@@ -973,12 +945,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectCanadaPostRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectCanadaPostRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlEcommerceRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectDhlEcommerceRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectDhlEcommerceRequestBody");
             match++;
@@ -986,12 +958,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectDhlEcommerceRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectDhlEcommerceRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectDhlExpressRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectDhlExpressRequestBody");
             match++;
@@ -999,12 +971,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectDhlExpressRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectDhlExpressRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressAuRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectDhlExpressAuRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectDhlExpressAuRequestBody");
             match++;
@@ -1012,12 +984,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectDhlExpressAuRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectDhlExpressAuRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressCaRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectDhlExpressCaRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectDhlExpressCaRequestBody");
             match++;
@@ -1025,12 +997,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectDhlExpressCaRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectDhlExpressCaRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDhlExpressUkRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectDhlExpressUkRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectDhlExpressUkRequestBody");
             match++;
@@ -1038,12 +1010,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectDhlExpressUkRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectDhlExpressUkRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectDpdRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectDpdRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectDpdRequestBody");
             match++;
@@ -1051,12 +1023,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectDpdRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectDpdRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectEndiciaRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectEndiciaRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectEndiciaRequestBody");
             match++;
@@ -1064,12 +1036,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectEndiciaRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectEndiciaRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectFedexRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectFedexRequestBody");
             match++;
@@ -1077,12 +1049,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectFedexRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectFedexRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFedexUkRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectFedexUkRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectFedexUkRequestBody");
             match++;
@@ -1090,12 +1062,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectFedexUkRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectFedexUkRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectFirstmileRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectFirstmileRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectFirstmileRequestBody");
             match++;
@@ -1103,12 +1075,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectFirstmileRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectFirstmileRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectImexRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectImexRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectImexRequestBody");
             match++;
@@ -1116,12 +1088,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectImexRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectImexRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectLasershipRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectLasershipRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectLasershipRequestBody");
             match++;
@@ -1129,12 +1101,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectLasershipRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectLasershipRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectNewgisticsRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectNewgisticsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectNewgisticsRequestBody");
             match++;
@@ -1142,12 +1114,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectNewgisticsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectNewgisticsRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectOntracRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectOntracRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectOntracRequestBody");
             match++;
@@ -1155,12 +1127,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectOntracRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectOntracRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectPurolatorRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectPurolatorRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectPurolatorRequestBody");
             match++;
@@ -1168,12 +1140,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectPurolatorRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectPurolatorRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRoyalMailRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectRoyalMailRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectRoyalMailRequestBody");
             match++;
@@ -1181,12 +1153,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectRoyalMailRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectRoyalMailRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectRrDonnelleyRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectRrDonnelleyRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectRrDonnelleyRequestBody");
             match++;
@@ -1194,12 +1166,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectRrDonnelleyRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectRrDonnelleyRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSekoRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectSekoRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectSekoRequestBody");
             match++;
@@ -1207,12 +1179,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectSekoRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectSekoRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectSendleRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectSendleRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectSendleRequestBody");
             match++;
@@ -1220,12 +1192,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectSendleRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectSendleRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectStampsRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectStampsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectStampsRequestBody");
             match++;
@@ -1233,12 +1205,12 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectStampsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectStampsRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(JsonSerializer.Deserialize<ConnectUpsRequestBody>(jsonDoc, DeserializingOptions));
+            newConnectCarrierRequestBody = new ConnectCarrierRequestBody(jsonDoc.Deserialize<ConnectUpsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("ConnectUpsRequestBody");
             match++;
@@ -1246,7 +1218,7 @@ public class ConnectCarrierRequestBodyJsonConverter : JsonConverter<ConnectCarri
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ConnectUpsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ConnectUpsRequestBody: {1}", jsonDoc, exception);
         }
 
         if (match == 0)

@@ -86,11 +86,13 @@ public partial class BulkRate
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class BulkRate {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  RateRequestId: ").Append(RateRequestId).Append("\n");
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
         sb.Append("  Status: ").Append(Status).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

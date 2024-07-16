@@ -31,6 +31,9 @@ public class UpsPickupType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of UpsPickupType with a predefined value.
+    /// </summary>
     internal UpsPickupType()
     {
         _value = "daily_pickup";

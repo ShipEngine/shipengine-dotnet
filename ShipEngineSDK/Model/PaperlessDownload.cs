@@ -61,9 +61,11 @@ public partial class PaperlessDownload
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PaperlessDownload {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Href: ").Append(Href).Append("\n");
         sb.Append("  Instructions: ").Append(Instructions).Append("\n");
         sb.Append("  HandoffCode: ").Append(HandoffCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

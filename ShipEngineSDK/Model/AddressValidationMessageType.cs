@@ -31,6 +31,9 @@ public class AddressValidationMessageType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of AddressValidationMessageType with a predefined value.
+    /// </summary>
     internal AddressValidationMessageType()
     {
         _value = "error";

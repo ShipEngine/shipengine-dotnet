@@ -61,9 +61,11 @@ public partial class ConnectEndiciaRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectEndiciaRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  Account: ").Append(Account).Append("\n");
         sb.Append("  Passphrase: ").Append(Passphrase).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

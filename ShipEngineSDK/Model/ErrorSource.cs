@@ -31,6 +31,9 @@ public class ErrorSource
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ErrorSource with a predefined value.
+    /// </summary>
     internal ErrorSource()
     {
         _value = "carrier";

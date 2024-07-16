@@ -140,6 +140,7 @@ public partial class DeprecatedManifest
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class DeprecatedManifest {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ManifestId: ").Append(ManifestId).Append("\n");
         sb.Append("  FormId: ").Append(FormId).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -150,6 +151,7 @@ public partial class DeprecatedManifest
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  ManifestDownload: ").Append(ManifestDownload).Append("\n");
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

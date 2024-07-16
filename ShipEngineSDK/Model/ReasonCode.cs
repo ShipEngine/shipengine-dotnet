@@ -31,6 +31,9 @@ public class ReasonCode
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ReasonCode with a predefined value.
+    /// </summary>
     internal ReasonCode()
     {
         _value = "unknown";

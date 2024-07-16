@@ -72,10 +72,12 @@ public partial class ResponseMessage
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ResponseMessage {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Code: ").Append(Code).Append("\n");
         sb.Append("  Message: ").Append(Message).Append("\n");
         sb.Append("  Type: ").Append(Type).Append("\n");
         sb.Append("  DetailCode: ").Append(DetailCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

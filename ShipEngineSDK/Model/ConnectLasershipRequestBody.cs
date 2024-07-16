@@ -229,6 +229,7 @@ public partial class ConnectLasershipRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectLasershipRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  WebServicesId: ").Append(WebServicesId).Append("\n");
         sb.Append("  WebServicesKey: ").Append(WebServicesKey).Append("\n");
@@ -255,6 +256,7 @@ public partial class ConnectLasershipRequestBody
         sb.Append("  AttrRefrigerated: ").Append(AttrRefrigerated).Append("\n");
         sb.Append("  AttrPerishable: ").Append(AttrPerishable).Append("\n");
         sb.Append("  AttrNoRTS: ").Append(AttrNoRTS).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

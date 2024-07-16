@@ -31,6 +31,9 @@ public class RateResponseStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of RateResponseStatus with a predefined value.
+    /// </summary>
     internal RateResponseStatus()
     {
         _value = "working";

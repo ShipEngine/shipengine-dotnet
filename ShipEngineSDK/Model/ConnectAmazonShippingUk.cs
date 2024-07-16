@@ -56,8 +56,10 @@ public partial class ConnectAmazonShippingUk
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectAmazonShippingUk {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  AuthCode: ").Append(AuthCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

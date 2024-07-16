@@ -30,6 +30,9 @@ public class PackagingGroup
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of PackagingGroup with a predefined value.
+    /// </summary>
     internal PackagingGroup()
     {
         _value = "i";

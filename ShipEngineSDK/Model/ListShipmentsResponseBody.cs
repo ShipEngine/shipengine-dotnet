@@ -77,11 +77,13 @@ public partial class ListShipmentsResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListShipmentsResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Shipments: ").Append(Shipments).Append("\n");
         sb.Append("  Total: ").Append(Total).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
         sb.Append("  Pages: ").Append(Pages).Append("\n");
         sb.Append("  Links: ").Append(Links).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

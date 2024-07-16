@@ -33,16 +33,27 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     [JsonConverter(typeof(FeaturesEnumJsonConverter))]
     public class FeaturesEnum
     {
-        private string _value;
+        private readonly string _value;
 
+        /// <summary>
+        /// Create a new instance of FeaturesEnum with a predefined value.
+        /// </summary>
         internal FeaturesEnum()
         {
             _value = "drop_off_point";
         }
 
+        /// <summary>
+        /// Create a new instance of FeaturesEnum with a custom value.
+        /// </summary>
+        /// <param name="value">The value of the FeaturesEnum</param>
+        /// <remarks>
+        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+        /// </remarks>
         public FeaturesEnum(string value)
         {
-
+            _value = value;
         }
 
         /// <summary>
@@ -97,16 +108,27 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     [JsonConverter(typeof(TypeEnumJsonConverter))]
     public class TypeEnum
     {
-        private string _value;
+        private readonly string _value;
 
+        /// <summary>
+        /// Create a new instance of TypeEnum with a predefined value.
+        /// </summary>
         internal TypeEnum()
         {
             _value = "pudo";
         }
 
+        /// <summary>
+        /// Create a new instance of TypeEnum with a custom value.
+        /// </summary>
+        /// <param name="value">The value of the TypeEnum</param>
+        /// <remarks>
+        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+        /// </remarks>
         public TypeEnum(string value)
         {
-
+            _value = value;
         }
 
         /// <summary>
@@ -281,6 +303,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetServicePointByIdResponseBodyServicePoint {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
         sb.Append("  ServiceCodes: ").Append(ServiceCodes).Append("\n");
         sb.Append("  ServicePointId: ").Append(ServicePointId).Append("\n");
@@ -296,6 +319,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
         sb.Append("  HoursOfOperation: ").Append(HoursOfOperation).Append("\n");
         sb.Append("  Features: ").Append(Features).Append("\n");
         sb.Append("  Type: ").Append(Type).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

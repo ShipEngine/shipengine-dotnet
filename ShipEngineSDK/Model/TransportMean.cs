@@ -30,6 +30,9 @@ public class TransportMean
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of TransportMean with a predefined value.
+    /// </summary>
     internal TransportMean()
     {
         _value = "ground";

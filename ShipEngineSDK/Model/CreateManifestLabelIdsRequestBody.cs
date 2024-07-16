@@ -45,7 +45,9 @@ public partial class CreateManifestLabelIdsRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateManifestLabelIdsRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

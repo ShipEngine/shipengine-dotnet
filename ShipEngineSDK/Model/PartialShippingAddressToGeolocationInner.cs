@@ -34,16 +34,27 @@ public partial class PartialShippingAddressToGeolocationInner
     [JsonConverter(typeof(TypeEnumJsonConverter))]
     public class TypeEnum
     {
-        private string _value;
+        private readonly string _value;
 
+        /// <summary>
+        /// Create a new instance of TypeEnum with a predefined value.
+        /// </summary>
         internal TypeEnum()
         {
             _value = "what3words";
         }
 
+        /// <summary>
+        /// Create a new instance of TypeEnum with a custom value.
+        /// </summary>
+        /// <param name="value">The value of the TypeEnum</param>
+        /// <remarks>
+        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+        /// </remarks>
         public TypeEnum(string value)
         {
-
+            _value = value;
         }
 
         /// <summary>
@@ -96,8 +107,10 @@ public partial class PartialShippingAddressToGeolocationInner
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PartialShippingAddressToGeolocationInner {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Type: ").Append(Type).Append("\n");
         sb.Append("  Value: ").Append(Value).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

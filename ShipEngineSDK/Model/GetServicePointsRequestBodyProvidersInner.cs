@@ -53,8 +53,10 @@ public partial class GetServicePointsRequestBodyProvidersInner
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetServicePointsRequestBodyProvidersInner {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -182,6 +182,7 @@ public partial class CreateManifestResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateManifestResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Manifests: ").Append(Manifests).Append("\n");
         sb.Append("  ManifestRequests: ").Append(ManifestRequests).Append("\n");
         sb.Append("  ManifestId: ").Append(ManifestId).Append("\n");
@@ -196,6 +197,7 @@ public partial class CreateManifestResponseBody
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
         sb.Append("  RequestId: ").Append(RequestId).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

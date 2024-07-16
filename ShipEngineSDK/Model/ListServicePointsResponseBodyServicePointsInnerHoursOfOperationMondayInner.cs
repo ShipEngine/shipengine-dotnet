@@ -57,8 +57,10 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Open: ").Append(Open).Append("\n");
         sb.Append("  Close: ").Append(Close).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

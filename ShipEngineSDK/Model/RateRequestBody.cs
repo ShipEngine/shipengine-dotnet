@@ -78,12 +78,14 @@ public partial class RateRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class RateRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierIds: ").Append(CarrierIds).Append("\n");
         sb.Append("  PackageTypes: ").Append(PackageTypes).Append("\n");
         sb.Append("  ServiceCodes: ").Append(ServiceCodes).Append("\n");
         sb.Append("  CalculateTaxAmount: ").Append(CalculateTaxAmount).Append("\n");
         sb.Append("  PreferredCurrency: ").Append(PreferredCurrency).Append("\n");
         sb.Append("  IsReturn: ").Append(IsReturn).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

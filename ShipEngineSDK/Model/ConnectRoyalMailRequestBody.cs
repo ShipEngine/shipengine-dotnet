@@ -132,6 +132,7 @@ public partial class ConnectRoyalMailRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectRoyalMailRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  ObaEmail: ").Append(ObaEmail).Append("\n");
         sb.Append("  ContactName: ").Append(ContactName).Append("\n");
@@ -144,6 +145,7 @@ public partial class ConnectRoyalMailRequestBody
         sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
         sb.Append("  Phone: ").Append(Phone).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -257,6 +257,7 @@ public partial class Rate
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Rate {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  RateId: ").Append(RateId).Append("\n");
         sb.Append("  RateType: ").Append(RateType).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
@@ -283,6 +284,7 @@ public partial class Rate
         sb.Append("  ValidationStatus: ").Append(ValidationStatus).Append("\n");
         sb.Append("  WarningMessages: ").Append(WarningMessages).Append("\n");
         sb.Append("  ErrorMessages: ").Append(ErrorMessages).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

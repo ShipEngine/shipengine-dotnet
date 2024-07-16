@@ -274,6 +274,7 @@ public partial class CalculateRatesResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CalculateRatesResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
@@ -302,6 +303,7 @@ public partial class CalculateRatesResponseBody
         sb.Append("  TotalWeight: ").Append(TotalWeight).Append("\n");
         sb.Append("  ComparisonRateType: ").Append(ComparisonRateType).Append("\n");
         sb.Append("  RateResponse: ").Append(RateResponse).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

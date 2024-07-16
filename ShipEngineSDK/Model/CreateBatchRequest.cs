@@ -36,11 +36,10 @@ public partial class CreateBatchRequest : AbstractOpenAPISchema
     /// with the <see cref="CreateBatchRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of CreateBatchRequestBody.</param>
-    public CreateBatchRequest(CreateBatchRequestBody actualInstance)
+    public CreateBatchRequest(CreateBatchRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -48,11 +47,10 @@ public partial class CreateBatchRequest : AbstractOpenAPISchema
     /// with the <see cref="CreateAndProcessBatchRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of CreateAndProcessBatchRequestBody.</param>
-    public CreateBatchRequest(CreateAndProcessBatchRequestBody actualInstance)
+    public CreateBatchRequest(CreateAndProcessBatchRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -134,9 +132,9 @@ public partial class CreateBatchRequest : AbstractOpenAPISchema
 /// </summary>
 public class CreateBatchRequestJsonConverter : JsonConverter<CreateBatchRequest>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(CreateBatchRequestBody), typeof(CreateAndProcessBatchRequestBody)];
-    private static HashSet<string> MandatoryFields = [];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(CreateBatchRequestBody), typeof(CreateAndProcessBatchRequestBody)];
+    private static readonly HashSet<string> MandatoryFields = [];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -196,7 +194,7 @@ public class CreateBatchRequestJsonConverter : JsonConverter<CreateBatchRequest>
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override CreateBatchRequest Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override CreateBatchRequest? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -204,14 +202,14 @@ public class CreateBatchRequestJsonConverter : JsonConverter<CreateBatchRequest>
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        CreateBatchRequest newCreateBatchRequest = null;
+        CreateBatchRequest? newCreateBatchRequest = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newCreateBatchRequest = new CreateBatchRequest(JsonSerializer.Deserialize<CreateBatchRequestBody>(jsonDoc, DeserializingOptions));
+            newCreateBatchRequest = new CreateBatchRequest(jsonDoc.Deserialize<CreateBatchRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("CreateBatchRequestBody");
             match++;
@@ -219,12 +217,12 @@ public class CreateBatchRequestJsonConverter : JsonConverter<CreateBatchRequest>
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CreateBatchRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into CreateBatchRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newCreateBatchRequest = new CreateBatchRequest(JsonSerializer.Deserialize<CreateAndProcessBatchRequestBody>(jsonDoc, DeserializingOptions));
+            newCreateBatchRequest = new CreateBatchRequest(jsonDoc.Deserialize<CreateAndProcessBatchRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("CreateAndProcessBatchRequestBody");
             match++;
@@ -232,7 +230,7 @@ public class CreateBatchRequestJsonConverter : JsonConverter<CreateBatchRequest>
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CreateAndProcessBatchRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into CreateAndProcessBatchRequestBody: {1}", jsonDoc, exception);
         }
 
         if (match == 0)

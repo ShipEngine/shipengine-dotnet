@@ -70,11 +70,13 @@ public partial class CreateAndProcessBatchRequestBodyProcessLabels
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateAndProcessBatchRequestBodyProcessLabels {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CreateBatchAndProcessLabels: ").Append(CreateBatchAndProcessLabels).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
         sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

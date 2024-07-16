@@ -64,9 +64,11 @@ public partial class BatchResponseError
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class BatchResponseError {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Error: ").Append(Error).Append("\n");
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
         sb.Append("  ExternalShipmentId: ").Append(ExternalShipmentId).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

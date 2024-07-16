@@ -117,6 +117,7 @@ public partial class UpsAccountSettings
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpsAccountSettings {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  IsPrimaryAccount: ").Append(IsPrimaryAccount).Append("\n");
         sb.Append("  PickupType: ").Append(PickupType).Append("\n");
@@ -129,6 +130,7 @@ public partial class UpsAccountSettings
         sb.Append("  UseNegotiatedRates: ").Append(UseNegotiatedRates).Append("\n");
         sb.Append("  AccountPostalCode: ").Append(AccountPostalCode).Append("\n");
         sb.Append("  Invoice: ").Append(Invoice).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

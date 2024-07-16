@@ -53,8 +53,10 @@ public partial class GetInsuranceBalanceResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetInsuranceBalanceResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Currency: ").Append(Currency).Append("\n");
         sb.Append("  Amount: ").Append(Amount).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

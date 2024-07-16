@@ -30,6 +30,9 @@ public class AllowedIncoterms
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of AllowedIncoterms with a predefined value.
+    /// </summary>
     internal AllowedIncoterms()
     {
         _value = "exw";

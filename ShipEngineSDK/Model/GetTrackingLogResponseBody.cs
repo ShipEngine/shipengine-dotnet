@@ -177,6 +177,7 @@ public partial class GetTrackingLogResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetTrackingLogResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
         sb.Append("  TrackingUrl: ").Append(TrackingUrl).Append("\n");
         sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
@@ -191,6 +192,7 @@ public partial class GetTrackingLogResponseBody
         sb.Append("  ActualDeliveryDate: ").Append(ActualDeliveryDate).Append("\n");
         sb.Append("  ExceptionDescription: ").Append(ExceptionDescription).Append("\n");
         sb.Append("  Events: ").Append(Events).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -147,6 +147,7 @@ public partial class ConnectDhlEcommerceRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectDhlEcommerceRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  ClientId: ").Append(ClientId).Append("\n");
         sb.Append("  Username: ").Append(Username).Append("\n");
@@ -162,6 +163,7 @@ public partial class ConnectDhlEcommerceRequestBody
         sb.Append("  SoldTo: ").Append(SoldTo).Append("\n");
         sb.Append("  RegistrationId: ").Append(RegistrationId).Append("\n");
         sb.Append("  SoftwareName: ").Append(SoftwareName).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

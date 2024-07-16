@@ -31,6 +31,9 @@ public class BatchStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of BatchStatus with a predefined value.
+    /// </summary>
     internal BatchStatus()
     {
         _value = "open";

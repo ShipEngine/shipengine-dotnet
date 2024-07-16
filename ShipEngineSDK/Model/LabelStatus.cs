@@ -31,6 +31,9 @@ public class LabelStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of LabelStatus with a predefined value.
+    /// </summary>
     internal LabelStatus()
     {
         _value = "processing";

@@ -31,6 +31,9 @@ public class SortDir
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of SortDir with a predefined value.
+    /// </summary>
     internal SortDir()
     {
         _value = "asc";

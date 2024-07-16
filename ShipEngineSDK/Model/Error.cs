@@ -72,10 +72,12 @@ public partial class Error
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Error {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ErrorSource: ").Append(ErrorSource).Append("\n");
         sb.Append("  ErrorType: ").Append(ErrorType).Append("\n");
         sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
         sb.Append("  Message: ").Append(Message).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

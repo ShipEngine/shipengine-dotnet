@@ -54,8 +54,10 @@ public partial class UpdateWebhookRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpdateWebhookRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Url: ").Append(Url).Append("\n");
         sb.Append("  Headers: ").Append(Headers).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -64,9 +64,11 @@ public partial class CarrierAdvancedOption
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CarrierAdvancedOption {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  DefaultValue: ").Append(DefaultValue).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

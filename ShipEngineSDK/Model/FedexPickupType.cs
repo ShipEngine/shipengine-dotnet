@@ -31,6 +31,9 @@ public class FedexPickupType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of FedexPickupType with a predefined value.
+    /// </summary>
     internal FedexPickupType()
     {
         _value = "none";

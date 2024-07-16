@@ -45,11 +45,10 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
     /// with the <see cref="RateRequestByShipmentIds" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of RateRequestByShipmentIds.</param>
-    public CompareBulkRatesRequestBody(RateRequestByShipmentIds actualInstance)
+    public CompareBulkRatesRequestBody(RateRequestByShipmentIds actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -57,11 +56,10 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
     /// with the <see cref="RateRequestByShipments" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of RateRequestByShipments.</param>
-    public CompareBulkRatesRequestBody(RateRequestByShipments actualInstance)
+    public CompareBulkRatesRequestBody(RateRequestByShipments actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -144,9 +142,9 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBulkRatesRequestBody>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(RateRequestByShipmentIds), typeof(RateRequestByShipments)];
-    private static HashSet<string> MandatoryFields = ["RateOptions"];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(RateRequestByShipmentIds), typeof(RateRequestByShipments)];
+    private static readonly HashSet<string> MandatoryFields = ["RateOptions"];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -208,7 +206,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override CompareBulkRatesRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override CompareBulkRatesRequestBody? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -216,14 +214,14 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        CompareBulkRatesRequestBody newCompareBulkRatesRequestBody = null;
+        CompareBulkRatesRequestBody? newCompareBulkRatesRequestBody = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipmentIds>(jsonDoc, DeserializingOptions));
+            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(jsonDoc.Deserialize<RateRequestByShipmentIds>(DeserializingOptions)!);
 
             matchedTypes.Add("RateRequestByShipmentIds");
             match++;
@@ -231,12 +229,12 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RateRequestByShipmentIds: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into RateRequestByShipmentIds: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(JsonSerializer.Deserialize<RateRequestByShipments>(jsonDoc, DeserializingOptions));
+            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(jsonDoc.Deserialize<RateRequestByShipments>(DeserializingOptions)!);
 
             matchedTypes.Add("RateRequestByShipments");
             match++;
@@ -244,7 +242,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RateRequestByShipments: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into RateRequestByShipments: {1}", jsonDoc, exception);
         }
 
         if (match == 0)
@@ -257,7 +255,7 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
 
-        newCompareBulkRatesRequestBody.RateOptions = JsonSerializer.Deserialize<RateRequestBody>(jsonDoc.RootElement.GetProperty("rate_options"), DeserializingOptions);
+        newCompareBulkRatesRequestBody!.RateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newCompareBulkRatesRequestBody;

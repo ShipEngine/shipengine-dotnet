@@ -101,6 +101,7 @@ public partial class ShipmentItem
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ShipmentItem {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  SalesOrderId: ").Append(SalesOrderId).Append("\n");
         sb.Append("  SalesOrderItemId: ").Append(SalesOrderItemId).Append("\n");
@@ -110,6 +111,7 @@ public partial class ShipmentItem
         sb.Append("  ExternalOrderItemId: ").Append(ExternalOrderItemId).Append("\n");
         sb.Append("  Asin: ").Append(Asin).Append("\n");
         sb.Append("  OrderSourceCode: ").Append(OrderSourceCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

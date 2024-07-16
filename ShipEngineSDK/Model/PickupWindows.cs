@@ -57,8 +57,10 @@ public partial class PickupWindows
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PickupWindows {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  StartAt: ").Append(StartAt).Append("\n");
         sb.Append("  EndAt: ").Append(EndAt).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

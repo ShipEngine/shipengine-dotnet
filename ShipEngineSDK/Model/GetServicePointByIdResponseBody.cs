@@ -43,7 +43,9 @@ public partial class GetServicePointByIdResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetServicePointByIdResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ServicePoint: ").Append(ServicePoint).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -31,6 +31,9 @@ public class ErrorCode
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ErrorCode with a predefined value.
+    /// </summary>
     internal ErrorCode()
     {
         _value = "auto_fund_not_supported";

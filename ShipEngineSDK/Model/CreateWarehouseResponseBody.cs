@@ -93,12 +93,14 @@ public partial class CreateWarehouseResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateWarehouseResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
         sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
         sb.Append("  OriginAddress: ").Append(OriginAddress).Append("\n");
         sb.Append("  ReturnAddress: ").Append(ReturnAddress).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

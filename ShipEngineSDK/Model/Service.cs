@@ -98,6 +98,7 @@ public partial class Service
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Service {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
         sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
@@ -105,6 +106,7 @@ public partial class Service
         sb.Append("  Domestic: ").Append(Domestic).Append("\n");
         sb.Append("  International: ").Append(International).Append("\n");
         sb.Append("  IsMultiPackageSupported: ").Append(IsMultiPackageSupported).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

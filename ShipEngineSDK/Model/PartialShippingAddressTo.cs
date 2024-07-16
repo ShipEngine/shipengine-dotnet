@@ -50,8 +50,10 @@ public partial class PartialShippingAddressTo
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PartialShippingAddressTo {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Instructions: ").Append(Instructions).Append("\n");
         sb.Append("  Geolocation: ").Append(Geolocation).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

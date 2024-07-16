@@ -31,6 +31,9 @@ public class WebhookEvent
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of WebhookEvent with a predefined value.
+    /// </summary>
     internal WebhookEvent()
     {
         _value = "batch";

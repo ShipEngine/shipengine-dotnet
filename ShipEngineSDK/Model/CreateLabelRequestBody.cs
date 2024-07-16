@@ -355,6 +355,7 @@ public partial class CreateLabelRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateLabelRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ShipToServicePointId: ").Append(ShipToServicePointId).Append("\n");
         sb.Append("  ShipFromServicePointId: ").Append(ShipFromServicePointId).Append("\n");
         sb.Append("  LabelId: ").Append(LabelId).Append("\n");
@@ -395,6 +396,7 @@ public partial class CreateLabelRequestBody
         sb.Append("  Packages: ").Append(Packages).Append("\n");
         sb.Append("  AlternativeIdentifiers: ").Append(AlternativeIdentifiers).Append("\n");
         sb.Append("  TrackingUrl: ").Append(TrackingUrl).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

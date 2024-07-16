@@ -31,6 +31,9 @@ public class WeightUnit
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of WeightUnit with a predefined value.
+    /// </summary>
     internal WeightUnit()
     {
         _value = "pound";

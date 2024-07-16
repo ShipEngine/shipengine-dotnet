@@ -72,11 +72,13 @@ public partial class InvoiceAdditionalDetails
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class InvoiceAdditionalDetails {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  FreightCharge: ").Append(FreightCharge).Append("\n");
         sb.Append("  InsuranceCharge: ").Append(InsuranceCharge).Append("\n");
         sb.Append("  Discount: ").Append(Discount).Append("\n");
         sb.Append("  OtherCharge: ").Append(OtherCharge).Append("\n");
         sb.Append("  OtherChargeDescription: ").Append(OtherChargeDescription).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

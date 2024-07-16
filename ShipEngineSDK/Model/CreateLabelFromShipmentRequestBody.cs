@@ -63,11 +63,13 @@ public partial class CreateLabelFromShipmentRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateLabelFromShipmentRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ValidateAddress: ").Append(ValidateAddress).Append("\n");
         sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
         sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

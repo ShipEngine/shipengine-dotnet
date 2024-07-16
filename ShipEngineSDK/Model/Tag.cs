@@ -48,7 +48,9 @@ public partial class Tag
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Tag {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

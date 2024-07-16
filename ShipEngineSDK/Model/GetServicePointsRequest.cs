@@ -36,11 +36,10 @@ public partial class GetServicePointsRequest : AbstractOpenAPISchema
     /// with the <see cref="GetServicePointsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of GetServicePointsRequestBody.</param>
-    public GetServicePointsRequest(GetServicePointsRequestBody actualInstance)
+    public GetServicePointsRequest(GetServicePointsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -108,9 +107,9 @@ public partial class GetServicePointsRequest : AbstractOpenAPISchema
 /// </summary>
 public class GetServicePointsRequestJsonConverter : JsonConverter<GetServicePointsRequest>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(GetServicePointsRequestBody)];
-    private static HashSet<string> MandatoryFields = ["Providers"];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(GetServicePointsRequestBody)];
+    private static readonly HashSet<string> MandatoryFields = ["Providers"];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -170,7 +169,7 @@ public class GetServicePointsRequestJsonConverter : JsonConverter<GetServicePoin
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override GetServicePointsRequest Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override GetServicePointsRequest? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -178,14 +177,14 @@ public class GetServicePointsRequestJsonConverter : JsonConverter<GetServicePoin
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        GetServicePointsRequest newGetServicePointsRequest = null;
+        GetServicePointsRequest? newGetServicePointsRequest = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newGetServicePointsRequest = new GetServicePointsRequest(JsonSerializer.Deserialize<GetServicePointsRequestBody>(jsonDoc, DeserializingOptions));
+            newGetServicePointsRequest = new GetServicePointsRequest(jsonDoc.Deserialize<GetServicePointsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("GetServicePointsRequestBody");
             match++;
@@ -193,7 +192,7 @@ public class GetServicePointsRequestJsonConverter : JsonConverter<GetServicePoin
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into GetServicePointsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into GetServicePointsRequestBody: {1}", jsonDoc, exception);
         }
 
         if (match == 0)

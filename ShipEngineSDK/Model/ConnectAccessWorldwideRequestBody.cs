@@ -64,9 +64,11 @@ public partial class ConnectAccessWorldwideRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectAccessWorldwideRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  Username: ").Append(Username).Append("\n");
         sb.Append("  Password: ").Append(Password).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

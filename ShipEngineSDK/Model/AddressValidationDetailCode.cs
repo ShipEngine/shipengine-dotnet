@@ -31,6 +31,9 @@ public class AddressValidationDetailCode
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of AddressValidationDetailCode with a predefined value.
+    /// </summary>
     internal AddressValidationDetailCode()
     {
         _value = "unsupported_country";

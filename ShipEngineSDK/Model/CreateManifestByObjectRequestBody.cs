@@ -84,11 +84,13 @@ public partial class CreateManifestByObjectRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateManifestByObjectRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  ExcludedLabelIds: ").Append(ExcludedLabelIds).Append("\n");
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
         sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

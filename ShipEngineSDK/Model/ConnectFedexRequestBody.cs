@@ -157,6 +157,7 @@ public partial class ConnectFedexRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectFedexRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  Address1: ").Append(Address1).Append("\n");
         sb.Append("  Address2: ").Append(Address2).Append("\n");
@@ -172,6 +173,7 @@ public partial class ConnectFedexRequestBody
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  AgreeToEula: ").Append(AgreeToEula).Append("\n");
         sb.Append("  MeterNumber: ").Append(MeterNumber).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

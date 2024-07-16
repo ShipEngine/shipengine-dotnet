@@ -69,10 +69,12 @@ public partial class Dimensions
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Dimensions {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Unit: ").Append(Unit).Append("\n");
         sb.Append("  Length: ").Append(Length).Append("\n");
         sb.Append("  Width: ").Append(Width).Append("\n");
         sb.Append("  Height: ").Append(Height).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

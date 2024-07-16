@@ -161,11 +161,10 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// with the <see cref="RateEstimateByCarrierId" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of RateEstimateByCarrierId.</param>
-    public EstimateRatesRequestBody(RateEstimateByCarrierId actualInstance)
+    public EstimateRatesRequestBody(RateEstimateByCarrierId actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -173,11 +172,10 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// with the <see cref="RateEstimateByCarrierIds" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of RateEstimateByCarrierIds.</param>
-    public EstimateRatesRequestBody(RateEstimateByCarrierIds actualInstance)
+    public EstimateRatesRequestBody(RateEstimateByCarrierIds actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -272,9 +270,9 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRatesRequestBody>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(RateEstimateByCarrierId), typeof(RateEstimateByCarrierIds)];
-    private static HashSet<string> MandatoryFields = ["FromCityLocality", "FromCountryCode", "FromPostalCode", "FromStateProvince", "ShipDate", "ToCityLocality", "ToCountryCode", "ToPostalCode", "ToStateProvince", "Weight"];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(RateEstimateByCarrierId), typeof(RateEstimateByCarrierIds)];
+    private static readonly HashSet<string> MandatoryFields = ["FromCityLocality", "FromCountryCode", "FromPostalCode", "FromStateProvince", "ShipDate", "ToCityLocality", "ToCountryCode", "ToPostalCode", "ToStateProvince", "Weight"];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -360,7 +358,7 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override EstimateRatesRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override EstimateRatesRequestBody? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -368,14 +366,14 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        EstimateRatesRequestBody newEstimateRatesRequestBody = null;
+        EstimateRatesRequestBody? newEstimateRatesRequestBody = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierId>(jsonDoc, DeserializingOptions));
+            newEstimateRatesRequestBody = new EstimateRatesRequestBody(jsonDoc.Deserialize<RateEstimateByCarrierId>(DeserializingOptions)!);
 
             matchedTypes.Add("RateEstimateByCarrierId");
             match++;
@@ -383,12 +381,12 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RateEstimateByCarrierId: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into RateEstimateByCarrierId: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newEstimateRatesRequestBody = new EstimateRatesRequestBody(JsonSerializer.Deserialize<RateEstimateByCarrierIds>(jsonDoc, DeserializingOptions));
+            newEstimateRatesRequestBody = new EstimateRatesRequestBody(jsonDoc.Deserialize<RateEstimateByCarrierIds>(DeserializingOptions)!);
 
             matchedTypes.Add("RateEstimateByCarrierIds");
             match++;
@@ -396,7 +394,7 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RateEstimateByCarrierIds: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into RateEstimateByCarrierIds: {1}", jsonDoc, exception);
         }
 
         if (match == 0)
@@ -409,19 +407,19 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
 
-        newEstimateRatesRequestBody.FromCountryCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_country_code"), DeserializingOptions);
-        newEstimateRatesRequestBody.FromPostalCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_postal_code"), DeserializingOptions);
-        newEstimateRatesRequestBody.FromCityLocality = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_city_locality"), DeserializingOptions);
-        newEstimateRatesRequestBody.FromStateProvince = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("from_state_province"), DeserializingOptions);
-        newEstimateRatesRequestBody.ToCountryCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_country_code"), DeserializingOptions);
-        newEstimateRatesRequestBody.ToPostalCode = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_postal_code"), DeserializingOptions);
-        newEstimateRatesRequestBody.ToCityLocality = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_city_locality"), DeserializingOptions);
-        newEstimateRatesRequestBody.ToStateProvince = JsonSerializer.Deserialize<string>(jsonDoc.RootElement.GetProperty("to_state_province"), DeserializingOptions);
-        newEstimateRatesRequestBody.Weight = JsonSerializer.Deserialize<Weight>(jsonDoc.RootElement.GetProperty("weight"), DeserializingOptions);
-        newEstimateRatesRequestBody.Dimensions = JsonSerializer.Deserialize<Dimensions>(jsonDoc.RootElement.GetProperty("dimensions"), DeserializingOptions);
-        newEstimateRatesRequestBody.Confirmation = JsonSerializer.Deserialize<DeliveryConfirmation>(jsonDoc.RootElement.GetProperty("confirmation"), DeserializingOptions);
-        newEstimateRatesRequestBody.AddressResidentialIndicator = JsonSerializer.Deserialize<AddressResidentialIndicator>(jsonDoc.RootElement.GetProperty("address_residential_indicator"), DeserializingOptions);
-        newEstimateRatesRequestBody.ShipDate = JsonSerializer.Deserialize<DateTimeOffset>(jsonDoc.RootElement.GetProperty("ship_date"), DeserializingOptions);
+        newEstimateRatesRequestBody!.FromCountryCode = jsonDoc.RootElement.GetProperty("from_country_code").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.FromPostalCode = jsonDoc.RootElement.GetProperty("from_postal_code").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.FromCityLocality = jsonDoc.RootElement.GetProperty("from_city_locality").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.FromStateProvince = jsonDoc.RootElement.GetProperty("from_state_province").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.ToCountryCode = jsonDoc.RootElement.GetProperty("to_country_code").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.ToPostalCode = jsonDoc.RootElement.GetProperty("to_postal_code").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.ToCityLocality = jsonDoc.RootElement.GetProperty("to_city_locality").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.ToStateProvince = jsonDoc.RootElement.GetProperty("to_state_province").Deserialize<string>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.Weight = jsonDoc.RootElement.GetProperty("weight").Deserialize<Weight>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.Dimensions = jsonDoc.RootElement.GetProperty("dimensions").Deserialize<Dimensions>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.Confirmation = jsonDoc.RootElement.GetProperty("confirmation").Deserialize<DeliveryConfirmation>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.AddressResidentialIndicator = jsonDoc.RootElement.GetProperty("address_residential_indicator").Deserialize<AddressResidentialIndicator>(DeserializingOptions)!;
+        newEstimateRatesRequestBody!.ShipDate = jsonDoc.RootElement.GetProperty("ship_date").Deserialize<DateTimeOffset>(DeserializingOptions)!;
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newEstimateRatesRequestBody;

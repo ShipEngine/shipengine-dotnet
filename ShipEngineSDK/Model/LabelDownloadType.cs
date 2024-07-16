@@ -31,6 +31,9 @@ public class LabelDownloadType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of LabelDownloadType with a predefined value.
+    /// </summary>
     internal LabelDownloadType()
     {
         _value = "url";

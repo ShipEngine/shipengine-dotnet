@@ -197,6 +197,7 @@ public partial class AdvancedShipmentOptions
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class AdvancedShipmentOptions {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  BillToAccount: ").Append(BillToAccount).Append("\n");
         sb.Append("  BillToCountryCode: ").Append(BillToCountryCode).Append("\n");
         sb.Append("  BillToParty: ").Append(BillToParty).Append("\n");
@@ -220,6 +221,7 @@ public partial class AdvancedShipmentOptions
         sb.Append("  ThirdPartyConsignee: ").Append(ThirdPartyConsignee).Append("\n");
         sb.Append("  DangerousGoods: ").Append(DangerousGoods).Append("\n");
         sb.Append("  DangerousGoodsContact: ").Append(DangerousGoodsContact).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

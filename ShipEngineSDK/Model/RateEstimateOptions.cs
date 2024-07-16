@@ -151,6 +151,7 @@ public partial class RateEstimateOptions
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class RateEstimateOptions {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  FromCountryCode: ").Append(FromCountryCode).Append("\n");
         sb.Append("  FromPostalCode: ").Append(FromPostalCode).Append("\n");
         sb.Append("  FromCityLocality: ").Append(FromCityLocality).Append("\n");
@@ -164,6 +165,7 @@ public partial class RateEstimateOptions
         sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
         sb.Append("  AddressResidentialIndicator: ").Append(AddressResidentialIndicator).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

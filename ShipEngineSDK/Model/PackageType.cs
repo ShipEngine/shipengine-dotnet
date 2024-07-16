@@ -85,11 +85,13 @@ public partial class PackageType
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PackageType {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  PackageId: ").Append(PackageId).Append("\n");
         sb.Append("  PackageCode: ").Append(PackageCode).Append("\n");
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

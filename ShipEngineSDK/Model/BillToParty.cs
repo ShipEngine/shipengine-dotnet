@@ -31,6 +31,9 @@ public class BillToParty
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of BillToParty with a predefined value.
+    /// </summary>
     internal BillToParty()
     {
         _value = "recipient";

@@ -70,10 +70,12 @@ public partial class ListServicePointsResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListServicePointsResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Lat: ").Append(Lat).Append("\n");
         sb.Append("  Long: ").Append(Long).Append("\n");
         sb.Append("  ServicePoints: ").Append(ServicePoints).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

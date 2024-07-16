@@ -31,6 +31,9 @@ public class IdentifierType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of IdentifierType with a predefined value.
+    /// </summary>
     internal IdentifierType()
     {
         _value = "vat";

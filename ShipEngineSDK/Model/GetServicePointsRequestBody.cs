@@ -107,6 +107,7 @@ public partial class GetServicePointsRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetServicePointsRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressQuery: ").Append(AddressQuery).Append("\n");
         sb.Append("  Address: ").Append(Address).Append("\n");
         sb.Append("  Providers: ").Append(Providers).Append("\n");
@@ -115,6 +116,7 @@ public partial class GetServicePointsRequestBody
         sb.Append("  Radius: ").Append(Radius).Append("\n");
         sb.Append("  MaxResults: ").Append(MaxResults).Append("\n");
         sb.Append("  Shipment: ").Append(Shipment).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

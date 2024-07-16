@@ -31,6 +31,9 @@ public class ShipmentStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ShipmentStatus with a predefined value.
+    /// </summary>
     internal ShipmentStatus()
     {
         _value = "pending";

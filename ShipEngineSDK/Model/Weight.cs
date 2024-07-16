@@ -53,8 +53,10 @@ public partial class Weight
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Weight {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Value: ").Append(Value).Append("\n");
         sb.Append("  Unit: ").Append(Unit).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

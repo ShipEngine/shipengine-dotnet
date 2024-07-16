@@ -57,8 +57,10 @@ public partial class AlternativeIdentifier
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class AlternativeIdentifier {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Type: ").Append(Type).Append("\n");
         sb.Append("  Value: ").Append(Value).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -31,6 +31,9 @@ public class NonDelivery
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of NonDelivery with a predefined value.
+    /// </summary>
     internal NonDelivery()
     {
         _value = "return_to_sender";

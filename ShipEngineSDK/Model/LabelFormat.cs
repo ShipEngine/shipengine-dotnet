@@ -31,6 +31,9 @@ public class LabelFormat
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of LabelFormat with a predefined value.
+    /// </summary>
     internal LabelFormat()
     {
         _value = "pdf";

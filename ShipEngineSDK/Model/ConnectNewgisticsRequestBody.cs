@@ -67,10 +67,12 @@ public partial class ConnectNewgisticsRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectNewgisticsRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
         sb.Append("  MailerId: ").Append(MailerId).Append("\n");
         sb.Append("  InductionSite: ").Append(InductionSite).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

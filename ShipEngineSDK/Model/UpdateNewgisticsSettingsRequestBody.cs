@@ -49,8 +49,10 @@ public partial class UpdateNewgisticsSettingsRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpdateNewgisticsSettingsRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  IncludeBarcodeWithOrderNumber: ").Append(IncludeBarcodeWithOrderNumber).Append("\n");
         sb.Append("  ReceiveEmailOnManifestProcessing: ").Append(ReceiveEmailOnManifestProcessing).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

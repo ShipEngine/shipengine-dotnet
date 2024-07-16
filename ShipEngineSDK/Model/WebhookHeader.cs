@@ -59,8 +59,10 @@ public partial class WebhookHeader
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class WebhookHeader {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Key: ").Append(Key).Append("\n");
         sb.Append("  Value: ").Append(Value).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

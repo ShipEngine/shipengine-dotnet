@@ -44,7 +44,9 @@ public partial class PartialShippingAddress
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PartialShippingAddress {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -139,6 +139,7 @@ public partial class SchedulePickupRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class SchedulePickupRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  PickupId: ").Append(PickupId).Append("\n");
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -151,6 +152,7 @@ public partial class SchedulePickupRequestBody
         sb.Append("  PickupNotes: ").Append(PickupNotes).Append("\n");
         sb.Append("  PickupWindow: ").Append(PickupWindow).Append("\n");
         sb.Append("  PickupWindows: ").Append(PickupWindows).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

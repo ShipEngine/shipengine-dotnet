@@ -42,7 +42,9 @@ public partial class GetAccountSettingsResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetAccountSettingsResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  DefaultLabelLayout: ").Append(DefaultLabelLayout).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

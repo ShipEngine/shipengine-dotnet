@@ -54,8 +54,10 @@ public partial class OptionalLink
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class OptionalLink {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Href: ").Append(Href).Append("\n");
         sb.Append("  Type: ").Append(Type).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

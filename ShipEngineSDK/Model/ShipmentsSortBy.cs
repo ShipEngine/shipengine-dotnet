@@ -31,6 +31,9 @@ public class ShipmentsSortBy
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ShipmentsSortBy with a predefined value.
+    /// </summary>
     internal ShipmentsSortBy()
     {
         _value = "modified_at";

@@ -31,6 +31,9 @@ public class TrackingStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of TrackingStatus with a predefined value.
+    /// </summary>
     internal TrackingStatus()
     {
         _value = "unknown";

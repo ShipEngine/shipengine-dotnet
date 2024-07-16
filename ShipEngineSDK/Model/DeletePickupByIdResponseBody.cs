@@ -67,9 +67,11 @@ public partial class DeletePickupByIdResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class DeletePickupByIdResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  RequestId: ").Append(RequestId).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
         sb.Append("  PickupId: ").Append(PickupId).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

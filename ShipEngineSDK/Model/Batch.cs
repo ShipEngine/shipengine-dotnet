@@ -233,6 +233,7 @@ public partial class Batch
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Batch {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
         sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  BatchId: ").Append(BatchId).Append("\n");
@@ -254,6 +255,7 @@ public partial class Batch
         sb.Append("  FormDownload: ").Append(FormDownload).Append("\n");
         sb.Append("  PaperlessDownload: ").Append(PaperlessDownload).Append("\n");
         sb.Append("  Status: ").Append(Status).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

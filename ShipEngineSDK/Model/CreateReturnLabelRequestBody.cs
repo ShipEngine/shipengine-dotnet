@@ -76,12 +76,14 @@ public partial class CreateReturnLabelRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateReturnLabelRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ChargeEvent: ").Append(ChargeEvent).Append("\n");
         sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
         sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
         sb.Append("  LabelImageId: ").Append(LabelImageId).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

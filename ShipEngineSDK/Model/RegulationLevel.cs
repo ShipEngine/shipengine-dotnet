@@ -30,6 +30,9 @@ public class RegulationLevel
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of RegulationLevel with a predefined value.
+    /// </summary>
     internal RegulationLevel()
     {
         _value = "lightly_regulated";

@@ -29,6 +29,14 @@ public abstract partial class AbstractOpenAPISchema
     };
 
     /// <summary>
+    /// Constructor
+    /// </summary>
+    protected AbstractOpenAPISchema(string schemaType)
+    {
+        SchemaType = schemaType;
+    }
+
+    /// <summary>
     /// Gets or Sets the actual instance
     /// </summary>
     public abstract Object ActualInstance { get; set; }

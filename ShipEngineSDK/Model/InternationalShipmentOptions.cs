@@ -95,6 +95,7 @@ public partial class InternationalShipmentOptions
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class InternationalShipmentOptions {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Contents: ").Append(Contents).Append("\n");
         sb.Append("  ContentsExplanation: ").Append(ContentsExplanation).Append("\n");
         sb.Append("  NonDelivery: ").Append(NonDelivery).Append("\n");
@@ -103,6 +104,7 @@ public partial class InternationalShipmentOptions
         sb.Append("  InvoiceAdditionalDetails: ").Append(InvoiceAdditionalDetails).Append("\n");
         sb.Append("  ImporterOfRecord: ").Append(ImporterOfRecord).Append("\n");
         sb.Append("  CustomsItems: ").Append(CustomsItems).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

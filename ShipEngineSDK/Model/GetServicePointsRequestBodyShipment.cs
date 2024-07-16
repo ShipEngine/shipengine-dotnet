@@ -44,7 +44,9 @@ public partial class GetServicePointsRequestBodyShipment
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetServicePointsRequestBodyShipment {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  TotalWeight: ").Append(TotalWeight).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

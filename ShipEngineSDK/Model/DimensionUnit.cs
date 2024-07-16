@@ -31,6 +31,9 @@ public class DimensionUnit
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of DimensionUnit with a predefined value.
+    /// </summary>
     internal DimensionUnit()
     {
         _value = "inch";

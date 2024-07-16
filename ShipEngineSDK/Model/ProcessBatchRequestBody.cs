@@ -63,10 +63,12 @@ public partial class ProcessBatchRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ProcessBatchRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
         sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

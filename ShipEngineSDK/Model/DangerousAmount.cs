@@ -51,8 +51,10 @@ public partial class DangerousAmount
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class DangerousAmount {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Amount: ").Append(Amount).Append("\n");
         sb.Append("  Unit: ").Append(Unit).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

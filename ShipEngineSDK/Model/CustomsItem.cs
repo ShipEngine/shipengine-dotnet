@@ -123,6 +123,7 @@ public partial class CustomsItem
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CustomsItem {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CustomsItemId: ").Append(CustomsItemId).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
         sb.Append("  Quantity: ").Append(Quantity).Append("\n");
@@ -134,6 +135,7 @@ public partial class CustomsItem
         sb.Append("  UnitOfMeasure: ").Append(UnitOfMeasure).Append("\n");
         sb.Append("  Sku: ").Append(Sku).Append("\n");
         sb.Append("  SkuDescription: ").Append(SkuDescription).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

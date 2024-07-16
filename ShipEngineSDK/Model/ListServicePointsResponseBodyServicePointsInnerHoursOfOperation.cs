@@ -79,6 +79,7 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ListServicePointsResponseBodyServicePointsInnerHoursOfOperation {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Monday: ").Append(Monday).Append("\n");
         sb.Append("  Tuesday: ").Append(Tuesday).Append("\n");
         sb.Append("  Wednesday: ").Append(Wednesday).Append("\n");
@@ -86,6 +87,7 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
         sb.Append("  Friday: ").Append(Friday).Append("\n");
         sb.Append("  Saturday: ").Append(Saturday).Append("\n");
         sb.Append("  Sunday: ").Append(Sunday).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

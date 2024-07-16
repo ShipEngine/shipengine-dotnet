@@ -168,6 +168,7 @@ public partial class DangerousGoods
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class DangerousGoods {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  IdNumber: ").Append(IdNumber).Append("\n");
         sb.Append("  ShippingName: ").Append(ShippingName).Append("\n");
         sb.Append("  TechnicalName: ").Append(TechnicalName).Append("\n");
@@ -187,6 +188,7 @@ public partial class DangerousGoods
         sb.Append("  ReportableQuantity: ").Append(ReportableQuantity).Append("\n");
         sb.Append("  TunnelCode: ").Append(TunnelCode).Append("\n");
         sb.Append("  AdditionalDescription: ").Append(AdditionalDescription).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -94,6 +94,7 @@ public partial class GetServicePointsRequestBodyAddress
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetServicePointsRequestBodyAddress {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");
         sb.Append("  AddressLine2: ").Append(AddressLine2).Append("\n");
         sb.Append("  AddressLine3: ").Append(AddressLine3).Append("\n");
@@ -101,6 +102,7 @@ public partial class GetServicePointsRequestBodyAddress
         sb.Append("  StateProvince: ").Append(StateProvince).Append("\n");
         sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
         sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

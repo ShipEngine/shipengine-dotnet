@@ -147,6 +147,7 @@ public partial class Package
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Package {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  PackageId: ").Append(PackageId).Append("\n");
         sb.Append("  PackageCode: ").Append(PackageCode).Append("\n");
         sb.Append("  ContentDescription: ").Append(ContentDescription).Append("\n");
@@ -161,6 +162,7 @@ public partial class Package
         sb.Append("  PaperlessDownload: ").Append(PaperlessDownload).Append("\n");
         sb.Append("  Sequence: ").Append(Sequence).Append("\n");
         sb.Append("  Products: ").Append(Products).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

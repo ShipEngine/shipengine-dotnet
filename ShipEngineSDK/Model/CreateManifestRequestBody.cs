@@ -36,11 +36,10 @@ public partial class CreateManifestRequestBody : AbstractOpenAPISchema
     /// with the <see cref="CreateManifestByObjectRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of CreateManifestByObjectRequestBody.</param>
-    public CreateManifestRequestBody(CreateManifestByObjectRequestBody actualInstance)
+    public CreateManifestRequestBody(CreateManifestByObjectRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -48,11 +47,10 @@ public partial class CreateManifestRequestBody : AbstractOpenAPISchema
     /// with the <see cref="CreateManifestLabelIdsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of CreateManifestLabelIdsRequestBody.</param>
-    public CreateManifestRequestBody(CreateManifestLabelIdsRequestBody actualInstance)
+    public CreateManifestRequestBody(CreateManifestLabelIdsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -134,9 +132,9 @@ public partial class CreateManifestRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class CreateManifestRequestBodyJsonConverter : JsonConverter<CreateManifestRequestBody>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(CreateManifestByObjectRequestBody), typeof(CreateManifestLabelIdsRequestBody)];
-    private static HashSet<string> MandatoryFields = ["CarrierId", "LabelIds", "ShipDate", "WarehouseId"];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(CreateManifestByObjectRequestBody), typeof(CreateManifestLabelIdsRequestBody)];
+    private static readonly HashSet<string> MandatoryFields = ["CarrierId", "LabelIds", "ShipDate", "WarehouseId"];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -196,7 +194,7 @@ public class CreateManifestRequestBodyJsonConverter : JsonConverter<CreateManife
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override CreateManifestRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override CreateManifestRequestBody? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -204,14 +202,14 @@ public class CreateManifestRequestBodyJsonConverter : JsonConverter<CreateManife
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        CreateManifestRequestBody newCreateManifestRequestBody = null;
+        CreateManifestRequestBody? newCreateManifestRequestBody = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newCreateManifestRequestBody = new CreateManifestRequestBody(JsonSerializer.Deserialize<CreateManifestByObjectRequestBody>(jsonDoc, DeserializingOptions));
+            newCreateManifestRequestBody = new CreateManifestRequestBody(jsonDoc.Deserialize<CreateManifestByObjectRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("CreateManifestByObjectRequestBody");
             match++;
@@ -219,12 +217,12 @@ public class CreateManifestRequestBodyJsonConverter : JsonConverter<CreateManife
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CreateManifestByObjectRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into CreateManifestByObjectRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newCreateManifestRequestBody = new CreateManifestRequestBody(JsonSerializer.Deserialize<CreateManifestLabelIdsRequestBody>(jsonDoc, DeserializingOptions));
+            newCreateManifestRequestBody = new CreateManifestRequestBody(jsonDoc.Deserialize<CreateManifestLabelIdsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("CreateManifestLabelIdsRequestBody");
             match++;
@@ -232,7 +230,7 @@ public class CreateManifestRequestBodyJsonConverter : JsonConverter<CreateManife
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CreateManifestLabelIdsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into CreateManifestLabelIdsRequestBody: {1}", jsonDoc, exception);
         }
 
         if (match == 0)

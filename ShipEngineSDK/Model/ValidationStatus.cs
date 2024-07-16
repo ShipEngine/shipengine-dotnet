@@ -31,6 +31,9 @@ public class ValidationStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ValidationStatus with a predefined value.
+    /// </summary>
     internal ValidationStatus()
     {
         _value = "valid";

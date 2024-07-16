@@ -31,6 +31,9 @@ public class CollectOnDeliveryPaymentType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of CollectOnDeliveryPaymentType with a predefined value.
+    /// </summary>
     internal CollectOnDeliveryPaymentType()
     {
         _value = "any";

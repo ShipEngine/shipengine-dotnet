@@ -51,8 +51,10 @@ public partial class TokensGetEphemeralTokenResponseBodyYaml
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class TokensGetEphemeralTokenResponseBodyYaml {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Token: ").Append(Token).Append("\n");
         sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

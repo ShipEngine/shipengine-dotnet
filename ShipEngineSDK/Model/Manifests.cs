@@ -44,7 +44,9 @@ public partial class Manifests
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Manifests {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  VarManifests: ").Append(VarManifests).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -31,6 +31,9 @@ public class StatusCode
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of StatusCode with a predefined value.
+    /// </summary>
     internal StatusCode()
     {
         _value = "un";

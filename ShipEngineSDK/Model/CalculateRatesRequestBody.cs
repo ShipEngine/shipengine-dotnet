@@ -44,11 +44,10 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ShipmentIdRequest" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ShipmentIdRequest.</param>
-    public CalculateRatesRequestBody(ShipmentIdRequest actualInstance)
+    public CalculateRatesRequestBody(ShipmentIdRequest actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -56,11 +55,10 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
     /// with the <see cref="ShipmentRequest" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of ShipmentRequest.</param>
-    public CalculateRatesRequestBody(ShipmentRequest actualInstance)
+    public CalculateRatesRequestBody(ShipmentRequest actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -143,9 +141,9 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRatesRequestBody>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(ShipmentIdRequest), typeof(ShipmentRequest)];
-    private static HashSet<string> MandatoryFields = ["Shipment", "ShipmentId"];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(ShipmentIdRequest), typeof(ShipmentRequest)];
+    private static readonly HashSet<string> MandatoryFields = ["Shipment", "ShipmentId"];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -207,7 +205,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override CalculateRatesRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override CalculateRatesRequestBody? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -215,14 +213,14 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        CalculateRatesRequestBody newCalculateRatesRequestBody = null;
+        CalculateRatesRequestBody? newCalculateRatesRequestBody = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentIdRequest>(jsonDoc, DeserializingOptions));
+            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentIdRequest>(DeserializingOptions)!);
 
             matchedTypes.Add("ShipmentIdRequest");
             match++;
@@ -230,12 +228,12 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ShipmentIdRequest: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ShipmentIdRequest: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newCalculateRatesRequestBody = new CalculateRatesRequestBody(JsonSerializer.Deserialize<ShipmentRequest>(jsonDoc, DeserializingOptions));
+            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentRequest>(DeserializingOptions)!);
 
             matchedTypes.Add("ShipmentRequest");
             match++;
@@ -243,7 +241,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ShipmentRequest: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ShipmentRequest: {1}", jsonDoc, exception);
         }
 
         if (match == 0)
@@ -256,7 +254,7 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
 
-        newCalculateRatesRequestBody.RateOptions = JsonSerializer.Deserialize<RateRequestBody>(jsonDoc.RootElement.GetProperty("rate_options"), DeserializingOptions);
+        newCalculateRatesRequestBody!.RateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newCalculateRatesRequestBody;

@@ -72,10 +72,12 @@ public partial class ConnectDhlExpressUkRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectDhlExpressUkRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  SiteId: ").Append(SiteId).Append("\n");
         sb.Append("  Password: ").Append(Password).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

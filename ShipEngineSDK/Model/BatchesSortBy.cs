@@ -31,6 +31,9 @@ public class BatchesSortBy
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of BatchesSortBy with a predefined value.
+    /// </summary>
     internal BatchesSortBy()
     {
         _value = "ship_date";

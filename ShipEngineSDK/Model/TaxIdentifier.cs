@@ -69,10 +69,12 @@ public partial class TaxIdentifier
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class TaxIdentifier {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  TaxableEntityType: ").Append(TaxableEntityType).Append("\n");
         sb.Append("  IdentifierType: ").Append(IdentifierType).Append("\n");
         sb.Append("  IssuingAuthority: ").Append(IssuingAuthority).Append("\n");
         sb.Append("  Value: ").Append(Value).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

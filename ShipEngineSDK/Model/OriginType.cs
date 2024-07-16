@@ -31,6 +31,9 @@ public class OriginType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of OriginType with a predefined value.
+    /// </summary>
     internal OriginType()
     {
         _value = "pickup";

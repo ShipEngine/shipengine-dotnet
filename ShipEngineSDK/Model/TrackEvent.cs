@@ -201,6 +201,7 @@ public partial class TrackEvent
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class TrackEvent {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  OccurredAt: ").Append(OccurredAt).Append("\n");
         sb.Append("  CarrierOccurredAt: ").Append(CarrierOccurredAt).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
@@ -218,6 +219,7 @@ public partial class TrackEvent
         sb.Append("  CarrierStatusDescription: ").Append(CarrierStatusDescription).Append("\n");
         sb.Append("  Latitude: ").Append(Latitude).Append("\n");
         sb.Append("  Longitude: ").Append(Longitude).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

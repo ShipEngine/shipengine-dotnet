@@ -50,8 +50,10 @@ public partial class PaymentAmount
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PaymentAmount {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Currency: ").Append(Currency).Append("\n");
         sb.Append("  Amount: ").Append(Amount).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

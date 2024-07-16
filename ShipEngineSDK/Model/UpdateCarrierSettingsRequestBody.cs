@@ -36,11 +36,10 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     /// with the <see cref="UpdateDhlExpressSettingsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of UpdateDhlExpressSettingsRequestBody.</param>
-    public UpdateCarrierSettingsRequestBody(UpdateDhlExpressSettingsRequestBody actualInstance)
+    public UpdateCarrierSettingsRequestBody(UpdateDhlExpressSettingsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -48,11 +47,10 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     /// with the <see cref="UpdateFedexSettingsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of UpdateFedexSettingsRequestBody.</param>
-    public UpdateCarrierSettingsRequestBody(UpdateFedexSettingsRequestBody actualInstance)
+    public UpdateCarrierSettingsRequestBody(UpdateFedexSettingsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -60,11 +58,10 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     /// with the <see cref="UpdateNewgisticsSettingsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of UpdateNewgisticsSettingsRequestBody.</param>
-    public UpdateCarrierSettingsRequestBody(UpdateNewgisticsSettingsRequestBody actualInstance)
+    public UpdateCarrierSettingsRequestBody(UpdateNewgisticsSettingsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -72,11 +69,10 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     /// with the <see cref="UpdateUpsSettingsRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of UpdateUpsSettingsRequestBody.</param>
-    public UpdateCarrierSettingsRequestBody(UpdateUpsSettingsRequestBody actualInstance)
+    public UpdateCarrierSettingsRequestBody(UpdateUpsSettingsRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -84,11 +80,10 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
     /// with the <see cref="UpdateAmazonBuyShippingRequestBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of UpdateAmazonBuyShippingRequestBody.</param>
-    public UpdateCarrierSettingsRequestBody(UpdateAmazonBuyShippingRequestBody actualInstance)
+    public UpdateCarrierSettingsRequestBody(UpdateAmazonBuyShippingRequestBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -212,9 +207,9 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<UpdateCarrierSettingsRequestBody>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(UpdateDhlExpressSettingsRequestBody), typeof(UpdateFedexSettingsRequestBody), typeof(UpdateNewgisticsSettingsRequestBody), typeof(UpdateUpsSettingsRequestBody), typeof(UpdateAmazonBuyShippingRequestBody)];
-    private static HashSet<string> MandatoryFields = [];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(UpdateDhlExpressSettingsRequestBody), typeof(UpdateFedexSettingsRequestBody), typeof(UpdateNewgisticsSettingsRequestBody), typeof(UpdateUpsSettingsRequestBody), typeof(UpdateAmazonBuyShippingRequestBody)];
+    private static readonly HashSet<string> MandatoryFields = [];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -274,7 +269,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override UpdateCarrierSettingsRequestBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override UpdateCarrierSettingsRequestBody? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -282,14 +277,14 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        UpdateCarrierSettingsRequestBody newUpdateCarrierSettingsRequestBody = null;
+        UpdateCarrierSettingsRequestBody? newUpdateCarrierSettingsRequestBody = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateDhlExpressSettingsRequestBody>(jsonDoc, DeserializingOptions));
+            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(jsonDoc.Deserialize<UpdateDhlExpressSettingsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("UpdateDhlExpressSettingsRequestBody");
             match++;
@@ -297,12 +292,12 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UpdateDhlExpressSettingsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into UpdateDhlExpressSettingsRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateFedexSettingsRequestBody>(jsonDoc, DeserializingOptions));
+            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(jsonDoc.Deserialize<UpdateFedexSettingsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("UpdateFedexSettingsRequestBody");
             match++;
@@ -310,12 +305,12 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UpdateFedexSettingsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into UpdateFedexSettingsRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateNewgisticsSettingsRequestBody>(jsonDoc, DeserializingOptions));
+            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(jsonDoc.Deserialize<UpdateNewgisticsSettingsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("UpdateNewgisticsSettingsRequestBody");
             match++;
@@ -323,12 +318,12 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UpdateNewgisticsSettingsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into UpdateNewgisticsSettingsRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateUpsSettingsRequestBody>(jsonDoc, DeserializingOptions));
+            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(jsonDoc.Deserialize<UpdateUpsSettingsRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("UpdateUpsSettingsRequestBody");
             match++;
@@ -336,12 +331,12 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UpdateUpsSettingsRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into UpdateUpsSettingsRequestBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(JsonSerializer.Deserialize<UpdateAmazonBuyShippingRequestBody>(jsonDoc, DeserializingOptions));
+            newUpdateCarrierSettingsRequestBody = new UpdateCarrierSettingsRequestBody(jsonDoc.Deserialize<UpdateAmazonBuyShippingRequestBody>(DeserializingOptions)!);
 
             matchedTypes.Add("UpdateAmazonBuyShippingRequestBody");
             match++;
@@ -349,7 +344,7 @@ public class UpdateCarrierSettingsRequestBodyJsonConverter : JsonConverter<Updat
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UpdateAmazonBuyShippingRequestBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into UpdateAmazonBuyShippingRequestBody: {1}", jsonDoc, exception);
         }
 
         if (match == 0)

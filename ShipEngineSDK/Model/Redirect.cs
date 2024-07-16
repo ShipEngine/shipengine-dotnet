@@ -31,6 +31,9 @@ public class Redirect
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of Redirect with a predefined value.
+    /// </summary>
     internal Redirect()
     {
         _value = "shipengine-dashboard";

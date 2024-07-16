@@ -31,6 +31,9 @@ public class ErrorType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ErrorType with a predefined value.
+    /// </summary>
     internal ErrorType()
     {
         _value = "account_status";

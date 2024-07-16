@@ -64,9 +64,11 @@ public partial class GetCarriersResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetCarriersResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Carriers: ").Append(Carriers).Append("\n");
         sb.Append("  RequestId: ").Append(RequestId).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

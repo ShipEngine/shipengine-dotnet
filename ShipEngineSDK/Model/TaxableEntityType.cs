@@ -31,6 +31,9 @@ public class TaxableEntityType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of TaxableEntityType with a predefined value.
+    /// </summary>
     internal TaxableEntityType()
     {
         _value = "shipper";

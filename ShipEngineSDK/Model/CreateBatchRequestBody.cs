@@ -71,10 +71,12 @@ public partial class CreateBatchRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class CreateBatchRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ExternalBatchId: ").Append(ExternalBatchId).Append("\n");
         sb.Append("  BatchNotes: ").Append(BatchNotes).Append("\n");
         sb.Append("  ShipmentIds: ").Append(ShipmentIds).Append("\n");
         sb.Append("  RateIds: ").Append(RateIds).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

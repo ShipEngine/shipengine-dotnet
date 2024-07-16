@@ -286,6 +286,7 @@ public partial class UpdateShipmentResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpdateShipmentResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
@@ -315,6 +316,7 @@ public partial class UpdateShipmentResponseBody
         sb.Append("  ComparisonRateType: ").Append(ComparisonRateType).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
         sb.Append("  AddressValidation: ").Append(AddressValidation).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -31,6 +31,9 @@ public class AddressResidentialIndicator
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of AddressResidentialIndicator with a predefined value.
+    /// </summary>
     internal AddressResidentialIndicator()
     {
         _value = "unknown";

@@ -170,6 +170,7 @@ public partial class ShippingAddress
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ShippingAddress {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  Phone: ").Append(Phone).Append("\n");
         sb.Append("  Email: ").Append(Email).Append("\n");
@@ -183,6 +184,7 @@ public partial class ShippingAddress
         sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
         sb.Append("  AddressResidentialIndicator: ").Append(AddressResidentialIndicator).Append("\n");
         sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

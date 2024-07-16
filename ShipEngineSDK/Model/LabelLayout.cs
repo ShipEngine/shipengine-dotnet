@@ -31,6 +31,9 @@ public class LabelLayout
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of LabelLayout with a predefined value.
+    /// </summary>
     internal LabelLayout()
     {
         _value = "4x6";

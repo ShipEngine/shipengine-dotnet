@@ -69,10 +69,12 @@ public partial class PaginationLink
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class PaginationLink {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  First: ").Append(First).Append("\n");
         sb.Append("  Last: ").Append(Last).Append("\n");
         sb.Append("  Prev: ").Append(Prev).Append("\n");
         sb.Append("  Next: ").Append(Next).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

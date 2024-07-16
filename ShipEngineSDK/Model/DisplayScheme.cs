@@ -31,6 +31,9 @@ public class DisplayScheme
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of DisplayScheme with a predefined value.
+    /// </summary>
     internal DisplayScheme()
     {
         _value = "label";

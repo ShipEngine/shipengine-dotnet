@@ -69,10 +69,12 @@ public partial class ConnectAustraliaPostRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectAustraliaPostRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
         sb.Append("  ApiSecret: ").Append(ApiSecret).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

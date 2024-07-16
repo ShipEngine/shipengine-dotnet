@@ -31,6 +31,9 @@ public class DeliveryConfirmation
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of DeliveryConfirmation with a predefined value.
+    /// </summary>
     internal DeliveryConfirmation()
     {
         _value = "none";

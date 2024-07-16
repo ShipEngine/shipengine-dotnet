@@ -77,10 +77,12 @@ public partial class LabelDownload
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class LabelDownload {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Href: ").Append(Href).Append("\n");
         sb.Append("  Pdf: ").Append(Pdf).Append("\n");
         sb.Append("  Png: ").Append(Png).Append("\n");
         sb.Append("  Zpl: ").Append(Zpl).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

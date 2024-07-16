@@ -31,6 +31,9 @@ public class AddressValidationCode
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of AddressValidationCode with a predefined value.
+    /// </summary>
     internal AddressValidationCode()
     {
         _value = "a1000";

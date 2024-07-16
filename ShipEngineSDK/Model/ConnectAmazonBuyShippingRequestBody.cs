@@ -73,10 +73,12 @@ public partial class ConnectAmazonBuyShippingRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectAmazonBuyShippingRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  MerchantSellerId: ").Append(MerchantSellerId).Append("\n");
         sb.Append("  MwsAuthToken: ").Append(MwsAuthToken).Append("\n");
         sb.Append("  Email: ").Append(Email).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

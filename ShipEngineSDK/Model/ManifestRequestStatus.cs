@@ -31,6 +31,9 @@ public class ManifestRequestStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ManifestRequestStatus with a predefined value.
+    /// </summary>
     internal ManifestRequestStatus()
     {
         _value = "in_progress";

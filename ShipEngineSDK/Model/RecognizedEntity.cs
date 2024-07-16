@@ -84,12 +84,14 @@ public partial class RecognizedEntity
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class RecognizedEntity {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Type: ").Append(Type).Append("\n");
         sb.Append("  Score: ").Append(Score).Append("\n");
         sb.Append("  Text: ").Append(Text).Append("\n");
         sb.Append("  StartIndex: ").Append(StartIndex).Append("\n");
         sb.Append("  EndIndex: ").Append(EndIndex).Append("\n");
         sb.Append("  Result: ").Append(Result).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

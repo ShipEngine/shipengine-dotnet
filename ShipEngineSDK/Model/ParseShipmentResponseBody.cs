@@ -61,9 +61,11 @@ public partial class ParseShipmentResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ParseShipmentResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Score: ").Append(Score).Append("\n");
         sb.Append("  Shipment: ").Append(Shipment).Append("\n");
         sb.Append("  Entities: ").Append(Entities).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

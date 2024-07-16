@@ -31,6 +31,9 @@ public class AddressValidationStatus
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of AddressValidationStatus with a predefined value.
+    /// </summary>
     internal AddressValidationStatus()
     {
         _value = "unverified";

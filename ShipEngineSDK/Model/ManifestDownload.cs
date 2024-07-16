@@ -47,7 +47,9 @@ public partial class ManifestDownload
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ManifestDownload {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Href: ").Append(Href).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

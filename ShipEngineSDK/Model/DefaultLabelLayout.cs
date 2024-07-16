@@ -31,6 +31,9 @@ public class DefaultLabelLayout
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of DefaultLabelLayout with a predefined value.
+    /// </summary>
     internal DefaultLabelLayout()
     {
         _value = "4x6";

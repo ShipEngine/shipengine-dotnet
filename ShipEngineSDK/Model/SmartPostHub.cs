@@ -31,6 +31,9 @@ public class SmartPostHub
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of SmartPostHub with a predefined value.
+    /// </summary>
     internal SmartPostHub()
     {
         _value = "none";

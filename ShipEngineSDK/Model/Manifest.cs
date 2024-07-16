@@ -130,6 +130,7 @@ public partial class Manifest
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class Manifest {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ManifestId: ").Append(ManifestId).Append("\n");
         sb.Append("  FormId: ").Append(FormId).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -140,6 +141,7 @@ public partial class Manifest
         sb.Append("  SubmissionId: ").Append(SubmissionId).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  ManifestDownload: ").Append(ManifestDownload).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

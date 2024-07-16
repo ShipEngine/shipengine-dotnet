@@ -34,16 +34,27 @@ public partial class UpdateAccountSettingsImageRequestBody
     [JsonConverter(typeof(ImageContentTypeEnumJsonConverter))]
     public class ImageContentTypeEnum
     {
-        private string _value;
+        private readonly string _value;
 
+        /// <summary>
+        /// Create a new instance of ImageContentTypeEnum with a predefined value.
+        /// </summary>
         internal ImageContentTypeEnum()
         {
             _value = "image/png";
         }
 
+        /// <summary>
+        /// Create a new instance of ImageContentTypeEnum with a custom value.
+        /// </summary>
+        /// <param name="value">The value of the ImageContentTypeEnum</param>
+        /// <remarks>
+        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+        /// </remarks>
         public ImageContentTypeEnum(string value)
         {
-
+            _value = value;
         }
 
         /// <summary>
@@ -150,6 +161,7 @@ public partial class UpdateAccountSettingsImageRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class UpdateAccountSettingsImageRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  LabelImageId: ").Append(LabelImageId).Append("\n");
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
@@ -157,6 +169,7 @@ public partial class UpdateAccountSettingsImageRequestBody
         sb.Append("  ImageData: ").Append(ImageData).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
         sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

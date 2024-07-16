@@ -61,9 +61,11 @@ public partial class LabelMessages
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class LabelMessages {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Reference1: ").Append(Reference1).Append("\n");
         sb.Append("  Reference2: ").Append(Reference2).Append("\n");
         sb.Append("  Reference3: ").Append(Reference3).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

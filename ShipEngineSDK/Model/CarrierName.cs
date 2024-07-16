@@ -31,6 +31,9 @@ public class CarrierName
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of CarrierName with a predefined value.
+    /// </summary>
     internal CarrierName()
     {
         _value = "access_worldwide";

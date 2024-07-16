@@ -31,6 +31,9 @@ public class AncillaryServiceEndorsement
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of AncillaryServiceEndorsement with a predefined value.
+    /// </summary>
     internal AncillaryServiceEndorsement()
     {
         _value = "none";

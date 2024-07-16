@@ -31,6 +31,9 @@ public class ValidateAddress
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of ValidateAddress with a predefined value.
+    /// </summary>
     internal ValidateAddress()
     {
         _value = "no_validation";

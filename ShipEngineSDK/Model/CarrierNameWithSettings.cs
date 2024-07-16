@@ -31,6 +31,9 @@ public class CarrierNameWithSettings
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of CarrierNameWithSettings with a predefined value.
+    /// </summary>
     internal CarrierNameWithSettings()
     {
         _value = "dhl_express";

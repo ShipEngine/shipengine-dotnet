@@ -51,8 +51,10 @@ public partial class AdvancedShipmentOptionsDangerousGoodsContact
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class AdvancedShipmentOptionsDangerousGoodsContact {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  Phone: ").Append(Phone).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -30,6 +30,9 @@ public class PackagingInstructionSection
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of PackagingInstructionSection with a predefined value.
+    /// </summary>
     internal PackagingInstructionSection()
     {
         _value = "section_1";

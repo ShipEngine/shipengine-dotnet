@@ -31,6 +31,9 @@ public class RateType
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of RateType with a predefined value.
+    /// </summary>
     internal RateType()
     {
         _value = "check";

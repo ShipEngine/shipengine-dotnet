@@ -77,6 +77,7 @@ public partial class FedexAccountSettings
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class FedexAccountSettings {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  PickupType: ").Append(PickupType).Append("\n");
         sb.Append("  SmartPostHub: ").Append(SmartPostHub).Append("\n");
@@ -84,6 +85,7 @@ public partial class FedexAccountSettings
         sb.Append("  IsPrimaryAccount: ").Append(IsPrimaryAccount).Append("\n");
         sb.Append("  SignatureImage: ").Append(SignatureImage).Append("\n");
         sb.Append("  LetterheadImage: ").Append(LetterheadImage).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

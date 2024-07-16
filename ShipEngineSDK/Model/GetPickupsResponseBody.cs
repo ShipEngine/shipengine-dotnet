@@ -105,6 +105,7 @@ public partial class GetPickupsResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetPickupsResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Pickups: ").Append(Pickups).Append("\n");
         sb.Append("  Total: ").Append(Total).Append("\n");
         sb.Append("  Page: ").Append(Page).Append("\n");
@@ -112,6 +113,7 @@ public partial class GetPickupsResponseBody
         sb.Append("  Links: ").Append(Links).Append("\n");
         sb.Append("  RequestId: ").Append(RequestId).Append("\n");
         sb.Append("  Errors: ").Append(Errors).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

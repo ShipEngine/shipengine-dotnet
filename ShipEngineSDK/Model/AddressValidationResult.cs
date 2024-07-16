@@ -69,10 +69,12 @@ public partial class AddressValidationResult
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class AddressValidationResult {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Status: ").Append(Status).Append("\n");
         sb.Append("  OriginalAddress: ").Append(OriginalAddress).Append("\n");
         sb.Append("  MatchedAddress: ").Append(MatchedAddress).Append("\n");
         sb.Append("  Messages: ").Append(Messages).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

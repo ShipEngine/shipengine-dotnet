@@ -124,6 +124,7 @@
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class {{classname}} {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         {{#parent}}
         sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
         {{/parent}}
@@ -133,6 +134,7 @@
         {{#isAdditionalPropertiesTrue}}
         sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
         {{/isAdditionalPropertiesTrue}}
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

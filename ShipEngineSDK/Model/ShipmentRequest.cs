@@ -44,7 +44,9 @@ public partial class ShipmentRequest
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ShipmentRequest {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Shipment: ").Append(Shipment).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

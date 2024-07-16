@@ -44,7 +44,9 @@ public partial class AlternativeIdentifiers
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class AlternativeIdentifiers {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  VarAlternativeIdentifiers: ").Append(VarAlternativeIdentifiers).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

@@ -64,9 +64,11 @@ public partial class VoidLabelResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class VoidLabelResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Approved: ").Append(Approved).Append("\n");
         sb.Append("  Message: ").Append(Message).Append("\n");
         sb.Append("  ReasonCode: ").Append(ReasonCode).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

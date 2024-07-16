@@ -77,11 +77,13 @@ public partial class ConnectCanadaPostRequestBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class ConnectCanadaPostRequestBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
         sb.Append("  ApiSecret: ").Append(ApiSecret).Append("\n");
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
         sb.Append("  ContractId: ").Append(ContractId).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

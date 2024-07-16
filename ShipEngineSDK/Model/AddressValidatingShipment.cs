@@ -257,6 +257,7 @@ public partial class AddressValidatingShipment
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class AddressValidatingShipment {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ValidateAddress: ").Append(ValidateAddress).Append("\n");
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
@@ -285,6 +286,7 @@ public partial class AddressValidatingShipment
         sb.Append("  Packages: ").Append(Packages).Append("\n");
         sb.Append("  TotalWeight: ").Append(TotalWeight).Append("\n");
         sb.Append("  ComparisonRateType: ").Append(ComparisonRateType).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

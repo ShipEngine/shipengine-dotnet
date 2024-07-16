@@ -44,7 +44,9 @@ public partial class GetCarrierOptionsResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetCarrierOptionsResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Options: ").Append(Options).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

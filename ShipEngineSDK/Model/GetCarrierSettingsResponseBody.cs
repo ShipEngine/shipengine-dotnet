@@ -36,11 +36,10 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
     /// with the <see cref="DhlExpressSettingsResponseBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of DhlExpressSettingsResponseBody.</param>
-    public GetCarrierSettingsResponseBody(DhlExpressSettingsResponseBody actualInstance)
+    public GetCarrierSettingsResponseBody(DhlExpressSettingsResponseBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -48,11 +47,10 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
     /// with the <see cref="FedexSettingsResponseBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of FedexSettingsResponseBody.</param>
-    public GetCarrierSettingsResponseBody(FedexSettingsResponseBody actualInstance)
+    public GetCarrierSettingsResponseBody(FedexSettingsResponseBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
     /// <summary>
@@ -60,11 +58,10 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
     /// with the <see cref="UpsSettingsResponseBody" /> class
     /// </summary>
     /// <param name="actualInstance">An instance of UpsSettingsResponseBody.</param>
-    public GetCarrierSettingsResponseBody(UpsSettingsResponseBody actualInstance)
+    public GetCarrierSettingsResponseBody(UpsSettingsResponseBody actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
-        this.SchemaType = "oneOf";
-        this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
     }
 
 
@@ -160,9 +157,9 @@ public partial class GetCarrierSettingsResponseBody : AbstractOpenAPISchema
 /// </summary>
 public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarrierSettingsResponseBody>
 {
-    private static HashSet<Type> OneOfTypes = [typeof(DhlExpressSettingsResponseBody), typeof(FedexSettingsResponseBody), typeof(UpsSettingsResponseBody)];
-    private static HashSet<string> MandatoryFields = [];
-    private static JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
+    private static readonly HashSet<Type> OneOfTypes = [typeof(DhlExpressSettingsResponseBody), typeof(FedexSettingsResponseBody), typeof(UpsSettingsResponseBody)];
+    private static readonly HashSet<string> MandatoryFields = [];
+    private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
@@ -222,7 +219,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
     /// <param name="typeToConvert">Object type to convert</param>
     /// <param name="options">Serializer options</param>
     /// <returns>The object converted from the JSON string</returns>
-    public override GetCarrierSettingsResponseBody Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override GetCarrierSettingsResponseBody? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
@@ -230,14 +227,14 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         }
 
         var jsonDoc = JsonDocument.ParseValue(ref reader);
-        GetCarrierSettingsResponseBody newGetCarrierSettingsResponseBody = null;
+        GetCarrierSettingsResponseBody? newGetCarrierSettingsResponseBody = null;
 
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<DhlExpressSettingsResponseBody>(jsonDoc, DeserializingOptions));
+            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(jsonDoc.Deserialize<DhlExpressSettingsResponseBody>(DeserializingOptions)!);
 
             matchedTypes.Add("DhlExpressSettingsResponseBody");
             match++;
@@ -245,12 +242,12 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into DhlExpressSettingsResponseBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into DhlExpressSettingsResponseBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<FedexSettingsResponseBody>(jsonDoc, DeserializingOptions));
+            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(jsonDoc.Deserialize<FedexSettingsResponseBody>(DeserializingOptions)!);
 
             matchedTypes.Add("FedexSettingsResponseBody");
             match++;
@@ -258,12 +255,12 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into FedexSettingsResponseBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into FedexSettingsResponseBody: {1}", jsonDoc, exception);
         }
 
         try
         {
-            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(JsonSerializer.Deserialize<UpsSettingsResponseBody>(jsonDoc, DeserializingOptions));
+            newGetCarrierSettingsResponseBody = new GetCarrierSettingsResponseBody(jsonDoc.Deserialize<UpsSettingsResponseBody>(DeserializingOptions)!);
 
             matchedTypes.Add("UpsSettingsResponseBody");
             match++;
@@ -271,7 +268,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into UpsSettingsResponseBody: {1}", jsonDoc, exception.ToString()));
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into UpsSettingsResponseBody: {1}", jsonDoc, exception);
         }
 
         if (match == 0)

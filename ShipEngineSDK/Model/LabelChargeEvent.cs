@@ -31,6 +31,9 @@ public class LabelChargeEvent
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of LabelChargeEvent with a predefined value.
+    /// </summary>
     internal LabelChargeEvent()
     {
         _value = "carrier_default";

@@ -157,6 +157,7 @@ public partial class AddressToValidate
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class AddressToValidate {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  Phone: ").Append(Phone).Append("\n");
         sb.Append("  Email: ").Append(Email).Append("\n");
@@ -169,6 +170,7 @@ public partial class AddressToValidate
         sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
         sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
         sb.Append("  AddressResidentialIndicator: ").Append(AddressResidentialIndicator).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

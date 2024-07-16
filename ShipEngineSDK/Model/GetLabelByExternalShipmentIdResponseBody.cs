@@ -334,6 +334,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetLabelByExternalShipmentIdResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  LabelId: ").Append(LabelId).Append("\n");
         sb.Append("  Status: ").Append(Status).Append("\n");
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
@@ -372,6 +373,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
         sb.Append("  Packages: ").Append(Packages).Append("\n");
         sb.Append("  AlternativeIdentifiers: ").Append(AlternativeIdentifiers).Append("\n");
         sb.Append("  TrackingUrl: ").Append(TrackingUrl).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

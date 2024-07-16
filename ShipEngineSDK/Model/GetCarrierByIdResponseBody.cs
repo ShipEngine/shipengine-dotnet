@@ -153,6 +153,7 @@ public partial class GetCarrierByIdResponseBody
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("class GetCarrierByIdResponseBody {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
@@ -167,6 +168,7 @@ public partial class GetCarrierByIdResponseBody
         sb.Append("  Services: ").Append(Services).Append("\n");
         sb.Append("  Packages: ").Append(Packages).Append("\n");
         sb.Append("  Options: ").Append(Options).Append("\n");
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }

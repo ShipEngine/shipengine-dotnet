@@ -31,6 +31,9 @@ public class InsuranceProvider
 {
     private string _value;
 
+    /// <summary>
+    /// Create a new instance of InsuranceProvider with a predefined value.
+    /// </summary>
     internal InsuranceProvider()
     {
         _value = "none";
