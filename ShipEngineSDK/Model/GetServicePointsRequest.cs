@@ -179,6 +179,7 @@ public class GetServicePointsRequestJsonConverter : JsonConverter<GetServicePoin
         var jsonDoc = JsonDocument.ParseValue(ref reader);
         GetServicePointsRequest? newGetServicePointsRequest = null;
 
+
         int match = 0;
         var matchedTypes = new List<string>();
 
@@ -204,7 +205,6 @@ public class GetServicePointsRequestJsonConverter : JsonConverter<GetServicePoin
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
-
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newGetServicePointsRequest;

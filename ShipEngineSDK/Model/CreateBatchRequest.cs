@@ -204,6 +204,7 @@ public class CreateBatchRequestJsonConverter : JsonConverter<CreateBatchRequest>
         var jsonDoc = JsonDocument.ParseValue(ref reader);
         CreateBatchRequest? newCreateBatchRequest = null;
 
+
         int match = 0;
         var matchedTypes = new List<string>();
 
@@ -242,7 +243,6 @@ public class CreateBatchRequestJsonConverter : JsonConverter<CreateBatchRequest>
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
-
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newCreateBatchRequest;

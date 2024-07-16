@@ -33,7 +33,7 @@ public partial class TaxIdentifier
     /// </summary>
     [JsonPropertyName("identifier_type")]
     [JsonRequired]
-    public IdentifierType IdentifierType { get; set; } = new();
+    public required IdentifierType IdentifierType { get; set; } = new();
 
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class TaxIdentifier
     /// </summary>
     [JsonPropertyName("taxable_entity_type")]
     [JsonRequired]
-    public TaxableEntityType TaxableEntityType { get; set; } = new();
+    public required TaxableEntityType TaxableEntityType { get; set; } = new();
 
 
     /// <summary>
@@ -50,7 +50,7 @@ public partial class TaxIdentifier
     /// <value>The authority that issued this tax. This must be a valid 2 character ISO 3166 Alpha 2 country code.</value>
     [JsonPropertyName("issuing_authority")]
     [JsonRequired]
-    public string IssuingAuthority { get; set; }
+    public required string IssuingAuthority { get; set; }
 
     /// <summary>
     /// The value of the identifier
@@ -58,7 +58,7 @@ public partial class TaxIdentifier
     /// <value>The value of the identifier</value>
     [JsonPropertyName("value")]
     [JsonRequired]
-    public string Value { get; set; }
+    public required string Value { get; set; }
 
 
     /// <summary>

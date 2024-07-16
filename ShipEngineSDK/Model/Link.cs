@@ -37,7 +37,7 @@ public partial class Link
     /// </example>
     [JsonPropertyName("href")]
     [JsonRequired]
-    public string Href { get; set; }
+    public required string Href { get; set; }
 
     /// <summary>
     /// The type of resource, or the type of relationship to the parent resource

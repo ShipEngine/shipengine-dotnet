@@ -33,7 +33,7 @@ public partial class CreateWebhookRequestBody
     /// </summary>
     [JsonPropertyName("event")]
     [JsonRequired]
-    public WebhookEvent Event { get; set; } = new();
+    public required WebhookEvent Event { get; set; } = new();
 
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class CreateWebhookRequestBody
     /// </example>
     [JsonPropertyName("url")]
     [JsonRequired]
-    public string Url { get; set; }
+    public required string Url { get; set; }
 
     /// <summary>
     /// Array of custom webhook headers

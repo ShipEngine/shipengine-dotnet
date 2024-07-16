@@ -37,7 +37,7 @@ public partial class CreateManifestByObjectRequestBody
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
     /// <summary>
     /// The ship date that the shipment will be sent out on
@@ -48,7 +48,7 @@ public partial class CreateManifestByObjectRequestBody
     /// </example>
     [JsonPropertyName("ship_date")]
     [JsonRequired]
-    public DateTimeOffset ShipDate { get; set; }
+    public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -59,7 +59,7 @@ public partial class CreateManifestByObjectRequestBody
     /// </example>
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
-    public string WarehouseId { get; set; }
+    public required string WarehouseId { get; set; }
 
     /// <summary>
     /// The list of label ids to exclude from the manifest

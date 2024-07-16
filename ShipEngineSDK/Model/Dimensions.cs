@@ -33,7 +33,7 @@ public partial class Dimensions
     /// </summary>
     [JsonPropertyName("unit")]
     [JsonRequired]
-    public DimensionUnit Unit { get; set; } = new();
+    public required DimensionUnit Unit { get; set; } = new();
 
 
     /// <summary>
@@ -42,7 +42,7 @@ public partial class Dimensions
     /// <value>The height of the package, in the specified unit</value>
     [JsonPropertyName("height")]
     [JsonRequired]
-    public double Height { get; set; }
+    public required double Height { get; set; }
 
     /// <summary>
     /// The length of the package, in the specified unit
@@ -50,7 +50,7 @@ public partial class Dimensions
     /// <value>The length of the package, in the specified unit</value>
     [JsonPropertyName("length")]
     [JsonRequired]
-    public double Length { get; set; }
+    public required double Length { get; set; }
 
     /// <summary>
     /// The width of the package, in the specified unit
@@ -58,7 +58,7 @@ public partial class Dimensions
     /// <value>The width of the package, in the specified unit</value>
     [JsonPropertyName("width")]
     [JsonRequired]
-    public double Width { get; set; }
+    public required double Width { get; set; }
 
 
     /// <summary>

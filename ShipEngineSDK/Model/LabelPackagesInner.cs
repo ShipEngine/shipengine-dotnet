@@ -34,7 +34,7 @@ public partial class LabelPackagesInner
     /// <value>The package weight</value>
     [JsonPropertyName("weight")]
     [JsonRequired]
-    public Weight Weight { get; set; }
+    public required Weight Weight { get; set; }
 
     /// <summary>
     /// Alternative identifiers associated with this package. 

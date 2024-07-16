@@ -34,7 +34,7 @@ public partial class ConnectAmazonShippingUk
     /// <value>Amazon UK Shipping auth code.</value>
     [JsonPropertyName("auth_code")]
     [JsonRequired]
-    public string AuthCode { get; set; }
+    public required string AuthCode { get; set; }
 
     /// <summary>
     /// The nickname associated with the carrier connection
@@ -45,7 +45,7 @@ public partial class ConnectAmazonShippingUk
     /// </example>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
 
     /// <summary>

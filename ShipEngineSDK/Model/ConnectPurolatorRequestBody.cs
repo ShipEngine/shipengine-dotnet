@@ -34,7 +34,7 @@ public partial class ConnectPurolatorRequestBody
     /// <value>Account number</value>
     [JsonPropertyName("account_number")]
     [JsonRequired]
-    public string AccountNumber { get; set; }
+    public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Activation key
@@ -42,7 +42,7 @@ public partial class ConnectPurolatorRequestBody
     /// <value>Activation key</value>
     [JsonPropertyName("activation_key")]
     [JsonRequired]
-    public string ActivationKey { get; set; }
+    public required string ActivationKey { get; set; }
 
     /// <summary>
     /// Nickname
@@ -50,7 +50,7 @@ public partial class ConnectPurolatorRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
 
     /// <summary>

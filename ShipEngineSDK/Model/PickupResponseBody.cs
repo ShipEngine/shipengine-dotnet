@@ -37,14 +37,14 @@ public partial class PickupResponseBody
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
     /// <summary>
     /// Gets or Sets ContactDetails
     /// </summary>
     [JsonPropertyName("contact_details")]
     [JsonRequired]
-    public ContactDetails ContactDetails { get; set; }
+    public required ContactDetails ContactDetails { get; set; }
 
     /// <summary>
     /// The date and time that the pickup was created in ShipEngine.
@@ -55,7 +55,7 @@ public partial class PickupResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTimeOffset CreatedAt { get; set; }
+    public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
@@ -63,14 +63,14 @@ public partial class PickupResponseBody
     /// <value>Label IDs that will be included in the pickup request</value>
     [JsonPropertyName("label_ids")]
     [JsonRequired]
-    public List<string> LabelIds { get; set; }
+    public required List<string> LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupAddress
     /// </summary>
     [JsonPropertyName("pickup_address")]
     [JsonRequired]
-    public Address PickupAddress { get; set; }
+    public required Address PickupAddress { get; set; }
 
     /// <summary>
     /// Pickup Resource ID
@@ -81,14 +81,14 @@ public partial class PickupResponseBody
     /// </example>
     [JsonPropertyName("pickup_id")]
     [JsonRequired]
-    public string PickupId { get; set; }
+    public required string PickupId { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupWindow
     /// </summary>
     [JsonPropertyName("pickup_window")]
     [JsonRequired]
-    public PickupWindow PickupWindow { get; set; }
+    public required PickupWindow PickupWindow { get; set; }
 
     /// <summary>
     /// The warehouse_id associated with the pickup
@@ -99,7 +99,7 @@ public partial class PickupResponseBody
     /// </example>
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
-    public string WarehouseId { get; set; }
+    public required string WarehouseId { get; set; }
 
     /// <summary>
     /// The date and time that the pickup was cancelled in ShipEngine.
@@ -120,7 +120,7 @@ public partial class PickupResponseBody
     /// </example>
     [JsonPropertyName("confirmation_number")]
     [JsonRequired]
-    public string ConfirmationNumber { get; set; }
+    public required string ConfirmationNumber { get; set; }
 
     /// <summary>
     /// Used by some carriers to give special instructions for a package pickup

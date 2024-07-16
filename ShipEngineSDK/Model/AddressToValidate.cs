@@ -43,7 +43,7 @@ public partial class AddressToValidate
     /// </example>
     [JsonPropertyName("address_line1")]
     [JsonRequired]
-    public string AddressLine1 { get; set; }
+    public required string AddressLine1 { get; set; }
 
     /// <summary>
     /// The name of the city or locality
@@ -54,7 +54,7 @@ public partial class AddressToValidate
     /// </example>
     [JsonPropertyName("city_locality")]
     [JsonRequired]
-    public string CityLocality { get; set; }
+    public required string CityLocality { get; set; }
 
     /// <summary>
     /// The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -65,7 +65,7 @@ public partial class AddressToValidate
     /// </example>
     [JsonPropertyName("country_code")]
     [JsonRequired]
-    public string CountryCode { get; set; }
+    public required string CountryCode { get; set; }
 
     /// <summary>
     /// The state or province.  For some countries (including the U.S.) only abbreviations are allowed.  Other countries allow the full name or abbreviation. 
@@ -76,7 +76,7 @@ public partial class AddressToValidate
     /// </example>
     [JsonPropertyName("state_province")]
     [JsonRequired]
-    public string StateProvince { get; set; }
+    public required string StateProvince { get; set; }
 
     /// <summary>
     /// The second line of the street address.  For some addresses, this line may not be needed. 

@@ -34,7 +34,7 @@ public partial class SchedulePickupResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; set; }
+    public required List<Error> Errors { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -45,7 +45,7 @@ public partial class SchedulePickupResponseBody
     /// </example>
     [JsonPropertyName("request_id")]
     [JsonRequired]
-    public Guid RequestId { get; set; }
+    public required Guid RequestId { get; set; }
 
     /// <summary>
     /// The date and time that the pickup was cancelled in ShipEngine.

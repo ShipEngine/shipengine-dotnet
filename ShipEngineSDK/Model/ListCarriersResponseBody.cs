@@ -34,7 +34,7 @@ public partial class ListCarriersResponseBody
     /// <value>The carrier response body</value>
     [JsonPropertyName("carriers")]
     [JsonRequired]
-    public List<Carrier> Carriers { get; set; }
+    public required List<Carrier> Carriers { get; set; }
 
 
     /// <summary>

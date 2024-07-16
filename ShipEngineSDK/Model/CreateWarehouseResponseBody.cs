@@ -37,7 +37,7 @@ public partial class CreateWarehouseResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTimeOffset CreatedAt { get; set; }
+    public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// Name of the warehouse
@@ -48,7 +48,7 @@ public partial class CreateWarehouseResponseBody
     /// </example>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     /// <summary>
     /// The origin address of the warehouse
@@ -56,7 +56,7 @@ public partial class CreateWarehouseResponseBody
     /// <value>The origin address of the warehouse</value>
     [JsonPropertyName("origin_address")]
     [JsonRequired]
-    public Address OriginAddress { get; set; }
+    public required Address OriginAddress { get; set; }
 
     /// <summary>
     /// The return address associated with the warehouse
@@ -64,7 +64,7 @@ public partial class CreateWarehouseResponseBody
     /// <value>The return address associated with the warehouse</value>
     [JsonPropertyName("return_address")]
     [JsonRequired]
-    public Address ReturnAddress { get; set; }
+    public required Address ReturnAddress { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -75,7 +75,7 @@ public partial class CreateWarehouseResponseBody
     /// </example>
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
-    public string WarehouseId { get; set; }
+    public required string WarehouseId { get; set; }
 
     /// <summary>
     /// Designates which single warehouse is the default on the account

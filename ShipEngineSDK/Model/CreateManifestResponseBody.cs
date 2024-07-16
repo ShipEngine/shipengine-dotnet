@@ -38,7 +38,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
     [Obsolete]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
     /// <summary>
     /// The date-time that the manifest was created
@@ -50,7 +50,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("created_at")]
     [JsonRequired]
     [Obsolete]
-    public DateTimeOffset CreatedAt { get; set; }
+    public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The errors associated with the failed API call
@@ -58,7 +58,7 @@ public partial class CreateManifestResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; set; }
+    public required List<Error> Errors { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the form
@@ -70,7 +70,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("form_id")]
     [JsonRequired]
     [Obsolete]
-    public string FormId { get; set; }
+    public required string FormId { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
@@ -78,7 +78,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("manifest_download")]
     [JsonRequired]
     [Obsolete]
-    public ManifestDownload ManifestDownload { get; set; }
+    public required ManifestDownload ManifestDownload { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the manifest
@@ -90,7 +90,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("manifest_id")]
     [JsonRequired]
     [Obsolete]
-    public string ManifestId { get; set; }
+    public required string ManifestId { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -101,7 +101,7 @@ public partial class CreateManifestResponseBody
     /// </example>
     [JsonPropertyName("request_id")]
     [JsonRequired]
-    public Guid RequestId { get; set; }
+    public required Guid RequestId { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -113,7 +113,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("ship_date")]
     [JsonRequired]
     [Obsolete]
-    public DateTimeOffset ShipDate { get; set; }
+    public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest
@@ -125,7 +125,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("shipments")]
     [JsonRequired]
     [Obsolete]
-    public int Shipments { get; set; }
+    public required int Shipments { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
@@ -137,7 +137,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("submission_id")]
     [JsonRequired]
     [Obsolete]
-    public string SubmissionId { get; set; }
+    public required string SubmissionId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -149,7 +149,7 @@ public partial class CreateManifestResponseBody
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
     [Obsolete]
-    public string WarehouseId { get; set; }
+    public required string WarehouseId { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.

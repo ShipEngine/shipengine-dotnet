@@ -37,7 +37,7 @@ public partial class GetServicePointsRequestBodyAddress
     /// </example>
     [JsonPropertyName("country_code")]
     [JsonRequired]
-    public string CountryCode { get; set; }
+    public required string CountryCode { get; set; }
 
     /// <summary>
     /// The first line of the street address. For some addresses, this may be the only line. Other addresses may require 2 or 3 lines.

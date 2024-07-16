@@ -33,7 +33,7 @@ public partial class TagShipmentResponseBody
     /// </summary>
     [JsonPropertyName("tags")]
     [JsonRequired]
-    public List<string> Tags { get; set; }
+    public required List<string> Tags { get; set; }
 
 
     /// <summary>

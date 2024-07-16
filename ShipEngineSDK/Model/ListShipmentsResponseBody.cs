@@ -33,21 +33,21 @@ public partial class ListShipmentsResponseBody
     /// </summary>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public required PaginationLink Links { get; set; }
 
     /// <summary>
     /// Gets or Sets Page
     /// </summary>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; set; }
+    public required int Page { get; set; }
 
     /// <summary>
     /// Gets or Sets Pages
     /// </summary>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; set; }
+    public required int Pages { get; set; }
 
     /// <summary>
     /// The list of shipments returned by the api call
@@ -55,7 +55,7 @@ public partial class ListShipmentsResponseBody
     /// <value>The list of shipments returned by the api call</value>
     [JsonPropertyName("shipments")]
     [JsonRequired]
-    public List<Shipment> Shipments { get; set; }
+    public required List<Shipment> Shipments { get; set; }
 
     /// <summary>
     /// Total number of shipments returned by the api call
@@ -66,7 +66,7 @@ public partial class ListShipmentsResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; set; }
+    public required long Total { get; set; }
 
 
     /// <summary>

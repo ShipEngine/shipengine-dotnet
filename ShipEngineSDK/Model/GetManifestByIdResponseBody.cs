@@ -37,7 +37,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
     /// <summary>
     /// The date-time that the manifest was created
@@ -48,7 +48,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTimeOffset CreatedAt { get; set; }
+    public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the form
@@ -59,7 +59,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("form_id")]
     [JsonRequired]
-    public string FormId { get; set; }
+    public required string FormId { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.
@@ -67,14 +67,14 @@ public partial class GetManifestByIdResponseBody
     /// <value>An array of the label ids used in this manifest.</value>
     [JsonPropertyName("label_ids")]
     [JsonRequired]
-    public List<string> LabelIds { get; set; }
+    public required List<string> LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
     /// </summary>
     [JsonPropertyName("manifest_download")]
     [JsonRequired]
-    public ManifestDownload ManifestDownload { get; set; }
+    public required ManifestDownload ManifestDownload { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the manifest
@@ -85,7 +85,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("manifest_id")]
     [JsonRequired]
-    public string ManifestId { get; set; }
+    public required string ManifestId { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
@@ -96,7 +96,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("ship_date")]
     [JsonRequired]
-    public DateTimeOffset ShipDate { get; set; }
+    public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest
@@ -107,7 +107,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("shipments")]
     [JsonRequired]
-    public int Shipments { get; set; }
+    public required int Shipments { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
@@ -118,7 +118,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("submission_id")]
     [JsonRequired]
-    public string SubmissionId { get; set; }
+    public required string SubmissionId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
@@ -129,7 +129,7 @@ public partial class GetManifestByIdResponseBody
     /// </example>
     [JsonPropertyName("warehouse_id")]
     [JsonRequired]
-    public string WarehouseId { get; set; }
+    public required string WarehouseId { get; set; }
 
 
     /// <summary>

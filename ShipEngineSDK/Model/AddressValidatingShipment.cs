@@ -65,7 +65,7 @@ public partial class AddressValidatingShipment
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
     /// <summary>
     /// The [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) used to ship the package, such as &#x60;fedex_ground&#x60;, &#x60;usps_first_class_mail&#x60;, &#x60;flat_rate_envelope&#x60;, etc. 
@@ -76,7 +76,7 @@ public partial class AddressValidatingShipment
     /// </example>
     [JsonPropertyName("service_code")]
     [JsonRequired]
-    public string ServiceCode { get; set; }
+    public required string ServiceCode { get; set; }
 
     /// <summary>
     /// The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. 
@@ -84,7 +84,7 @@ public partial class AddressValidatingShipment
     /// <value>The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. </value>
     [JsonPropertyName("ship_from")]
     [JsonRequired]
-    public ShippingAddress ShipFrom { get; set; }
+    public required ShippingAddress ShipFrom { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address
@@ -92,7 +92,7 @@ public partial class AddressValidatingShipment
     /// <value>The recipient&#39;s mailing address</value>
     [JsonPropertyName("ship_to")]
     [JsonRequired]
-    public ShippingAddressTo ShipTo { get; set; }
+    public required ShippingAddressTo ShipTo { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -103,7 +103,7 @@ public partial class AddressValidatingShipment
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; set; }
+    public required string ShipmentId { get; set; }
 
     /// <summary>
     /// Advanced shipment options.  These are entirely optional.

@@ -43,7 +43,7 @@ public partial class VoidLabelResponseBody
     /// </example>
     [JsonPropertyName("approved")]
     [JsonRequired]
-    public bool Approved { get; set; }
+    public required bool Approved { get; set; }
 
     /// <summary>
     /// Gets or Sets Message
@@ -53,7 +53,7 @@ public partial class VoidLabelResponseBody
     /// </example>
     [JsonPropertyName("message")]
     [JsonRequired]
-    public string Message { get; set; }
+    public required string Message { get; set; }
 
 
     /// <summary>

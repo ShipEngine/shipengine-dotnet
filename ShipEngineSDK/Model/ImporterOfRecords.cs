@@ -37,7 +37,7 @@ public partial class ImporterOfRecords
     /// </example>
     [JsonPropertyName("address_line1")]
     [JsonRequired]
-    public string AddressLine1 { get; set; }
+    public required string AddressLine1 { get; set; }
 
     /// <summary>
     /// The name of the city or locality
@@ -48,7 +48,7 @@ public partial class ImporterOfRecords
     /// </example>
     [JsonPropertyName("city_locality")]
     [JsonRequired]
-    public string CityLocality { get; set; }
+    public required string CityLocality { get; set; }
 
     /// <summary>
     /// The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -59,7 +59,7 @@ public partial class ImporterOfRecords
     /// </example>
     [JsonPropertyName("country_code")]
     [JsonRequired]
-    public string CountryCode { get; set; }
+    public required string CountryCode { get; set; }
 
     /// <summary>
     /// The name of a contact person at this address. Either &#x60;name&#x60; or the &#x60;company_name&#x60; field should always be set. 
@@ -70,7 +70,7 @@ public partial class ImporterOfRecords
     /// </example>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     /// <summary>
     /// postal code
@@ -81,7 +81,7 @@ public partial class ImporterOfRecords
     /// </example>
     [JsonPropertyName("postal_code")]
     [JsonRequired]
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
 
     /// <summary>
     /// The second line of the street address.  For some addresses, this line may not be needed. 

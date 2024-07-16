@@ -33,7 +33,7 @@ public partial class ListShipmentRatesResponseBody
     /// </summary>
     [JsonPropertyName("status")]
     [JsonRequired]
-    public RateResponseStatus Status { get; set; } = new();
+    public required RateResponseStatus Status { get; set; } = new();
 
 
     /// <summary>
@@ -45,14 +45,14 @@ public partial class ListShipmentRatesResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public string CreatedAt { get; set; }
+    public required string CreatedAt { get; set; }
 
     /// <summary>
     /// Gets or Sets Errors
     /// </summary>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; set; }
+    public required List<Error> Errors { get; set; }
 
     /// <summary>
     /// An array of invalid shipment rates
@@ -60,7 +60,7 @@ public partial class ListShipmentRatesResponseBody
     /// <value>An array of invalid shipment rates</value>
     [JsonPropertyName("invalid_rates")]
     [JsonRequired]
-    public List<Rate> InvalidRates { get; set; }
+    public required List<Rate> InvalidRates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -71,7 +71,7 @@ public partial class ListShipmentRatesResponseBody
     /// </example>
     [JsonPropertyName("rate_request_id")]
     [JsonRequired]
-    public string RateRequestId { get; set; }
+    public required string RateRequestId { get; set; }
 
     /// <summary>
     /// An array of shipment rates
@@ -79,7 +79,7 @@ public partial class ListShipmentRatesResponseBody
     /// <value>An array of shipment rates</value>
     [JsonPropertyName("rates")]
     [JsonRequired]
-    public List<Rate> Rates { get; set; }
+    public required List<Rate> Rates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -90,7 +90,7 @@ public partial class ListShipmentRatesResponseBody
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; set; }
+    public required string ShipmentId { get; set; }
 
 
     /// <summary>

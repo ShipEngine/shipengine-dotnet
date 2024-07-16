@@ -33,7 +33,7 @@ public partial class RateEstimate
     /// </summary>
     [JsonPropertyName("rate_type")]
     [JsonRequired]
-    public RateType RateType { get; set; } = new();
+    public required RateType RateType { get; set; } = new();
 
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class RateEstimate
     /// </summary>
     [JsonPropertyName("validation_status")]
     [JsonRequired]
-    public ValidationStatus ValidationStatus { get; set; } = new();
+    public required ValidationStatus ValidationStatus { get; set; } = new();
 
 
     /// <summary>
@@ -50,7 +50,7 @@ public partial class RateEstimate
     /// <value>A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.</value>
     [JsonPropertyName("carrier_code")]
     [JsonRequired]
-    public string CarrierCode { get; set; }
+    public required string CarrierCode { get; set; }
 
     /// <summary>
     /// carrier friendly name
@@ -58,7 +58,7 @@ public partial class RateEstimate
     /// <value>carrier friendly name</value>
     [JsonPropertyName("carrier_friendly_name")]
     [JsonRequired]
-    public string CarrierFriendlyName { get; set; }
+    public required string CarrierFriendlyName { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the carrier
@@ -69,7 +69,7 @@ public partial class RateEstimate
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
     /// <summary>
     /// carrier nickname
@@ -77,7 +77,7 @@ public partial class RateEstimate
     /// <value>carrier nickname</value>
     [JsonPropertyName("carrier_nickname")]
     [JsonRequired]
-    public string CarrierNickname { get; set; }
+    public required string CarrierNickname { get; set; }
 
     /// <summary>
     /// The confirmation amount
@@ -85,7 +85,7 @@ public partial class RateEstimate
     /// <value>The confirmation amount</value>
     [JsonPropertyName("confirmation_amount")]
     [JsonRequired]
-    public MonetaryValue ConfirmationAmount { get; set; }
+    public required MonetaryValue ConfirmationAmount { get; set; }
 
     /// <summary>
     /// The error messages
@@ -93,7 +93,7 @@ public partial class RateEstimate
     /// <value>The error messages</value>
     [JsonPropertyName("error_messages")]
     [JsonRequired]
-    public List<string> ErrorMessages { get; set; }
+    public required List<string> ErrorMessages { get; set; }
 
     /// <summary>
     /// Indicates if the rate is guaranteed.
@@ -101,7 +101,7 @@ public partial class RateEstimate
     /// <value>Indicates if the rate is guaranteed.</value>
     [JsonPropertyName("guaranteed_service")]
     [JsonRequired]
-    public bool GuaranteedService { get; set; }
+    public required bool GuaranteedService { get; set; }
 
     /// <summary>
     /// The insurance amount
@@ -109,7 +109,7 @@ public partial class RateEstimate
     /// <value>The insurance amount</value>
     [JsonPropertyName("insurance_amount")]
     [JsonRequired]
-    public MonetaryValue InsuranceAmount { get; set; }
+    public required MonetaryValue InsuranceAmount { get; set; }
 
     /// <summary>
     /// Indicates if the rates been negotiated
@@ -117,7 +117,7 @@ public partial class RateEstimate
     /// <value>Indicates if the rates been negotiated</value>
     [JsonPropertyName("negotiated_rate")]
     [JsonRequired]
-    public bool NegotiatedRate { get; set; }
+    public required bool NegotiatedRate { get; set; }
 
     /// <summary>
     /// Any other charges associated with this rate
@@ -125,7 +125,7 @@ public partial class RateEstimate
     /// <value>Any other charges associated with this rate</value>
     [JsonPropertyName("other_amount")]
     [JsonRequired]
-    public MonetaryValue OtherAmount { get; set; }
+    public required MonetaryValue OtherAmount { get; set; }
 
     /// <summary>
     /// service code for the rate
@@ -133,7 +133,7 @@ public partial class RateEstimate
     /// <value>service code for the rate</value>
     [JsonPropertyName("service_code")]
     [JsonRequired]
-    public string ServiceCode { get; set; }
+    public required string ServiceCode { get; set; }
 
     /// <summary>
     /// service type
@@ -141,7 +141,7 @@ public partial class RateEstimate
     /// <value>service type</value>
     [JsonPropertyName("service_type")]
     [JsonRequired]
-    public string ServiceType { get; set; }
+    public required string ServiceType { get; set; }
 
     /// <summary>
     /// The shipping amount
@@ -149,7 +149,7 @@ public partial class RateEstimate
     /// <value>The shipping amount</value>
     [JsonPropertyName("shipping_amount")]
     [JsonRequired]
-    public MonetaryValue ShippingAmount { get; set; }
+    public required MonetaryValue ShippingAmount { get; set; }
 
     /// <summary>
     /// Indicates if rate is trackable
@@ -157,7 +157,7 @@ public partial class RateEstimate
     /// <value>Indicates if rate is trackable</value>
     [JsonPropertyName("trackable")]
     [JsonRequired]
-    public bool Trackable { get; set; }
+    public required bool Trackable { get; set; }
 
     /// <summary>
     /// The warning messages
@@ -165,7 +165,7 @@ public partial class RateEstimate
     /// <value>The warning messages</value>
     [JsonPropertyName("warning_messages")]
     [JsonRequired]
-    public List<string> WarningMessages { get; set; }
+    public required List<string> WarningMessages { get; set; }
 
     /// <summary>
     /// The carrier delivery days
@@ -203,7 +203,7 @@ public partial class RateEstimate
     /// </example>
     [JsonPropertyName("package_type")]
     [JsonRequired]
-    public string PackageType { get; set; }
+    public required string PackageType { get; set; }
 
     /// <summary>
     /// ship date
@@ -228,7 +228,7 @@ public partial class RateEstimate
     /// </example>
     [JsonPropertyName("zone")]
     [JsonRequired]
-    public int Zone { get; set; }
+    public required int Zone { get; set; }
 
 
     /// <summary>

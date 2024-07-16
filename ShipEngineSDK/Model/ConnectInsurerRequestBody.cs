@@ -37,14 +37,14 @@ public partial class ConnectInsurerRequestBody
     /// </example>
     [JsonPropertyName("email")]
     [JsonRequired]
-    public string Email { get; set; }
+    public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets PolicyId
     /// </summary>
     [JsonPropertyName("policy_id")]
     [JsonRequired]
-    public string PolicyId { get; set; }
+    public required string PolicyId { get; set; }
 
 
     /// <summary>

@@ -34,7 +34,7 @@ public partial class ListWarehousesResponseBody
     /// <value>The array of warehouses returned by the API call</value>
     [JsonPropertyName("warehouses")]
     [JsonRequired]
-    public List<Warehouse> Warehouses { get; set; }
+    public required List<Warehouse> Warehouses { get; set; }
 
 
     /// <summary>

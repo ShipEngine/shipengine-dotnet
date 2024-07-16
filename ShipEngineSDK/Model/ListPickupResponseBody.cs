@@ -34,7 +34,7 @@ public partial class ListPickupResponseBody
     /// <value>Helpful links to other pages of results</value>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public required PaginationLink Links { get; set; }
 
     /// <summary>
     /// Current page of the list pickups results
@@ -45,7 +45,7 @@ public partial class ListPickupResponseBody
     /// </example>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; set; }
+    public required int Page { get; set; }
 
     /// <summary>
     /// Total number of pages for list pickups results
@@ -56,7 +56,7 @@ public partial class ListPickupResponseBody
     /// </example>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; set; }
+    public required int Pages { get; set; }
 
     /// <summary>
     /// An array of pickups associated with the user&#39;s account.
@@ -64,7 +64,7 @@ public partial class ListPickupResponseBody
     /// <value>An array of pickups associated with the user&#39;s account.</value>
     [JsonPropertyName("pickups")]
     [JsonRequired]
-    public List<Pickup> Pickups { get; set; }
+    public required List<Pickup> Pickups { get; set; }
 
     /// <summary>
     /// The total number of pickups returned
@@ -75,7 +75,7 @@ public partial class ListPickupResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; set; }
+    public required long Total { get; set; }
 
 
     /// <summary>

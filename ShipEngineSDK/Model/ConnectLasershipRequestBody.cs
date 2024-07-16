@@ -34,7 +34,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>Address</value>
     [JsonPropertyName("Address")]
     [JsonRequired]
-    public string Address { get; set; }
+    public required string Address { get; set; }
 
     /// <summary>
     /// City
@@ -42,7 +42,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>City</value>
     [JsonPropertyName("City")]
     [JsonRequired]
-    public string City { get; set; }
+    public required string City { get; set; }
 
     /// <summary>
     /// Customer Branch
@@ -50,7 +50,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>Customer Branch</value>
     [JsonPropertyName("customer_branch")]
     [JsonRequired]
-    public string CustomerBranch { get; set; }
+    public required string CustomerBranch { get; set; }
 
     /// <summary>
     /// Critical Entry Time (local time)
@@ -58,7 +58,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>Critical Entry Time (local time)</value>
     [JsonPropertyName("lasership_critical_entry_time")]
     [JsonRequired]
-    public string LasershipCriticalEntryTime { get; set; }
+    public required string LasershipCriticalEntryTime { get; set; }
 
     /// <summary>
     /// Critical Pull Time (local time)
@@ -66,7 +66,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>Critical Pull Time (local time)</value>
     [JsonPropertyName("lasership_critical_pull_time")]
     [JsonRequired]
-    public string LasershipCriticalPullTime { get; set; }
+    public required string LasershipCriticalPullTime { get; set; }
 
     /// <summary>
     /// Nickname
@@ -74,7 +74,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// PostalCode
@@ -82,7 +82,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>PostalCode</value>
     [JsonPropertyName("PostalCode")]
     [JsonRequired]
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
 
     /// <summary>
     /// State
@@ -90,7 +90,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>State</value>
     [JsonPropertyName("State")]
     [JsonRequired]
-    public string State { get; set; }
+    public required string State { get; set; }
 
     /// <summary>
     /// Web Service ID (WSID)
@@ -98,7 +98,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>Web Service ID (WSID)</value>
     [JsonPropertyName("web_services_id")]
     [JsonRequired]
-    public string WebServicesId { get; set; }
+    public required string WebServicesId { get; set; }
 
     /// <summary>
     /// Web Service Key (WSKey)
@@ -106,7 +106,7 @@ public partial class ConnectLasershipRequestBody
     /// <value>Web Service Key (WSKey)</value>
     [JsonPropertyName("web_services_key")]
     [JsonRequired]
-    public string WebServicesKey { get; set; }
+    public required string WebServicesKey { get; set; }
 
     /// <summary>
     /// Address2

@@ -37,7 +37,7 @@ public partial class PickupWindow
     /// </example>
     [JsonPropertyName("end_at")]
     [JsonRequired]
-    public DateTimeOffset EndAt { get; set; }
+    public required DateTimeOffset EndAt { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -48,7 +48,7 @@ public partial class PickupWindow
     /// </example>
     [JsonPropertyName("start_at")]
     [JsonRequired]
-    public DateTimeOffset StartAt { get; set; }
+    public required DateTimeOffset StartAt { get; set; }
 
 
     /// <summary>

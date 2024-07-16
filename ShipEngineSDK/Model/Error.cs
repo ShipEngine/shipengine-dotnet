@@ -33,7 +33,7 @@ public partial class Error
     /// </summary>
     [JsonPropertyName("error_code")]
     [JsonRequired]
-    public ErrorCode ErrorCode { get; set; } = new();
+    public required ErrorCode ErrorCode { get; set; } = new();
 
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class Error
     /// </summary>
     [JsonPropertyName("error_source")]
     [JsonRequired]
-    public ErrorSource ErrorSource { get; set; } = new();
+    public required ErrorSource ErrorSource { get; set; } = new();
 
 
     /// <summary>
@@ -49,7 +49,7 @@ public partial class Error
     /// </summary>
     [JsonPropertyName("error_type")]
     [JsonRequired]
-    public ErrorType ErrorType { get; set; } = new();
+    public required ErrorType ErrorType { get; set; } = new();
 
 
     /// <summary>
@@ -61,7 +61,7 @@ public partial class Error
     /// </example>
     [JsonPropertyName("message")]
     [JsonRequired]
-    public string Message { get; set; }
+    public required string Message { get; set; }
 
 
     /// <summary>

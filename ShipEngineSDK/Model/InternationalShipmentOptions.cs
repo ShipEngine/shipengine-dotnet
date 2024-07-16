@@ -34,7 +34,7 @@ public partial class InternationalShipmentOptions
     /// <value>The type of contents in this shipment.  This may impact import duties or customs treatment.</value>
     [JsonPropertyName("contents")]
     [JsonRequired]
-    public PackageContents Contents { get; set; } = new();
+    public required PackageContents Contents { get; set; } = new();
 
 
     /// <summary>
@@ -43,7 +43,7 @@ public partial class InternationalShipmentOptions
     /// <value>Indicates what to do if a package is unable to be delivered.</value>
     [JsonPropertyName("non_delivery")]
     [JsonRequired]
-    public NonDelivery NonDelivery { get; set; } = new();
+    public required NonDelivery NonDelivery { get; set; } = new();
 
 
     /// <summary>

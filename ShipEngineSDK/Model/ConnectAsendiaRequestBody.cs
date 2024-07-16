@@ -34,7 +34,7 @@ public partial class ConnectAsendiaRequestBody
     /// <value>Asendia account number</value>
     [JsonPropertyName("account_number")]
     [JsonRequired]
-    public string AccountNumber { get; set; }
+    public required string AccountNumber { get; set; }
 
     /// <summary>
     /// FTP password
@@ -42,7 +42,7 @@ public partial class ConnectAsendiaRequestBody
     /// <value>FTP password</value>
     [JsonPropertyName("ftp_password")]
     [JsonRequired]
-    public string FtpPassword { get; set; }
+    public required string FtpPassword { get; set; }
 
     /// <summary>
     /// FTP username
@@ -50,7 +50,7 @@ public partial class ConnectAsendiaRequestBody
     /// <value>FTP username</value>
     [JsonPropertyName("ftp_username")]
     [JsonRequired]
-    public string FtpUsername { get; set; }
+    public required string FtpUsername { get; set; }
 
     /// <summary>
     /// The nickname of the Asendia account
@@ -61,7 +61,7 @@ public partial class ConnectAsendiaRequestBody
     /// </example>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
 
     /// <summary>

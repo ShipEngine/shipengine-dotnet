@@ -34,7 +34,7 @@ public partial class GetServicePointsRequestBody
     /// <value>An array of shipping service providers and service codes</value>
     [JsonPropertyName("providers")]
     [JsonRequired]
-    public List<GetServicePointsRequestBodyProvidersInner> Providers { get; set; }
+    public required List<GetServicePointsRequestBodyProvidersInner> Providers { get; set; }
 
     /// <summary>
     /// Gets or Sets Address

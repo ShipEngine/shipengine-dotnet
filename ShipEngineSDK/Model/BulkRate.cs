@@ -33,7 +33,7 @@ public partial class BulkRate
     /// </summary>
     [JsonPropertyName("status")]
     [JsonRequired]
-    public RateResponseStatus Status { get; set; } = new();
+    public required RateResponseStatus Status { get; set; } = new();
 
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class BulkRate
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTimeOffset CreatedAt { get; set; }
+    public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// An array of errors that were returned while retrieving the bulk rate
@@ -53,7 +53,7 @@ public partial class BulkRate
     /// <value>An array of errors that were returned while retrieving the bulk rate</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; set; }
+    public required List<Error> Errors { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -64,7 +64,7 @@ public partial class BulkRate
     /// </example>
     [JsonPropertyName("rate_request_id")]
     [JsonRequired]
-    public string RateRequestId { get; set; }
+    public required string RateRequestId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -75,7 +75,7 @@ public partial class BulkRate
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; set; }
+    public required string ShipmentId { get; set; }
 
 
     /// <summary>

@@ -36,7 +36,7 @@ public partial class CreatePackageTypeResponseBody
     /// </example>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     /// <summary>
     /// A [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/), such as &#x60;thick_envelope&#x60;, &#x60;small_flat_rate_box&#x60;, &#x60;large_package&#x60;, etc.  Use the code &#x60;package&#x60; for custom or unknown package types. 
@@ -47,7 +47,7 @@ public partial class CreatePackageTypeResponseBody
     /// </example>
     [JsonPropertyName("package_code")]
     [JsonRequired]
-    public string PackageCode { get; set; }
+    public required string PackageCode { get; set; }
 
     /// <summary>
     /// Provides a helpful description for the custom package.

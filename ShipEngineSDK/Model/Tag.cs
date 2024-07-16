@@ -37,7 +37,7 @@ public partial class Tag
     /// </example>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
 
     /// <summary>

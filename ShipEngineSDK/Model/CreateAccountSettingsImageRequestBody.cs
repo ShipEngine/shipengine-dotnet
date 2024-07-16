@@ -91,7 +91,7 @@ public partial class CreateAccountSettingsImageRequestBody
     /// <value>The image type</value>
     [JsonPropertyName("image_content_type")]
     [JsonRequired]
-    public ImageContentTypeEnum ImageContentType { get; set; } = new();
+    public required ImageContentTypeEnum ImageContentType { get; set; } = new();
 
 
     /// <summary>
@@ -103,7 +103,7 @@ public partial class CreateAccountSettingsImageRequestBody
     /// </example>
     [JsonPropertyName("image_data")]
     [JsonRequired]
-    public string ImageData { get; set; }
+    public required string ImageData { get; set; }
 
     /// <summary>
     /// A human readable name for the image. 
@@ -114,7 +114,7 @@ public partial class CreateAccountSettingsImageRequestBody
     /// </example>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     /// <summary>
     /// The date and time that the image was created in ShipEngine.

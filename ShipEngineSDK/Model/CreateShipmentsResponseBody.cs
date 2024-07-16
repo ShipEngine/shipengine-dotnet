@@ -34,7 +34,7 @@ public partial class CreateShipmentsResponseBody
     /// <value>An array of shipments that were created.</value>
     [JsonPropertyName("shipments")]
     [JsonRequired]
-    public List<CreateAndValidateShipment> Shipments { get; set; }
+    public required List<CreateAndValidateShipment> Shipments { get; set; }
 
     /// <summary>
     /// Indicates if errors occured while creating the shipments
@@ -42,7 +42,7 @@ public partial class CreateShipmentsResponseBody
     /// <value>Indicates if errors occured while creating the shipments</value>
     [JsonPropertyName("has_errors")]
     [JsonRequired]
-    public bool HasErrors { get; set; }
+    public required bool HasErrors { get; set; }
 
 
     /// <summary>

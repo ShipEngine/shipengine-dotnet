@@ -37,7 +37,7 @@ public partial class ConnectApcRequestBody
     /// </example>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// The password for the APC account
@@ -48,7 +48,7 @@ public partial class ConnectApcRequestBody
     /// </example>
     [JsonPropertyName("password")]
     [JsonRequired]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 
     /// <summary>
     /// The username for the APC account
@@ -59,7 +59,7 @@ public partial class ConnectApcRequestBody
     /// </example>
     [JsonPropertyName("username")]
     [JsonRequired]
-    public string Username { get; set; }
+    public required string Username { get; set; }
 
 
     /// <summary>

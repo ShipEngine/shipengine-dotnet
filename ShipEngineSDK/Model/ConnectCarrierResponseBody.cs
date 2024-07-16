@@ -37,7 +37,7 @@ public partial class ConnectCarrierResponseBody
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
 
     /// <summary>

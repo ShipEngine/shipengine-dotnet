@@ -34,7 +34,7 @@ public partial class CalculateRatesResponseBody
     /// <value>The type of delivery confirmation that is required for this shipment.</value>
     [JsonPropertyName("confirmation")]
     [JsonRequired]
-    public DeliveryConfirmation Confirmation { get; set; } = new();
+    public required DeliveryConfirmation Confirmation { get; set; } = new();
 
 
     /// <summary>
@@ -43,7 +43,7 @@ public partial class CalculateRatesResponseBody
     /// <value>The insurance provider to use for any insured packages in the shipment. </value>
     [JsonPropertyName("insurance_provider")]
     [JsonRequired]
-    public InsuranceProvider InsuranceProvider { get; set; } = new();
+    public required InsuranceProvider InsuranceProvider { get; set; } = new();
 
 
     /// <summary>
@@ -52,7 +52,7 @@ public partial class CalculateRatesResponseBody
     /// <value>The current status of the shipment</value>
     [JsonPropertyName("shipment_status")]
     [JsonRequired]
-    public ShipmentStatus ShipmentStatus { get; set; } = new();
+    public required ShipmentStatus ShipmentStatus { get; set; } = new();
 
 
     /// <summary>
@@ -66,7 +66,7 @@ public partial class CalculateRatesResponseBody
     /// <value>Advanced shipment options.  These are entirely optional.</value>
     [JsonPropertyName("advanced_options")]
     [JsonRequired]
-    public AdvancedShipmentOptions AdvancedOptions { get; set; }
+    public required AdvancedShipmentOptions AdvancedOptions { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created in ShipEngine.
@@ -77,7 +77,7 @@ public partial class CalculateRatesResponseBody
     /// </example>
     [JsonPropertyName("created_at")]
     [JsonRequired]
-    public DateTimeOffset CreatedAt { get; set; }
+    public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created or last modified.
@@ -88,7 +88,7 @@ public partial class CalculateRatesResponseBody
     /// </example>
     [JsonPropertyName("modified_at")]
     [JsonRequired]
-    public DateTimeOffset ModifiedAt { get; set; }
+    public required DateTimeOffset ModifiedAt { get; set; }
 
     /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
@@ -96,7 +96,7 @@ public partial class CalculateRatesResponseBody
     /// <value>The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. </value>
     [JsonPropertyName("packages")]
     [JsonRequired]
-    public List<Package> Packages { get; set; }
+    public required List<Package> Packages { get; set; }
 
     /// <summary>
     /// The rates response
@@ -104,7 +104,7 @@ public partial class CalculateRatesResponseBody
     /// <value>The rates response</value>
     [JsonPropertyName("rate_response")]
     [JsonRequired]
-    public RatesInformation RateResponse { get; set; }
+    public required RatesInformation RateResponse { get; set; }
 
     /// <summary>
     /// The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. 
@@ -112,7 +112,7 @@ public partial class CalculateRatesResponseBody
     /// <value>The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. </value>
     [JsonPropertyName("return_to")]
     [JsonRequired]
-    public ShippingAddress ReturnTo { get; set; }
+    public required ShippingAddress ReturnTo { get; set; }
 
     /// <summary>
     /// The date that the shipment was (or will be) shippped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead. 
@@ -123,7 +123,7 @@ public partial class CalculateRatesResponseBody
     /// </example>
     [JsonPropertyName("ship_date")]
     [JsonRequired]
-    public DateTimeOffset ShipDate { get; set; }
+    public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -134,7 +134,7 @@ public partial class CalculateRatesResponseBody
     /// </example>
     [JsonPropertyName("shipment_id")]
     [JsonRequired]
-    public string ShipmentId { get; set; }
+    public required string ShipmentId { get; set; }
 
     /// <summary>
     /// Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. 
@@ -142,7 +142,7 @@ public partial class CalculateRatesResponseBody
     /// <value>Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. </value>
     [JsonPropertyName("tags")]
     [JsonRequired]
-    public List<Tag> Tags { get; set; }
+    public required List<Tag> Tags { get; set; }
 
     /// <summary>
     /// The combined weight of all packages in the shipment
@@ -150,7 +150,7 @@ public partial class CalculateRatesResponseBody
     /// <value>The combined weight of all packages in the shipment</value>
     [JsonPropertyName("total_weight")]
     [JsonRequired]
-    public Weight TotalWeight { get; set; }
+    public required Weight TotalWeight { get; set; }
 
     /// <summary>
     /// The carrier account that is billed for the shipping charges
@@ -178,7 +178,7 @@ public partial class CalculateRatesResponseBody
     /// <value>Customs information.  This is usually only needed for international shipments. </value>
     [JsonPropertyName("customs")]
     [JsonRequired]
-    public InternationalShipmentOptions Customs { get; set; }
+    public required InternationalShipmentOptions Customs { get; set; }
 
     /// <summary>
     /// ID that the Order Source assigned

@@ -34,14 +34,14 @@ public partial class ListBatchesResponseBody
     /// <value>Batch List</value>
     [JsonPropertyName("batches")]
     [JsonRequired]
-    public List<Batch> Batches { get; set; }
+    public required List<Batch> Batches { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public required PaginationLink Links { get; set; }
 
     /// <summary>
     /// The page that is currently being read
@@ -52,7 +52,7 @@ public partial class ListBatchesResponseBody
     /// </example>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; set; }
+    public required int Page { get; set; }
 
     /// <summary>
     /// The total number of batch pages the API call returned
@@ -63,7 +63,7 @@ public partial class ListBatchesResponseBody
     /// </example>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; set; }
+    public required int Pages { get; set; }
 
     /// <summary>
     /// The total number of batches the API call returned
@@ -74,7 +74,7 @@ public partial class ListBatchesResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; set; }
+    public required long Total { get; set; }
 
 
     /// <summary>

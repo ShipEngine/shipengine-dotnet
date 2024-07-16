@@ -33,7 +33,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// </summary>
     [JsonPropertyName("status_code")]
     [JsonRequired]
-    public StatusCode StatusCode { get; set; } = new();
+    public required StatusCode StatusCode { get; set; } = new();
 
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// </example>
     [JsonPropertyName("carrier_status_code")]
     [JsonRequired]
-    public string CarrierStatusCode { get; set; }
+    public required string CarrierStatusCode { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -56,7 +56,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// </example>
     [JsonPropertyName("estimated_delivery_date")]
     [JsonRequired]
-    public DateTimeOffset EstimatedDeliveryDate { get; set; }
+    public required DateTimeOffset EstimatedDeliveryDate { get; set; }
 
     /// <summary>
     /// The events that have occured during the lifetime of this tracking number.
@@ -64,7 +64,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <value>The events that have occured during the lifetime of this tracking number.</value>
     [JsonPropertyName("events")]
     [JsonRequired]
-    public List<TrackEvent> Events { get; set; }
+    public required List<TrackEvent> Events { get; set; }
 
     /// <summary>
     /// A tracking number for a package. The format depends on the carrier.
@@ -75,7 +75,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// </example>
     [JsonPropertyName("tracking_number")]
     [JsonRequired]
-    public string TrackingNumber { get; set; }
+    public required string TrackingNumber { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 

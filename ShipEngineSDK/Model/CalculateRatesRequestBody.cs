@@ -215,12 +215,18 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         var jsonDoc = JsonDocument.ParseValue(ref reader);
         CalculateRatesRequestBody? newCalculateRatesRequestBody = null;
 
+        // Deserialize all the common properties of the model so they can be used in object initializers later
+        var rateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
+
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentIdRequest>(DeserializingOptions)!);
+            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentIdRequest>(DeserializingOptions)!)
+            {
+                RateOptions = rateOptions,
+            };
 
             matchedTypes.Add("ShipmentIdRequest");
             match++;
@@ -233,7 +239,10 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
 
         try
         {
-            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentRequest>(DeserializingOptions)!);
+            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentRequest>(DeserializingOptions)!)
+            {
+                RateOptions = rateOptions,
+            };
 
             matchedTypes.Add("ShipmentRequest");
             match++;
@@ -253,8 +262,6 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
-
-        newCalculateRatesRequestBody!.RateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newCalculateRatesRequestBody;

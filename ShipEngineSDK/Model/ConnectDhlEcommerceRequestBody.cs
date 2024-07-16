@@ -39,7 +39,7 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>The client id</value>
     [JsonPropertyName("client_id")]
     [JsonRequired]
-    public string ClientId { get; set; }
+    public required string ClientId { get; set; }
 
     /// <summary>
     /// The distribution center
@@ -47,7 +47,7 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>The distribution center</value>
     [JsonPropertyName("distribution_center")]
     [JsonRequired]
-    public string DistributionCenter { get; set; }
+    public required string DistributionCenter { get; set; }
 
     /// <summary>
     /// A nickname to help you identify this account
@@ -55,7 +55,7 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>A nickname to help you identify this account</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// The account password
@@ -63,7 +63,7 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>The account password</value>
     [JsonPropertyName("password")]
     [JsonRequired]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 
     /// <summary>
     /// The pickup number
@@ -71,7 +71,7 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>The pickup number</value>
     [JsonPropertyName("pickup_number")]
     [JsonRequired]
-    public string PickupNumber { get; set; }
+    public required string PickupNumber { get; set; }
 
     /// <summary>
     /// The account username
@@ -79,7 +79,7 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>The account username</value>
     [JsonPropertyName("username")]
     [JsonRequired]
-    public string Username { get; set; }
+    public required string Username { get; set; }
 
     /// <summary>
     /// Account number

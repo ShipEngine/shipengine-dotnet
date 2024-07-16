@@ -33,7 +33,7 @@ public partial class ResponseMessage
     /// </summary>
     [JsonPropertyName("code")]
     [JsonRequired]
-    public AddressValidationCode Code { get; set; } = new();
+    public required AddressValidationCode Code { get; set; } = new();
 
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class ResponseMessage
     /// </summary>
     [JsonPropertyName("type")]
     [JsonRequired]
-    public AddressValidationMessageType Type { get; set; } = new();
+    public required AddressValidationMessageType Type { get; set; } = new();
 
 
     /// <summary>
@@ -49,7 +49,7 @@ public partial class ResponseMessage
     /// </summary>
     [JsonPropertyName("detail_code")]
     [JsonRequired]
-    public AddressValidationDetailCode DetailCode { get; set; } = new();
+    public required AddressValidationDetailCode DetailCode { get; set; } = new();
 
 
     /// <summary>
@@ -61,7 +61,7 @@ public partial class ResponseMessage
     /// </example>
     [JsonPropertyName("message")]
     [JsonRequired]
-    public string Message { get; set; }
+    public required string Message { get; set; }
 
 
     /// <summary>

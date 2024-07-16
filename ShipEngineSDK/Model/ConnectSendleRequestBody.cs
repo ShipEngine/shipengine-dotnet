@@ -34,7 +34,7 @@ public partial class ConnectSendleRequestBody
     /// <value>API key</value>
     [JsonPropertyName("api_key")]
     [JsonRequired]
-    public string ApiKey { get; set; }
+    public required string ApiKey { get; set; }
 
     /// <summary>
     /// Nickname
@@ -42,7 +42,7 @@ public partial class ConnectSendleRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the sendle
@@ -53,7 +53,7 @@ public partial class ConnectSendleRequestBody
     /// </example>
     [JsonPropertyName("sendle_id")]
     [JsonRequired]
-    public string SendleId { get; set; }
+    public required string SendleId { get; set; }
 
 
     /// <summary>

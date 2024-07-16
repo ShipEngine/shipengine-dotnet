@@ -37,21 +37,21 @@ public partial class ConnectAmazonBuyShippingRequestBody
     /// </example>
     [JsonPropertyName("email")]
     [JsonRequired]
-    public string Email { get; set; }
+    public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets MerchantSellerId
     /// </summary>
     [JsonPropertyName("merchant_seller_id")]
     [JsonRequired]
-    public string MerchantSellerId { get; set; }
+    public required string MerchantSellerId { get; set; }
 
     /// <summary>
     /// Gets or Sets MwsAuthToken
     /// </summary>
     [JsonPropertyName("mws_auth_token")]
     [JsonRequired]
-    public string MwsAuthToken { get; set; }
+    public required string MwsAuthToken { get; set; }
 
     /// <summary>
     /// Nickname to be associated with the account connection
@@ -62,7 +62,7 @@ public partial class ConnectAmazonBuyShippingRequestBody
     /// </example>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
 
     /// <summary>

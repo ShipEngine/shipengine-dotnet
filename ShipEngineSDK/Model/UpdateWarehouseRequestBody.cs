@@ -37,7 +37,7 @@ public partial class UpdateWarehouseRequestBody
     /// </example>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     /// <summary>
     /// The origin address of the warehouse
@@ -45,7 +45,7 @@ public partial class UpdateWarehouseRequestBody
     /// <value>The origin address of the warehouse</value>
     [JsonPropertyName("origin_address")]
     [JsonRequired]
-    public Address OriginAddress { get; set; }
+    public required Address OriginAddress { get; set; }
 
     /// <summary>
     /// Timestamp that indicates when the warehouse was created

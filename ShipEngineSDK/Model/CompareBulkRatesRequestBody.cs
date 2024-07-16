@@ -37,7 +37,7 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
     /// <value>The rate options</value>
     [JsonPropertyName("rate_options")]
     [JsonRequired]
-    public RateRequestBody RateOptions { get; set; }
+    public required RateRequestBody RateOptions { get; set; }
 
 
     /// <summary>
@@ -216,12 +216,18 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
         var jsonDoc = JsonDocument.ParseValue(ref reader);
         CompareBulkRatesRequestBody? newCompareBulkRatesRequestBody = null;
 
+        // Deserialize all the common properties of the model so they can be used in object initializers later
+        var rateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
+
         int match = 0;
         var matchedTypes = new List<string>();
 
         try
         {
-            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(jsonDoc.Deserialize<RateRequestByShipmentIds>(DeserializingOptions)!);
+            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(jsonDoc.Deserialize<RateRequestByShipmentIds>(DeserializingOptions)!)
+            {
+                RateOptions = rateOptions,
+            };
 
             matchedTypes.Add("RateRequestByShipmentIds");
             match++;
@@ -234,7 +240,10 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
 
         try
         {
-            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(jsonDoc.Deserialize<RateRequestByShipments>(DeserializingOptions)!);
+            newCompareBulkRatesRequestBody = new CompareBulkRatesRequestBody(jsonDoc.Deserialize<RateRequestByShipments>(DeserializingOptions)!)
+            {
+                RateOptions = rateOptions,
+            };
 
             matchedTypes.Add("RateRequestByShipments");
             match++;
@@ -250,12 +259,11 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` cannot be deserialized into any schema defined.");
         }
 
+
         if (match > 1)
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
-
-        newCompareBulkRatesRequestBody!.RateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newCompareBulkRatesRequestBody;

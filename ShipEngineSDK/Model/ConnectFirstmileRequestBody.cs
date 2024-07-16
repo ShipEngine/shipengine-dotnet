@@ -37,7 +37,7 @@ public partial class ConnectFirstmileRequestBody
     /// </example>
     [JsonPropertyName("mailer_id")]
     [JsonRequired]
-    public string MailerId { get; set; }
+    public required string MailerId { get; set; }
 
     /// <summary>
     /// Nickname
@@ -45,7 +45,7 @@ public partial class ConnectFirstmileRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// Password
@@ -53,7 +53,7 @@ public partial class ConnectFirstmileRequestBody
     /// <value>Password</value>
     [JsonPropertyName("password")]
     [JsonRequired]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 
     /// <summary>
     /// Profile name

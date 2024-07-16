@@ -37,14 +37,14 @@ public partial class ContactDetails
     /// </example>
     [JsonPropertyName("email")]
     [JsonRequired]
-    public string Email { get; set; }
+    public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets Name
     /// </summary>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     /// <summary>
     /// Phone number associated
@@ -52,7 +52,7 @@ public partial class ContactDetails
     /// <value>Phone number associated</value>
     [JsonPropertyName("phone")]
     [JsonRequired]
-    public string Phone { get; set; }
+    public required string Phone { get; set; }
 
 
     /// <summary>

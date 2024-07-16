@@ -34,7 +34,7 @@ public partial class RateRequestBody
     /// <value>Array of carrier ids to get rates for</value>
     [JsonPropertyName("carrier_ids")]
     [JsonRequired]
-    public List<string> CarrierIds { get; set; }
+    public required List<string> CarrierIds { get; set; }
 
     /// <summary>
     /// Calculate the duties and tariffs for cross border shipments.

@@ -34,7 +34,7 @@ public partial class GetInsuranceBalanceResponseBody
     /// <value>The monetary amount, in the specified currency.</value>
     [JsonPropertyName("amount")]
     [JsonRequired]
-    public double Amount { get; set; }
+    public required double Amount { get; set; }
 
     /// <summary>
     /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
@@ -42,7 +42,7 @@ public partial class GetInsuranceBalanceResponseBody
     /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
     [JsonPropertyName("currency")]
     [JsonRequired]
-    public string Currency { get; set; }
+    public required string Currency { get; set; }
 
 
     /// <summary>

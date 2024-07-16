@@ -229,6 +229,7 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         var jsonDoc = JsonDocument.ParseValue(ref reader);
         GetCarrierSettingsResponseBody? newGetCarrierSettingsResponseBody = null;
 
+
         int match = 0;
         var matchedTypes = new List<string>();
 
@@ -280,7 +281,6 @@ public class GetCarrierSettingsResponseBodyJsonConverter : JsonConverter<GetCarr
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
-
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return newGetCarrierSettingsResponseBody;

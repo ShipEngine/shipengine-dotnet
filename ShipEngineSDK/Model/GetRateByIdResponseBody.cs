@@ -33,7 +33,7 @@ public partial class GetRateByIdResponseBody
     /// </summary>
     [JsonPropertyName("rate_type")]
     [JsonRequired]
-    public RateType RateType { get; set; } = new();
+    public required RateType RateType { get; set; } = new();
 
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class GetRateByIdResponseBody
     /// </summary>
     [JsonPropertyName("validation_status")]
     [JsonRequired]
-    public ValidationStatus ValidationStatus { get; set; } = new();
+    public required ValidationStatus ValidationStatus { get; set; } = new();
 
 
     /// <summary>
@@ -50,7 +50,7 @@ public partial class GetRateByIdResponseBody
     /// <value>carrier code</value>
     [JsonPropertyName("carrier_code")]
     [JsonRequired]
-    public string CarrierCode { get; set; }
+    public required string CarrierCode { get; set; }
 
     /// <summary>
     /// carrier friendly name
@@ -58,7 +58,7 @@ public partial class GetRateByIdResponseBody
     /// <value>carrier friendly name</value>
     [JsonPropertyName("carrier_friendly_name")]
     [JsonRequired]
-    public string CarrierFriendlyName { get; set; }
+    public required string CarrierFriendlyName { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the carrier
@@ -69,7 +69,7 @@ public partial class GetRateByIdResponseBody
     /// </example>
     [JsonPropertyName("carrier_id")]
     [JsonRequired]
-    public string CarrierId { get; set; }
+    public required string CarrierId { get; set; }
 
     /// <summary>
     /// carrier nickname
@@ -77,7 +77,7 @@ public partial class GetRateByIdResponseBody
     /// <value>carrier nickname</value>
     [JsonPropertyName("carrier_nickname")]
     [JsonRequired]
-    public string CarrierNickname { get; set; }
+    public required string CarrierNickname { get; set; }
 
     /// <summary>
     /// The confirmation amount.  Should be added with shipping_amount, insurance_amount and other_amount to calculate the total purchase price.
@@ -85,7 +85,7 @@ public partial class GetRateByIdResponseBody
     /// <value>The confirmation amount.  Should be added with shipping_amount, insurance_amount and other_amount to calculate the total purchase price.</value>
     [JsonPropertyName("confirmation_amount")]
     [JsonRequired]
-    public MonetaryValue ConfirmationAmount { get; set; }
+    public required MonetaryValue ConfirmationAmount { get; set; }
 
     /// <summary>
     /// The error messages
@@ -93,7 +93,7 @@ public partial class GetRateByIdResponseBody
     /// <value>The error messages</value>
     [JsonPropertyName("error_messages")]
     [JsonRequired]
-    public List<string> ErrorMessages { get; set; }
+    public required List<string> ErrorMessages { get; set; }
 
     /// <summary>
     /// Indicates if the rate is guaranteed.
@@ -101,7 +101,7 @@ public partial class GetRateByIdResponseBody
     /// <value>Indicates if the rate is guaranteed.</value>
     [JsonPropertyName("guaranteed_service")]
     [JsonRequired]
-    public bool GuaranteedService { get; set; }
+    public required bool GuaranteedService { get; set; }
 
     /// <summary>
     /// The insurance amount.  Should be added with shipping_amount, confirmation_amount and other_amount to calculate the total purchase price.
@@ -109,7 +109,7 @@ public partial class GetRateByIdResponseBody
     /// <value>The insurance amount.  Should be added with shipping_amount, confirmation_amount and other_amount to calculate the total purchase price.</value>
     [JsonPropertyName("insurance_amount")]
     [JsonRequired]
-    public MonetaryValue InsuranceAmount { get; set; }
+    public required MonetaryValue InsuranceAmount { get; set; }
 
     /// <summary>
     /// Indicates if the rates been negotiated
@@ -117,7 +117,7 @@ public partial class GetRateByIdResponseBody
     /// <value>Indicates if the rates been negotiated</value>
     [JsonPropertyName("negotiated_rate")]
     [JsonRequired]
-    public bool NegotiatedRate { get; set; }
+    public required bool NegotiatedRate { get; set; }
 
     /// <summary>
     /// Any other charges associated with this rate.  Should be added with shipping_amount, insurance_amount and confirmation_amount to calculate the total purchase price.
@@ -125,7 +125,7 @@ public partial class GetRateByIdResponseBody
     /// <value>Any other charges associated with this rate.  Should be added with shipping_amount, insurance_amount and confirmation_amount to calculate the total purchase price.</value>
     [JsonPropertyName("other_amount")]
     [JsonRequired]
-    public MonetaryValue OtherAmount { get; set; }
+    public required MonetaryValue OtherAmount { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate
@@ -136,7 +136,7 @@ public partial class GetRateByIdResponseBody
     /// </example>
     [JsonPropertyName("rate_id")]
     [JsonRequired]
-    public string RateId { get; set; }
+    public required string RateId { get; set; }
 
     /// <summary>
     /// service code for the rate
@@ -144,7 +144,7 @@ public partial class GetRateByIdResponseBody
     /// <value>service code for the rate</value>
     [JsonPropertyName("service_code")]
     [JsonRequired]
-    public string ServiceCode { get; set; }
+    public required string ServiceCode { get; set; }
 
     /// <summary>
     /// service type
@@ -152,7 +152,7 @@ public partial class GetRateByIdResponseBody
     /// <value>service type</value>
     [JsonPropertyName("service_type")]
     [JsonRequired]
-    public string ServiceType { get; set; }
+    public required string ServiceType { get; set; }
 
     /// <summary>
     /// The shipping amount. Should be added with confirmation_amount, insurance_amount and other_amount to calculate the total purchase price.
@@ -160,7 +160,7 @@ public partial class GetRateByIdResponseBody
     /// <value>The shipping amount. Should be added with confirmation_amount, insurance_amount and other_amount to calculate the total purchase price.</value>
     [JsonPropertyName("shipping_amount")]
     [JsonRequired]
-    public MonetaryValue ShippingAmount { get; set; }
+    public required MonetaryValue ShippingAmount { get; set; }
 
     /// <summary>
     /// Indicates if rate is trackable
@@ -168,7 +168,7 @@ public partial class GetRateByIdResponseBody
     /// <value>Indicates if rate is trackable</value>
     [JsonPropertyName("trackable")]
     [JsonRequired]
-    public bool Trackable { get; set; }
+    public required bool Trackable { get; set; }
 
     /// <summary>
     /// The warning messages
@@ -176,7 +176,7 @@ public partial class GetRateByIdResponseBody
     /// <value>The warning messages</value>
     [JsonPropertyName("warning_messages")]
     [JsonRequired]
-    public List<string> WarningMessages { get; set; }
+    public required List<string> WarningMessages { get; set; }
 
     /// <summary>
     /// The carrier delivery days
@@ -214,7 +214,7 @@ public partial class GetRateByIdResponseBody
     /// </example>
     [JsonPropertyName("package_type")]
     [JsonRequired]
-    public string PackageType { get; set; }
+    public required string PackageType { get; set; }
 
     /// <summary>
     /// The total shipping cost for the specified comparison_rate_type.
@@ -246,7 +246,7 @@ public partial class GetRateByIdResponseBody
     /// </example>
     [JsonPropertyName("zone")]
     [JsonRequired]
-    public int Zone { get; set; }
+    public required int Zone { get; set; }
 
 
     /// <summary>

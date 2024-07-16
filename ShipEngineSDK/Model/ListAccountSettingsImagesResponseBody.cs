@@ -104,14 +104,14 @@ public partial class ListAccountSettingsImagesResponseBody
     /// <value>Image List</value>
     [JsonPropertyName("images")]
     [JsonRequired]
-    public List<ListAccountSettingsImagesResponseBodyItem> Images { get; set; }
+    public required List<ListAccountSettingsImagesResponseBodyItem> Images { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public required PaginationLink Links { get; set; }
 
     /// <summary>
     /// The current page number of results.  For example, if there are 80 results, and the page size is 25, then &#x60;page&#x60; could be 1, 2, 3, or 4.  The first three pages would contain 25 items each, and the fourth page would contain the five remaining items.
@@ -122,7 +122,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// </example>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; set; }
+    public required int Page { get; set; }
 
     /// <summary>
     /// The total number of pages of results.  For example, if there are 80 results, and the page size is 25, then &#x60;pages&#x60; would be 4.  The first three pages would contain 25 items each, and the fourth page would contain the five remaining items.  If there are no results, then &#x60;pages&#x60; will be zero.
@@ -133,7 +133,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// </example>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; set; }
+    public required int Pages { get; set; }
 
     /// <summary>
     /// The total number of items across all pages of results
@@ -144,7 +144,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public int Total { get; set; }
+    public required int Total { get; set; }
 
 
     /// <summary>

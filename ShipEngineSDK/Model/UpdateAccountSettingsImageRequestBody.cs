@@ -100,7 +100,7 @@ public partial class UpdateAccountSettingsImageRequestBody
     /// </example>
     [JsonPropertyName("is_default")]
     [JsonRequired]
-    public bool IsDefault { get; set; }
+    public required bool IsDefault { get; set; }
 
     /// <summary>
     /// The date and time that the image was created in ShipEngine.

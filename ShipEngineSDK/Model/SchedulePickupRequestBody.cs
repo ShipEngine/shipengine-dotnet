@@ -33,7 +33,7 @@ public partial class SchedulePickupRequestBody
     /// </summary>
     [JsonPropertyName("contact_details")]
     [JsonRequired]
-    public ContactDetails ContactDetails { get; set; }
+    public required ContactDetails ContactDetails { get; set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
@@ -41,14 +41,14 @@ public partial class SchedulePickupRequestBody
     /// <value>Label IDs that will be included in the pickup request</value>
     [JsonPropertyName("label_ids")]
     [JsonRequired]
-    public List<string> LabelIds { get; set; }
+    public required List<string> LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupWindow
     /// </summary>
     [JsonPropertyName("pickup_window")]
     [JsonRequired]
-    public PickupWindow PickupWindow { get; set; }
+    public required PickupWindow PickupWindow { get; set; }
 
     /// <summary>
     /// The date and time that the pickup was cancelled in ShipEngine.

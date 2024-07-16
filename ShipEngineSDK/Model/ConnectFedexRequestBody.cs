@@ -34,7 +34,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Account number</value>
     [JsonPropertyName("account_number")]
     [JsonRequired]
-    public string AccountNumber { get; set; }
+    public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Address
@@ -42,7 +42,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Address</value>
     [JsonPropertyName("address1")]
     [JsonRequired]
-    public string Address1 { get; set; }
+    public required string Address1 { get; set; }
 
     /// <summary>
     /// Boolean signaling agreement to the Fedex End User License Agreement
@@ -50,7 +50,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Boolean signaling agreement to the Fedex End User License Agreement</value>
     [JsonPropertyName("agree_to_eula")]
     [JsonRequired]
-    public bool AgreeToEula { get; set; }
+    public required bool AgreeToEula { get; set; }
 
     /// <summary>
     /// The city
@@ -58,7 +58,7 @@ public partial class ConnectFedexRequestBody
     /// <value>The city</value>
     [JsonPropertyName("city")]
     [JsonRequired]
-    public string City { get; set; }
+    public required string City { get; set; }
 
     /// <summary>
     /// Country code
@@ -66,7 +66,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Country code</value>
     [JsonPropertyName("country_code")]
     [JsonRequired]
-    public string CountryCode { get; set; }
+    public required string CountryCode { get; set; }
 
     /// <summary>
     /// The email address
@@ -77,7 +77,7 @@ public partial class ConnectFedexRequestBody
     /// </example>
     [JsonPropertyName("email")]
     [JsonRequired]
-    public string Email { get; set; }
+    public required string Email { get; set; }
 
     /// <summary>
     /// First name
@@ -85,7 +85,7 @@ public partial class ConnectFedexRequestBody
     /// <value>First name</value>
     [JsonPropertyName("first_name")]
     [JsonRequired]
-    public string FirstName { get; set; }
+    public required string FirstName { get; set; }
 
     /// <summary>
     /// Last name
@@ -93,7 +93,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Last name</value>
     [JsonPropertyName("last_name")]
     [JsonRequired]
-    public string LastName { get; set; }
+    public required string LastName { get; set; }
 
     /// <summary>
     /// Nickname
@@ -101,7 +101,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// Phone number
@@ -109,7 +109,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Phone number</value>
     [JsonPropertyName("phone")]
     [JsonRequired]
-    public string Phone { get; set; }
+    public required string Phone { get; set; }
 
     /// <summary>
     /// Postal Code
@@ -117,7 +117,7 @@ public partial class ConnectFedexRequestBody
     /// <value>Postal Code</value>
     [JsonPropertyName("postal_code")]
     [JsonRequired]
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
 
     /// <summary>
     /// State
@@ -125,7 +125,7 @@ public partial class ConnectFedexRequestBody
     /// <value>State</value>
     [JsonPropertyName("state")]
     [JsonRequired]
-    public string State { get; set; }
+    public required string State { get; set; }
 
     /// <summary>
     /// Address

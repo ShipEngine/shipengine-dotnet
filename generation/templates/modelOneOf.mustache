@@ -44,7 +44,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
+    public{{#required}} required{{/required}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
     
     {{/required}}
     {{/isEnum}}
@@ -70,7 +70,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{{dataType}}}{{^required}}?{{/required}} {{name}} { get; set; }
+    public{{#required}} required{{/required}} {{{dataType}}}{{^required}}?{{/required}} {{name}} { get; set; }
 
     {{/isEnum}}
     {{/isInherited}}
@@ -330,13 +330,25 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
         var jsonDoc = JsonDocument.ParseValue(ref reader);
         {{classname}}? new{{classname}} = null;
 
+{{#composedSchemas.allOf}}
+        // Deserialize all the common properties of the model so they can be used in object initializers later
+        {{#allVars}}
+        var {{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}} = jsonDoc.RootElement.GetProperty("{{baseName}}").Deserialize<{{#isEnum}}{{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}>(DeserializingOptions)!;
+        {{/allVars}}
+{{/composedSchemas.allOf}}
+
         int match = 0;
         var matchedTypes = new List<string>();
         {{#composedSchemas.oneOf}}
 
         try
         {
-            new{{classname}} = new {{classname}}(jsonDoc.Deserialize<{{{dataType}}}>(DeserializingOptions)!);
+            new{{classname}} = new {{classname}}(jsonDoc.Deserialize<{{{dataType}}}>(DeserializingOptions)!){{#model.composedSchemas.allOf}}
+            {
+                {{#allVars}}
+                {{name}} = {{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}},
+                {{/allVars}}
+            }{{/model.composedSchemas.allOf}};
 
             matchedTypes.Add("{{{dataType}}}");
             match++;
@@ -357,12 +369,6 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
         {
             throw new InvalidDataException("The JSON string `" + jsonDoc + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
         }
-
-{{#composedSchemas.allOf}}
-        {{#allVars}}
-        new{{classname}}!.{{name}} = jsonDoc.RootElement.GetProperty("{{baseName}}").Deserialize<{{#isEnum}}{{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}>(DeserializingOptions)!;
-        {{/allVars}}
-{{/composedSchemas.allOf}}
 
         // deserialization is considered successful at this point if no exception has been thrown.
         return new{{classname}};

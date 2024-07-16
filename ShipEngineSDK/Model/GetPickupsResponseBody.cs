@@ -34,7 +34,7 @@ public partial class GetPickupsResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("errors")]
     [JsonRequired]
-    public List<Error> Errors { get; set; }
+    public required List<Error> Errors { get; set; }
 
     /// <summary>
     /// Helpful links to other pages of results
@@ -42,7 +42,7 @@ public partial class GetPickupsResponseBody
     /// <value>Helpful links to other pages of results</value>
     [JsonPropertyName("links")]
     [JsonRequired]
-    public PaginationLink Links { get; set; }
+    public required PaginationLink Links { get; set; }
 
     /// <summary>
     /// Current page of the list pickups results
@@ -53,7 +53,7 @@ public partial class GetPickupsResponseBody
     /// </example>
     [JsonPropertyName("page")]
     [JsonRequired]
-    public int Page { get; set; }
+    public required int Page { get; set; }
 
     /// <summary>
     /// Total number of pages for list pickups results
@@ -64,7 +64,7 @@ public partial class GetPickupsResponseBody
     /// </example>
     [JsonPropertyName("pages")]
     [JsonRequired]
-    public int Pages { get; set; }
+    public required int Pages { get; set; }
 
     /// <summary>
     /// An array of pickups associated with the user&#39;s account.
@@ -72,7 +72,7 @@ public partial class GetPickupsResponseBody
     /// <value>An array of pickups associated with the user&#39;s account.</value>
     [JsonPropertyName("pickups")]
     [JsonRequired]
-    public List<Pickup> Pickups { get; set; }
+    public required List<Pickup> Pickups { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -83,7 +83,7 @@ public partial class GetPickupsResponseBody
     /// </example>
     [JsonPropertyName("request_id")]
     [JsonRequired]
-    public Guid RequestId { get; set; }
+    public required Guid RequestId { get; set; }
 
     /// <summary>
     /// The total number of pickups returned
@@ -94,7 +94,7 @@ public partial class GetPickupsResponseBody
     /// </example>
     [JsonPropertyName("total")]
     [JsonRequired]
-    public long Total { get; set; }
+    public required long Total { get; set; }
 
 
     /// <summary>

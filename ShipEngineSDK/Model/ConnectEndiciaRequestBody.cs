@@ -34,7 +34,7 @@ public partial class ConnectEndiciaRequestBody
     /// <value>Account</value>
     [JsonPropertyName("account")]
     [JsonRequired]
-    public string Account { get; set; }
+    public required string Account { get; set; }
 
     /// <summary>
     /// Nickname
@@ -42,7 +42,7 @@ public partial class ConnectEndiciaRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// Passphrase
@@ -50,7 +50,7 @@ public partial class ConnectEndiciaRequestBody
     /// <value>Passphrase</value>
     [JsonPropertyName("passphrase")]
     [JsonRequired]
-    public string Passphrase { get; set; }
+    public required string Passphrase { get; set; }
 
 
     /// <summary>

@@ -33,7 +33,7 @@ public partial class AddressValidationResult
     /// </summary>
     [JsonPropertyName("status")]
     [JsonRequired]
-    public AddressValidationStatus Status { get; set; } = new();
+    public required AddressValidationStatus Status { get; set; } = new();
 
 
     /// <summary>
@@ -42,7 +42,7 @@ public partial class AddressValidationResult
     /// <value>The list of messages that were generated during the address validation request.</value>
     [JsonPropertyName("messages")]
     [JsonRequired]
-    public List<ResponseMessage> Messages { get; set; }
+    public required List<ResponseMessage> Messages { get; set; }
 
     /// <summary>
     /// The original address that was sent for validation
@@ -50,7 +50,7 @@ public partial class AddressValidationResult
     /// <value>The original address that was sent for validation</value>
     [JsonPropertyName("original_address")]
     [JsonRequired]
-    public Address OriginalAddress { get; set; }
+    public required Address OriginalAddress { get; set; }
 
     /// <summary>
     /// The matched address found by the Shipengine API
@@ -58,7 +58,7 @@ public partial class AddressValidationResult
     /// <value>The matched address found by the Shipengine API</value>
     [JsonPropertyName("matched_address")]
     [JsonRequired]
-    public Address MatchedAddress { get; set; }
+    public required Address MatchedAddress { get; set; }
 
 
     /// <summary>

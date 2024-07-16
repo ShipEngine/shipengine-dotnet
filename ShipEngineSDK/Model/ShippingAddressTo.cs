@@ -34,7 +34,7 @@ public partial class ShippingAddressTo
     /// <value>Indicates whether this is a residential address.</value>
     [JsonPropertyName("address_residential_indicator")]
     [JsonRequired]
-    public AddressResidentialIndicator AddressResidentialIndicator { get; set; } = new();
+    public required AddressResidentialIndicator AddressResidentialIndicator { get; set; } = new();
 
 
     /// <summary>
@@ -46,7 +46,7 @@ public partial class ShippingAddressTo
     /// </example>
     [JsonPropertyName("address_line1")]
     [JsonRequired]
-    public string AddressLine1 { get; set; }
+    public required string AddressLine1 { get; set; }
 
     /// <summary>
     /// The name of the city or locality
@@ -57,7 +57,7 @@ public partial class ShippingAddressTo
     /// </example>
     [JsonPropertyName("city_locality")]
     [JsonRequired]
-    public string CityLocality { get; set; }
+    public required string CityLocality { get; set; }
 
     /// <summary>
     /// The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -68,7 +68,7 @@ public partial class ShippingAddressTo
     /// </example>
     [JsonPropertyName("country_code")]
     [JsonRequired]
-    public string CountryCode { get; set; }
+    public required string CountryCode { get; set; }
 
     /// <summary>
     /// The name of a contact person at this address.  This field may be set instead of - or in addition to - the &#x60;company_name&#x60; field. 
@@ -79,7 +79,7 @@ public partial class ShippingAddressTo
     /// </example>
     [JsonPropertyName("name")]
     [JsonRequired]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     /// <summary>
     /// The phone number of a contact person at this address.  The format of this phone number varies depending on the country. 
@@ -90,7 +90,7 @@ public partial class ShippingAddressTo
     /// </example>
     [JsonPropertyName("phone")]
     [JsonRequired]
-    public string Phone { get; set; }
+    public required string Phone { get; set; }
 
     /// <summary>
     /// postal code
@@ -101,7 +101,7 @@ public partial class ShippingAddressTo
     /// </example>
     [JsonPropertyName("postal_code")]
     [JsonRequired]
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
 
     /// <summary>
     /// The state or province.  For some countries (including the U.S.) only abbreviations are allowed.  Other countries allow the full name or abbreviation. 
@@ -112,7 +112,7 @@ public partial class ShippingAddressTo
     /// </example>
     [JsonPropertyName("state_province")]
     [JsonRequired]
-    public string StateProvince { get; set; }
+    public required string StateProvince { get; set; }
 
     /// <summary>
     /// The second line of the street address.  For some addresses, this line may not be needed. 

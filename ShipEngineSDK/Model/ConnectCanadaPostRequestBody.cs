@@ -34,7 +34,7 @@ public partial class ConnectCanadaPostRequestBody
     /// <value>Canada Post Account Number</value>
     [JsonPropertyName("account_number")]
     [JsonRequired]
-    public string AccountNumber { get; set; }
+    public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Canada Post Account API Key
@@ -42,7 +42,7 @@ public partial class ConnectCanadaPostRequestBody
     /// <value>Canada Post Account API Key</value>
     [JsonPropertyName("api_key")]
     [JsonRequired]
-    public string ApiKey { get; set; }
+    public required string ApiKey { get; set; }
 
     /// <summary>
     /// Canada Post Account API Secret
@@ -50,7 +50,7 @@ public partial class ConnectCanadaPostRequestBody
     /// <value>Canada Post Account API Secret</value>
     [JsonPropertyName("api_secret")]
     [JsonRequired]
-    public string ApiSecret { get; set; }
+    public required string ApiSecret { get; set; }
 
     /// <summary>
     /// Canada Post Account Contract ID
@@ -58,7 +58,7 @@ public partial class ConnectCanadaPostRequestBody
     /// <value>Canada Post Account Contract ID</value>
     [JsonPropertyName("contract_id")]
     [JsonRequired]
-    public string ContractId { get; set; }
+    public required string ContractId { get; set; }
 
     /// <summary>
     /// Nickname
@@ -66,7 +66,7 @@ public partial class ConnectCanadaPostRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
 
     /// <summary>

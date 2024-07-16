@@ -37,7 +37,7 @@ public partial class WebhookHeader
     /// </example>
     [JsonPropertyName("key")]
     [JsonRequired]
-    public string Key { get; set; }
+    public required string Key { get; set; }
 
     /// <summary>
     /// Value of a header
@@ -48,7 +48,7 @@ public partial class WebhookHeader
     /// </example>
     [JsonPropertyName("value")]
     [JsonRequired]
-    public string Value { get; set; }
+    public required string Value { get; set; }
 
 
     /// <summary>

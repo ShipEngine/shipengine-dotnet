@@ -34,7 +34,7 @@ public partial class Package
     /// <value>The package weight</value>
     [JsonPropertyName("weight")]
     [JsonRequired]
-    public Weight Weight { get; set; }
+    public required Weight Weight { get; set; }
 
     /// <summary>
     /// A short description of the package content. Required for shipments moving to, from, and through Mexico. 

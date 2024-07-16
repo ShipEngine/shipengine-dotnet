@@ -34,7 +34,7 @@ public partial class ConnectRoyalMailRequestBody
     /// <value>Account number</value>
     [JsonPropertyName("account_number")]
     [JsonRequired]
-    public string AccountNumber { get; set; }
+    public required string AccountNumber { get; set; }
 
     /// <summary>
     /// City
@@ -42,7 +42,7 @@ public partial class ConnectRoyalMailRequestBody
     /// <value>City</value>
     [JsonPropertyName("city")]
     [JsonRequired]
-    public string City { get; set; }
+    public required string City { get; set; }
 
     /// <summary>
     /// Contact name
@@ -50,7 +50,7 @@ public partial class ConnectRoyalMailRequestBody
     /// <value>Contact name</value>
     [JsonPropertyName("contact_name")]
     [JsonRequired]
-    public string ContactName { get; set; }
+    public required string ContactName { get; set; }
 
     /// <summary>
     /// Nickname
@@ -58,7 +58,7 @@ public partial class ConnectRoyalMailRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// Postal code
@@ -66,7 +66,7 @@ public partial class ConnectRoyalMailRequestBody
     /// <value>Postal code</value>
     [JsonPropertyName("postal_code")]
     [JsonRequired]
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
 
     /// <summary>
     /// Company name

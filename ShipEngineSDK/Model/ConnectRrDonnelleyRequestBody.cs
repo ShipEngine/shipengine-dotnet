@@ -34,7 +34,7 @@ public partial class ConnectRrDonnelleyRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// Password
@@ -42,7 +42,7 @@ public partial class ConnectRrDonnelleyRequestBody
     /// <value>Password</value>
     [JsonPropertyName("password")]
     [JsonRequired]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 
     /// <summary>
     /// Username
@@ -50,7 +50,7 @@ public partial class ConnectRrDonnelleyRequestBody
     /// <value>Username</value>
     [JsonPropertyName("username")]
     [JsonRequired]
-    public string Username { get; set; }
+    public required string Username { get; set; }
 
 
     /// <summary>

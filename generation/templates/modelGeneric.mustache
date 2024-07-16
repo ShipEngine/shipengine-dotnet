@@ -48,7 +48,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
+    public{{#required}} required{{/required}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
 
     {{/required}}
     {{/isEnum}}
@@ -79,7 +79,7 @@
         {{#deprecated}}
         [Obsolete]
         {{/deprecated}}
-        public {{{dataType}}}{{#isNullable}}?{{/isNullable}} {{name}} { get; set; }
+        public{{#required}} required{{/required}} {{{dataType}}}{{#isNullable}}?{{/isNullable}} {{name}} { get; set; }
 
     {{#-last}}
     }
@@ -102,7 +102,7 @@
     {{#deprecated}}
     [Obsolete]
     {{/deprecated}}
-    public {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}}{{^required}}?{{/required}} {{name}} { get; set; }
+    public{{#required}} required{{/required}} {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}}{{^required}}?{{/required}} {{name}} { get; set; }
 
     {{/isEnum}}
     {{/isInherited}}

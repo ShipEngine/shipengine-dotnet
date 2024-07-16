@@ -37,7 +37,7 @@ public partial class ConnectAccessWorldwideRequestBody
     /// </example>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// Access Worldwide Password
@@ -45,7 +45,7 @@ public partial class ConnectAccessWorldwideRequestBody
     /// <value>Access Worldwide Password</value>
     [JsonPropertyName("password")]
     [JsonRequired]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 
     /// <summary>
     /// Access Worldwide Username
@@ -53,7 +53,7 @@ public partial class ConnectAccessWorldwideRequestBody
     /// <value>Access Worldwide Username</value>
     [JsonPropertyName("username")]
     [JsonRequired]
-    public string Username { get; set; }
+    public required string Username { get; set; }
 
 
     /// <summary>

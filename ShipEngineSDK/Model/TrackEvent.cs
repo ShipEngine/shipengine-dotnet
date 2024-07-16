@@ -33,7 +33,7 @@ public partial class TrackEvent
     /// </summary>
     [JsonPropertyName("status_code")]
     [JsonRequired]
-    public StatusCode StatusCode { get; set; } = new();
+    public required StatusCode StatusCode { get; set; } = new();
 
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("carrier_detail_code")]
     [JsonRequired]
-    public string CarrierDetailCode { get; set; }
+    public required string CarrierDetailCode { get; set; }
 
     /// <summary>
     /// Carrier status code
@@ -56,7 +56,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("carrier_status_code")]
     [JsonRequired]
-    public string CarrierStatusCode { get; set; }
+    public required string CarrierStatusCode { get; set; }
 
     /// <summary>
     /// carrier status description
@@ -67,7 +67,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("carrier_status_description")]
     [JsonRequired]
-    public string CarrierStatusDescription { get; set; }
+    public required string CarrierStatusDescription { get; set; }
 
     /// <summary>
     /// City locality
@@ -78,7 +78,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("city_locality")]
     [JsonRequired]
-    public string CityLocality { get; set; }
+    public required string CityLocality { get; set; }
 
     /// <summary>
     /// Timestamp for carrier event
@@ -89,7 +89,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("occurred_at")]
     [JsonRequired]
-    public DateTimeOffset OccurredAt { get; set; }
+    public required DateTimeOffset OccurredAt { get; set; }
 
     /// <summary>
     /// Postal code
@@ -100,7 +100,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("postal_code")]
     [JsonRequired]
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
 
     /// <summary>
     /// State province
@@ -111,7 +111,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("state_province")]
     [JsonRequired]
-    public string StateProvince { get; set; }
+    public required string StateProvince { get; set; }
 
     /// <summary>
     /// Event Status Description
@@ -122,7 +122,7 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("status_description")]
     [JsonRequired]
-    public string StatusDescription { get; set; }
+    public required string StatusDescription { get; set; }
 
     /// <summary>
     /// Carrier timestamp for the event, it is assumed to be the local time of where the event occurred.

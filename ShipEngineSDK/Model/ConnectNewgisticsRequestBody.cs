@@ -34,7 +34,7 @@ public partial class ConnectNewgisticsRequestBody
     /// <value>Induction site</value>
     [JsonPropertyName("induction_site")]
     [JsonRequired]
-    public string InductionSite { get; set; }
+    public required string InductionSite { get; set; }
 
     /// <summary>
     /// Nickname
@@ -42,7 +42,7 @@ public partial class ConnectNewgisticsRequestBody
     /// <value>Nickname</value>
     [JsonPropertyName("nickname")]
     [JsonRequired]
-    public string Nickname { get; set; }
+    public required string Nickname { get; set; }
 
     /// <summary>
     /// Mailer id

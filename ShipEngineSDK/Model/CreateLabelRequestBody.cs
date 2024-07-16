@@ -79,7 +79,7 @@ public partial class CreateLabelRequestBody
     /// <value>The shipment information used to generate the label</value>
     [JsonPropertyName("shipment")]
     [JsonRequired]
-    public Shipment Shipment { get; set; }
+    public required Shipment Shipment { get; set; }
 
     /// <summary>
     /// Additional information some carriers may provide by which to identify a given label in their system.  
