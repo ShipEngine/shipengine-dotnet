@@ -1,6 +1,5 @@
 #pragma warning disable 1591
 
-using ShipEngineSDK.Enums;
 using System;
 using System.Net.Http;
 

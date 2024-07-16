@@ -1,4 +1,4 @@
-namespace ShipEngineSDK.Enums
+namespace ShipEngineSDK
 {
     /// <summary>
     /// The error_source field indicates where the error originated.

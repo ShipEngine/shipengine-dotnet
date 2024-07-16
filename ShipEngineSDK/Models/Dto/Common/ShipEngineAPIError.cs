@@ -1,6 +1,6 @@
 #nullable disable
 
-using ShipEngineSDK.Enums;
+using ShipEngineSDK;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 

@@ -1,5 +1,4 @@
 using ShipEngineSDK.Common;
-using ShipEngineSDK.Enums;
 using System;
 using System.Linq;
 using System.Net;
