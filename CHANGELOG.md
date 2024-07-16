@@ -151,3 +151,7 @@ Updated nuget package dependencies
 ### Added
 
 - Created new SDK methods for the entire API that sit next to the pre-existing methods.  The pre-existing methods will be deprecated eventually.
+
+## 3.0.0-beta.1
+
+- Created new SDK methods for the entire API that sit next to the pre-existing methods.  The pre-existing methods will be deprecated eventually.

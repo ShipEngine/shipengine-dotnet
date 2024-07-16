@@ -5,7 +5,9 @@
 
 name: CI
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   dot_net_framework_test:
@@ -95,10 +97,16 @@ jobs:
   nuget-deploy:
     runs-on: ubuntu-latest
     needs: [dot_net_framework_test, dot_net_core_test]
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     steps:
       # Checkout code if release was created
       - uses: actions/checkout@v2
+      
+      - uses: bbonkr/get-version-action@v1
+        id: get_version
+        with:
+          project: './ShipEngineSDK/ShipEngineSDK.csproj'
+          show_log_message: true
 
       # Setup Dotnet if release was created
       - name: Setup dotnet 8.0.x
@@ -109,6 +117,7 @@ jobs:
       - name: publish on version change
         id: publish_nuget
         uses: alirezanet/publish-nuget@v3.1.0
+        if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && steps.get_version.outputs.pre-release != '')
 
         with:
           # Filepath of the project to be packaged, relative to root of repository
