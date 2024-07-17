@@ -29,12 +29,10 @@ public partial class TrackEvent
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode  CLOVUS
+    /// Gets or Sets StatusCode
     /// </summary>
-    [JsonPropertyName("status_code")]
-    [JsonRequired]
-    public required StatusCode StatusCode { get; set; } = new();
-
+    [JsonPropertyName("status_code"), JsonRequired, JsonPropertyOrder(8)]
+    public required StatusCode StatusCode { get; set; }
 
     /// <summary>
     /// Carrier detail code
@@ -43,9 +41,8 @@ public partial class TrackEvent
     /// <example>
     /// OT
     /// </example>
-    [JsonPropertyName("carrier_detail_code")]
-    [JsonRequired]
-    public required string CarrierDetailCode { get; set; }
+    [JsonPropertyName("carrier_detail_code"), JsonInclude]
+    public string? CarrierDetailCode { get; private set; }
 
     /// <summary>
     /// Carrier status code
@@ -54,9 +51,8 @@ public partial class TrackEvent
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("carrier_status_code")]
-    [JsonRequired]
-    public required string CarrierStatusCode { get; set; }
+    [JsonPropertyName("carrier_status_code"), JsonInclude]
+    public string? CarrierStatusCode { get; private set; }
 
     /// <summary>
     /// carrier status description
@@ -65,9 +61,8 @@ public partial class TrackEvent
     /// <example>
     /// Your item was delivered in or at the mailbox at 9:10 am on March
     /// </example>
-    [JsonPropertyName("carrier_status_description")]
-    [JsonRequired]
-    public required string CarrierStatusDescription { get; set; }
+    [JsonPropertyName("carrier_status_description"), JsonInclude]
+    public string? CarrierStatusDescription { get; private set; }
 
     /// <summary>
     /// City locality
@@ -76,9 +71,8 @@ public partial class TrackEvent
     /// <example>
     /// AUSTIN
     /// </example>
-    [JsonPropertyName("city_locality")]
-    [JsonRequired]
-    public required string CityLocality { get; set; }
+    [JsonPropertyName("city_locality"), JsonInclude]
+    public string? CityLocality { get; private set; }
 
     /// <summary>
     /// Timestamp for carrier event
@@ -87,8 +81,7 @@ public partial class TrackEvent
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("occurred_at")]
-    [JsonRequired]
+    [JsonPropertyName("occurred_at"), JsonRequired, JsonPropertyOrder(5)]
     public required DateTimeOffset OccurredAt { get; set; }
 
     /// <summary>
@@ -98,9 +91,8 @@ public partial class TrackEvent
     /// <example>
     /// 78756
     /// </example>
-    [JsonPropertyName("postal_code")]
-    [JsonRequired]
-    public required string PostalCode { get; set; }
+    [JsonPropertyName("postal_code"), JsonInclude]
+    public string? PostalCode { get; private set; }
 
     /// <summary>
     /// State province
@@ -109,9 +101,8 @@ public partial class TrackEvent
     /// <example>
     /// TX
     /// </example>
-    [JsonPropertyName("state_province")]
-    [JsonRequired]
-    public required string StateProvince { get; set; }
+    [JsonPropertyName("state_province"), JsonInclude]
+    public string? StateProvince { get; private set; }
 
     /// <summary>
     /// Event Status Description
@@ -120,9 +111,8 @@ public partial class TrackEvent
     /// <example>
     /// In Transit
     /// </example>
-    [JsonPropertyName("status_description")]
-    [JsonRequired]
-    public required string StatusDescription { get; set; }
+    [JsonPropertyName("status_description"), JsonInclude]
+    public string? StatusDescription { get; private set; }
 
     /// <summary>
     /// Carrier timestamp for the event, it is assumed to be the local time of where the event occurred.
@@ -131,7 +121,7 @@ public partial class TrackEvent
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("carrier_occurred_at")]
+    [JsonPropertyName("carrier_occurred_at"), JsonPropertyOrder(10)]
     public DateTimeOffset? CarrierOccurredAt { get; set; }
 
     /// <summary>
@@ -141,8 +131,8 @@ public partial class TrackEvent
     /// <example>
     /// Stamps.com
     /// </example>
-    [JsonPropertyName("company_name")]
-    public string? CompanyName { get; set; }
+    [JsonPropertyName("company_name"), JsonInclude]
+    public string? CompanyName { get; private set; }
 
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -151,7 +141,7 @@ public partial class TrackEvent
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(12)]
     public string? CountryCode { get; set; }
 
     /// <summary>
@@ -161,36 +151,36 @@ public partial class TrackEvent
     /// <example>
     /// Delivered, In/At Mailbox
     /// </example>
-    [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    [JsonPropertyName("description"), JsonInclude]
+    public string? Description { get; private set; }
 
     /// <summary>
     /// Event Code
     /// </summary>
     /// <value>Event Code</value>
-    [JsonPropertyName("event_code")]
+    [JsonPropertyName("event_code"), JsonPropertyOrder(14)]
     public string? EventCode { get; set; }
 
     /// <summary>
     /// Latitude coordinate of tracking event.
     /// </summary>
     /// <value>Latitude coordinate of tracking event.</value>
-    [JsonPropertyName("latitude")]
+    [JsonPropertyName("latitude"), JsonPropertyOrder(15)]
     public double? Latitude { get; set; }
 
     /// <summary>
     /// Longitude coordinate of tracking event.
     /// </summary>
     /// <value>Longitude coordinate of tracking event.</value>
-    [JsonPropertyName("longitude")]
+    [JsonPropertyName("longitude"), JsonPropertyOrder(16)]
     public double? Longitude { get; set; }
 
     /// <summary>
     /// Signer information
     /// </summary>
     /// <value>Signer information</value>
-    [JsonPropertyName("signer")]
-    public string? Signer { get; set; }
+    [JsonPropertyName("signer"), JsonInclude]
+    public string? Signer { get; private set; }
 
 
     /// <summary>

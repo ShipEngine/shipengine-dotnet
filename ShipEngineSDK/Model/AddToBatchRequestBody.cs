@@ -32,14 +32,14 @@ public partial class AddToBatchRequestBody
     /// Array of Rate IDs to be modifed on the batch
     /// </summary>
     /// <value>Array of Rate IDs to be modifed on the batch</value>
-    [JsonPropertyName("rate_ids")]
+    [JsonPropertyName("rate_ids"), JsonPropertyOrder(1)]
     public List<string>? RateIds { get; set; }
 
     /// <summary>
     /// The Shipment Ids to be modified on the batch
     /// </summary>
     /// <value>The Shipment Ids to be modified on the batch</value>
-    [JsonPropertyName("shipment_ids")]
+    [JsonPropertyName("shipment_ids"), JsonPropertyOrder(2)]
     public List<string>? ShipmentIds { get; set; }
 
 

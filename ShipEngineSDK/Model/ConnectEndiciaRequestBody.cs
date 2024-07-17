@@ -32,24 +32,21 @@ public partial class ConnectEndiciaRequestBody
     /// Account
     /// </summary>
     /// <value>Account</value>
-    [JsonPropertyName("account")]
-    [JsonRequired]
+    [JsonPropertyName("account"), JsonRequired, JsonPropertyOrder(1)]
     public required string Account { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Passphrase
     /// </summary>
     /// <value>Passphrase</value>
-    [JsonPropertyName("passphrase")]
-    [JsonRequired]
+    [JsonPropertyName("passphrase"), JsonRequired, JsonPropertyOrder(3)]
     public required string Passphrase { get; set; }
 
 

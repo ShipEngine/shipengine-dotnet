@@ -32,24 +32,21 @@ public partial class ConnectDhlExpressUkRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number")]
-    [JsonRequired]
+    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Password
     /// </summary>
     /// <value>Password</value>
-    [JsonPropertyName("password")]
-    [JsonRequired]
+    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(3)]
     public required string Password { get; set; }
 
     /// <summary>
@@ -59,8 +56,7 @@ public partial class ConnectDhlExpressUkRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("site_id")]
-    [JsonRequired]
+    [JsonPropertyName("site_id"), JsonRequired, JsonPropertyOrder(4)]
     public required string SiteId { get; set; }
 
 

@@ -29,11 +29,12 @@ public partial class VoidLabelResponseBody
 {
 
     /// <summary>
-    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.  CLOVUS
+    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.
     /// </summary>
     /// <value>Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.</value>
-    [JsonPropertyName("reason_code")]
-    public ReasonCode? ReasonCode { get; set; }
+    [JsonPropertyName("reason_code"), JsonInclude]
+    public ReasonCode? ReasonCode { get; private set; }
+
     /// <summary>
     /// Indicates whether the attempt to void the label was successful
     /// </summary>
@@ -41,9 +42,8 @@ public partial class VoidLabelResponseBody
     /// <example>
     /// false
     /// </example>
-    [JsonPropertyName("approved")]
-    [JsonRequired]
-    public required bool Approved { get; set; }
+    [JsonPropertyName("approved"), JsonInclude]
+    public bool? Approved { get; private set; }
 
     /// <summary>
     /// Gets or Sets Message
@@ -51,9 +51,8 @@ public partial class VoidLabelResponseBody
     /// <example>
     /// Unable to delete FedEx shipment. Unable to retrieve record from database.
     /// </example>
-    [JsonPropertyName("message")]
-    [JsonRequired]
-    public required string Message { get; set; }
+    [JsonPropertyName("message"), JsonInclude]
+    public string? Message { get; private set; }
 
 
     /// <summary>

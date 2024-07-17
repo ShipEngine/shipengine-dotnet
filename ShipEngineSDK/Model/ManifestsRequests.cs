@@ -32,7 +32,7 @@ public partial class ManifestsRequests
     /// Resulting manifest requests with statuses
     /// </summary>
     /// <value>Resulting manifest requests with statuses</value>
-    [JsonPropertyName("manifest_requests")]
+    [JsonPropertyName("manifest_requests"), JsonPropertyOrder(1)]
     public List<ManifestRequest>? ManifestRequests { get; set; }
 
 

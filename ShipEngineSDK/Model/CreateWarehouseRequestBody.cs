@@ -35,16 +35,14 @@ public partial class CreateWarehouseRequestBody
     /// <example>
     /// Zero Cool HQ
     /// </example>
-    [JsonPropertyName("name")]
-    [JsonRequired]
+    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(1)]
     public required string Name { get; set; }
 
     /// <summary>
     /// The origin address of the warehouse
     /// </summary>
     /// <value>The origin address of the warehouse</value>
-    [JsonPropertyName("origin_address")]
-    [JsonRequired]
+    [JsonPropertyName("origin_address"), JsonRequired, JsonPropertyOrder(2)]
     public required Address OriginAddress { get; set; }
 
     /// <summary>
@@ -54,21 +52,21 @@ public partial class CreateWarehouseRequestBody
     /// <example>
     /// 2019-06-25T18:12:35.583Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    public DateTimeOffset? CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// Designates which single warehouse is the default on the account
     /// </summary>
     /// <value>Designates which single warehouse is the default on the account</value>
-    [JsonPropertyName("is_default")]
+    [JsonPropertyName("is_default"), JsonPropertyOrder(4)]
     public bool? IsDefault { get; set; }
 
     /// <summary>
     /// The return address associated with the warehouse
     /// </summary>
     /// <value>The return address associated with the warehouse</value>
-    [JsonPropertyName("return_address")]
+    [JsonPropertyName("return_address"), JsonPropertyOrder(5)]
     public Address? ReturnAddress { get; set; }
 
     /// <summary>
@@ -78,8 +76,8 @@ public partial class CreateWarehouseRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
-    public string? WarehouseId { get; set; }
+    [JsonPropertyName("warehouse_id"), JsonInclude]
+    public string? WarehouseId { get; private set; }
 
 
     /// <summary>

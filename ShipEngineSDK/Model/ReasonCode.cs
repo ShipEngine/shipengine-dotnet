@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(ReasonCodeJsonConverter))]
 public class ReasonCode
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of ReasonCode with a predefined value.
@@ -98,6 +98,12 @@ public class ReasonCode
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is ReasonCode other && _value == other._value;
 }
 
 internal class ReasonCodeJsonConverter : JsonConverter<ReasonCode>

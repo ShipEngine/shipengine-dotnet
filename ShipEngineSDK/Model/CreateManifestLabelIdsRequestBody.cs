@@ -32,8 +32,7 @@ public partial class CreateManifestLabelIdsRequestBody
     /// The list of label ids to include in the manifest
     /// </summary>
     /// <value>The list of label ids to include in the manifest</value>
-    [JsonPropertyName("label_ids")]
-    [JsonRequired]
+    [JsonPropertyName("label_ids"), JsonRequired, JsonPropertyOrder(1)]
     public required List<string> LabelIds { get; set; }
 
 

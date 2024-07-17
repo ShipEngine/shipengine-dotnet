@@ -32,16 +32,15 @@ public partial class CreateShipmentResponseBodyFields
     /// The address validation
     /// </summary>
     /// <value>The address validation</value>
-    [JsonPropertyName("address_validation")]
+    [JsonPropertyName("address_validation"), JsonPropertyOrder(1)]
     public AddressValidationResult? AddressValidation { get; set; }
 
     /// <summary>
     /// An array of errors that occurred while creating shipment.
     /// </summary>
     /// <value>An array of errors that occurred while creating shipment.</value>
-    [JsonPropertyName("errors")]
-    [Obsolete]
-    public List<string>? Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude, Obsolete]
+    public List<string>? Errors { get; private set; }
 
 
     /// <summary>

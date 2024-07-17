@@ -35,8 +35,7 @@ public partial class WebhookHeader
     /// <example>
     /// custom-key
     /// </example>
-    [JsonPropertyName("key")]
-    [JsonRequired]
+    [JsonPropertyName("key"), JsonRequired, JsonPropertyOrder(1)]
     public required string Key { get; set; }
 
     /// <summary>
@@ -46,8 +45,7 @@ public partial class WebhookHeader
     /// <example>
     /// custom-value
     /// </example>
-    [JsonPropertyName("value")]
-    [JsonRequired]
+    [JsonPropertyName("value"), JsonRequired, JsonPropertyOrder(2)]
     public required string Value { get; set; }
 
 

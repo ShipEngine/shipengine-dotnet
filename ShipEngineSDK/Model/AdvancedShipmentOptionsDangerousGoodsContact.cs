@@ -32,14 +32,14 @@ public partial class AdvancedShipmentOptionsDangerousGoodsContact
     /// Name of the contact
     /// </summary>
     /// <value>Name of the contact</value>
-    [JsonPropertyName("name")]
+    [JsonPropertyName("name"), JsonPropertyOrder(1)]
     public string? Name { get; set; }
 
     /// <summary>
     /// Phone number of the contact
     /// </summary>
     /// <value>Phone number of the contact</value>
-    [JsonPropertyName("phone")]
+    [JsonPropertyName("phone"), JsonPropertyOrder(2)]
     public string? Phone { get; set; }
 
 

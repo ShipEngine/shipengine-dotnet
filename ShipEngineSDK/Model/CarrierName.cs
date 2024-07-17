@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(CarrierNameJsonConverter))]
 public class CarrierName
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of CarrierName with a predefined value.
@@ -224,6 +224,12 @@ public class CarrierName
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is CarrierName other && _value == other._value;
 }
 
 internal class CarrierNameJsonConverter : JsonConverter<CarrierName>

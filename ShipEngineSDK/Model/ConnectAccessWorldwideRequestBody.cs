@@ -35,24 +35,21 @@ public partial class ConnectAccessWorldwideRequestBody
     /// <example>
     /// Stamps.com
     /// </example>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(1)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Access Worldwide Password
     /// </summary>
     /// <value>Access Worldwide Password</value>
-    [JsonPropertyName("password")]
-    [JsonRequired]
+    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(2)]
     public required string Password { get; set; }
 
     /// <summary>
     /// Access Worldwide Username
     /// </summary>
     /// <value>Access Worldwide Username</value>
-    [JsonPropertyName("username")]
-    [JsonRequired]
+    [JsonPropertyName("username"), JsonRequired, JsonPropertyOrder(3)]
     public required string Username { get; set; }
 
 

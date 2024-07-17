@@ -32,16 +32,14 @@ public partial class ConnectSekoRequestBody
     /// Seko Account Access Key
     /// </summary>
     /// <value>Seko Account Access Key</value>
-    [JsonPropertyName("access_key")]
-    [JsonRequired]
+    [JsonPropertyName("access_key"), JsonRequired, JsonPropertyOrder(1)]
     public required string AccessKey { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
 

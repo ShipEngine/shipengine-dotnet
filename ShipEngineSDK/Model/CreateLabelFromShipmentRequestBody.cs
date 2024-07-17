@@ -29,31 +29,36 @@ public partial class CreateLabelFromShipmentRequestBody
 {
 
     /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
+    /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(1)]
     public DisplayScheme? DisplayScheme { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelDownloadType  CLOVUS
+    /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type")]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(2)]
     public LabelDownloadType? LabelDownloadType { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelFormat  CLOVUS
+    /// Gets or Sets LabelFormat
     /// </summary>
-    [JsonPropertyName("label_format")]
+    [JsonPropertyName("label_format"), JsonPropertyOrder(3)]
     public LabelFormat? LabelFormat { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelLayout  CLOVUS
+    /// Gets or Sets LabelLayout
     /// </summary>
-    [JsonPropertyName("label_layout")]
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(4)]
     public LabelLayout? LabelLayout { get; set; }
+
     /// <summary>
-    /// Gets or Sets ValidateAddress  CLOVUS
+    /// Gets or Sets ValidateAddress
     /// </summary>
-    [JsonPropertyName("validate_address")]
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(5)]
     public ValidateAddress? ValidateAddress { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object

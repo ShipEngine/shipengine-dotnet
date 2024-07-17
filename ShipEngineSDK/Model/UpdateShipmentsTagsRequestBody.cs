@@ -31,7 +31,7 @@ public partial class UpdateShipmentsTagsRequestBody
     /// <summary>
     /// Gets or Sets ShipmentsTags
     /// </summary>
-    [JsonPropertyName("shipments_tags")]
+    [JsonPropertyName("shipments_tags"), JsonPropertyOrder(1)]
     public List<UpdateShipmentsTagsShipmentsTagsInner>? ShipmentsTags { get; set; }
 
 

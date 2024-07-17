@@ -32,16 +32,15 @@ public partial class LabelPackagesInner
     /// The package weight
     /// </summary>
     /// <value>The package weight</value>
-    [JsonPropertyName("weight")]
-    [JsonRequired]
+    [JsonPropertyName("weight"), JsonRequired, JsonPropertyOrder(1)]
     public required Weight Weight { get; set; }
 
     /// <summary>
     /// Alternative identifiers associated with this package. 
     /// </summary>
     /// <value>Alternative identifiers associated with this package. </value>
-    [JsonPropertyName("alternative_identifiers")]
-    public List<AlternativeIdentifier>? AlternativeIdentifiers { get; set; }
+    [JsonPropertyName("alternative_identifiers"), JsonInclude]
+    public List<AlternativeIdentifier>? AlternativeIdentifiers { get; private set; }
 
     /// <summary>
     /// A short description of the package content. Required for shipments moving to, from, and through Mexico. 
@@ -50,48 +49,48 @@ public partial class LabelPackagesInner
     /// <example>
     /// Hand knitted wool socks
     /// </example>
-    [JsonPropertyName("content_description")]
+    [JsonPropertyName("content_description"), JsonPropertyOrder(3)]
     public string? ContentDescription { get; set; }
 
     /// <summary>
     /// The package dimensions
     /// </summary>
     /// <value>The package dimensions</value>
-    [JsonPropertyName("dimensions")]
+    [JsonPropertyName("dimensions"), JsonPropertyOrder(4)]
     public Dimensions? Dimensions { get; set; }
 
     /// <summary>
     /// An external package id.
     /// </summary>
     /// <value>An external package id.</value>
-    [JsonPropertyName("external_package_id")]
+    [JsonPropertyName("external_package_id"), JsonPropertyOrder(5)]
     public string? ExternalPackageId { get; set; }
 
     /// <summary>
     /// The form download for any customs that are needed
     /// </summary>
     /// <value>The form download for any customs that are needed</value>
-    [JsonPropertyName("form_download")]
-    public OptionalLink? FormDownload { get; set; }
+    [JsonPropertyName("form_download"), JsonInclude]
+    public OptionalLink? FormDownload { get; private set; }
 
     /// <summary>
     /// The insured value of the package.  Requires the &#x60;insurance_provider&#x60; field of the shipment to be set. 
     /// </summary>
     /// <value>The insured value of the package.  Requires the &#x60;insurance_provider&#x60; field of the shipment to be set. </value>
-    [JsonPropertyName("insured_value")]
+    [JsonPropertyName("insured_value"), JsonPropertyOrder(7)]
     public MonetaryValue? InsuredValue { get; set; }
 
     /// <summary>
     /// The label download for the package
     /// </summary>
     /// <value>The label download for the package</value>
-    [JsonPropertyName("label_download")]
-    public LabelDownload? LabelDownload { get; set; }
+    [JsonPropertyName("label_download"), JsonInclude]
+    public LabelDownload? LabelDownload { get; private set; }
 
     /// <summary>
     /// Gets or Sets LabelMessages
     /// </summary>
-    [JsonPropertyName("label_messages")]
+    [JsonPropertyName("label_messages"), JsonPropertyOrder(9)]
     public LabelMessages? LabelMessages { get; set; }
 
     /// <summary>
@@ -101,7 +100,7 @@ public partial class LabelPackagesInner
     /// <example>
     /// small_flat_rate_box
     /// </example>
-    [JsonPropertyName("package_code")]
+    [JsonPropertyName("package_code"), JsonPropertyOrder(10)]
     public string? PackageCode { get; set; }
 
     /// <summary>
@@ -111,29 +110,29 @@ public partial class LabelPackagesInner
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("package_id")]
+    [JsonPropertyName("package_id"), JsonPropertyOrder(11)]
     public string? PackageId { get; set; }
 
     /// <summary>
     /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.
     /// </summary>
     /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.</value>
-    [JsonPropertyName("paperless_download")]
-    public PaperlessDownload? PaperlessDownload { get; set; }
+    [JsonPropertyName("paperless_download"), JsonInclude]
+    public PaperlessDownload? PaperlessDownload { get; private set; }
 
     /// <summary>
     /// Details about products inside packages (Information provided would be used on custom documentation)
     /// </summary>
     /// <value>Details about products inside packages (Information provided would be used on custom documentation)</value>
-    [JsonPropertyName("products")]
+    [JsonPropertyName("products"), JsonPropertyOrder(13)]
     public List<Products>? Products { get; set; }
 
     /// <summary>
     /// Package sequence
     /// </summary>
     /// <value>Package sequence</value>
-    [JsonPropertyName("sequence")]
-    public int? Sequence { get; set; }
+    [JsonPropertyName("sequence"), JsonInclude]
+    public int? Sequence { get; private set; }
 
     /// <summary>
     /// The tracking number for the package.  The format depends on the carrier. 
@@ -142,8 +141,8 @@ public partial class LabelPackagesInner
     /// <example>
     /// 1Z932R800392060079
     /// </example>
-    [JsonPropertyName("tracking_number")]
-    public string? TrackingNumber { get; set; }
+    [JsonPropertyName("tracking_number"), JsonInclude]
+    public string? TrackingNumber { get; private set; }
 
 
     /// <summary>

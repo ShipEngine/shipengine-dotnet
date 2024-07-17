@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(PackageContentsJsonConverter))]
 public class PackageContents
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of PackageContents with a predefined value.
@@ -92,6 +92,12 @@ public class PackageContents
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is PackageContents other && _value == other._value;
 }
 
 internal class PackageContentsJsonConverter : JsonConverter<PackageContents>

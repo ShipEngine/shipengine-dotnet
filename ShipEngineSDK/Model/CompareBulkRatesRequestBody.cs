@@ -35,8 +35,7 @@ public partial class CompareBulkRatesRequestBody : AbstractOpenAPISchema
     /// The rate options
     /// </summary>
     /// <value>The rate options</value>
-    [JsonPropertyName("rate_options")]
-    [JsonRequired]
+    [JsonPropertyName("rate_options"), JsonRequired, JsonPropertyOrder(1)]
     public required RateRequestBody RateOptions { get; set; }
 
 

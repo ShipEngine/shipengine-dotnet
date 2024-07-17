@@ -35,7 +35,7 @@ public partial class LabelDownload
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("href")]
+    [JsonPropertyName("href"), JsonPropertyOrder(1)]
     public string? Href { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class LabelDownload
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("pdf")]
+    [JsonPropertyName("pdf"), JsonPropertyOrder(2)]
     public string? Pdf { get; set; }
 
     /// <summary>
@@ -55,7 +55,7 @@ public partial class LabelDownload
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("png")]
+    [JsonPropertyName("png"), JsonPropertyOrder(3)]
     public string? Png { get; set; }
 
     /// <summary>
@@ -65,7 +65,7 @@ public partial class LabelDownload
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("zpl")]
+    [JsonPropertyName("zpl"), JsonPropertyOrder(4)]
     public string? Zpl { get; set; }
 
 

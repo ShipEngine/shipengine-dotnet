@@ -34,8 +34,7 @@ public partial class UpdatePackageTypeRequestBody
     /// <example>
     /// laptop_box
     /// </example>
-    [JsonPropertyName("name")]
-    [JsonRequired]
+    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(1)]
     public required string Name { get; set; }
 
     /// <summary>
@@ -45,8 +44,7 @@ public partial class UpdatePackageTypeRequestBody
     /// <example>
     /// small_flat_rate_box
     /// </example>
-    [JsonPropertyName("package_code")]
-    [JsonRequired]
+    [JsonPropertyName("package_code"), JsonRequired, JsonPropertyOrder(2)]
     public required string PackageCode { get; set; }
 
     /// <summary>
@@ -56,14 +54,14 @@ public partial class UpdatePackageTypeRequestBody
     /// <example>
     /// Packaging for laptops
     /// </example>
-    [JsonPropertyName("description")]
+    [JsonPropertyName("description"), JsonPropertyOrder(3)]
     public string? Description { get; set; }
 
     /// <summary>
     /// The custom dimensions for the package.
     /// </summary>
     /// <value>The custom dimensions for the package.</value>
-    [JsonPropertyName("dimensions")]
+    [JsonPropertyName("dimensions"), JsonPropertyOrder(4)]
     public Dimensions? Dimensions { get; set; }
 
     /// <summary>
@@ -73,7 +71,7 @@ public partial class UpdatePackageTypeRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("package_id")]
+    [JsonPropertyName("package_id"), JsonPropertyOrder(5)]
     public string? PackageId { get; set; }
 
 

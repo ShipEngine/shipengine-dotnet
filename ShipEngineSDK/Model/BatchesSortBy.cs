@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(BatchesSortByJsonConverter))]
 public class BatchesSortBy
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of BatchesSortBy with a predefined value.
@@ -74,6 +74,12 @@ public class BatchesSortBy
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is BatchesSortBy other && _value == other._value;
 }
 
 internal class BatchesSortByJsonConverter : JsonConverter<BatchesSortBy>

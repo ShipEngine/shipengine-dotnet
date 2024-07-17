@@ -32,7 +32,7 @@ public partial class Manifests
     /// Resulting Manifests
     /// </summary>
     /// <value>Resulting Manifests</value>
-    [JsonPropertyName("manifests")]
+    [JsonPropertyName("manifests"), JsonPropertyOrder(1)]
     public List<Manifest>? VarManifests { get; set; }
 
 

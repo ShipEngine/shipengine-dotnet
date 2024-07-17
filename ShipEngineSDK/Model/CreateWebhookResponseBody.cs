@@ -29,12 +29,10 @@ public partial class CreateWebhookResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets Event  CLOVUS
+    /// Gets or Sets Event
     /// </summary>
-    [JsonPropertyName("event")]
-    [JsonRequired]
-    public required WebhookEvent Event { get; set; } = new();
-
+    [JsonPropertyName("event"), JsonRequired, JsonPropertyOrder(1)]
+    public required WebhookEvent Event { get; set; }
 
     /// <summary>
     /// The url that the webhook sends the request to
@@ -43,8 +41,7 @@ public partial class CreateWebhookResponseBody
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("url")]
-    [JsonRequired]
+    [JsonPropertyName("url"), JsonRequired, JsonPropertyOrder(2)]
     public required string Url { get; set; }
 
     /// <summary>
@@ -54,15 +51,14 @@ public partial class CreateWebhookResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("webhook_id")]
-    [JsonRequired]
-    public required string WebhookId { get; set; }
+    [JsonPropertyName("webhook_id"), JsonInclude]
+    public string? WebhookId { get; private set; }
 
     /// <summary>
     /// Array of custom webhook headers
     /// </summary>
     /// <value>Array of custom webhook headers</value>
-    [JsonPropertyName("headers")]
+    [JsonPropertyName("headers"), JsonPropertyOrder(4)]
     public List<WebhookHeader>? Headers { get; set; }
 
 

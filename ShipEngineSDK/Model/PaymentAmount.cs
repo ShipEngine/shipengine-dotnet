@@ -31,14 +31,14 @@ public partial class PaymentAmount
     /// <summary>
     /// Gets or Sets Amount
     /// </summary>
-    [JsonPropertyName("amount")]
+    [JsonPropertyName("amount"), JsonPropertyOrder(1)]
     public double? Amount { get; set; }
 
     /// <summary>
     /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
     /// </summary>
     /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
-    [JsonPropertyName("currency")]
+    [JsonPropertyName("currency"), JsonPropertyOrder(2)]
     public string? Currency { get; set; }
 
 

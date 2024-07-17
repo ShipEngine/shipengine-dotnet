@@ -35,8 +35,7 @@ public partial class DeleteScheduledPickupResponseBody
     /// <example>
     /// pik_3YcKU5zdtJuCqoeNwyqqbW
     /// </example>
-    [JsonPropertyName("pickup_id")]
-    [JsonRequired]
+    [JsonPropertyName("pickup_id"), JsonRequired, JsonPropertyOrder(1)]
     public required string PickupId { get; set; }
 
 

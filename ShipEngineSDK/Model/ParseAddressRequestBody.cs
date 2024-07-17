@@ -35,15 +35,14 @@ public partial class ParseAddressRequestBody
     /// <example>
     /// Margie McMiller at 3800 North Lamar suite 200 in austin, tx.  The zip code there is 78652.
     /// </example>
-    [JsonPropertyName("text")]
-    [JsonRequired]
+    [JsonPropertyName("text"), JsonRequired, JsonPropertyOrder(1)]
     public required string Text { get; set; }
 
     /// <summary>
     /// You can optionally provide any already-known address values. For example, you may already know the recipient&#39;s name, city, and country, and only want to parse the street address into separate lines. 
     /// </summary>
     /// <value>You can optionally provide any already-known address values. For example, you may already know the recipient&#39;s name, city, and country, and only want to parse the street address into separate lines. </value>
-    [JsonPropertyName("address")]
+    [JsonPropertyName("address"), JsonPropertyOrder(2)]
     public PartialAddress? Address { get; set; }
 
 

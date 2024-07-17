@@ -29,26 +29,29 @@ public partial class CreateAndProcessBatchRequestBodyProcessLabels
 {
 
     /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
+    /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(2)]
     public DisplayScheme? DisplayScheme { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelFormat  CLOVUS
+    /// Gets or Sets LabelFormat
     /// </summary>
-    [JsonPropertyName("label_format")]
+    [JsonPropertyName("label_format"), JsonPropertyOrder(3)]
     public LabelFormat? LabelFormat { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelLayout  CLOVUS
+    /// Gets or Sets LabelLayout
     /// </summary>
-    [JsonPropertyName("label_layout")]
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(4)]
     public LabelLayout? LabelLayout { get; set; }
+
     /// <summary>
     /// When &#39;true&#39;, the batch will be enqueued for processing
     /// </summary>
     /// <value>When &#39;true&#39;, the batch will be enqueued for processing</value>
-    [JsonPropertyName("create_batch_and_process_labels")]
+    [JsonPropertyName("create_batch_and_process_labels"), JsonPropertyOrder(1)]
     public bool? CreateBatchAndProcessLabels { get; set; }
 
     /// <summary>
@@ -58,7 +61,7 @@ public partial class CreateAndProcessBatchRequestBodyProcessLabels
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(5)]
     public DateTimeOffset? ShipDate { get; set; }
 
 

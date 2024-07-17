@@ -35,8 +35,8 @@ public partial class GetCarrierByIdResponseBody
     /// <example>
     /// account_570827
     /// </example>
-    [JsonPropertyName("account_number")]
-    public string? AccountNumber { get; set; }
+    [JsonPropertyName("account_number"), JsonInclude]
+    public string? AccountNumber { get; private set; }
 
     /// <summary>
     /// Current available balance
@@ -45,8 +45,8 @@ public partial class GetCarrierByIdResponseBody
     /// <example>
     /// 3799.52
     /// </example>
-    [JsonPropertyName("balance")]
-    public double? Balance { get; set; }
+    [JsonPropertyName("balance"), JsonInclude]
+    public double? Balance { get; private set; }
 
     /// <summary>
     /// The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
@@ -55,8 +55,8 @@ public partial class GetCarrierByIdResponseBody
     /// <example>
     /// dhl_express
     /// </example>
-    [JsonPropertyName("carrier_code")]
-    public string? CarrierCode { get; set; }
+    [JsonPropertyName("carrier_code"), JsonInclude]
+    public string? CarrierCode { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the carrier.
@@ -65,15 +65,15 @@ public partial class GetCarrierByIdResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    public string? CarrierId { get; set; }
+    [JsonPropertyName("carrier_id"), JsonInclude]
+    public string? CarrierId { get; private set; }
 
     /// <summary>
     /// The carrier is disabled by the current ShipEngine account&#39;s billing plan.
     /// </summary>
     /// <value>The carrier is disabled by the current ShipEngine account&#39;s billing plan.</value>
-    [JsonPropertyName("disabled_by_billing_plan")]
-    public bool? DisabledByBillingPlan { get; set; }
+    [JsonPropertyName("disabled_by_billing_plan"), JsonInclude]
+    public bool? DisabledByBillingPlan { get; private set; }
 
     /// <summary>
     /// Screen readable name
@@ -82,15 +82,15 @@ public partial class GetCarrierByIdResponseBody
     /// <example>
     /// Stamps.com
     /// </example>
-    [JsonPropertyName("friendly_name")]
-    public string? FriendlyName { get; set; }
+    [JsonPropertyName("friendly_name"), JsonInclude]
+    public string? FriendlyName { get; private set; }
 
     /// <summary>
     /// Carrier supports multiple packages per shipment
     /// </summary>
     /// <value>Carrier supports multiple packages per shipment</value>
-    [JsonPropertyName("has_multi_package_supporting_services")]
-    public bool? HasMultiPackageSupportingServices { get; set; }
+    [JsonPropertyName("has_multi_package_supporting_services"), JsonInclude]
+    public bool? HasMultiPackageSupportingServices { get; private set; }
 
     /// <summary>
     /// Nickname given to the account when initially setting up the carrier.
@@ -99,50 +99,50 @@ public partial class GetCarrierByIdResponseBody
     /// <example>
     /// ShipEngine Account - Stamps.com
     /// </example>
-    [JsonPropertyName("nickname")]
-    public string? Nickname { get; set; }
+    [JsonPropertyName("nickname"), JsonInclude]
+    public string? Nickname { get; private set; }
 
     /// <summary>
     /// A list of options that are available to that carrier
     /// </summary>
     /// <value>A list of options that are available to that carrier</value>
-    [JsonPropertyName("options")]
-    public List<CarrierAdvancedOption>? Options { get; set; }
+    [JsonPropertyName("options"), JsonInclude]
+    public List<CarrierAdvancedOption>? Options { get; private set; }
 
     /// <summary>
     /// A list of package types that are supported by the carrier
     /// </summary>
     /// <value>A list of package types that are supported by the carrier</value>
-    [JsonPropertyName("packages")]
-    public List<PackageType>? Packages { get; set; }
+    [JsonPropertyName("packages"), JsonInclude]
+    public List<PackageType>? Packages { get; private set; }
 
     /// <summary>
     /// Is this the primary carrier that is used by default when no carrier is specified in label/shipment creation
     /// </summary>
     /// <value>Is this the primary carrier that is used by default when no carrier is specified in label/shipment creation</value>
-    [JsonPropertyName("primary")]
-    public bool? Primary { get; set; }
+    [JsonPropertyName("primary"), JsonInclude]
+    public bool? Primary { get; private set; }
 
     /// <summary>
     /// Indicates whether the carrier requires funding to use its services
     /// </summary>
     /// <value>Indicates whether the carrier requires funding to use its services</value>
-    [JsonPropertyName("requires_funded_amount")]
-    public bool? RequiresFundedAmount { get; set; }
+    [JsonPropertyName("requires_funded_amount"), JsonInclude]
+    public bool? RequiresFundedAmount { get; private set; }
 
     /// <summary>
     /// A list of services that are offered by the carrier
     /// </summary>
     /// <value>A list of services that are offered by the carrier</value>
-    [JsonPropertyName("services")]
-    public List<Service>? Services { get; set; }
+    [JsonPropertyName("services"), JsonInclude]
+    public List<Service>? Services { get; private set; }
 
     /// <summary>
     /// The carrier supports adding custom label messages to an order.
     /// </summary>
     /// <value>The carrier supports adding custom label messages to an order.</value>
-    [JsonPropertyName("supports_label_messages")]
-    public bool? SupportsLabelMessages { get; set; }
+    [JsonPropertyName("supports_label_messages"), JsonInclude]
+    public bool? SupportsLabelMessages { get; private set; }
 
 
     /// <summary>

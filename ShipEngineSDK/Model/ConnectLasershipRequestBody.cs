@@ -32,192 +32,182 @@ public partial class ConnectLasershipRequestBody
     /// Address
     /// </summary>
     /// <value>Address</value>
-    [JsonPropertyName("Address")]
-    [JsonRequired]
+    [JsonPropertyName("Address"), JsonRequired, JsonPropertyOrder(1)]
     public required string Address { get; set; }
 
     /// <summary>
     /// City
     /// </summary>
     /// <value>City</value>
-    [JsonPropertyName("City")]
-    [JsonRequired]
+    [JsonPropertyName("City"), JsonRequired, JsonPropertyOrder(2)]
     public required string City { get; set; }
 
     /// <summary>
     /// Customer Branch
     /// </summary>
     /// <value>Customer Branch</value>
-    [JsonPropertyName("customer_branch")]
-    [JsonRequired]
+    [JsonPropertyName("customer_branch"), JsonRequired, JsonPropertyOrder(3)]
     public required string CustomerBranch { get; set; }
 
     /// <summary>
     /// Critical Entry Time (local time)
     /// </summary>
     /// <value>Critical Entry Time (local time)</value>
-    [JsonPropertyName("lasership_critical_entry_time")]
-    [JsonRequired]
+    [JsonPropertyName("lasership_critical_entry_time"), JsonRequired, JsonPropertyOrder(4)]
     public required string LasershipCriticalEntryTime { get; set; }
 
     /// <summary>
     /// Critical Pull Time (local time)
     /// </summary>
     /// <value>Critical Pull Time (local time)</value>
-    [JsonPropertyName("lasership_critical_pull_time")]
-    [JsonRequired]
+    [JsonPropertyName("lasership_critical_pull_time"), JsonRequired, JsonPropertyOrder(5)]
     public required string LasershipCriticalPullTime { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(6)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// PostalCode
     /// </summary>
     /// <value>PostalCode</value>
-    [JsonPropertyName("PostalCode")]
-    [JsonRequired]
+    [JsonPropertyName("PostalCode"), JsonRequired, JsonPropertyOrder(7)]
     public required string PostalCode { get; set; }
 
     /// <summary>
     /// State
     /// </summary>
     /// <value>State</value>
-    [JsonPropertyName("State")]
-    [JsonRequired]
+    [JsonPropertyName("State"), JsonRequired, JsonPropertyOrder(8)]
     public required string State { get; set; }
 
     /// <summary>
     /// Web Service ID (WSID)
     /// </summary>
     /// <value>Web Service ID (WSID)</value>
-    [JsonPropertyName("web_services_id")]
-    [JsonRequired]
+    [JsonPropertyName("web_services_id"), JsonRequired, JsonPropertyOrder(9)]
     public required string WebServicesId { get; set; }
 
     /// <summary>
     /// Web Service Key (WSKey)
     /// </summary>
     /// <value>Web Service Key (WSKey)</value>
-    [JsonPropertyName("web_services_key")]
-    [JsonRequired]
+    [JsonPropertyName("web_services_key"), JsonRequired, JsonPropertyOrder(10)]
     public required string WebServicesKey { get; set; }
 
     /// <summary>
     /// Address2
     /// </summary>
     /// <value>Address2</value>
-    [JsonPropertyName("Address2")]
+    [JsonPropertyName("Address2"), JsonPropertyOrder(11)]
     public string? Address2 { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Alcohol
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Alcohol</value>
-    [JsonPropertyName("AttrAlcohol")]
+    [JsonPropertyName("AttrAlcohol"), JsonPropertyOrder(12)]
     public bool? AttrAlcohol { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Controlled Substances
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Controlled Substances</value>
-    [JsonPropertyName("AttrControlledSubstance")]
+    [JsonPropertyName("AttrControlledSubstance"), JsonPropertyOrder(13)]
     public bool? AttrControlledSubstance { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain DryIce
     /// </summary>
     /// <value>Set this to true if your shipments will always contain DryIce</value>
-    [JsonPropertyName("AttrDryIce")]
+    [JsonPropertyName("AttrDryIce"), JsonPropertyOrder(14)]
     public bool? AttrDryIce { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Explosives
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Explosives</value>
-    [JsonPropertyName("AttrExplosive")]
+    [JsonPropertyName("AttrExplosive"), JsonPropertyOrder(15)]
     public bool? AttrExplosive { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Hazmat
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Hazmat</value>
-    [JsonPropertyName("AttrHazmat")]
+    [JsonPropertyName("AttrHazmat"), JsonPropertyOrder(16)]
     public bool? AttrHazmat { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always use \&quot;No Return To Sender\&quot;
     /// </summary>
     /// <value>Set this to true if your shipments will always use \&quot;No Return To Sender\&quot;</value>
-    [JsonPropertyName("AttrNoRTS")]
+    [JsonPropertyName("AttrNoRTS"), JsonPropertyOrder(17)]
     public bool? AttrNoRTS { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always be Perishable
     /// </summary>
     /// <value>Set this to true if your shipments will always be Perishable</value>
-    [JsonPropertyName("AttrPerishable")]
+    [JsonPropertyName("AttrPerishable"), JsonPropertyOrder(18)]
     public bool? AttrPerishable { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always require Refrigeration
     /// </summary>
     /// <value>Set this to true if your shipments will always require Refrigeration</value>
-    [JsonPropertyName("AttrRefrigerated")]
+    [JsonPropertyName("AttrRefrigerated"), JsonPropertyOrder(19)]
     public bool? AttrRefrigerated { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always require Two Persons
     /// </summary>
     /// <value>Set this to true if your shipments will always require Two Persons</value>
-    [JsonPropertyName("AttrTwoPersons")]
+    [JsonPropertyName("AttrTwoPersons"), JsonPropertyOrder(20)]
     public bool? AttrTwoPersons { get; set; }
 
     /// <summary>
     /// Country
     /// </summary>
     /// <value>Country</value>
-    [JsonPropertyName("country")]
+    [JsonPropertyName("country"), JsonPropertyOrder(21)]
     public string? Country { get; set; }
 
     /// <summary>
     /// Declare piece attributes separately for every shipment, overrides individual attribute below.
     /// </summary>
     /// <value>Declare piece attributes separately for every shipment, overrides individual attribute below.</value>
-    [JsonPropertyName("declare_piece_attributes_separately_for_every_shipment")]
+    [JsonPropertyName("declare_piece_attributes_separately_for_every_shipment"), JsonPropertyOrder(22)]
     public bool? DeclarePieceAttributesSeparatelyForEveryShipment { get; set; }
 
     /// <summary>
     /// Email
     /// </summary>
     /// <value>Email</value>
-    [JsonPropertyName("Email")]
+    [JsonPropertyName("Email"), JsonPropertyOrder(23)]
     public string? Email { get; set; }
 
     /// <summary>
     /// Facility Code
     /// </summary>
     /// <value>Facility Code</value>
-    [JsonPropertyName("facility_code")]
+    [JsonPropertyName("facility_code"), JsonPropertyOrder(24)]
     public string? FacilityCode { get; set; }
 
     /// <summary>
     /// Instructions
     /// </summary>
     /// <value>Instructions</value>
-    [JsonPropertyName("instructions")]
+    [JsonPropertyName("instructions"), JsonPropertyOrder(25)]
     public string? Instructions { get; set; }
 
     /// <summary>
     /// Phone
     /// </summary>
     /// <value>Phone</value>
-    [JsonPropertyName("Phone")]
+    [JsonPropertyName("Phone"), JsonPropertyOrder(26)]
     public string? Phone { get; set; }
 
 

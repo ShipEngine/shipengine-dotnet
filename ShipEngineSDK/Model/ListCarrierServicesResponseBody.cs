@@ -32,8 +32,8 @@ public partial class ListCarrierServicesResponseBody
     /// An array of services associated with the carrier
     /// </summary>
     /// <value>An array of services associated with the carrier</value>
-    [JsonPropertyName("services")]
-    public List<Service>? Services { get; set; }
+    [JsonPropertyName("services"), JsonInclude]
+    public List<Service>? Services { get; private set; }
 
 
     /// <summary>

@@ -33,7 +33,7 @@
     {{#isEnum}}
 
     /// <summary>
-    /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}  CLOVUS
+    /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
     /// </summary>
     {{#description}}
     /// <value>{{.}}</value>
@@ -43,14 +43,8 @@
     /// {{.}}
     /// </example>
     {{/example}}
-    [JsonPropertyName("{{baseName}}")]{{#required}}
-    [JsonRequired]{{/required}}
-    {{#deprecated}}
-    [Obsolete]
-    {{/deprecated}}
-    public{{#required}} required{{/required}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
-
-    {{/required}}
+    {{>partial_jsonAttributes}}
+    public{{>partial_requiredAttribute}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{>partial_optional}}{{/isContainer}} {{name}} {{>partial_getSet}}
     {{/isEnum}}
     {{/vars}}
 
@@ -74,15 +68,8 @@
         /// {{.}}
         /// </example>
         {{/example}}
-        [JsonPropertyName("{{baseName}}")]{{#required}}
-        [JsonRequired]{{/required}}
-        {{#isDate}}
-        [JsonConverter(typeof(DateJsonConverter))]
-        {{/isDate}}
-        {{#deprecated}}
-        [Obsolete]
-        {{/deprecated}}
-        public{{#required}} required{{/required}} {{{dataType}}}{{^required}}?{{/required}} {{name}} { get; set; }
+        {{>partial_jsonAttributes}}
+        public{{>partial_requiredAttribute}} {{{dataType}}}{{>partial_optional}} {{name}} {{>partial_getSet}}
 
     {{#-last}}
     }
@@ -97,15 +84,8 @@
     /// {{.}}
     /// </example>
     {{/example}}
-    [JsonPropertyName("{{baseName}}")]{{#required}}
-    [JsonRequired]{{/required}}
-    {{#isDate}}
-    [JsonConverter(typeof(DateJsonConverter))]
-    {{/isDate}}
-    {{#deprecated}}
-    [Obsolete]
-    {{/deprecated}}
-    public{{#required}} required{{/required}} {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}}{{^required}}?{{/required}} {{name}} { get; set; }
+    {{>partial_jsonAttributes}}
+    public{{>partial_requiredAttribute}} {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}}{{>partial_optional}} {{name}} {{>partial_getSet}}
 
     {{/isEnum}}
     {{/isInherited}}
@@ -115,7 +95,7 @@
     /// Gets or Sets additional properties
     /// </summary>
     [JsonExtensionData]
-    public IDictionary<string, object> AdditionalProperties { get; set; } = new Dictionary<string, object>();
+    public IDictionary<string, object> AdditionalProperties {{>partial_getSet}} = new Dictionary<string, object>();
 
     {{/isAdditionalPropertiesTrue}}
 

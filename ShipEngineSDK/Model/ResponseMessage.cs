@@ -29,28 +29,22 @@ public partial class ResponseMessage
 {
 
     /// <summary>
-    /// Gets or Sets Code  CLOVUS
+    /// Gets or Sets Code
     /// </summary>
-    [JsonPropertyName("code")]
-    [JsonRequired]
-    public required AddressValidationCode Code { get; set; } = new();
-
+    [JsonPropertyName("code"), JsonInclude]
+    public AddressValidationCode? Code { get; private set; }
 
     /// <summary>
-    /// Gets or Sets Type  CLOVUS
+    /// Gets or Sets Type
     /// </summary>
-    [JsonPropertyName("type")]
-    [JsonRequired]
-    public required AddressValidationMessageType Type { get; set; } = new();
-
+    [JsonPropertyName("type"), JsonInclude]
+    public AddressValidationMessageType? Type { get; private set; }
 
     /// <summary>
-    /// Gets or Sets DetailCode  CLOVUS
+    /// Gets or Sets DetailCode
     /// </summary>
-    [JsonPropertyName("detail_code")]
-    [JsonRequired]
-    public required AddressValidationDetailCode DetailCode { get; set; } = new();
-
+    [JsonPropertyName("detail_code"), JsonRequired, JsonPropertyOrder(4)]
+    public required AddressValidationDetailCode DetailCode { get; set; }
 
     /// <summary>
     /// Message explaining the address validation error
@@ -59,9 +53,8 @@ public partial class ResponseMessage
     /// <example>
     /// Invalid Postal Code
     /// </example>
-    [JsonPropertyName("message")]
-    [JsonRequired]
-    public required string Message { get; set; }
+    [JsonPropertyName("message"), JsonInclude]
+    public string? Message { get; private set; }
 
 
     /// <summary>

@@ -32,7 +32,7 @@ public partial class PartialShippingAddress
     /// Additional text about how to handle the shipment at this address. 
     /// </summary>
     /// <value>Additional text about how to handle the shipment at this address. </value>
-    [JsonPropertyName("instructions")]
+    [JsonPropertyName("instructions"), JsonPropertyOrder(1)]
     public string? Instructions { get; set; }
 
 

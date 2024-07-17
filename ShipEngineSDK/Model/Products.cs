@@ -35,21 +35,21 @@ public partial class Products
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_of_origin")]
+    [JsonPropertyName("country_of_origin"), JsonPropertyOrder(1)]
     public string? CountryOfOrigin { get; set; }
 
     /// <summary>
     /// Details about dangerous goods inside products
     /// </summary>
     /// <value>Details about dangerous goods inside products</value>
-    [JsonPropertyName("dangerous_goods")]
+    [JsonPropertyName("dangerous_goods"), JsonPropertyOrder(2)]
     public List<DangerousGoods>? DangerousGoods { get; set; }
 
     /// <summary>
     /// A description of the item
     /// </summary>
     /// <value>A description of the item</value>
-    [JsonPropertyName("description")]
+    [JsonPropertyName("description"), JsonPropertyOrder(3)]
     public string? Description { get; set; }
 
     /// <summary>
@@ -59,55 +59,55 @@ public partial class Products
     /// <example>
     /// 3926.1
     /// </example>
-    [JsonPropertyName("harmonized_tariff_code")]
+    [JsonPropertyName("harmonized_tariff_code"), JsonPropertyOrder(4)]
     public string? HarmonizedTariffCode { get; set; }
 
     /// <summary>
     /// Manufacturers Identification code
     /// </summary>
     /// <value>Manufacturers Identification code</value>
-    [JsonPropertyName("mid_code")]
+    [JsonPropertyName("mid_code"), JsonPropertyOrder(5)]
     public string? MidCode { get; set; }
 
     /// <summary>
     /// link to the item on the seller website
     /// </summary>
     /// <value>link to the item on the seller website</value>
-    [JsonPropertyName("product_url")]
+    [JsonPropertyName("product_url"), JsonPropertyOrder(6)]
     public string? ProductUrl { get; set; }
 
     /// <summary>
     /// The quantity of this item in the shipment.
     /// </summary>
     /// <value>The quantity of this item in the shipment.</value>
-    [JsonPropertyName("quantity")]
+    [JsonPropertyName("quantity"), JsonPropertyOrder(7)]
     public int? Quantity { get; set; }
 
     /// <summary>
     /// The SKU (Stock Keeping Unit) of the item
     /// </summary>
     /// <value>The SKU (Stock Keeping Unit) of the item</value>
-    [JsonPropertyName("sku")]
+    [JsonPropertyName("sku"), JsonPropertyOrder(8)]
     public string? Sku { get; set; }
 
     /// <summary>
     /// Description of the Custom Item&#39;s SKU
     /// </summary>
     /// <value>Description of the Custom Item&#39;s SKU</value>
-    [JsonPropertyName("sku_description")]
+    [JsonPropertyName("sku_description"), JsonPropertyOrder(9)]
     public string? SkuDescription { get; set; }
 
     /// <summary>
     /// Gets or Sets UnitOfMeasure
     /// </summary>
-    [JsonPropertyName("unit_of_measure")]
+    [JsonPropertyName("unit_of_measure"), JsonPropertyOrder(10)]
     public string? UnitOfMeasure { get; set; }
 
     /// <summary>
     /// The declared value of each item
     /// </summary>
     /// <value>The declared value of each item</value>
-    [JsonPropertyName("value")]
+    [JsonPropertyName("value"), JsonPropertyOrder(11)]
     public MonetaryValue? Value { get; set; }
 
     /// <summary>
@@ -117,14 +117,14 @@ public partial class Products
     /// <example>
     /// 0.2
     /// </example>
-    [JsonPropertyName("vat_rate")]
+    [JsonPropertyName("vat_rate"), JsonPropertyOrder(12)]
     public double? VatRate { get; set; }
 
     /// <summary>
     /// The item weight
     /// </summary>
     /// <value>The item weight</value>
-    [JsonPropertyName("weight")]
+    [JsonPropertyName("weight"), JsonPropertyOrder(13)]
     public Weight? Weight { get; set; }
 
 

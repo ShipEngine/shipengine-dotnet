@@ -35,7 +35,7 @@ public partial class CreateAndProcessBatchRequestBody
     /// <example>
     /// This is my batch
     /// </example>
-    [JsonPropertyName("batch_notes")]
+    [JsonPropertyName("batch_notes"), JsonPropertyOrder(1)]
     public string? BatchNotes { get; set; }
 
     /// <summary>
@@ -45,27 +45,27 @@ public partial class CreateAndProcessBatchRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("external_batch_id")]
+    [JsonPropertyName("external_batch_id"), JsonPropertyOrder(2)]
     public string? ExternalBatchId { get; set; }
 
     /// <summary>
     /// Gets or Sets ProcessLabels
     /// </summary>
-    [JsonPropertyName("process_labels")]
+    [JsonPropertyName("process_labels"), JsonPropertyOrder(3)]
     public CreateAndProcessBatchRequestBodyProcessLabels? ProcessLabels { get; set; }
 
     /// <summary>
     /// Array of rate IDs used in the batch
     /// </summary>
     /// <value>Array of rate IDs used in the batch</value>
-    [JsonPropertyName("rate_ids")]
+    [JsonPropertyName("rate_ids"), JsonPropertyOrder(4)]
     public List<string>? RateIds { get; set; }
 
     /// <summary>
     /// Array of shipment IDs used in the batch
     /// </summary>
     /// <value>Array of shipment IDs used in the batch</value>
-    [JsonPropertyName("shipment_ids")]
+    [JsonPropertyName("shipment_ids"), JsonPropertyOrder(5)]
     public List<string>? ShipmentIds { get; set; }
 
 

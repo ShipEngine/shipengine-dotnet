@@ -29,36 +29,31 @@ public partial class AddressValidationResult
 {
 
     /// <summary>
-    /// Gets or Sets Status  CLOVUS
+    /// Gets or Sets Status
     /// </summary>
-    [JsonPropertyName("status")]
-    [JsonRequired]
-    public required AddressValidationStatus Status { get; set; } = new();
-
+    [JsonPropertyName("status"), JsonRequired, JsonPropertyOrder(3)]
+    public required AddressValidationStatus Status { get; set; }
 
     /// <summary>
     /// The list of messages that were generated during the address validation request.
     /// </summary>
     /// <value>The list of messages that were generated during the address validation request.</value>
-    [JsonPropertyName("messages")]
-    [JsonRequired]
-    public required List<ResponseMessage> Messages { get; set; }
+    [JsonPropertyName("messages"), JsonInclude]
+    public List<ResponseMessage>? Messages { get; private set; }
 
     /// <summary>
     /// The original address that was sent for validation
     /// </summary>
     /// <value>The original address that was sent for validation</value>
-    [JsonPropertyName("original_address")]
-    [JsonRequired]
+    [JsonPropertyName("original_address"), JsonRequired, JsonPropertyOrder(2)]
     public required Address OriginalAddress { get; set; }
 
     /// <summary>
     /// The matched address found by the Shipengine API
     /// </summary>
     /// <value>The matched address found by the Shipengine API</value>
-    [JsonPropertyName("matched_address")]
-    [JsonRequired]
-    public required Address MatchedAddress { get; set; }
+    [JsonPropertyName("matched_address"), JsonInclude]
+    public Address? MatchedAddress { get; private set; }
 
 
     /// <summary>

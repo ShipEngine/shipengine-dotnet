@@ -89,13 +89,11 @@ public partial class CreateAccountSettingsImageRequestBody
 
 
     /// <summary>
-    /// The image type  CLOVUS
+    /// The image type
     /// </summary>
     /// <value>The image type</value>
-    [JsonPropertyName("image_content_type")]
-    [JsonRequired]
-    public required ImageContentTypeEnum ImageContentType { get; set; } = new();
-
+    [JsonPropertyName("image_content_type"), JsonRequired, JsonPropertyOrder(1)]
+    public required ImageContentTypeEnum ImageContentType { get; set; }
 
     /// <summary>
     /// A base64 encoded string representation of the image. 
@@ -104,8 +102,7 @@ public partial class CreateAccountSettingsImageRequestBody
     /// <example>
     /// iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAiVJREFUSEu91j3IeVEcB/CvSTIoBrFSikEZMdjsjExeUspgUEp5SUpeshrIgEFJJmWwMZHJQGHDhJSXTPfpnH/8ebzd56HnN93u7ZzP/f1+55x7Ob1ejxEKheByufh0HI9HrFYrcKbTKUMu5HI5BALBx5zNZoPxeAySAGc2mzF8Pp/e+BR0Ash8u93uHyKVSnH54J2Mvs8zn8//I6RO70L3xt8g70CPXvAu8hvoWQUeIj+BXpX4KcIGegWQOV4izyA2AGvkHsQW+BFyCUkkEiwWC9Ybl1W5Ls8ZMoAABCIbmE3cINFoFMFgEEajEeVyGSKRCJ1OB3q9ns5nMpmQTCaxXq9/l8loNEKj0YDX66UACYvFQq9brRYcDgdUKhU9RD/SEwLm83lEIhGUSiX0+33E4/GrU5otRMs1mUyYbDYLu90OhUJBMzhlZbPZ4Pf7odFo4HQ6b1rABqJIvV5nttstLc0pSIn2+z0tTy6XQ6FQoI/a7TZ0Ot0V9gqiiMFgYKrVKm0yieVyCZ/PB6vVSpF0Ok2zJHEqIY/HYw1RxOfzMYlE4jwoEAhAJpPBbDZf9eBwOCCVSsHtdp9f6FJ6egorlUqmVqvRfjSbTXS7XXg8nptP8Svk0RF01ROtVguSUTgchlgsPpeOZBaLxTAcDlEsFpHJZPC9XM8yoshgMGBCoRBdQWTCU7hcLjohWb5kM6rValQqlfMKfLbbb77xf/K38hf/XV9ilOpnLqvnogAAAABJRU5ErkJggg&#x3D;&#x3D;
     /// </example>
-    [JsonPropertyName("image_data")]
-    [JsonRequired]
+    [JsonPropertyName("image_data"), JsonRequired, JsonPropertyOrder(2)]
     public required string ImageData { get; set; }
 
     /// <summary>
@@ -115,8 +112,7 @@ public partial class CreateAccountSettingsImageRequestBody
     /// <example>
     /// My logo
     /// </example>
-    [JsonPropertyName("name")]
-    [JsonRequired]
+    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(3)]
     public required string Name { get; set; }
 
     /// <summary>
@@ -126,8 +122,8 @@ public partial class CreateAccountSettingsImageRequestBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    public DateTimeOffset? CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// Indicates whether this image is set as default. 
@@ -136,7 +132,7 @@ public partial class CreateAccountSettingsImageRequestBody
     /// <example>
     /// false
     /// </example>
-    [JsonPropertyName("is_default")]
+    [JsonPropertyName("is_default"), JsonPropertyOrder(5)]
     public bool? IsDefault { get; set; }
 
     /// <summary>
@@ -146,8 +142,8 @@ public partial class CreateAccountSettingsImageRequestBody
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id")]
-    public string? LabelImageId { get; set; }
+    [JsonPropertyName("label_image_id"), JsonInclude]
+    public string? LabelImageId { get; private set; }
 
     /// <summary>
     /// The date and time that the image was modified in ShipEngine.
@@ -156,8 +152,8 @@ public partial class CreateAccountSettingsImageRequestBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("modified_at")]
-    public DateTimeOffset? ModifiedAt { get; set; }
+    [JsonPropertyName("modified_at"), JsonInclude]
+    public DateTimeOffset? ModifiedAt { get; private set; }
 
 
     /// <summary>

@@ -35,8 +35,7 @@ public partial class GetServicePointsRequestBodyAddress
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
-    [JsonRequired]
+    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(1)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -46,26 +45,26 @@ public partial class GetServicePointsRequestBodyAddress
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1")]
+    [JsonPropertyName("address_line1"), JsonPropertyOrder(2)]
     public string? AddressLine1 { get; set; }
 
     /// <summary>
     /// Gets or Sets AddressLine2
     /// </summary>
-    [JsonPropertyName("address_line2")]
+    [JsonPropertyName("address_line2"), JsonPropertyOrder(3)]
     public string? AddressLine2 { get; set; }
 
     /// <summary>
     /// Gets or Sets AddressLine3
     /// </summary>
-    [JsonPropertyName("address_line3")]
+    [JsonPropertyName("address_line3"), JsonPropertyOrder(4)]
     public string? AddressLine3 { get; set; }
 
     /// <summary>
     /// The name of the city or locality
     /// </summary>
     /// <value>The name of the city or locality</value>
-    [JsonPropertyName("city_locality")]
+    [JsonPropertyName("city_locality"), JsonPropertyOrder(5)]
     public string? CityLocality { get; set; }
 
     /// <summary>
@@ -75,14 +74,14 @@ public partial class GetServicePointsRequestBodyAddress
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code")]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(6)]
     public string? PostalCode { get; set; }
 
     /// <summary>
     /// The state or province. For some countries (including the U.S.) only abbreviations are allowed. Other countries allow the full name or abbreviation.
     /// </summary>
     /// <value>The state or province. For some countries (including the U.S.) only abbreviations are allowed. Other countries allow the full name or abbreviation.</value>
-    [JsonPropertyName("state_province")]
+    [JsonPropertyName("state_province"), JsonPropertyOrder(7)]
     public string? StateProvince { get; set; }
 
 

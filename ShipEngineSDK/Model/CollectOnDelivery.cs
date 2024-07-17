@@ -29,14 +29,15 @@ public partial class CollectOnDelivery
 {
 
     /// <summary>
-    /// Gets or Sets PaymentType  CLOVUS
+    /// Gets or Sets PaymentType
     /// </summary>
-    [JsonPropertyName("payment_type")]
+    [JsonPropertyName("payment_type"), JsonPropertyOrder(2)]
     public CollectOnDeliveryPaymentType? PaymentType { get; set; }
+
     /// <summary>
     /// Gets or Sets PaymentAmount
     /// </summary>
-    [JsonPropertyName("payment_amount")]
+    [JsonPropertyName("payment_amount"), JsonPropertyOrder(1)]
     public PaymentAmount? PaymentAmount { get; set; }
 
 

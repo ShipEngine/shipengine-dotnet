@@ -35,7 +35,7 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
     /// <example>
     /// 12:00
     /// </example>
-    [JsonPropertyName("close")]
+    [JsonPropertyName("close"), JsonPropertyOrder(1)]
     public string? Close { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
     /// <example>
     /// 09:15
     /// </example>
-    [JsonPropertyName("open")]
+    [JsonPropertyName("open"), JsonPropertyOrder(2)]
     public string? Open { get; set; }
 
 

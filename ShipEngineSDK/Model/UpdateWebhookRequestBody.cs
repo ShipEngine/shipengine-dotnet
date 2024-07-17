@@ -32,7 +32,7 @@ public partial class UpdateWebhookRequestBody
     /// Array of custom webhook headers
     /// </summary>
     /// <value>Array of custom webhook headers</value>
-    [JsonPropertyName("headers")]
+    [JsonPropertyName("headers"), JsonPropertyOrder(1)]
     public List<WebhookHeader>? Headers { get; set; }
 
     /// <summary>
@@ -42,7 +42,7 @@ public partial class UpdateWebhookRequestBody
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("url")]
+    [JsonPropertyName("url"), JsonPropertyOrder(2)]
     public string? Url { get; set; }
 
 

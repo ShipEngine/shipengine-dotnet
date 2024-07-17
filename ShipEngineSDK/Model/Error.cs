@@ -29,28 +29,22 @@ public partial class Error
 {
 
     /// <summary>
-    /// Gets or Sets ErrorCode  CLOVUS
+    /// Gets or Sets ErrorCode
     /// </summary>
-    [JsonPropertyName("error_code")]
-    [JsonRequired]
-    public required ErrorCode ErrorCode { get; set; } = new();
-
+    [JsonPropertyName("error_code"), JsonRequired, JsonPropertyOrder(1)]
+    public required ErrorCode ErrorCode { get; set; }
 
     /// <summary>
-    /// Gets or Sets ErrorSource  CLOVUS
+    /// Gets or Sets ErrorSource
     /// </summary>
-    [JsonPropertyName("error_source")]
-    [JsonRequired]
-    public required ErrorSource ErrorSource { get; set; } = new();
-
+    [JsonPropertyName("error_source"), JsonRequired, JsonPropertyOrder(2)]
+    public required ErrorSource ErrorSource { get; set; }
 
     /// <summary>
-    /// Gets or Sets ErrorType  CLOVUS
+    /// Gets or Sets ErrorType
     /// </summary>
-    [JsonPropertyName("error_type")]
-    [JsonRequired]
-    public required ErrorType ErrorType { get; set; } = new();
-
+    [JsonPropertyName("error_type"), JsonRequired, JsonPropertyOrder(3)]
+    public required ErrorType ErrorType { get; set; }
 
     /// <summary>
     /// An error message associated with the failed API call
@@ -59,9 +53,8 @@ public partial class Error
     /// <example>
     /// Body of request cannot be null.
     /// </example>
-    [JsonPropertyName("message")]
-    [JsonRequired]
-    public required string Message { get; set; }
+    [JsonPropertyName("message"), JsonInclude]
+    public string? Message { get; private set; }
 
 
     /// <summary>

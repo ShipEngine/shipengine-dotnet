@@ -31,43 +31,43 @@ public partial class ListServicePointsResponseBodyServicePointsInnerHoursOfOpera
     /// <summary>
     /// Gets or Sets Friday
     /// </summary>
-    [JsonPropertyName("friday")]
+    [JsonPropertyName("friday"), JsonPropertyOrder(1)]
     public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Friday { get; set; }
 
     /// <summary>
     /// Gets or Sets Monday
     /// </summary>
-    [JsonPropertyName("monday")]
+    [JsonPropertyName("monday"), JsonPropertyOrder(2)]
     public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Monday { get; set; }
 
     /// <summary>
     /// Gets or Sets Saturday
     /// </summary>
-    [JsonPropertyName("saturday")]
+    [JsonPropertyName("saturday"), JsonPropertyOrder(3)]
     public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Saturday { get; set; }
 
     /// <summary>
     /// Gets or Sets Sunday
     /// </summary>
-    [JsonPropertyName("sunday")]
+    [JsonPropertyName("sunday"), JsonPropertyOrder(4)]
     public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Sunday { get; set; }
 
     /// <summary>
     /// Gets or Sets Thursday
     /// </summary>
-    [JsonPropertyName("thursday")]
+    [JsonPropertyName("thursday"), JsonPropertyOrder(5)]
     public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Thursday { get; set; }
 
     /// <summary>
     /// Gets or Sets Tuesday
     /// </summary>
-    [JsonPropertyName("tuesday")]
+    [JsonPropertyName("tuesday"), JsonPropertyOrder(6)]
     public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Tuesday { get; set; }
 
     /// <summary>
     /// Gets or Sets Wednesday
     /// </summary>
-    [JsonPropertyName("wednesday")]
+    [JsonPropertyName("wednesday"), JsonPropertyOrder(7)]
     public List<ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner>? Wednesday { get; set; }
 
 

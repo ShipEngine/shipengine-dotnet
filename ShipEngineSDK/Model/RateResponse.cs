@@ -32,7 +32,7 @@ public partial class RateResponse
     /// The rates response
     /// </summary>
     /// <value>The rates response</value>
-    [JsonPropertyName("rate_response")]
+    [JsonPropertyName("rate_response"), JsonPropertyOrder(1)]
     public RatesInformation? VarRateResponse { get; set; }
 
 

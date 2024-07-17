@@ -23,9 +23,10 @@ namespace ShipEngineSDK
         /// Options for serializing the method call params to JSON.
         /// A separate inline setting is used for deserializing the response
         /// </summary>
-        protected static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
+        internal static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
         {
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            IgnoreReadOnlyProperties = true,
             PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
             PropertyNameCaseInsensitive = true,
             WriteIndented = true,

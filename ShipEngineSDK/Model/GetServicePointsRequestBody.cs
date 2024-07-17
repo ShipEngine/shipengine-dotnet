@@ -32,14 +32,13 @@ public partial class GetServicePointsRequestBody
     /// An array of shipping service providers and service codes
     /// </summary>
     /// <value>An array of shipping service providers and service codes</value>
-    [JsonPropertyName("providers")]
-    [JsonRequired]
+    [JsonPropertyName("providers"), JsonRequired, JsonPropertyOrder(1)]
     public required List<GetServicePointsRequestBodyProvidersInner> Providers { get; set; }
 
     /// <summary>
     /// Gets or Sets Address
     /// </summary>
-    [JsonPropertyName("address")]
+    [JsonPropertyName("address"), JsonPropertyOrder(2)]
     public GetServicePointsRequestBodyAddress? Address { get; set; }
 
     /// <summary>
@@ -49,7 +48,7 @@ public partial class GetServicePointsRequestBody
     /// <example>
     /// 177A Bleecker Street New York
     /// </example>
-    [JsonPropertyName("address_query")]
+    [JsonPropertyName("address_query"), JsonPropertyOrder(3)]
     public string? AddressQuery { get; set; }
 
     /// <summary>
@@ -59,7 +58,7 @@ public partial class GetServicePointsRequestBody
     /// <example>
     /// 48.874518928233094
     /// </example>
-    [JsonPropertyName("lat")]
+    [JsonPropertyName("lat"), JsonPropertyOrder(4)]
     public double? Lat { get; set; }
 
     /// <summary>
@@ -69,7 +68,7 @@ public partial class GetServicePointsRequestBody
     /// <example>
     /// 2.3591775711639404
     /// </example>
-    [JsonPropertyName("long")]
+    [JsonPropertyName("long"), JsonPropertyOrder(5)]
     public double? Long { get; set; }
 
     /// <summary>
@@ -79,7 +78,7 @@ public partial class GetServicePointsRequestBody
     /// <example>
     /// 25
     /// </example>
-    [JsonPropertyName("max_results")]
+    [JsonPropertyName("max_results"), JsonPropertyOrder(6)]
     public int? MaxResults { get; set; }
 
     /// <summary>
@@ -89,13 +88,13 @@ public partial class GetServicePointsRequestBody
     /// <example>
     /// 500
     /// </example>
-    [JsonPropertyName("radius")]
+    [JsonPropertyName("radius"), JsonPropertyOrder(7)]
     public int? Radius { get; set; }
 
     /// <summary>
     /// Gets or Sets Shipment
     /// </summary>
-    [JsonPropertyName("shipment")]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(8)]
     public GetServicePointsRequestBodyShipment? Shipment { get; set; }
 
 

@@ -29,34 +29,39 @@ public partial class CreateReturnLabelRequestBody
 {
 
     /// <summary>
-    /// The label charge event.   CLOVUS
+    /// The label charge event. 
     /// </summary>
     /// <value>The label charge event. </value>
-    [JsonPropertyName("charge_event")]
+    [JsonPropertyName("charge_event"), JsonPropertyOrder(1)]
     public LabelChargeEvent? ChargeEvent { get; set; }
+
     /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
+    /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(2)]
     public DisplayScheme? DisplayScheme { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelDownloadType  CLOVUS
+    /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type")]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(3)]
     public LabelDownloadType? LabelDownloadType { get; set; }
+
     /// <summary>
-    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats.   CLOVUS
+    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
     /// </summary>
     /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
-    [JsonPropertyName("label_format")]
+    [JsonPropertyName("label_format"), JsonPropertyOrder(4)]
     public LabelFormat? LabelFormat { get; set; }
+
     /// <summary>
-    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format.   CLOVUS
+    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
     /// </summary>
     /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    [JsonPropertyName("label_layout")]
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(6)]
     public LabelLayout? LabelLayout { get; set; }
+
     /// <summary>
     /// The label image resource that was used to create a custom label image.
     /// </summary>
@@ -64,7 +69,7 @@ public partial class CreateReturnLabelRequestBody
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id")]
+    [JsonPropertyName("label_image_id"), JsonPropertyOrder(5)]
     public string? LabelImageId { get; set; }
 
 

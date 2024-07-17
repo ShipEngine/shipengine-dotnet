@@ -31,13 +31,13 @@ public partial class UpdateShipmentsTagsShipmentsTagsInner
     /// <summary>
     /// Gets or Sets ShipmentId
     /// </summary>
-    [JsonPropertyName("shipment_id")]
+    [JsonPropertyName("shipment_id"), JsonPropertyOrder(1)]
     public string? ShipmentId { get; set; }
 
     /// <summary>
     /// Gets or Sets Tags
     /// </summary>
-    [JsonPropertyName("tags")]
+    [JsonPropertyName("tags"), JsonPropertyOrder(2)]
     public List<string>? Tags { get; set; }
 
 

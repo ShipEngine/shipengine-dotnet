@@ -29,43 +29,46 @@ public partial class FedexAccountSettings
 {
 
     /// <summary>
-    /// Gets or Sets PickupType  CLOVUS
+    /// Gets or Sets PickupType
     /// </summary>
-    [JsonPropertyName("pickup_type")]
+    [JsonPropertyName("pickup_type"), JsonPropertyOrder(4)]
     public FedexPickupType? PickupType { get; set; }
+
     /// <summary>
-    /// Gets or Sets SmartPostEndorsement  CLOVUS
+    /// Gets or Sets SmartPostEndorsement
     /// </summary>
-    [JsonPropertyName("smart_post_endorsement")]
+    [JsonPropertyName("smart_post_endorsement"), JsonPropertyOrder(6)]
     public AncillaryServiceEndorsement? SmartPostEndorsement { get; set; }
+
     /// <summary>
-    /// Gets or Sets SmartPostHub  CLOVUS
+    /// Gets or Sets SmartPostHub
     /// </summary>
-    [JsonPropertyName("smart_post_hub")]
+    [JsonPropertyName("smart_post_hub"), JsonPropertyOrder(7)]
     public SmartPostHub? SmartPostHub { get; set; }
+
     /// <summary>
     /// Gets or Sets IsPrimaryAccount
     /// </summary>
-    [JsonPropertyName("is_primary_account")]
+    [JsonPropertyName("is_primary_account"), JsonPropertyOrder(1)]
     public bool? IsPrimaryAccount { get; set; }
 
     /// <summary>
     /// Gets or Sets LetterheadImage
     /// </summary>
-    [JsonPropertyName("letterhead_image")]
+    [JsonPropertyName("letterhead_image"), JsonPropertyOrder(2)]
     public string? LetterheadImage { get; set; }
 
     /// <summary>
     /// Account nickname
     /// </summary>
     /// <value>Account nickname</value>
-    [JsonPropertyName("nickname")]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(3)]
     public string? Nickname { get; set; }
 
     /// <summary>
     /// Gets or Sets SignatureImage
     /// </summary>
-    [JsonPropertyName("signature_image")]
+    [JsonPropertyName("signature_image"), JsonPropertyOrder(5)]
     public string? SignatureImage { get; set; }
 
 

@@ -29,40 +29,44 @@ public partial class CreateAndValidateShipment
 {
 
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.  CLOVUS
+    /// The type of delivery confirmation that is required for this shipment.
     /// </summary>
     /// <value>The type of delivery confirmation that is required for this shipment.</value>
-    [JsonPropertyName("confirmation")]
+    [JsonPropertyName("confirmation"), JsonPropertyOrder(5)]
     public DeliveryConfirmation? Confirmation { get; set; }
+
     /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment.   CLOVUS
+    /// The insurance provider to use for any insured packages in the shipment. 
     /// </summary>
     /// <value>The insurance provider to use for any insured packages in the shipment. </value>
-    [JsonPropertyName("insurance_provider")]
+    [JsonPropertyName("insurance_provider"), JsonPropertyOrder(11)]
     public InsuranceProvider? InsuranceProvider { get; set; }
+
     /// <summary>
-    /// Gets or Sets OrderSourceCode  CLOVUS
+    /// Gets or Sets OrderSourceCode
     /// </summary>
-    [JsonPropertyName("order_source_code")]
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(15)]
     public OrderSourceName? OrderSourceCode { get; set; }
+
     /// <summary>
-    /// The current status of the shipment  CLOVUS
+    /// The current status of the shipment
     /// </summary>
     /// <value>The current status of the shipment</value>
-    [JsonPropertyName("shipment_status")]
-    public ShipmentStatus? ShipmentStatus { get; set; }
+    [JsonPropertyName("shipment_status"), JsonInclude]
+    public ShipmentStatus? ShipmentStatus { get; private set; }
+
     /// <summary>
     /// The address validation
     /// </summary>
     /// <value>The address validation</value>
-    [JsonPropertyName("address_validation")]
+    [JsonPropertyName("address_validation"), JsonPropertyOrder(1)]
     public AddressValidationResult? AddressValidation { get; set; }
 
     /// <summary>
     /// Advanced shipment options.  These are entirely optional.
     /// </summary>
     /// <value>Advanced shipment options.  These are entirely optional.</value>
-    [JsonPropertyName("advanced_options")]
+    [JsonPropertyName("advanced_options"), JsonPropertyOrder(2)]
     public AdvancedShipmentOptions? AdvancedOptions { get; set; }
 
     /// <summary>
@@ -72,7 +76,7 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(3)]
     public string? CarrierId { get; set; }
 
     /// <summary>
@@ -82,7 +86,7 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// retail
     /// </example>
-    [JsonPropertyName("comparison_rate_type")]
+    [JsonPropertyName("comparison_rate_type"), JsonPropertyOrder(4)]
     public string? ComparisonRateType { get; set; }
 
     /// <summary>
@@ -92,50 +96,49 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    public DateTimeOffset? CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// Customs information.  This is usually only needed for international shipments. 
     /// </summary>
     /// <value>Customs information.  This is usually only needed for international shipments. </value>
-    [JsonPropertyName("customs")]
+    [JsonPropertyName("customs"), JsonPropertyOrder(7)]
     public InternationalShipmentOptions? Customs { get; set; }
 
     /// <summary>
     /// An array of errors that occurred while creating shipment.
     /// </summary>
     /// <value>An array of errors that occurred while creating shipment.</value>
-    [JsonPropertyName("errors")]
-    [Obsolete]
-    public List<string>? Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude, Obsolete]
+    public List<string>? Errors { get; private set; }
 
     /// <summary>
     /// ID that the Order Source assigned
     /// </summary>
     /// <value>ID that the Order Source assigned</value>
-    [JsonPropertyName("external_order_id")]
+    [JsonPropertyName("external_order_id"), JsonPropertyOrder(9)]
     public string? ExternalOrderId { get; set; }
 
     /// <summary>
     /// A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.  &gt; **Warning:** The &#x60;external_shipment_id&#x60; is limited to 50 characters. Any additional characters will be truncated. 
     /// </summary>
     /// <value>A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.  &gt; **Warning:** The &#x60;external_shipment_id&#x60; is limited to 50 characters. Any additional characters will be truncated. </value>
-    [JsonPropertyName("external_shipment_id")]
+    [JsonPropertyName("external_shipment_id"), JsonPropertyOrder(10)]
     public string? ExternalShipmentId { get; set; }
 
     /// <summary>
     /// An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. 
     /// </summary>
     /// <value>An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. </value>
-    [JsonPropertyName("is_return")]
+    [JsonPropertyName("is_return"), JsonPropertyOrder(12)]
     public bool? IsReturn { get; set; }
 
     /// <summary>
     /// Describe the packages included in this shipment as related to potential metadata that was imported from external order sources 
     /// </summary>
     /// <value>Describe the packages included in this shipment as related to potential metadata that was imported from external order sources </value>
-    [JsonPropertyName("items")]
+    [JsonPropertyName("items"), JsonPropertyOrder(13)]
     public List<ShipmentItem>? Items { get; set; }
 
     /// <summary>
@@ -145,21 +148,21 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("modified_at")]
-    public DateTimeOffset? ModifiedAt { get; set; }
+    [JsonPropertyName("modified_at"), JsonInclude]
+    public DateTimeOffset? ModifiedAt { get; private set; }
 
     /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
     /// </summary>
     /// <value>The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. </value>
-    [JsonPropertyName("packages")]
+    [JsonPropertyName("packages"), JsonPropertyOrder(16)]
     public List<Package>? Packages { get; set; }
 
     /// <summary>
     /// The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. 
     /// </summary>
     /// <value>The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. </value>
-    [JsonPropertyName("return_to")]
+    [JsonPropertyName("return_to"), JsonPropertyOrder(17)]
     public ShippingAddress? ReturnTo { get; set; }
 
     /// <summary>
@@ -169,7 +172,7 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// usps_first_class_mail
     /// </example>
-    [JsonPropertyName("service_code")]
+    [JsonPropertyName("service_code"), JsonPropertyOrder(18)]
     public string? ServiceCode { get; set; }
 
     /// <summary>
@@ -179,21 +182,21 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// 2018-09-23T00:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(19)]
     public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
     /// The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. 
     /// </summary>
     /// <value>The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. </value>
-    [JsonPropertyName("ship_from")]
+    [JsonPropertyName("ship_from"), JsonPropertyOrder(20)]
     public ShippingAddress? ShipFrom { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address
     /// </summary>
     /// <value>The recipient&#39;s mailing address</value>
-    [JsonPropertyName("ship_to")]
+    [JsonPropertyName("ship_to"), JsonPropertyOrder(21)]
     public ShippingAddressTo? ShipTo { get; set; }
 
     /// <summary>
@@ -203,14 +206,14 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipment_id")]
-    public string? ShipmentId { get; set; }
+    [JsonPropertyName("shipment_id"), JsonInclude]
+    public string? ShipmentId { get; private set; }
 
     /// <summary>
     /// A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.  &gt; **Warning:** The &#x60;shipment_number&#x60; is limited to 50 characters. Any additional characters will be truncated. 
     /// </summary>
     /// <value>A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.  &gt; **Warning:** The &#x60;shipment_number&#x60; is limited to 50 characters. Any additional characters will be truncated. </value>
-    [JsonPropertyName("shipment_number")]
+    [JsonPropertyName("shipment_number"), JsonPropertyOrder(23)]
     public string? ShipmentNumber { get; set; }
 
     /// <summary>
@@ -220,28 +223,28 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipping_rule_id")]
+    [JsonPropertyName("shipping_rule_id"), JsonPropertyOrder(25)]
     public string? ShippingRuleId { get; set; }
 
     /// <summary>
     /// Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. 
     /// </summary>
     /// <value>Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. </value>
-    [JsonPropertyName("tags")]
-    public List<Tag>? Tags { get; set; }
+    [JsonPropertyName("tags"), JsonInclude]
+    public List<Tag>? Tags { get; private set; }
 
     /// <summary>
     /// Gets or Sets TaxIdentifiers
     /// </summary>
-    [JsonPropertyName("tax_identifiers")]
+    [JsonPropertyName("tax_identifiers"), JsonPropertyOrder(27)]
     public List<TaxIdentifier>? TaxIdentifiers { get; set; }
 
     /// <summary>
     /// The combined weight of all packages in the shipment
     /// </summary>
     /// <value>The combined weight of all packages in the shipment</value>
-    [JsonPropertyName("total_weight")]
-    public Weight? TotalWeight { get; set; }
+    [JsonPropertyName("total_weight"), JsonInclude]
+    public Weight? TotalWeight { get; private set; }
 
     /// <summary>
     /// The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either &#x60;warehouse_id&#x60; or &#x60;ship_from&#x60; must be specified. 
@@ -250,7 +253,7 @@ public partial class CreateAndValidateShipment
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
+    [JsonPropertyName("warehouse_id"), JsonPropertyOrder(29)]
     public string? WarehouseId { get; set; }
 
 

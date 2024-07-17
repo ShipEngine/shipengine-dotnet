@@ -29,11 +29,12 @@ public partial class AddressToValidate
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.  CLOVUS
+    /// Indicates whether this is a residential address.
     /// </summary>
     /// <value>Indicates whether this is a residential address.</value>
-    [JsonPropertyName("address_residential_indicator")]
+    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(7)]
     public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
+
     /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. 
     /// </summary>
@@ -41,8 +42,7 @@ public partial class AddressToValidate
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1")]
-    [JsonRequired]
+    [JsonPropertyName("address_line1"), JsonRequired, JsonPropertyOrder(1)]
     public required string AddressLine1 { get; set; }
 
     /// <summary>
@@ -52,8 +52,7 @@ public partial class AddressToValidate
     /// <example>
     /// Winnipeg
     /// </example>
-    [JsonPropertyName("city_locality")]
-    [JsonRequired]
+    [JsonPropertyName("city_locality"), JsonRequired, JsonPropertyOrder(2)]
     public required string CityLocality { get; set; }
 
     /// <summary>
@@ -63,8 +62,7 @@ public partial class AddressToValidate
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
-    [JsonRequired]
+    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(3)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -74,8 +72,7 @@ public partial class AddressToValidate
     /// <example>
     /// Manitoba
     /// </example>
-    [JsonPropertyName("state_province")]
-    [JsonRequired]
+    [JsonPropertyName("state_province"), JsonRequired, JsonPropertyOrder(4)]
     public required string StateProvince { get; set; }
 
     /// <summary>
@@ -85,7 +82,7 @@ public partial class AddressToValidate
     /// <example>
     /// Unit 408
     /// </example>
-    [JsonPropertyName("address_line2")]
+    [JsonPropertyName("address_line2"), JsonPropertyOrder(5)]
     public string? AddressLine2 { get; set; }
 
     /// <summary>
@@ -95,7 +92,7 @@ public partial class AddressToValidate
     /// <example>
     /// Building #7
     /// </example>
-    [JsonPropertyName("address_line3")]
+    [JsonPropertyName("address_line3"), JsonPropertyOrder(6)]
     public string? AddressLine3 { get; set; }
 
     /// <summary>
@@ -105,7 +102,7 @@ public partial class AddressToValidate
     /// <example>
     /// The Home Depot
     /// </example>
-    [JsonPropertyName("company_name")]
+    [JsonPropertyName("company_name"), JsonPropertyOrder(8)]
     public string? CompanyName { get; set; }
 
     /// <summary>
@@ -115,7 +112,7 @@ public partial class AddressToValidate
     /// <example>
     /// example@example.com
     /// </example>
-    [JsonPropertyName("email")]
+    [JsonPropertyName("email"), JsonPropertyOrder(9)]
     public string? Email { get; set; }
 
     /// <summary>
@@ -125,7 +122,7 @@ public partial class AddressToValidate
     /// <example>
     /// John Doe
     /// </example>
-    [JsonPropertyName("name")]
+    [JsonPropertyName("name"), JsonPropertyOrder(10)]
     public string? Name { get; set; }
 
     /// <summary>
@@ -135,7 +132,7 @@ public partial class AddressToValidate
     /// <example>
     /// +1 204-253-9411 ext. 123
     /// </example>
-    [JsonPropertyName("phone")]
+    [JsonPropertyName("phone"), JsonPropertyOrder(11)]
     public string? Phone { get; set; }
 
     /// <summary>
@@ -145,7 +142,7 @@ public partial class AddressToValidate
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code")]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(12)]
     public string? PostalCode { get; set; }
 
 

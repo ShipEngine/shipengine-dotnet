@@ -35,7 +35,7 @@ public partial class Service
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_code")]
+    [JsonPropertyName("carrier_code"), JsonPropertyOrder(1)]
     public string? CarrierCode { get; set; }
 
     /// <summary>
@@ -45,29 +45,29 @@ public partial class Service
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    public string? CarrierId { get; set; }
+    [JsonPropertyName("carrier_id"), JsonInclude]
+    public string? CarrierId { get; private set; }
 
     /// <summary>
     /// Supports domestic shipping
     /// </summary>
     /// <value>Supports domestic shipping</value>
-    [JsonPropertyName("domestic")]
-    public bool? Domestic { get; set; }
+    [JsonPropertyName("domestic"), JsonInclude]
+    public bool? Domestic { get; private set; }
 
     /// <summary>
     /// Supports international shipping.
     /// </summary>
     /// <value>Supports international shipping.</value>
-    [JsonPropertyName("international")]
-    public bool? International { get; set; }
+    [JsonPropertyName("international"), JsonInclude]
+    public bool? International { get; private set; }
 
     /// <summary>
     /// Carrier supports multiple packages per shipment
     /// </summary>
     /// <value>Carrier supports multiple packages per shipment</value>
-    [JsonPropertyName("is_multi_package_supported")]
-    public bool? IsMultiPackageSupported { get; set; }
+    [JsonPropertyName("is_multi_package_supported"), JsonInclude]
+    public bool? IsMultiPackageSupported { get; private set; }
 
     /// <summary>
     /// User friendly service name
@@ -76,8 +76,8 @@ public partial class Service
     /// <example>
     /// USPS First Class Mail
     /// </example>
-    [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    [JsonPropertyName("name"), JsonInclude]
+    public string? Name { get; private set; }
 
     /// <summary>
     /// service code
@@ -86,8 +86,8 @@ public partial class Service
     /// <example>
     /// usps_media_mail
     /// </example>
-    [JsonPropertyName("service_code")]
-    public string? ServiceCode { get; set; }
+    [JsonPropertyName("service_code"), JsonInclude]
+    public string? ServiceCode { get; private set; }
 
 
     /// <summary>

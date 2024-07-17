@@ -35,7 +35,7 @@ public partial class UpdateWarehouseSettingsRequestBody
     /// <example>
     /// true
     /// </example>
-    [JsonPropertyName("is_default")]
+    [JsonPropertyName("is_default"), JsonPropertyOrder(1)]
     public bool? IsDefault { get; set; }
 
 

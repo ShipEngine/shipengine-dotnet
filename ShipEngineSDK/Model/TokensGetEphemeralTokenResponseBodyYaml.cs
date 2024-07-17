@@ -32,14 +32,14 @@ public partial class TokensGetEphemeralTokenResponseBodyYaml
     /// The redirect url formatted with the requested token.
     /// </summary>
     /// <value>The redirect url formatted with the requested token.</value>
-    [JsonPropertyName("redirect_url")]
+    [JsonPropertyName("redirect_url"), JsonPropertyOrder(1)]
     public string? RedirectUrl { get; set; }
 
     /// <summary>
     /// The requested token that expires in 10 seconds.
     /// </summary>
     /// <value>The requested token that expires in 10 seconds.</value>
-    [JsonPropertyName("token")]
+    [JsonPropertyName("token"), JsonPropertyOrder(2)]
     public string? Token { get; set; }
 
 

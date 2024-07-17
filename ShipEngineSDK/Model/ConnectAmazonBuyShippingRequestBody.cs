@@ -35,22 +35,19 @@ public partial class ConnectAmazonBuyShippingRequestBody
     /// <example>
     /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("email")]
-    [JsonRequired]
+    [JsonPropertyName("email"), JsonRequired, JsonPropertyOrder(1)]
     public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets MerchantSellerId
     /// </summary>
-    [JsonPropertyName("merchant_seller_id")]
-    [JsonRequired]
+    [JsonPropertyName("merchant_seller_id"), JsonRequired, JsonPropertyOrder(2)]
     public required string MerchantSellerId { get; set; }
 
     /// <summary>
     /// Gets or Sets MwsAuthToken
     /// </summary>
-    [JsonPropertyName("mws_auth_token")]
-    [JsonRequired]
+    [JsonPropertyName("mws_auth_token"), JsonRequired, JsonPropertyOrder(3)]
     public required string MwsAuthToken { get; set; }
 
     /// <summary>
@@ -60,8 +57,7 @@ public partial class ConnectAmazonBuyShippingRequestBody
     /// <example>
     /// Test Amazon Buy Shipping
     /// </example>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(4)]
     public required string Nickname { get; set; }
 
 

@@ -32,30 +32,28 @@ public partial class ConnectNewgisticsRequestBody
     /// Induction site
     /// </summary>
     /// <value>Induction site</value>
-    [JsonPropertyName("induction_site")]
-    [JsonRequired]
+    [JsonPropertyName("induction_site"), JsonRequired, JsonPropertyOrder(1)]
     public required string InductionSite { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Mailer id
     /// </summary>
     /// <value>Mailer id</value>
-    [JsonPropertyName("mailer_id")]
+    [JsonPropertyName("mailer_id"), JsonPropertyOrder(3)]
     public int? MailerId { get; set; }
 
     /// <summary>
     /// Merchant id
     /// </summary>
     /// <value>Merchant id</value>
-    [JsonPropertyName("merchant_id")]
+    [JsonPropertyName("merchant_id"), JsonPropertyOrder(4)]
     public int? MerchantId { get; set; }
 
 

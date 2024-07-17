@@ -32,8 +32,8 @@ public partial class ListCarrierPackageTypesResponseBody
     /// An array of custom package types
     /// </summary>
     /// <value>An array of custom package types</value>
-    [JsonPropertyName("packages")]
-    public List<PackageType>? Packages { get; set; }
+    [JsonPropertyName("packages"), JsonInclude]
+    public List<PackageType>? Packages { get; private set; }
 
 
     /// <summary>

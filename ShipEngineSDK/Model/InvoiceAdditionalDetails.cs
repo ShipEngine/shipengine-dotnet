@@ -32,35 +32,35 @@ public partial class InvoiceAdditionalDetails
     /// Discount for shipment.
     /// </summary>
     /// <value>Discount for shipment.</value>
-    [JsonPropertyName("discount")]
+    [JsonPropertyName("discount"), JsonPropertyOrder(1)]
     public MonetaryValue? Discount { get; set; }
 
     /// <summary>
     /// Freight Charge for shipment.
     /// </summary>
     /// <value>Freight Charge for shipment.</value>
-    [JsonPropertyName("freight_charge")]
+    [JsonPropertyName("freight_charge"), JsonPropertyOrder(2)]
     public MonetaryValue? FreightCharge { get; set; }
 
     /// <summary>
     /// Insurance Charge for shipment.
     /// </summary>
     /// <value>Insurance Charge for shipment.</value>
-    [JsonPropertyName("insurance_charge")]
+    [JsonPropertyName("insurance_charge"), JsonPropertyOrder(3)]
     public MonetaryValue? InsuranceCharge { get; set; }
 
     /// <summary>
     /// Other charge for shipment.
     /// </summary>
     /// <value>Other charge for shipment.</value>
-    [JsonPropertyName("other_charge")]
+    [JsonPropertyName("other_charge"), JsonPropertyOrder(4)]
     public MonetaryValue? OtherCharge { get; set; }
 
     /// <summary>
     /// Description for the other charge (if provided).
     /// </summary>
     /// <value>Description for the other charge (if provided).</value>
-    [JsonPropertyName("other_charge_description")]
+    [JsonPropertyName("other_charge_description"), JsonPropertyOrder(5)]
     public string? OtherChargeDescription { get; set; }
 
 

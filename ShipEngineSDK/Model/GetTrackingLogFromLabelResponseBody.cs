@@ -29,12 +29,10 @@ public partial class GetTrackingLogFromLabelResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode  CLOVUS
+    /// Gets or Sets StatusCode
     /// </summary>
-    [JsonPropertyName("status_code")]
-    [JsonRequired]
-    public required StatusCode StatusCode { get; set; } = new();
-
+    [JsonPropertyName("status_code"), JsonRequired, JsonPropertyOrder(4)]
+    public required StatusCode StatusCode { get; set; }
 
     /// <summary>
     /// Carrier status code
@@ -43,9 +41,8 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("carrier_status_code")]
-    [JsonRequired]
-    public required string CarrierStatusCode { get; set; }
+    [JsonPropertyName("carrier_status_code"), JsonInclude]
+    public string? CarrierStatusCode { get; private set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -54,17 +51,15 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("estimated_delivery_date")]
-    [JsonRequired]
+    [JsonPropertyName("estimated_delivery_date"), JsonRequired, JsonPropertyOrder(2)]
     public required DateTimeOffset EstimatedDeliveryDate { get; set; }
 
     /// <summary>
     /// The events that have occured during the lifetime of this tracking number.
     /// </summary>
     /// <value>The events that have occured during the lifetime of this tracking number.</value>
-    [JsonPropertyName("events")]
-    [JsonRequired]
-    public required List<TrackEvent> Events { get; set; }
+    [JsonPropertyName("events"), JsonInclude]
+    public List<TrackEvent>? Events { get; private set; }
 
     /// <summary>
     /// A tracking number for a package. The format depends on the carrier.
@@ -73,8 +68,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 1Z932R800392060079
     /// </example>
-    [JsonPropertyName("tracking_number")]
-    [JsonRequired]
+    [JsonPropertyName("tracking_number"), JsonRequired, JsonPropertyOrder(5)]
     public required string TrackingNumber { get; set; }
 
     /// <summary>
@@ -84,7 +78,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("actual_delivery_date")]
+    [JsonPropertyName("actual_delivery_date"), JsonPropertyOrder(6)]
     public DateTimeOffset? ActualDeliveryDate { get; set; }
 
     /// <summary>
@@ -94,7 +88,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// dhl_express
     /// </example>
-    [JsonPropertyName("carrier_code")]
+    [JsonPropertyName("carrier_code"), JsonPropertyOrder(7)]
     public string? CarrierCode { get; set; }
 
     /// <summary>
@@ -104,8 +98,8 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// OT
     /// </example>
-    [JsonPropertyName("carrier_detail_code")]
-    public string? CarrierDetailCode { get; set; }
+    [JsonPropertyName("carrier_detail_code"), JsonInclude]
+    public string? CarrierDetailCode { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.
@@ -114,7 +108,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(9)]
     public string? CarrierId { get; set; }
 
     /// <summary>
@@ -124,15 +118,15 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// Your item was delivered in or at the mailbox at 9:10 am on March
     /// </example>
-    [JsonPropertyName("carrier_status_description")]
-    public string? CarrierStatusDescription { get; set; }
+    [JsonPropertyName("carrier_status_description"), JsonInclude]
+    public string? CarrierStatusDescription { get; private set; }
 
     /// <summary>
     /// Exception description
     /// </summary>
     /// <value>Exception description</value>
-    [JsonPropertyName("exception_description")]
-    public string? ExceptionDescription { get; set; }
+    [JsonPropertyName("exception_description"), JsonInclude]
+    public string? ExceptionDescription { get; private set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -141,7 +135,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(12)]
     public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
@@ -151,8 +145,8 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// Delivered
     /// </example>
-    [JsonPropertyName("status_description")]
-    public string? StatusDescription { get; set; }
+    [JsonPropertyName("status_description"), JsonInclude]
+    public string? StatusDescription { get; private set; }
 
     /// <summary>
     /// Carrier Tracking Url, if available
@@ -161,8 +155,8 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// https://www.fedex.com/fedextrack/?action&#x3D;track&amp;trackingnumber&#x3D;1234
     /// </example>
-    [JsonPropertyName("tracking_url")]
-    public string? TrackingUrl { get; set; }
+    [JsonPropertyName("tracking_url"), JsonInclude]
+    public string? TrackingUrl { get; private set; }
 
 
     /// <summary>

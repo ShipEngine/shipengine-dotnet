@@ -23,7 +23,7 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// The information necessary to schedule a package pickup 
+/// The information necessary to schedule a package pickup
 /// </summary>
 public partial class Pickup
 {
@@ -35,8 +35,8 @@ public partial class Pickup
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("cancelled_at")]
-    public DateTimeOffset? CancelledAt { get; set; }
+    [JsonPropertyName("cancelled_at"), JsonInclude]
+    public DateTimeOffset? CancelledAt { get; private set; }
 
     /// <summary>
     /// The carrier_id associated with the pickup
@@ -45,8 +45,8 @@ public partial class Pickup
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    public string? CarrierId { get; set; }
+    [JsonPropertyName("carrier_id"), JsonInclude]
+    public string? CarrierId { get; private set; }
 
     /// <summary>
     /// The carrier confirmation number for the scheduled pickup.
@@ -55,13 +55,13 @@ public partial class Pickup
     /// <example>
     /// 292513CL4A3
     /// </example>
-    [JsonPropertyName("confirmation_number")]
-    public string? ConfirmationNumber { get; set; }
+    [JsonPropertyName("confirmation_number"), JsonInclude]
+    public string? ConfirmationNumber { get; private set; }
 
     /// <summary>
     /// Gets or Sets ContactDetails
     /// </summary>
-    [JsonPropertyName("contact_details")]
+    [JsonPropertyName("contact_details"), JsonPropertyOrder(4)]
     public ContactDetails? ContactDetails { get; set; }
 
     /// <summary>
@@ -71,21 +71,21 @@ public partial class Pickup
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    public DateTimeOffset? CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
     /// </summary>
     /// <value>Label IDs that will be included in the pickup request</value>
-    [JsonPropertyName("label_ids")]
+    [JsonPropertyName("label_ids"), JsonPropertyOrder(6)]
     public List<string>? LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupAddress
     /// </summary>
-    [JsonPropertyName("pickup_address")]
-    public Address? PickupAddress { get; set; }
+    [JsonPropertyName("pickup_address"), JsonInclude]
+    public Address? PickupAddress { get; private set; }
 
     /// <summary>
     /// Pickup Resource ID
@@ -94,28 +94,28 @@ public partial class Pickup
     /// <example>
     /// pik_3YcKU5zdtJuCqoeNwyqqbW
     /// </example>
-    [JsonPropertyName("pickup_id")]
-    public string? PickupId { get; set; }
+    [JsonPropertyName("pickup_id"), JsonInclude]
+    public string? PickupId { get; private set; }
 
     /// <summary>
     /// Used by some carriers to give special instructions for a package pickup
     /// </summary>
     /// <value>Used by some carriers to give special instructions for a package pickup</value>
-    [JsonPropertyName("pickup_notes")]
+    [JsonPropertyName("pickup_notes"), JsonPropertyOrder(9)]
     public string? PickupNotes { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupWindow
     /// </summary>
-    [JsonPropertyName("pickup_window")]
+    [JsonPropertyName("pickup_window"), JsonPropertyOrder(10)]
     public PickupWindow? PickupWindow { get; set; }
 
     /// <summary>
-    /// An array of available pickup windows. Carriers can return multiple times that they will pickup packages. 
+    /// An array of available pickup windows. Carriers can return multiple times that they will pickup packages.
     /// </summary>
     /// <value>An array of available pickup windows. Carriers can return multiple times that they will pickup packages. </value>
-    [JsonPropertyName("pickup_windows")]
-    public List<PickupWindows>? PickupWindows { get; set; }
+    [JsonPropertyName("pickup_windows"), JsonInclude, JsonRequired]
+    public List<PickupWindows>? PickupWindows { get; private set; }
 
     /// <summary>
     /// The warehouse_id associated with the pickup
@@ -124,8 +124,8 @@ public partial class Pickup
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
-    public string? WarehouseId { get; set; }
+    [JsonPropertyName("warehouse_id"), JsonInclude]
+    public string? WarehouseId { get; private set; }
 
 
     /// <summary>

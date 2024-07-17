@@ -32,16 +32,14 @@ public partial class ListBatchErrorsResponseBody
     /// The errors currently associated with the batch
     /// </summary>
     /// <value>The errors currently associated with the batch</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public required List<BatchResponseError> Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public List<BatchResponseError>? Errors { get; private set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
-    [JsonPropertyName("links")]
-    [JsonRequired]
-    public required PaginationLink Links { get; set; }
+    [JsonPropertyName("links"), JsonInclude]
+    public PaginationLink? Links { get; private set; }
 
 
     /// <summary>

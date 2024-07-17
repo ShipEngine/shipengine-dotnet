@@ -32,16 +32,14 @@ public partial class AddFundsToCarrierRequestBody
     /// The monetary amount, in the specified currency.
     /// </summary>
     /// <value>The monetary amount, in the specified currency.</value>
-    [JsonPropertyName("amount")]
-    [JsonRequired]
+    [JsonPropertyName("amount"), JsonRequired, JsonPropertyOrder(1)]
     public required double Amount { get; set; }
 
     /// <summary>
     /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
     /// </summary>
     /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
-    [JsonPropertyName("currency")]
-    [JsonRequired]
+    [JsonPropertyName("currency"), JsonRequired, JsonPropertyOrder(2)]
     public required string Currency { get; set; }
 
 

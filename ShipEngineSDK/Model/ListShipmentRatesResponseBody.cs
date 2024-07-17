@@ -29,12 +29,10 @@ public partial class ListShipmentRatesResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets Status  CLOVUS
+    /// Gets or Sets Status
     /// </summary>
-    [JsonPropertyName("status")]
-    [JsonRequired]
-    public required RateResponseStatus Status { get; set; } = new();
-
+    [JsonPropertyName("status"), JsonInclude]
+    public RateResponseStatus? Status { get; private set; }
 
     /// <summary>
     /// When the rate was created
@@ -43,24 +41,21 @@ public partial class ListShipmentRatesResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("created_at")]
-    [JsonRequired]
+    [JsonPropertyName("created_at"), JsonRequired, JsonPropertyOrder(1)]
     public required string CreatedAt { get; set; }
 
     /// <summary>
     /// Gets or Sets Errors
     /// </summary>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
+    [JsonPropertyName("errors"), JsonRequired, JsonPropertyOrder(2)]
     public required List<Error> Errors { get; set; }
 
     /// <summary>
     /// An array of invalid shipment rates
     /// </summary>
     /// <value>An array of invalid shipment rates</value>
-    [JsonPropertyName("invalid_rates")]
-    [JsonRequired]
-    public required List<Rate> InvalidRates { get; set; }
+    [JsonPropertyName("invalid_rates"), JsonInclude]
+    public List<Rate>? InvalidRates { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -69,17 +64,15 @@ public partial class ListShipmentRatesResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("rate_request_id")]
-    [JsonRequired]
-    public required string RateRequestId { get; set; }
+    [JsonPropertyName("rate_request_id"), JsonInclude]
+    public string? RateRequestId { get; private set; }
 
     /// <summary>
     /// An array of shipment rates
     /// </summary>
     /// <value>An array of shipment rates</value>
-    [JsonPropertyName("rates")]
-    [JsonRequired]
-    public required List<Rate> Rates { get; set; }
+    [JsonPropertyName("rates"), JsonInclude]
+    public List<Rate>? Rates { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -88,9 +81,8 @@ public partial class ListShipmentRatesResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipment_id")]
-    [JsonRequired]
-    public required string ShipmentId { get; set; }
+    [JsonPropertyName("shipment_id"), JsonInclude]
+    public string? ShipmentId { get; private set; }
 
 
     /// <summary>

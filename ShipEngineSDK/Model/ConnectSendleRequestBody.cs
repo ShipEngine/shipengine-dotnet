@@ -32,16 +32,14 @@ public partial class ConnectSendleRequestBody
     /// API key
     /// </summary>
     /// <value>API key</value>
-    [JsonPropertyName("api_key")]
-    [JsonRequired]
+    [JsonPropertyName("api_key"), JsonRequired, JsonPropertyOrder(1)]
     public required string ApiKey { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
@@ -51,8 +49,7 @@ public partial class ConnectSendleRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("sendle_id")]
-    [JsonRequired]
+    [JsonPropertyName("sendle_id"), JsonRequired, JsonPropertyOrder(3)]
     public required string SendleId { get; set; }
 
 

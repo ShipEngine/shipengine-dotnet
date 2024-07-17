@@ -29,21 +29,24 @@ public partial class ProcessBatchRequestBody
 {
 
     /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
+    /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(1)]
     public DisplayScheme? DisplayScheme { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelFormat  CLOVUS
+    /// Gets or Sets LabelFormat
     /// </summary>
-    [JsonPropertyName("label_format")]
+    [JsonPropertyName("label_format"), JsonPropertyOrder(2)]
     public LabelFormat? LabelFormat { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelLayout  CLOVUS
+    /// Gets or Sets LabelLayout
     /// </summary>
-    [JsonPropertyName("label_layout")]
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(3)]
     public LabelLayout? LabelLayout { get; set; }
+
     /// <summary>
     /// The Ship date the batch is being processed for
     /// </summary>
@@ -51,7 +54,7 @@ public partial class ProcessBatchRequestBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(4)]
     public DateTimeOffset? ShipDate { get; set; }
 
 

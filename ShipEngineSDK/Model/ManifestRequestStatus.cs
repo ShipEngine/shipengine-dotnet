@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(ManifestRequestStatusJsonConverter))]
 public class ManifestRequestStatus
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of ManifestRequestStatus with a predefined value.
@@ -68,6 +68,12 @@ public class ManifestRequestStatus
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is ManifestRequestStatus other && _value == other._value;
 }
 
 internal class ManifestRequestStatusJsonConverter : JsonConverter<ManifestRequestStatus>

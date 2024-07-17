@@ -29,13 +29,11 @@ public partial class ShippingAddress
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.  CLOVUS
+    /// Indicates whether this is a residential address.
     /// </summary>
     /// <value>Indicates whether this is a residential address.</value>
-    [JsonPropertyName("address_residential_indicator")]
-    [JsonRequired]
-    public required AddressResidentialIndicator AddressResidentialIndicator { get; set; } = new();
-
+    [JsonPropertyName("address_residential_indicator"), JsonRequired, JsonPropertyOrder(2)]
+    public required AddressResidentialIndicator AddressResidentialIndicator { get; set; }
 
     /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. 
@@ -44,8 +42,7 @@ public partial class ShippingAddress
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1")]
-    [JsonRequired]
+    [JsonPropertyName("address_line1"), JsonRequired, JsonPropertyOrder(1)]
     public required string AddressLine1 { get; set; }
 
     /// <summary>
@@ -55,8 +52,7 @@ public partial class ShippingAddress
     /// <example>
     /// Winnipeg
     /// </example>
-    [JsonPropertyName("city_locality")]
-    [JsonRequired]
+    [JsonPropertyName("city_locality"), JsonRequired, JsonPropertyOrder(3)]
     public required string CityLocality { get; set; }
 
     /// <summary>
@@ -66,8 +62,7 @@ public partial class ShippingAddress
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
-    [JsonRequired]
+    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(4)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -77,8 +72,7 @@ public partial class ShippingAddress
     /// <example>
     /// John Doe
     /// </example>
-    [JsonPropertyName("name")]
-    [JsonRequired]
+    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(5)]
     public required string Name { get; set; }
 
     /// <summary>
@@ -88,8 +82,7 @@ public partial class ShippingAddress
     /// <example>
     /// +1 204-253-9411 ext. 123
     /// </example>
-    [JsonPropertyName("phone")]
-    [JsonRequired]
+    [JsonPropertyName("phone"), JsonRequired, JsonPropertyOrder(6)]
     public required string Phone { get; set; }
 
     /// <summary>
@@ -99,8 +92,7 @@ public partial class ShippingAddress
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code")]
-    [JsonRequired]
+    [JsonPropertyName("postal_code"), JsonRequired, JsonPropertyOrder(7)]
     public required string PostalCode { get; set; }
 
     /// <summary>
@@ -110,8 +102,7 @@ public partial class ShippingAddress
     /// <example>
     /// Manitoba
     /// </example>
-    [JsonPropertyName("state_province")]
-    [JsonRequired]
+    [JsonPropertyName("state_province"), JsonRequired, JsonPropertyOrder(8)]
     public required string StateProvince { get; set; }
 
     /// <summary>
@@ -121,7 +112,7 @@ public partial class ShippingAddress
     /// <example>
     /// Unit 408
     /// </example>
-    [JsonPropertyName("address_line2")]
+    [JsonPropertyName("address_line2"), JsonPropertyOrder(9)]
     public string? AddressLine2 { get; set; }
 
     /// <summary>
@@ -131,7 +122,7 @@ public partial class ShippingAddress
     /// <example>
     /// Building #7
     /// </example>
-    [JsonPropertyName("address_line3")]
+    [JsonPropertyName("address_line3"), JsonPropertyOrder(10)]
     public string? AddressLine3 { get; set; }
 
     /// <summary>
@@ -141,7 +132,7 @@ public partial class ShippingAddress
     /// <example>
     /// The Home Depot
     /// </example>
-    [JsonPropertyName("company_name")]
+    [JsonPropertyName("company_name"), JsonPropertyOrder(11)]
     public string? CompanyName { get; set; }
 
     /// <summary>
@@ -151,14 +142,14 @@ public partial class ShippingAddress
     /// <example>
     /// example@example.com
     /// </example>
-    [JsonPropertyName("email")]
+    [JsonPropertyName("email"), JsonPropertyOrder(12)]
     public string? Email { get; set; }
 
     /// <summary>
     /// Additional text about how to handle the shipment at this address. 
     /// </summary>
     /// <value>Additional text about how to handle the shipment at this address. </value>
-    [JsonPropertyName("instructions")]
+    [JsonPropertyName("instructions"), JsonPropertyOrder(13)]
     public string? Instructions { get; set; }
 
 

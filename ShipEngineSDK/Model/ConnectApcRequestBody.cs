@@ -35,8 +35,7 @@ public partial class ConnectApcRequestBody
     /// <example>
     /// APC carrier account
     /// </example>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(1)]
     public required string Nickname { get; set; }
 
     /// <summary>
@@ -46,8 +45,7 @@ public partial class ConnectApcRequestBody
     /// <example>
     /// 12345
     /// </example>
-    [JsonPropertyName("password")]
-    [JsonRequired]
+    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(2)]
     public required string Password { get; set; }
 
     /// <summary>
@@ -57,8 +55,7 @@ public partial class ConnectApcRequestBody
     /// <example>
     /// john_doe
     /// </example>
-    [JsonPropertyName("username")]
-    [JsonRequired]
+    [JsonPropertyName("username"), JsonRequired, JsonPropertyOrder(3)]
     public required string Username { get; set; }
 
 

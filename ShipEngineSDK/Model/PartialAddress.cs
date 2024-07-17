@@ -29,11 +29,12 @@ public partial class PartialAddress
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.  CLOVUS
+    /// Indicates whether this is a residential address.
     /// </summary>
     /// <value>Indicates whether this is a residential address.</value>
-    [JsonPropertyName("address_residential_indicator")]
+    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(4)]
     public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
+
     /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. 
     /// </summary>
@@ -41,7 +42,7 @@ public partial class PartialAddress
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1")]
+    [JsonPropertyName("address_line1"), JsonPropertyOrder(1)]
     public string? AddressLine1 { get; set; }
 
     /// <summary>
@@ -51,7 +52,7 @@ public partial class PartialAddress
     /// <example>
     /// Unit 408
     /// </example>
-    [JsonPropertyName("address_line2")]
+    [JsonPropertyName("address_line2"), JsonPropertyOrder(2)]
     public string? AddressLine2 { get; set; }
 
     /// <summary>
@@ -61,7 +62,7 @@ public partial class PartialAddress
     /// <example>
     /// Building #7
     /// </example>
-    [JsonPropertyName("address_line3")]
+    [JsonPropertyName("address_line3"), JsonPropertyOrder(3)]
     public string? AddressLine3 { get; set; }
 
     /// <summary>
@@ -71,7 +72,7 @@ public partial class PartialAddress
     /// <example>
     /// Winnipeg
     /// </example>
-    [JsonPropertyName("city_locality")]
+    [JsonPropertyName("city_locality"), JsonPropertyOrder(5)]
     public string? CityLocality { get; set; }
 
     /// <summary>
@@ -81,7 +82,7 @@ public partial class PartialAddress
     /// <example>
     /// The Home Depot
     /// </example>
-    [JsonPropertyName("company_name")]
+    [JsonPropertyName("company_name"), JsonPropertyOrder(6)]
     public string? CompanyName { get; set; }
 
     /// <summary>
@@ -91,7 +92,7 @@ public partial class PartialAddress
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(7)]
     public string? CountryCode { get; set; }
 
     /// <summary>
@@ -101,7 +102,7 @@ public partial class PartialAddress
     /// <example>
     /// example@example.com
     /// </example>
-    [JsonPropertyName("email")]
+    [JsonPropertyName("email"), JsonPropertyOrder(8)]
     public string? Email { get; set; }
 
     /// <summary>
@@ -111,7 +112,7 @@ public partial class PartialAddress
     /// <example>
     /// John Doe
     /// </example>
-    [JsonPropertyName("name")]
+    [JsonPropertyName("name"), JsonPropertyOrder(9)]
     public string? Name { get; set; }
 
     /// <summary>
@@ -121,7 +122,7 @@ public partial class PartialAddress
     /// <example>
     /// +1 204-253-9411 ext. 123
     /// </example>
-    [JsonPropertyName("phone")]
+    [JsonPropertyName("phone"), JsonPropertyOrder(10)]
     public string? Phone { get; set; }
 
     /// <summary>
@@ -131,7 +132,7 @@ public partial class PartialAddress
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code")]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(11)]
     public string? PostalCode { get; set; }
 
     /// <summary>
@@ -141,7 +142,7 @@ public partial class PartialAddress
     /// <example>
     /// Manitoba
     /// </example>
-    [JsonPropertyName("state_province")]
+    [JsonPropertyName("state_province"), JsonPropertyOrder(12)]
     public string? StateProvince { get; set; }
 
 

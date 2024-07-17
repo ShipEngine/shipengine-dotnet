@@ -31,13 +31,13 @@ public partial class AdvancedShipmentOptionsFedexFreight
     /// <summary>
     /// Gets or Sets BookingConfirmation
     /// </summary>
-    [JsonPropertyName("booking_confirmation")]
+    [JsonPropertyName("booking_confirmation"), JsonPropertyOrder(1)]
     public string? BookingConfirmation { get; set; }
 
     /// <summary>
     /// Gets or Sets ShipperLoadAndCount
     /// </summary>
-    [JsonPropertyName("shipper_load_and_count")]
+    [JsonPropertyName("shipper_load_and_count"), JsonPropertyOrder(2)]
     public string? ShipperLoadAndCount { get; set; }
 
 

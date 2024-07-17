@@ -31,14 +31,14 @@ public partial class PartialShippingAddressTo
     /// <summary>
     /// Gets or Sets Geolocation
     /// </summary>
-    [JsonPropertyName("geolocation")]
+    [JsonPropertyName("geolocation"), JsonPropertyOrder(1)]
     public List<PartialShippingAddressToGeolocationInner>? Geolocation { get; set; }
 
     /// <summary>
     /// Additional text about how to handle the shipment at this address. 
     /// </summary>
     /// <value>Additional text about how to handle the shipment at this address. </value>
-    [JsonPropertyName("instructions")]
+    [JsonPropertyName("instructions"), JsonPropertyOrder(2)]
     public string? Instructions { get; set; }
 
 

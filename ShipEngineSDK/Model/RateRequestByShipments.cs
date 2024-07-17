@@ -32,8 +32,7 @@ public partial class RateRequestByShipments
     /// The array of shipments to get bulk rate estimates for
     /// </summary>
     /// <value>The array of shipments to get bulk rate estimates for</value>
-    [JsonPropertyName("shipments")]
-    [JsonRequired]
+    [JsonPropertyName("shipments"), JsonRequired, JsonPropertyOrder(1)]
     public required List<AddressValidatingShipment> Shipments { get; set; }
 
 

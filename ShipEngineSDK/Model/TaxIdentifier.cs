@@ -29,35 +29,29 @@ public partial class TaxIdentifier
 {
 
     /// <summary>
-    /// Gets or Sets IdentifierType  CLOVUS
+    /// Gets or Sets IdentifierType
     /// </summary>
-    [JsonPropertyName("identifier_type")]
-    [JsonRequired]
-    public required IdentifierType IdentifierType { get; set; } = new();
-
+    [JsonPropertyName("identifier_type"), JsonRequired, JsonPropertyOrder(1)]
+    public required IdentifierType IdentifierType { get; set; }
 
     /// <summary>
-    /// Gets or Sets TaxableEntityType  CLOVUS
+    /// Gets or Sets TaxableEntityType
     /// </summary>
-    [JsonPropertyName("taxable_entity_type")]
-    [JsonRequired]
-    public required TaxableEntityType TaxableEntityType { get; set; } = new();
-
+    [JsonPropertyName("taxable_entity_type"), JsonRequired, JsonPropertyOrder(3)]
+    public required TaxableEntityType TaxableEntityType { get; set; }
 
     /// <summary>
     /// The authority that issued this tax. This must be a valid 2 character ISO 3166 Alpha 2 country code.
     /// </summary>
     /// <value>The authority that issued this tax. This must be a valid 2 character ISO 3166 Alpha 2 country code.</value>
-    [JsonPropertyName("issuing_authority")]
-    [JsonRequired]
+    [JsonPropertyName("issuing_authority"), JsonRequired, JsonPropertyOrder(2)]
     public required string IssuingAuthority { get; set; }
 
     /// <summary>
     /// The value of the identifier
     /// </summary>
     /// <value>The value of the identifier</value>
-    [JsonPropertyName("value")]
-    [JsonRequired]
+    [JsonPropertyName("value"), JsonRequired, JsonPropertyOrder(4)]
     public required string Value { get; set; }
 
 

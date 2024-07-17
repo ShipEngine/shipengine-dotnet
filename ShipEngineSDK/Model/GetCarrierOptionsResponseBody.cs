@@ -32,8 +32,8 @@ public partial class GetCarrierOptionsResponseBody
     /// AN array of carrier options
     /// </summary>
     /// <value>AN array of carrier options</value>
-    [JsonPropertyName("options")]
-    public List<CarrierAdvancedOption>? Options { get; set; }
+    [JsonPropertyName("options"), JsonInclude]
+    public List<CarrierAdvancedOption>? Options { get; private set; }
 
 
     /// <summary>

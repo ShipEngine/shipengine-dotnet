@@ -29,15 +29,16 @@ public partial class Webhook
 {
 
     /// <summary>
-    /// Gets or Sets Event  CLOVUS
+    /// Gets or Sets Event
     /// </summary>
-    [JsonPropertyName("event")]
+    [JsonPropertyName("event"), JsonPropertyOrder(1)]
     public WebhookEvent? Event { get; set; }
+
     /// <summary>
     /// Array of custom webhook headers
     /// </summary>
     /// <value>Array of custom webhook headers</value>
-    [JsonPropertyName("headers")]
+    [JsonPropertyName("headers"), JsonPropertyOrder(2)]
     public List<WebhookHeader>? Headers { get; set; }
 
     /// <summary>
@@ -47,7 +48,7 @@ public partial class Webhook
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("url")]
+    [JsonPropertyName("url"), JsonPropertyOrder(3)]
     public string? Url { get; set; }
 
     /// <summary>
@@ -57,8 +58,8 @@ public partial class Webhook
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("webhook_id")]
-    public string? WebhookId { get; set; }
+    [JsonPropertyName("webhook_id"), JsonInclude]
+    public string? WebhookId { get; private set; }
 
 
     /// <summary>

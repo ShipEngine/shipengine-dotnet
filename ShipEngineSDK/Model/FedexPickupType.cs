@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(FedexPickupTypeJsonConverter))]
 public class FedexPickupType
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of FedexPickupType with a predefined value.
@@ -92,6 +92,12 @@ public class FedexPickupType
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is FedexPickupType other && _value == other._value;
 }
 
 internal class FedexPickupTypeJsonConverter : JsonConverter<FedexPickupType>

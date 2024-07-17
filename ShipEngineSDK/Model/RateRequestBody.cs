@@ -32,41 +32,40 @@ public partial class RateRequestBody
     /// Array of carrier ids to get rates for
     /// </summary>
     /// <value>Array of carrier ids to get rates for</value>
-    [JsonPropertyName("carrier_ids")]
-    [JsonRequired]
+    [JsonPropertyName("carrier_ids"), JsonRequired, JsonPropertyOrder(1)]
     public required List<string> CarrierIds { get; set; }
 
     /// <summary>
     /// Calculate the duties and tariffs for cross border shipments.
     /// </summary>
     /// <value>Calculate the duties and tariffs for cross border shipments.</value>
-    [JsonPropertyName("calculate_tax_amount")]
+    [JsonPropertyName("calculate_tax_amount"), JsonPropertyOrder(2)]
     public bool? CalculateTaxAmount { get; set; }
 
     /// <summary>
     /// Indicate if it&#39;s a return shipment
     /// </summary>
     /// <value>Indicate if it&#39;s a return shipment</value>
-    [JsonPropertyName("is_return")]
+    [JsonPropertyName("is_return"), JsonPropertyOrder(3)]
     public bool? IsReturn { get; set; }
 
     /// <summary>
     /// Gets or Sets PackageTypes
     /// </summary>
-    [JsonPropertyName("package_types")]
+    [JsonPropertyName("package_types"), JsonPropertyOrder(4)]
     public List<string>? PackageTypes { get; set; }
 
     /// <summary>
     /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
     /// </summary>
     /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
-    [JsonPropertyName("preferred_currency")]
+    [JsonPropertyName("preferred_currency"), JsonPropertyOrder(5)]
     public string? PreferredCurrency { get; set; }
 
     /// <summary>
     /// Gets or Sets ServiceCodes
     /// </summary>
-    [JsonPropertyName("service_codes")]
+    [JsonPropertyName("service_codes"), JsonPropertyOrder(6)]
     public List<string>? ServiceCodes { get; set; }
 
 

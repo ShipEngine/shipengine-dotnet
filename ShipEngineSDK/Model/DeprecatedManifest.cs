@@ -35,8 +35,7 @@ public partial class DeprecatedManifest
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    [Obsolete]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(1), Obsolete]
     public string? CarrierId { get; set; }
 
     /// <summary>
@@ -46,8 +45,7 @@ public partial class DeprecatedManifest
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    [Obsolete]
+    [JsonPropertyName("created_at"), JsonPropertyOrder(2), Obsolete]
     public DateTimeOffset? CreatedAt { get; set; }
 
     /// <summary>
@@ -57,23 +55,20 @@ public partial class DeprecatedManifest
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("form_id")]
-    [Obsolete]
+    [JsonPropertyName("form_id"), JsonPropertyOrder(3), Obsolete]
     public string? FormId { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.
     /// </summary>
     /// <value>An array of the label ids used in this manifest.</value>
-    [JsonPropertyName("label_ids")]
-    [Obsolete]
-    public List<string>? LabelIds { get; set; }
+    [JsonPropertyName("label_ids"), JsonInclude, Obsolete]
+    public List<string>? LabelIds { get; private set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
     /// </summary>
-    [JsonPropertyName("manifest_download")]
-    [Obsolete]
+    [JsonPropertyName("manifest_download"), JsonPropertyOrder(5), Obsolete]
     public ManifestDownload? ManifestDownload { get; set; }
 
     /// <summary>
@@ -83,8 +78,7 @@ public partial class DeprecatedManifest
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("manifest_id")]
-    [Obsolete]
+    [JsonPropertyName("manifest_id"), JsonPropertyOrder(6), Obsolete]
     public string? ManifestId { get; set; }
 
     /// <summary>
@@ -94,8 +88,7 @@ public partial class DeprecatedManifest
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
-    [JsonPropertyName("ship_date")]
-    [Obsolete]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(7), Obsolete]
     public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
@@ -105,9 +98,8 @@ public partial class DeprecatedManifest
     /// <example>
     /// 100
     /// </example>
-    [JsonPropertyName("shipments")]
-    [Obsolete]
-    public int? Shipments { get; set; }
+    [JsonPropertyName("shipments"), JsonInclude, Obsolete]
+    public int? Shipments { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
@@ -116,8 +108,7 @@ public partial class DeprecatedManifest
     /// <example>
     /// 9475711899564878915476
     /// </example>
-    [JsonPropertyName("submission_id")]
-    [Obsolete]
+    [JsonPropertyName("submission_id"), JsonPropertyOrder(9), Obsolete]
     public string? SubmissionId { get; set; }
 
     /// <summary>
@@ -127,8 +118,7 @@ public partial class DeprecatedManifest
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
-    [Obsolete]
+    [JsonPropertyName("warehouse_id"), JsonPropertyOrder(10), Obsolete]
     public string? WarehouseId { get; set; }
 
 

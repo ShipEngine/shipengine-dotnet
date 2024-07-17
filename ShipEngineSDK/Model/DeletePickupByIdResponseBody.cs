@@ -32,9 +32,8 @@ public partial class DeletePickupByIdResponseBody
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public required List<Error> Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public List<Error>? Errors { get; private set; }
 
     /// <summary>
     /// Pickup Resource ID
@@ -43,8 +42,7 @@ public partial class DeletePickupByIdResponseBody
     /// <example>
     /// pik_3YcKU5zdtJuCqoeNwyqqbW
     /// </example>
-    [JsonPropertyName("pickup_id")]
-    [JsonRequired]
+    [JsonPropertyName("pickup_id"), JsonRequired, JsonPropertyOrder(2)]
     public required string PickupId { get; set; }
 
     /// <summary>
@@ -54,8 +52,7 @@ public partial class DeletePickupByIdResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id")]
-    [JsonRequired]
+    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(3)]
     public required Guid RequestId { get; set; }
 
 

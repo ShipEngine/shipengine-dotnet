@@ -32,17 +32,15 @@ public partial class ListManifestsResponseBody
     /// Helpful links to other pages of results
     /// </summary>
     /// <value>Helpful links to other pages of results</value>
-    [JsonPropertyName("links")]
-    [JsonRequired]
-    public required PaginationLink Links { get; set; }
+    [JsonPropertyName("links"), JsonInclude]
+    public PaginationLink? Links { get; private set; }
 
     /// <summary>
     /// The list of available manifests
     /// </summary>
     /// <value>The list of available manifests</value>
-    [JsonPropertyName("manifests")]
-    [JsonRequired]
-    public required List<Manifest> Manifests { get; set; }
+    [JsonPropertyName("manifests"), JsonInclude]
+    public List<Manifest>? Manifests { get; private set; }
 
     /// <summary>
     /// Current page of the list manifests results
@@ -51,9 +49,8 @@ public partial class ListManifestsResponseBody
     /// <example>
     /// 3
     /// </example>
-    [JsonPropertyName("page")]
-    [JsonRequired]
-    public required int Page { get; set; }
+    [JsonPropertyName("page"), JsonInclude]
+    public int? Page { get; private set; }
 
     /// <summary>
     /// Total number of pages for list manifests results
@@ -62,9 +59,8 @@ public partial class ListManifestsResponseBody
     /// <example>
     /// 4
     /// </example>
-    [JsonPropertyName("pages")]
-    [JsonRequired]
-    public required int Pages { get; set; }
+    [JsonPropertyName("pages"), JsonInclude]
+    public int? Pages { get; private set; }
 
     /// <summary>
     /// The total number of manifests returned
@@ -73,9 +69,8 @@ public partial class ListManifestsResponseBody
     /// <example>
     /// 3
     /// </example>
-    [JsonPropertyName("total")]
-    [JsonRequired]
-    public required long Total { get; set; }
+    [JsonPropertyName("total"), JsonInclude]
+    public long? Total { get; private set; }
 
 
     /// <summary>

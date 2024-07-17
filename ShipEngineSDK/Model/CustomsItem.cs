@@ -35,9 +35,8 @@ public partial class CustomsItem
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("customs_item_id")]
-    [JsonRequired]
-    public required string CustomsItemId { get; set; }
+    [JsonPropertyName("customs_item_id"), JsonInclude]
+    public string? CustomsItemId { get; private set; }
 
     /// <summary>
     /// The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) where this item originated 
@@ -46,14 +45,14 @@ public partial class CustomsItem
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_of_origin")]
+    [JsonPropertyName("country_of_origin"), JsonPropertyOrder(2)]
     public string? CountryOfOrigin { get; set; }
 
     /// <summary>
     /// A description of the item
     /// </summary>
     /// <value>A description of the item</value>
-    [JsonPropertyName("description")]
+    [JsonPropertyName("description"), JsonPropertyOrder(3)]
     public string? Description { get; set; }
 
     /// <summary>
@@ -63,55 +62,55 @@ public partial class CustomsItem
     /// <example>
     /// 3926.1
     /// </example>
-    [JsonPropertyName("harmonized_tariff_code")]
+    [JsonPropertyName("harmonized_tariff_code"), JsonPropertyOrder(4)]
     public string? HarmonizedTariffCode { get; set; }
 
     /// <summary>
     /// The quantity of this item in the shipment.
     /// </summary>
     /// <value>The quantity of this item in the shipment.</value>
-    [JsonPropertyName("quantity")]
+    [JsonPropertyName("quantity"), JsonPropertyOrder(5)]
     public int? Quantity { get; set; }
 
     /// <summary>
     /// The SKU (Stock Keeping Unit) of the customs item
     /// </summary>
     /// <value>The SKU (Stock Keeping Unit) of the customs item</value>
-    [JsonPropertyName("sku")]
+    [JsonPropertyName("sku"), JsonPropertyOrder(6)]
     public string? Sku { get; set; }
 
     /// <summary>
     /// Description of the Custom Item&#39;s SKU
     /// </summary>
     /// <value>Description of the Custom Item&#39;s SKU</value>
-    [JsonPropertyName("sku_description")]
+    [JsonPropertyName("sku_description"), JsonPropertyOrder(7)]
     public string? SkuDescription { get; set; }
 
     /// <summary>
     /// Gets or Sets UnitOfMeasure
     /// </summary>
-    [JsonPropertyName("unit_of_measure")]
+    [JsonPropertyName("unit_of_measure"), JsonPropertyOrder(8)]
     public string? UnitOfMeasure { get; set; }
 
     /// <summary>
     /// The monetary amount, in the specified currency.
     /// </summary>
     /// <value>The monetary amount, in the specified currency.</value>
-    [JsonPropertyName("value")]
+    [JsonPropertyName("value"), JsonPropertyOrder(9)]
     public double? Value { get; set; }
 
     /// <summary>
     /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 
     /// </summary>
     /// <value>The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html </value>
-    [JsonPropertyName("value_currency")]
+    [JsonPropertyName("value_currency"), JsonPropertyOrder(10)]
     public string? ValueCurrency { get; set; }
 
     /// <summary>
     /// The item weight
     /// </summary>
     /// <value>The item weight</value>
-    [JsonPropertyName("weight")]
+    [JsonPropertyName("weight"), JsonPropertyOrder(11)]
     public Weight? Weight { get; set; }
 
 

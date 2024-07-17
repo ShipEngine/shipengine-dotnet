@@ -32,7 +32,7 @@ public partial class GetServicePointsRequestBodyShipment
     /// Shipment total weight
     /// </summary>
     /// <value>Shipment total weight</value>
-    [JsonPropertyName("total_weight")]
+    [JsonPropertyName("total_weight"), JsonPropertyOrder(1)]
     public Weight? TotalWeight { get; set; }
 
 

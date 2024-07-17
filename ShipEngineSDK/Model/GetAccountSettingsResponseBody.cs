@@ -29,10 +29,11 @@ public partial class GetAccountSettingsResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets DefaultLabelLayout  CLOVUS
+    /// Gets or Sets DefaultLabelLayout
     /// </summary>
-    [JsonPropertyName("default_label_layout")]
+    [JsonPropertyName("default_label_layout"), JsonPropertyOrder(1)]
     public DefaultLabelLayout? DefaultLabelLayout { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object

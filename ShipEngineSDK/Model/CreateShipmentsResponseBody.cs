@@ -32,16 +32,14 @@ public partial class CreateShipmentsResponseBody
     /// An array of shipments that were created.
     /// </summary>
     /// <value>An array of shipments that were created.</value>
-    [JsonPropertyName("shipments")]
-    [JsonRequired]
+    [JsonPropertyName("shipments"), JsonRequired, JsonPropertyOrder(1)]
     public required List<CreateAndValidateShipment> Shipments { get; set; }
 
     /// <summary>
     /// Indicates if errors occured while creating the shipments
     /// </summary>
     /// <value>Indicates if errors occured while creating the shipments</value>
-    [JsonPropertyName("has_errors")]
-    [JsonRequired]
+    [JsonPropertyName("has_errors"), JsonRequired, JsonPropertyOrder(2)]
     public required bool HasErrors { get; set; }
 
 

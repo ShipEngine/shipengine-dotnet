@@ -32,8 +32,7 @@ public partial class RateRequestByShipmentIds
     /// The array of shipment IDs
     /// </summary>
     /// <value>The array of shipment IDs</value>
-    [JsonPropertyName("shipment_ids")]
-    [JsonRequired]
+    [JsonPropertyName("shipment_ids"), JsonRequired, JsonPropertyOrder(1)]
     public required List<string> ShipmentIds { get; set; }
 
 

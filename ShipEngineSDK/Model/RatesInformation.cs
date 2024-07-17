@@ -29,10 +29,11 @@ public partial class RatesInformation
 {
 
     /// <summary>
-    /// Gets or Sets Status  CLOVUS
+    /// Gets or Sets Status
     /// </summary>
-    [JsonPropertyName("status")]
-    public RateResponseStatus? Status { get; set; }
+    [JsonPropertyName("status"), JsonInclude]
+    public RateResponseStatus? Status { get; private set; }
+
     /// <summary>
     /// When the rate was created
     /// </summary>
@@ -40,21 +41,21 @@ public partial class RatesInformation
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("created_at")]
+    [JsonPropertyName("created_at"), JsonPropertyOrder(1)]
     public string? CreatedAt { get; set; }
 
     /// <summary>
     /// Gets or Sets Errors
     /// </summary>
-    [JsonPropertyName("errors")]
+    [JsonPropertyName("errors"), JsonPropertyOrder(2)]
     public List<Error>? Errors { get; set; }
 
     /// <summary>
     /// An array of invalid shipment rates
     /// </summary>
     /// <value>An array of invalid shipment rates</value>
-    [JsonPropertyName("invalid_rates")]
-    public List<Rate>? InvalidRates { get; set; }
+    [JsonPropertyName("invalid_rates"), JsonInclude]
+    public List<Rate>? InvalidRates { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -63,15 +64,15 @@ public partial class RatesInformation
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("rate_request_id")]
-    public string? RateRequestId { get; set; }
+    [JsonPropertyName("rate_request_id"), JsonInclude]
+    public string? RateRequestId { get; private set; }
 
     /// <summary>
     /// An array of shipment rates
     /// </summary>
     /// <value>An array of shipment rates</value>
-    [JsonPropertyName("rates")]
-    public List<Rate>? Rates { get; set; }
+    [JsonPropertyName("rates"), JsonInclude]
+    public List<Rate>? Rates { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -80,8 +81,8 @@ public partial class RatesInformation
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipment_id")]
-    public string? ShipmentId { get; set; }
+    [JsonPropertyName("shipment_id"), JsonInclude]
+    public string? ShipmentId { get; private set; }
 
 
     /// <summary>

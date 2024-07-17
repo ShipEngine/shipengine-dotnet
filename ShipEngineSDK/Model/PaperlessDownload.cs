@@ -32,7 +32,7 @@ public partial class PaperlessDownload
     /// The handoff code for the paperless download. 
     /// </summary>
     /// <value>The handoff code for the paperless download. </value>
-    [JsonPropertyName("handoff_code")]
+    [JsonPropertyName("handoff_code"), JsonPropertyOrder(1)]
     public string? HandoffCode { get; set; }
 
     /// <summary>
@@ -42,14 +42,14 @@ public partial class PaperlessDownload
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("href")]
+    [JsonPropertyName("href"), JsonPropertyOrder(2)]
     public string? Href { get; set; }
 
     /// <summary>
     /// The instructions for the paperless download. 
     /// </summary>
     /// <value>The instructions for the paperless download. </value>
-    [JsonPropertyName("instructions")]
+    [JsonPropertyName("instructions"), JsonPropertyOrder(3)]
     public string? Instructions { get; set; }
 
 

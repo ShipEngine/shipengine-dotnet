@@ -29,10 +29,11 @@ public partial class ManifestRequest
 {
 
     /// <summary>
-    /// Gets or Sets Status  CLOVUS
+    /// Gets or Sets Status
     /// </summary>
-    [JsonPropertyName("status")]
+    [JsonPropertyName("status"), JsonPropertyOrder(2)]
     public ManifestRequestStatus? Status { get; set; }
+
     /// <summary>
     /// A string that uniquely identifies a manifest request
     /// </summary>
@@ -40,8 +41,8 @@ public partial class ManifestRequest
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("manifest_request_id")]
-    public string? ManifestRequestId { get; set; }
+    [JsonPropertyName("manifest_request_id"), JsonInclude]
+    public string? ManifestRequestId { get; private set; }
 
 
     /// <summary>

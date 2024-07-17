@@ -32,7 +32,7 @@ public partial class ShipmentRequest
     /// The shipment object
     /// </summary>
     /// <value>The shipment object</value>
-    [JsonPropertyName("shipment")]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(1)]
     public AddressValidatingShipment? Shipment { get; set; }
 
 

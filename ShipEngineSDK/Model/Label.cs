@@ -29,56 +29,64 @@ public partial class Label
 {
 
     /// <summary>
-    /// The label charge event.   CLOVUS
+    /// The label charge event. 
     /// </summary>
     /// <value>The label charge event. </value>
-    [JsonPropertyName("charge_event")]
+    [JsonPropertyName("charge_event"), JsonPropertyOrder(5)]
     public LabelChargeEvent? ChargeEvent { get; set; }
+
     /// <summary>
-    /// The display format that the label should be shown in.  CLOVUS
+    /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme")]
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(7)]
     public DisplayScheme? DisplayScheme { get; set; }
+
     /// <summary>
-    /// Gets or Sets LabelDownloadType  CLOVUS
+    /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type")]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(14)]
     public LabelDownloadType? LabelDownloadType { get; set; }
+
     /// <summary>
-    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats.   CLOVUS
+    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
     /// </summary>
     /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
-    [JsonPropertyName("label_format")]
+    [JsonPropertyName("label_format"), JsonPropertyOrder(15)]
     public LabelFormat? LabelFormat { get; set; }
+
     /// <summary>
-    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format.   CLOVUS
+    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
     /// </summary>
     /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    [JsonPropertyName("label_layout")]
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(18)]
     public LabelLayout? LabelLayout { get; set; }
+
     /// <summary>
-    /// Gets or Sets Status  CLOVUS
+    /// Gets or Sets Status
     /// </summary>
-    [JsonPropertyName("status")]
-    public LabelStatus? Status { get; set; }
+    [JsonPropertyName("status"), JsonInclude]
+    public LabelStatus? Status { get; private set; }
+
     /// <summary>
-    /// The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;  CLOVUS
+    /// The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;
     /// </summary>
     /// <value>The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;</value>
-    [JsonPropertyName("tracking_status")]
-    public TrackingStatus? TrackingStatus { get; set; }
+    [JsonPropertyName("tracking_status"), JsonInclude]
+    public TrackingStatus? TrackingStatus { get; private set; }
+
     /// <summary>
-    /// Gets or Sets ValidateAddress  CLOVUS
+    /// Gets or Sets ValidateAddress
     /// </summary>
-    [JsonPropertyName("validate_address")]
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(36)]
     public ValidateAddress? ValidateAddress { get; set; }
+
     /// <summary>
     /// Additional information some carriers may provide by which to identify a given label in their system.  
     /// </summary>
     /// <value>Additional information some carriers may provide by which to identify a given label in their system.  </value>
-    [JsonPropertyName("alternative_identifiers")]
-    public List<AlternativeIdentifier>? AlternativeIdentifiers { get; set; }
+    [JsonPropertyName("alternative_identifiers"), JsonInclude]
+    public List<AlternativeIdentifier>? AlternativeIdentifiers { get; private set; }
 
     /// <summary>
     /// If this label was created as part of a [batch](https://www.shipengine.com/docs/labels/bulk/), then this is the unique ID of that batch. 
@@ -87,8 +95,8 @@ public partial class Label
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("batch_id")]
-    public string? BatchId { get; set; }
+    [JsonPropertyName("batch_id"), JsonInclude]
+    public string? BatchId { get; private set; }
 
     /// <summary>
     /// The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
@@ -97,8 +105,8 @@ public partial class Label
     /// <example>
     /// dhl_express
     /// </example>
-    [JsonPropertyName("carrier_code")]
-    public string? CarrierCode { get; set; }
+    [JsonPropertyName("carrier_code"), JsonInclude]
+    public string? CarrierCode { get; private set; }
 
     /// <summary>
     /// The unique ID of the [carrier account](https://www.shipengine.com/docs/carriers/setup/) that was used to create this label 
@@ -107,8 +115,8 @@ public partial class Label
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    public string? CarrierId { get; set; }
+    [JsonPropertyName("carrier_id"), JsonInclude]
+    public string? CarrierId { get; private set; }
 
     /// <summary>
     /// The date and time that the label was created in ShipEngine.
@@ -117,49 +125,49 @@ public partial class Label
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    public DateTimeOffset? CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it. 
     /// </summary>
     /// <value>The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it. </value>
-    [JsonPropertyName("form_download")]
-    public Link? FormDownload { get; set; }
+    [JsonPropertyName("form_download"), JsonInclude]
+    public Link? FormDownload { get; private set; }
 
     /// <summary>
     /// The link to submit an insurance claim for the shipment.  This field is null if the shipment is not insured or if the insurance provider does not support online claim submission. 
     /// </summary>
     /// <value>The link to submit an insurance claim for the shipment.  This field is null if the shipment is not insured or if the insurance provider does not support online claim submission. </value>
-    [JsonPropertyName("insurance_claim")]
-    public Link? InsuranceClaim { get; set; }
+    [JsonPropertyName("insurance_claim"), JsonInclude]
+    public Link? InsuranceClaim { get; private set; }
 
     /// <summary>
     /// The insurance cost for this package.  Add this to the &#x60;shipment_cost&#x60; field to get the total cost. 
     /// </summary>
     /// <value>The insurance cost for this package.  Add this to the &#x60;shipment_cost&#x60; field to get the total cost. </value>
-    [JsonPropertyName("insurance_cost")]
-    public MonetaryValue? InsuranceCost { get; set; }
+    [JsonPropertyName("insurance_cost"), JsonInclude]
+    public MonetaryValue? InsuranceCost { get; private set; }
 
     /// <summary>
     /// Indicates whether this is an international shipment.  That is, the originating country and destination country are different. 
     /// </summary>
     /// <value>Indicates whether this is an international shipment.  That is, the originating country and destination country are different. </value>
-    [JsonPropertyName("is_international")]
-    public bool? IsInternational { get; set; }
+    [JsonPropertyName("is_international"), JsonInclude]
+    public bool? IsInternational { get; private set; }
 
     /// <summary>
     /// Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. 
     /// </summary>
     /// <value>Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. </value>
-    [JsonPropertyName("is_return_label")]
+    [JsonPropertyName("is_return_label"), JsonPropertyOrder(12)]
     public bool? IsReturnLabel { get; set; }
 
     /// <summary>
     /// Gets or Sets LabelDownload
     /// </summary>
-    [JsonPropertyName("label_download")]
-    public LabelDownload? LabelDownload { get; set; }
+    [JsonPropertyName("label_download"), JsonInclude]
+    public LabelDownload? LabelDownload { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the label. This ID is generated by ShipEngine when the label is created. 
@@ -168,8 +176,8 @@ public partial class Label
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("label_id")]
-    public string? LabelId { get; set; }
+    [JsonPropertyName("label_id"), JsonInclude]
+    public string? LabelId { get; private set; }
 
     /// <summary>
     /// The label image resource that was used to create a custom label image.
@@ -178,7 +186,7 @@ public partial class Label
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id")]
+    [JsonPropertyName("label_image_id"), JsonPropertyOrder(17)]
     public string? LabelImageId { get; set; }
 
     /// <summary>
@@ -188,7 +196,7 @@ public partial class Label
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("outbound_label_id")]
+    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(19)]
     public string? OutboundLabelId { get; set; }
 
     /// <summary>
@@ -198,35 +206,35 @@ public partial class Label
     /// <example>
     /// small_flat_rate_box
     /// </example>
-    [JsonPropertyName("package_code")]
-    public string? PackageCode { get; set; }
+    [JsonPropertyName("package_code"), JsonInclude]
+    public string? PackageCode { get; private set; }
 
     /// <summary>
     /// The label&#39;s package(s).  &gt; **Note:** Some carriers only allow one package per label.  If you attempt to create a multi-package label for a carrier that doesn&#39;t allow it, an error will be returned. 
     /// </summary>
     /// <value>The label&#39;s package(s).  &gt; **Note:** Some carriers only allow one package per label.  If you attempt to create a multi-package label for a carrier that doesn&#39;t allow it, an error will be returned. </value>
-    [JsonPropertyName("packages")]
-    public List<LabelPackagesInner>? Packages { get; set; }
+    [JsonPropertyName("packages"), JsonInclude]
+    public List<LabelPackagesInner>? Packages { get; private set; }
 
     /// <summary>
     /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;. 
     /// </summary>
     /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;. </value>
-    [JsonPropertyName("paperless_download")]
-    public PaperlessDownload? PaperlessDownload { get; set; }
+    [JsonPropertyName("paperless_download"), JsonInclude]
+    public PaperlessDownload? PaperlessDownload { get; private set; }
 
     /// <summary>
     /// The total shipping cost for the specified comparison_rate_type. 
     /// </summary>
     /// <value>The total shipping cost for the specified comparison_rate_type. </value>
-    [JsonPropertyName("requested_comparison_amount")]
-    public MonetaryValue? RequestedComparisonAmount { get; set; }
+    [JsonPropertyName("requested_comparison_amount"), JsonInclude]
+    public MonetaryValue? RequestedComparisonAmount { get; private set; }
 
     /// <summary>
     /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
     /// </summary>
     /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-    [JsonPropertyName("rma_number")]
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(24)]
     public string? RmaNumber { get; set; }
 
     /// <summary>
@@ -236,8 +244,8 @@ public partial class Label
     /// <example>
     /// usps_first_class_mail
     /// </example>
-    [JsonPropertyName("service_code")]
-    public string? ServiceCode { get; set; }
+    [JsonPropertyName("service_code"), JsonInclude]
+    public string? ServiceCode { get; private set; }
 
     /// <summary>
     /// The date that the package was (or will be) shippped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead. 
@@ -246,22 +254,22 @@ public partial class Label
     /// <example>
     /// 2018-09-23T00:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
-    public DateTimeOffset? ShipDate { get; set; }
+    [JsonPropertyName("ship_date"), JsonInclude]
+    public DateTimeOffset? ShipDate { get; private set; }
 
     /// <summary>
     /// The shipment information used to generate the label
     /// </summary>
     /// <value>The shipment information used to generate the label</value>
-    [JsonPropertyName("shipment")]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(27)]
     public Shipment? Shipment { get; set; }
 
     /// <summary>
     /// The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs. 
     /// </summary>
     /// <value>The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs. </value>
-    [JsonPropertyName("shipment_cost")]
-    public MonetaryValue? ShipmentCost { get; set; }
+    [JsonPropertyName("shipment_cost"), JsonInclude]
+    public MonetaryValue? ShipmentCost { get; private set; }
 
     /// <summary>
     /// The shipment that this label is for.  ShipEngine can create a shipment for you automatically when you [create a label](https://www.shipengine.com/docs/labels/create-a-label/), or you can [create your own shipment](https://www.shipengine.com/docs/shipping/create-a-shipment/) and then [use it to print a label](https://www.shipengine.com/docs/labels/create-from-shipment/) 
@@ -270,23 +278,22 @@ public partial class Label
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipment_id")]
-    public string? ShipmentId { get; set; }
+    [JsonPropertyName("shipment_id"), JsonInclude]
+    public string? ShipmentId { get; private set; }
 
     /// <summary>
     /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
     /// </summary>
     /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-    [JsonPropertyName("test_label")]
-    [Obsolete]
+    [JsonPropertyName("test_label"), JsonPropertyOrder(31), Obsolete]
     public bool? TestLabel { get; set; }
 
     /// <summary>
     /// Indicates whether the shipment is trackable, in which case the &#x60;tracking_status&#x60; field will reflect the current status and each package will have a &#x60;tracking_number&#x60;. 
     /// </summary>
     /// <value>Indicates whether the shipment is trackable, in which case the &#x60;tracking_status&#x60; field will reflect the current status and each package will have a &#x60;tracking_number&#x60;. </value>
-    [JsonPropertyName("trackable")]
-    public bool? Trackable { get; set; }
+    [JsonPropertyName("trackable"), JsonInclude]
+    public bool? Trackable { get; private set; }
 
     /// <summary>
     /// The tracking number for the package. Tracking number formats vary across carriers.
@@ -295,8 +302,8 @@ public partial class Label
     /// <example>
     /// 782758401696
     /// </example>
-    [JsonPropertyName("tracking_number")]
-    public string? TrackingNumber { get; set; }
+    [JsonPropertyName("tracking_number"), JsonInclude]
+    public string? TrackingNumber { get; private set; }
 
     /// <summary>
     /// The URL to track the package. This URL is provided by the carrier and is unique to the tracking number. 
@@ -305,15 +312,15 @@ public partial class Label
     /// <example>
     /// https://www.fedex.com/fedextrack/?action&#x3D;track&amp;trackingnumber&#x3D;1234
     /// </example>
-    [JsonPropertyName("tracking_url")]
-    public string? TrackingUrl { get; set; }
+    [JsonPropertyName("tracking_url"), JsonInclude]
+    public string? TrackingUrl { get; private set; }
 
     /// <summary>
     /// Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/) 
     /// </summary>
     /// <value>Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/) </value>
-    [JsonPropertyName("voided")]
-    public bool? Voided { get; set; }
+    [JsonPropertyName("voided"), JsonInclude]
+    public bool? Voided { get; private set; }
 
     /// <summary>
     /// The date and time that the label was [voided](https://www.shipengine.com/docs/labels/voiding/), or &#x60;null&#x60; if the label has not been voided 
@@ -322,8 +329,8 @@ public partial class Label
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("voided_at")]
-    public DateTimeOffset? VoidedAt { get; set; }
+    [JsonPropertyName("voided_at"), JsonInclude]
+    public DateTimeOffset? VoidedAt { get; private set; }
 
 
     /// <summary>

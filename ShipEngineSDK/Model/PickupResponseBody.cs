@@ -35,15 +35,13 @@ public partial class PickupResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    [JsonRequired]
-    public required string CarrierId { get; set; }
+    [JsonPropertyName("carrier_id"), JsonInclude]
+    public string? CarrierId { get; private set; }
 
     /// <summary>
     /// Gets or Sets ContactDetails
     /// </summary>
-    [JsonPropertyName("contact_details")]
-    [JsonRequired]
+    [JsonPropertyName("contact_details"), JsonRequired, JsonPropertyOrder(2)]
     public required ContactDetails ContactDetails { get; set; }
 
     /// <summary>
@@ -53,24 +51,21 @@ public partial class PickupResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    [JsonRequired]
-    public required DateTimeOffset CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
     /// </summary>
     /// <value>Label IDs that will be included in the pickup request</value>
-    [JsonPropertyName("label_ids")]
-    [JsonRequired]
+    [JsonPropertyName("label_ids"), JsonRequired, JsonPropertyOrder(4)]
     public required List<string> LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupAddress
     /// </summary>
-    [JsonPropertyName("pickup_address")]
-    [JsonRequired]
-    public required Address PickupAddress { get; set; }
+    [JsonPropertyName("pickup_address"), JsonInclude]
+    public Address? PickupAddress { get; private set; }
 
     /// <summary>
     /// Pickup Resource ID
@@ -79,15 +74,13 @@ public partial class PickupResponseBody
     /// <example>
     /// pik_3YcKU5zdtJuCqoeNwyqqbW
     /// </example>
-    [JsonPropertyName("pickup_id")]
-    [JsonRequired]
-    public required string PickupId { get; set; }
+    [JsonPropertyName("pickup_id"), JsonInclude]
+    public string? PickupId { get; private set; }
 
     /// <summary>
     /// Gets or Sets PickupWindow
     /// </summary>
-    [JsonPropertyName("pickup_window")]
-    [JsonRequired]
+    [JsonPropertyName("pickup_window"), JsonRequired, JsonPropertyOrder(7)]
     public required PickupWindow PickupWindow { get; set; }
 
     /// <summary>
@@ -97,9 +90,8 @@ public partial class PickupResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
-    [JsonRequired]
-    public required string WarehouseId { get; set; }
+    [JsonPropertyName("warehouse_id"), JsonInclude]
+    public string? WarehouseId { get; private set; }
 
     /// <summary>
     /// The date and time that the pickup was cancelled in ShipEngine.
@@ -108,8 +100,8 @@ public partial class PickupResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("cancelled_at")]
-    public DateTimeOffset? CancelledAt { get; set; }
+    [JsonPropertyName("cancelled_at"), JsonInclude]
+    public DateTimeOffset? CancelledAt { get; private set; }
 
     /// <summary>
     /// The carrier confirmation number for the scheduled pickup.
@@ -118,23 +110,22 @@ public partial class PickupResponseBody
     /// <example>
     /// 292513CL4A3
     /// </example>
-    [JsonPropertyName("confirmation_number")]
-    [JsonRequired]
-    public required string ConfirmationNumber { get; set; }
+    [JsonPropertyName("confirmation_number"), JsonInclude]
+    public string? ConfirmationNumber { get; private set; }
 
     /// <summary>
     /// Used by some carriers to give special instructions for a package pickup
     /// </summary>
     /// <value>Used by some carriers to give special instructions for a package pickup</value>
-    [JsonPropertyName("pickup_notes")]
+    [JsonPropertyName("pickup_notes"), JsonPropertyOrder(11)]
     public string? PickupNotes { get; set; }
 
     /// <summary>
     /// An array of available pickup windows. Carriers can return multiple times that they will pickup packages. 
     /// </summary>
     /// <value>An array of available pickup windows. Carriers can return multiple times that they will pickup packages. </value>
-    [JsonPropertyName("pickup_windows")]
-    public List<PickupWindows>? PickupWindows { get; set; }
+    [JsonPropertyName("pickup_windows"), JsonInclude]
+    public List<PickupWindows>? PickupWindows { get; private set; }
 
 
     /// <summary>

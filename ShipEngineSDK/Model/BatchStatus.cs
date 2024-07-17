@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(BatchStatusJsonConverter))]
 public class BatchStatus
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of BatchStatus with a predefined value.
@@ -104,6 +104,12 @@ public class BatchStatus
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is BatchStatus other && _value == other._value;
 }
 
 internal class BatchStatusJsonConverter : JsonConverter<BatchStatus>

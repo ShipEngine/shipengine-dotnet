@@ -36,15 +36,14 @@ public partial class ParseShipmentRequestBody
     /// I have a 4oz package that&#39;s 5x10x14in, and I need to ship it to Margie McMiller at 3800 North Lamar suite 200 in austin, tx 78652. Please send it via USPS first class and require an adult signature. It also needs to be insured for $400.
 
     /// </example>
-    [JsonPropertyName("text")]
-    [JsonRequired]
+    [JsonPropertyName("text"), JsonRequired, JsonPropertyOrder(1)]
     public required string Text { get; set; }
 
     /// <summary>
     /// You can optionally provide a &#x60;shipment&#x60; object containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use. 
     /// </summary>
     /// <value>You can optionally provide a &#x60;shipment&#x60; object containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use. </value>
-    [JsonPropertyName("shipment")]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(2)]
     public PartialShipment? Shipment { get; set; }
 
 

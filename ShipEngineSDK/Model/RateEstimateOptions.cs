@@ -29,20 +29,22 @@ public partial class RateEstimateOptions
 {
 
     /// <summary>
-    /// Gets or Sets AddressResidentialIndicator  CLOVUS
+    /// Gets or Sets AddressResidentialIndicator
     /// </summary>
-    [JsonPropertyName("address_residential_indicator")]
+    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(1)]
     public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
+
     /// <summary>
-    /// Gets or Sets Confirmation  CLOVUS
+    /// Gets or Sets Confirmation
     /// </summary>
-    [JsonPropertyName("confirmation")]
+    [JsonPropertyName("confirmation"), JsonPropertyOrder(2)]
     public DeliveryConfirmation? Confirmation { get; set; }
+
     /// <summary>
     /// The dimensions of the package
     /// </summary>
     /// <value>The dimensions of the package</value>
-    [JsonPropertyName("dimensions")]
+    [JsonPropertyName("dimensions"), JsonPropertyOrder(3)]
     public Dimensions? Dimensions { get; set; }
 
     /// <summary>
@@ -52,7 +54,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// Austin
     /// </example>
-    [JsonPropertyName("from_city_locality")]
+    [JsonPropertyName("from_city_locality"), JsonPropertyOrder(4)]
     public string? FromCityLocality { get; set; }
 
     /// <summary>
@@ -62,7 +64,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("from_country_code")]
+    [JsonPropertyName("from_country_code"), JsonPropertyOrder(5)]
     public string? FromCountryCode { get; set; }
 
     /// <summary>
@@ -72,7 +74,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("from_postal_code")]
+    [JsonPropertyName("from_postal_code"), JsonPropertyOrder(6)]
     public string? FromPostalCode { get; set; }
 
     /// <summary>
@@ -82,7 +84,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// Austin
     /// </example>
-    [JsonPropertyName("from_state_province")]
+    [JsonPropertyName("from_state_province"), JsonPropertyOrder(7)]
     public string? FromStateProvince { get; set; }
 
     /// <summary>
@@ -92,7 +94,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(8)]
     public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
@@ -102,7 +104,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// Austin
     /// </example>
-    [JsonPropertyName("to_city_locality")]
+    [JsonPropertyName("to_city_locality"), JsonPropertyOrder(9)]
     public string? ToCityLocality { get; set; }
 
     /// <summary>
@@ -112,7 +114,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("to_country_code")]
+    [JsonPropertyName("to_country_code"), JsonPropertyOrder(10)]
     public string? ToCountryCode { get; set; }
 
     /// <summary>
@@ -122,7 +124,7 @@ public partial class RateEstimateOptions
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("to_postal_code")]
+    [JsonPropertyName("to_postal_code"), JsonPropertyOrder(11)]
     public string? ToPostalCode { get; set; }
 
     /// <summary>
@@ -132,14 +134,14 @@ public partial class RateEstimateOptions
     /// <example>
     /// Houston
     /// </example>
-    [JsonPropertyName("to_state_province")]
+    [JsonPropertyName("to_state_province"), JsonPropertyOrder(12)]
     public string? ToStateProvince { get; set; }
 
     /// <summary>
     /// The weight of the package
     /// </summary>
     /// <value>The weight of the package</value>
-    [JsonPropertyName("weight")]
+    [JsonPropertyName("weight"), JsonPropertyOrder(13)]
     public Weight? Weight { get; set; }
 
 

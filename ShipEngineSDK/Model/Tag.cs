@@ -35,8 +35,7 @@ public partial class Tag
     /// <example>
     /// Fragile
     /// </example>
-    [JsonPropertyName("name")]
-    [JsonRequired]
+    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(1)]
     public required string Name { get; set; }
 
 

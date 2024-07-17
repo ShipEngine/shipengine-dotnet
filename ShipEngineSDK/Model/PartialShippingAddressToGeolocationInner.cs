@@ -83,14 +83,15 @@ public partial class PartialShippingAddressToGeolocationInner
 
 
     /// <summary>
-    /// Enum of available type of geolocation items:   - &#39;what3words&#39; functionality allows to specify a location by providing 3 words that have been assign to the specific location see [link](https://what3words.com/business) for more details.   CLOVUS
+    /// Enum of available type of geolocation items:   - &#39;what3words&#39; functionality allows to specify a location by providing 3 words that have been assign to the specific location see [link](https://what3words.com/business) for more details. 
     /// </summary>
     /// <value>Enum of available type of geolocation items:   - &#39;what3words&#39; functionality allows to specify a location by providing 3 words that have been assign to the specific location see [link](https://what3words.com/business) for more details. </value>
     /// <example>
     /// what3words
     /// </example>
-    [JsonPropertyName("type")]
+    [JsonPropertyName("type"), JsonPropertyOrder(1)]
     public TypeEnum? Type { get; set; }
+
     /// <summary>
     /// value of the geolocation item
     /// </summary>
@@ -98,7 +99,7 @@ public partial class PartialShippingAddressToGeolocationInner
     /// <example>
     /// cats.with.thumbs
     /// </example>
-    [JsonPropertyName("value")]
+    [JsonPropertyName("value"), JsonPropertyOrder(2)]
     public string? Value { get; set; }
 
 

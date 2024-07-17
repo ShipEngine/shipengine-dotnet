@@ -32,9 +32,8 @@ public partial class AddFundsToCarrierResponseBody
     /// The current balance of the account
     /// </summary>
     /// <value>The current balance of the account</value>
-    [JsonPropertyName("balance")]
-    [JsonRequired]
-    public required MonetaryValue Balance { get; set; }
+    [JsonPropertyName("balance"), JsonInclude]
+    public MonetaryValue? Balance { get; private set; }
 
 
     /// <summary>

@@ -35,8 +35,7 @@ public partial class RateEstimateByCarrierId
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    [Obsolete]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(1), Obsolete]
     public string? CarrierId { get; set; }
 
 

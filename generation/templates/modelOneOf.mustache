@@ -39,12 +39,8 @@
     /// {{.}}
     /// </example>
     {{/example}}
-    [JsonPropertyName("{{baseName}}")]{{#required}}
-    [JsonRequired]{{/required}}
-    {{#deprecated}}
-    [Obsolete]
-    {{/deprecated}}
-    public{{#required}} required{{/required}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
+    {{>partial_jsonAttributes}}
+    public{{>partial_requiredAttribute}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{>partial_optional}}{{/isContainer}} {{name}} {{>partial_getSet}}{{#required}} = new();
     
     {{/required}}
     {{/isEnum}}
@@ -62,15 +58,8 @@
     /// {{.}}
     /// </example>
     {{/example}}
-    [JsonPropertyName("{{baseName}}")]{{#required}}
-    [JsonRequired]{{/required}}
-    {{#isDate}}
-    [JsonConverter(typeof(DateJsonConverter))]
-    {{/isDate}}
-    {{#deprecated}}
-    [Obsolete]
-    {{/deprecated}}
-    public{{#required}} required{{/required}} {{{dataType}}}{{^required}}?{{/required}} {{name}} { get; set; }
+    {{>partial_jsonAttributes}}
+    public{{>partial_requiredAttribute}} {{{dataType}}}{{>partial_optional}} {{name}} {{>partial_getSet}}
 
     {{/isEnum}}
     {{/isInherited}}
@@ -81,7 +70,7 @@
     /// Gets or Sets additional properties
     /// </summary>
     [JsonExtensionData]
-    public IDictionary<string, object> AdditionalProperties { get; set; } = new Dictionary<string, object>();
+    public IDictionary<string, object> AdditionalProperties {{>partial_getSet}} = new Dictionary<string, object>();
 
     {{/isAdditionalPropertiesTrue}}
 

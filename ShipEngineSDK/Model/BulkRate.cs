@@ -29,12 +29,10 @@ public partial class BulkRate
 {
 
     /// <summary>
-    /// Gets or Sets Status  CLOVUS
+    /// Gets or Sets Status
     /// </summary>
-    [JsonPropertyName("status")]
-    [JsonRequired]
-    public required RateResponseStatus Status { get; set; } = new();
-
+    [JsonPropertyName("status"), JsonInclude]
+    public RateResponseStatus? Status { get; private set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -43,17 +41,15 @@ public partial class BulkRate
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    [JsonRequired]
-    public required DateTimeOffset CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// An array of errors that were returned while retrieving the bulk rate
     /// </summary>
     /// <value>An array of errors that were returned while retrieving the bulk rate</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public required List<Error> Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public List<Error>? Errors { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
@@ -62,9 +58,8 @@ public partial class BulkRate
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("rate_request_id")]
-    [JsonRequired]
-    public required string RateRequestId { get; set; }
+    [JsonPropertyName("rate_request_id"), JsonInclude]
+    public string? RateRequestId { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -73,9 +68,8 @@ public partial class BulkRate
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipment_id")]
-    [JsonRequired]
-    public required string ShipmentId { get; set; }
+    [JsonPropertyName("shipment_id"), JsonInclude]
+    public string? ShipmentId { get; private set; }
 
 
     /// <summary>

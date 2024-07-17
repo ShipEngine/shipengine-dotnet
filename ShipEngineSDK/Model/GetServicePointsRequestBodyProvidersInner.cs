@@ -35,13 +35,13 @@ public partial class GetServicePointsRequestBodyProvidersInner
     /// <example>
     /// se-123456
     /// </example>
-    [JsonPropertyName("carrier_id")]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(1)]
     public string? CarrierId { get; set; }
 
     /// <summary>
     /// Gets or Sets ServiceCode
     /// </summary>
-    [JsonPropertyName("service_code")]
+    [JsonPropertyName("service_code"), JsonPropertyOrder(2)]
     public List<string>? ServiceCode { get; set; }
 
 

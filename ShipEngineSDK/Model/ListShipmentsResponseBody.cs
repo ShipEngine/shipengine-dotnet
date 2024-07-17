@@ -31,31 +31,27 @@ public partial class ListShipmentsResponseBody
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
-    [JsonPropertyName("links")]
-    [JsonRequired]
-    public required PaginationLink Links { get; set; }
+    [JsonPropertyName("links"), JsonInclude]
+    public PaginationLink? Links { get; private set; }
 
     /// <summary>
     /// Gets or Sets Page
     /// </summary>
-    [JsonPropertyName("page")]
-    [JsonRequired]
-    public required int Page { get; set; }
+    [JsonPropertyName("page"), JsonInclude]
+    public int? Page { get; private set; }
 
     /// <summary>
     /// Gets or Sets Pages
     /// </summary>
-    [JsonPropertyName("pages")]
-    [JsonRequired]
-    public required int Pages { get; set; }
+    [JsonPropertyName("pages"), JsonInclude]
+    public int? Pages { get; private set; }
 
     /// <summary>
     /// The list of shipments returned by the api call
     /// </summary>
     /// <value>The list of shipments returned by the api call</value>
-    [JsonPropertyName("shipments")]
-    [JsonRequired]
-    public required List<Shipment> Shipments { get; set; }
+    [JsonPropertyName("shipments"), JsonInclude]
+    public List<Shipment>? Shipments { get; private set; }
 
     /// <summary>
     /// Total number of shipments returned by the api call
@@ -64,9 +60,8 @@ public partial class ListShipmentsResponseBody
     /// <example>
     /// 1990
     /// </example>
-    [JsonPropertyName("total")]
-    [JsonRequired]
-    public required long Total { get; set; }
+    [JsonPropertyName("total"), JsonInclude]
+    public long? Total { get; private set; }
 
 
     /// <summary>

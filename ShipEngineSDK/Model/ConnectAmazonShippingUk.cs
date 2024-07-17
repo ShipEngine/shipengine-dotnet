@@ -32,8 +32,7 @@ public partial class ConnectAmazonShippingUk
     /// Amazon UK Shipping auth code.
     /// </summary>
     /// <value>Amazon UK Shipping auth code.</value>
-    [JsonPropertyName("auth_code")]
-    [JsonRequired]
+    [JsonPropertyName("auth_code"), JsonRequired, JsonPropertyOrder(1)]
     public required string AuthCode { get; set; }
 
     /// <summary>
@@ -43,8 +42,7 @@ public partial class ConnectAmazonShippingUk
     /// <example>
     /// Stamps.com
     /// </example>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
 

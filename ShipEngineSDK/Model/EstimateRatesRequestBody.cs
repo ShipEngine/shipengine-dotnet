@@ -34,12 +34,12 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <summary>
     /// Gets or Sets AddressResidentialIndicator
     /// </summary>
-    [JsonPropertyName("address_residential_indicator")]
+    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(11)]
     public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
     /// <summary>
     /// Gets or Sets Confirmation
     /// </summary>
-    [JsonPropertyName("confirmation")]
+    [JsonPropertyName("confirmation"), JsonPropertyOrder(12)]
     public DeliveryConfirmation? Confirmation { get; set; }
     /// <summary>
     /// from postal code
@@ -48,8 +48,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// Austin
     /// </example>
-    [JsonPropertyName("from_city_locality")]
-    [JsonRequired]
+    [JsonPropertyName("from_city_locality"), JsonRequired, JsonPropertyOrder(1)]
     public required string FromCityLocality { get; set; }
 
     /// <summary>
@@ -59,8 +58,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("from_country_code")]
-    [JsonRequired]
+    [JsonPropertyName("from_country_code"), JsonRequired, JsonPropertyOrder(2)]
     public required string FromCountryCode { get; set; }
 
     /// <summary>
@@ -70,8 +68,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("from_postal_code")]
-    [JsonRequired]
+    [JsonPropertyName("from_postal_code"), JsonRequired, JsonPropertyOrder(3)]
     public required string FromPostalCode { get; set; }
 
     /// <summary>
@@ -81,8 +78,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// Austin
     /// </example>
-    [JsonPropertyName("from_state_province")]
-    [JsonRequired]
+    [JsonPropertyName("from_state_province"), JsonRequired, JsonPropertyOrder(4)]
     public required string FromStateProvince { get; set; }
 
     /// <summary>
@@ -92,8 +88,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
-    [JsonRequired]
+    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(5)]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
@@ -103,8 +98,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// Austin
     /// </example>
-    [JsonPropertyName("to_city_locality")]
-    [JsonRequired]
+    [JsonPropertyName("to_city_locality"), JsonRequired, JsonPropertyOrder(6)]
     public required string ToCityLocality { get; set; }
 
     /// <summary>
@@ -114,8 +108,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("to_country_code")]
-    [JsonRequired]
+    [JsonPropertyName("to_country_code"), JsonRequired, JsonPropertyOrder(7)]
     public required string ToCountryCode { get; set; }
 
     /// <summary>
@@ -125,8 +118,7 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("to_postal_code")]
-    [JsonRequired]
+    [JsonPropertyName("to_postal_code"), JsonRequired, JsonPropertyOrder(8)]
     public required string ToPostalCode { get; set; }
 
     /// <summary>
@@ -136,23 +128,21 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
     /// <example>
     /// Houston
     /// </example>
-    [JsonPropertyName("to_state_province")]
-    [JsonRequired]
+    [JsonPropertyName("to_state_province"), JsonRequired, JsonPropertyOrder(9)]
     public required string ToStateProvince { get; set; }
 
     /// <summary>
     /// The weight of the package
     /// </summary>
     /// <value>The weight of the package</value>
-    [JsonPropertyName("weight")]
-    [JsonRequired]
+    [JsonPropertyName("weight"), JsonRequired, JsonPropertyOrder(10)]
     public required Weight Weight { get; set; }
 
     /// <summary>
     /// The dimensions of the package
     /// </summary>
     /// <value>The dimensions of the package</value>
-    [JsonPropertyName("dimensions")]
+    [JsonPropertyName("dimensions"), JsonPropertyOrder(13)]
     public Dimensions? Dimensions { get; set; }
 
 

@@ -31,8 +31,7 @@ public partial class TagShipmentResponseBody
     /// <summary>
     /// Gets or Sets Tags
     /// </summary>
-    [JsonPropertyName("tags")]
-    [JsonRequired]
+    [JsonPropertyName("tags"), JsonRequired, JsonPropertyOrder(1)]
     public required List<string> Tags { get; set; }
 
 

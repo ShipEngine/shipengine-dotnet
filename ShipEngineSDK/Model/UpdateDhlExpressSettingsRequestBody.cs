@@ -32,21 +32,21 @@ public partial class UpdateDhlExpressSettingsRequestBody
     /// Indicates if this is primary account
     /// </summary>
     /// <value>Indicates if this is primary account</value>
-    [JsonPropertyName("is_primary_account")]
+    [JsonPropertyName("is_primary_account"), JsonPropertyOrder(1)]
     public bool? IsPrimaryAccount { get; set; }
 
     /// <summary>
     /// Account nickname
     /// </summary>
     /// <value>Account nickname</value>
-    [JsonPropertyName("nickname")]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public string? Nickname { get; set; }
 
     /// <summary>
     /// Indicates if the account number should be hidden on the archive documentation
     /// </summary>
     /// <value>Indicates if the account number should be hidden on the archive documentation</value>
-    [JsonPropertyName("should_hide_account_number_on_archive_doc")]
+    [JsonPropertyName("should_hide_account_number_on_archive_doc"), JsonPropertyOrder(3)]
     public bool? ShouldHideAccountNumberOnArchiveDoc { get; set; }
 
 

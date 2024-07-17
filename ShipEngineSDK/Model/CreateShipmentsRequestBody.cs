@@ -32,8 +32,7 @@ public partial class CreateShipmentsRequestBody
     /// An array of shipments to be created.
     /// </summary>
     /// <value>An array of shipments to be created.</value>
-    [JsonPropertyName("shipments")]
-    [JsonRequired]
+    [JsonPropertyName("shipments"), JsonRequired, JsonPropertyOrder(1)]
     public required List<AddressValidatingShipment> Shipments { get; set; }
 
 

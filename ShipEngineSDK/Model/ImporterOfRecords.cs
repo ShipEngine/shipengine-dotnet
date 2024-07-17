@@ -35,8 +35,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1")]
-    [JsonRequired]
+    [JsonPropertyName("address_line1"), JsonRequired, JsonPropertyOrder(1)]
     public required string AddressLine1 { get; set; }
 
     /// <summary>
@@ -46,8 +45,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// Winnipeg
     /// </example>
-    [JsonPropertyName("city_locality")]
-    [JsonRequired]
+    [JsonPropertyName("city_locality"), JsonRequired, JsonPropertyOrder(2)]
     public required string CityLocality { get; set; }
 
     /// <summary>
@@ -57,8 +55,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
-    [JsonRequired]
+    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(3)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -68,8 +65,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// John Doe
     /// </example>
-    [JsonPropertyName("name")]
-    [JsonRequired]
+    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(4)]
     public required string Name { get; set; }
 
     /// <summary>
@@ -79,8 +75,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code")]
-    [JsonRequired]
+    [JsonPropertyName("postal_code"), JsonRequired, JsonPropertyOrder(5)]
     public required string PostalCode { get; set; }
 
     /// <summary>
@@ -90,7 +85,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// Unit 408
     /// </example>
-    [JsonPropertyName("address_line2")]
+    [JsonPropertyName("address_line2"), JsonPropertyOrder(6)]
     public string? AddressLine2 { get; set; }
 
     /// <summary>
@@ -100,7 +95,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// Building #7
     /// </example>
-    [JsonPropertyName("address_line3")]
+    [JsonPropertyName("address_line3"), JsonPropertyOrder(7)]
     public string? AddressLine3 { get; set; }
 
     /// <summary>
@@ -110,7 +105,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// The Home Depot
     /// </example>
-    [JsonPropertyName("company_name")]
+    [JsonPropertyName("company_name"), JsonPropertyOrder(8)]
     public string? CompanyName { get; set; }
 
     /// <summary>
@@ -120,7 +115,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// example@example.com
     /// </example>
-    [JsonPropertyName("email")]
+    [JsonPropertyName("email"), JsonPropertyOrder(9)]
     public string? Email { get; set; }
 
     /// <summary>
@@ -130,7 +125,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// +1 204-253-9411 ext. 123
     /// </example>
-    [JsonPropertyName("phone")]
+    [JsonPropertyName("phone"), JsonPropertyOrder(10)]
     public string? Phone { get; set; }
 
     /// <summary>
@@ -140,7 +135,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// Manitoba
     /// </example>
-    [JsonPropertyName("state_province")]
+    [JsonPropertyName("state_province"), JsonPropertyOrder(11)]
     public string? StateProvince { get; set; }
 
 

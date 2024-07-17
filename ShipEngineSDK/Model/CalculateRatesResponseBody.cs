@@ -29,43 +29,37 @@ public partial class CalculateRatesResponseBody
 {
 
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.  CLOVUS
+    /// The type of delivery confirmation that is required for this shipment.
     /// </summary>
     /// <value>The type of delivery confirmation that is required for this shipment.</value>
-    [JsonPropertyName("confirmation")]
-    [JsonRequired]
-    public required DeliveryConfirmation Confirmation { get; set; } = new();
-
+    [JsonPropertyName("confirmation"), JsonRequired, JsonPropertyOrder(2)]
+    public required DeliveryConfirmation Confirmation { get; set; }
 
     /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment.   CLOVUS
+    /// The insurance provider to use for any insured packages in the shipment. 
     /// </summary>
     /// <value>The insurance provider to use for any insured packages in the shipment. </value>
-    [JsonPropertyName("insurance_provider")]
-    [JsonRequired]
-    public required InsuranceProvider InsuranceProvider { get; set; } = new();
-
+    [JsonPropertyName("insurance_provider"), JsonRequired, JsonPropertyOrder(4)]
+    public required InsuranceProvider InsuranceProvider { get; set; }
 
     /// <summary>
-    /// The current status of the shipment  CLOVUS
+    /// The current status of the shipment
     /// </summary>
     /// <value>The current status of the shipment</value>
-    [JsonPropertyName("shipment_status")]
-    [JsonRequired]
-    public required ShipmentStatus ShipmentStatus { get; set; } = new();
-
+    [JsonPropertyName("shipment_status"), JsonInclude]
+    public ShipmentStatus? ShipmentStatus { get; private set; }
 
     /// <summary>
-    /// Gets or Sets OrderSourceCode  CLOVUS
+    /// Gets or Sets OrderSourceCode
     /// </summary>
-    [JsonPropertyName("order_source_code")]
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(21)]
     public OrderSourceName? OrderSourceCode { get; set; }
+
     /// <summary>
     /// Advanced shipment options.  These are entirely optional.
     /// </summary>
     /// <value>Advanced shipment options.  These are entirely optional.</value>
-    [JsonPropertyName("advanced_options")]
-    [JsonRequired]
+    [JsonPropertyName("advanced_options"), JsonRequired, JsonPropertyOrder(1)]
     public required AdvancedShipmentOptions AdvancedOptions { get; set; }
 
     /// <summary>
@@ -75,9 +69,8 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    [JsonRequired]
-    public required DateTimeOffset CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// The date and time that the shipment was created or last modified.
@@ -86,32 +79,28 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("modified_at")]
-    [JsonRequired]
-    public required DateTimeOffset ModifiedAt { get; set; }
+    [JsonPropertyName("modified_at"), JsonInclude]
+    public DateTimeOffset? ModifiedAt { get; private set; }
 
     /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
     /// </summary>
     /// <value>The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. </value>
-    [JsonPropertyName("packages")]
-    [JsonRequired]
+    [JsonPropertyName("packages"), JsonRequired, JsonPropertyOrder(6)]
     public required List<Package> Packages { get; set; }
 
     /// <summary>
     /// The rates response
     /// </summary>
     /// <value>The rates response</value>
-    [JsonPropertyName("rate_response")]
-    [JsonRequired]
+    [JsonPropertyName("rate_response"), JsonRequired, JsonPropertyOrder(7)]
     public required RatesInformation RateResponse { get; set; }
 
     /// <summary>
     /// The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. 
     /// </summary>
     /// <value>The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. </value>
-    [JsonPropertyName("return_to")]
-    [JsonRequired]
+    [JsonPropertyName("return_to"), JsonRequired, JsonPropertyOrder(8)]
     public required ShippingAddress ReturnTo { get; set; }
 
     /// <summary>
@@ -121,8 +110,7 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// 2018-09-23T00:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
-    [JsonRequired]
+    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(9)]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
@@ -132,25 +120,22 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipment_id")]
-    [JsonRequired]
-    public required string ShipmentId { get; set; }
+    [JsonPropertyName("shipment_id"), JsonInclude]
+    public string? ShipmentId { get; private set; }
 
     /// <summary>
     /// Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. 
     /// </summary>
     /// <value>Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. </value>
-    [JsonPropertyName("tags")]
-    [JsonRequired]
-    public required List<Tag> Tags { get; set; }
+    [JsonPropertyName("tags"), JsonInclude]
+    public List<Tag>? Tags { get; private set; }
 
     /// <summary>
     /// The combined weight of all packages in the shipment
     /// </summary>
     /// <value>The combined weight of all packages in the shipment</value>
-    [JsonPropertyName("total_weight")]
-    [JsonRequired]
-    public required Weight TotalWeight { get; set; }
+    [JsonPropertyName("total_weight"), JsonInclude]
+    public Weight? TotalWeight { get; private set; }
 
     /// <summary>
     /// The carrier account that is billed for the shipping charges
@@ -159,7 +144,7 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(14)]
     public string? CarrierId { get; set; }
 
     /// <summary>
@@ -169,43 +154,42 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// retail
     /// </example>
-    [JsonPropertyName("comparison_rate_type")]
+    [JsonPropertyName("comparison_rate_type"), JsonPropertyOrder(15)]
     public string? ComparisonRateType { get; set; }
 
     /// <summary>
     /// Customs information.  This is usually only needed for international shipments. 
     /// </summary>
     /// <value>Customs information.  This is usually only needed for international shipments. </value>
-    [JsonPropertyName("customs")]
-    [JsonRequired]
+    [JsonPropertyName("customs"), JsonRequired, JsonPropertyOrder(16)]
     public required InternationalShipmentOptions Customs { get; set; }
 
     /// <summary>
     /// ID that the Order Source assigned
     /// </summary>
     /// <value>ID that the Order Source assigned</value>
-    [JsonPropertyName("external_order_id")]
+    [JsonPropertyName("external_order_id"), JsonPropertyOrder(17)]
     public string? ExternalOrderId { get; set; }
 
     /// <summary>
     /// A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.  &gt; **Warning:** The &#x60;external_shipment_id&#x60; is limited to 50 characters. Any additional characters will be truncated. 
     /// </summary>
     /// <value>A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.  &gt; **Warning:** The &#x60;external_shipment_id&#x60; is limited to 50 characters. Any additional characters will be truncated. </value>
-    [JsonPropertyName("external_shipment_id")]
+    [JsonPropertyName("external_shipment_id"), JsonPropertyOrder(18)]
     public string? ExternalShipmentId { get; set; }
 
     /// <summary>
     /// An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. 
     /// </summary>
     /// <value>An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. </value>
-    [JsonPropertyName("is_return")]
+    [JsonPropertyName("is_return"), JsonPropertyOrder(19)]
     public bool? IsReturn { get; set; }
 
     /// <summary>
     /// Describe the packages included in this shipment as related to potential metadata that was imported from external order sources 
     /// </summary>
     /// <value>Describe the packages included in this shipment as related to potential metadata that was imported from external order sources </value>
-    [JsonPropertyName("items")]
+    [JsonPropertyName("items"), JsonPropertyOrder(20)]
     public List<ShipmentItem>? Items { get; set; }
 
     /// <summary>
@@ -215,28 +199,28 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// usps_first_class_mail
     /// </example>
-    [JsonPropertyName("service_code")]
+    [JsonPropertyName("service_code"), JsonPropertyOrder(22)]
     public string? ServiceCode { get; set; }
 
     /// <summary>
     /// The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. 
     /// </summary>
     /// <value>The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. </value>
-    [JsonPropertyName("ship_from")]
+    [JsonPropertyName("ship_from"), JsonPropertyOrder(23)]
     public ShippingAddress? ShipFrom { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address
     /// </summary>
     /// <value>The recipient&#39;s mailing address</value>
-    [JsonPropertyName("ship_to")]
+    [JsonPropertyName("ship_to"), JsonPropertyOrder(24)]
     public ShippingAddressTo? ShipTo { get; set; }
 
     /// <summary>
     /// A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.  &gt; **Warning:** The &#x60;shipment_number&#x60; is limited to 50 characters. Any additional characters will be truncated. 
     /// </summary>
     /// <value>A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.  &gt; **Warning:** The &#x60;shipment_number&#x60; is limited to 50 characters. Any additional characters will be truncated. </value>
-    [JsonPropertyName("shipment_number")]
+    [JsonPropertyName("shipment_number"), JsonPropertyOrder(25)]
     public string? ShipmentNumber { get; set; }
 
     /// <summary>
@@ -246,13 +230,13 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipping_rule_id")]
+    [JsonPropertyName("shipping_rule_id"), JsonPropertyOrder(26)]
     public string? ShippingRuleId { get; set; }
 
     /// <summary>
     /// Gets or Sets TaxIdentifiers
     /// </summary>
-    [JsonPropertyName("tax_identifiers")]
+    [JsonPropertyName("tax_identifiers"), JsonPropertyOrder(27)]
     public List<TaxIdentifier>? TaxIdentifiers { get; set; }
 
     /// <summary>
@@ -262,7 +246,7 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
+    [JsonPropertyName("warehouse_id"), JsonPropertyOrder(28)]
     public string? WarehouseId { get; set; }
 
 

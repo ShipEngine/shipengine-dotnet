@@ -32,17 +32,15 @@ public partial class GetCarriersResponseBody
     /// The carrier response body
     /// </summary>
     /// <value>The carrier response body</value>
-    [JsonPropertyName("carriers")]
-    [JsonRequired]
-    public required List<Carrier> Carriers { get; set; }
+    [JsonPropertyName("carriers"), JsonInclude]
+    public List<Carrier>? Carriers { get; private set; }
 
     /// <summary>
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public required List<Error> Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public List<Error>? Errors { get; private set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -51,8 +49,7 @@ public partial class GetCarriersResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id")]
-    [JsonRequired]
+    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(3)]
     public required Guid RequestId { get; set; }
 
 

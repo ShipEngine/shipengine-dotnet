@@ -35,15 +35,15 @@ public partial class BatchResponseError
     /// <example>
     /// Recipient address has not been verified.
     /// </example>
-    [JsonPropertyName("error")]
-    public string? Error { get; set; }
+    [JsonPropertyName("error"), JsonInclude]
+    public string? Error { get; private set; }
 
     /// <summary>
     /// An external shipment id associated with the shipment
     /// </summary>
     /// <value>An external shipment id associated with the shipment</value>
-    [JsonPropertyName("external_shipment_id")]
-    public string? ExternalShipmentId { get; set; }
+    [JsonPropertyName("external_shipment_id"), JsonInclude]
+    public string? ExternalShipmentId { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
@@ -52,8 +52,8 @@ public partial class BatchResponseError
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("shipment_id")]
-    public string? ShipmentId { get; set; }
+    [JsonPropertyName("shipment_id"), JsonInclude]
+    public string? ShipmentId { get; private set; }
 
 
     /// <summary>

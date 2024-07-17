@@ -35,23 +35,20 @@ public partial class ContactDetails
     /// <example>
     /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("email")]
-    [JsonRequired]
+    [JsonPropertyName("email"), JsonRequired, JsonPropertyOrder(1)]
     public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets Name
     /// </summary>
-    [JsonPropertyName("name")]
-    [JsonRequired]
+    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(2)]
     public required string Name { get; set; }
 
     /// <summary>
     /// Phone number associated
     /// </summary>
     /// <value>Phone number associated</value>
-    [JsonPropertyName("phone")]
-    [JsonRequired]
+    [JsonPropertyName("phone"), JsonRequired, JsonPropertyOrder(3)]
     public required string Phone { get; set; }
 
 

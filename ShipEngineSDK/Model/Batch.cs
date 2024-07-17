@@ -29,37 +29,30 @@ public partial class Batch
 {
 
     /// <summary>
-    /// Gets or Sets LabelFormat  CLOVUS
+    /// Gets or Sets LabelFormat
     /// </summary>
-    [JsonPropertyName("label_format")]
-    [JsonRequired]
-    public required LabelFormat LabelFormat { get; set; } = new();
-
+    [JsonPropertyName("label_format"), JsonInclude]
+    public LabelFormat? LabelFormat { get; private set; }
 
     /// <summary>
-    /// label layout  CLOVUS
+    /// label layout
     /// </summary>
     /// <value>label layout</value>
-    [JsonPropertyName("label_layout")]
-    [JsonRequired]
-    public required LabelLayout LabelLayout { get; set; } = new();
-
+    [JsonPropertyName("label_layout"), JsonInclude]
+    public LabelLayout? LabelLayout { get; private set; }
 
     /// <summary>
-    /// Gets or Sets Status  CLOVUS
+    /// Gets or Sets Status
     /// </summary>
-    [JsonPropertyName("status")]
-    [JsonRequired]
-    public required BatchStatus Status { get; set; } = new();
-
+    [JsonPropertyName("status"), JsonInclude]
+    public BatchStatus? Status { get; private set; }
 
     /// <summary>
     /// Link to batch errors endpoint
     /// </summary>
     /// <value>Link to batch errors endpoint</value>
-    [JsonPropertyName("batch_errors_url")]
-    [JsonRequired]
-    public required OptionalLink BatchErrorsUrl { get; set; }
+    [JsonPropertyName("batch_errors_url"), JsonInclude]
+    public OptionalLink? BatchErrorsUrl { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the batch
@@ -68,32 +61,28 @@ public partial class Batch
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("batch_id")]
-    [JsonRequired]
-    public required string BatchId { get; set; }
+    [JsonPropertyName("batch_id"), JsonInclude]
+    public string? BatchId { get; private set; }
 
     /// <summary>
     /// Link to batch labels query
     /// </summary>
     /// <value>Link to batch labels query</value>
-    [JsonPropertyName("batch_labels_url")]
-    [JsonRequired]
+    [JsonPropertyName("batch_labels_url"), JsonRequired, JsonPropertyOrder(3)]
     public required OptionalLink BatchLabelsUrl { get; set; }
 
     /// <summary>
     /// The batch number.
     /// </summary>
     /// <value>The batch number.</value>
-    [JsonPropertyName("batch_number")]
-    [JsonRequired]
-    public required string BatchNumber { get; set; }
+    [JsonPropertyName("batch_number"), JsonInclude]
+    public string? BatchNumber { get; private set; }
 
     /// <summary>
     /// The batch shipments endpoint
     /// </summary>
     /// <value>The batch shipments endpoint</value>
-    [JsonPropertyName("batch_shipments_url")]
-    [JsonRequired]
+    [JsonPropertyName("batch_shipments_url"), JsonRequired, JsonPropertyOrder(5)]
     public required OptionalLink BatchShipmentsUrl { get; set; }
 
     /// <summary>
@@ -103,9 +92,8 @@ public partial class Batch
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("completed")]
-    [JsonRequired]
-    public required int Completed { get; set; }
+    [JsonPropertyName("completed"), JsonInclude]
+    public int? Completed { get; private set; }
 
     /// <summary>
     /// The total of errors, warnings, and completed properties
@@ -114,9 +102,8 @@ public partial class Batch
     /// <example>
     /// 2
     /// </example>
-    [JsonPropertyName("count")]
-    [JsonRequired]
-    public required int Count { get; set; }
+    [JsonPropertyName("count"), JsonInclude]
+    public int? Count { get; private set; }
 
     /// <summary>
     /// The date and time the batch was created in ShipEngine
@@ -125,9 +112,8 @@ public partial class Batch
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    [JsonRequired]
-    public required DateTimeOffset CreatedAt { get; set; }
+    [JsonPropertyName("created_at"), JsonInclude]
+    public DateTimeOffset? CreatedAt { get; private set; }
 
     /// <summary>
     /// The number of errors that occurred while generating the batch
@@ -136,17 +122,15 @@ public partial class Batch
     /// <example>
     /// 2
     /// </example>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public required int Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public int? Errors { get; private set; }
 
     /// <summary>
     /// The form download for any customs that are needed
     /// </summary>
     /// <value>The form download for any customs that are needed</value>
-    [JsonPropertyName("form_download")]
-    [JsonRequired]
-    public required OptionalLink FormDownload { get; set; }
+    [JsonPropertyName("form_download"), JsonInclude]
+    public OptionalLink? FormDownload { get; private set; }
 
     /// <summary>
     /// The number of forms for customs that are available for download
@@ -155,33 +139,29 @@ public partial class Batch
     /// <example>
     /// 3
     /// </example>
-    [JsonPropertyName("forms")]
-    [JsonRequired]
-    public required int Forms { get; set; }
+    [JsonPropertyName("forms"), JsonInclude]
+    public int? Forms { get; private set; }
 
     /// <summary>
     /// The label download for the batch
     /// </summary>
     /// <value>The label download for the batch</value>
-    [JsonPropertyName("label_download")]
-    [JsonRequired]
-    public required LabelDownload LabelDownload { get; set; }
+    [JsonPropertyName("label_download"), JsonInclude]
+    public LabelDownload? LabelDownload { get; private set; }
 
     /// <summary>
     /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.
     /// </summary>
     /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.</value>
-    [JsonPropertyName("paperless_download")]
-    [JsonRequired]
-    public required PaperlessDownload PaperlessDownload { get; set; }
+    [JsonPropertyName("paperless_download"), JsonInclude]
+    public PaperlessDownload? PaperlessDownload { get; private set; }
 
     /// <summary>
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("process_errors")]
-    [JsonRequired]
-    public required List<Error> ProcessErrors { get; set; }
+    [JsonPropertyName("process_errors"), JsonInclude]
+    public List<Error>? ProcessErrors { get; private set; }
 
     /// <summary>
     /// The number of warnings that occurred while generating the batch
@@ -190,9 +170,8 @@ public partial class Batch
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("warnings")]
-    [JsonRequired]
-    public required int Warnings { get; set; }
+    [JsonPropertyName("warnings"), JsonInclude]
+    public int? Warnings { get; private set; }
 
     /// <summary>
     /// Custom notes you can add for each created batch
@@ -201,17 +180,15 @@ public partial class Batch
     /// <example>
     /// Batch for morning shipment
     /// </example>
-    [JsonPropertyName("batch_notes")]
-    [JsonRequired]
-    public required string BatchNotes { get; set; }
+    [JsonPropertyName("batch_notes"), JsonInclude]
+    public string? BatchNotes { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the external batch
     /// </summary>
     /// <value>A string that uniquely identifies the external batch</value>
-    [JsonPropertyName("external_batch_id")]
-    [JsonRequired]
-    public required string ExternalBatchId { get; set; }
+    [JsonPropertyName("external_batch_id"), JsonInclude]
+    public string? ExternalBatchId { get; private set; }
 
     /// <summary>
     /// The date and time the batch was processed in ShipEngine
@@ -220,9 +197,8 @@ public partial class Batch
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("processed_at")]
-    [JsonRequired]
-    public required DateTimeOffset ProcessedAt { get; set; }
+    [JsonPropertyName("processed_at"), JsonInclude]
+    public DateTimeOffset? ProcessedAt { get; private set; }
 
 
     /// <summary>

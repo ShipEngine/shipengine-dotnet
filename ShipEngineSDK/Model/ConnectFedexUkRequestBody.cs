@@ -32,40 +32,35 @@ public partial class ConnectFedexUkRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number")]
-    [JsonRequired]
+    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Address
     /// </summary>
     /// <value>Address</value>
-    [JsonPropertyName("address1")]
-    [JsonRequired]
+    [JsonPropertyName("address1"), JsonRequired, JsonPropertyOrder(2)]
     public required string Address1 { get; set; }
 
     /// <summary>
     /// Boolean signaling agreement to the Fedex End User License Agreement
     /// </summary>
     /// <value>Boolean signaling agreement to the Fedex End User License Agreement</value>
-    [JsonPropertyName("agree_to_eula")]
-    [JsonRequired]
+    [JsonPropertyName("agree_to_eula"), JsonRequired, JsonPropertyOrder(3)]
     public required bool AgreeToEula { get; set; }
 
     /// <summary>
     /// The city
     /// </summary>
     /// <value>The city</value>
-    [JsonPropertyName("city")]
-    [JsonRequired]
+    [JsonPropertyName("city"), JsonRequired, JsonPropertyOrder(4)]
     public required string City { get; set; }
 
     /// <summary>
     /// Country code
     /// </summary>
     /// <value>Country code</value>
-    [JsonPropertyName("country_code")]
-    [JsonRequired]
+    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(5)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -75,77 +70,70 @@ public partial class ConnectFedexUkRequestBody
     /// <example>
     /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("email")]
-    [JsonRequired]
+    [JsonPropertyName("email"), JsonRequired, JsonPropertyOrder(6)]
     public required string Email { get; set; }
 
     /// <summary>
     /// First name
     /// </summary>
     /// <value>First name</value>
-    [JsonPropertyName("first_name")]
-    [JsonRequired]
+    [JsonPropertyName("first_name"), JsonRequired, JsonPropertyOrder(7)]
     public required string FirstName { get; set; }
 
     /// <summary>
     /// Last name
     /// </summary>
     /// <value>Last name</value>
-    [JsonPropertyName("last_name")]
-    [JsonRequired]
+    [JsonPropertyName("last_name"), JsonRequired, JsonPropertyOrder(8)]
     public required string LastName { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(9)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Phone number
     /// </summary>
     /// <value>Phone number</value>
-    [JsonPropertyName("phone")]
-    [JsonRequired]
+    [JsonPropertyName("phone"), JsonRequired, JsonPropertyOrder(10)]
     public required string Phone { get; set; }
 
     /// <summary>
     /// Postal Code
     /// </summary>
     /// <value>Postal Code</value>
-    [JsonPropertyName("postal_code")]
-    [JsonRequired]
+    [JsonPropertyName("postal_code"), JsonRequired, JsonPropertyOrder(11)]
     public required string PostalCode { get; set; }
 
     /// <summary>
     /// State
     /// </summary>
     /// <value>State</value>
-    [JsonPropertyName("state")]
-    [JsonRequired]
+    [JsonPropertyName("state"), JsonRequired, JsonPropertyOrder(12)]
     public required string State { get; set; }
 
     /// <summary>
     /// Address
     /// </summary>
     /// <value>Address</value>
-    [JsonPropertyName("address2")]
+    [JsonPropertyName("address2"), JsonPropertyOrder(13)]
     public string? Address2 { get; set; }
 
     /// <summary>
     /// The company
     /// </summary>
     /// <value>The company</value>
-    [JsonPropertyName("company")]
+    [JsonPropertyName("company"), JsonPropertyOrder(14)]
     public string? Company { get; set; }
 
     /// <summary>
     /// Meter number
     /// </summary>
     /// <value>Meter number</value>
-    [JsonPropertyName("meter_number")]
+    [JsonPropertyName("meter_number"), JsonPropertyOrder(15)]
     public string? MeterNumber { get; set; }
 
 

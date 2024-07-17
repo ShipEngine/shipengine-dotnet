@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(AddressValidationStatusJsonConverter))]
 public class AddressValidationStatus
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of AddressValidationStatus with a predefined value.
@@ -80,6 +80,12 @@ public class AddressValidationStatus
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is AddressValidationStatus other && _value == other._value;
 }
 
 internal class AddressValidationStatusJsonConverter : JsonConverter<AddressValidationStatus>

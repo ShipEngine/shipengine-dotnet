@@ -166,11 +166,12 @@ public partial class GetServicePointByIdResponseBodyServicePoint
 
 
     /// <summary>
-    /// Service point type  CLOVUS
+    /// Service point type
     /// </summary>
     /// <value>Service point type</value>
-    [JsonPropertyName("type")]
+    [JsonPropertyName("type"), JsonPropertyOrder(15)]
     public TypeEnum? Type { get; set; }
+
     /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines.
     /// </summary>
@@ -178,7 +179,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// PLACE DU CANADA
     /// </example>
-    [JsonPropertyName("address_line1")]
+    [JsonPropertyName("address_line1"), JsonPropertyOrder(1)]
     public string? AddressLine1 { get; set; }
 
     /// <summary>
@@ -188,7 +189,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// dhl_express
     /// </example>
-    [JsonPropertyName("carrier_code")]
+    [JsonPropertyName("carrier_code"), JsonPropertyOrder(2)]
     public string? CarrierCode { get; set; }
 
     /// <summary>
@@ -198,7 +199,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// TRUN
     /// </example>
-    [JsonPropertyName("city_locality")]
+    [JsonPropertyName("city_locality"), JsonPropertyOrder(3)]
     public string? CityLocality { get; set; }
 
     /// <summary>
@@ -208,7 +209,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// My fancy company name
     /// </example>
-    [JsonPropertyName("company_name")]
+    [JsonPropertyName("company_name"), JsonPropertyOrder(4)]
     public string? CompanyName { get; set; }
 
     /// <summary>
@@ -218,20 +219,20 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(5)]
     public string? CountryCode { get; set; }
 
     /// <summary>
     /// Service features
     /// </summary>
     /// <value>Service features</value>
-    [JsonPropertyName("features")]
+    [JsonPropertyName("features"), JsonPropertyOrder(6)]
     public List<GetServicePointByIdResponseBodyServicePoint.FeaturesEnum>? Features { get; set; }
 
     /// <summary>
     /// Gets or Sets HoursOfOperation
     /// </summary>
-    [JsonPropertyName("hours_of_operation")]
+    [JsonPropertyName("hours_of_operation"), JsonPropertyOrder(7)]
     public ListServicePointsResponseBodyServicePointsInnerHoursOfOperation? HoursOfOperation { get; set; }
 
     /// <summary>
@@ -241,7 +242,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// 48.842608
     /// </example>
-    [JsonPropertyName("lat")]
+    [JsonPropertyName("lat"), JsonPropertyOrder(8)]
     public double? Lat { get; set; }
 
     /// <summary>
@@ -251,7 +252,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// 0.032875
     /// </example>
-    [JsonPropertyName("long")]
+    [JsonPropertyName("long"), JsonPropertyOrder(9)]
     public double? Long { get; set; }
 
     /// <summary>
@@ -261,7 +262,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// 555-555-5555
     /// </example>
-    [JsonPropertyName("phone_number")]
+    [JsonPropertyName("phone_number"), JsonPropertyOrder(10)]
     public string? PhoneNumber { get; set; }
 
     /// <summary>
@@ -271,13 +272,13 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code")]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(11)]
     public string? PostalCode { get; set; }
 
     /// <summary>
     /// Gets or Sets ServiceCodes
     /// </summary>
-    [JsonPropertyName("service_codes")]
+    [JsonPropertyName("service_codes"), JsonPropertyOrder(12)]
     public List<string>? ServiceCodes { get; set; }
 
     /// <summary>
@@ -287,7 +288,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// 614940
     /// </example>
-    [JsonPropertyName("service_point_id")]
+    [JsonPropertyName("service_point_id"), JsonPropertyOrder(13)]
     public string? ServicePointId { get; set; }
 
     /// <summary>
@@ -297,7 +298,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <example>
     /// TRUN
     /// </example>
-    [JsonPropertyName("state_province")]
+    [JsonPropertyName("state_province"), JsonPropertyOrder(14)]
     public string? StateProvince { get; set; }
 
 

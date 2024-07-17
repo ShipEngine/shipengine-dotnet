@@ -32,16 +32,14 @@ public partial class ConnectUpsRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number")]
-    [JsonRequired]
+    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
 

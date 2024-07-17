@@ -35,8 +35,7 @@ public partial class ConnectCarrierResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    [JsonRequired]
+    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(1)]
     public required string CarrierId { get; set; }
 
 

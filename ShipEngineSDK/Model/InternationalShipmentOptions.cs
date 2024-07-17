@@ -29,61 +29,57 @@ public partial class InternationalShipmentOptions
 {
 
     /// <summary>
-    /// The type of contents in this shipment.  This may impact import duties or customs treatment.  CLOVUS
+    /// The type of contents in this shipment.  This may impact import duties or customs treatment.
     /// </summary>
     /// <value>The type of contents in this shipment.  This may impact import duties or customs treatment.</value>
-    [JsonPropertyName("contents")]
-    [JsonRequired]
-    public required PackageContents Contents { get; set; } = new();
-
+    [JsonPropertyName("contents"), JsonRequired, JsonPropertyOrder(1)]
+    public required PackageContents Contents { get; set; }
 
     /// <summary>
-    /// Indicates what to do if a package is unable to be delivered.  CLOVUS
+    /// Indicates what to do if a package is unable to be delivered.
     /// </summary>
     /// <value>Indicates what to do if a package is unable to be delivered.</value>
-    [JsonPropertyName("non_delivery")]
-    [JsonRequired]
-    public required NonDelivery NonDelivery { get; set; } = new();
-
+    [JsonPropertyName("non_delivery"), JsonRequired, JsonPropertyOrder(2)]
+    public required NonDelivery NonDelivery { get; set; }
 
     /// <summary>
-    /// Specifies the supported terms of trade code (incoterms)  CLOVUS
+    /// Specifies the supported terms of trade code (incoterms)
     /// </summary>
     /// <value>Specifies the supported terms of trade code (incoterms)</value>
-    [JsonPropertyName("terms_of_trade_code")]
+    [JsonPropertyName("terms_of_trade_code"), JsonPropertyOrder(8)]
     public AllowedIncoterms? TermsOfTradeCode { get; set; }
+
     /// <summary>
     /// Explanation for contents (required if the &#x60;contents&#x60; is provided as &#x60;other&#x60;)
     /// </summary>
     /// <value>Explanation for contents (required if the &#x60;contents&#x60; is provided as &#x60;other&#x60;)</value>
-    [JsonPropertyName("contents_explanation")]
+    [JsonPropertyName("contents_explanation"), JsonPropertyOrder(3)]
     public string? ContentsExplanation { get; set; }
 
     /// <summary>
     /// Customs declarations for each item in the shipment. (Please provide this information under &#x60;products&#x60; inside &#x60;packages&#x60;)
     /// </summary>
     /// <value>Customs declarations for each item in the shipment. (Please provide this information under &#x60;products&#x60; inside &#x60;packages&#x60;)</value>
-    [JsonPropertyName("customs_items")]
-    [Obsolete]
+    [JsonPropertyName("customs_items"), JsonPropertyOrder(4), Obsolete]
     public List<CustomsItem>? CustomsItems { get; set; }
 
     /// <summary>
     /// Declaration statement to be placed on the commercial invoice
     /// </summary>
     /// <value>Declaration statement to be placed on the commercial invoice</value>
-    [JsonPropertyName("declaration")]
+    [JsonPropertyName("declaration"), JsonPropertyOrder(5)]
     public string? Declaration { get; set; }
 
     /// <summary>
     /// Gets or Sets ImporterOfRecord
     /// </summary>
-    [JsonPropertyName("importer_of_record")]
+    [JsonPropertyName("importer_of_record"), JsonPropertyOrder(6)]
     public ImporterOfRecords? ImporterOfRecord { get; set; }
 
     /// <summary>
     /// Gets or Sets InvoiceAdditionalDetails
     /// </summary>
-    [JsonPropertyName("invoice_additional_details")]
+    [JsonPropertyName("invoice_additional_details"), JsonPropertyOrder(7)]
     public InvoiceAdditionalDetails? InvoiceAdditionalDetails { get; set; }
 
 

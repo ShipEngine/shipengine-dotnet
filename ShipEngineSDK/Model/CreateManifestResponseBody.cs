@@ -35,9 +35,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(1), Obsolete]
     public required string CarrierId { get; set; }
 
     /// <summary>
@@ -47,18 +45,15 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
-    [JsonPropertyName("created_at")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("created_at"), JsonRequired, JsonPropertyOrder(2), Obsolete]
     public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public required List<Error> Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public List<Error>? Errors { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the form
@@ -67,17 +62,13 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("form_id")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("form_id"), JsonRequired, JsonPropertyOrder(4), Obsolete]
     public required string FormId { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
     /// </summary>
-    [JsonPropertyName("manifest_download")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("manifest_download"), JsonRequired, JsonPropertyOrder(5), Obsolete]
     public required ManifestDownload ManifestDownload { get; set; }
 
     /// <summary>
@@ -87,9 +78,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("manifest_id")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("manifest_id"), JsonRequired, JsonPropertyOrder(6), Obsolete]
     public required string ManifestId { get; set; }
 
     /// <summary>
@@ -99,8 +88,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id")]
-    [JsonRequired]
+    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(7)]
     public required Guid RequestId { get; set; }
 
     /// <summary>
@@ -110,9 +98,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
-    [JsonPropertyName("ship_date")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(8), Obsolete]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
@@ -122,10 +108,8 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// 100
     /// </example>
-    [JsonPropertyName("shipments")]
-    [JsonRequired]
-    [Obsolete]
-    public required int Shipments { get; set; }
+    [JsonPropertyName("shipments"), JsonInclude, Obsolete]
+    public int? Shipments { get; private set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
@@ -134,9 +118,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// 9475711899564878915476
     /// </example>
-    [JsonPropertyName("submission_id")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("submission_id"), JsonRequired, JsonPropertyOrder(10), Obsolete]
     public required string SubmissionId { get; set; }
 
     /// <summary>
@@ -146,31 +128,28 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
-    [JsonRequired]
-    [Obsolete]
+    [JsonPropertyName("warehouse_id"), JsonRequired, JsonPropertyOrder(11), Obsolete]
     public required string WarehouseId { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.
     /// </summary>
     /// <value>An array of the label ids used in this manifest.</value>
-    [JsonPropertyName("label_ids")]
-    [Obsolete]
-    public List<string>? LabelIds { get; set; }
+    [JsonPropertyName("label_ids"), JsonInclude, Obsolete]
+    public List<string>? LabelIds { get; private set; }
 
     /// <summary>
     /// Resulting manifest requests with statuses
     /// </summary>
     /// <value>Resulting manifest requests with statuses</value>
-    [JsonPropertyName("manifest_requests")]
+    [JsonPropertyName("manifest_requests"), JsonPropertyOrder(13)]
     public List<ManifestRequest>? ManifestRequests { get; set; }
 
     /// <summary>
     /// Resulting Manifests
     /// </summary>
     /// <value>Resulting Manifests</value>
-    [JsonPropertyName("manifests")]
+    [JsonPropertyName("manifests"), JsonPropertyOrder(14)]
     public List<Manifest>? Manifests { get; set; }
 
 

@@ -32,9 +32,8 @@ public partial class ListCarriersResponseBody
     /// The carrier response body
     /// </summary>
     /// <value>The carrier response body</value>
-    [JsonPropertyName("carriers")]
-    [JsonRequired]
-    public required List<Carrier> Carriers { get; set; }
+    [JsonPropertyName("carriers"), JsonInclude]
+    public List<Carrier>? Carriers { get; private set; }
 
 
     /// <summary>

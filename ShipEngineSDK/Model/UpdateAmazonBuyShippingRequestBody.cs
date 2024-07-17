@@ -32,7 +32,7 @@ public partial class UpdateAmazonBuyShippingRequestBody
     /// Email
     /// </summary>
     /// <value>Email</value>
-    [JsonPropertyName("email")]
+    [JsonPropertyName("email"), JsonPropertyOrder(1)]
     public string? Email { get; set; }
 
 

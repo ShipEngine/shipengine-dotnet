@@ -32,8 +32,8 @@ public partial class ListServicePointsResponseBody
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    public List<Error>? Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public List<Error>? Errors { get; private set; }
 
     /// <summary>
     /// The latitude of the point. Represented as signed degrees. Required if long is provided. http://www.geomidpoint.com/latlon.html
@@ -42,7 +42,7 @@ public partial class ListServicePointsResponseBody
     /// <example>
     /// 48.842608
     /// </example>
-    [JsonPropertyName("lat")]
+    [JsonPropertyName("lat"), JsonPropertyOrder(2)]
     public double? Lat { get; set; }
 
     /// <summary>
@@ -52,13 +52,13 @@ public partial class ListServicePointsResponseBody
     /// <example>
     /// 0.032875
     /// </example>
-    [JsonPropertyName("long")]
+    [JsonPropertyName("long"), JsonPropertyOrder(3)]
     public double? Long { get; set; }
 
     /// <summary>
     /// Gets or Sets ServicePoints
     /// </summary>
-    [JsonPropertyName("service_points")]
+    [JsonPropertyName("service_points"), JsonPropertyOrder(4)]
     public List<ListServicePointsResponseBodyServicePointsInner>? ServicePoints { get; set; }
 
 

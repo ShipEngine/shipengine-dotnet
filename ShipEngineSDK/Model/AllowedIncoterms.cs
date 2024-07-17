@@ -28,7 +28,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(AllowedIncotermsJsonConverter))]
 public class AllowedIncoterms
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of AllowedIncoterms with a predefined value.
@@ -145,6 +145,12 @@ public class AllowedIncoterms
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is AllowedIncoterms other && _value == other._value;
 }
 
 internal class AllowedIncotermsJsonConverter : JsonConverter<AllowedIncoterms>

@@ -32,24 +32,21 @@ public partial class ConnectPurolatorRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number")]
-    [JsonRequired]
+    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Activation key
     /// </summary>
     /// <value>Activation key</value>
-    [JsonPropertyName("activation_key")]
-    [JsonRequired]
+    [JsonPropertyName("activation_key"), JsonRequired, JsonPropertyOrder(2)]
     public required string ActivationKey { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(3)]
     public required string Nickname { get; set; }
 
 

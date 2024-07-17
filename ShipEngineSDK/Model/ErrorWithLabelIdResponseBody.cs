@@ -32,9 +32,8 @@ public partial class ErrorWithLabelIdResponseBody
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
-    [JsonPropertyName("errors")]
-    [JsonRequired]
-    public required List<Error> Errors { get; set; }
+    [JsonPropertyName("errors"), JsonInclude]
+    public List<Error>? Errors { get; private set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -43,8 +42,7 @@ public partial class ErrorWithLabelIdResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id")]
-    [JsonRequired]
+    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(2)]
     public required Guid RequestId { get; set; }
 
 

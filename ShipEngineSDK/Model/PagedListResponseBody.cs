@@ -31,8 +31,7 @@ public partial class PagedListResponseBody
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
-    [JsonPropertyName("links")]
-    [JsonRequired]
+    [JsonPropertyName("links"), JsonRequired, JsonPropertyOrder(1)]
     public required PaginationLink Links { get; set; }
 
     /// <summary>
@@ -42,8 +41,7 @@ public partial class PagedListResponseBody
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("page")]
-    [JsonRequired]
+    [JsonPropertyName("page"), JsonRequired, JsonPropertyOrder(2)]
     public required int Page { get; set; }
 
     /// <summary>
@@ -53,8 +51,7 @@ public partial class PagedListResponseBody
     /// <example>
     /// 4
     /// </example>
-    [JsonPropertyName("pages")]
-    [JsonRequired]
+    [JsonPropertyName("pages"), JsonRequired, JsonPropertyOrder(3)]
     public required int Pages { get; set; }
 
     /// <summary>
@@ -64,8 +61,7 @@ public partial class PagedListResponseBody
     /// <example>
     /// 2750
     /// </example>
-    [JsonPropertyName("total")]
-    [JsonRequired]
+    [JsonPropertyName("total"), JsonRequired, JsonPropertyOrder(4)]
     public required int Total { get; set; }
 
     /// <summary>

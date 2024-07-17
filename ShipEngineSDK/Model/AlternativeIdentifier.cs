@@ -35,7 +35,7 @@ public partial class AlternativeIdentifier
     /// <example>
     /// last_mile_tracking_number
     /// </example>
-    [JsonPropertyName("type")]
+    [JsonPropertyName("type"), JsonPropertyOrder(1)]
     public string? Type { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class AlternativeIdentifier
     /// <example>
     /// 12345678912345678912
     /// </example>
-    [JsonPropertyName("value")]
+    [JsonPropertyName("value"), JsonPropertyOrder(2)]
     public string? Value { get; set; }
 
 

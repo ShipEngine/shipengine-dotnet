@@ -1,0 +1,1 @@
+[JsonPropertyName("{{baseName}}"){{^isReadOnly}}{{#required}}, JsonRequired{{/required}}, JsonPropertyOrder({{-index}}){{/isReadOnly}}{{#isReadOnly}}, JsonInclude{{/isReadOnly}}{{#isDate}}, JsonConverter(typeof(DateJsonConverter)){{/isDate}}{{#deprecated}}, Obsolete{{/deprecated}}]

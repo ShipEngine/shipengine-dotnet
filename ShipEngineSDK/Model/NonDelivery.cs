@@ -29,7 +29,7 @@ namespace ShipEngineSDK.Model;
 [JsonConverter(typeof(NonDeliveryJsonConverter))]
 public class NonDelivery
 {
-    private string _value;
+    private readonly string _value;
 
     /// <summary>
     /// Create a new instance of NonDelivery with a predefined value.
@@ -68,6 +68,12 @@ public class NonDelivery
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
+
+    /// <summary>
+    /// Get whether this instance is equal to another instance
+    /// </summary>
+    public override bool Equals(object? obj) =>
+        obj is NonDelivery other && _value == other._value;
 }
 
 internal class NonDeliveryJsonConverter : JsonConverter<NonDelivery>

@@ -35,8 +35,7 @@ public partial class CreateManifestByObjectRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id")]
-    [JsonRequired]
+    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(1)]
     public required string CarrierId { get; set; }
 
     /// <summary>
@@ -46,8 +45,7 @@ public partial class CreateManifestByObjectRequestBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("ship_date")]
-    [JsonRequired]
+    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(2)]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
@@ -57,22 +55,21 @@ public partial class CreateManifestByObjectRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id")]
-    [JsonRequired]
+    [JsonPropertyName("warehouse_id"), JsonRequired, JsonPropertyOrder(3)]
     public required string WarehouseId { get; set; }
 
     /// <summary>
     /// The list of label ids to exclude from the manifest
     /// </summary>
     /// <value>The list of label ids to exclude from the manifest</value>
-    [JsonPropertyName("excluded_label_ids")]
+    [JsonPropertyName("excluded_label_ids"), JsonPropertyOrder(4)]
     public List<string>? ExcludedLabelIds { get; set; }
 
     /// <summary>
     /// The list of label ids to include for the manifest
     /// </summary>
     /// <value>The list of label ids to include for the manifest</value>
-    [JsonPropertyName("label_ids")]
+    [JsonPropertyName("label_ids"), JsonPropertyOrder(5)]
     public List<string>? LabelIds { get; set; }
 
 

@@ -35,8 +35,7 @@ public partial class PickupWindow
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("end_at")]
-    [JsonRequired]
+    [JsonPropertyName("end_at"), JsonRequired, JsonPropertyOrder(1)]
     public required DateTimeOffset EndAt { get; set; }
 
     /// <summary>
@@ -46,8 +45,7 @@ public partial class PickupWindow
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("start_at")]
-    [JsonRequired]
+    [JsonPropertyName("start_at"), JsonRequired, JsonPropertyOrder(2)]
     public required DateTimeOffset StartAt { get; set; }
 
 

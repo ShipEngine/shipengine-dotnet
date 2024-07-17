@@ -29,19 +29,16 @@ public partial class Weight
 {
 
     /// <summary>
-    /// Gets or Sets Unit  CLOVUS
+    /// Gets or Sets Unit
     /// </summary>
-    [JsonPropertyName("unit")]
-    [JsonRequired]
-    public required WeightUnit Unit { get; set; } = new();
-
+    [JsonPropertyName("unit"), JsonRequired, JsonPropertyOrder(1)]
+    public required WeightUnit Unit { get; set; }
 
     /// <summary>
     /// The weight, in the specified unit
     /// </summary>
     /// <value>The weight, in the specified unit</value>
-    [JsonPropertyName("value")]
-    [JsonRequired]
+    [JsonPropertyName("value"), JsonRequired, JsonPropertyOrder(2)]
     public required double Value { get; set; }
 
 

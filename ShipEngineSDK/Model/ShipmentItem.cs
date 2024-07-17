@@ -29,10 +29,11 @@ public partial class ShipmentItem
 {
 
     /// <summary>
-    /// Gets or Sets OrderSourceCode  CLOVUS
+    /// Gets or Sets OrderSourceCode
     /// </summary>
-    [JsonPropertyName("order_source_code")]
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(5)]
     public OrderSourceName? OrderSourceCode { get; set; }
+
     /// <summary>
     /// Amazon Standard Identification Number
     /// </summary>
@@ -40,56 +41,56 @@ public partial class ShipmentItem
     /// <example>
     /// B00005N5PF
     /// </example>
-    [JsonPropertyName("asin")]
+    [JsonPropertyName("asin"), JsonPropertyOrder(1)]
     public string? Asin { get; set; }
 
     /// <summary>
     /// external order id
     /// </summary>
     /// <value>external order id</value>
-    [JsonPropertyName("external_order_id")]
+    [JsonPropertyName("external_order_id"), JsonPropertyOrder(2)]
     public string? ExternalOrderId { get; set; }
 
     /// <summary>
     /// external order item id
     /// </summary>
     /// <value>external order item id</value>
-    [JsonPropertyName("external_order_item_id")]
+    [JsonPropertyName("external_order_item_id"), JsonPropertyOrder(3)]
     public string? ExternalOrderItemId { get; set; }
 
     /// <summary>
     /// item name
     /// </summary>
     /// <value>item name</value>
-    [JsonPropertyName("name")]
+    [JsonPropertyName("name"), JsonPropertyOrder(4)]
     public string? Name { get; set; }
 
     /// <summary>
     /// The quantity of this item included in the shipment
     /// </summary>
     /// <value>The quantity of this item included in the shipment</value>
-    [JsonPropertyName("quantity")]
+    [JsonPropertyName("quantity"), JsonPropertyOrder(6)]
     public int? Quantity { get; set; }
 
     /// <summary>
     /// sales order id
     /// </summary>
     /// <value>sales order id</value>
-    [JsonPropertyName("sales_order_id")]
+    [JsonPropertyName("sales_order_id"), JsonPropertyOrder(7)]
     public string? SalesOrderId { get; set; }
 
     /// <summary>
     /// sales order item id
     /// </summary>
     /// <value>sales order item id</value>
-    [JsonPropertyName("sales_order_item_id")]
+    [JsonPropertyName("sales_order_item_id"), JsonPropertyOrder(8)]
     public string? SalesOrderItemId { get; set; }
 
     /// <summary>
     /// Item Stock Keeping Unit
     /// </summary>
     /// <value>Item Stock Keeping Unit</value>
-    [JsonPropertyName("sku")]
+    [JsonPropertyName("sku"), JsonPropertyOrder(9)]
     public string? Sku { get; set; }
 
 

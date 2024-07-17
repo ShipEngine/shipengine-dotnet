@@ -32,16 +32,14 @@ public partial class ConnectDhlExpressRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number")]
-    [JsonRequired]
+    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname")]
-    [JsonRequired]
+    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
@@ -51,21 +49,21 @@ public partial class ConnectDhlExpressRequestBody
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code")]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(3)]
     public string? CountryCode { get; set; }
 
     /// <summary>
     /// Required if site id is provided
     /// </summary>
     /// <value>Required if site id is provided</value>
-    [JsonPropertyName("password")]
+    [JsonPropertyName("password"), JsonPropertyOrder(4)]
     public string? Password { get; set; }
 
     /// <summary>
     /// Required if password is provided
     /// </summary>
     /// <value>Required if password is provided</value>
-    [JsonPropertyName("site_id")]
+    [JsonPropertyName("site_id"), JsonPropertyOrder(5)]
     public string? SiteId { get; set; }
 
 

@@ -35,33 +35,33 @@ public partial class UpsInvoice
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("control_id")]
+    [JsonPropertyName("control_id"), JsonPropertyOrder(1)]
     public string? ControlId { get; set; }
 
     /// <summary>
     /// Gets or Sets InvoiceAmount
     /// </summary>
-    [JsonPropertyName("invoice_amount")]
+    [JsonPropertyName("invoice_amount"), JsonPropertyOrder(2)]
     public double? InvoiceAmount { get; set; }
 
     /// <summary>
     /// Gets or Sets InvoiceCurrencyCode
     /// </summary>
-    [JsonPropertyName("invoice_currency_code")]
+    [JsonPropertyName("invoice_currency_code"), JsonPropertyOrder(3)]
     public string? InvoiceCurrencyCode { get; set; }
 
     /// <summary>
     /// invoice date
     /// </summary>
     /// <value>invoice date</value>
-    [JsonPropertyName("invoice_date")]
+    [JsonPropertyName("invoice_date"), JsonPropertyOrder(4)]
     public DateTimeOffset? InvoiceDate { get; set; }
 
     /// <summary>
     /// invoice number
     /// </summary>
     /// <value>invoice number</value>
-    [JsonPropertyName("invoice_number")]
+    [JsonPropertyName("invoice_number"), JsonPropertyOrder(5)]
     public string? InvoiceNumber { get; set; }
 
 
