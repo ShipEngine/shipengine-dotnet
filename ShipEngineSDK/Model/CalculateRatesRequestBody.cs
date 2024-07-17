@@ -119,7 +119,6 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
         var sb = new StringBuilder();
         sb.Append("class CalculateRatesRequestBody {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-
         sb.Append("  RateOptions: ").Append(this.RateOptions).Append("\n");
         sb.Append("}\n");
         return sb.ToString();

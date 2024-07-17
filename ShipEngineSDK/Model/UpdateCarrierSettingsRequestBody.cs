@@ -186,7 +186,6 @@ public partial class UpdateCarrierSettingsRequestBody : AbstractOpenAPISchema
         var sb = new StringBuilder();
         sb.Append("class UpdateCarrierSettingsRequestBody {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-
         sb.Append("}\n");
         return sb.ToString();
     }

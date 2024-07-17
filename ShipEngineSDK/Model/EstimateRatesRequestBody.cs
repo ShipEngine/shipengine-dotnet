@@ -236,7 +236,6 @@ public partial class EstimateRatesRequestBody : AbstractOpenAPISchema
         var sb = new StringBuilder();
         sb.Append("class EstimateRatesRequestBody {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-
         sb.Append("  FromCityLocality: ").Append(this.FromCityLocality).Append("\n");
         sb.Append("  FromCountryCode: ").Append(this.FromCountryCode).Append("\n");
         sb.Append("  FromPostalCode: ").Append(this.FromPostalCode).Append("\n");

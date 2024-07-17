@@ -111,7 +111,6 @@ public partial class CreateManifestRequestBody : AbstractOpenAPISchema
         var sb = new StringBuilder();
         sb.Append("class CreateManifestRequestBody {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-
         sb.Append("}\n");
         return sb.ToString();
     }

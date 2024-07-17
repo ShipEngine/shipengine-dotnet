@@ -165,7 +165,6 @@
         var sb = new StringBuilder();
         sb.Append("class {{classname}} {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-
 {{#composedSchemas.allOf}}
         {{#allVars}}
         sb.Append("  {{name}}: ").Append(this.{{name}}).Append("\n");

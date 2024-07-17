@@ -111,7 +111,6 @@ public partial class CreateBatchRequest : AbstractOpenAPISchema
         var sb = new StringBuilder();
         sb.Append("class CreateBatchRequest {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-
         sb.Append("}\n");
         return sb.ToString();
     }

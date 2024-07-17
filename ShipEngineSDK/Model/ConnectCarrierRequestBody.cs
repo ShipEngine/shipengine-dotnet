@@ -761,7 +761,6 @@ public partial class ConnectCarrierRequestBody : AbstractOpenAPISchema
         var sb = new StringBuilder();
         sb.Append("class ConnectCarrierRequestBody {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-
         sb.Append("}\n");
         return sb.ToString();
     }
