@@ -42,7 +42,7 @@ public partial class ShipmentRequest
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ShipmentRequest {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Shipment: ").Append(Shipment).Append("\n");

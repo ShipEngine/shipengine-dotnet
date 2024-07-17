@@ -170,3 +170,11 @@ Updated nuget package dependencies
 ## Changed
 
 - Add more explicit nullable reference types
+
+## 3.0.0-beta.3
+
+## Changed
+
+- Don't require any properties for deserialization so that small API changes don't completely break consumers
+- Don't try to serialize read-only properties
+- Don't try to deserialize write-only properties

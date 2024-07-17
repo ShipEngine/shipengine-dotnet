@@ -63,7 +63,7 @@ public partial class ListLabelsResponseBody
         /// The shipment information used to generate the label
         /// </summary>
         /// <value>The shipment information used to generate the label</value>
-        [JsonPropertyName("shipment"), JsonPropertyOrder(4)]
+        [JsonPropertyName("shipment"), JsonPropertyOrder(4), JsonWriteOnly]
         public Shipment? Shipment { get; set; }
 
         /// <summary>
@@ -172,7 +172,7 @@ public partial class ListLabelsResponseBody
         /// <example>
         /// se-28529731
         /// </example>
-        [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(17)]
+        [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(17), JsonWriteOnly]
         public string? OutboundLabelId { get; set; }
 
         /// <summary>
@@ -189,7 +189,7 @@ public partial class ListLabelsResponseBody
         /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
         /// </summary>
         /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-        [JsonPropertyName("test_label"), JsonPropertyOrder(19), Obsolete]
+        [JsonPropertyName("test_label"), JsonPropertyOrder(19), JsonWriteOnly, Obsolete]
         public bool? TestLabel { get; set; }
 
         /// <summary>
@@ -205,7 +205,7 @@ public partial class ListLabelsResponseBody
         /// <summary>
         /// Gets or Sets ValidateAddress
         /// </summary>
-        [JsonPropertyName("validate_address"), JsonPropertyOrder(21)]
+        [JsonPropertyName("validate_address"), JsonPropertyOrder(21), JsonWriteOnly]
         public ValidateAddress? ValidateAddress { get; set; }
 
         /// <summary>
@@ -228,7 +228,7 @@ public partial class ListLabelsResponseBody
         /// <summary>
         /// Gets or Sets LabelDownloadType
         /// </summary>
-        [JsonPropertyName("label_download_type"), JsonPropertyOrder(24)]
+        [JsonPropertyName("label_download_type"), JsonPropertyOrder(24), JsonWriteOnly]
         public LabelDownloadType? LabelDownloadType { get; set; }
 
         /// <summary>
@@ -342,13 +342,13 @@ public partial class ListLabelsResponseBody
     /// The labels that matched the query criteria.  If no matching labels were found, then this array is empty; otherwise, it contains one page of results.  The last page of results may have fewer labels than the &#x60;page_size&#x60;. 
     /// </summary>
     /// <value>The labels that matched the query criteria.  If no matching labels were found, then this array is empty; otherwise, it contains one page of results.  The last page of results may have fewer labels than the &#x60;page_size&#x60;. </value>
-    [JsonPropertyName("labels"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("labels"), JsonPropertyOrder(1)]
     public required List<ListLabelsResponseBodyItem> Labels { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
-    [JsonPropertyName("links"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("links"), JsonPropertyOrder(2)]
     public required PaginationLink Links { get; set; }
 
     /// <summary>
@@ -358,7 +358,7 @@ public partial class ListLabelsResponseBody
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("page"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("page"), JsonPropertyOrder(3)]
     public required int Page { get; set; }
 
     /// <summary>
@@ -368,7 +368,7 @@ public partial class ListLabelsResponseBody
     /// <example>
     /// 4
     /// </example>
-    [JsonPropertyName("pages"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("pages"), JsonPropertyOrder(4)]
     public required int Pages { get; set; }
 
     /// <summary>
@@ -378,7 +378,7 @@ public partial class ListLabelsResponseBody
     /// <example>
     /// 2750
     /// </example>
-    [JsonPropertyName("total"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("total"), JsonPropertyOrder(5)]
     public required int Total { get; set; }
 
 
@@ -388,7 +388,7 @@ public partial class ListLabelsResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ListLabelsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Labels: ").Append(Labels).Append("\n");

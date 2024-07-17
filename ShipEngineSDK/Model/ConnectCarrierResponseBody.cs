@@ -35,7 +35,7 @@ public partial class ConnectCarrierResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(1)]
     public required string CarrierId { get; set; }
 
 
@@ -45,7 +45,7 @@ public partial class ConnectCarrierResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectCarrierResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");

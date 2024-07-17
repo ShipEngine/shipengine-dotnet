@@ -166,13 +166,6 @@ public partial class GetServicePointByIdResponseBodyServicePoint
 
 
     /// <summary>
-    /// Service point type
-    /// </summary>
-    /// <value>Service point type</value>
-    [JsonPropertyName("type"), JsonPropertyOrder(15)]
-    public TypeEnum? Type { get; set; }
-
-    /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines.
     /// </summary>
     /// <value>The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines.</value>
@@ -301,6 +294,13 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     [JsonPropertyName("state_province"), JsonPropertyOrder(14)]
     public string? StateProvince { get; set; }
 
+    /// <summary>
+    /// Service point type
+    /// </summary>
+    /// <value>Service point type</value>
+    [JsonPropertyName("type"), JsonPropertyOrder(15)]
+    public TypeEnum? Type { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -308,7 +308,7 @@ public partial class GetServicePointByIdResponseBodyServicePoint
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetServicePointByIdResponseBodyServicePoint {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");

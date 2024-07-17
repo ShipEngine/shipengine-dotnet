@@ -89,13 +89,6 @@ public partial class AccountSettingsImages
 
 
     /// <summary>
-    /// The image type
-    /// </summary>
-    /// <value>The image type</value>
-    [JsonPropertyName("image_content_type"), JsonPropertyOrder(2)]
-    public ImageContentTypeEnum? ImageContentType { get; set; }
-
-    /// <summary>
     /// The date and time that the image was created in ShipEngine.
     /// </summary>
     /// <value>The date and time that the image was created in ShipEngine.</value>
@@ -104,6 +97,13 @@ public partial class AccountSettingsImages
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
     public DateTimeOffset? CreatedAt { get; private set; }
+
+    /// <summary>
+    /// The image type
+    /// </summary>
+    /// <value>The image type</value>
+    [JsonPropertyName("image_content_type"), JsonPropertyOrder(2)]
+    public ImageContentTypeEnum? ImageContentType { get; set; }
 
     /// <summary>
     /// A base64 encoded string representation of the image. 
@@ -162,7 +162,7 @@ public partial class AccountSettingsImages
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class AccountSettingsImages {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");

@@ -36,7 +36,7 @@ public partial class ParseShipmentRequestBody
     /// I have a 4oz package that&#39;s 5x10x14in, and I need to ship it to Margie McMiller at 3800 North Lamar suite 200 in austin, tx 78652. Please send it via USPS first class and require an adult signature. It also needs to be insured for $400.
 
     /// </example>
-    [JsonPropertyName("text"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("text"), JsonPropertyOrder(1)]
     public required string Text { get; set; }
 
     /// <summary>
@@ -53,7 +53,7 @@ public partial class ParseShipmentRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ParseShipmentRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Text: ").Append(Text).Append("\n");

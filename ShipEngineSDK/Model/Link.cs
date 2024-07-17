@@ -35,7 +35,7 @@ public partial class Link
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("href"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("href"), JsonPropertyOrder(1)]
     public required string Href { get; set; }
 
     /// <summary>
@@ -52,7 +52,7 @@ public partial class Link
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Link {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Href: ").Append(Href).Append("\n");

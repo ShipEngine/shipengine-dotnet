@@ -32,21 +32,21 @@ public partial class ParseAddressResponseBody
     /// The parsed address.  This address may not be complete, depending on how much information was included in the text and how confident the API is about each recognized entity.  &gt; **Note:** The address-recognition API does not currently perform any validation of the parsed address, so we recommend that you use the [address-validation API](https://www.shipengine.com/docs/addresses/validation/) to ensure that the address is correct. 
     /// </summary>
     /// <value>The parsed address.  This address may not be complete, depending on how much information was included in the text and how confident the API is about each recognized entity.  &gt; **Note:** The address-recognition API does not currently perform any validation of the parsed address, so we recommend that you use the [address-validation API](https://www.shipengine.com/docs/addresses/validation/) to ensure that the address is correct. </value>
-    [JsonPropertyName("address"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("address"), JsonPropertyOrder(1)]
     public required PartialAddress Address { get; set; }
 
     /// <summary>
     /// All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, or an address line.  Each entity includes the original text and the parsed value. 
     /// </summary>
     /// <value>All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, or an address line.  Each entity includes the original text and the parsed value. </value>
-    [JsonPropertyName("entities"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("entities"), JsonPropertyOrder(2)]
     public required List<RecognizedEntity> Entities { get; set; }
 
     /// <summary>
     /// A confidence score between zero and one that indicates how certain the API is that it understood the text. 
     /// </summary>
     /// <value>A confidence score between zero and one that indicates how certain the API is that it understood the text. </value>
-    [JsonPropertyName("score"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("score"), JsonPropertyOrder(3)]
     public required double Score { get; set; }
 
 
@@ -56,7 +56,7 @@ public partial class ParseAddressResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ParseAddressResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Address: ").Append(Address).Append("\n");

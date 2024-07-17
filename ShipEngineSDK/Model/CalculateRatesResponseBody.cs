@@ -29,38 +29,18 @@ public partial class CalculateRatesResponseBody
 {
 
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.
-    /// </summary>
-    /// <value>The type of delivery confirmation that is required for this shipment.</value>
-    [JsonPropertyName("confirmation"), JsonRequired, JsonPropertyOrder(2)]
-    public required DeliveryConfirmation Confirmation { get; set; }
-
-    /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment. 
-    /// </summary>
-    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
-    [JsonPropertyName("insurance_provider"), JsonRequired, JsonPropertyOrder(4)]
-    public required InsuranceProvider InsuranceProvider { get; set; }
-
-    /// <summary>
-    /// The current status of the shipment
-    /// </summary>
-    /// <value>The current status of the shipment</value>
-    [JsonPropertyName("shipment_status"), JsonInclude]
-    public ShipmentStatus? ShipmentStatus { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets OrderSourceCode
-    /// </summary>
-    [JsonPropertyName("order_source_code"), JsonPropertyOrder(21)]
-    public OrderSourceName? OrderSourceCode { get; set; }
-
-    /// <summary>
     /// Advanced shipment options.  These are entirely optional.
     /// </summary>
     /// <value>Advanced shipment options.  These are entirely optional.</value>
-    [JsonPropertyName("advanced_options"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("advanced_options"), JsonPropertyOrder(1)]
     public required AdvancedShipmentOptions AdvancedOptions { get; set; }
+
+    /// <summary>
+    /// The type of delivery confirmation that is required for this shipment.
+    /// </summary>
+    /// <value>The type of delivery confirmation that is required for this shipment.</value>
+    [JsonPropertyName("confirmation"), JsonPropertyOrder(2)]
+    public required DeliveryConfirmation Confirmation { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created in ShipEngine.
@@ -71,6 +51,13 @@ public partial class CalculateRatesResponseBody
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
     public DateTimeOffset? CreatedAt { get; private set; }
+
+    /// <summary>
+    /// The insurance provider to use for any insured packages in the shipment. 
+    /// </summary>
+    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
+    [JsonPropertyName("insurance_provider"), JsonPropertyOrder(4)]
+    public required InsuranceProvider InsuranceProvider { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created or last modified.
@@ -86,21 +73,21 @@ public partial class CalculateRatesResponseBody
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
     /// </summary>
     /// <value>The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. </value>
-    [JsonPropertyName("packages"), JsonRequired, JsonPropertyOrder(6)]
+    [JsonPropertyName("packages"), JsonPropertyOrder(6)]
     public required List<Package> Packages { get; set; }
 
     /// <summary>
     /// The rates response
     /// </summary>
     /// <value>The rates response</value>
-    [JsonPropertyName("rate_response"), JsonRequired, JsonPropertyOrder(7)]
+    [JsonPropertyName("rate_response"), JsonPropertyOrder(7)]
     public required RatesInformation RateResponse { get; set; }
 
     /// <summary>
     /// The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. 
     /// </summary>
     /// <value>The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. </value>
-    [JsonPropertyName("return_to"), JsonRequired, JsonPropertyOrder(8)]
+    [JsonPropertyName("return_to"), JsonPropertyOrder(8)]
     public required ShippingAddress ReturnTo { get; set; }
 
     /// <summary>
@@ -110,7 +97,7 @@ public partial class CalculateRatesResponseBody
     /// <example>
     /// 2018-09-23T00:00Z
     /// </example>
-    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(9)]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(9)]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
@@ -122,6 +109,13 @@ public partial class CalculateRatesResponseBody
     /// </example>
     [JsonPropertyName("shipment_id"), JsonInclude]
     public string? ShipmentId { get; private set; }
+
+    /// <summary>
+    /// The current status of the shipment
+    /// </summary>
+    /// <value>The current status of the shipment</value>
+    [JsonPropertyName("shipment_status"), JsonInclude]
+    public ShipmentStatus? ShipmentStatus { get; private set; }
 
     /// <summary>
     /// Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. 
@@ -161,7 +155,7 @@ public partial class CalculateRatesResponseBody
     /// Customs information.  This is usually only needed for international shipments. 
     /// </summary>
     /// <value>Customs information.  This is usually only needed for international shipments. </value>
-    [JsonPropertyName("customs"), JsonRequired, JsonPropertyOrder(16)]
+    [JsonPropertyName("customs"), JsonPropertyOrder(16)]
     public required InternationalShipmentOptions Customs { get; set; }
 
     /// <summary>
@@ -191,6 +185,12 @@ public partial class CalculateRatesResponseBody
     /// <value>Describe the packages included in this shipment as related to potential metadata that was imported from external order sources </value>
     [JsonPropertyName("items"), JsonPropertyOrder(20)]
     public List<ShipmentItem>? Items { get; set; }
+
+    /// <summary>
+    /// Gets or Sets OrderSourceCode
+    /// </summary>
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(21)]
+    public OrderSourceName? OrderSourceCode { get; set; }
 
     /// <summary>
     /// The [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) used to ship the package, such as &#x60;fedex_ground&#x60;, &#x60;usps_first_class_mail&#x60;, &#x60;flat_rate_envelope&#x60;, etc. 
@@ -256,7 +256,7 @@ public partial class CalculateRatesResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CalculateRatesResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AdvancedOptions: ").Append(AdvancedOptions).Append("\n");

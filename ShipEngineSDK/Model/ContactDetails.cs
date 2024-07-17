@@ -35,20 +35,20 @@ public partial class ContactDetails
     /// <example>
     /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("email"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("email"), JsonPropertyOrder(1)]
     public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets Name
     /// </summary>
-    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("name"), JsonPropertyOrder(2)]
     public required string Name { get; set; }
 
     /// <summary>
     /// Phone number associated
     /// </summary>
     /// <value>Phone number associated</value>
-    [JsonPropertyName("phone"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("phone"), JsonPropertyOrder(3)]
     public required string Phone { get; set; }
 
 
@@ -58,7 +58,7 @@ public partial class ContactDetails
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ContactDetails {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Email: ").Append(Email).Append("\n");

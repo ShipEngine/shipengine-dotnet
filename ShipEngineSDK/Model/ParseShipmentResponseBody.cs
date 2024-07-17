@@ -32,21 +32,21 @@ public partial class ParseShipmentResponseBody
     /// All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, a carrier name, or a package weight.  Each entity includes the original text and the parsed value. 
     /// </summary>
     /// <value>All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, a carrier name, or a package weight.  Each entity includes the original text and the parsed value. </value>
-    [JsonPropertyName("entities"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("entities"), JsonPropertyOrder(1)]
     public required List<RecognizedEntity> Entities { get; set; }
 
     /// <summary>
     /// A confidence score between zero and one that indicates how certain the API is that it understood the text. 
     /// </summary>
     /// <value>A confidence score between zero and one that indicates how certain the API is that it understood the text. </value>
-    [JsonPropertyName("score"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("score"), JsonPropertyOrder(2)]
     public required double Score { get; set; }
 
     /// <summary>
     /// The parsed shipment.  This shipment may not be complete, depending on how much information was included in the text and how confident the API is about each recognized entity.  &gt; **Note:** The shipment-recognition API does not currently perform any validation of the parsed addresses, so we recommend that you use the [address-validation API](https://www.shipengine.com/docs/addresses/validation/) to ensure that the addresses are correct. 
     /// </summary>
     /// <value>The parsed shipment.  This shipment may not be complete, depending on how much information was included in the text and how confident the API is about each recognized entity.  &gt; **Note:** The shipment-recognition API does not currently perform any validation of the parsed addresses, so we recommend that you use the [address-validation API](https://www.shipengine.com/docs/addresses/validation/) to ensure that the addresses are correct. </value>
-    [JsonPropertyName("shipment"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(3)]
     public required PartialShipment Shipment { get; set; }
 
 
@@ -56,7 +56,7 @@ public partial class ParseShipmentResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ParseShipmentResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Entities: ").Append(Entities).Append("\n");

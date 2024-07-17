@@ -26,8 +26,10 @@
 {{>modelInnerEnum}}
     {{/complexType}}
     {{/isEnum}}
-    {{#isEnum}}
+    {{/allVars}}
 
+    {{#allVars}}
+    {{#isEnum}}
     /// <summary>
     /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
     /// </summary>
@@ -44,9 +46,6 @@
     
     {{/required}}
     {{/isEnum}}
-    {{/allVars}}
-
-    {{#allVars}}
     {{^isInherited}}
     {{^isEnum}}
     /// <summary>

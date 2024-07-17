@@ -59,7 +59,7 @@ public partial class ListPickupResponseBody
     /// An array of pickups associated with the user&#39;s account.
     /// </summary>
     /// <value>An array of pickups associated with the user&#39;s account.</value>
-    [JsonPropertyName("pickups"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("pickups"), JsonPropertyOrder(4)]
     public required List<Pickup> Pickups { get; set; }
 
     /// <summary>
@@ -79,7 +79,7 @@ public partial class ListPickupResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ListPickupResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Links: ").Append(Links).Append("\n");

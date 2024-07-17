@@ -29,24 +29,6 @@ public partial class FedexAccountSettingsRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets PickupType
-    /// </summary>
-    [JsonPropertyName("pickup_type"), JsonPropertyOrder(4)]
-    public FedexPickupType? PickupType { get; set; }
-
-    /// <summary>
-    /// Gets or Sets SmartPostEndorsement
-    /// </summary>
-    [JsonPropertyName("smart_post_endorsement"), JsonPropertyOrder(6)]
-    public AncillaryServiceEndorsement? SmartPostEndorsement { get; set; }
-
-    /// <summary>
-    /// Gets or Sets SmartPostHub
-    /// </summary>
-    [JsonPropertyName("smart_post_hub"), JsonPropertyOrder(7)]
-    public SmartPostHub? SmartPostHub { get; set; }
-
-    /// <summary>
     /// Gets or Sets IsPrimaryAccount
     /// </summary>
     [JsonPropertyName("is_primary_account"), JsonPropertyOrder(1)]
@@ -66,10 +48,28 @@ public partial class FedexAccountSettingsRequestBody
     public string? Nickname { get; set; }
 
     /// <summary>
+    /// Gets or Sets PickupType
+    /// </summary>
+    [JsonPropertyName("pickup_type"), JsonPropertyOrder(4)]
+    public FedexPickupType? PickupType { get; set; }
+
+    /// <summary>
     /// Gets or Sets SignatureImage
     /// </summary>
     [JsonPropertyName("signature_image"), JsonPropertyOrder(5)]
     public string? SignatureImage { get; set; }
+
+    /// <summary>
+    /// Gets or Sets SmartPostEndorsement
+    /// </summary>
+    [JsonPropertyName("smart_post_endorsement"), JsonPropertyOrder(6)]
+    public AncillaryServiceEndorsement? SmartPostEndorsement { get; set; }
+
+    /// <summary>
+    /// Gets or Sets SmartPostHub
+    /// </summary>
+    [JsonPropertyName("smart_post_hub"), JsonPropertyOrder(7)]
+    public SmartPostHub? SmartPostHub { get; set; }
 
 
     /// <summary>
@@ -78,7 +78,7 @@ public partial class FedexAccountSettingsRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class FedexAccountSettingsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  IsPrimaryAccount: ").Append(IsPrimaryAccount).Append("\n");

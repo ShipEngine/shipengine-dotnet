@@ -31,14 +31,14 @@ public partial class Weight
     /// <summary>
     /// Gets or Sets Unit
     /// </summary>
-    [JsonPropertyName("unit"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("unit"), JsonPropertyOrder(1)]
     public required WeightUnit Unit { get; set; }
 
     /// <summary>
     /// The weight, in the specified unit
     /// </summary>
     /// <value>The weight, in the specified unit</value>
-    [JsonPropertyName("value"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("value"), JsonPropertyOrder(2)]
     public required double Value { get; set; }
 
 
@@ -48,7 +48,7 @@ public partial class Weight
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Weight {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Unit: ").Append(Unit).Append("\n");

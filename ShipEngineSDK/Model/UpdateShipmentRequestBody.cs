@@ -29,50 +29,17 @@ public partial class UpdateShipmentRequestBody
 {
 
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.
-    /// </summary>
-    /// <value>The type of delivery confirmation that is required for this shipment.</value>
-    [JsonPropertyName("confirmation"), JsonPropertyOrder(6)]
-    public DeliveryConfirmation? Confirmation { get; set; }
-
-    /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment. 
-    /// </summary>
-    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
-    [JsonPropertyName("insurance_provider"), JsonPropertyOrder(11)]
-    public InsuranceProvider? InsuranceProvider { get; set; }
-
-    /// <summary>
-    /// Gets or Sets OrderSourceCode
-    /// </summary>
-    [JsonPropertyName("order_source_code"), JsonPropertyOrder(15)]
-    public OrderSourceName? OrderSourceCode { get; set; }
-
-    /// <summary>
-    /// The current status of the shipment
-    /// </summary>
-    /// <value>The current status of the shipment</value>
-    [JsonPropertyName("shipment_status"), JsonInclude]
-    public ShipmentStatus? ShipmentStatus { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets ValidateAddress
-    /// </summary>
-    [JsonPropertyName("validate_address"), JsonPropertyOrder(27)]
-    public ValidateAddress? ValidateAddress { get; set; }
-
-    /// <summary>
     /// The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. 
     /// </summary>
     /// <value>The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. </value>
-    [JsonPropertyName("ship_from"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("ship_from"), JsonPropertyOrder(1)]
     public required ShippingAddress ShipFrom { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address
     /// </summary>
     /// <value>The recipient&#39;s mailing address</value>
-    [JsonPropertyName("ship_to"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("ship_to"), JsonPropertyOrder(2)]
     public required ShippingAddressTo ShipTo { get; set; }
 
     /// <summary>
@@ -101,6 +68,13 @@ public partial class UpdateShipmentRequestBody
     /// </example>
     [JsonPropertyName("comparison_rate_type"), JsonPropertyOrder(5)]
     public string? ComparisonRateType { get; set; }
+
+    /// <summary>
+    /// The type of delivery confirmation that is required for this shipment.
+    /// </summary>
+    /// <value>The type of delivery confirmation that is required for this shipment.</value>
+    [JsonPropertyName("confirmation"), JsonPropertyOrder(6)]
+    public DeliveryConfirmation? Confirmation { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created in ShipEngine.
@@ -134,6 +108,13 @@ public partial class UpdateShipmentRequestBody
     public string? ExternalShipmentId { get; set; }
 
     /// <summary>
+    /// The insurance provider to use for any insured packages in the shipment. 
+    /// </summary>
+    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
+    [JsonPropertyName("insurance_provider"), JsonPropertyOrder(11)]
+    public InsuranceProvider? InsuranceProvider { get; set; }
+
+    /// <summary>
     /// An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. 
     /// </summary>
     /// <value>An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. </value>
@@ -156,6 +137,12 @@ public partial class UpdateShipmentRequestBody
     /// </example>
     [JsonPropertyName("modified_at"), JsonInclude]
     public DateTimeOffset? ModifiedAt { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets OrderSourceCode
+    /// </summary>
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(15)]
+    public OrderSourceName? OrderSourceCode { get; set; }
 
     /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
@@ -209,6 +196,13 @@ public partial class UpdateShipmentRequestBody
     public string? ShipmentNumber { get; set; }
 
     /// <summary>
+    /// The current status of the shipment
+    /// </summary>
+    /// <value>The current status of the shipment</value>
+    [JsonPropertyName("shipment_status"), JsonInclude]
+    public ShipmentStatus? ShipmentStatus { get; private set; }
+
+    /// <summary>
     /// ID of the shipping rule, which you want to use to automate carrier/carrier service selection for the shipment 
     /// </summary>
     /// <value>ID of the shipping rule, which you want to use to automate carrier/carrier service selection for the shipment </value>
@@ -239,6 +233,12 @@ public partial class UpdateShipmentRequestBody
     public Weight? TotalWeight { get; private set; }
 
     /// <summary>
+    /// Gets or Sets ValidateAddress
+    /// </summary>
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(27)]
+    public ValidateAddress? ValidateAddress { get; set; }
+
+    /// <summary>
     /// The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either &#x60;warehouse_id&#x60; or &#x60;ship_from&#x60; must be specified. 
     /// </summary>
     /// <value>The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either &#x60;warehouse_id&#x60; or &#x60;ship_from&#x60; must be specified. </value>
@@ -255,7 +255,7 @@ public partial class UpdateShipmentRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class UpdateShipmentRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ShipFrom: ").Append(ShipFrom).Append("\n");

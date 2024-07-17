@@ -30,8 +30,11 @@
 {{>modelInnerEnum}}
     {{/complexType}}
     {{/isEnum}}
-    {{#isEnum}}
+    {{/vars}}
 
+    {{#vars}}
+    {{^isInherited}}
+    {{#isEnum}}
     /// <summary>
     /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
     /// </summary>
@@ -45,11 +48,8 @@
     {{/example}}
     {{>partial_jsonAttributes}}
     public{{>partial_requiredAttribute}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{>partial_optional}}{{/isContainer}} {{name}} {{>partial_getSet}}
-    {{/isEnum}}
-    {{/vars}}
 
-    {{#vars}}
-    {{^isInherited}}
+    {{/isEnum}}
     {{^isEnum}}
     {{#items.vars}}
     {{#-first}}
@@ -105,7 +105,7 @@
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class {{classname}} {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         {{#parent}}

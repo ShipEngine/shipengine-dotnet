@@ -32,14 +32,14 @@ public partial class ConnectDhlExpressRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("account_number"), JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
@@ -73,7 +73,7 @@ public partial class ConnectDhlExpressRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectDhlExpressRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");

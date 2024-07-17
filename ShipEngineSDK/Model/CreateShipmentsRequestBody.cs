@@ -32,7 +32,7 @@ public partial class CreateShipmentsRequestBody
     /// An array of shipments to be created.
     /// </summary>
     /// <value>An array of shipments to be created.</value>
-    [JsonPropertyName("shipments"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("shipments"), JsonPropertyOrder(1)]
     public required List<AddressValidatingShipment> Shipments { get; set; }
 
 
@@ -42,7 +42,7 @@ public partial class CreateShipmentsRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateShipmentsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Shipments: ").Append(Shipments).Append("\n");

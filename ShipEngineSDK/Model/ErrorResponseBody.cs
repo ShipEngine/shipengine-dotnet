@@ -42,7 +42,7 @@ public partial class ErrorResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("request_id"), JsonPropertyOrder(2)]
     public required Guid RequestId { get; set; }
 
 
@@ -52,7 +52,7 @@ public partial class ErrorResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ErrorResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Errors: ").Append(Errors).Append("\n");

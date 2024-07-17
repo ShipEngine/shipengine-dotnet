@@ -29,19 +29,13 @@ public partial class GetTrackingLogResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode
-    /// </summary>
-    [JsonPropertyName("status_code"), JsonRequired, JsonPropertyOrder(7)]
-    public required StatusCode StatusCode { get; set; }
-
-    /// <summary>
     /// A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
     /// </summary>
     /// <value>A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. </value>
     /// <example>
     /// dhl_express
     /// </example>
-    [JsonPropertyName("carrier_code"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("carrier_code"), JsonPropertyOrder(1)]
     public required string CarrierCode { get; set; }
 
     /// <summary>
@@ -61,7 +55,7 @@ public partial class GetTrackingLogResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(3)]
     public required string CarrierId { get; set; }
 
     /// <summary>
@@ -81,7 +75,7 @@ public partial class GetTrackingLogResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("estimated_delivery_date"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("estimated_delivery_date"), JsonPropertyOrder(5)]
     public required DateTimeOffset EstimatedDeliveryDate { get; set; }
 
     /// <summary>
@@ -92,13 +86,19 @@ public partial class GetTrackingLogResponseBody
     public List<TrackEvent>? Events { get; private set; }
 
     /// <summary>
+    /// Gets or Sets StatusCode
+    /// </summary>
+    [JsonPropertyName("status_code"), JsonPropertyOrder(7)]
+    public required StatusCode StatusCode { get; set; }
+
+    /// <summary>
     /// A tracking number for a package. The format depends on the carrier.
     /// </summary>
     /// <value>A tracking number for a package. The format depends on the carrier.</value>
     /// <example>
     /// 1Z932R800392060079
     /// </example>
-    [JsonPropertyName("tracking_number"), JsonRequired, JsonPropertyOrder(8)]
+    [JsonPropertyName("tracking_number"), JsonPropertyOrder(8)]
     public required string TrackingNumber { get; set; }
 
     /// <summary>
@@ -165,7 +165,7 @@ public partial class GetTrackingLogResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetTrackingLogResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");

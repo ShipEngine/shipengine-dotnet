@@ -68,7 +68,7 @@ public partial class Webhook
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Webhook {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Event: ").Append(Event).Append("\n");

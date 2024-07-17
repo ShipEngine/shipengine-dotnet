@@ -35,7 +35,7 @@ public partial class DeleteScheduledPickupResponseBody
     /// <example>
     /// pik_3YcKU5zdtJuCqoeNwyqqbW
     /// </example>
-    [JsonPropertyName("pickup_id"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("pickup_id"), JsonPropertyOrder(1)]
     public required string PickupId { get; set; }
 
 
@@ -45,7 +45,7 @@ public partial class DeleteScheduledPickupResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class DeleteScheduledPickupResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  PickupId: ").Append(PickupId).Append("\n");

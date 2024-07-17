@@ -29,20 +29,13 @@ public partial class AddressToValidate
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.
-    /// </summary>
-    /// <value>Indicates whether this is a residential address.</value>
-    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(7)]
-    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
-
-    /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. 
     /// </summary>
     /// <value>The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. </value>
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("address_line1"), JsonPropertyOrder(1)]
     public required string AddressLine1 { get; set; }
 
     /// <summary>
@@ -52,7 +45,7 @@ public partial class AddressToValidate
     /// <example>
     /// Winnipeg
     /// </example>
-    [JsonPropertyName("city_locality"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("city_locality"), JsonPropertyOrder(2)]
     public required string CityLocality { get; set; }
 
     /// <summary>
@@ -62,7 +55,7 @@ public partial class AddressToValidate
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(3)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -72,7 +65,7 @@ public partial class AddressToValidate
     /// <example>
     /// Manitoba
     /// </example>
-    [JsonPropertyName("state_province"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("state_province"), JsonPropertyOrder(4)]
     public required string StateProvince { get; set; }
 
     /// <summary>
@@ -94,6 +87,13 @@ public partial class AddressToValidate
     /// </example>
     [JsonPropertyName("address_line3"), JsonPropertyOrder(6)]
     public string? AddressLine3 { get; set; }
+
+    /// <summary>
+    /// Indicates whether this is a residential address.
+    /// </summary>
+    /// <value>Indicates whether this is a residential address.</value>
+    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(7)]
+    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
 
     /// <summary>
     /// If this is a business address, then the company name should be specified here. 
@@ -152,7 +152,7 @@ public partial class AddressToValidate
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class AddressToValidate {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");

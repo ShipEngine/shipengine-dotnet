@@ -35,7 +35,7 @@ public partial class WebhookHeader
     /// <example>
     /// custom-key
     /// </example>
-    [JsonPropertyName("key"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("key"), JsonPropertyOrder(1)]
     public required string Key { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class WebhookHeader
     /// <example>
     /// custom-value
     /// </example>
-    [JsonPropertyName("value"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("value"), JsonPropertyOrder(2)]
     public required string Value { get; set; }
 
 
@@ -55,7 +55,7 @@ public partial class WebhookHeader
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class WebhookHeader {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Key: ").Append(Key).Append("\n");

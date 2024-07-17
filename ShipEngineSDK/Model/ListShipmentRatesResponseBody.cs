@@ -29,25 +29,19 @@ public partial class ListShipmentRatesResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets Status
-    /// </summary>
-    [JsonPropertyName("status"), JsonInclude]
-    public RateResponseStatus? Status { get; private set; }
-
-    /// <summary>
     /// When the rate was created
     /// </summary>
     /// <value>When the rate was created</value>
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("created_at"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("created_at"), JsonPropertyOrder(1)]
     public required string CreatedAt { get; set; }
 
     /// <summary>
     /// Gets or Sets Errors
     /// </summary>
-    [JsonPropertyName("errors"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("errors"), JsonPropertyOrder(2)]
     public required List<Error> Errors { get; set; }
 
     /// <summary>
@@ -84,6 +78,12 @@ public partial class ListShipmentRatesResponseBody
     [JsonPropertyName("shipment_id"), JsonInclude]
     public string? ShipmentId { get; private set; }
 
+    /// <summary>
+    /// Gets or Sets Status
+    /// </summary>
+    [JsonPropertyName("status"), JsonInclude]
+    public RateResponseStatus? Status { get; private set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -91,7 +91,7 @@ public partial class ListShipmentRatesResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ListShipmentRatesResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");

@@ -32,14 +32,14 @@ public partial class ConnectNewgisticsRequestBody
     /// Induction site
     /// </summary>
     /// <value>Induction site</value>
-    [JsonPropertyName("induction_site"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("induction_site"), JsonPropertyOrder(1)]
     public required string InductionSite { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
@@ -63,7 +63,7 @@ public partial class ConnectNewgisticsRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectNewgisticsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  InductionSite: ").Append(InductionSite).Append("\n");

@@ -29,12 +29,6 @@ public partial class RatesInformation
 {
 
     /// <summary>
-    /// Gets or Sets Status
-    /// </summary>
-    [JsonPropertyName("status"), JsonInclude]
-    public RateResponseStatus? Status { get; private set; }
-
-    /// <summary>
     /// When the rate was created
     /// </summary>
     /// <value>When the rate was created</value>
@@ -84,6 +78,12 @@ public partial class RatesInformation
     [JsonPropertyName("shipment_id"), JsonInclude]
     public string? ShipmentId { get; private set; }
 
+    /// <summary>
+    /// Gets or Sets Status
+    /// </summary>
+    [JsonPropertyName("status"), JsonInclude]
+    public RateResponseStatus? Status { get; private set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -91,7 +91,7 @@ public partial class RatesInformation
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class RatesInformation {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");

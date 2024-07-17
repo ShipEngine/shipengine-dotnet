@@ -32,7 +32,7 @@ public partial class Package
     /// The package weight
     /// </summary>
     /// <value>The package weight</value>
-    [JsonPropertyName("weight"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("weight"), JsonPropertyOrder(1)]
     public required Weight Weight { get; set; }
 
     /// <summary>
@@ -144,7 +144,7 @@ public partial class Package
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Package {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Weight: ").Append(Weight).Append("\n");

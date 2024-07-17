@@ -35,7 +35,7 @@ public partial class Tag
     /// <example>
     /// Fragile
     /// </example>
-    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("name"), JsonPropertyOrder(1)]
     public required string Name { get; set; }
 
 
@@ -45,7 +45,7 @@ public partial class Tag
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Tag {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");

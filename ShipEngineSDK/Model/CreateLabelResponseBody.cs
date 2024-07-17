@@ -29,59 +29,6 @@ public partial class CreateLabelResponseBody
 {
 
     /// <summary>
-    /// The label charge event. 
-    /// </summary>
-    /// <value>The label charge event. </value>
-    [JsonPropertyName("charge_event"), JsonRequired, JsonPropertyOrder(4)]
-    public required LabelChargeEvent ChargeEvent { get; set; }
-
-    /// <summary>
-    /// The display format that the label should be shown in.
-    /// </summary>
-    /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme"), JsonRequired, JsonPropertyOrder(6)]
-    public required DisplayScheme DisplayScheme { get; set; }
-
-    /// <summary>
-    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
-    /// </summary>
-    /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
-    [JsonPropertyName("label_format"), JsonRequired, JsonPropertyOrder(11)]
-    public required LabelFormat LabelFormat { get; set; }
-
-    /// <summary>
-    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
-    /// </summary>
-    /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    [JsonPropertyName("label_layout"), JsonRequired, JsonPropertyOrder(13)]
-    public required LabelLayout LabelLayout { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Status
-    /// </summary>
-    [JsonPropertyName("status"), JsonInclude]
-    public LabelStatus? Status { get; private set; }
-
-    /// <summary>
-    /// The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;
-    /// </summary>
-    /// <value>The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;</value>
-    [JsonPropertyName("tracking_status"), JsonInclude]
-    public TrackingStatus? TrackingStatus { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets LabelDownloadType
-    /// </summary>
-    [JsonPropertyName("label_download_type"), JsonPropertyOrder(28)]
-    public LabelDownloadType? LabelDownloadType { get; set; }
-
-    /// <summary>
-    /// Gets or Sets ValidateAddress
-    /// </summary>
-    [JsonPropertyName("validate_address"), JsonPropertyOrder(37)]
-    public ValidateAddress? ValidateAddress { get; set; }
-
-    /// <summary>
     /// If this label was created as part of a [batch](https://www.shipengine.com/docs/labels/bulk/), then this is the unique ID of that batch. 
     /// </summary>
     /// <value>If this label was created as part of a [batch](https://www.shipengine.com/docs/labels/bulk/), then this is the unique ID of that batch. </value>
@@ -112,6 +59,13 @@ public partial class CreateLabelResponseBody
     public string? CarrierId { get; private set; }
 
     /// <summary>
+    /// The label charge event. 
+    /// </summary>
+    /// <value>The label charge event. </value>
+    [JsonPropertyName("charge_event"), JsonPropertyOrder(4)]
+    public required LabelChargeEvent ChargeEvent { get; set; }
+
+    /// <summary>
     /// The date and time that the label was created in ShipEngine.
     /// </summary>
     /// <value>The date and time that the label was created in ShipEngine.</value>
@@ -120,6 +74,13 @@ public partial class CreateLabelResponseBody
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
     public DateTimeOffset? CreatedAt { get; private set; }
+
+    /// <summary>
+    /// The display format that the label should be shown in.
+    /// </summary>
+    /// <value>The display format that the label should be shown in.</value>
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(6)]
+    public required DisplayScheme DisplayScheme { get; set; }
 
     /// <summary>
     /// The insurance cost for this package.  Add this to the &#x60;shipment_cost&#x60; field to get the total cost. 
@@ -139,7 +100,7 @@ public partial class CreateLabelResponseBody
     /// Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. 
     /// </summary>
     /// <value>Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. </value>
-    [JsonPropertyName("is_return_label"), JsonRequired, JsonPropertyOrder(9)]
+    [JsonPropertyName("is_return_label"), JsonPropertyOrder(9)]
     public required bool IsReturnLabel { get; set; }
 
     /// <summary>
@@ -147,6 +108,13 @@ public partial class CreateLabelResponseBody
     /// </summary>
     [JsonPropertyName("label_download"), JsonInclude]
     public LabelDownload? LabelDownload { get; private set; }
+
+    /// <summary>
+    /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
+    /// </summary>
+    /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
+    [JsonPropertyName("label_format"), JsonPropertyOrder(11)]
+    public required LabelFormat LabelFormat { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the label. This ID is generated by ShipEngine when the label is created. 
@@ -157,6 +125,13 @@ public partial class CreateLabelResponseBody
     /// </example>
     [JsonPropertyName("label_id"), JsonInclude]
     public string? LabelId { get; private set; }
+
+    /// <summary>
+    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
+    /// </summary>
+    /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(13)]
+    public required LabelLayout LabelLayout { get; set; }
 
     /// <summary>
     /// The [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/), such as &#x60;thick_envelope&#x60;, &#x60;small_flat_rate_box&#x60;, &#x60;large_package&#x60;, etc.  The code &#x60;package&#x60; indicates a custom or unknown package type. 
@@ -213,6 +188,12 @@ public partial class CreateLabelResponseBody
     public string? ShipmentId { get; private set; }
 
     /// <summary>
+    /// Gets or Sets Status
+    /// </summary>
+    [JsonPropertyName("status"), JsonInclude]
+    public LabelStatus? Status { get; private set; }
+
+    /// <summary>
     /// Indicates whether the shipment is trackable, in which case the &#x60;tracking_status&#x60; field will reflect the current status and each package will have a &#x60;tracking_number&#x60;. 
     /// </summary>
     /// <value>Indicates whether the shipment is trackable, in which case the &#x60;tracking_status&#x60; field will reflect the current status and each package will have a &#x60;tracking_number&#x60;. </value>
@@ -228,6 +209,13 @@ public partial class CreateLabelResponseBody
     /// </example>
     [JsonPropertyName("tracking_number"), JsonInclude]
     public string? TrackingNumber { get; private set; }
+
+    /// <summary>
+    /// The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;
+    /// </summary>
+    /// <value>The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60;</value>
+    [JsonPropertyName("tracking_status"), JsonInclude]
+    public TrackingStatus? TrackingStatus { get; private set; }
 
     /// <summary>
     /// Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/) 
@@ -258,13 +246,19 @@ public partial class CreateLabelResponseBody
     public Link? InsuranceClaim { get; private set; }
 
     /// <summary>
+    /// Gets or Sets LabelDownloadType
+    /// </summary>
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(28), JsonWriteOnly]
+    public LabelDownloadType? LabelDownloadType { get; set; }
+
+    /// <summary>
     /// The label image resource that was used to create a custom label image.
     /// </summary>
     /// <value>The label image resource that was used to create a custom label image.</value>
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id"), JsonRequired, JsonPropertyOrder(29)]
+    [JsonPropertyName("label_image_id"), JsonPropertyOrder(29)]
     public required string LabelImageId { get; set; }
 
     /// <summary>
@@ -274,7 +268,7 @@ public partial class CreateLabelResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(30)]
+    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(30), JsonWriteOnly]
     public string? OutboundLabelId { get; set; }
 
     /// <summary>
@@ -295,21 +289,21 @@ public partial class CreateLabelResponseBody
     /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
     /// </summary>
     /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-    [JsonPropertyName("rma_number"), JsonRequired, JsonPropertyOrder(33)]
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(33)]
     public required string RmaNumber { get; set; }
 
     /// <summary>
     /// The shipment information used to generate the label
     /// </summary>
     /// <value>The shipment information used to generate the label</value>
-    [JsonPropertyName("shipment"), JsonPropertyOrder(34)]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(34), JsonWriteOnly]
     public Shipment? Shipment { get; set; }
 
     /// <summary>
     /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
     /// </summary>
     /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-    [JsonPropertyName("test_label"), JsonPropertyOrder(35), Obsolete]
+    [JsonPropertyName("test_label"), JsonPropertyOrder(35), JsonWriteOnly, Obsolete]
     public bool? TestLabel { get; set; }
 
     /// <summary>
@@ -321,6 +315,12 @@ public partial class CreateLabelResponseBody
     /// </example>
     [JsonPropertyName("tracking_url"), JsonInclude]
     public string? TrackingUrl { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets ValidateAddress
+    /// </summary>
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(37), JsonWriteOnly]
+    public ValidateAddress? ValidateAddress { get; set; }
 
     /// <summary>
     /// The date and time that the label was [voided](https://www.shipengine.com/docs/labels/voiding/), or &#x60;null&#x60; if the label has not been voided 
@@ -339,7 +339,7 @@ public partial class CreateLabelResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateLabelResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  BatchId: ").Append(BatchId).Append("\n");

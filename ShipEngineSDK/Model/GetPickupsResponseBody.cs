@@ -66,7 +66,7 @@ public partial class GetPickupsResponseBody
     /// An array of pickups associated with the user&#39;s account.
     /// </summary>
     /// <value>An array of pickups associated with the user&#39;s account.</value>
-    [JsonPropertyName("pickups"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("pickups"), JsonPropertyOrder(5)]
     public required List<Pickup> Pickups { get; set; }
 
     /// <summary>
@@ -76,7 +76,7 @@ public partial class GetPickupsResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(6)]
+    [JsonPropertyName("request_id"), JsonPropertyOrder(6)]
     public required Guid RequestId { get; set; }
 
     /// <summary>
@@ -96,7 +96,7 @@ public partial class GetPickupsResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetPickupsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Errors: ").Append(Errors).Append("\n");

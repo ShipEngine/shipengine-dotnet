@@ -29,18 +29,6 @@ public partial class UpsSettingsResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets MailInnovationsEndorsement
-    /// </summary>
-    [JsonPropertyName("mail_innovations_endorsement"), JsonPropertyOrder(5)]
-    public AncillaryServiceEndorsement? MailInnovationsEndorsement { get; set; }
-
-    /// <summary>
-    /// Gets or Sets PickupType
-    /// </summary>
-    [JsonPropertyName("pickup_type"), JsonPropertyOrder(7)]
-    public UpsPickupType? PickupType { get; set; }
-
-    /// <summary>
     /// account postal code
     /// </summary>
     /// <value>account postal code</value>
@@ -69,11 +57,23 @@ public partial class UpsSettingsResponseBody
     public string? MailInnovationsCostCenter { get; set; }
 
     /// <summary>
+    /// Gets or Sets MailInnovationsEndorsement
+    /// </summary>
+    [JsonPropertyName("mail_innovations_endorsement"), JsonPropertyOrder(5)]
+    public AncillaryServiceEndorsement? MailInnovationsEndorsement { get; set; }
+
+    /// <summary>
     /// nickname
     /// </summary>
     /// <value>nickname</value>
     [JsonPropertyName("nickname"), JsonPropertyOrder(6)]
     public string? Nickname { get; set; }
+
+    /// <summary>
+    /// Gets or Sets PickupType
+    /// </summary>
+    [JsonPropertyName("pickup_type"), JsonPropertyOrder(7)]
+    public UpsPickupType? PickupType { get; set; }
 
     /// <summary>
     /// The use carbon neutral shipping program
@@ -117,7 +117,7 @@ public partial class UpsSettingsResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class UpsSettingsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountPostalCode: ").Append(AccountPostalCode).Append("\n");

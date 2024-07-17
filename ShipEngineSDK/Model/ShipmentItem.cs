@@ -29,12 +29,6 @@ public partial class ShipmentItem
 {
 
     /// <summary>
-    /// Gets or Sets OrderSourceCode
-    /// </summary>
-    [JsonPropertyName("order_source_code"), JsonPropertyOrder(5)]
-    public OrderSourceName? OrderSourceCode { get; set; }
-
-    /// <summary>
     /// Amazon Standard Identification Number
     /// </summary>
     /// <value>Amazon Standard Identification Number</value>
@@ -64,6 +58,12 @@ public partial class ShipmentItem
     /// <value>item name</value>
     [JsonPropertyName("name"), JsonPropertyOrder(4)]
     public string? Name { get; set; }
+
+    /// <summary>
+    /// Gets or Sets OrderSourceCode
+    /// </summary>
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(5)]
+    public OrderSourceName? OrderSourceCode { get; set; }
 
     /// <summary>
     /// The quantity of this item included in the shipment
@@ -100,7 +100,7 @@ public partial class ShipmentItem
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ShipmentItem {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Asin: ").Append(Asin).Append("\n");

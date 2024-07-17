@@ -32,70 +32,70 @@ public partial class ConnectLasershipRequestBody
     /// Address
     /// </summary>
     /// <value>Address</value>
-    [JsonPropertyName("Address"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("Address"), JsonPropertyOrder(1)]
     public required string Address { get; set; }
 
     /// <summary>
     /// City
     /// </summary>
     /// <value>City</value>
-    [JsonPropertyName("City"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("City"), JsonPropertyOrder(2)]
     public required string City { get; set; }
 
     /// <summary>
     /// Customer Branch
     /// </summary>
     /// <value>Customer Branch</value>
-    [JsonPropertyName("customer_branch"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("customer_branch"), JsonPropertyOrder(3)]
     public required string CustomerBranch { get; set; }
 
     /// <summary>
     /// Critical Entry Time (local time)
     /// </summary>
     /// <value>Critical Entry Time (local time)</value>
-    [JsonPropertyName("lasership_critical_entry_time"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("lasership_critical_entry_time"), JsonPropertyOrder(4)]
     public required string LasershipCriticalEntryTime { get; set; }
 
     /// <summary>
     /// Critical Pull Time (local time)
     /// </summary>
     /// <value>Critical Pull Time (local time)</value>
-    [JsonPropertyName("lasership_critical_pull_time"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("lasership_critical_pull_time"), JsonPropertyOrder(5)]
     public required string LasershipCriticalPullTime { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(6)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(6)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// PostalCode
     /// </summary>
     /// <value>PostalCode</value>
-    [JsonPropertyName("PostalCode"), JsonRequired, JsonPropertyOrder(7)]
+    [JsonPropertyName("PostalCode"), JsonPropertyOrder(7)]
     public required string PostalCode { get; set; }
 
     /// <summary>
     /// State
     /// </summary>
     /// <value>State</value>
-    [JsonPropertyName("State"), JsonRequired, JsonPropertyOrder(8)]
+    [JsonPropertyName("State"), JsonPropertyOrder(8)]
     public required string State { get; set; }
 
     /// <summary>
     /// Web Service ID (WSID)
     /// </summary>
     /// <value>Web Service ID (WSID)</value>
-    [JsonPropertyName("web_services_id"), JsonRequired, JsonPropertyOrder(9)]
+    [JsonPropertyName("web_services_id"), JsonPropertyOrder(9)]
     public required string WebServicesId { get; set; }
 
     /// <summary>
     /// Web Service Key (WSKey)
     /// </summary>
     /// <value>Web Service Key (WSKey)</value>
-    [JsonPropertyName("web_services_key"), JsonRequired, JsonPropertyOrder(10)]
+    [JsonPropertyName("web_services_key"), JsonPropertyOrder(10)]
     public required string WebServicesKey { get; set; }
 
     /// <summary>
@@ -217,7 +217,7 @@ public partial class ConnectLasershipRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectLasershipRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Address: ").Append(Address).Append("\n");

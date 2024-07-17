@@ -31,27 +31,27 @@ public partial class TaxIdentifier
     /// <summary>
     /// Gets or Sets IdentifierType
     /// </summary>
-    [JsonPropertyName("identifier_type"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("identifier_type"), JsonPropertyOrder(1)]
     public required IdentifierType IdentifierType { get; set; }
-
-    /// <summary>
-    /// Gets or Sets TaxableEntityType
-    /// </summary>
-    [JsonPropertyName("taxable_entity_type"), JsonRequired, JsonPropertyOrder(3)]
-    public required TaxableEntityType TaxableEntityType { get; set; }
 
     /// <summary>
     /// The authority that issued this tax. This must be a valid 2 character ISO 3166 Alpha 2 country code.
     /// </summary>
     /// <value>The authority that issued this tax. This must be a valid 2 character ISO 3166 Alpha 2 country code.</value>
-    [JsonPropertyName("issuing_authority"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("issuing_authority"), JsonPropertyOrder(2)]
     public required string IssuingAuthority { get; set; }
+
+    /// <summary>
+    /// Gets or Sets TaxableEntityType
+    /// </summary>
+    [JsonPropertyName("taxable_entity_type"), JsonPropertyOrder(3)]
+    public required TaxableEntityType TaxableEntityType { get; set; }
 
     /// <summary>
     /// The value of the identifier
     /// </summary>
     /// <value>The value of the identifier</value>
-    [JsonPropertyName("value"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("value"), JsonPropertyOrder(4)]
     public required string Value { get; set; }
 
 
@@ -61,7 +61,7 @@ public partial class TaxIdentifier
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class TaxIdentifier {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  IdentifierType: ").Append(IdentifierType).Append("\n");

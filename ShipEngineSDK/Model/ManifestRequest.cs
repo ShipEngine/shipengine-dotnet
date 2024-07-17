@@ -29,12 +29,6 @@ public partial class ManifestRequest
 {
 
     /// <summary>
-    /// Gets or Sets Status
-    /// </summary>
-    [JsonPropertyName("status"), JsonPropertyOrder(2)]
-    public ManifestRequestStatus? Status { get; set; }
-
-    /// <summary>
     /// A string that uniquely identifies a manifest request
     /// </summary>
     /// <value>A string that uniquely identifies a manifest request</value>
@@ -44,6 +38,12 @@ public partial class ManifestRequest
     [JsonPropertyName("manifest_request_id"), JsonInclude]
     public string? ManifestRequestId { get; private set; }
 
+    /// <summary>
+    /// Gets or Sets Status
+    /// </summary>
+    [JsonPropertyName("status"), JsonPropertyOrder(2)]
+    public ManifestRequestStatus? Status { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -51,7 +51,7 @@ public partial class ManifestRequest
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ManifestRequest {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ManifestRequestId: ").Append(ManifestRequestId).Append("\n");

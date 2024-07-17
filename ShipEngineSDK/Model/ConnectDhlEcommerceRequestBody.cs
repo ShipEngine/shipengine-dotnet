@@ -29,51 +29,45 @@ public partial class ConnectDhlEcommerceRequestBody
 {
 
     /// <summary>
-    /// Gets or Sets AncillaryEndorsement
-    /// </summary>
-    [JsonPropertyName("ancillary_endorsement"), JsonPropertyOrder(8)]
-    public AncillaryServiceEndorsement? AncillaryEndorsement { get; set; }
-
-    /// <summary>
     /// The client id
     /// </summary>
     /// <value>The client id</value>
-    [JsonPropertyName("client_id"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("client_id"), JsonPropertyOrder(1)]
     public required string ClientId { get; set; }
 
     /// <summary>
     /// The distribution center
     /// </summary>
     /// <value>The distribution center</value>
-    [JsonPropertyName("distribution_center"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("distribution_center"), JsonPropertyOrder(2)]
     public required string DistributionCenter { get; set; }
 
     /// <summary>
     /// A nickname to help you identify this account
     /// </summary>
     /// <value>A nickname to help you identify this account</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(3)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// The account password
     /// </summary>
     /// <value>The account password</value>
-    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("password"), JsonPropertyOrder(4)]
     public required string Password { get; set; }
 
     /// <summary>
     /// The pickup number
     /// </summary>
     /// <value>The pickup number</value>
-    [JsonPropertyName("pickup_number"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("pickup_number"), JsonPropertyOrder(5)]
     public required string PickupNumber { get; set; }
 
     /// <summary>
     /// The account username
     /// </summary>
     /// <value>The account username</value>
-    [JsonPropertyName("username"), JsonRequired, JsonPropertyOrder(6)]
+    [JsonPropertyName("username"), JsonPropertyOrder(6)]
     public required string Username { get; set; }
 
     /// <summary>
@@ -82,6 +76,12 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <value>Account number</value>
     [JsonPropertyName("account_number"), JsonPropertyOrder(7), Obsolete]
     public string? AccountNumber { get; set; }
+
+    /// <summary>
+    /// Gets or Sets AncillaryEndorsement
+    /// </summary>
+    [JsonPropertyName("ancillary_endorsement"), JsonPropertyOrder(8)]
+    public AncillaryServiceEndorsement? AncillaryEndorsement { get; set; }
 
     /// <summary>
     /// The DHL E-Commerce API key. This field is optional, but if not set you will not be able to get rates for this account. 
@@ -137,7 +137,7 @@ public partial class ConnectDhlEcommerceRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectDhlEcommerceRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ClientId: ").Append(ClientId).Append("\n");

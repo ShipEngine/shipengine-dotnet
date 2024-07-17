@@ -29,30 +29,6 @@ public partial class DangerousGoods
 {
 
     /// <summary>
-    /// Gets or Sets PackagingGroup
-    /// </summary>
-    [JsonPropertyName("packaging_group"), JsonPropertyOrder(4)]
-    public PackagingGroup? PackagingGroup { get; set; }
-
-    /// <summary>
-    /// Gets or Sets PackagingInstructionSection
-    /// </summary>
-    [JsonPropertyName("packaging_instruction_section"), JsonPropertyOrder(6)]
-    public PackagingInstructionSection? PackagingInstructionSection { get; set; }
-
-    /// <summary>
-    /// Gets or Sets RegulationLevel
-    /// </summary>
-    [JsonPropertyName("regulation_level"), JsonPropertyOrder(13)]
-    public RegulationLevel? RegulationLevel { get; set; }
-
-    /// <summary>
-    /// Gets or Sets TransportMean
-    /// </summary>
-    [JsonPropertyName("transport_mean"), JsonPropertyOrder(18)]
-    public TransportMean? TransportMean { get; set; }
-
-    /// <summary>
     /// Provider additonal description regarding the dangerous goods. This is used as a placed holder to provider additional context and varies by carrier
     /// </summary>
     /// <value>Provider additonal description regarding the dangerous goods. This is used as a placed holder to provider additional context and varies by carrier</value>
@@ -74,11 +50,23 @@ public partial class DangerousGoods
     public string? IdNumber { get; set; }
 
     /// <summary>
+    /// Gets or Sets PackagingGroup
+    /// </summary>
+    [JsonPropertyName("packaging_group"), JsonPropertyOrder(4)]
+    public PackagingGroup? PackagingGroup { get; set; }
+
+    /// <summary>
     /// The specific standardized packaging instructions from the relevant regulatory agency that have been applied to the parcel/container.
     /// </summary>
     /// <value>The specific standardized packaging instructions from the relevant regulatory agency that have been applied to the parcel/container.</value>
     [JsonPropertyName("packaging_instruction"), JsonPropertyOrder(5)]
     public string? PackagingInstruction { get; set; }
+
+    /// <summary>
+    /// Gets or Sets PackagingInstructionSection
+    /// </summary>
+    [JsonPropertyName("packaging_instruction_section"), JsonPropertyOrder(6)]
+    public PackagingInstructionSection? PackagingInstructionSection { get; set; }
 
     /// <summary>
     /// The type of exterior packaging used to contain the dangerous good.
@@ -126,6 +114,12 @@ public partial class DangerousGoods
     public string? RegulationAuthority { get; set; }
 
     /// <summary>
+    /// Gets or Sets RegulationLevel
+    /// </summary>
+    [JsonPropertyName("regulation_level"), JsonPropertyOrder(13)]
+    public RegulationLevel? RegulationLevel { get; set; }
+
+    /// <summary>
     /// Indication if the substance needs to be reported to regulatory authority based on the quantity.
     /// </summary>
     /// <value>Indication if the substance needs to be reported to regulatory authority based on the quantity.</value>
@@ -157,6 +151,12 @@ public partial class DangerousGoods
     public string? TransportCategory { get; set; }
 
     /// <summary>
+    /// Gets or Sets TransportMean
+    /// </summary>
+    [JsonPropertyName("transport_mean"), JsonPropertyOrder(18)]
+    public TransportMean? TransportMean { get; set; }
+
+    /// <summary>
     /// Defines which types of tunnels the shipment is allowed to go through
     /// </summary>
     /// <value>Defines which types of tunnels the shipment is allowed to go through</value>
@@ -170,7 +170,7 @@ public partial class DangerousGoods
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class DangerousGoods {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AdditionalDescription: ").Append(AdditionalDescription).Append("\n");

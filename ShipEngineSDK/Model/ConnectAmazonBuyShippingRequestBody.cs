@@ -35,19 +35,19 @@ public partial class ConnectAmazonBuyShippingRequestBody
     /// <example>
     /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("email"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("email"), JsonPropertyOrder(1)]
     public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets MerchantSellerId
     /// </summary>
-    [JsonPropertyName("merchant_seller_id"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("merchant_seller_id"), JsonPropertyOrder(2)]
     public required string MerchantSellerId { get; set; }
 
     /// <summary>
     /// Gets or Sets MwsAuthToken
     /// </summary>
-    [JsonPropertyName("mws_auth_token"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("mws_auth_token"), JsonPropertyOrder(3)]
     public required string MwsAuthToken { get; set; }
 
     /// <summary>
@@ -57,7 +57,7 @@ public partial class ConnectAmazonBuyShippingRequestBody
     /// <example>
     /// Test Amazon Buy Shipping
     /// </example>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(4)]
     public required string Nickname { get; set; }
 
 
@@ -67,7 +67,7 @@ public partial class ConnectAmazonBuyShippingRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectAmazonBuyShippingRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Email: ").Append(Email).Append("\n");

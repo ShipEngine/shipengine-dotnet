@@ -29,12 +29,6 @@ public partial class GetTrackingLogFromLabelResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode
-    /// </summary>
-    [JsonPropertyName("status_code"), JsonRequired, JsonPropertyOrder(4)]
-    public required StatusCode StatusCode { get; set; }
-
-    /// <summary>
     /// Carrier status code
     /// </summary>
     /// <value>Carrier status code</value>
@@ -51,7 +45,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("estimated_delivery_date"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("estimated_delivery_date"), JsonPropertyOrder(2)]
     public required DateTimeOffset EstimatedDeliveryDate { get; set; }
 
     /// <summary>
@@ -62,13 +56,19 @@ public partial class GetTrackingLogFromLabelResponseBody
     public List<TrackEvent>? Events { get; private set; }
 
     /// <summary>
+    /// Gets or Sets StatusCode
+    /// </summary>
+    [JsonPropertyName("status_code"), JsonPropertyOrder(4)]
+    public required StatusCode StatusCode { get; set; }
+
+    /// <summary>
     /// A tracking number for a package. The format depends on the carrier.
     /// </summary>
     /// <value>A tracking number for a package. The format depends on the carrier.</value>
     /// <example>
     /// 1Z932R800392060079
     /// </example>
-    [JsonPropertyName("tracking_number"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("tracking_number"), JsonPropertyOrder(5)]
     public required string TrackingNumber { get; set; }
 
     /// <summary>
@@ -165,7 +165,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetTrackingLogFromLabelResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierStatusCode: ").Append(CarrierStatusCode).Append("\n");

@@ -35,14 +35,14 @@ public partial class CreateWarehouseRequestBody
     /// <example>
     /// Zero Cool HQ
     /// </example>
-    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("name"), JsonPropertyOrder(1)]
     public required string Name { get; set; }
 
     /// <summary>
     /// The origin address of the warehouse
     /// </summary>
     /// <value>The origin address of the warehouse</value>
-    [JsonPropertyName("origin_address"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("origin_address"), JsonPropertyOrder(2)]
     public required Address OriginAddress { get; set; }
 
     /// <summary>
@@ -86,7 +86,7 @@ public partial class CreateWarehouseRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateWarehouseRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");

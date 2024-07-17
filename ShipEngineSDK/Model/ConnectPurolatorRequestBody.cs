@@ -32,21 +32,21 @@ public partial class ConnectPurolatorRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("account_number"), JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Activation key
     /// </summary>
     /// <value>Activation key</value>
-    [JsonPropertyName("activation_key"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("activation_key"), JsonPropertyOrder(2)]
     public required string ActivationKey { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(3)]
     public required string Nickname { get; set; }
 
 
@@ -56,7 +56,7 @@ public partial class ConnectPurolatorRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectPurolatorRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");

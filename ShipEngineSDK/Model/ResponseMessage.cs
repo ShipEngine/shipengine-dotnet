@@ -35,18 +35,6 @@ public partial class ResponseMessage
     public AddressValidationCode? Code { get; private set; }
 
     /// <summary>
-    /// Gets or Sets Type
-    /// </summary>
-    [JsonPropertyName("type"), JsonInclude]
-    public AddressValidationMessageType? Type { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets DetailCode
-    /// </summary>
-    [JsonPropertyName("detail_code"), JsonRequired, JsonPropertyOrder(4)]
-    public required AddressValidationDetailCode DetailCode { get; set; }
-
-    /// <summary>
     /// Message explaining the address validation error
     /// </summary>
     /// <value>Message explaining the address validation error</value>
@@ -56,6 +44,18 @@ public partial class ResponseMessage
     [JsonPropertyName("message"), JsonInclude]
     public string? Message { get; private set; }
 
+    /// <summary>
+    /// Gets or Sets Type
+    /// </summary>
+    [JsonPropertyName("type"), JsonInclude]
+    public AddressValidationMessageType? Type { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets DetailCode
+    /// </summary>
+    [JsonPropertyName("detail_code"), JsonPropertyOrder(4)]
+    public required AddressValidationDetailCode DetailCode { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ public partial class ResponseMessage
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ResponseMessage {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Code: ").Append(Code).Append("\n");

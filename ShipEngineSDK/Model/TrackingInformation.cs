@@ -29,12 +29,6 @@ public partial class TrackingInformation
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode
-    /// </summary>
-    [JsonPropertyName("status_code"), JsonPropertyOrder(11)]
-    public StatusCode? StatusCode { get; set; }
-
-    /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
     /// </summary>
     /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
@@ -129,6 +123,12 @@ public partial class TrackingInformation
     public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
+    /// Gets or Sets StatusCode
+    /// </summary>
+    [JsonPropertyName("status_code"), JsonPropertyOrder(11)]
+    public StatusCode? StatusCode { get; set; }
+
+    /// <summary>
     /// Status description
     /// </summary>
     /// <value>Status description</value>
@@ -165,7 +165,7 @@ public partial class TrackingInformation
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class TrackingInformation {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ActualDeliveryDate: ").Append(ActualDeliveryDate).Append("\n");

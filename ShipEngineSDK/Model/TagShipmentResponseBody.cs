@@ -31,7 +31,7 @@ public partial class TagShipmentResponseBody
     /// <summary>
     /// Gets or Sets Tags
     /// </summary>
-    [JsonPropertyName("tags"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("tags"), JsonPropertyOrder(1)]
     public required List<string> Tags { get; set; }
 
 
@@ -41,7 +41,7 @@ public partial class TagShipmentResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class TagShipmentResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Tags: ").Append(Tags).Append("\n");

@@ -31,19 +31,19 @@ public partial class Error
     /// <summary>
     /// Gets or Sets ErrorCode
     /// </summary>
-    [JsonPropertyName("error_code"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("error_code"), JsonPropertyOrder(1)]
     public required ErrorCode ErrorCode { get; set; }
 
     /// <summary>
     /// Gets or Sets ErrorSource
     /// </summary>
-    [JsonPropertyName("error_source"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("error_source"), JsonPropertyOrder(2)]
     public required ErrorSource ErrorSource { get; set; }
 
     /// <summary>
     /// Gets or Sets ErrorType
     /// </summary>
-    [JsonPropertyName("error_type"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("error_type"), JsonPropertyOrder(3)]
     public required ErrorType ErrorType { get; set; }
 
     /// <summary>
@@ -63,7 +63,7 @@ public partial class Error
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Error {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");

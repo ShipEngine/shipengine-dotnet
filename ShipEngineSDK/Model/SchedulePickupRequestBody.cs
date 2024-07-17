@@ -31,20 +31,20 @@ public partial class SchedulePickupRequestBody
     /// <summary>
     /// Gets or Sets ContactDetails
     /// </summary>
-    [JsonPropertyName("contact_details"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("contact_details"), JsonPropertyOrder(1)]
     public required ContactDetails ContactDetails { get; set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
     /// </summary>
     /// <value>Label IDs that will be included in the pickup request</value>
-    [JsonPropertyName("label_ids"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("label_ids"), JsonPropertyOrder(2)]
     public required List<string> LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets PickupWindow
     /// </summary>
-    [JsonPropertyName("pickup_window"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("pickup_window"), JsonPropertyOrder(3)]
     public required PickupWindow PickupWindow { get; set; }
 
     /// <summary>
@@ -134,7 +134,7 @@ public partial class SchedulePickupRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class SchedulePickupRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ContactDetails: ").Append(ContactDetails).Append("\n");

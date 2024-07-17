@@ -32,7 +32,7 @@ public partial class ConnectAmazonShippingUk
     /// Amazon UK Shipping auth code.
     /// </summary>
     /// <value>Amazon UK Shipping auth code.</value>
-    [JsonPropertyName("auth_code"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("auth_code"), JsonPropertyOrder(1)]
     public required string AuthCode { get; set; }
 
     /// <summary>
@@ -42,7 +42,7 @@ public partial class ConnectAmazonShippingUk
     /// <example>
     /// Stamps.com
     /// </example>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
 
@@ -52,7 +52,7 @@ public partial class ConnectAmazonShippingUk
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectAmazonShippingUk {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AuthCode: ").Append(AuthCode).Append("\n");

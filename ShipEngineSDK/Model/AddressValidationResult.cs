@@ -29,12 +29,6 @@ public partial class AddressValidationResult
 {
 
     /// <summary>
-    /// Gets or Sets Status
-    /// </summary>
-    [JsonPropertyName("status"), JsonRequired, JsonPropertyOrder(3)]
-    public required AddressValidationStatus Status { get; set; }
-
-    /// <summary>
     /// The list of messages that were generated during the address validation request.
     /// </summary>
     /// <value>The list of messages that were generated during the address validation request.</value>
@@ -45,8 +39,14 @@ public partial class AddressValidationResult
     /// The original address that was sent for validation
     /// </summary>
     /// <value>The original address that was sent for validation</value>
-    [JsonPropertyName("original_address"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("original_address"), JsonPropertyOrder(2)]
     public required Address OriginalAddress { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Status
+    /// </summary>
+    [JsonPropertyName("status"), JsonPropertyOrder(3)]
+    public required AddressValidationStatus Status { get; set; }
 
     /// <summary>
     /// The matched address found by the Shipengine API
@@ -62,7 +62,7 @@ public partial class AddressValidationResult
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class AddressValidationResult {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Messages: ").Append(Messages).Append("\n");

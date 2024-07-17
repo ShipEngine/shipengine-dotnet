@@ -41,7 +41,7 @@ public partial class GetPickupByIdResponseBody
     /// <summary>
     /// Gets or Sets ContactDetails
     /// </summary>
-    [JsonPropertyName("contact_details"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("contact_details"), JsonPropertyOrder(2)]
     public required ContactDetails ContactDetails { get; set; }
 
     /// <summary>
@@ -65,7 +65,7 @@ public partial class GetPickupByIdResponseBody
     /// Label IDs that will be included in the pickup request
     /// </summary>
     /// <value>Label IDs that will be included in the pickup request</value>
-    [JsonPropertyName("label_ids"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("label_ids"), JsonPropertyOrder(5)]
     public required List<string> LabelIds { get; set; }
 
     /// <summary>
@@ -87,7 +87,7 @@ public partial class GetPickupByIdResponseBody
     /// <summary>
     /// Gets or Sets PickupWindow
     /// </summary>
-    [JsonPropertyName("pickup_window"), JsonRequired, JsonPropertyOrder(8)]
+    [JsonPropertyName("pickup_window"), JsonPropertyOrder(8)]
     public required PickupWindow PickupWindow { get; set; }
 
     /// <summary>
@@ -97,7 +97,7 @@ public partial class GetPickupByIdResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(9)]
+    [JsonPropertyName("request_id"), JsonPropertyOrder(9)]
     public required Guid RequestId { get; set; }
 
     /// <summary>
@@ -151,7 +151,7 @@ public partial class GetPickupByIdResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetPickupByIdResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");

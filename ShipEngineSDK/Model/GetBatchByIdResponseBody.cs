@@ -29,25 +29,6 @@ public partial class GetBatchByIdResponseBody
 {
 
     /// <summary>
-    /// Gets or Sets LabelFormat
-    /// </summary>
-    [JsonPropertyName("label_format"), JsonInclude]
-    public LabelFormat? LabelFormat { get; private set; }
-
-    /// <summary>
-    /// label layout
-    /// </summary>
-    /// <value>label layout</value>
-    [JsonPropertyName("label_layout"), JsonInclude]
-    public LabelLayout? LabelLayout { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets Status
-    /// </summary>
-    [JsonPropertyName("status"), JsonInclude]
-    public BatchStatus? Status { get; private set; }
-
-    /// <summary>
     /// Link to batch errors endpoint
     /// </summary>
     /// <value>Link to batch errors endpoint</value>
@@ -68,7 +49,7 @@ public partial class GetBatchByIdResponseBody
     /// Link to batch labels query
     /// </summary>
     /// <value>Link to batch labels query</value>
-    [JsonPropertyName("batch_labels_url"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("batch_labels_url"), JsonPropertyOrder(3)]
     public required OptionalLink BatchLabelsUrl { get; set; }
 
     /// <summary>
@@ -82,7 +63,7 @@ public partial class GetBatchByIdResponseBody
     /// The batch shipments endpoint
     /// </summary>
     /// <value>The batch shipments endpoint</value>
-    [JsonPropertyName("batch_shipments_url"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("batch_shipments_url"), JsonPropertyOrder(5)]
     public required OptionalLink BatchShipmentsUrl { get; set; }
 
     /// <summary>
@@ -150,6 +131,19 @@ public partial class GetBatchByIdResponseBody
     public LabelDownload? LabelDownload { get; private set; }
 
     /// <summary>
+    /// Gets or Sets LabelFormat
+    /// </summary>
+    [JsonPropertyName("label_format"), JsonInclude]
+    public LabelFormat? LabelFormat { get; private set; }
+
+    /// <summary>
+    /// label layout
+    /// </summary>
+    /// <value>label layout</value>
+    [JsonPropertyName("label_layout"), JsonInclude]
+    public LabelLayout? LabelLayout { get; private set; }
+
+    /// <summary>
     /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.
     /// </summary>
     /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.</value>
@@ -162,6 +156,12 @@ public partial class GetBatchByIdResponseBody
     /// <value>The errors associated with the failed API call</value>
     [JsonPropertyName("process_errors"), JsonInclude]
     public List<Error>? ProcessErrors { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets Status
+    /// </summary>
+    [JsonPropertyName("status"), JsonInclude]
+    public BatchStatus? Status { get; private set; }
 
     /// <summary>
     /// The number of warnings that occurred while generating the batch
@@ -207,7 +207,7 @@ public partial class GetBatchByIdResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetBatchByIdResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  BatchErrorsUrl: ").Append(BatchErrorsUrl).Append("\n");

@@ -31,7 +31,7 @@ public partial class CreateWebhookResponseBody
     /// <summary>
     /// Gets or Sets Event
     /// </summary>
-    [JsonPropertyName("event"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("event"), JsonPropertyOrder(1)]
     public required WebhookEvent Event { get; set; }
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class CreateWebhookResponseBody
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("url"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("url"), JsonPropertyOrder(2)]
     public required string Url { get; set; }
 
     /// <summary>
@@ -68,7 +68,7 @@ public partial class CreateWebhookResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateWebhookResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Event: ").Append(Event).Append("\n");

@@ -52,7 +52,7 @@ public partial class UpdateWebhookRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class UpdateWebhookRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Headers: ").Append(Headers).Append("\n");

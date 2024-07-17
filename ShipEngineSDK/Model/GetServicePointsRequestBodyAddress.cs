@@ -35,7 +35,7 @@ public partial class GetServicePointsRequestBodyAddress
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(1)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -91,7 +91,7 @@ public partial class GetServicePointsRequestBodyAddress
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetServicePointsRequestBodyAddress {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");

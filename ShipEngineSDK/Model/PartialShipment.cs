@@ -29,33 +29,6 @@ public partial class PartialShipment
 {
 
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.
-    /// </summary>
-    /// <value>The type of delivery confirmation that is required for this shipment.</value>
-    [JsonPropertyName("confirmation"), JsonPropertyOrder(4)]
-    public DeliveryConfirmation? Confirmation { get; set; }
-
-    /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment. 
-    /// </summary>
-    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
-    [JsonPropertyName("insurance_provider"), JsonPropertyOrder(9)]
-    public InsuranceProvider? InsuranceProvider { get; set; }
-
-    /// <summary>
-    /// Gets or Sets OrderSourceCode
-    /// </summary>
-    [JsonPropertyName("order_source_code"), JsonPropertyOrder(13)]
-    public OrderSourceName? OrderSourceCode { get; set; }
-
-    /// <summary>
-    /// The current status of the shipment
-    /// </summary>
-    /// <value>The current status of the shipment</value>
-    [JsonPropertyName("shipment_status"), JsonInclude]
-    public ShipmentStatus? ShipmentStatus { get; private set; }
-
-    /// <summary>
     /// Advanced shipment options.  These are entirely optional.
     /// </summary>
     /// <value>Advanced shipment options.  These are entirely optional.</value>
@@ -81,6 +54,13 @@ public partial class PartialShipment
     /// </example>
     [JsonPropertyName("comparison_rate_type"), JsonPropertyOrder(3)]
     public string? ComparisonRateType { get; set; }
+
+    /// <summary>
+    /// The type of delivery confirmation that is required for this shipment.
+    /// </summary>
+    /// <value>The type of delivery confirmation that is required for this shipment.</value>
+    [JsonPropertyName("confirmation"), JsonPropertyOrder(4)]
+    public DeliveryConfirmation? Confirmation { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created in ShipEngine.
@@ -114,6 +94,13 @@ public partial class PartialShipment
     public string? ExternalShipmentId { get; set; }
 
     /// <summary>
+    /// The insurance provider to use for any insured packages in the shipment. 
+    /// </summary>
+    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
+    [JsonPropertyName("insurance_provider"), JsonPropertyOrder(9)]
+    public InsuranceProvider? InsuranceProvider { get; set; }
+
+    /// <summary>
     /// An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. 
     /// </summary>
     /// <value>An optional indicator if the shipment is intended to be a return. Defaults to false if not provided. </value>
@@ -136,6 +123,12 @@ public partial class PartialShipment
     /// </example>
     [JsonPropertyName("modified_at"), JsonInclude]
     public DateTimeOffset? ModifiedAt { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets OrderSourceCode
+    /// </summary>
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(13)]
+    public OrderSourceName? OrderSourceCode { get; set; }
 
     /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
@@ -203,6 +196,13 @@ public partial class PartialShipment
     public string? ShipmentNumber { get; set; }
 
     /// <summary>
+    /// The current status of the shipment
+    /// </summary>
+    /// <value>The current status of the shipment</value>
+    [JsonPropertyName("shipment_status"), JsonInclude]
+    public ShipmentStatus? ShipmentStatus { get; private set; }
+
+    /// <summary>
     /// ID of the shipping rule, which you want to use to automate carrier/carrier service selection for the shipment 
     /// </summary>
     /// <value>ID of the shipping rule, which you want to use to automate carrier/carrier service selection for the shipment </value>
@@ -249,7 +249,7 @@ public partial class PartialShipment
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class PartialShipment {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AdvancedOptions: ").Append(AdvancedOptions).Append("\n");

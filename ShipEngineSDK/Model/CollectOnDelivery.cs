@@ -29,16 +29,16 @@ public partial class CollectOnDelivery
 {
 
     /// <summary>
-    /// Gets or Sets PaymentType
-    /// </summary>
-    [JsonPropertyName("payment_type"), JsonPropertyOrder(2)]
-    public CollectOnDeliveryPaymentType? PaymentType { get; set; }
-
-    /// <summary>
     /// Gets or Sets PaymentAmount
     /// </summary>
     [JsonPropertyName("payment_amount"), JsonPropertyOrder(1)]
     public PaymentAmount? PaymentAmount { get; set; }
+
+    /// <summary>
+    /// Gets or Sets PaymentType
+    /// </summary>
+    [JsonPropertyName("payment_type"), JsonPropertyOrder(2)]
+    public CollectOnDeliveryPaymentType? PaymentType { get; set; }
 
 
     /// <summary>
@@ -47,7 +47,7 @@ public partial class CollectOnDelivery
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CollectOnDelivery {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  PaymentAmount: ").Append(PaymentAmount).Append("\n");

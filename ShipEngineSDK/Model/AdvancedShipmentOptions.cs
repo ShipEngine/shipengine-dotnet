@@ -29,19 +29,6 @@ public partial class AdvancedShipmentOptions
 {
 
     /// <summary>
-    /// Indicates whether to bill shipping costs to the recipient or to a third-party.  When billing to a third-party, the &#x60;bill_to_account&#x60;, &#x60;bill_to_country_code&#x60;, and &#x60;bill_to_postal_code&#x60; fields must also be set. 
-    /// </summary>
-    /// <value>Indicates whether to bill shipping costs to the recipient or to a third-party.  When billing to a third-party, the &#x60;bill_to_account&#x60;, &#x60;bill_to_country_code&#x60;, and &#x60;bill_to_postal_code&#x60; fields must also be set. </value>
-    [JsonPropertyName("bill_to_party"), JsonPropertyOrder(4)]
-    public BillToParty? BillToParty { get; set; }
-
-    /// <summary>
-    /// Gets or Sets OriginType
-    /// </summary>
-    [JsonPropertyName("origin_type"), JsonPropertyOrder(19)]
-    public OriginType? OriginType { get; set; }
-
-    /// <summary>
     /// Indicate to the carrier that this shipment requires additional handling. 
     /// </summary>
     /// <value>Indicate to the carrier that this shipment requires additional handling. </value>
@@ -64,6 +51,13 @@ public partial class AdvancedShipmentOptions
     /// </example>
     [JsonPropertyName("bill_to_country_code"), JsonPropertyOrder(3)]
     public string? BillToCountryCode { get; set; }
+
+    /// <summary>
+    /// Indicates whether to bill shipping costs to the recipient or to a third-party.  When billing to a third-party, the &#x60;bill_to_account&#x60;, &#x60;bill_to_country_code&#x60;, and &#x60;bill_to_postal_code&#x60; fields must also be set. 
+    /// </summary>
+    /// <value>Indicates whether to bill shipping costs to the recipient or to a third-party.  When billing to a third-party, the &#x60;bill_to_account&#x60;, &#x60;bill_to_country_code&#x60;, and &#x60;bill_to_postal_code&#x60; fields must also be set. </value>
+    [JsonPropertyName("bill_to_party"), JsonPropertyOrder(4)]
+    public BillToParty? BillToParty { get; set; }
 
     /// <summary>
     /// The postal code of the third-party that is responsible for shipping costs. 
@@ -164,6 +158,12 @@ public partial class AdvancedShipmentOptions
     public bool? NonMachinable { get; set; }
 
     /// <summary>
+    /// Gets or Sets OriginType
+    /// </summary>
+    [JsonPropertyName("origin_type"), JsonPropertyOrder(19)]
+    public OriginType? OriginType { get; set; }
+
+    /// <summary>
     /// Enables Saturday delivery, if supported by the carrier.
     /// </summary>
     /// <value>Enables Saturday delivery, if supported by the carrier.</value>
@@ -197,7 +197,7 @@ public partial class AdvancedShipmentOptions
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class AdvancedShipmentOptions {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AdditionalHandling: ").Append(AdditionalHandling).Append("\n");

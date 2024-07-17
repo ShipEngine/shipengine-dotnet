@@ -32,14 +32,14 @@ public partial class ConnectSekoRequestBody
     /// Seko Account Access Key
     /// </summary>
     /// <value>Seko Account Access Key</value>
-    [JsonPropertyName("access_key"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("access_key"), JsonPropertyOrder(1)]
     public required string AccessKey { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
 
@@ -49,7 +49,7 @@ public partial class ConnectSekoRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectSekoRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");

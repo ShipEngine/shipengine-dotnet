@@ -32,35 +32,35 @@ public partial class ConnectCanadaPostRequestBody
     /// Canada Post Account Number
     /// </summary>
     /// <value>Canada Post Account Number</value>
-    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("account_number"), JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Canada Post Account API Key
     /// </summary>
     /// <value>Canada Post Account API Key</value>
-    [JsonPropertyName("api_key"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("api_key"), JsonPropertyOrder(2)]
     public required string ApiKey { get; set; }
 
     /// <summary>
     /// Canada Post Account API Secret
     /// </summary>
     /// <value>Canada Post Account API Secret</value>
-    [JsonPropertyName("api_secret"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("api_secret"), JsonPropertyOrder(3)]
     public required string ApiSecret { get; set; }
 
     /// <summary>
     /// Canada Post Account Contract ID
     /// </summary>
     /// <value>Canada Post Account Contract ID</value>
-    [JsonPropertyName("contract_id"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("contract_id"), JsonPropertyOrder(4)]
     public required string ContractId { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(5)]
     public required string Nickname { get; set; }
 
 
@@ -70,7 +70,7 @@ public partial class ConnectCanadaPostRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectCanadaPostRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");

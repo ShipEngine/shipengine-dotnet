@@ -29,18 +29,6 @@ public partial class RateEstimate
 {
 
     /// <summary>
-    /// Gets or Sets RateType
-    /// </summary>
-    [JsonPropertyName("rate_type"), JsonInclude]
-    public RateType? RateType { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets ValidationStatus
-    /// </summary>
-    [JsonPropertyName("validation_status"), JsonInclude]
-    public ValidationStatus? ValidationStatus { get; private set; }
-
-    /// <summary>
     /// A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.
     /// </summary>
     /// <value>A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.</value>
@@ -114,6 +102,12 @@ public partial class RateEstimate
     public MonetaryValue? OtherAmount { get; private set; }
 
     /// <summary>
+    /// Gets or Sets RateType
+    /// </summary>
+    [JsonPropertyName("rate_type"), JsonInclude]
+    public RateType? RateType { get; private set; }
+
+    /// <summary>
     /// service code for the rate
     /// </summary>
     /// <value>service code for the rate</value>
@@ -140,6 +134,12 @@ public partial class RateEstimate
     /// <value>Indicates if rate is trackable</value>
     [JsonPropertyName("trackable"), JsonInclude]
     public bool? Trackable { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets ValidationStatus
+    /// </summary>
+    [JsonPropertyName("validation_status"), JsonInclude]
+    public ValidationStatus? ValidationStatus { get; private set; }
 
     /// <summary>
     /// The warning messages
@@ -216,7 +216,7 @@ public partial class RateEstimate
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class RateEstimate {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");

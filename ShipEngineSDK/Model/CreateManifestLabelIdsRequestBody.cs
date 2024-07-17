@@ -32,7 +32,7 @@ public partial class CreateManifestLabelIdsRequestBody
     /// The list of label ids to include in the manifest
     /// </summary>
     /// <value>The list of label ids to include in the manifest</value>
-    [JsonPropertyName("label_ids"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("label_ids"), JsonPropertyOrder(1)]
     public required List<string> LabelIds { get; set; }
 
 
@@ -42,7 +42,7 @@ public partial class CreateManifestLabelIdsRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateManifestLabelIdsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  LabelIds: ").Append(LabelIds).Append("\n");

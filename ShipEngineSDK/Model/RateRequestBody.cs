@@ -32,7 +32,7 @@ public partial class RateRequestBody
     /// Array of carrier ids to get rates for
     /// </summary>
     /// <value>Array of carrier ids to get rates for</value>
-    [JsonPropertyName("carrier_ids"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("carrier_ids"), JsonPropertyOrder(1)]
     public required List<string> CarrierIds { get; set; }
 
     /// <summary>
@@ -75,7 +75,7 @@ public partial class RateRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class RateRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierIds: ").Append(CarrierIds).Append("\n");

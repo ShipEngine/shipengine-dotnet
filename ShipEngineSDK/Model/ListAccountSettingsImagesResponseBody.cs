@@ -111,7 +111,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
-    [JsonPropertyName("links"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("links"), JsonPropertyOrder(2)]
     public required PaginationLink Links { get; set; }
 
     /// <summary>
@@ -121,7 +121,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("page"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("page"), JsonPropertyOrder(3)]
     public required int Page { get; set; }
 
     /// <summary>
@@ -131,7 +131,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// <example>
     /// 4
     /// </example>
-    [JsonPropertyName("pages"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("pages"), JsonPropertyOrder(4)]
     public required int Pages { get; set; }
 
     /// <summary>
@@ -141,7 +141,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// <example>
     /// 2750
     /// </example>
-    [JsonPropertyName("total"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("total"), JsonPropertyOrder(5)]
     public required int Total { get; set; }
 
 
@@ -151,7 +151,7 @@ public partial class ListAccountSettingsImagesResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ListAccountSettingsImagesResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Images: ").Append(Images).Append("\n");

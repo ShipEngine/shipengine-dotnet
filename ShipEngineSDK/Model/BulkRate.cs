@@ -29,12 +29,6 @@ public partial class BulkRate
 {
 
     /// <summary>
-    /// Gets or Sets Status
-    /// </summary>
-    [JsonPropertyName("status"), JsonInclude]
-    public RateResponseStatus? Status { get; private set; }
-
-    /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
     /// </summary>
     /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
@@ -71,6 +65,12 @@ public partial class BulkRate
     [JsonPropertyName("shipment_id"), JsonInclude]
     public string? ShipmentId { get; private set; }
 
+    /// <summary>
+    /// Gets or Sets Status
+    /// </summary>
+    [JsonPropertyName("status"), JsonInclude]
+    public RateResponseStatus? Status { get; private set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -78,7 +78,7 @@ public partial class BulkRate
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class BulkRate {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");

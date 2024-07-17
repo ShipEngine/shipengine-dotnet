@@ -59,6 +59,11 @@
     /// </summary>
     public override bool Equals(object? obj) =>
         obj is {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} other && _value == other._value;
+
+    /// <summary>
+    /// Get the hash code of the object
+    /// </summary>
+    public override int GetHashCode() => _value.GetHashCode();
 }
 
 internal class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter : JsonConverter<{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}>

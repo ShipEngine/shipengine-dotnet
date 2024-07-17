@@ -35,13 +35,13 @@ public partial class ConnectInsurerRequestBody
     /// <example>
     /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("email"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("email"), JsonPropertyOrder(1)]
     public required string Email { get; set; }
 
     /// <summary>
     /// Gets or Sets PolicyId
     /// </summary>
-    [JsonPropertyName("policy_id"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("policy_id"), JsonPropertyOrder(2)]
     public required string PolicyId { get; set; }
 
 
@@ -51,7 +51,7 @@ public partial class ConnectInsurerRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectInsurerRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Email: ").Append(Email).Append("\n");

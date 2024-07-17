@@ -42,7 +42,7 @@ public partial class AddFundsToCarrierResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class AddFundsToCarrierResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Balance: ").Append(Balance).Append("\n");

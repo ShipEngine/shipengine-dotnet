@@ -32,35 +32,35 @@ public partial class RecognizedEntity
     /// The index of the last character of this entity within the original text
     /// </summary>
     /// <value>The index of the last character of this entity within the original text</value>
-    [JsonPropertyName("end_index"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("end_index"), JsonPropertyOrder(1)]
     public required int EndIndex { get; set; }
 
     /// <summary>
     /// A confidence score between zero and one that indicates how certain the API is that it correctly recognized this entity 
     /// </summary>
     /// <value>A confidence score between zero and one that indicates how certain the API is that it correctly recognized this entity </value>
-    [JsonPropertyName("score"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("score"), JsonPropertyOrder(2)]
     public required double Score { get; set; }
 
     /// <summary>
     /// The index of the first character of this entity within the original text
     /// </summary>
     /// <value>The index of the first character of this entity within the original text</value>
-    [JsonPropertyName("start_index"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("start_index"), JsonPropertyOrder(3)]
     public required int StartIndex { get; set; }
 
     /// <summary>
     /// The substring from the original text that was recognized as this entity
     /// </summary>
     /// <value>The substring from the original text that was recognized as this entity</value>
-    [JsonPropertyName("text"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("text"), JsonPropertyOrder(4)]
     public required string Text { get; set; }
 
     /// <summary>
     /// The Entity type (e.g. \&quot;weight\&quot;, \&quot;person\&quot;, \&quot;address_line1\&quot;, etc.)
     /// </summary>
     /// <value>The Entity type (e.g. \&quot;weight\&quot;, \&quot;person\&quot;, \&quot;address_line1\&quot;, etc.)</value>
-    [JsonPropertyName("type"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("type"), JsonPropertyOrder(5)]
     public required string Type { get; set; }
 
     /// <summary>
@@ -77,7 +77,7 @@ public partial class RecognizedEntity
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class RecognizedEntity {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  EndIndex: ").Append(EndIndex).Append("\n");

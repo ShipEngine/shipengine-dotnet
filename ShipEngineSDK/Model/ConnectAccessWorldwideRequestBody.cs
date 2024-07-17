@@ -35,21 +35,21 @@ public partial class ConnectAccessWorldwideRequestBody
     /// <example>
     /// Stamps.com
     /// </example>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(1)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Access Worldwide Password
     /// </summary>
     /// <value>Access Worldwide Password</value>
-    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("password"), JsonPropertyOrder(2)]
     public required string Password { get; set; }
 
     /// <summary>
     /// Access Worldwide Username
     /// </summary>
     /// <value>Access Worldwide Username</value>
-    [JsonPropertyName("username"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("username"), JsonPropertyOrder(3)]
     public required string Username { get; set; }
 
 
@@ -59,7 +59,7 @@ public partial class ConnectAccessWorldwideRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectAccessWorldwideRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");

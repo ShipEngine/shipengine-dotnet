@@ -23,7 +23,7 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// The information necessary to schedule a package pickup
+/// The information necessary to schedule a package pickup 
 /// </summary>
 public partial class Pickup
 {
@@ -111,10 +111,10 @@ public partial class Pickup
     public PickupWindow? PickupWindow { get; set; }
 
     /// <summary>
-    /// An array of available pickup windows. Carriers can return multiple times that they will pickup packages.
+    /// An array of available pickup windows. Carriers can return multiple times that they will pickup packages. 
     /// </summary>
     /// <value>An array of available pickup windows. Carriers can return multiple times that they will pickup packages. </value>
-    [JsonPropertyName("pickup_windows"), JsonInclude, JsonRequired]
+    [JsonPropertyName("pickup_windows"), JsonInclude]
     public List<PickupWindows>? PickupWindows { get; private set; }
 
     /// <summary>
@@ -134,7 +134,7 @@ public partial class Pickup
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Pickup {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");

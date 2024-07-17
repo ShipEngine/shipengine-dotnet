@@ -32,22 +32,15 @@ public partial class InternationalShipmentOptions
     /// The type of contents in this shipment.  This may impact import duties or customs treatment.
     /// </summary>
     /// <value>The type of contents in this shipment.  This may impact import duties or customs treatment.</value>
-    [JsonPropertyName("contents"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("contents"), JsonPropertyOrder(1)]
     public required PackageContents Contents { get; set; }
 
     /// <summary>
     /// Indicates what to do if a package is unable to be delivered.
     /// </summary>
     /// <value>Indicates what to do if a package is unable to be delivered.</value>
-    [JsonPropertyName("non_delivery"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("non_delivery"), JsonPropertyOrder(2)]
     public required NonDelivery NonDelivery { get; set; }
-
-    /// <summary>
-    /// Specifies the supported terms of trade code (incoterms)
-    /// </summary>
-    /// <value>Specifies the supported terms of trade code (incoterms)</value>
-    [JsonPropertyName("terms_of_trade_code"), JsonPropertyOrder(8)]
-    public AllowedIncoterms? TermsOfTradeCode { get; set; }
 
     /// <summary>
     /// Explanation for contents (required if the &#x60;contents&#x60; is provided as &#x60;other&#x60;)
@@ -82,6 +75,13 @@ public partial class InternationalShipmentOptions
     [JsonPropertyName("invoice_additional_details"), JsonPropertyOrder(7)]
     public InvoiceAdditionalDetails? InvoiceAdditionalDetails { get; set; }
 
+    /// <summary>
+    /// Specifies the supported terms of trade code (incoterms)
+    /// </summary>
+    /// <value>Specifies the supported terms of trade code (incoterms)</value>
+    [JsonPropertyName("terms_of_trade_code"), JsonPropertyOrder(8)]
+    public AllowedIncoterms? TermsOfTradeCode { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -89,7 +89,7 @@ public partial class InternationalShipmentOptions
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class InternationalShipmentOptions {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Contents: ").Append(Contents).Append("\n");

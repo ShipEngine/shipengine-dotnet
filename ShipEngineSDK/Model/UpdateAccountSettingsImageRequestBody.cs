@@ -89,20 +89,13 @@ public partial class UpdateAccountSettingsImageRequestBody
 
 
     /// <summary>
-    /// The image type
-    /// </summary>
-    /// <value>The image type</value>
-    [JsonPropertyName("image_content_type"), JsonPropertyOrder(3)]
-    public ImageContentTypeEnum? ImageContentType { get; set; }
-
-    /// <summary>
     /// Indicates whether this image is set as default. 
     /// </summary>
     /// <value>Indicates whether this image is set as default. </value>
     /// <example>
     /// false
     /// </example>
-    [JsonPropertyName("is_default"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("is_default"), JsonPropertyOrder(1)]
     public required bool IsDefault { get; set; }
 
     /// <summary>
@@ -114,6 +107,13 @@ public partial class UpdateAccountSettingsImageRequestBody
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
     public DateTimeOffset? CreatedAt { get; private set; }
+
+    /// <summary>
+    /// The image type
+    /// </summary>
+    /// <value>The image type</value>
+    [JsonPropertyName("image_content_type"), JsonPropertyOrder(3)]
+    public ImageContentTypeEnum? ImageContentType { get; set; }
 
     /// <summary>
     /// A base64 encoded string representation of the image. 
@@ -162,7 +162,7 @@ public partial class UpdateAccountSettingsImageRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class UpdateAccountSettingsImageRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");

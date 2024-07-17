@@ -35,7 +35,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("address_line1"), JsonPropertyOrder(1)]
     public required string AddressLine1 { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// Winnipeg
     /// </example>
-    [JsonPropertyName("city_locality"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("city_locality"), JsonPropertyOrder(2)]
     public required string CityLocality { get; set; }
 
     /// <summary>
@@ -55,7 +55,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(3)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -65,7 +65,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// John Doe
     /// </example>
-    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("name"), JsonPropertyOrder(4)]
     public required string Name { get; set; }
 
     /// <summary>
@@ -75,7 +75,7 @@ public partial class ImporterOfRecords
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(5)]
     public required string PostalCode { get; set; }
 
     /// <summary>
@@ -145,7 +145,7 @@ public partial class ImporterOfRecords
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ImporterOfRecords {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");

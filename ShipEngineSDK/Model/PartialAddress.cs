@@ -29,13 +29,6 @@ public partial class PartialAddress
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.
-    /// </summary>
-    /// <value>Indicates whether this is a residential address.</value>
-    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(4)]
-    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
-
-    /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. 
     /// </summary>
     /// <value>The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. </value>
@@ -64,6 +57,13 @@ public partial class PartialAddress
     /// </example>
     [JsonPropertyName("address_line3"), JsonPropertyOrder(3)]
     public string? AddressLine3 { get; set; }
+
+    /// <summary>
+    /// Indicates whether this is a residential address.
+    /// </summary>
+    /// <value>Indicates whether this is a residential address.</value>
+    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(4)]
+    public AddressResidentialIndicator? AddressResidentialIndicator { get; set; }
 
     /// <summary>
     /// The name of the city or locality
@@ -152,7 +152,7 @@ public partial class PartialAddress
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class PartialAddress {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");

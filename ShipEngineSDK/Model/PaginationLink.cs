@@ -32,28 +32,28 @@ public partial class PaginationLink
     /// The link to the first page of results.  This object will _always_ have an &#x60;href&#x60; field. If there are no results, then the first page will contain an empty array of items. 
     /// </summary>
     /// <value>The link to the first page of results.  This object will _always_ have an &#x60;href&#x60; field. If there are no results, then the first page will contain an empty array of items. </value>
-    [JsonPropertyName("first"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("first"), JsonPropertyOrder(1)]
     public required Link First { get; set; }
 
     /// <summary>
     /// The link to the final page of results.  This object will _always_ have an &#x60;href&#x60; field. If there are no results, then the final page will contain an empty array of items. 
     /// </summary>
     /// <value>The link to the final page of results.  This object will _always_ have an &#x60;href&#x60; field. If there are no results, then the final page will contain an empty array of items. </value>
-    [JsonPropertyName("last"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("last"), JsonPropertyOrder(2)]
     public required Link Last { get; set; }
 
     /// <summary>
     /// The link to the next page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is less than &#x60;pages&#x60;. 
     /// </summary>
     /// <value>The link to the next page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is less than &#x60;pages&#x60;. </value>
-    [JsonPropertyName("next"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("next"), JsonPropertyOrder(3)]
     public required OptionalLink Next { get; set; }
 
     /// <summary>
     /// The link to the previous page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is 2 or greater. 
     /// </summary>
     /// <value>The link to the previous page of results.  The &#x60;href&#x60; field will only be set when the &#x60;page&#x60; is 2 or greater. </value>
-    [JsonPropertyName("prev"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("prev"), JsonPropertyOrder(4)]
     public required OptionalLink Prev { get; set; }
 
 
@@ -63,7 +63,7 @@ public partial class PaginationLink
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class PaginationLink {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  First: ").Append(First).Append("\n");

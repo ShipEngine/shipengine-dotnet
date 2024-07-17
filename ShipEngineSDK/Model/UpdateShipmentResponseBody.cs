@@ -29,44 +29,17 @@ public partial class UpdateShipmentResponseBody
 {
 
     /// <summary>
-    /// The type of delivery confirmation that is required for this shipment.
-    /// </summary>
-    /// <value>The type of delivery confirmation that is required for this shipment.</value>
-    [JsonPropertyName("confirmation"), JsonRequired, JsonPropertyOrder(4)]
-    public required DeliveryConfirmation Confirmation { get; set; }
-
-    /// <summary>
-    /// The insurance provider to use for any insured packages in the shipment. 
-    /// </summary>
-    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
-    [JsonPropertyName("insurance_provider"), JsonRequired, JsonPropertyOrder(7)]
-    public required InsuranceProvider InsuranceProvider { get; set; }
-
-    /// <summary>
-    /// The current status of the shipment
-    /// </summary>
-    /// <value>The current status of the shipment</value>
-    [JsonPropertyName("shipment_status"), JsonInclude]
-    public ShipmentStatus? ShipmentStatus { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets OrderSourceCode
-    /// </summary>
-    [JsonPropertyName("order_source_code"), JsonPropertyOrder(25)]
-    public OrderSourceName? OrderSourceCode { get; set; }
-
-    /// <summary>
     /// The address validation
     /// </summary>
     /// <value>The address validation</value>
-    [JsonPropertyName("address_validation"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("address_validation"), JsonPropertyOrder(1)]
     public required AddressValidationResult AddressValidation { get; set; }
 
     /// <summary>
     /// Advanced shipment options.  These are entirely optional.
     /// </summary>
     /// <value>Advanced shipment options.  These are entirely optional.</value>
-    [JsonPropertyName("advanced_options"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("advanced_options"), JsonPropertyOrder(2)]
     public required AdvancedShipmentOptions AdvancedOptions { get; set; }
 
     /// <summary>
@@ -76,8 +49,15 @@ public partial class UpdateShipmentResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(3)]
     public required string CarrierId { get; set; }
+
+    /// <summary>
+    /// The type of delivery confirmation that is required for this shipment.
+    /// </summary>
+    /// <value>The type of delivery confirmation that is required for this shipment.</value>
+    [JsonPropertyName("confirmation"), JsonPropertyOrder(4)]
+    public required DeliveryConfirmation Confirmation { get; set; }
 
     /// <summary>
     /// The date and time that the shipment was created in ShipEngine.
@@ -97,17 +77,24 @@ public partial class UpdateShipmentResponseBody
     public List<string>? Errors { get; private set; }
 
     /// <summary>
+    /// The insurance provider to use for any insured packages in the shipment. 
+    /// </summary>
+    /// <value>The insurance provider to use for any insured packages in the shipment. </value>
+    [JsonPropertyName("insurance_provider"), JsonPropertyOrder(7)]
+    public required InsuranceProvider InsuranceProvider { get; set; }
+
+    /// <summary>
     /// The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. 
     /// </summary>
     /// <value>The packages in the shipment.  &gt; **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn&#39;t allow it, an error will be returned. </value>
-    [JsonPropertyName("packages"), JsonRequired, JsonPropertyOrder(8)]
+    [JsonPropertyName("packages"), JsonPropertyOrder(8)]
     public required List<Package> Packages { get; set; }
 
     /// <summary>
     /// The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. 
     /// </summary>
     /// <value>The return address for this shipment.  Defaults to the &#x60;ship_from&#x60; address. </value>
-    [JsonPropertyName("return_to"), JsonRequired, JsonPropertyOrder(9)]
+    [JsonPropertyName("return_to"), JsonPropertyOrder(9)]
     public required ShippingAddress ReturnTo { get; set; }
 
     /// <summary>
@@ -117,7 +104,7 @@ public partial class UpdateShipmentResponseBody
     /// <example>
     /// usps_first_class_mail
     /// </example>
-    [JsonPropertyName("service_code"), JsonRequired, JsonPropertyOrder(10)]
+    [JsonPropertyName("service_code"), JsonPropertyOrder(10)]
     public required string ServiceCode { get; set; }
 
     /// <summary>
@@ -127,21 +114,21 @@ public partial class UpdateShipmentResponseBody
     /// <example>
     /// 2018-09-23T00:00Z
     /// </example>
-    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(11)]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(11)]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
     /// The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. 
     /// </summary>
     /// <value>The shipment&#39;s origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the &#x60;warehouse_id&#x60; rather than the complete address each time. </value>
-    [JsonPropertyName("ship_from"), JsonRequired, JsonPropertyOrder(12)]
+    [JsonPropertyName("ship_from"), JsonPropertyOrder(12)]
     public required ShippingAddress ShipFrom { get; set; }
 
     /// <summary>
     /// The recipient&#39;s mailing address
     /// </summary>
     /// <value>The recipient&#39;s mailing address</value>
-    [JsonPropertyName("ship_to"), JsonRequired, JsonPropertyOrder(13)]
+    [JsonPropertyName("ship_to"), JsonPropertyOrder(13)]
     public required ShippingAddressTo ShipTo { get; set; }
 
     /// <summary>
@@ -153,6 +140,13 @@ public partial class UpdateShipmentResponseBody
     /// </example>
     [JsonPropertyName("shipment_id"), JsonInclude]
     public string? ShipmentId { get; private set; }
+
+    /// <summary>
+    /// The current status of the shipment
+    /// </summary>
+    /// <value>The current status of the shipment</value>
+    [JsonPropertyName("shipment_status"), JsonInclude]
+    public ShipmentStatus? ShipmentStatus { get; private set; }
 
     /// <summary>
     /// Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. 
@@ -182,7 +176,7 @@ public partial class UpdateShipmentResponseBody
     /// Customs information.  This is usually only needed for international shipments. 
     /// </summary>
     /// <value>Customs information.  This is usually only needed for international shipments. </value>
-    [JsonPropertyName("customs"), JsonRequired, JsonPropertyOrder(19)]
+    [JsonPropertyName("customs"), JsonPropertyOrder(19)]
     public required InternationalShipmentOptions Customs { get; set; }
 
     /// <summary>
@@ -224,6 +218,12 @@ public partial class UpdateShipmentResponseBody
     public DateTimeOffset? ModifiedAt { get; private set; }
 
     /// <summary>
+    /// Gets or Sets OrderSourceCode
+    /// </summary>
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(25)]
+    public OrderSourceName? OrderSourceCode { get; set; }
+
+    /// <summary>
     /// A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.  &gt; **Warning:** The &#x60;shipment_number&#x60; is limited to 50 characters. Any additional characters will be truncated. 
     /// </summary>
     /// <value>A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.  &gt; **Warning:** The &#x60;shipment_number&#x60; is limited to 50 characters. Any additional characters will be truncated. </value>
@@ -263,7 +263,7 @@ public partial class UpdateShipmentResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class UpdateShipmentResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressValidation: ").Append(AddressValidation).Append("\n");

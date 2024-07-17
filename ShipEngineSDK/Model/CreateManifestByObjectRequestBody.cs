@@ -35,7 +35,7 @@ public partial class CreateManifestByObjectRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(1)]
     public required string CarrierId { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class CreateManifestByObjectRequestBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(2)]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
@@ -55,7 +55,7 @@ public partial class CreateManifestByObjectRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("warehouse_id"), JsonPropertyOrder(3)]
     public required string WarehouseId { get; set; }
 
     /// <summary>
@@ -79,7 +79,7 @@ public partial class CreateManifestByObjectRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateManifestByObjectRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");

@@ -32,35 +32,35 @@ public partial class ConnectRoyalMailRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("account_number"), JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// City
     /// </summary>
     /// <value>City</value>
-    [JsonPropertyName("city"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("city"), JsonPropertyOrder(2)]
     public required string City { get; set; }
 
     /// <summary>
     /// Contact name
     /// </summary>
     /// <value>Contact name</value>
-    [JsonPropertyName("contact_name"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("contact_name"), JsonPropertyOrder(3)]
     public required string ContactName { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(4)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Postal code
     /// </summary>
     /// <value>Postal code</value>
-    [JsonPropertyName("postal_code"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(5)]
     public required string PostalCode { get; set; }
 
     /// <summary>
@@ -125,7 +125,7 @@ public partial class ConnectRoyalMailRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectRoyalMailRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");

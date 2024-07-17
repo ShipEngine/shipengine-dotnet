@@ -31,7 +31,7 @@ public partial class PagedListResponseBody
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
-    [JsonPropertyName("links"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("links"), JsonPropertyOrder(1)]
     public required PaginationLink Links { get; set; }
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class PagedListResponseBody
     /// <example>
     /// 1
     /// </example>
-    [JsonPropertyName("page"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("page"), JsonPropertyOrder(2)]
     public required int Page { get; set; }
 
     /// <summary>
@@ -51,7 +51,7 @@ public partial class PagedListResponseBody
     /// <example>
     /// 4
     /// </example>
-    [JsonPropertyName("pages"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("pages"), JsonPropertyOrder(3)]
     public required int Pages { get; set; }
 
     /// <summary>
@@ -61,7 +61,7 @@ public partial class PagedListResponseBody
     /// <example>
     /// 2750
     /// </example>
-    [JsonPropertyName("total"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("total"), JsonPropertyOrder(4)]
     public required int Total { get; set; }
 
     /// <summary>
@@ -77,7 +77,7 @@ public partial class PagedListResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class PagedListResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Links: ").Append(Links).Append("\n");

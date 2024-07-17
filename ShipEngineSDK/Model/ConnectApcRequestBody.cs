@@ -35,7 +35,7 @@ public partial class ConnectApcRequestBody
     /// <example>
     /// APC carrier account
     /// </example>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(1)]
     public required string Nickname { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class ConnectApcRequestBody
     /// <example>
     /// 12345
     /// </example>
-    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("password"), JsonPropertyOrder(2)]
     public required string Password { get; set; }
 
     /// <summary>
@@ -55,7 +55,7 @@ public partial class ConnectApcRequestBody
     /// <example>
     /// john_doe
     /// </example>
-    [JsonPropertyName("username"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("username"), JsonPropertyOrder(3)]
     public required string Username { get; set; }
 
 
@@ -65,7 +65,7 @@ public partial class ConnectApcRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectApcRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");

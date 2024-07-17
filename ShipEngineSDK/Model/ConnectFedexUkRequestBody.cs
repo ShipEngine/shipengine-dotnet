@@ -32,35 +32,35 @@ public partial class ConnectFedexUkRequestBody
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("account_number"), JsonPropertyOrder(1)]
     public required string AccountNumber { get; set; }
 
     /// <summary>
     /// Address
     /// </summary>
     /// <value>Address</value>
-    [JsonPropertyName("address1"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("address1"), JsonPropertyOrder(2)]
     public required string Address1 { get; set; }
 
     /// <summary>
     /// Boolean signaling agreement to the Fedex End User License Agreement
     /// </summary>
     /// <value>Boolean signaling agreement to the Fedex End User License Agreement</value>
-    [JsonPropertyName("agree_to_eula"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("agree_to_eula"), JsonPropertyOrder(3)]
     public required bool AgreeToEula { get; set; }
 
     /// <summary>
     /// The city
     /// </summary>
     /// <value>The city</value>
-    [JsonPropertyName("city"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("city"), JsonPropertyOrder(4)]
     public required string City { get; set; }
 
     /// <summary>
     /// Country code
     /// </summary>
     /// <value>Country code</value>
-    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(5)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -70,49 +70,49 @@ public partial class ConnectFedexUkRequestBody
     /// <example>
     /// john.doe@example.com
     /// </example>
-    [JsonPropertyName("email"), JsonRequired, JsonPropertyOrder(6)]
+    [JsonPropertyName("email"), JsonPropertyOrder(6)]
     public required string Email { get; set; }
 
     /// <summary>
     /// First name
     /// </summary>
     /// <value>First name</value>
-    [JsonPropertyName("first_name"), JsonRequired, JsonPropertyOrder(7)]
+    [JsonPropertyName("first_name"), JsonPropertyOrder(7)]
     public required string FirstName { get; set; }
 
     /// <summary>
     /// Last name
     /// </summary>
     /// <value>Last name</value>
-    [JsonPropertyName("last_name"), JsonRequired, JsonPropertyOrder(8)]
+    [JsonPropertyName("last_name"), JsonPropertyOrder(8)]
     public required string LastName { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(9)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(9)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Phone number
     /// </summary>
     /// <value>Phone number</value>
-    [JsonPropertyName("phone"), JsonRequired, JsonPropertyOrder(10)]
+    [JsonPropertyName("phone"), JsonPropertyOrder(10)]
     public required string Phone { get; set; }
 
     /// <summary>
     /// Postal Code
     /// </summary>
     /// <value>Postal Code</value>
-    [JsonPropertyName("postal_code"), JsonRequired, JsonPropertyOrder(11)]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(11)]
     public required string PostalCode { get; set; }
 
     /// <summary>
     /// State
     /// </summary>
     /// <value>State</value>
-    [JsonPropertyName("state"), JsonRequired, JsonPropertyOrder(12)]
+    [JsonPropertyName("state"), JsonPropertyOrder(12)]
     public required string State { get; set; }
 
     /// <summary>
@@ -143,7 +143,7 @@ public partial class ConnectFedexUkRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectFedexUkRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");

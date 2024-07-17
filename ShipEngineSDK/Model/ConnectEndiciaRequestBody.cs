@@ -32,21 +32,21 @@ public partial class ConnectEndiciaRequestBody
     /// Account
     /// </summary>
     /// <value>Account</value>
-    [JsonPropertyName("account"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("account"), JsonPropertyOrder(1)]
     public required string Account { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Passphrase
     /// </summary>
     /// <value>Passphrase</value>
-    [JsonPropertyName("passphrase"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("passphrase"), JsonPropertyOrder(3)]
     public required string Passphrase { get; set; }
 
 
@@ -56,7 +56,7 @@ public partial class ConnectEndiciaRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectEndiciaRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Account: ").Append(Account).Append("\n");

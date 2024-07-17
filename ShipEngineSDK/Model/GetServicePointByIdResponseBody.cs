@@ -41,7 +41,7 @@ public partial class GetServicePointByIdResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetServicePointByIdResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ServicePoint: ").Append(ServicePoint).Append("\n");

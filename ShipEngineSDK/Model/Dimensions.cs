@@ -31,28 +31,28 @@ public partial class Dimensions
     /// <summary>
     /// Gets or Sets Unit
     /// </summary>
-    [JsonPropertyName("unit"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("unit"), JsonPropertyOrder(1)]
     public required DimensionUnit Unit { get; set; }
 
     /// <summary>
     /// The height of the package, in the specified unit
     /// </summary>
     /// <value>The height of the package, in the specified unit</value>
-    [JsonPropertyName("height"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("height"), JsonPropertyOrder(2)]
     public required double Height { get; set; }
 
     /// <summary>
     /// The length of the package, in the specified unit
     /// </summary>
     /// <value>The length of the package, in the specified unit</value>
-    [JsonPropertyName("length"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("length"), JsonPropertyOrder(3)]
     public required double Length { get; set; }
 
     /// <summary>
     /// The width of the package, in the specified unit
     /// </summary>
     /// <value>The width of the package, in the specified unit</value>
-    [JsonPropertyName("width"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("width"), JsonPropertyOrder(4)]
     public required double Width { get; set; }
 
 
@@ -62,7 +62,7 @@ public partial class Dimensions
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Dimensions {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Unit: ").Append(Unit).Append("\n");

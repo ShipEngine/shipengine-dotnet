@@ -101,16 +101,14 @@ namespace ShipEngineSDK.Test
                 public void WhenDeserializing_ItShouldNotIncludeWriteOnlyProperties()
                 {
                     var json = @"{
-  ""pickup_window"": {
-    ""end_at"": ""2024-07-19T12:27:35+00:00"",
-    ""start_at"": ""2024-07-17T12:27:35+00:00""
-  }
+  ""label_download_type"": ""inline"",
+  ""label_format"": ""png""
 }";
 
-                    var pickup = JsonSerializer.Deserialize<SchedulePickupRequestBody>(json, ShipEngineClient.JsonSerializerOptions);
+                    var pickup = JsonSerializer.Deserialize<CreateReturnLabelRequestBody>(json, ShipEngineClient.JsonSerializerOptions);
 
-                    Assert.Equal("se-12345", pickup.CarrierId);
-                    Assert.Null(pickup.PickupWindow);
+                    Assert.Equal(LabelFormat.Png, pickup.LabelFormat);
+                    Assert.Null(pickup.LabelDownloadType);
                 }
             }
         }

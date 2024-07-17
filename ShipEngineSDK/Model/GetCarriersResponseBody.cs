@@ -49,7 +49,7 @@ public partial class GetCarriersResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("request_id"), JsonPropertyOrder(3)]
     public required Guid RequestId { get; set; }
 
 
@@ -59,7 +59,7 @@ public partial class GetCarriersResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetCarriersResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Carriers: ").Append(Carriers).Append("\n");

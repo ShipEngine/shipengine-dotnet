@@ -35,21 +35,21 @@ public partial class ConnectFirstmileRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("mailer_id"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("mailer_id"), JsonPropertyOrder(1)]
     public required string MailerId { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Password
     /// </summary>
     /// <value>Password</value>
-    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("password"), JsonPropertyOrder(3)]
     public required string Password { get; set; }
 
     /// <summary>
@@ -66,7 +66,7 @@ public partial class ConnectFirstmileRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectFirstmileRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  MailerId: ").Append(MailerId).Append("\n");

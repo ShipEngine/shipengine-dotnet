@@ -29,13 +29,6 @@ public partial class VoidLabelResponseBody
 {
 
     /// <summary>
-    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.
-    /// </summary>
-    /// <value>Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.</value>
-    [JsonPropertyName("reason_code"), JsonInclude]
-    public ReasonCode? ReasonCode { get; private set; }
-
-    /// <summary>
     /// Indicates whether the attempt to void the label was successful
     /// </summary>
     /// <value>Indicates whether the attempt to void the label was successful</value>
@@ -54,6 +47,13 @@ public partial class VoidLabelResponseBody
     [JsonPropertyName("message"), JsonInclude]
     public string? Message { get; private set; }
 
+    /// <summary>
+    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.
+    /// </summary>
+    /// <value>Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.</value>
+    [JsonPropertyName("reason_code"), JsonInclude]
+    public ReasonCode? ReasonCode { get; private set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -61,7 +61,7 @@ public partial class VoidLabelResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class VoidLabelResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Approved: ").Append(Approved).Append("\n");

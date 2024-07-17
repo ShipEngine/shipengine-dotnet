@@ -42,7 +42,7 @@ public partial class RateEstimateByCarrierIds
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class RateEstimateByCarrierIds {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierIds: ").Append(CarrierIds).Append("\n");

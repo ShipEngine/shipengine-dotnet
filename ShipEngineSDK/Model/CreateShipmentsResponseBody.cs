@@ -32,14 +32,14 @@ public partial class CreateShipmentsResponseBody
     /// An array of shipments that were created.
     /// </summary>
     /// <value>An array of shipments that were created.</value>
-    [JsonPropertyName("shipments"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("shipments"), JsonPropertyOrder(1)]
     public required List<CreateAndValidateShipment> Shipments { get; set; }
 
     /// <summary>
     /// Indicates if errors occured while creating the shipments
     /// </summary>
     /// <value>Indicates if errors occured while creating the shipments</value>
-    [JsonPropertyName("has_errors"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("has_errors"), JsonPropertyOrder(2)]
     public required bool HasErrors { get; set; }
 
 
@@ -49,7 +49,7 @@ public partial class CreateShipmentsResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateShipmentsResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Shipments: ").Append(Shipments).Append("\n");

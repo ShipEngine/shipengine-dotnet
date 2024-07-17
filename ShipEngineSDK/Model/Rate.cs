@@ -29,18 +29,6 @@ public partial class Rate
 {
 
     /// <summary>
-    /// Gets or Sets RateType
-    /// </summary>
-    [JsonPropertyName("rate_type"), JsonInclude]
-    public RateType? RateType { get; private set; }
-
-    /// <summary>
-    /// Gets or Sets ValidationStatus
-    /// </summary>
-    [JsonPropertyName("validation_status"), JsonInclude]
-    public ValidationStatus? ValidationStatus { get; private set; }
-
-    /// <summary>
     /// carrier code
     /// </summary>
     /// <value>carrier code</value>
@@ -124,6 +112,12 @@ public partial class Rate
     public string? RateId { get; private set; }
 
     /// <summary>
+    /// Gets or Sets RateType
+    /// </summary>
+    [JsonPropertyName("rate_type"), JsonInclude]
+    public RateType? RateType { get; private set; }
+
+    /// <summary>
     /// service code for the rate
     /// </summary>
     /// <value>service code for the rate</value>
@@ -150,6 +144,12 @@ public partial class Rate
     /// <value>Indicates if rate is trackable</value>
     [JsonPropertyName("trackable"), JsonInclude]
     public bool? Trackable { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets ValidationStatus
+    /// </summary>
+    [JsonPropertyName("validation_status"), JsonInclude]
+    public ValidationStatus? ValidationStatus { get; private set; }
 
     /// <summary>
     /// The warning messages
@@ -233,7 +233,7 @@ public partial class Rate
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class Rate {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");

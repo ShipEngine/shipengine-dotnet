@@ -80,6 +80,11 @@ public class BatchesSortBy
     /// </summary>
     public override bool Equals(object? obj) =>
         obj is BatchesSortBy other && _value == other._value;
+
+    /// <summary>
+    /// Get the hash code of the object
+    /// </summary>
+    public override int GetHashCode() => _value.GetHashCode();
 }
 
 internal class BatchesSortByJsonConverter : JsonConverter<BatchesSortBy>

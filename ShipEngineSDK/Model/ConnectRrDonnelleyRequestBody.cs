@@ -32,21 +32,21 @@ public partial class ConnectRrDonnelleyRequestBody
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(1)]
     public required string Nickname { get; set; }
 
     /// <summary>
     /// Password
     /// </summary>
     /// <value>Password</value>
-    [JsonPropertyName("password"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("password"), JsonPropertyOrder(2)]
     public required string Password { get; set; }
 
     /// <summary>
     /// Username
     /// </summary>
     /// <value>Username</value>
-    [JsonPropertyName("username"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("username"), JsonPropertyOrder(3)]
     public required string Username { get; set; }
 
 
@@ -56,7 +56,7 @@ public partial class ConnectRrDonnelleyRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectRrDonnelleyRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");

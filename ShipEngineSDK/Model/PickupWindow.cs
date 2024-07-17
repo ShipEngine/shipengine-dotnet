@@ -35,7 +35,7 @@ public partial class PickupWindow
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("end_at"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("end_at"), JsonPropertyOrder(1)]
     public required DateTimeOffset EndAt { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class PickupWindow
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("start_at"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("start_at"), JsonPropertyOrder(2)]
     public required DateTimeOffset StartAt { get; set; }
 
 
@@ -55,7 +55,7 @@ public partial class PickupWindow
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class PickupWindow {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  EndAt: ").Append(EndAt).Append("\n");

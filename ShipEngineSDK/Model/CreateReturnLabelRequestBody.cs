@@ -45,7 +45,7 @@ public partial class CreateReturnLabelRequestBody
     /// <summary>
     /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type"), JsonPropertyOrder(3)]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(3), JsonWriteOnly]
     public LabelDownloadType? LabelDownloadType { get; set; }
 
     /// <summary>
@@ -54,13 +54,6 @@ public partial class CreateReturnLabelRequestBody
     /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
     [JsonPropertyName("label_format"), JsonPropertyOrder(4)]
     public LabelFormat? LabelFormat { get; set; }
-
-    /// <summary>
-    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
-    /// </summary>
-    /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    [JsonPropertyName("label_layout"), JsonPropertyOrder(6)]
-    public LabelLayout? LabelLayout { get; set; }
 
     /// <summary>
     /// The label image resource that was used to create a custom label image.
@@ -72,6 +65,13 @@ public partial class CreateReturnLabelRequestBody
     [JsonPropertyName("label_image_id"), JsonPropertyOrder(5)]
     public string? LabelImageId { get; set; }
 
+    /// <summary>
+    /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
+    /// </summary>
+    /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(6)]
+    public LabelLayout? LabelLayout { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -79,7 +79,7 @@ public partial class CreateReturnLabelRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateReturnLabelRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ChargeEvent: ").Append(ChargeEvent).Append("\n");

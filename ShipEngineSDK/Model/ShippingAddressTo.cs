@@ -29,21 +29,21 @@ public partial class ShippingAddressTo
 {
 
     /// <summary>
-    /// Indicates whether this is a residential address.
-    /// </summary>
-    /// <value>Indicates whether this is a residential address.</value>
-    [JsonPropertyName("address_residential_indicator"), JsonRequired, JsonPropertyOrder(2)]
-    public required AddressResidentialIndicator AddressResidentialIndicator { get; set; }
-
-    /// <summary>
     /// The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. 
     /// </summary>
     /// <value>The first line of the street address.  For some addresses, this may be the only line.  Other addresses may require 2 or 3 lines. </value>
     /// <example>
     /// 1999 Bishop Grandin Blvd.
     /// </example>
-    [JsonPropertyName("address_line1"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("address_line1"), JsonPropertyOrder(1)]
     public required string AddressLine1 { get; set; }
+
+    /// <summary>
+    /// Indicates whether this is a residential address.
+    /// </summary>
+    /// <value>Indicates whether this is a residential address.</value>
+    [JsonPropertyName("address_residential_indicator"), JsonPropertyOrder(2)]
+    public required AddressResidentialIndicator AddressResidentialIndicator { get; set; }
 
     /// <summary>
     /// The name of the city or locality
@@ -52,7 +52,7 @@ public partial class ShippingAddressTo
     /// <example>
     /// Winnipeg
     /// </example>
-    [JsonPropertyName("city_locality"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("city_locality"), JsonPropertyOrder(3)]
     public required string CityLocality { get; set; }
 
     /// <summary>
@@ -62,7 +62,7 @@ public partial class ShippingAddressTo
     /// <example>
     /// CA
     /// </example>
-    [JsonPropertyName("country_code"), JsonRequired, JsonPropertyOrder(4)]
+    [JsonPropertyName("country_code"), JsonPropertyOrder(4)]
     public required string CountryCode { get; set; }
 
     /// <summary>
@@ -72,7 +72,7 @@ public partial class ShippingAddressTo
     /// <example>
     /// John Doe
     /// </example>
-    [JsonPropertyName("name"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("name"), JsonPropertyOrder(5)]
     public required string Name { get; set; }
 
     /// <summary>
@@ -82,7 +82,7 @@ public partial class ShippingAddressTo
     /// <example>
     /// +1 204-253-9411 ext. 123
     /// </example>
-    [JsonPropertyName("phone"), JsonRequired, JsonPropertyOrder(6)]
+    [JsonPropertyName("phone"), JsonPropertyOrder(6)]
     public required string Phone { get; set; }
 
     /// <summary>
@@ -92,7 +92,7 @@ public partial class ShippingAddressTo
     /// <example>
     /// 78756-3717
     /// </example>
-    [JsonPropertyName("postal_code"), JsonRequired, JsonPropertyOrder(7)]
+    [JsonPropertyName("postal_code"), JsonPropertyOrder(7)]
     public required string PostalCode { get; set; }
 
     /// <summary>
@@ -102,7 +102,7 @@ public partial class ShippingAddressTo
     /// <example>
     /// Manitoba
     /// </example>
-    [JsonPropertyName("state_province"), JsonRequired, JsonPropertyOrder(8)]
+    [JsonPropertyName("state_province"), JsonPropertyOrder(8)]
     public required string StateProvince { get; set; }
 
     /// <summary>
@@ -165,7 +165,7 @@ public partial class ShippingAddressTo
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ShippingAddressTo {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");

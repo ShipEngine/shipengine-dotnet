@@ -35,7 +35,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("carrier_id"), JsonRequired, JsonPropertyOrder(1), Obsolete]
+    [JsonPropertyName("carrier_id"), JsonPropertyOrder(1), Obsolete]
     public required string CarrierId { get; set; }
 
     /// <summary>
@@ -45,7 +45,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
-    [JsonPropertyName("created_at"), JsonRequired, JsonPropertyOrder(2), Obsolete]
+    [JsonPropertyName("created_at"), JsonPropertyOrder(2), Obsolete]
     public required DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
@@ -62,13 +62,13 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("form_id"), JsonRequired, JsonPropertyOrder(4), Obsolete]
+    [JsonPropertyName("form_id"), JsonPropertyOrder(4), Obsolete]
     public required string FormId { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
     /// </summary>
-    [JsonPropertyName("manifest_download"), JsonRequired, JsonPropertyOrder(5), Obsolete]
+    [JsonPropertyName("manifest_download"), JsonPropertyOrder(5), Obsolete]
     public required ManifestDownload ManifestDownload { get; set; }
 
     /// <summary>
@@ -78,7 +78,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("manifest_id"), JsonRequired, JsonPropertyOrder(6), Obsolete]
+    [JsonPropertyName("manifest_id"), JsonPropertyOrder(6), Obsolete]
     public required string ManifestId { get; set; }
 
     /// <summary>
@@ -88,7 +88,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// aa3d8e8e-462b-4476-9618-72db7f7b7009
     /// </example>
-    [JsonPropertyName("request_id"), JsonRequired, JsonPropertyOrder(7)]
+    [JsonPropertyName("request_id"), JsonPropertyOrder(7)]
     public required Guid RequestId { get; set; }
 
     /// <summary>
@@ -98,7 +98,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
-    [JsonPropertyName("ship_date"), JsonRequired, JsonPropertyOrder(8), Obsolete]
+    [JsonPropertyName("ship_date"), JsonPropertyOrder(8), Obsolete]
     public required DateTimeOffset ShipDate { get; set; }
 
     /// <summary>
@@ -118,7 +118,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// 9475711899564878915476
     /// </example>
-    [JsonPropertyName("submission_id"), JsonRequired, JsonPropertyOrder(10), Obsolete]
+    [JsonPropertyName("submission_id"), JsonPropertyOrder(10), Obsolete]
     public required string SubmissionId { get; set; }
 
     /// <summary>
@@ -128,7 +128,7 @@ public partial class CreateManifestResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("warehouse_id"), JsonRequired, JsonPropertyOrder(11), Obsolete]
+    [JsonPropertyName("warehouse_id"), JsonPropertyOrder(11), Obsolete]
     public required string WarehouseId { get; set; }
 
     /// <summary>
@@ -159,7 +159,7 @@ public partial class CreateManifestResponseBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateManifestResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");

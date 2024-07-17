@@ -32,21 +32,21 @@ public partial class LabelMessages
     /// The first line of the custom label message.  Some carriers may prefix this line with something like \&quot;REF\&quot;, \&quot;Reference\&quot;, \&quot;Trx Ref No.\&quot;, etc. 
     /// </summary>
     /// <value>The first line of the custom label message.  Some carriers may prefix this line with something like \&quot;REF\&quot;, \&quot;Reference\&quot;, \&quot;Trx Ref No.\&quot;, etc. </value>
-    [JsonPropertyName("reference1"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("reference1"), JsonPropertyOrder(1)]
     public required string Reference1 { get; set; }
 
     /// <summary>
     /// The second line of the custom label message.  Some carriers may prefix this line with something like \&quot;INV\&quot;, \&quot;Reference 2\&quot;, \&quot;Trx Ref No.\&quot;, etc. 
     /// </summary>
     /// <value>The second line of the custom label message.  Some carriers may prefix this line with something like \&quot;INV\&quot;, \&quot;Reference 2\&quot;, \&quot;Trx Ref No.\&quot;, etc. </value>
-    [JsonPropertyName("reference2"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("reference2"), JsonPropertyOrder(2)]
     public required string Reference2 { get; set; }
 
     /// <summary>
     /// The third line of the custom label message.  Some carriers may prefix this line with something like \&quot;PO\&quot;, \&quot;Reference 3\&quot;, etc. 
     /// </summary>
     /// <value>The third line of the custom label message.  Some carriers may prefix this line with something like \&quot;PO\&quot;, \&quot;Reference 3\&quot;, etc. </value>
-    [JsonPropertyName("reference3"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("reference3"), JsonPropertyOrder(3)]
     public required string Reference3 { get; set; }
 
 
@@ -56,7 +56,7 @@ public partial class LabelMessages
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class LabelMessages {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Reference1: ").Append(Reference1).Append("\n");

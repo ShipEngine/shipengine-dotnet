@@ -59,7 +59,7 @@ public partial class PaperlessDownload
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class PaperlessDownload {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  HandoffCode: ").Append(HandoffCode).Append("\n");

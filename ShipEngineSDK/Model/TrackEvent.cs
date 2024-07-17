@@ -29,12 +29,6 @@ public partial class TrackEvent
 {
 
     /// <summary>
-    /// Gets or Sets StatusCode
-    /// </summary>
-    [JsonPropertyName("status_code"), JsonRequired, JsonPropertyOrder(8)]
-    public required StatusCode StatusCode { get; set; }
-
-    /// <summary>
     /// Carrier detail code
     /// </summary>
     /// <value>Carrier detail code</value>
@@ -81,7 +75,7 @@ public partial class TrackEvent
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("occurred_at"), JsonRequired, JsonPropertyOrder(5)]
+    [JsonPropertyName("occurred_at"), JsonPropertyOrder(5)]
     public required DateTimeOffset OccurredAt { get; set; }
 
     /// <summary>
@@ -103,6 +97,12 @@ public partial class TrackEvent
     /// </example>
     [JsonPropertyName("state_province"), JsonInclude]
     public string? StateProvince { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets StatusCode
+    /// </summary>
+    [JsonPropertyName("status_code"), JsonPropertyOrder(8)]
+    public required StatusCode StatusCode { get; set; }
 
     /// <summary>
     /// Event Status Description
@@ -189,7 +189,7 @@ public partial class TrackEvent
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class TrackEvent {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierDetailCode: ").Append(CarrierDetailCode).Append("\n");

@@ -32,14 +32,14 @@ public partial class ConnectSendleRequestBody
     /// API key
     /// </summary>
     /// <value>API key</value>
-    [JsonPropertyName("api_key"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("api_key"), JsonPropertyOrder(1)]
     public required string ApiKey { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonRequired, JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
     public required string Nickname { get; set; }
 
     /// <summary>
@@ -49,7 +49,7 @@ public partial class ConnectSendleRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("sendle_id"), JsonRequired, JsonPropertyOrder(3)]
+    [JsonPropertyName("sendle_id"), JsonPropertyOrder(3)]
     public required string SendleId { get; set; }
 
 
@@ -59,7 +59,7 @@ public partial class ConnectSendleRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class ConnectSendleRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");

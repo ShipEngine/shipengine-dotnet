@@ -29,6 +29,13 @@ public partial class CreateAndProcessBatchRequestBodyProcessLabels
 {
 
     /// <summary>
+    /// When &#39;true&#39;, the batch will be enqueued for processing
+    /// </summary>
+    /// <value>When &#39;true&#39;, the batch will be enqueued for processing</value>
+    [JsonPropertyName("create_batch_and_process_labels"), JsonPropertyOrder(1)]
+    public bool? CreateBatchAndProcessLabels { get; set; }
+
+    /// <summary>
     /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
@@ -48,13 +55,6 @@ public partial class CreateAndProcessBatchRequestBodyProcessLabels
     public LabelLayout? LabelLayout { get; set; }
 
     /// <summary>
-    /// When &#39;true&#39;, the batch will be enqueued for processing
-    /// </summary>
-    /// <value>When &#39;true&#39;, the batch will be enqueued for processing</value>
-    [JsonPropertyName("create_batch_and_process_labels"), JsonPropertyOrder(1)]
-    public bool? CreateBatchAndProcessLabels { get; set; }
-
-    /// <summary>
     /// The Ship date the batch is being processed for
     /// </summary>
     /// <value>The Ship date the batch is being processed for</value>
@@ -71,7 +71,7 @@ public partial class CreateAndProcessBatchRequestBodyProcessLabels
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class CreateAndProcessBatchRequestBodyProcessLabels {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CreateBatchAndProcessLabels: ").Append(CreateBatchAndProcessLabels).Append("\n");

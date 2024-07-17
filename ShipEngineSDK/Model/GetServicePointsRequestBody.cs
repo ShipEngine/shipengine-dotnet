@@ -32,7 +32,7 @@ public partial class GetServicePointsRequestBody
     /// An array of shipping service providers and service codes
     /// </summary>
     /// <value>An array of shipping service providers and service codes</value>
-    [JsonPropertyName("providers"), JsonRequired, JsonPropertyOrder(1)]
+    [JsonPropertyName("providers"), JsonPropertyOrder(1)]
     public required List<GetServicePointsRequestBodyProvidersInner> Providers { get; set; }
 
     /// <summary>
@@ -104,7 +104,7 @@ public partial class GetServicePointsRequestBody
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class GetServicePointsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Providers: ").Append(Providers).Append("\n");
