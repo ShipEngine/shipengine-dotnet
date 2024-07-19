@@ -32,11 +32,14 @@ public partial class ManifestRequest
     /// A string that uniquely identifies a manifest request
     /// </summary>
     /// <value>A string that uniquely identifies a manifest request</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("manifest_request_id"), JsonInclude]
-    public string? ManifestRequestId { get; private set; }
+    public string? ManifestRequestId { get; set; }
 
     /// <summary>
     /// Gets or Sets Status

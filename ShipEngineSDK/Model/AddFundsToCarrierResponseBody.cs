@@ -32,8 +32,11 @@ public partial class AddFundsToCarrierResponseBody
     /// The current balance of the account
     /// </summary>
     /// <value>The current balance of the account</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("balance"), JsonInclude]
-    public MonetaryValue? Balance { get; private set; }
+    public MonetaryValue? Balance { get; set; }
 
 
     /// <summary>

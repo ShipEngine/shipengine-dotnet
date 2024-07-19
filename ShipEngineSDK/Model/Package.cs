@@ -63,8 +63,11 @@ public partial class Package
     /// The form download for any customs that are needed
     /// </summary>
     /// <value>The form download for any customs that are needed</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("form_download"), JsonInclude]
-    public OptionalLink? FormDownload { get; private set; }
+    public OptionalLink? FormDownload { get; set; }
 
     /// <summary>
     /// The insured value of the package.  Requires the &#x60;insurance_provider&#x60; field of the shipment to be set. 
@@ -77,8 +80,11 @@ public partial class Package
     /// The label download for the package
     /// </summary>
     /// <value>The label download for the package</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("label_download"), JsonInclude]
-    public LabelDownload? LabelDownload { get; private set; }
+    public LabelDownload? LabelDownload { get; set; }
 
     /// <summary>
     /// Gets or Sets LabelMessages
@@ -110,8 +116,11 @@ public partial class Package
     /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.
     /// </summary>
     /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("paperless_download"), JsonInclude]
-    public PaperlessDownload? PaperlessDownload { get; private set; }
+    public PaperlessDownload? PaperlessDownload { get; set; }
 
     /// <summary>
     /// Details about products inside packages (Information provided would be used on custom documentation)
@@ -124,18 +133,24 @@ public partial class Package
     /// Package sequence
     /// </summary>
     /// <value>Package sequence</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("sequence"), JsonInclude]
-    public int? Sequence { get; private set; }
+    public int? Sequence { get; set; }
 
     /// <summary>
     /// The tracking number for the package.  The format depends on the carrier. 
     /// </summary>
     /// <value>The tracking number for the package.  The format depends on the carrier. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 1Z932R800392060079
     /// </example>
     [JsonPropertyName("tracking_number"), JsonInclude]
-    public string? TrackingNumber { get; private set; }
+    public string? TrackingNumber { get; set; }
 
 
     /// <summary>

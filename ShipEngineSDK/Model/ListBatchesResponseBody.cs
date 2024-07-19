@@ -32,44 +32,59 @@ public partial class ListBatchesResponseBody
     /// Batch List
     /// </summary>
     /// <value>Batch List</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("batches"), JsonInclude]
-    public List<Batch>? Batches { get; private set; }
+    public List<Batch>? Batches { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("links"), JsonInclude]
-    public PaginationLink? Links { get; private set; }
+    public PaginationLink? Links { get; set; }
 
     /// <summary>
     /// The page that is currently being read
     /// </summary>
     /// <value>The page that is currently being read</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 1
     /// </example>
     [JsonPropertyName("page"), JsonInclude]
-    public int? Page { get; private set; }
+    public int? Page { get; set; }
 
     /// <summary>
     /// The total number of batch pages the API call returned
     /// </summary>
     /// <value>The total number of batch pages the API call returned</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 10
     /// </example>
     [JsonPropertyName("pages"), JsonInclude]
-    public int? Pages { get; private set; }
+    public int? Pages { get; set; }
 
     /// <summary>
     /// The total number of batches the API call returned
     /// </summary>
     /// <value>The total number of batches the API call returned</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 10
     /// </example>
     [JsonPropertyName("total"), JsonInclude]
-    public long? Total { get; private set; }
+    public long? Total { get; set; }
 
 
     /// <summary>

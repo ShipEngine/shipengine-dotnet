@@ -32,28 +32,37 @@ public partial class ListPickupResponseBody
     /// Helpful links to other pages of results
     /// </summary>
     /// <value>Helpful links to other pages of results</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("links"), JsonInclude]
-    public PaginationLink? Links { get; private set; }
+    public PaginationLink? Links { get; set; }
 
     /// <summary>
     /// Current page of the list pickups results
     /// </summary>
     /// <value>Current page of the list pickups results</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 3
     /// </example>
     [JsonPropertyName("page"), JsonInclude]
-    public int? Page { get; private set; }
+    public int? Page { get; set; }
 
     /// <summary>
     /// Total number of pages for list pickups results
     /// </summary>
     /// <value>Total number of pages for list pickups results</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 4
     /// </example>
     [JsonPropertyName("pages"), JsonInclude]
-    public int? Pages { get; private set; }
+    public int? Pages { get; set; }
 
     /// <summary>
     /// An array of pickups associated with the user&#39;s account.
@@ -66,11 +75,14 @@ public partial class ListPickupResponseBody
     /// The total number of pickups returned
     /// </summary>
     /// <value>The total number of pickups returned</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 3
     /// </example>
     [JsonPropertyName("total"), JsonInclude]
-    public long? Total { get; private set; }
+    public long? Total { get; set; }
 
 
     /// <summary>

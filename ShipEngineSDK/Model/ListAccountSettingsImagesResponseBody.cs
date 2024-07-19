@@ -41,7 +41,7 @@ public partial class ListAccountSettingsImagesResponseBody
         /// img_DtBXupDBxREpHnwEXhTfgK
         /// </example>
         [JsonPropertyName("label_image_id"), JsonInclude]
-        public string? LabelImageId { get; private set; }
+        public string? LabelImageId { get; set; }
 
         /// <summary>
         /// A human readable name for the image. 
@@ -88,7 +88,7 @@ public partial class ListAccountSettingsImagesResponseBody
         /// 2018-09-23T15:00Z
         /// </example>
         [JsonPropertyName("created_at"), JsonInclude]
-        public DateTimeOffset? CreatedAt { get; private set; }
+        public DateTimeOffset? CreatedAt { get; set; }
 
         /// <summary>
         /// The date and time that the image was modified in ShipEngine.
@@ -98,15 +98,18 @@ public partial class ListAccountSettingsImagesResponseBody
         /// 2018-09-23T15:00Z
         /// </example>
         [JsonPropertyName("modified_at"), JsonInclude]
-        public DateTimeOffset? ModifiedAt { get; private set; }
+        public DateTimeOffset? ModifiedAt { get; set; }
 
     }
     /// <summary>
     /// Image List
     /// </summary>
     /// <value>Image List</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("images"), JsonInclude]
-    public List<ListAccountSettingsImagesResponseBodyItem>? Images { get; private set; }
+    public List<ListAccountSettingsImagesResponseBodyItem>? Images { get; set; }
 
     /// <summary>
     /// Gets or Sets Links

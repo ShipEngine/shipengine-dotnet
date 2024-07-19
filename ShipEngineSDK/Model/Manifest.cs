@@ -32,94 +32,124 @@ public partial class Manifest
     /// A string that uniquely identifies the carrier
     /// </summary>
     /// <value>A string that uniquely identifies the carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id"), JsonInclude]
-    public string? CarrierId { get; private set; }
+    public string? CarrierId { get; set; }
 
     /// <summary>
     /// The date-time that the manifest was created
     /// </summary>
     /// <value>The date-time that the manifest was created</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
-    public DateTimeOffset? CreatedAt { get; private set; }
+    public DateTimeOffset? CreatedAt { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the form
     /// </summary>
     /// <value>A string that uniquely identifies the form</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("form_id"), JsonInclude]
-    public string? FormId { get; private set; }
+    public string? FormId { get; set; }
 
     /// <summary>
     /// An array of the label ids used in this manifest.
     /// </summary>
     /// <value>An array of the label ids used in this manifest.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("label_ids"), JsonInclude]
-    public List<string>? LabelIds { get; private set; }
+    public List<string>? LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("manifest_download"), JsonInclude]
-    public ManifestDownload? ManifestDownload { get; private set; }
+    public ManifestDownload? ManifestDownload { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the manifest
     /// </summary>
     /// <value>A string that uniquely identifies the manifest</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("manifest_id"), JsonInclude]
-    public string? ManifestId { get; private set; }
+    public string? ManifestId { get; set; }
 
     /// <summary>
     /// The date-time that the manifests shipments will be picked up
     /// </summary>
     /// <value>The date-time that the manifests shipments will be picked up</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2019-07-12T13:37:39.050Z
     /// </example>
     [JsonPropertyName("ship_date"), JsonInclude]
-    public DateTimeOffset? ShipDate { get; private set; }
+    public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
     /// The number of shipments that are included in this manifest
     /// </summary>
     /// <value>The number of shipments that are included in this manifest</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 100
     /// </example>
     [JsonPropertyName("shipments"), JsonInclude]
-    public int? Shipments { get; private set; }
+    public int? Shipments { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission
     /// </summary>
     /// <value>A string that uniquely identifies the submission</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 9475711899564878915476
     /// </example>
     [JsonPropertyName("submission_id"), JsonInclude]
-    public string? SubmissionId { get; private set; }
+    public string? SubmissionId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the warehouse
     /// </summary>
     /// <value>A string that uniquely identifies the warehouse</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("warehouse_id"), JsonInclude]
-    public string? WarehouseId { get; private set; }
+    public string? WarehouseId { get; set; }
 
 
     /// <summary>

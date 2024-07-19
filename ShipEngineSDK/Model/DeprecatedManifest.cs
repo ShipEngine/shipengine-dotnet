@@ -62,8 +62,11 @@ public partial class DeprecatedManifest
     /// An array of the label ids used in this manifest.
     /// </summary>
     /// <value>An array of the label ids used in this manifest.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("label_ids"), JsonInclude, Obsolete]
-    public List<string>? LabelIds { get; private set; }
+    public List<string>? LabelIds { get; set; }
 
     /// <summary>
     /// Gets or Sets ManifestDownload
@@ -95,11 +98,14 @@ public partial class DeprecatedManifest
     /// The number of shipments that are included in this manifest
     /// </summary>
     /// <value>The number of shipments that are included in this manifest</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 100
     /// </example>
     [JsonPropertyName("shipments"), JsonInclude, Obsolete]
-    public int? Shipments { get; private set; }
+    public int? Shipments { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the submission

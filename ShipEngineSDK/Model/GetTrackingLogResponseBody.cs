@@ -42,11 +42,14 @@ public partial class GetTrackingLogResponseBody
     /// Carrier detail code
     /// </summary>
     /// <value>Carrier detail code</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// OT
     /// </example>
     [JsonPropertyName("carrier_detail_code"), JsonInclude]
-    public string? CarrierDetailCode { get; private set; }
+    public string? CarrierDetailCode { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.
@@ -62,11 +65,14 @@ public partial class GetTrackingLogResponseBody
     /// Carrier status code
     /// </summary>
     /// <value>Carrier status code</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 1
     /// </example>
     [JsonPropertyName("carrier_status_code"), JsonInclude]
-    public string? CarrierStatusCode { get; private set; }
+    public string? CarrierStatusCode { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -82,8 +88,11 @@ public partial class GetTrackingLogResponseBody
     /// The events that have occured during the lifetime of this tracking number.
     /// </summary>
     /// <value>The events that have occured during the lifetime of this tracking number.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("events"), JsonInclude]
-    public List<TrackEvent>? Events { get; private set; }
+    public List<TrackEvent>? Events { get; set; }
 
     /// <summary>
     /// Gets or Sets StatusCode
@@ -105,11 +114,14 @@ public partial class GetTrackingLogResponseBody
     /// Carrier Tracking Url, if available
     /// </summary>
     /// <value>Carrier Tracking Url, if available</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// https://www.fedex.com/fedextrack/?action&#x3D;track&amp;trackingnumber&#x3D;1234
     /// </example>
     [JsonPropertyName("tracking_url"), JsonInclude]
-    public string? TrackingUrl { get; private set; }
+    public string? TrackingUrl { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -125,18 +137,24 @@ public partial class GetTrackingLogResponseBody
     /// carrier status description
     /// </summary>
     /// <value>carrier status description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Your item was delivered in or at the mailbox at 9:10 am on March
     /// </example>
     [JsonPropertyName("carrier_status_description"), JsonInclude]
-    public string? CarrierStatusDescription { get; private set; }
+    public string? CarrierStatusDescription { get; set; }
 
     /// <summary>
     /// Exception description
     /// </summary>
     /// <value>Exception description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("exception_description"), JsonInclude]
-    public string? ExceptionDescription { get; private set; }
+    public string? ExceptionDescription { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
@@ -152,11 +170,14 @@ public partial class GetTrackingLogResponseBody
     /// Status description
     /// </summary>
     /// <value>Status description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Delivered
     /// </example>
     [JsonPropertyName("status_description"), JsonInclude]
-    public string? StatusDescription { get; private set; }
+    public string? StatusDescription { get; set; }
 
 
     /// <summary>

@@ -32,8 +32,11 @@ public partial class AlternativeIdentifiers
     /// Alternative identifiers associated with this package. 
     /// </summary>
     /// <value>Alternative identifiers associated with this package. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("alternative_identifiers"), JsonInclude]
-    public List<AlternativeIdentifier>? VarAlternativeIdentifiers { get; private set; }
+    public List<AlternativeIdentifier>? VarAlternativeIdentifiers { get; set; }
 
 
     /// <summary>

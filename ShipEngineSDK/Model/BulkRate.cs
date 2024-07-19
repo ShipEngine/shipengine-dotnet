@@ -32,44 +32,59 @@ public partial class BulkRate
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
     /// </summary>
     /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
-    public DateTimeOffset? CreatedAt { get; private set; }
+    public DateTimeOffset? CreatedAt { get; set; }
 
     /// <summary>
     /// An array of errors that were returned while retrieving the bulk rate
     /// </summary>
     /// <value>An array of errors that were returned while retrieving the bulk rate</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("errors"), JsonInclude]
-    public List<Error>? Errors { get; private set; }
+    public List<Error>? Errors { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
     /// </summary>
     /// <value>A string that uniquely identifies the rate request</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("rate_request_id"), JsonInclude]
-    public string? RateRequestId { get; private set; }
+    public string? RateRequestId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
     /// </summary>
     /// <value>A string that uniquely identifies the shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id"), JsonInclude]
-    public string? ShipmentId { get; private set; }
+    public string? ShipmentId { get; set; }
 
     /// <summary>
     /// Gets or Sets Status
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("status"), JsonInclude]
-    public RateResponseStatus? Status { get; private set; }
+    public RateResponseStatus? Status { get; set; }
 
 
     /// <summary>

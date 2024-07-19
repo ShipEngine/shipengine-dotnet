@@ -50,11 +50,14 @@ public partial class Error
     /// An error message associated with the failed API call
     /// </summary>
     /// <value>An error message associated with the failed API call</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Body of request cannot be null.
     /// </example>
     [JsonPropertyName("message"), JsonInclude]
-    public string? Message { get; private set; }
+    public string? Message { get; set; }
 
 
     /// <summary>

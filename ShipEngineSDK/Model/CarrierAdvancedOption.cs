@@ -32,28 +32,37 @@ public partial class CarrierAdvancedOption
     /// Default value of option
     /// </summary>
     /// <value>Default value of option</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// false
     /// </example>
     [JsonPropertyName("default_value"), JsonInclude]
-    public string? DefaultValue { get; private set; }
+    public string? DefaultValue { get; set; }
 
     /// <summary>
     /// Description of option
     /// </summary>
     /// <value>Description of option</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("description"), JsonInclude]
-    public string? Description { get; private set; }
+    public string? Description { get; set; }
 
     /// <summary>
     /// Name of advanced option
     /// </summary>
     /// <value>Name of advanced option</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// contains_alcohol
     /// </example>
     [JsonPropertyName("name"), JsonInclude]
-    public string? Name { get; private set; }
+    public string? Name { get; set; }
 
 
     /// <summary>

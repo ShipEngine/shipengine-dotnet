@@ -31,37 +31,52 @@ public partial class ListShipmentsResponseBody
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("links"), JsonInclude]
-    public PaginationLink? Links { get; private set; }
+    public PaginationLink? Links { get; set; }
 
     /// <summary>
     /// Gets or Sets Page
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("page"), JsonInclude]
-    public int? Page { get; private set; }
+    public int? Page { get; set; }
 
     /// <summary>
     /// Gets or Sets Pages
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("pages"), JsonInclude]
-    public int? Pages { get; private set; }
+    public int? Pages { get; set; }
 
     /// <summary>
     /// The list of shipments returned by the api call
     /// </summary>
     /// <value>The list of shipments returned by the api call</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("shipments"), JsonInclude]
-    public List<Shipment>? Shipments { get; private set; }
+    public List<Shipment>? Shipments { get; set; }
 
     /// <summary>
     /// Total number of shipments returned by the api call
     /// </summary>
     /// <value>Total number of shipments returned by the api call</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 1990
     /// </example>
     [JsonPropertyName("total"), JsonInclude]
-    public long? Total { get; private set; }
+    public long? Total { get; set; }
 
 
     /// <summary>

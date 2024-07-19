@@ -48,11 +48,14 @@ public partial class CreateWebhookResponseBody
     /// A string that uniquely identifies the webhook
     /// </summary>
     /// <value>A string that uniquely identifies the webhook</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("webhook_id"), JsonInclude]
-    public string? WebhookId { get; private set; }
+    public string? WebhookId { get; set; }
 
     /// <summary>
     /// Array of custom webhook headers

@@ -32,27 +32,36 @@ public partial class VoidLabelResponseBody
     /// Indicates whether the attempt to void the label was successful
     /// </summary>
     /// <value>Indicates whether the attempt to void the label was successful</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// false
     /// </example>
     [JsonPropertyName("approved"), JsonInclude]
-    public bool? Approved { get; private set; }
+    public bool? Approved { get; set; }
 
     /// <summary>
     /// Gets or Sets Message
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Unable to delete FedEx shipment. Unable to retrieve record from database.
     /// </example>
     [JsonPropertyName("message"), JsonInclude]
-    public string? Message { get; private set; }
+    public string? Message { get; set; }
 
     /// <summary>
     /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.
     /// </summary>
     /// <value>Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("reason_code"), JsonInclude]
-    public ReasonCode? ReasonCode { get; private set; }
+    public ReasonCode? ReasonCode { get; set; }
 
 
     /// <summary>

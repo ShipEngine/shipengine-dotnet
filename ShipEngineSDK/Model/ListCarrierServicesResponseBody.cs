@@ -32,8 +32,11 @@ public partial class ListCarrierServicesResponseBody
     /// An array of services associated with the carrier
     /// </summary>
     /// <value>An array of services associated with the carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("services"), JsonInclude]
-    public List<Service>? Services { get; private set; }
+    public List<Service>? Services { get; set; }
 
 
     /// <summary>

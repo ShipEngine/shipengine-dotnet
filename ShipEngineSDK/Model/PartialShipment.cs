@@ -66,11 +66,14 @@ public partial class PartialShipment
     /// The date and time that the shipment was created in ShipEngine.
     /// </summary>
     /// <value>The date and time that the shipment was created in ShipEngine.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
-    public DateTimeOffset? CreatedAt { get; private set; }
+    public DateTimeOffset? CreatedAt { get; set; }
 
     /// <summary>
     /// Customs information.  This is usually only needed for international shipments. 
@@ -118,11 +121,14 @@ public partial class PartialShipment
     /// The date and time that the shipment was created or last modified.
     /// </summary>
     /// <value>The date and time that the shipment was created or last modified.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("modified_at"), JsonInclude]
-    public DateTimeOffset? ModifiedAt { get; private set; }
+    public DateTimeOffset? ModifiedAt { get; set; }
 
     /// <summary>
     /// Gets or Sets OrderSourceCode
@@ -182,11 +188,14 @@ public partial class PartialShipment
     /// A string that uniquely identifies the shipment
     /// </summary>
     /// <value>A string that uniquely identifies the shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id"), JsonInclude]
-    public string? ShipmentId { get; private set; }
+    public string? ShipmentId { get; set; }
 
     /// <summary>
     /// A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.  &gt; **Warning:** The &#x60;shipment_number&#x60; is limited to 50 characters. Any additional characters will be truncated. 
@@ -199,8 +208,11 @@ public partial class PartialShipment
     /// The current status of the shipment
     /// </summary>
     /// <value>The current status of the shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("shipment_status"), JsonInclude]
-    public ShipmentStatus? ShipmentStatus { get; private set; }
+    public ShipmentStatus? ShipmentStatus { get; set; }
 
     /// <summary>
     /// ID of the shipping rule, which you want to use to automate carrier/carrier service selection for the shipment 
@@ -216,8 +228,11 @@ public partial class PartialShipment
     /// Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. 
     /// </summary>
     /// <value>Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("tags"), JsonInclude]
-    public List<Tag>? Tags { get; private set; }
+    public List<Tag>? Tags { get; set; }
 
     /// <summary>
     /// Gets or Sets TaxIdentifiers
@@ -229,8 +244,11 @@ public partial class PartialShipment
     /// The combined weight of all packages in the shipment
     /// </summary>
     /// <value>The combined weight of all packages in the shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("total_weight"), JsonInclude]
-    public Weight? TotalWeight { get; private set; }
+    public Weight? TotalWeight { get; set; }
 
     /// <summary>
     /// The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either &#x60;warehouse_id&#x60; or &#x60;ship_from&#x60; must be specified. 

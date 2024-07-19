@@ -32,28 +32,37 @@ public partial class BatchResponseError
     /// Error message associated with the shipment.
     /// </summary>
     /// <value>Error message associated with the shipment.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Recipient address has not been verified.
     /// </example>
     [JsonPropertyName("error"), JsonInclude]
-    public string? Error { get; private set; }
+    public string? Error { get; set; }
 
     /// <summary>
     /// An external shipment id associated with the shipment
     /// </summary>
     /// <value>An external shipment id associated with the shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("external_shipment_id"), JsonInclude]
-    public string? ExternalShipmentId { get; private set; }
+    public string? ExternalShipmentId { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
     /// </summary>
     /// <value>A string that uniquely identifies the shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id"), JsonInclude]
-    public string? ShipmentId { get; private set; }
+    public string? ShipmentId { get; set; }
 
 
     /// <summary>

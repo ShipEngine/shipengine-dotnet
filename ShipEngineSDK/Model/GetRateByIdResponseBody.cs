@@ -32,199 +32,277 @@ public partial class GetRateByIdResponseBody
     /// carrier code
     /// </summary>
     /// <value>carrier code</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("carrier_code"), JsonInclude]
-    public string? CarrierCode { get; private set; }
+    public string? CarrierCode { get; set; }
 
     /// <summary>
     /// carrier friendly name
     /// </summary>
     /// <value>carrier friendly name</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("carrier_friendly_name"), JsonInclude]
-    public string? CarrierFriendlyName { get; private set; }
+    public string? CarrierFriendlyName { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the carrier
     /// </summary>
     /// <value>A string that uniquely identifies the carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id"), JsonInclude]
-    public string? CarrierId { get; private set; }
+    public string? CarrierId { get; set; }
 
     /// <summary>
     /// carrier nickname
     /// </summary>
     /// <value>carrier nickname</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("carrier_nickname"), JsonInclude]
-    public string? CarrierNickname { get; private set; }
+    public string? CarrierNickname { get; set; }
 
     /// <summary>
     /// The confirmation amount.  Should be added with shipping_amount, insurance_amount and other_amount to calculate the total purchase price.
     /// </summary>
     /// <value>The confirmation amount.  Should be added with shipping_amount, insurance_amount and other_amount to calculate the total purchase price.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("confirmation_amount"), JsonInclude]
-    public MonetaryValue? ConfirmationAmount { get; private set; }
+    public MonetaryValue? ConfirmationAmount { get; set; }
 
     /// <summary>
     /// The error messages
     /// </summary>
     /// <value>The error messages</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("error_messages"), JsonInclude]
-    public List<string>? ErrorMessages { get; private set; }
+    public List<string>? ErrorMessages { get; set; }
 
     /// <summary>
     /// Indicates if the rate is guaranteed.
     /// </summary>
     /// <value>Indicates if the rate is guaranteed.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("guaranteed_service"), JsonInclude]
-    public bool? GuaranteedService { get; private set; }
+    public bool? GuaranteedService { get; set; }
 
     /// <summary>
     /// The insurance amount.  Should be added with shipping_amount, confirmation_amount and other_amount to calculate the total purchase price.
     /// </summary>
     /// <value>The insurance amount.  Should be added with shipping_amount, confirmation_amount and other_amount to calculate the total purchase price.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("insurance_amount"), JsonInclude]
-    public MonetaryValue? InsuranceAmount { get; private set; }
+    public MonetaryValue? InsuranceAmount { get; set; }
 
     /// <summary>
     /// Indicates if the rates been negotiated
     /// </summary>
     /// <value>Indicates if the rates been negotiated</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("negotiated_rate"), JsonInclude]
-    public bool? NegotiatedRate { get; private set; }
+    public bool? NegotiatedRate { get; set; }
 
     /// <summary>
     /// Any other charges associated with this rate.  Should be added with shipping_amount, insurance_amount and confirmation_amount to calculate the total purchase price.
     /// </summary>
     /// <value>Any other charges associated with this rate.  Should be added with shipping_amount, insurance_amount and confirmation_amount to calculate the total purchase price.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("other_amount"), JsonInclude]
-    public MonetaryValue? OtherAmount { get; private set; }
+    public MonetaryValue? OtherAmount { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate
     /// </summary>
     /// <value>A string that uniquely identifies the rate</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("rate_id"), JsonInclude]
-    public string? RateId { get; private set; }
+    public string? RateId { get; set; }
 
     /// <summary>
     /// Gets or Sets RateType
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("rate_type"), JsonInclude]
-    public RateType? RateType { get; private set; }
+    public RateType? RateType { get; set; }
 
     /// <summary>
     /// service code for the rate
     /// </summary>
     /// <value>service code for the rate</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("service_code"), JsonInclude]
-    public string? ServiceCode { get; private set; }
+    public string? ServiceCode { get; set; }
 
     /// <summary>
     /// service type
     /// </summary>
     /// <value>service type</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("service_type"), JsonInclude]
-    public string? ServiceType { get; private set; }
+    public string? ServiceType { get; set; }
 
     /// <summary>
     /// The shipping amount. Should be added with confirmation_amount, insurance_amount and other_amount to calculate the total purchase price.
     /// </summary>
     /// <value>The shipping amount. Should be added with confirmation_amount, insurance_amount and other_amount to calculate the total purchase price.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("shipping_amount"), JsonInclude]
-    public MonetaryValue? ShippingAmount { get; private set; }
+    public MonetaryValue? ShippingAmount { get; set; }
 
     /// <summary>
     /// Indicates if rate is trackable
     /// </summary>
     /// <value>Indicates if rate is trackable</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("trackable"), JsonInclude]
-    public bool? Trackable { get; private set; }
+    public bool? Trackable { get; set; }
 
     /// <summary>
     /// Gets or Sets ValidationStatus
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("validation_status"), JsonInclude]
-    public ValidationStatus? ValidationStatus { get; private set; }
+    public ValidationStatus? ValidationStatus { get; set; }
 
     /// <summary>
     /// The warning messages
     /// </summary>
     /// <value>The warning messages</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("warning_messages"), JsonInclude]
-    public List<string>? WarningMessages { get; private set; }
+    public List<string>? WarningMessages { get; set; }
 
     /// <summary>
     /// The carrier delivery days
     /// </summary>
     /// <value>The carrier delivery days</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("carrier_delivery_days"), JsonInclude]
-    public string? CarrierDeliveryDays { get; private set; }
+    public string? CarrierDeliveryDays { get; set; }
 
     /// <summary>
     /// The number of days estimated for delivery, this will show the _actual_ delivery time if for example, the package gets shipped on a Friday 
     /// </summary>
     /// <value>The number of days estimated for delivery, this will show the _actual_ delivery time if for example, the package gets shipped on a Friday </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 5
     /// </example>
     [JsonPropertyName("delivery_days"), JsonInclude]
-    public int? DeliveryDays { get; private set; }
+    public int? DeliveryDays { get; set; }
 
     /// <summary>
     /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date, but not a specific time.  The value _may_ contain a time component, but it will be set to &#x60;00:00:00&#x60; UTC by ShipEngine. 
     /// </summary>
     /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date, but not a specific time.  The value _may_ contain a time component, but it will be set to &#x60;00:00:00&#x60; UTC by ShipEngine. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2018-09-23T00:00Z
     /// </example>
     [JsonPropertyName("estimated_delivery_date"), JsonInclude]
-    public DateTimeOffset? EstimatedDeliveryDate { get; private set; }
+    public DateTimeOffset? EstimatedDeliveryDate { get; set; }
 
     /// <summary>
     /// package type that this rate was estimated for
     /// </summary>
     /// <value>package type that this rate was estimated for</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// package
     /// </example>
     [JsonPropertyName("package_type"), JsonInclude]
-    public string? PackageType { get; private set; }
+    public string? PackageType { get; set; }
 
     /// <summary>
     /// The total shipping cost for the specified comparison_rate_type.
     /// </summary>
     /// <value>The total shipping cost for the specified comparison_rate_type.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("requested_comparison_amount"), JsonInclude]
-    public MonetaryValue? RequestedComparisonAmount { get; private set; }
+    public MonetaryValue? RequestedComparisonAmount { get; set; }
 
     /// <summary>
     /// ship date
     /// </summary>
     /// <value>ship date</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("ship_date"), JsonInclude]
-    public DateTimeOffset? ShipDate { get; private set; }
+    public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
     /// Tariff and additional taxes associated with an international shipment.
     /// </summary>
     /// <value>Tariff and additional taxes associated with an international shipment.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("tax_amount"), JsonInclude]
-    public MonetaryValue? TaxAmount { get; private set; }
+    public MonetaryValue? TaxAmount { get; set; }
 
     /// <summary>
     /// Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of custom zones that vary depending upon the ship_to and ship_from location 
     /// </summary>
     /// <value>Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of custom zones that vary depending upon the ship_to and ship_from location </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 6
     /// </example>
     [JsonPropertyName("zone"), JsonInclude]
-    public int? Zone { get; private set; }
+    public int? Zone { get; set; }
 
 
     /// <summary>

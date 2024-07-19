@@ -39,8 +39,11 @@ public partial class CreateShipmentResponseBodyFields
     /// An array of errors that occurred while creating shipment.
     /// </summary>
     /// <value>An array of errors that occurred while creating shipment.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("errors"), JsonInclude, Obsolete]
-    public List<string>? Errors { get; private set; }
+    public List<string>? Errors { get; set; }
 
 
     /// <summary>

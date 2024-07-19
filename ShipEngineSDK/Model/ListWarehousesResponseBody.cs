@@ -32,8 +32,11 @@ public partial class ListWarehousesResponseBody
     /// The array of warehouses returned by the API call
     /// </summary>
     /// <value>The array of warehouses returned by the API call</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("warehouses"), JsonInclude]
-    public List<Warehouse>? Warehouses { get; private set; }
+    public List<Warehouse>? Warehouses { get; set; }
 
 
     /// <summary>

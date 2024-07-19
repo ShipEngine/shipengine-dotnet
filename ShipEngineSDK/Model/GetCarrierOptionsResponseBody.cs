@@ -32,8 +32,11 @@ public partial class GetCarrierOptionsResponseBody
     /// AN array of carrier options
     /// </summary>
     /// <value>AN array of carrier options</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("options"), JsonInclude]
-    public List<CarrierAdvancedOption>? Options { get; private set; }
+    public List<CarrierAdvancedOption>? Options { get; set; }
 
 
     /// <summary>

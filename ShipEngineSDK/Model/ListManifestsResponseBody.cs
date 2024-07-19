@@ -32,45 +32,60 @@ public partial class ListManifestsResponseBody
     /// Helpful links to other pages of results
     /// </summary>
     /// <value>Helpful links to other pages of results</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("links"), JsonInclude]
-    public PaginationLink? Links { get; private set; }
+    public PaginationLink? Links { get; set; }
 
     /// <summary>
     /// The list of available manifests
     /// </summary>
     /// <value>The list of available manifests</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("manifests"), JsonInclude]
-    public List<Manifest>? Manifests { get; private set; }
+    public List<Manifest>? Manifests { get; set; }
 
     /// <summary>
     /// Current page of the list manifests results
     /// </summary>
     /// <value>Current page of the list manifests results</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 3
     /// </example>
     [JsonPropertyName("page"), JsonInclude]
-    public int? Page { get; private set; }
+    public int? Page { get; set; }
 
     /// <summary>
     /// Total number of pages for list manifests results
     /// </summary>
     /// <value>Total number of pages for list manifests results</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 4
     /// </example>
     [JsonPropertyName("pages"), JsonInclude]
-    public int? Pages { get; private set; }
+    public int? Pages { get; set; }
 
     /// <summary>
     /// The total number of manifests returned
     /// </summary>
     /// <value>The total number of manifests returned</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 3
     /// </example>
     [JsonPropertyName("total"), JsonInclude]
-    public long? Total { get; private set; }
+    public long? Total { get; set; }
 
 
     /// <summary>

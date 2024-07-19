@@ -32,117 +32,159 @@ public partial class Carrier
     /// The account number that the carrier is connected to.
     /// </summary>
     /// <value>The account number that the carrier is connected to.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// account_570827
     /// </example>
     [JsonPropertyName("account_number"), JsonInclude]
-    public string? AccountNumber { get; private set; }
+    public string? AccountNumber { get; set; }
 
     /// <summary>
     /// Current available balance
     /// </summary>
     /// <value>Current available balance</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 3799.52
     /// </example>
     [JsonPropertyName("balance"), JsonInclude]
-    public double? Balance { get; private set; }
+    public double? Balance { get; set; }
 
     /// <summary>
     /// The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
     /// </summary>
     /// <value>The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// dhl_express
     /// </example>
     [JsonPropertyName("carrier_code"), JsonInclude]
-    public string? CarrierCode { get; private set; }
+    public string? CarrierCode { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the carrier.
     /// </summary>
     /// <value>A string that uniquely identifies the carrier.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id"), JsonInclude]
-    public string? CarrierId { get; private set; }
+    public string? CarrierId { get; set; }
 
     /// <summary>
     /// The carrier is disabled by the current ShipEngine account&#39;s billing plan.
     /// </summary>
     /// <value>The carrier is disabled by the current ShipEngine account&#39;s billing plan.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("disabled_by_billing_plan"), JsonInclude]
-    public bool? DisabledByBillingPlan { get; private set; }
+    public bool? DisabledByBillingPlan { get; set; }
 
     /// <summary>
     /// Screen readable name
     /// </summary>
     /// <value>Screen readable name</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Stamps.com
     /// </example>
     [JsonPropertyName("friendly_name"), JsonInclude]
-    public string? FriendlyName { get; private set; }
+    public string? FriendlyName { get; set; }
 
     /// <summary>
     /// Carrier supports multiple packages per shipment
     /// </summary>
     /// <value>Carrier supports multiple packages per shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("has_multi_package_supporting_services"), JsonInclude]
-    public bool? HasMultiPackageSupportingServices { get; private set; }
+    public bool? HasMultiPackageSupportingServices { get; set; }
 
     /// <summary>
     /// Nickname given to the account when initially setting up the carrier.
     /// </summary>
     /// <value>Nickname given to the account when initially setting up the carrier.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// ShipEngine Account - Stamps.com
     /// </example>
     [JsonPropertyName("nickname"), JsonInclude]
-    public string? Nickname { get; private set; }
+    public string? Nickname { get; set; }
 
     /// <summary>
     /// A list of options that are available to that carrier
     /// </summary>
     /// <value>A list of options that are available to that carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("options"), JsonInclude]
-    public List<CarrierAdvancedOption>? Options { get; private set; }
+    public List<CarrierAdvancedOption>? Options { get; set; }
 
     /// <summary>
     /// A list of package types that are supported by the carrier
     /// </summary>
     /// <value>A list of package types that are supported by the carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("packages"), JsonInclude]
-    public List<PackageType>? Packages { get; private set; }
+    public List<PackageType>? Packages { get; set; }
 
     /// <summary>
     /// Is this the primary carrier that is used by default when no carrier is specified in label/shipment creation
     /// </summary>
     /// <value>Is this the primary carrier that is used by default when no carrier is specified in label/shipment creation</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("primary"), JsonInclude]
-    public bool? Primary { get; private set; }
+    public bool? Primary { get; set; }
 
     /// <summary>
     /// Indicates whether the carrier requires funding to use its services
     /// </summary>
     /// <value>Indicates whether the carrier requires funding to use its services</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("requires_funded_amount"), JsonInclude]
-    public bool? RequiresFundedAmount { get; private set; }
+    public bool? RequiresFundedAmount { get; set; }
 
     /// <summary>
     /// A list of services that are offered by the carrier
     /// </summary>
     /// <value>A list of services that are offered by the carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("services"), JsonInclude]
-    public List<Service>? Services { get; private set; }
+    public List<Service>? Services { get; set; }
 
     /// <summary>
     /// The carrier supports adding custom label messages to an order.
     /// </summary>
     /// <value>The carrier supports adding custom label messages to an order.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("supports_label_messages"), JsonInclude]
-    public bool? SupportsLabelMessages { get; private set; }
+    public bool? SupportsLabelMessages { get; set; }
 
 
     /// <summary>

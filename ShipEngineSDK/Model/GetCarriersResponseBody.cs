@@ -32,15 +32,21 @@ public partial class GetCarriersResponseBody
     /// The carrier response body
     /// </summary>
     /// <value>The carrier response body</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("carriers"), JsonInclude]
-    public List<Carrier>? Carriers { get; private set; }
+    public List<Carrier>? Carriers { get; set; }
 
     /// <summary>
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("errors"), JsonInclude]
-    public List<Error>? Errors { get; private set; }
+    public List<Error>? Errors { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 

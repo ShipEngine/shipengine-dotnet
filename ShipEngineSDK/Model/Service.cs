@@ -42,52 +42,70 @@ public partial class Service
     /// A string that uniquely identifies the carrier
     /// </summary>
     /// <value>A string that uniquely identifies the carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id"), JsonInclude]
-    public string? CarrierId { get; private set; }
+    public string? CarrierId { get; set; }
 
     /// <summary>
     /// Supports domestic shipping
     /// </summary>
     /// <value>Supports domestic shipping</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("domestic"), JsonInclude]
-    public bool? Domestic { get; private set; }
+    public bool? Domestic { get; set; }
 
     /// <summary>
     /// Supports international shipping.
     /// </summary>
     /// <value>Supports international shipping.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("international"), JsonInclude]
-    public bool? International { get; private set; }
+    public bool? International { get; set; }
 
     /// <summary>
     /// Carrier supports multiple packages per shipment
     /// </summary>
     /// <value>Carrier supports multiple packages per shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("is_multi_package_supported"), JsonInclude]
-    public bool? IsMultiPackageSupported { get; private set; }
+    public bool? IsMultiPackageSupported { get; set; }
 
     /// <summary>
     /// User friendly service name
     /// </summary>
     /// <value>User friendly service name</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// USPS First Class Mail
     /// </example>
     [JsonPropertyName("name"), JsonInclude]
-    public string? Name { get; private set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// service code
     /// </summary>
     /// <value>service code</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// usps_media_mail
     /// </example>
     [JsonPropertyName("service_code"), JsonInclude]
-    public string? ServiceCode { get; private set; }
+    public string? ServiceCode { get; set; }
 
 
     /// <summary>

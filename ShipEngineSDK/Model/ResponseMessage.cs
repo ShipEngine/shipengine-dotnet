@@ -31,24 +31,33 @@ public partial class ResponseMessage
     /// <summary>
     /// Gets or Sets Code
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("code"), JsonInclude]
-    public AddressValidationCode? Code { get; private set; }
+    public AddressValidationCode? Code { get; set; }
 
     /// <summary>
     /// Message explaining the address validation error
     /// </summary>
     /// <value>Message explaining the address validation error</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Invalid Postal Code
     /// </example>
     [JsonPropertyName("message"), JsonInclude]
-    public string? Message { get; private set; }
+    public string? Message { get; set; }
 
     /// <summary>
     /// Gets or Sets Type
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("type"), JsonInclude]
-    public AddressValidationMessageType? Type { get; private set; }
+    public AddressValidationMessageType? Type { get; set; }
 
     /// <summary>
     /// Gets or Sets DetailCode

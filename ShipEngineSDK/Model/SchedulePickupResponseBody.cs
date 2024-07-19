@@ -32,8 +32,11 @@ public partial class SchedulePickupResponseBody
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("errors"), JsonInclude]
-    public List<Error>? Errors { get; private set; }
+    public List<Error>? Errors { get; set; }
 
     /// <summary>
     /// A UUID that uniquely identifies the request id. This can be given to the support team to help debug non-trivial issues that may occur 
@@ -49,31 +52,40 @@ public partial class SchedulePickupResponseBody
     /// The date and time that the pickup was cancelled in ShipEngine.
     /// </summary>
     /// <value>The date and time that the pickup was cancelled in ShipEngine.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("cancelled_at"), JsonInclude]
-    public DateTimeOffset? CancelledAt { get; private set; }
+    public DateTimeOffset? CancelledAt { get; set; }
 
     /// <summary>
     /// The carrier_id associated with the pickup
     /// </summary>
     /// <value>The carrier_id associated with the pickup</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("carrier_id"), JsonInclude]
-    public string? CarrierId { get; private set; }
+    public string? CarrierId { get; set; }
 
     /// <summary>
     /// The carrier confirmation number for the scheduled pickup.
     /// </summary>
     /// <value>The carrier confirmation number for the scheduled pickup.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 292513CL4A3
     /// </example>
     [JsonPropertyName("confirmation_number"), JsonInclude]
-    public string? ConfirmationNumber { get; private set; }
+    public string? ConfirmationNumber { get; set; }
 
     /// <summary>
     /// Gets or Sets ContactDetails
@@ -85,11 +97,14 @@ public partial class SchedulePickupResponseBody
     /// The date and time that the pickup was created in ShipEngine.
     /// </summary>
     /// <value>The date and time that the pickup was created in ShipEngine.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
-    public DateTimeOffset? CreatedAt { get; private set; }
+    public DateTimeOffset? CreatedAt { get; set; }
 
     /// <summary>
     /// Label IDs that will be included in the pickup request
@@ -101,18 +116,24 @@ public partial class SchedulePickupResponseBody
     /// <summary>
     /// Gets or Sets PickupAddress
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("pickup_address"), JsonInclude]
-    public Address? PickupAddress { get; private set; }
+    public Address? PickupAddress { get; set; }
 
     /// <summary>
     /// Pickup Resource ID
     /// </summary>
     /// <value>Pickup Resource ID</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// pik_3YcKU5zdtJuCqoeNwyqqbW
     /// </example>
     [JsonPropertyName("pickup_id"), JsonInclude]
-    public string? PickupId { get; private set; }
+    public string? PickupId { get; set; }
 
     /// <summary>
     /// Used by some carriers to give special instructions for a package pickup
@@ -131,18 +152,24 @@ public partial class SchedulePickupResponseBody
     /// An array of available pickup windows. Carriers can return multiple times that they will pickup packages. 
     /// </summary>
     /// <value>An array of available pickup windows. Carriers can return multiple times that they will pickup packages. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("pickup_windows"), JsonInclude]
-    public List<PickupWindows>? PickupWindows { get; private set; }
+    public List<PickupWindows>? PickupWindows { get; set; }
 
     /// <summary>
     /// The warehouse_id associated with the pickup
     /// </summary>
     /// <value>The warehouse_id associated with the pickup</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("warehouse_id"), JsonInclude]
-    public string? WarehouseId { get; private set; }
+    public string? WarehouseId { get; set; }
 
 
     /// <summary>

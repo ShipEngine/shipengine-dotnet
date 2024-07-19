@@ -32,8 +32,11 @@ public partial class ListCarrierPackageTypesResponseBody
     /// An array of custom package types
     /// </summary>
     /// <value>An array of custom package types</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("packages"), JsonInclude]
-    public List<PackageType>? Packages { get; private set; }
+    public List<PackageType>? Packages { get; set; }
 
 
     /// <summary>

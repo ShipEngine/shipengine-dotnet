@@ -32,11 +32,14 @@ public partial class CustomsItem
     /// A string that uniquely identifies the customs item
     /// </summary>
     /// <value>A string that uniquely identifies the customs item</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("customs_item_id"), JsonInclude]
-    public string? CustomsItemId { get; private set; }
+    public string? CustomsItemId { get; set; }
 
     /// <summary>
     /// The two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) where this item originated 

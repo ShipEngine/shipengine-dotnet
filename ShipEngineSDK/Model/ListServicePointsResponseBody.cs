@@ -32,8 +32,11 @@ public partial class ListServicePointsResponseBody
     /// The errors associated with the failed API call
     /// </summary>
     /// <value>The errors associated with the failed API call</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("errors"), JsonInclude]
-    public List<Error>? Errors { get; private set; }
+    public List<Error>? Errors { get; set; }
 
     /// <summary>
     /// The latitude of the point. Represented as signed degrees. Required if long is provided. http://www.geomidpoint.com/latlon.html

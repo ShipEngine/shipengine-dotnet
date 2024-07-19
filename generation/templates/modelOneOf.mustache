@@ -36,6 +36,11 @@
     {{#description}}
     /// <value>{{.}}</value>
     {{/description}}
+    {{#isReadOnly}}
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    {{/isReadOnly}}
     {{#example}}
     /// <example>
     /// {{.}}
@@ -50,8 +55,15 @@
     {{^isEnum}}
     /// <summary>
     /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
-    /// </summary>{{#description}}
-    /// <value>{{.}}</value>{{/description}}
+    /// </summary>
+    {{#description}}
+    /// <value>{{.}}</value>
+    {{/description}}
+    {{#isReadOnly}}
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    {{/isReadOnly}}
     {{#example}}
     /// <example>
     /// {{.}}

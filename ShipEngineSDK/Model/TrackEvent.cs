@@ -32,41 +32,53 @@ public partial class TrackEvent
     /// Carrier detail code
     /// </summary>
     /// <value>Carrier detail code</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// OT
     /// </example>
     [JsonPropertyName("carrier_detail_code"), JsonInclude]
-    public string? CarrierDetailCode { get; private set; }
+    public string? CarrierDetailCode { get; set; }
 
     /// <summary>
     /// Carrier status code
     /// </summary>
     /// <value>Carrier status code</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 1
     /// </example>
     [JsonPropertyName("carrier_status_code"), JsonInclude]
-    public string? CarrierStatusCode { get; private set; }
+    public string? CarrierStatusCode { get; set; }
 
     /// <summary>
     /// carrier status description
     /// </summary>
     /// <value>carrier status description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Your item was delivered in or at the mailbox at 9:10 am on March
     /// </example>
     [JsonPropertyName("carrier_status_description"), JsonInclude]
-    public string? CarrierStatusDescription { get; private set; }
+    public string? CarrierStatusDescription { get; set; }
 
     /// <summary>
     /// City locality
     /// </summary>
     /// <value>City locality</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// AUSTIN
     /// </example>
     [JsonPropertyName("city_locality"), JsonInclude]
-    public string? CityLocality { get; private set; }
+    public string? CityLocality { get; set; }
 
     /// <summary>
     /// Timestamp for carrier event
@@ -82,21 +94,27 @@ public partial class TrackEvent
     /// Postal code
     /// </summary>
     /// <value>Postal code</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 78756
     /// </example>
     [JsonPropertyName("postal_code"), JsonInclude]
-    public string? PostalCode { get; private set; }
+    public string? PostalCode { get; set; }
 
     /// <summary>
     /// State province
     /// </summary>
     /// <value>State province</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// TX
     /// </example>
     [JsonPropertyName("state_province"), JsonInclude]
-    public string? StateProvince { get; private set; }
+    public string? StateProvince { get; set; }
 
     /// <summary>
     /// Gets or Sets StatusCode
@@ -108,11 +126,14 @@ public partial class TrackEvent
     /// Event Status Description
     /// </summary>
     /// <value>Event Status Description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// In Transit
     /// </example>
     [JsonPropertyName("status_description"), JsonInclude]
-    public string? StatusDescription { get; private set; }
+    public string? StatusDescription { get; set; }
 
     /// <summary>
     /// Carrier timestamp for the event, it is assumed to be the local time of where the event occurred.
@@ -128,11 +149,14 @@ public partial class TrackEvent
     /// Company Name
     /// </summary>
     /// <value>Company Name</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Stamps.com
     /// </example>
     [JsonPropertyName("company_name"), JsonInclude]
-    public string? CompanyName { get; private set; }
+    public string? CompanyName { get; set; }
 
     /// <summary>
     /// A two-letter [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1) 
@@ -148,11 +172,14 @@ public partial class TrackEvent
     /// Event description
     /// </summary>
     /// <value>Event description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// Delivered, In/At Mailbox
     /// </example>
     [JsonPropertyName("description"), JsonInclude]
-    public string? Description { get; private set; }
+    public string? Description { get; set; }
 
     /// <summary>
     /// Event Code
@@ -179,8 +206,11 @@ public partial class TrackEvent
     /// Signer information
     /// </summary>
     /// <value>Signer information</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("signer"), JsonInclude]
-    public string? Signer { get; private set; }
+    public string? Signer { get; set; }
 
 
     /// <summary>

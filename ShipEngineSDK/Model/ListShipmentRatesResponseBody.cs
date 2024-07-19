@@ -48,41 +48,56 @@ public partial class ListShipmentRatesResponseBody
     /// An array of invalid shipment rates
     /// </summary>
     /// <value>An array of invalid shipment rates</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("invalid_rates"), JsonInclude]
-    public List<Rate>? InvalidRates { get; private set; }
+    public List<Rate>? InvalidRates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the rate request
     /// </summary>
     /// <value>A string that uniquely identifies the rate request</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("rate_request_id"), JsonInclude]
-    public string? RateRequestId { get; private set; }
+    public string? RateRequestId { get; set; }
 
     /// <summary>
     /// An array of shipment rates
     /// </summary>
     /// <value>An array of shipment rates</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("rates"), JsonInclude]
-    public List<Rate>? Rates { get; private set; }
+    public List<Rate>? Rates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment
     /// </summary>
     /// <value>A string that uniquely identifies the shipment</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("shipment_id"), JsonInclude]
-    public string? ShipmentId { get; private set; }
+    public string? ShipmentId { get; set; }
 
     /// <summary>
     /// Gets or Sets Status
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("status"), JsonInclude]
-    public RateResponseStatus? Status { get; private set; }
+    public RateResponseStatus? Status { get; set; }
 
 
     /// <summary>

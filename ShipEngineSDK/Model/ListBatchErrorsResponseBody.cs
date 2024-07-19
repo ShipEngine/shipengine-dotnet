@@ -32,14 +32,20 @@ public partial class ListBatchErrorsResponseBody
     /// The errors currently associated with the batch
     /// </summary>
     /// <value>The errors currently associated with the batch</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("errors"), JsonInclude]
-    public List<BatchResponseError>? Errors { get; private set; }
+    public List<BatchResponseError>? Errors { get; set; }
 
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("links"), JsonInclude]
-    public PaginationLink? Links { get; private set; }
+    public PaginationLink? Links { get; set; }
 
 
     /// <summary>

@@ -32,11 +32,14 @@ public partial class CreateWarehouseResponseBody
     /// Timestamp that indicates when the warehouse was created
     /// </summary>
     /// <value>Timestamp that indicates when the warehouse was created</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// 2019-06-25T18:12:35.583Z
     /// </example>
     [JsonPropertyName("created_at"), JsonInclude]
-    public DateTimeOffset? CreatedAt { get; private set; }
+    public DateTimeOffset? CreatedAt { get; set; }
 
     /// <summary>
     /// Name of the warehouse
@@ -66,11 +69,14 @@ public partial class CreateWarehouseResponseBody
     /// A string that uniquely identifies the warehouse
     /// </summary>
     /// <value>A string that uniquely identifies the warehouse</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     /// <example>
     /// se-28529731
     /// </example>
     [JsonPropertyName("warehouse_id"), JsonInclude]
-    public string? WarehouseId { get; private set; }
+    public string? WarehouseId { get; set; }
 
     /// <summary>
     /// Designates which single warehouse is the default on the account

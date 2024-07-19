@@ -32,8 +32,11 @@ public partial class AddressValidationResult
     /// The list of messages that were generated during the address validation request.
     /// </summary>
     /// <value>The list of messages that were generated during the address validation request.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("messages"), JsonInclude]
-    public List<ResponseMessage>? Messages { get; private set; }
+    public List<ResponseMessage>? Messages { get; set; }
 
     /// <summary>
     /// The original address that was sent for validation
@@ -52,8 +55,11 @@ public partial class AddressValidationResult
     /// The matched address found by the Shipengine API
     /// </summary>
     /// <value>The matched address found by the Shipengine API</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
     [JsonPropertyName("matched_address"), JsonInclude]
-    public Address? MatchedAddress { get; private set; }
+    public Address? MatchedAddress { get; set; }
 
 
     /// <summary>
