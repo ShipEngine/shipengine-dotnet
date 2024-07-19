@@ -189,12 +189,12 @@ namespace ShipEngineSDK
         /// <summary>
         /// Global HttpClient for ShipEngine instance.
         /// </summary>
-        public HttpClient _client;
+        private readonly HttpClient _client;
 
         /// <summary>
         /// Global config for ShipEngine instance.
         /// </summary>
-        public Config _config;
+        private readonly Config _config;
 
         /// <summary>
         /// Initialize the ShipEngine SDK with an API Key
@@ -219,9 +219,11 @@ namespace ShipEngineSDK
         /// <summary>
         /// Initialize the ShipEngine SDK with an httpClient object
         /// </summary>
+        /// <param name="config">Config object containing custom configurations</param>
         /// <param name="httpClient">HttpClient object to be used for ShipEngine API calls. We expect the httpClient has already been configured with ConfigureHttpClient</param>
-        public ShipEngine(HttpClient httpClient) : base()
+        public ShipEngine(Config config, HttpClient httpClient) : base()
         {
+            _config = config;
             _client = httpClient;
         }
 

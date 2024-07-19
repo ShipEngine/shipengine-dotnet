@@ -239,7 +239,7 @@ internal class Multimap<TKey, TValue> : IDictionary<TKey, IList<TValue>>
     /// <param name="key">The object to use as the key of the item to add.</param>
     /// <param name="value">The object to use as the value of the item to add.</param>
     /// <exception cref="InvalidOperationException">Thrown when couldn't add value to Multimap.</exception>
-    public void Add(TKey key, TValue value)
+    public void Add(TKey key, TValue? value)
     {
         if (value == null)
         {

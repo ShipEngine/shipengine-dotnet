@@ -8720,92 +8720,92 @@
             "description": "Customer Branch"
           },
           "Address": {
-            "type": "string,",
+            "type": "string",
             "description": "Address"
           },
           "Address2": {
-            "type": "string,",
+            "type": "string",
             "description": "Address2"
           },
           "PostalCode": {
-            "type": "string,",
+            "type": "string",
             "description": "PostalCode"
           },
           "City": {
-            "type": "string,",
+            "type": "string",
             "description": "City"
           },
           "State": {
-            "type": "string,",
+            "type": "string",
             "description": "State"
           },
           "country": {
-            "type": "string,",
+            "type": "string",
             "description": "Country"
           },
           "Phone": {
-            "type": "string,",
+            "type": "string",
             "description": "Phone"
           },
           "Email": {
-            "type": "string,",
+            "type": "string",
             "description": "Email"
           },
           "instructions": {
-            "type": "string,",
+            "type": "string",
             "description": "Instructions"
           },
           "facility_code": {
-            "type": "string,",
+            "type": "string",
             "description": "Facility Code"
           },
           "lasership_critical_pull_time": {
-            "type": "string,",
+            "type": "string",
             "description": "Critical Pull Time (local time)"
           },
           "lasership_critical_entry_time": {
-            "type": "string,",
+            "type": "string",
             "description": "Critical Entry Time (local time)"
           },
           "declare_piece_attributes_separately_for_every_shipment": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Declare piece attributes separately for every shipment, overrides individual attribute below.",
             "default": false
           },
           "AttrAlcohol": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always contain Alcohol"
           },
           "AttrDryIce": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always contain DryIce"
           },
           "AttrHazmat": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always contain Hazmat"
           },
           "AttrTwoPersons": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always require Two Persons"
           },
           "AttrExplosive": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always contain Explosives"
           },
           "AttrControlledSubstance": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always contain Controlled Substances"
           },
           "AttrRefrigerated": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always require Refrigeration"
           },
           "AttrPerishable": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always be Perishable"
           },
           "AttrNoRTS": {
-            "type": "boolean,",
+            "type": "boolean",
             "description": "Set this to true if your shipments will always use \"No Return To Sender\""
           }
         }
