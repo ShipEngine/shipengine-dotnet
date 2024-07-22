@@ -129,6 +129,11 @@ namespace ShipEngineSDK
             }
 
             T? result;
+            // If the caller asked for a string, return the response as-is. This can be useful for no content responses.
+            if (typeof(T).IsAssignableFrom(typeof(string)))
+            {
+                return (T)(object)(contentString ?? "");
+            }
             try
             {
                 result = JsonSerializer.Deserialize<T>(contentString, JsonSerializerOptions);
