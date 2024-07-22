@@ -167,7 +167,7 @@ namespace ShipEngineTest
         }
 
         [Fact]
-        public async Task SuccessResponseWithNullContentThrowsShipEngineExceptionWithUnparsedResponse()
+        public async Task SuccessResponseWithNullStringContentThrowsShipEngineExceptionWithUnparsedResponse()
         {
             var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
             var mockShipEngineFixture = new MockShipEngineFixture(config);
@@ -188,6 +188,40 @@ namespace ShipEngineTest
             Assert.Equal(200, (int)ex.ResponseMessage.StatusCode);
             Assert.Equal(responseBody, await ex.ResponseMessage.Content.ReadAsStringAsync());
             Assert.Equal(requestId, ex.RequestId);
+        }
+
+        [Fact]
+        public async Task SuccessResponseWhenStringRequestedReturnsUnparsedString()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine;
+
+            // this scenario is similar to unparseable JSON - except that it is valid JSON
+            var responseBody = @"The Response";
+            mockShipEngineFixture.StubRequest(HttpMethod.Delete, "/v1/something", System.Net.HttpStatusCode.OK,
+                responseBody);
+            var result = await shipengine.SendHttpRequestAsync<string>(HttpMethod.Delete, "/v1/something", "",
+                mockShipEngineFixture.HttpClient, config);
+
+            Assert.Equal(responseBody, result);
+        }
+
+        [Fact]
+        public async Task SuccessResponseWithNoContentCanBeReturnedIfStringRequested()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine;
+
+            // this scenario is similar to unparseable JSON - except that it is valid JSON
+            string responseBody = null;
+            mockShipEngineFixture.StubRequest(HttpMethod.Delete, "/v1/something", System.Net.HttpStatusCode.OK,
+                responseBody);
+            var result = await shipengine.SendHttpRequestAsync<string>(HttpMethod.Delete, "/v1/something", "",
+                mockShipEngineFixture.HttpClient, config);
+
+            Assert.Null(responseBody);
         }
     }
 }
