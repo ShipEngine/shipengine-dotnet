@@ -46,6 +46,11 @@ namespace ShipEngineSDK
         public CancellationToken CancellationToken { get; set; }
 
         /// <summary>
+        /// Modifies the client request before it is sent
+        /// </summary>
+        public Action<HttpRequestMessage>? ModifyRequest { get; set; }
+
+        /// <summary>
         /// Sets the HttpClient User agent, the json media type, and the API key to be used
         /// for all ShipEngine API calls unless overrwritten at the method level.
         /// </summary>
@@ -199,6 +204,7 @@ namespace ShipEngineSDK
                 try
                 {
                     var request = BuildRequest(method, path, jsonContent);
+                    ModifyRequest?.Invoke(request);
                     response = await client.SendAsync(request, cancellationToken);
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
