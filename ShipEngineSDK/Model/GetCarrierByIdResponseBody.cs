@@ -102,6 +102,19 @@ public partial class GetCarrierByIdResponseBody
     public string? FriendlyName { get; set; }
 
     /// <summary>
+    /// Funding source ID for the carrier
+    /// </summary>
+    /// <value>Funding source ID for the carrier</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("funding_source_id"), JsonInclude]
+    public string? FundingSourceId { get; set; }
+
+    /// <summary>
     /// Carrier supports multiple packages per shipment
     /// </summary>
     /// <value>Carrier supports multiple packages per shipment</value>
@@ -200,6 +213,7 @@ public partial class GetCarrierByIdResponseBody
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  DisabledByBillingPlan: ").Append(DisabledByBillingPlan).Append("\n");
         sb.Append("  FriendlyName: ").Append(FriendlyName).Append("\n");
+        sb.Append("  FundingSourceId: ").Append(FundingSourceId).Append("\n");
         sb.Append("  HasMultiPackageSupportingServices: ").Append(HasMultiPackageSupportingServices).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
         sb.Append("  Options: ").Append(Options).Append("\n");

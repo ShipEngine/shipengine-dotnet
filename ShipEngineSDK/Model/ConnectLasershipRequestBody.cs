@@ -31,14 +31,14 @@ public partial class ConnectLasershipRequestBody
     /// </summary>
     /// <value>Address</value>
     [JsonPropertyName("Address"), JsonPropertyOrder(1)]
-    public required string Address { get; set; }
+    public required String Address { get; set; }
 
     /// <summary>
     /// City
     /// </summary>
     /// <value>City</value>
     [JsonPropertyName("City"), JsonPropertyOrder(2)]
-    public required string City { get; set; }
+    public required String City { get; set; }
 
     /// <summary>
     /// Customer Branch
@@ -52,14 +52,14 @@ public partial class ConnectLasershipRequestBody
     /// </summary>
     /// <value>Critical Entry Time (local time)</value>
     [JsonPropertyName("lasership_critical_entry_time"), JsonPropertyOrder(4)]
-    public required string LasershipCriticalEntryTime { get; set; }
+    public required String LasershipCriticalEntryTime { get; set; }
 
     /// <summary>
     /// Critical Pull Time (local time)
     /// </summary>
     /// <value>Critical Pull Time (local time)</value>
     [JsonPropertyName("lasership_critical_pull_time"), JsonPropertyOrder(5)]
-    public required string LasershipCriticalPullTime { get; set; }
+    public required String LasershipCriticalPullTime { get; set; }
 
     /// <summary>
     /// Nickname
@@ -73,14 +73,14 @@ public partial class ConnectLasershipRequestBody
     /// </summary>
     /// <value>PostalCode</value>
     [JsonPropertyName("PostalCode"), JsonPropertyOrder(7)]
-    public required string PostalCode { get; set; }
+    public required String PostalCode { get; set; }
 
     /// <summary>
     /// State
     /// </summary>
     /// <value>State</value>
     [JsonPropertyName("State"), JsonPropertyOrder(8)]
-    public required string State { get; set; }
+    public required String State { get; set; }
 
     /// <summary>
     /// Web Service ID (WSID)
@@ -101,112 +101,112 @@ public partial class ConnectLasershipRequestBody
     /// </summary>
     /// <value>Address2</value>
     [JsonPropertyName("Address2"), JsonPropertyOrder(11)]
-    public string? Address2 { get; set; }
+    public String? Address2 { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Alcohol
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Alcohol</value>
     [JsonPropertyName("AttrAlcohol"), JsonPropertyOrder(12)]
-    public bool? AttrAlcohol { get; set; }
+    public Boolean? AttrAlcohol { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Controlled Substances
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Controlled Substances</value>
     [JsonPropertyName("AttrControlledSubstance"), JsonPropertyOrder(13)]
-    public bool? AttrControlledSubstance { get; set; }
+    public Boolean? AttrControlledSubstance { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain DryIce
     /// </summary>
     /// <value>Set this to true if your shipments will always contain DryIce</value>
     [JsonPropertyName("AttrDryIce"), JsonPropertyOrder(14)]
-    public bool? AttrDryIce { get; set; }
+    public Boolean? AttrDryIce { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Explosives
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Explosives</value>
     [JsonPropertyName("AttrExplosive"), JsonPropertyOrder(15)]
-    public bool? AttrExplosive { get; set; }
+    public Boolean? AttrExplosive { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always contain Hazmat
     /// </summary>
     /// <value>Set this to true if your shipments will always contain Hazmat</value>
     [JsonPropertyName("AttrHazmat"), JsonPropertyOrder(16)]
-    public bool? AttrHazmat { get; set; }
+    public Boolean? AttrHazmat { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always use \&quot;No Return To Sender\&quot;
     /// </summary>
     /// <value>Set this to true if your shipments will always use \&quot;No Return To Sender\&quot;</value>
     [JsonPropertyName("AttrNoRTS"), JsonPropertyOrder(17)]
-    public bool? AttrNoRTS { get; set; }
+    public Boolean? AttrNoRTS { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always be Perishable
     /// </summary>
     /// <value>Set this to true if your shipments will always be Perishable</value>
     [JsonPropertyName("AttrPerishable"), JsonPropertyOrder(18)]
-    public bool? AttrPerishable { get; set; }
+    public Boolean? AttrPerishable { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always require Refrigeration
     /// </summary>
     /// <value>Set this to true if your shipments will always require Refrigeration</value>
     [JsonPropertyName("AttrRefrigerated"), JsonPropertyOrder(19)]
-    public bool? AttrRefrigerated { get; set; }
+    public Boolean? AttrRefrigerated { get; set; }
 
     /// <summary>
     /// Set this to true if your shipments will always require Two Persons
     /// </summary>
     /// <value>Set this to true if your shipments will always require Two Persons</value>
     [JsonPropertyName("AttrTwoPersons"), JsonPropertyOrder(20)]
-    public bool? AttrTwoPersons { get; set; }
+    public Boolean? AttrTwoPersons { get; set; }
 
     /// <summary>
     /// Country
     /// </summary>
     /// <value>Country</value>
     [JsonPropertyName("country"), JsonPropertyOrder(21)]
-    public string? Country { get; set; }
+    public String? Country { get; set; }
 
     /// <summary>
     /// Declare piece attributes separately for every shipment, overrides individual attribute below.
     /// </summary>
     /// <value>Declare piece attributes separately for every shipment, overrides individual attribute below.</value>
     [JsonPropertyName("declare_piece_attributes_separately_for_every_shipment"), JsonPropertyOrder(22)]
-    public bool? DeclarePieceAttributesSeparatelyForEveryShipment { get; set; }
+    public Boolean? DeclarePieceAttributesSeparatelyForEveryShipment { get; set; }
 
     /// <summary>
     /// Email
     /// </summary>
     /// <value>Email</value>
     [JsonPropertyName("Email"), JsonPropertyOrder(23)]
-    public string? Email { get; set; }
+    public String? Email { get; set; }
 
     /// <summary>
     /// Facility Code
     /// </summary>
     /// <value>Facility Code</value>
     [JsonPropertyName("facility_code"), JsonPropertyOrder(24)]
-    public string? FacilityCode { get; set; }
+    public String? FacilityCode { get; set; }
 
     /// <summary>
     /// Instructions
     /// </summary>
     /// <value>Instructions</value>
     [JsonPropertyName("instructions"), JsonPropertyOrder(25)]
-    public string? Instructions { get; set; }
+    public String? Instructions { get; set; }
 
     /// <summary>
     /// Phone
     /// </summary>
     /// <value>Phone</value>
     [JsonPropertyName("Phone"), JsonPropertyOrder(26)]
-    public string? Phone { get; set; }
+    public String? Phone { get; set; }
 
 
     /// <summary>

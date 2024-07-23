@@ -52,9 +52,9 @@ public partial class VoidLabelResponseBody
     public string? Message { get; set; }
 
     /// <summary>
-    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.
+    /// Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. “unknown” codes may be specified later.
     /// </summary>
-    /// <value>Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.</value>
+    /// <value>Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. “unknown” codes may be specified later.</value>
     /// <remarks>
     /// This should not be used for input as it will be ignored on serialization.
     /// </remarks>

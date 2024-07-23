@@ -181,6 +181,7 @@ ShipEngineSDK/Model/LabelDownloadType.cs
 ShipEngineSDK/Model/LabelFormat.cs
 ShipEngineSDK/Model/LabelLayout.cs
 ShipEngineSDK/Model/LabelMessages.cs
+ShipEngineSDK/Model/LabelPackage.cs
 ShipEngineSDK/Model/LabelPackagesInner.cs
 ShipEngineSDK/Model/LabelStatus.cs
 ShipEngineSDK/Model/Link.cs

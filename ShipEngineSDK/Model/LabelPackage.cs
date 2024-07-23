@@ -21,9 +21,9 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// A package associated with a shipment 
+/// A package returned in the response from creating a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/) 
 /// </summary>
-public partial class Package
+public partial class LabelPackage
 {
 
     /// <summary>
@@ -58,16 +58,64 @@ public partial class Package
     public string? ExternalPackageId { get; set; }
 
     /// <summary>
+    /// The form download for any customs that are needed
+    /// </summary>
+    /// <value>The form download for any customs that are needed</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("form_download"), JsonInclude]
+    public OptionalLink? FormDownload { get; set; }
+
+    /// <summary>
+    /// Whether the package has form documents available for download
+    /// </summary>
+    /// <value>Whether the package has form documents available for download</value>
+    [JsonPropertyName("has_form_documents"), JsonPropertyOrder(6)]
+    public bool? HasFormDocuments { get; set; }
+
+    /// <summary>
+    /// Whether the package has label documents available for download
+    /// </summary>
+    /// <value>Whether the package has label documents available for download</value>
+    [JsonPropertyName("has_label_documents"), JsonPropertyOrder(7)]
+    public bool? HasLabelDocuments { get; set; }
+
+    /// <summary>
+    /// Whether the package has paperless documents available for download
+    /// </summary>
+    /// <value>Whether the package has paperless documents available for download</value>
+    [JsonPropertyName("has_paperless_label_documents"), JsonPropertyOrder(8)]
+    public bool? HasPaperlessLabelDocuments { get; set; }
+
+    /// <summary>
+    /// Whether the package has QR code documents available for download
+    /// </summary>
+    /// <value>Whether the package has QR code documents available for download</value>
+    [JsonPropertyName("has_qr_code_documents"), JsonPropertyOrder(9)]
+    public bool? HasQrCodeDocuments { get; set; }
+
+    /// <summary>
     /// The insured value of the package.  Requires the &#x60;insurance_provider&#x60; field of the shipment to be set. 
     /// </summary>
     /// <value>The insured value of the package.  Requires the &#x60;insurance_provider&#x60; field of the shipment to be set. </value>
-    [JsonPropertyName("insured_value"), JsonPropertyOrder(5)]
+    [JsonPropertyName("insured_value"), JsonPropertyOrder(10)]
     public MonetaryValue? InsuredValue { get; set; }
+
+    /// <summary>
+    /// The label download for the package
+    /// </summary>
+    /// <value>The label download for the package</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("label_download"), JsonInclude]
+    public LabelDownload? LabelDownload { get; set; }
 
     /// <summary>
     /// Gets or Sets LabelMessages
     /// </summary>
-    [JsonPropertyName("label_messages"), JsonPropertyOrder(6)]
+    [JsonPropertyName("label_messages"), JsonPropertyOrder(12)]
     public LabelMessages? LabelMessages { get; set; }
 
     /// <summary>
@@ -77,45 +125,48 @@ public partial class Package
     /// <example>
     /// small_flat_rate_box
     /// </example>
-    [JsonPropertyName("package_code"), JsonPropertyOrder(7)]
+    [JsonPropertyName("package_code"), JsonPropertyOrder(13)]
     public string? PackageCode { get; set; }
 
     /// <summary>
-    /// A string that uniquely identifies this [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/)
+    /// The shipment package id
     /// </summary>
-    /// <value>A string that uniquely identifies this [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/)</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("package_id"), JsonPropertyOrder(8)]
-    public string? PackageId { get; set; }
-
-    /// <summary>
-    /// The name of the of the [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/)
-    /// </summary>
-    /// <value>The name of the of the [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/)</value>
-    [JsonPropertyName("package_name"), JsonPropertyOrder(9)]
-    public string? PackageName { get; set; }
-
-    /// <summary>
-    /// Details about products inside packages (Information provided would be used on custom documentation)
-    /// </summary>
-    /// <value>Details about products inside packages (Information provided would be used on custom documentation)</value>
-    [JsonPropertyName("products"), JsonPropertyOrder(10)]
-    public List<Products>? Products { get; set; }
-
-    /// <summary>
-    /// A string that uniquely identifies this shipment package
-    /// </summary>
-    /// <value>A string that uniquely identifies this shipment package</value>
+    /// <value>The shipment package id</value>
     /// <remarks>
     /// This should not be used for input as it will be ignored on serialization.
     /// </remarks>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("shipment_package_id"), JsonInclude]
-    public string? ShipmentPackageId { get; set; }
+    [JsonPropertyName("package_id"), JsonInclude]
+    public int? PackageId { get; set; }
+
+    /// <summary>
+    /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.
+    /// </summary>
+    /// <value>The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("paperless_download"), JsonInclude]
+    public PaperlessDownload? PaperlessDownload { get; set; }
+
+    /// <summary>
+    /// The QR code download for the package
+    /// </summary>
+    /// <value>The QR code download for the package</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("qr_code_download"), JsonInclude]
+    public OptionalLink? QrCodeDownload { get; set; }
+
+    /// <summary>
+    /// Package sequence
+    /// </summary>
+    /// <value>Package sequence</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("sequence"), JsonInclude]
+    public int? Sequence { get; set; }
 
     /// <summary>
     /// The tracking number for the package.  The format depends on the carrier. 
@@ -138,19 +189,25 @@ public partial class Package
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class Package {\n");
+        sb.Append("class LabelPackage {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Weight: ").Append(Weight).Append("\n");
         sb.Append("  ContentDescription: ").Append(ContentDescription).Append("\n");
         sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
         sb.Append("  ExternalPackageId: ").Append(ExternalPackageId).Append("\n");
+        sb.Append("  FormDownload: ").Append(FormDownload).Append("\n");
+        sb.Append("  HasFormDocuments: ").Append(HasFormDocuments).Append("\n");
+        sb.Append("  HasLabelDocuments: ").Append(HasLabelDocuments).Append("\n");
+        sb.Append("  HasPaperlessLabelDocuments: ").Append(HasPaperlessLabelDocuments).Append("\n");
+        sb.Append("  HasQrCodeDocuments: ").Append(HasQrCodeDocuments).Append("\n");
         sb.Append("  InsuredValue: ").Append(InsuredValue).Append("\n");
+        sb.Append("  LabelDownload: ").Append(LabelDownload).Append("\n");
         sb.Append("  LabelMessages: ").Append(LabelMessages).Append("\n");
         sb.Append("  PackageCode: ").Append(PackageCode).Append("\n");
         sb.Append("  PackageId: ").Append(PackageId).Append("\n");
-        sb.Append("  PackageName: ").Append(PackageName).Append("\n");
-        sb.Append("  Products: ").Append(Products).Append("\n");
-        sb.Append("  ShipmentPackageId: ").Append(ShipmentPackageId).Append("\n");
+        sb.Append("  PaperlessDownload: ").Append(PaperlessDownload).Append("\n");
+        sb.Append("  QrCodeDownload: ").Append(QrCodeDownload).Append("\n");
+        sb.Append("  Sequence: ").Append(Sequence).Append("\n");
         sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

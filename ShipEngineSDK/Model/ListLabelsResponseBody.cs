@@ -316,7 +316,7 @@ public partial class ListLabelsResponseBody
         /// </summary>
         /// <value>The label&#39;s package(s).  &gt; **Note:** Some carriers only allow one package per label.  If you attempt to create a multi-package label for a carrier that doesn&#39;t allow it, an error will be returned. </value>
         [JsonPropertyName("packages"), JsonInclude]
-        public List<Package>? Packages { get; set; }
+        public List<LabelPackage>? Packages { get; set; }
 
         /// <summary>
         /// Additional information some carriers may provide by which to identify a given label in their system.  
