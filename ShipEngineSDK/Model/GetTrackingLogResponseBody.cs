@@ -50,14 +50,14 @@ public partial class GetTrackingLogResponseBody
     public string? CarrierDetailCode { get; set; }
 
     /// <summary>
-    /// A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.
+    /// The unique ID of the [carrier account](https://www.shipengine.com/docs/carriers/setup/) that was used to create this label 
     /// </summary>
-    /// <value>A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc.</value>
-    /// <example>
-    /// se-28529731
-    /// </example>
-    [JsonPropertyName("carrier_id"), JsonPropertyOrder(3)]
-    public required string CarrierId { get; set; }
+    /// <value>The unique ID of the [carrier account](https://www.shipengine.com/docs/carriers/setup/) that was used to create this label </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("carrier_id"), JsonInclude]
+    public int? CarrierId { get; set; }
 
     /// <summary>
     /// Carrier status code
