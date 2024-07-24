@@ -21,9 +21,9 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;un&#x60; | Unknown |&#x60;ac&#x60; | Accepted |&#x60;it&#x60; | In Transit |&#x60;de&#x60; | Delivered |&#x60;ex&#x60; | Exception |&#x60;at&#x60; | Delivery Attempt |&#x60;ny&#x60; | Not Yet In System 
+/// The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;UN&#x60; | Unknown |&#x60;AC&#x60; | Accepted |&#x60;IT&#x60; | In Transit |&#x60;DE&#x60; | Delivered |&#x60;EX&#x60; | Exception |&#x60;AT&#x60; | Delivery Attempt |&#x60;NY&#x60; | Not Yet In System 
 /// </summary>
-/// <value>The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;un&#x60; | Unknown |&#x60;ac&#x60; | Accepted |&#x60;it&#x60; | In Transit |&#x60;de&#x60; | Delivered |&#x60;ex&#x60; | Exception |&#x60;at&#x60; | Delivery Attempt |&#x60;ny&#x60; | Not Yet In System </value>
+/// <value>The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;UN&#x60; | Unknown |&#x60;AC&#x60; | Accepted |&#x60;IT&#x60; | In Transit |&#x60;DE&#x60; | Delivered |&#x60;EX&#x60; | Exception |&#x60;AT&#x60; | Delivery Attempt |&#x60;NY&#x60; | Not Yet In System </value>
 [JsonConverter(typeof(StatusCodeJsonConverter))]
 public class StatusCode
 {
@@ -34,7 +34,7 @@ public class StatusCode
     /// </summary>
     internal StatusCode()
     {
-        _value = "un";
+        _value = "UN";
     }
 
     /// <summary>
@@ -51,45 +51,45 @@ public class StatusCode
     }
 
     /// <summary>
-    /// Enum Un for value: un
+    /// Enum UN for value: UN
     /// </summary>
-    public static StatusCode Un { get; } = new("un");
+    public static StatusCode UN { get; } = new("UN");
 
 
     /// <summary>
-    /// Enum Ac for value: ac
+    /// Enum AC for value: AC
     /// </summary>
-    public static StatusCode Ac { get; } = new("ac");
+    public static StatusCode AC { get; } = new("AC");
 
 
     /// <summary>
-    /// Enum It for value: it
+    /// Enum IT for value: IT
     /// </summary>
-    public static StatusCode It { get; } = new("it");
+    public static StatusCode IT { get; } = new("IT");
 
 
     /// <summary>
-    /// Enum De for value: de
+    /// Enum DE for value: DE
     /// </summary>
-    public static StatusCode De { get; } = new("de");
+    public static StatusCode DE { get; } = new("DE");
 
 
     /// <summary>
-    /// Enum Ex for value: ex
+    /// Enum EX for value: EX
     /// </summary>
-    public static StatusCode Ex { get; } = new("ex");
+    public static StatusCode EX { get; } = new("EX");
 
 
     /// <summary>
-    /// Enum At for value: at
+    /// Enum AT for value: AT
     /// </summary>
-    public static StatusCode At { get; } = new("at");
+    public static StatusCode AT { get; } = new("AT");
 
 
     /// <summary>
-    /// Enum Ny for value: ny
+    /// Enum NY for value: NY
     /// </summary>
-    public static StatusCode Ny { get; } = new("ny");
+    public static StatusCode NY { get; } = new("NY");
 
 
     /// <summary>
