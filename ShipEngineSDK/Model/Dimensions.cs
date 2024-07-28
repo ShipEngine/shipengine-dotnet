@@ -37,21 +37,21 @@ public partial class Dimensions
     /// </summary>
     /// <value>The height of the package, in the specified unit</value>
     [JsonPropertyName("height"), JsonPropertyOrder(2)]
-    public required double Height { get; set; }
+    public required decimal Height { get; set; }
 
     /// <summary>
     /// The length of the package, in the specified unit
     /// </summary>
     /// <value>The length of the package, in the specified unit</value>
     [JsonPropertyName("length"), JsonPropertyOrder(3)]
-    public required double Length { get; set; }
+    public required decimal Length { get; set; }
 
     /// <summary>
     /// The width of the package, in the specified unit
     /// </summary>
     /// <value>The width of the package, in the specified unit</value>
     [JsonPropertyName("width"), JsonPropertyOrder(4)]
-    public required double Width { get; set; }
+    public required decimal Width { get; set; }
 
 
     /// <summary>

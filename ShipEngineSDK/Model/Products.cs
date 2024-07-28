@@ -116,7 +116,7 @@ public partial class Products
     /// 0.2
     /// </example>
     [JsonPropertyName("vat_rate"), JsonPropertyOrder(12)]
-    public double? VatRate { get; set; }
+    public decimal? VatRate { get; set; }
 
     /// <summary>
     /// The item weight

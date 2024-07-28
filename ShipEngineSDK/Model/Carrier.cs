@@ -50,7 +50,7 @@ public partial class Carrier
     /// 3799.52
     /// </example>
     [JsonPropertyName("balance"), JsonInclude]
-    public double? Balance { get; set; }
+    public decimal? Balance { get; set; }
 
     /// <summary>
     /// The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 

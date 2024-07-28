@@ -98,7 +98,7 @@ public partial class CustomsItem
     /// </summary>
     /// <value>The monetary amount, in the specified currency.</value>
     [JsonPropertyName("value"), JsonPropertyOrder(9)]
-    public double? Value { get; set; }
+    public decimal? Value { get; set; }
 
     /// <summary>
     /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 

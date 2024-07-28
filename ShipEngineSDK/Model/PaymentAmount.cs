@@ -30,7 +30,7 @@ public partial class PaymentAmount
     /// Gets or Sets Amount
     /// </summary>
     [JsonPropertyName("amount"), JsonPropertyOrder(1)]
-    public double? Amount { get; set; }
+    public decimal? Amount { get; set; }
 
     /// <summary>
     /// The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html 

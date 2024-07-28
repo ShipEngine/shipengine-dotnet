@@ -40,7 +40,7 @@ public partial class UpsInvoice
     /// Gets or Sets InvoiceAmount
     /// </summary>
     [JsonPropertyName("invoice_amount"), JsonPropertyOrder(2)]
-    public double? InvoiceAmount { get; set; }
+    public decimal? InvoiceAmount { get; set; }
 
     /// <summary>
     /// Gets or Sets InvoiceCurrencyCode

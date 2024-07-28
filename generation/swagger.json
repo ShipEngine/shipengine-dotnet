@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "ShipEngine API",
-    "version": "1.1.202407242007",
+    "version": "1.1.202407281907",
     "termsOfService": "https://www.shipengine.com/terms-of-service/",
     "x-logo": {
       "url": "https://shipengine.github.io/img/shipengine-logo-square.png",
@@ -7364,7 +7364,6 @@
           },
           "balance": {
             "type": "number",
-            "format": "double",
             "readOnly": true,
             "example": 3799.52,
             "minimum": 0,
@@ -7594,21 +7593,18 @@
           },
           "length": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The length of the package, in the specified unit"
           },
           "width": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The width of the package, in the specified unit"
           },
           "height": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The height of the package, in the specified unit"
@@ -7693,7 +7689,6 @@
           },
           "amount": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "description": "The monetary amount, in the specified currency."
           }
@@ -9434,7 +9429,6 @@
           },
           "invoice_amount": {
             "type": "number",
-            "format": "double",
             "minimum": 0
           },
           "invoice_currency_code": {
@@ -11338,7 +11332,6 @@
           },
           "value": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "description": "The monetary amount, in the specified currency."
           },
@@ -11399,7 +11392,6 @@
         "properties": {
           "value": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "exclusiveMinimum": true,
             "description": "The weight, in the specified unit"
@@ -11650,7 +11642,6 @@
           },
           "amount": {
             "minimum": 0,
-            "format": "double",
             "type": "number"
           }
         }
@@ -11908,7 +11899,6 @@
           },
           "vat_rate": {
             "type": "number",
-            "format": "double",
             "description": "VAT rate applicable to the item",
             "nullable": true,
             "example": 0.2
@@ -12054,7 +12044,6 @@
         "properties": {
           "amount": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The amount of dangerous goods."

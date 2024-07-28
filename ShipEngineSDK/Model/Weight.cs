@@ -37,7 +37,7 @@ public partial class Weight
     /// </summary>
     /// <value>The weight, in the specified unit</value>
     [JsonPropertyName("value"), JsonPropertyOrder(2)]
-    public required double Value { get; set; }
+    public required decimal Value { get; set; }
 
 
     /// <summary>
