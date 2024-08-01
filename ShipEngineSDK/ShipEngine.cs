@@ -226,6 +226,17 @@ namespace ShipEngineSDK
         }
 
         /// <summary>
+        /// Modifies the request before it is sent to the ShipEngine API
+        /// </summary>
+        /// <param name="modifyRequest"></param>
+        /// <returns></returns>
+        public ShipEngine ModifyRequest(Action<HttpRequestMessage> modifyRequest)
+        {
+            base.ModifyRequest = modifyRequest;
+            return this;
+        }
+
+        /// <summary>
         /// Dispose of the ShipEngine client
         /// </summary>
         public void Dispose()

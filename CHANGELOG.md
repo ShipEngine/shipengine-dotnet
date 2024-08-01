@@ -164,3 +164,7 @@ Updated nuget package dependencies
 ### Changed
 
 Fixed handling of No Content responses
+
+### Added
+
+- Added basic ability to modify the HttpClient in a request
