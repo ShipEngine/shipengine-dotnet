@@ -79,7 +79,7 @@ namespace ShipEngineTest
         {
             var requestId = Guid.NewGuid().ToString();
             var responseMessage = new HttpResponseMessage(status);
-            responseMessage.Content = new StringContent(response);
+            responseMessage.Content = new StringContent(response ?? "");
             responseMessage.Headers.Add("x-shipengine-requestid", requestId);
             responseMessage.Headers.Add("request-id", requestId);
 
