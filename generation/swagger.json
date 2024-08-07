@@ -5691,7 +5691,9 @@
           "incompatible_paired_labels",
           "invalid_charge_event",
           "invalid_object",
-          "no_rates_returned"
+          "no_rates_returned",
+          "funding_source_missing_configuration",
+          "funding_source_error"
         ],
         "description": "The error code specified for the failed API Call"
       },
