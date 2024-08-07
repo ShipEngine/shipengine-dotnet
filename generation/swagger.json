@@ -5641,7 +5641,9 @@
           "validation",
           "security",
           "system",
-          "integrations"
+          "integrations",
+          "wallet",
+          "funding_sources"
         ],
         "description": "The type of error\n"
       },
