@@ -31,8 +31,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="calculateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CalculateRatesResponseBody)</returns>
-    Task<CalculateRatesResponseBody> CalculateRates(CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (CalculateRatesResponseBody)</returns>
+    Task<ShipEngineResponse<CalculateRatesResponseBody>> CalculateRates(CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipping Rates It&#39;s not uncommon that you want to give your customer the choice between whether they want to ship the fastest, cheapest, or the most trusted route. Most companies don&#39;t solely ship things using a single shipping option; so we provide functionality to show you all your options! 
@@ -42,8 +42,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="calculateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CalculateRatesResponseBody)</returns>
-    Task<CalculateRatesResponseBody> CalculateRates(HttpClient methodClient, CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (CalculateRatesResponseBody)</returns>
+    Task<ShipEngineResponse<CalculateRatesResponseBody>> CalculateRates(HttpClient methodClient, CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Bulk Rates Get Bulk Shipment Rates
@@ -52,8 +52,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="compareBulkRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;BulkRate&gt;)</returns>
-    Task<List<BulkRate>> CompareBulkRates(CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;BulkRate&gt;)</returns>
+    Task<ShipEngineResponse<List<BulkRate>>> CompareBulkRates(CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Bulk Rates Get Bulk Shipment Rates
@@ -63,8 +63,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="compareBulkRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;BulkRate&gt;)</returns>
-    Task<List<BulkRate>> CompareBulkRates(HttpClient methodClient, CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;BulkRate&gt;)</returns>
+    Task<ShipEngineResponse<List<BulkRate>>> CompareBulkRates(HttpClient methodClient, CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Estimate Rates Get Rate Estimates
@@ -73,8 +73,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="estimateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;RateEstimate&gt;)</returns>
-    Task<List<RateEstimate>> EstimateRates(EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;RateEstimate&gt;)</returns>
+    Task<ShipEngineResponse<List<RateEstimate>>> EstimateRates(EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Estimate Rates Get Rate Estimates
@@ -84,8 +84,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="estimateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;RateEstimate&gt;)</returns>
-    Task<List<RateEstimate>> EstimateRates(HttpClient methodClient, EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;RateEstimate&gt;)</returns>
+    Task<ShipEngineResponse<List<RateEstimate>>> EstimateRates(HttpClient methodClient, EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Rate By ID Retrieve a previously queried rate by its ID
@@ -94,8 +94,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetRateByIdResponseBody)</returns>
-    Task<GetRateByIdResponseBody> GetRateById(string rateId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetRateByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetRateByIdResponseBody>> GetRateById(string rateId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Rate By ID Retrieve a previously queried rate by its ID
@@ -105,8 +105,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetRateByIdResponseBody)</returns>
-    Task<GetRateByIdResponseBody> GetRateById(HttpClient methodClient, string rateId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetRateByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetRateByIdResponseBody>> GetRateById(HttpClient methodClient, string rateId, CancellationToken cancellationToken = default);
 
 }
 
@@ -122,8 +122,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="calculateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CalculateRatesResponseBody)</returns>
-    public Task<CalculateRatesResponseBody> CalculateRates(CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (CalculateRatesResponseBody)</returns>
+    public Task<ShipEngineResponse<CalculateRatesResponseBody>> CalculateRates(CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default)
     {
         return CalculateRates(_client, calculateRatesRequestBody, cancellationToken);
     }
@@ -136,8 +136,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="calculateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CalculateRatesResponseBody)</returns>
-    public async Task<CalculateRatesResponseBody> CalculateRates(HttpClient methodClient, CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (CalculateRatesResponseBody)</returns>
+    public async Task<ShipEngineResponse<CalculateRatesResponseBody>> CalculateRates(HttpClient methodClient, CalculateRatesRequestBody calculateRatesRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'calculateRatesRequestBody' is set
         if (calculateRatesRequestBody == null)
@@ -152,9 +152,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.CalculateRates";
 
-        var result = await SendHttpRequestAsync<CalculateRatesResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<CalculateRatesResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<CalculateRatesResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -164,8 +165,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="compareBulkRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;BulkRate&gt;)</returns>
-    public Task<List<BulkRate>> CompareBulkRates(CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;BulkRate&gt;)</returns>
+    public Task<ShipEngineResponse<List<BulkRate>>> CompareBulkRates(CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default)
     {
         return CompareBulkRates(_client, compareBulkRatesRequestBody, cancellationToken);
     }
@@ -178,8 +179,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="compareBulkRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;BulkRate&gt;)</returns>
-    public async Task<List<BulkRate>> CompareBulkRates(HttpClient methodClient, CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;BulkRate&gt;)</returns>
+    public async Task<ShipEngineResponse<List<BulkRate>>> CompareBulkRates(HttpClient methodClient, CompareBulkRatesRequestBody compareBulkRatesRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'compareBulkRatesRequestBody' is set
         if (compareBulkRatesRequestBody == null)
@@ -194,9 +195,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.CompareBulkRates";
 
-        var result = await SendHttpRequestAsync<List<BulkRate>>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<List<BulkRate>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<List<BulkRate>>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -206,8 +208,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="estimateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;RateEstimate&gt;)</returns>
-    public Task<List<RateEstimate>> EstimateRates(EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;RateEstimate&gt;)</returns>
+    public Task<ShipEngineResponse<List<RateEstimate>>> EstimateRates(EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default)
     {
         return EstimateRates(_client, estimateRatesRequestBody, cancellationToken);
     }
@@ -220,8 +222,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="estimateRatesRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;RateEstimate&gt;)</returns>
-    public async Task<List<RateEstimate>> EstimateRates(HttpClient methodClient, EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;RateEstimate&gt;)</returns>
+    public async Task<ShipEngineResponse<List<RateEstimate>>> EstimateRates(HttpClient methodClient, EstimateRatesRequestBody estimateRatesRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'estimateRatesRequestBody' is set
         if (estimateRatesRequestBody == null)
@@ -236,9 +238,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.EstimateRates";
 
-        var result = await SendHttpRequestAsync<List<RateEstimate>>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<List<RateEstimate>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<List<RateEstimate>>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -248,8 +251,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetRateByIdResponseBody)</returns>
-    public Task<GetRateByIdResponseBody> GetRateById(string rateId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetRateByIdResponseBody)</returns>
+    public Task<ShipEngineResponse<GetRateByIdResponseBody>> GetRateById(string rateId, CancellationToken cancellationToken = default)
     {
         return GetRateById(_client, rateId, cancellationToken);
     }
@@ -262,8 +265,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="rateId">Rate ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetRateByIdResponseBody)</returns>
-    public async Task<GetRateByIdResponseBody> GetRateById(HttpClient methodClient, string rateId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetRateByIdResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetRateByIdResponseBody>> GetRateById(HttpClient methodClient, string rateId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'rateId' is set
         if (rateId == null)
@@ -278,9 +281,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.GetRateById";
 
-        var result = await SendHttpRequestAsync<GetRateByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetRateByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetRateByIdResponseBody>(data, response.StatusCode, headers);
     }
 
 }

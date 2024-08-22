@@ -31,8 +31,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="parseAddressRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide an &#x60;address&#x60; containing already-known values. For example, you may already know the recipient&#39;s name, city, and country, and only want to parse the street address into separate lines. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseAddressResponseBody)</returns>
-    Task<ParseAddressResponseBody> ParseAddress(ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ParseAddressResponseBody)</returns>
+    Task<ShipEngineResponse<ParseAddressResponseBody>> ParseAddress(ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parse an address The address-recognition API makes it easy for you to extract address data from unstructured text, including the recipient name, line 1, line 2, city, postal code, and more.  Data often enters your system as unstructured text (for example: emails, SMS messages, support tickets, or other documents). ShipEngine&#39;s address-recognition API helps you extract meaningful, structured data from this unstructured text. The parsed address data is returned in the same structure that&#39;s used for other ShipEngine APIs, such as address validation, rate quotes, and shipping labels.  &gt; **Note:** Address recognition is currently supported for the United States, Canada, Australia, New Zealand, the United Kingdom, and Ireland. 
@@ -42,8 +42,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="parseAddressRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide an &#x60;address&#x60; containing already-known values. For example, you may already know the recipient&#39;s name, city, and country, and only want to parse the street address into separate lines. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseAddressResponseBody)</returns>
-    Task<ParseAddressResponseBody> ParseAddress(HttpClient methodClient, ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ParseAddressResponseBody)</returns>
+    Task<ShipEngineResponse<ParseAddressResponseBody>> ParseAddress(HttpClient methodClient, ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Validate An Address Address validation ensures accurate addresses and can lead to reduced shipping costs by preventing address correction surcharges. ShipEngine cross references multiple databases to validate addresses and identify potential deliverability issues. 
@@ -52,8 +52,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="addressToValidate"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;AddressValidationResult&gt;)</returns>
-    Task<List<AddressValidationResult>> ValidateAddress(List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;AddressValidationResult&gt;)</returns>
+    Task<ShipEngineResponse<List<AddressValidationResult>>> ValidateAddress(List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Validate An Address Address validation ensures accurate addresses and can lead to reduced shipping costs by preventing address correction surcharges. ShipEngine cross references multiple databases to validate addresses and identify potential deliverability issues. 
@@ -63,8 +63,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="addressToValidate"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;AddressValidationResult&gt;)</returns>
-    Task<List<AddressValidationResult>> ValidateAddress(HttpClient methodClient, List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;AddressValidationResult&gt;)</returns>
+    Task<ShipEngineResponse<List<AddressValidationResult>>> ValidateAddress(HttpClient methodClient, List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default);
 
 }
 
@@ -80,8 +80,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="parseAddressRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide an &#x60;address&#x60; containing already-known values. For example, you may already know the recipient&#39;s name, city, and country, and only want to parse the street address into separate lines. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseAddressResponseBody)</returns>
-    public Task<ParseAddressResponseBody> ParseAddress(ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ParseAddressResponseBody)</returns>
+    public Task<ShipEngineResponse<ParseAddressResponseBody>> ParseAddress(ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default)
     {
         return ParseAddress(_client, parseAddressRequestBody, cancellationToken);
     }
@@ -94,8 +94,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="parseAddressRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide an &#x60;address&#x60; containing already-known values. For example, you may already know the recipient&#39;s name, city, and country, and only want to parse the street address into separate lines. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseAddressResponseBody)</returns>
-    public async Task<ParseAddressResponseBody> ParseAddress(HttpClient methodClient, ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ParseAddressResponseBody)</returns>
+    public async Task<ShipEngineResponse<ParseAddressResponseBody>> ParseAddress(HttpClient methodClient, ParseAddressRequestBody parseAddressRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'parseAddressRequestBody' is set
         if (parseAddressRequestBody == null)
@@ -110,9 +110,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AddressesApi.ParseAddress";
 
-        var result = await SendHttpRequestAsync<ParseAddressResponseBody>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<ParseAddressResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<ParseAddressResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -122,8 +123,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="addressToValidate"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;AddressValidationResult&gt;)</returns>
-    public Task<List<AddressValidationResult>> ValidateAddress(List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;AddressValidationResult&gt;)</returns>
+    public Task<ShipEngineResponse<List<AddressValidationResult>>> ValidateAddress(List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default)
     {
         return ValidateAddress(_client, addressToValidate, cancellationToken);
     }
@@ -136,8 +137,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="addressToValidate"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;AddressValidationResult&gt;)</returns>
-    public async Task<List<AddressValidationResult>> ValidateAddress(HttpClient methodClient, List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;AddressValidationResult&gt;)</returns>
+    public async Task<ShipEngineResponse<List<AddressValidationResult>>> ValidateAddress(HttpClient methodClient, List<AddressToValidate> addressToValidate, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'addressToValidate' is set
         if (addressToValidate == null)
@@ -152,9 +153,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AddressesApi.ValidateAddress";
 
-        var result = await SendHttpRequestAsync<List<AddressValidationResult>>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<List<AddressValidationResult>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<List<AddressValidationResult>>(data, response.StatusCode, headers);
     }
 
 }

@@ -33,11 +33,11 @@ namespace {{packageName}};
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
+    /// <returns>Task of ShipEngineResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+    Task<ShipEngineResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>> {{operationId}}({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     /// <summary>
     /// {{summary}} {{notes}}
@@ -49,11 +49,11 @@ namespace {{packageName}};
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
+    /// <returns>Task of ShipEngineResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+    Task<ShipEngineResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     {{/operation}}
 }
@@ -73,11 +73,11 @@ namespace {{packageName}};
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
+    /// <returns>Task of ShipEngineResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
+    public Task<ShipEngineResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>> {{operationId}}({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         return {{operationId}}(_client, {{#allParams}}{{paramName}}, {{/allParams}}cancellationToken);
     }
@@ -92,11 +92,11 @@ namespace {{packageName}};
     /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}</param>
     {{/allParams}}
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
+    /// <returns>Task of ShipEngineResponse{{#returnType}} ({{.}}){{/returnType}}</returns>
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
+    public async Task<ShipEngineResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         {{#allParams}}
         {{#required}}
@@ -238,9 +238,10 @@ namespace {{packageName}};
 
         requestOptions.Operation = "{{classname}}.{{operationId}}";
 
-        var result = await SendHttpRequestAsync<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(HttpMethods.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(HttpMethods.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(data, response.StatusCode, headers);
     }
 
     {{/operation}}

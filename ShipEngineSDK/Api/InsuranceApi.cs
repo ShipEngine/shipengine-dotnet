@@ -31,8 +31,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="addFundsToInsuranceRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToInsuranceResponseBody)</returns>
-    Task<AddFundsToInsuranceResponseBody> AddFundsToInsurance(AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (AddFundsToInsuranceResponseBody)</returns>
+    Task<ShipEngineResponse<AddFundsToInsuranceResponseBody>> AddFundsToInsurance(AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Add Funds To Insurance You may need to auto fund your account from time to time. For example, if you don&#39;t normally ship items over $100, and may want to add funds to insurance rather than keeping the account funded. 
@@ -42,8 +42,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="addFundsToInsuranceRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToInsuranceResponseBody)</returns>
-    Task<AddFundsToInsuranceResponseBody> AddFundsToInsurance(HttpClient methodClient, AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (AddFundsToInsuranceResponseBody)</returns>
+    Task<ShipEngineResponse<AddFundsToInsuranceResponseBody>> AddFundsToInsurance(HttpClient methodClient, AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Connect a Shipsurance Account Connect a Shipsurance Account
@@ -52,8 +52,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="connectInsurerRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    Task<Object> ConnectInsurer(ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    Task<ShipEngineResponse<Object>> ConnectInsurer(ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Connect a Shipsurance Account Connect a Shipsurance Account
@@ -63,8 +63,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="connectInsurerRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    Task<Object> ConnectInsurer(HttpClient methodClient, ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    Task<ShipEngineResponse<Object>> ConnectInsurer(HttpClient methodClient, ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect a Shipsurance Account Disconnect a Shipsurance Account
@@ -72,8 +72,8 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    Task<Object> DisconnectInsurer(CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    Task<ShipEngineResponse<Object>> DisconnectInsurer(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect a Shipsurance Account Disconnect a Shipsurance Account
@@ -82,8 +82,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    Task<Object> DisconnectInsurer(HttpClient methodClient, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    Task<ShipEngineResponse<Object>> DisconnectInsurer(HttpClient methodClient, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Insurance Funds Balance Retrieve the balance of your Shipsurance account.
@@ -91,8 +91,8 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetInsuranceBalanceResponseBody)</returns>
-    Task<GetInsuranceBalanceResponseBody> GetInsuranceBalance(CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetInsuranceBalanceResponseBody)</returns>
+    Task<ShipEngineResponse<GetInsuranceBalanceResponseBody>> GetInsuranceBalance(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Insurance Funds Balance Retrieve the balance of your Shipsurance account.
@@ -101,8 +101,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetInsuranceBalanceResponseBody)</returns>
-    Task<GetInsuranceBalanceResponseBody> GetInsuranceBalance(HttpClient methodClient, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetInsuranceBalanceResponseBody)</returns>
+    Task<ShipEngineResponse<GetInsuranceBalanceResponseBody>> GetInsuranceBalance(HttpClient methodClient, CancellationToken cancellationToken = default);
 
 }
 
@@ -118,8 +118,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="addFundsToInsuranceRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToInsuranceResponseBody)</returns>
-    public Task<AddFundsToInsuranceResponseBody> AddFundsToInsurance(AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (AddFundsToInsuranceResponseBody)</returns>
+    public Task<ShipEngineResponse<AddFundsToInsuranceResponseBody>> AddFundsToInsurance(AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default)
     {
         return AddFundsToInsurance(_client, addFundsToInsuranceRequestBody, cancellationToken);
     }
@@ -132,8 +132,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="addFundsToInsuranceRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToInsuranceResponseBody)</returns>
-    public async Task<AddFundsToInsuranceResponseBody> AddFundsToInsurance(HttpClient methodClient, AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (AddFundsToInsuranceResponseBody)</returns>
+    public async Task<ShipEngineResponse<AddFundsToInsuranceResponseBody>> AddFundsToInsurance(HttpClient methodClient, AddFundsToInsuranceRequestBody addFundsToInsuranceRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'addFundsToInsuranceRequestBody' is set
         if (addFundsToInsuranceRequestBody == null)
@@ -148,9 +148,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.AddFundsToInsurance";
 
-        var result = await SendHttpRequestAsync<AddFundsToInsuranceResponseBody>(HttpMethods.Patch, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<AddFundsToInsuranceResponseBody>(HttpMethods.Patch, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<AddFundsToInsuranceResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -160,8 +161,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="connectInsurerRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    public Task<Object> ConnectInsurer(ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    public Task<ShipEngineResponse<Object>> ConnectInsurer(ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default)
     {
         return ConnectInsurer(_client, connectInsurerRequestBody, cancellationToken);
     }
@@ -174,8 +175,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="connectInsurerRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    public async Task<Object> ConnectInsurer(HttpClient methodClient, ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    public async Task<ShipEngineResponse<Object>> ConnectInsurer(HttpClient methodClient, ConnectInsurerRequestBody connectInsurerRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'connectInsurerRequestBody' is set
         if (connectInsurerRequestBody == null)
@@ -190,9 +191,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.ConnectInsurer";
 
-        var result = await SendHttpRequestAsync<Object>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<Object>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<Object>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -201,8 +203,8 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    public Task<Object> DisconnectInsurer(CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    public Task<ShipEngineResponse<Object>> DisconnectInsurer(CancellationToken cancellationToken = default)
     {
         return DisconnectInsurer(_client, cancellationToken);
     }
@@ -214,8 +216,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (Object)</returns>
-    public async Task<Object> DisconnectInsurer(HttpClient methodClient, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (Object)</returns>
+    public async Task<ShipEngineResponse<Object>> DisconnectInsurer(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/connections/insurance/shipsurance");
@@ -223,9 +225,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.DisconnectInsurer";
 
-        var result = await SendHttpRequestAsync<Object>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<Object>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<Object>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -234,8 +237,8 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetInsuranceBalanceResponseBody)</returns>
-    public Task<GetInsuranceBalanceResponseBody> GetInsuranceBalance(CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetInsuranceBalanceResponseBody)</returns>
+    public Task<ShipEngineResponse<GetInsuranceBalanceResponseBody>> GetInsuranceBalance(CancellationToken cancellationToken = default)
     {
         return GetInsuranceBalance(_client, cancellationToken);
     }
@@ -247,8 +250,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetInsuranceBalanceResponseBody)</returns>
-    public async Task<GetInsuranceBalanceResponseBody> GetInsuranceBalance(HttpClient methodClient, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetInsuranceBalanceResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetInsuranceBalanceResponseBody>> GetInsuranceBalance(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/insurance/shipsurance/balance");
@@ -256,9 +259,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.GetInsuranceBalance";
 
-        var result = await SendHttpRequestAsync<GetInsuranceBalanceResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetInsuranceBalanceResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetInsuranceBalanceResponseBody>(data, response.StatusCode, headers);
     }
 
 }

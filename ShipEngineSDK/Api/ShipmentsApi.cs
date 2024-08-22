@@ -31,8 +31,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> CancelShipments(string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> CancelShipments(string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Cancel a Shipment Mark a shipment cancelled, if it is no longer needed or being used by your organized. Any label associated with the shipment needs to be voided first An example use case would be if a batch label creation job is going to run at a set time and only queries &#x60;pending&#x60; shipments. Marking a shipment as cancelled would remove it from this process 
@@ -42,8 +42,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> CancelShipments(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> CancelShipments(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create Shipments Create one or multiple shipments.
@@ -52,8 +52,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="createShipmentsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateShipmentsResponseBody)</returns>
-    Task<CreateShipmentsResponseBody> CreateShipments(CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (CreateShipmentsResponseBody)</returns>
+    Task<ShipEngineResponse<CreateShipmentsResponseBody>> CreateShipments(CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create Shipments Create one or multiple shipments.
@@ -63,8 +63,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createShipmentsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateShipmentsResponseBody)</returns>
-    Task<CreateShipmentsResponseBody> CreateShipments(HttpClient methodClient, CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (CreateShipmentsResponseBody)</returns>
+    Task<ShipEngineResponse<CreateShipmentsResponseBody>> CreateShipments(HttpClient methodClient, CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment By External ID Query Shipments created using your own custom ID convention using this endpint
@@ -73,8 +73,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="externalShipmentId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByExternalIdResponseBody)</returns>
-    Task<GetShipmentByExternalIdResponseBody> GetShipmentByExternalId(string externalShipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetShipmentByExternalIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetShipmentByExternalIdResponseBody>> GetShipmentByExternalId(string externalShipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment By External ID Query Shipments created using your own custom ID convention using this endpint
@@ -84,8 +84,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="externalShipmentId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByExternalIdResponseBody)</returns>
-    Task<GetShipmentByExternalIdResponseBody> GetShipmentByExternalId(HttpClient methodClient, string externalShipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetShipmentByExternalIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetShipmentByExternalIdResponseBody>> GetShipmentByExternalId(HttpClient methodClient, string externalShipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment By ID Get an individual shipment based on its ID
@@ -94,8 +94,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByIdResponseBody)</returns>
-    Task<GetShipmentByIdResponseBody> GetShipmentById(string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetShipmentByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetShipmentByIdResponseBody>> GetShipmentById(string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment By ID Get an individual shipment based on its ID
@@ -105,8 +105,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByIdResponseBody)</returns>
-    Task<GetShipmentByIdResponseBody> GetShipmentById(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetShipmentByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetShipmentByIdResponseBody>> GetShipmentById(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment Rates Get Rates for the shipment information associated with the shipment ID
@@ -116,8 +116,8 @@ public partial interface IShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    Task<ListShipmentRatesResponseBody> ListShipmentRates(string shipmentId, DateTimeOffset? createdAtStart, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListShipmentRatesResponseBody)</returns>
+    Task<ShipEngineResponse<ListShipmentRatesResponseBody>> ListShipmentRates(string shipmentId, DateTimeOffset? createdAtStart, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment Rates Get Rates for the shipment information associated with the shipment ID
@@ -128,8 +128,8 @@ public partial interface IShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset? createdAtStart, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListShipmentRatesResponseBody)</returns>
+    Task<ShipEngineResponse<ListShipmentRatesResponseBody>> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset? createdAtStart, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Shipments Get list of Shipments
@@ -149,8 +149,8 @@ public partial interface IShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    Task<ListShipmentsResponseBody> ListShipments(DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, DateTimeOffset? modifiedAtStart, DateTimeOffset? modifiedAtEnd, ShipmentStatus? shipmentStatus, ShipmentsSortBy? sortBy, SortDir? sortDir, string? batchId, string? tag, string? salesOrderId, int? page, int? pageSize, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListShipmentsResponseBody)</returns>
+    Task<ShipEngineResponse<ListShipmentsResponseBody>> ListShipments(DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, DateTimeOffset? modifiedAtStart, DateTimeOffset? modifiedAtEnd, ShipmentStatus? shipmentStatus, ShipmentsSortBy? sortBy, SortDir? sortDir, string? batchId, string? tag, string? salesOrderId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Shipments Get list of Shipments
@@ -171,8 +171,8 @@ public partial interface IShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, DateTimeOffset? modifiedAtStart, DateTimeOffset? modifiedAtEnd, ShipmentStatus? shipmentStatus, ShipmentsSortBy? sortBy, SortDir? sortDir, string? batchId, string? tag, string? salesOrderId, int? page, int? pageSize, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListShipmentsResponseBody)</returns>
+    Task<ShipEngineResponse<ListShipmentsResponseBody>> ListShipments(HttpClient methodClient, DateTimeOffset? createdAtStart, DateTimeOffset? createdAtEnd, DateTimeOffset? modifiedAtStart, DateTimeOffset? modifiedAtEnd, ShipmentStatus? shipmentStatus, ShipmentsSortBy? sortBy, SortDir? sortDir, string? batchId, string? tag, string? salesOrderId, int? page, int? pageSize, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parse shipping info The shipment-recognition API makes it easy for you to extract shipping data from unstructured text, including people&#39;s names, addresses, package weights and dimensions, insurance and delivery requirements, and more.  Data often enters your system as unstructured text (for example: emails, SMS messages, support tickets, or other documents). ShipEngine&#39;s shipment-recognition API helps you extract meaningful, structured data from this unstructured text. The parsed shipment data is returned in the same structure that&#39;s used for other ShipEngine APIs, so you can easily use the parsed data to create a shipping label.  &gt; **Note:** Shipment recognition is currently supported for the United States, Canada, Australia, New Zealand, the United Kingdom, and Ireland. 
@@ -181,8 +181,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="parseShipmentRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseShipmentResponseBody)</returns>
-    Task<ParseShipmentResponseBody> ParseShipment(ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ParseShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<ParseShipmentResponseBody>> ParseShipment(ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parse shipping info The shipment-recognition API makes it easy for you to extract shipping data from unstructured text, including people&#39;s names, addresses, package weights and dimensions, insurance and delivery requirements, and more.  Data often enters your system as unstructured text (for example: emails, SMS messages, support tickets, or other documents). ShipEngine&#39;s shipment-recognition API helps you extract meaningful, structured data from this unstructured text. The parsed shipment data is returned in the same structure that&#39;s used for other ShipEngine APIs, so you can easily use the parsed data to create a shipping label.  &gt; **Note:** Shipment recognition is currently supported for the United States, Canada, Australia, New Zealand, the United Kingdom, and Ireland. 
@@ -192,8 +192,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="parseShipmentRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseShipmentResponseBody)</returns>
-    Task<ParseShipmentResponseBody> ParseShipment(HttpClient methodClient, ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ParseShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<ParseShipmentResponseBody>> ParseShipment(HttpClient methodClient, ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment Tags Get Shipment tags based on its ID
@@ -202,8 +202,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    Task<TagShipmentResponseBody> ShipmentsListTags(string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<TagShipmentResponseBody>> ShipmentsListTags(string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Shipment Tags Get Shipment tags based on its ID
@@ -213,8 +213,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    Task<TagShipmentResponseBody> ShipmentsListTags(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<TagShipmentResponseBody>> ShipmentsListTags(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Shipments Tags Update Shipments Tags
@@ -223,8 +223,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="updateShipmentsTagsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse</returns>
-    Task<Object> ShipmentsUpdateTags(UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse</returns>
+    Task<ShipEngineResponse<Object>> ShipmentsUpdateTags(UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Shipments Tags Update Shipments Tags
@@ -234,8 +234,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="updateShipmentsTagsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse</returns>
-    Task<Object> ShipmentsUpdateTags(HttpClient methodClient, UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse</returns>
+    Task<ShipEngineResponse<Object>> ShipmentsUpdateTags(HttpClient methodClient, UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Add Tag to Shipment Add a tag to the shipment object
@@ -245,8 +245,8 @@ public partial interface IShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    Task<TagShipmentResponseBody> TagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<TagShipmentResponseBody>> TagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Add Tag to Shipment Add a tag to the shipment object
@@ -257,8 +257,8 @@ public partial interface IShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    Task<TagShipmentResponseBody> TagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<TagShipmentResponseBody>> TagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Remove Tag from Shipment Remove an existing tag from the Shipment object
@@ -268,8 +268,8 @@ public partial interface IShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UntagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> UntagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Remove Tag from Shipment Remove an existing tag from the Shipment object
@@ -280,8 +280,8 @@ public partial interface IShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UntagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> UntagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Shipment By ID Update a shipment object based on its ID
@@ -291,8 +291,8 @@ public partial interface IShipEngine
     /// <param name="updateShipmentRequestBody"></param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (UpdateShipmentResponseBody)</returns>
-    Task<UpdateShipmentResponseBody> UpdateShipment(UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (UpdateShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<UpdateShipmentResponseBody>> UpdateShipment(UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Shipment By ID Update a shipment object based on its ID
@@ -303,8 +303,8 @@ public partial interface IShipEngine
     /// <param name="updateShipmentRequestBody"></param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (UpdateShipmentResponseBody)</returns>
-    Task<UpdateShipmentResponseBody> UpdateShipment(HttpClient methodClient, UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (UpdateShipmentResponseBody)</returns>
+    Task<ShipEngineResponse<UpdateShipmentResponseBody>> UpdateShipment(HttpClient methodClient, UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default);
 
 }
 
@@ -320,8 +320,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> CancelShipments(string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> CancelShipments(string shipmentId, CancellationToken cancellationToken = default)
     {
         return CancelShipments(_client, shipmentId, cancellationToken);
     }
@@ -334,8 +334,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> CancelShipments(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> CancelShipments(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
@@ -350,9 +350,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.CancelShipments";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -362,8 +363,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="createShipmentsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateShipmentsResponseBody)</returns>
-    public Task<CreateShipmentsResponseBody> CreateShipments(CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (CreateShipmentsResponseBody)</returns>
+    public Task<ShipEngineResponse<CreateShipmentsResponseBody>> CreateShipments(CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default)
     {
         return CreateShipments(_client, createShipmentsRequestBody, cancellationToken);
     }
@@ -376,8 +377,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createShipmentsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateShipmentsResponseBody)</returns>
-    public async Task<CreateShipmentsResponseBody> CreateShipments(HttpClient methodClient, CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (CreateShipmentsResponseBody)</returns>
+    public async Task<ShipEngineResponse<CreateShipmentsResponseBody>> CreateShipments(HttpClient methodClient, CreateShipmentsRequestBody createShipmentsRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'createShipmentsRequestBody' is set
         if (createShipmentsRequestBody == null)
@@ -392,9 +393,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.CreateShipments";
 
-        var result = await SendHttpRequestAsync<CreateShipmentsResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<CreateShipmentsResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<CreateShipmentsResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -404,8 +406,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="externalShipmentId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByExternalIdResponseBody)</returns>
-    public Task<GetShipmentByExternalIdResponseBody> GetShipmentByExternalId(string externalShipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetShipmentByExternalIdResponseBody)</returns>
+    public Task<ShipEngineResponse<GetShipmentByExternalIdResponseBody>> GetShipmentByExternalId(string externalShipmentId, CancellationToken cancellationToken = default)
     {
         return GetShipmentByExternalId(_client, externalShipmentId, cancellationToken);
     }
@@ -418,8 +420,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="externalShipmentId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByExternalIdResponseBody)</returns>
-    public async Task<GetShipmentByExternalIdResponseBody> GetShipmentByExternalId(HttpClient methodClient, string externalShipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetShipmentByExternalIdResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetShipmentByExternalIdResponseBody>> GetShipmentByExternalId(HttpClient methodClient, string externalShipmentId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'externalShipmentId' is set
         if (externalShipmentId == null)
@@ -434,9 +436,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.GetShipmentByExternalId";
 
-        var result = await SendHttpRequestAsync<GetShipmentByExternalIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetShipmentByExternalIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetShipmentByExternalIdResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -446,8 +449,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByIdResponseBody)</returns>
-    public Task<GetShipmentByIdResponseBody> GetShipmentById(string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetShipmentByIdResponseBody)</returns>
+    public Task<ShipEngineResponse<GetShipmentByIdResponseBody>> GetShipmentById(string shipmentId, CancellationToken cancellationToken = default)
     {
         return GetShipmentById(_client, shipmentId, cancellationToken);
     }
@@ -460,8 +463,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetShipmentByIdResponseBody)</returns>
-    public async Task<GetShipmentByIdResponseBody> GetShipmentById(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetShipmentByIdResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetShipmentByIdResponseBody>> GetShipmentById(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
@@ -476,9 +479,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.GetShipmentById";
 
-        var result = await SendHttpRequestAsync<GetShipmentByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetShipmentByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetShipmentByIdResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -489,8 +493,8 @@ public partial class ShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    public Task<ListShipmentRatesResponseBody> ListShipmentRates(string shipmentId, DateTimeOffset? createdAtStart = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListShipmentRatesResponseBody)</returns>
+    public Task<ShipEngineResponse<ListShipmentRatesResponseBody>> ListShipmentRates(string shipmentId, DateTimeOffset? createdAtStart = default, CancellationToken cancellationToken = default)
     {
         return ListShipmentRates(_client, shipmentId, createdAtStart, cancellationToken);
     }
@@ -504,8 +508,8 @@ public partial class ShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="createdAtStart">Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentRatesResponseBody)</returns>
-    public async Task<ListShipmentRatesResponseBody> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset? createdAtStart = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListShipmentRatesResponseBody)</returns>
+    public async Task<ShipEngineResponse<ListShipmentRatesResponseBody>> ListShipmentRates(HttpClient methodClient, string shipmentId, DateTimeOffset? createdAtStart = default, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
@@ -524,9 +528,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.ListShipmentRates";
 
-        var result = await SendHttpRequestAsync<ListShipmentRatesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<ListShipmentRatesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<ListShipmentRatesResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -547,8 +552,8 @@ public partial class ShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    public Task<ListShipmentsResponseBody> ListShipments(DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, DateTimeOffset? modifiedAtStart = default, DateTimeOffset? modifiedAtEnd = default, ShipmentStatus? shipmentStatus = default, ShipmentsSortBy? sortBy = default, SortDir? sortDir = default, string? batchId = default, string? tag = default, string? salesOrderId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListShipmentsResponseBody)</returns>
+    public Task<ShipEngineResponse<ListShipmentsResponseBody>> ListShipments(DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, DateTimeOffset? modifiedAtStart = default, DateTimeOffset? modifiedAtEnd = default, ShipmentStatus? shipmentStatus = default, ShipmentsSortBy? sortBy = default, SortDir? sortDir = default, string? batchId = default, string? tag = default, string? salesOrderId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
         return ListShipments(_client, createdAtStart, createdAtEnd, modifiedAtStart, modifiedAtEnd, shipmentStatus, sortBy, sortDir, batchId, tag, salesOrderId, page, pageSize, cancellationToken);
     }
@@ -572,8 +577,8 @@ public partial class ShipEngine
     /// <param name="page">Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  (optional, default to 1)</param>
     /// <param name="pageSize">The number of results to return per response. (optional, default to 25)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListShipmentsResponseBody)</returns>
-    public async Task<ListShipmentsResponseBody> ListShipments(HttpClient methodClient, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, DateTimeOffset? modifiedAtStart = default, DateTimeOffset? modifiedAtEnd = default, ShipmentStatus? shipmentStatus = default, ShipmentsSortBy? sortBy = default, SortDir? sortDir = default, string? batchId = default, string? tag = default, string? salesOrderId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListShipmentsResponseBody)</returns>
+    public async Task<ShipEngineResponse<ListShipmentsResponseBody>> ListShipments(HttpClient methodClient, DateTimeOffset? createdAtStart = default, DateTimeOffset? createdAtEnd = default, DateTimeOffset? modifiedAtStart = default, DateTimeOffset? modifiedAtEnd = default, ShipmentStatus? shipmentStatus = default, ShipmentsSortBy? sortBy = default, SortDir? sortDir = default, string? batchId = default, string? tag = default, string? salesOrderId = default, int? page = default, int? pageSize = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/shipments");
@@ -629,9 +634,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.ListShipments";
 
-        var result = await SendHttpRequestAsync<ListShipmentsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<ListShipmentsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<ListShipmentsResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -641,8 +647,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="parseShipmentRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseShipmentResponseBody)</returns>
-    public Task<ParseShipmentResponseBody> ParseShipment(ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ParseShipmentResponseBody)</returns>
+    public Task<ShipEngineResponse<ParseShipmentResponseBody>> ParseShipment(ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default)
     {
         return ParseShipment(_client, parseShipmentRequestBody, cancellationToken);
     }
@@ -655,8 +661,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="parseShipmentRequestBody">The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use. </param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ParseShipmentResponseBody)</returns>
-    public async Task<ParseShipmentResponseBody> ParseShipment(HttpClient methodClient, ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ParseShipmentResponseBody)</returns>
+    public async Task<ShipEngineResponse<ParseShipmentResponseBody>> ParseShipment(HttpClient methodClient, ParseShipmentRequestBody parseShipmentRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'parseShipmentRequestBody' is set
         if (parseShipmentRequestBody == null)
@@ -671,9 +677,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.ParseShipment";
 
-        var result = await SendHttpRequestAsync<ParseShipmentResponseBody>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<ParseShipmentResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<ParseShipmentResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -683,8 +690,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    public Task<TagShipmentResponseBody> ShipmentsListTags(string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    public Task<ShipEngineResponse<TagShipmentResponseBody>> ShipmentsListTags(string shipmentId, CancellationToken cancellationToken = default)
     {
         return ShipmentsListTags(_client, shipmentId, cancellationToken);
     }
@@ -697,8 +704,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    public async Task<TagShipmentResponseBody> ShipmentsListTags(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    public async Task<ShipEngineResponse<TagShipmentResponseBody>> ShipmentsListTags(HttpClient methodClient, string shipmentId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
@@ -713,9 +720,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.ShipmentsListTags";
 
-        var result = await SendHttpRequestAsync<TagShipmentResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<TagShipmentResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<TagShipmentResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -725,8 +733,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="updateShipmentsTagsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse</returns>
-    public Task<Object> ShipmentsUpdateTags(UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse</returns>
+    public Task<ShipEngineResponse<Object>> ShipmentsUpdateTags(UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default)
     {
         return ShipmentsUpdateTags(_client, updateShipmentsTagsRequestBody, cancellationToken);
     }
@@ -739,8 +747,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="updateShipmentsTagsRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse</returns>
-    public async Task<Object> ShipmentsUpdateTags(HttpClient methodClient, UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse</returns>
+    public async Task<ShipEngineResponse<Object>> ShipmentsUpdateTags(HttpClient methodClient, UpdateShipmentsTagsRequestBody updateShipmentsTagsRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'updateShipmentsTagsRequestBody' is set
         if (updateShipmentsTagsRequestBody == null)
@@ -755,9 +763,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.ShipmentsUpdateTags";
 
-        var result = await SendHttpRequestAsync<Object>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<Object>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<Object>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -768,8 +777,8 @@ public partial class ShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    public Task<TagShipmentResponseBody> TagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    public Task<ShipEngineResponse<TagShipmentResponseBody>> TagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
         return TagShipment(_client, shipmentId, tagName, cancellationToken);
     }
@@ -783,8 +792,8 @@ public partial class ShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TagShipmentResponseBody)</returns>
-    public async Task<TagShipmentResponseBody> TagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (TagShipmentResponseBody)</returns>
+    public async Task<ShipEngineResponse<TagShipmentResponseBody>> TagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
@@ -806,9 +815,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.TagShipment";
 
-        var result = await SendHttpRequestAsync<TagShipmentResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<TagShipmentResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<TagShipmentResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -819,8 +829,8 @@ public partial class ShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> UntagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> UntagShipment(string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
         return UntagShipment(_client, shipmentId, tagName, cancellationToken);
     }
@@ -834,8 +844,8 @@ public partial class ShipEngine
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UntagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> UntagShipment(HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null)
@@ -857,9 +867,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.UntagShipment";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -870,8 +881,8 @@ public partial class ShipEngine
     /// <param name="updateShipmentRequestBody"></param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (UpdateShipmentResponseBody)</returns>
-    public Task<UpdateShipmentResponseBody> UpdateShipment(UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (UpdateShipmentResponseBody)</returns>
+    public Task<ShipEngineResponse<UpdateShipmentResponseBody>> UpdateShipment(UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
     {
         return UpdateShipment(_client, updateShipmentRequestBody, shipmentId, cancellationToken);
     }
@@ -885,8 +896,8 @@ public partial class ShipEngine
     /// <param name="updateShipmentRequestBody"></param>
     /// <param name="shipmentId">Shipment ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (UpdateShipmentResponseBody)</returns>
-    public async Task<UpdateShipmentResponseBody> UpdateShipment(HttpClient methodClient, UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (UpdateShipmentResponseBody)</returns>
+    public async Task<ShipEngineResponse<UpdateShipmentResponseBody>> UpdateShipment(HttpClient methodClient, UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'updateShipmentRequestBody' is set
         if (updateShipmentRequestBody == null)
@@ -908,9 +919,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ShipmentsApi.UpdateShipment";
 
-        var result = await SendHttpRequestAsync<UpdateShipmentResponseBody>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<UpdateShipmentResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<UpdateShipmentResponseBody>(data, response.StatusCode, headers);
     }
 
 }

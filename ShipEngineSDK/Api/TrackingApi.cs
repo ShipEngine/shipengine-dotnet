@@ -32,8 +32,8 @@ public partial interface IShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    Task<GetTrackingLogResponseBody> GetTrackingLog(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetTrackingLogResponseBody)</returns>
+    Task<ShipEngineResponse<GetTrackingLogResponseBody>> GetTrackingLog(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Tracking Information Retrieve package tracking information
@@ -44,8 +44,8 @@ public partial interface IShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetTrackingLogResponseBody)</returns>
+    Task<ShipEngineResponse<GetTrackingLogResponseBody>> GetTrackingLog(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Start Tracking a Package Allows you to subscribe to tracking updates for a package. You specify the carrier_code and tracking_number of the package, and receive notifications via webhooks whenever the shipping status changes. 
@@ -55,8 +55,8 @@ public partial interface IShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StartTracking(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> StartTracking(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Start Tracking a Package Allows you to subscribe to tracking updates for a package. You specify the carrier_code and tracking_number of the package, and receive notifications via webhooks whenever the shipping status changes. 
@@ -67,8 +67,8 @@ public partial interface IShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StartTracking(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> StartTracking(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Stop Tracking a Package Unsubscribe from tracking updates for a package.
@@ -78,8 +78,8 @@ public partial interface IShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StopTracking(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> StopTracking(string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Stop Tracking a Package Unsubscribe from tracking updates for a package.
@@ -90,8 +90,8 @@ public partial interface IShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> StopTracking(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> StopTracking(HttpClient methodClient, string? carrierCode, string? trackingNumber, CancellationToken cancellationToken = default);
 
 }
 
@@ -108,8 +108,8 @@ public partial class ShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    public Task<GetTrackingLogResponseBody> GetTrackingLog(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetTrackingLogResponseBody)</returns>
+    public Task<ShipEngineResponse<GetTrackingLogResponseBody>> GetTrackingLog(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
         return GetTrackingLog(_client, carrierCode, trackingNumber, cancellationToken);
     }
@@ -123,8 +123,8 @@ public partial class ShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetTrackingLogResponseBody)</returns>
-    public async Task<GetTrackingLogResponseBody> GetTrackingLog(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetTrackingLogResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetTrackingLogResponseBody>> GetTrackingLog(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tracking");
@@ -140,9 +140,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TrackingApi.GetTrackingLog";
 
-        var result = await SendHttpRequestAsync<GetTrackingLogResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetTrackingLogResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetTrackingLogResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -153,8 +154,8 @@ public partial class ShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> StartTracking(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> StartTracking(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
         return StartTracking(_client, carrierCode, trackingNumber, cancellationToken);
     }
@@ -168,8 +169,8 @@ public partial class ShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> StartTracking(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> StartTracking(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tracking/start");
@@ -185,9 +186,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TrackingApi.StartTracking";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -198,8 +200,8 @@ public partial class ShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> StopTracking(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> StopTracking(string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
         return StopTracking(_client, carrierCode, trackingNumber, cancellationToken);
     }
@@ -213,8 +215,8 @@ public partial class ShipEngine
     /// <param name="carrierCode">A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  (optional)</param>
     /// <param name="trackingNumber">The tracking number associated with a shipment (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> StopTracking(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> StopTracking(HttpClient methodClient, string? carrierCode = default, string? trackingNumber = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tracking/stop");
@@ -230,9 +232,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TrackingApi.StopTracking";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
     }
 
 }

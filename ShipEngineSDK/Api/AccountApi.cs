@@ -31,8 +31,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="createAccountSettingsImageRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    Task<GetAccountSettingsImagesResponseBody> CreateAccountImage(CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> CreateAccountImage(CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create an Account Image Create an Account Image
@@ -42,8 +42,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createAccountSettingsImageRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    Task<GetAccountSettingsImagesResponseBody> CreateAccountImage(HttpClient methodClient, CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> CreateAccountImage(HttpClient methodClient, CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Account Image By Id Delete Account Image By Id
@@ -52,8 +52,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteAccountImageById(string labelImageId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> DeleteAccountImageById(string labelImageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Account Image By Id Delete Account Image By Id
@@ -63,8 +63,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteAccountImageById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> DeleteAccountImageById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Account Image By ID Retrieve information for an account image.
@@ -73,8 +73,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    Task<GetAccountSettingsImagesResponseBody> GetAccountSettingsImagesById(string labelImageId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> GetAccountSettingsImagesById(string labelImageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Account Image By ID Retrieve information for an account image.
@@ -84,8 +84,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    Task<GetAccountSettingsImagesResponseBody> GetAccountSettingsImagesById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> GetAccountSettingsImagesById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Account Images List all account images for the ShipEngine account
@@ -93,8 +93,8 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListAccountSettingsImagesResponseBody)</returns>
-    Task<ListAccountSettingsImagesResponseBody> ListAccountImages(CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListAccountSettingsImagesResponseBody)</returns>
+    Task<ShipEngineResponse<ListAccountSettingsImagesResponseBody>> ListAccountImages(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Account Images List all account images for the ShipEngine account
@@ -103,8 +103,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListAccountSettingsImagesResponseBody)</returns>
-    Task<ListAccountSettingsImagesResponseBody> ListAccountImages(HttpClient methodClient, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListAccountSettingsImagesResponseBody)</returns>
+    Task<ShipEngineResponse<ListAccountSettingsImagesResponseBody>> ListAccountImages(HttpClient methodClient, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Account Settings List all account settings for the ShipEngine account
@@ -112,8 +112,8 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsResponseBody)</returns>
-    Task<GetAccountSettingsResponseBody> ListAccountSettings(CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsResponseBody)</returns>
+    Task<ShipEngineResponse<GetAccountSettingsResponseBody>> ListAccountSettings(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Account Settings List all account settings for the ShipEngine account
@@ -122,8 +122,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsResponseBody)</returns>
-    Task<GetAccountSettingsResponseBody> ListAccountSettings(HttpClient methodClient, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsResponseBody)</returns>
+    Task<ShipEngineResponse<GetAccountSettingsResponseBody>> ListAccountSettings(HttpClient methodClient, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Account Image By ID Update information for an account image.
@@ -133,8 +133,8 @@ public partial interface IShipEngine
     /// <param name="updateAccountSettingsImageRequestBody"></param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateAccountSettingsImagesById(UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> UpdateAccountSettingsImagesById(UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update Account Image By ID Update information for an account image.
@@ -145,8 +145,8 @@ public partial interface IShipEngine
     /// <param name="updateAccountSettingsImageRequestBody"></param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateAccountSettingsImagesById(HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> UpdateAccountSettingsImagesById(HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default);
 
 }
 
@@ -162,8 +162,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="createAccountSettingsImageRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    public Task<GetAccountSettingsImagesResponseBody> CreateAccountImage(CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    public Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> CreateAccountImage(CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
     {
         return CreateAccountImage(_client, createAccountSettingsImageRequestBody, cancellationToken);
     }
@@ -176,8 +176,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createAccountSettingsImageRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    public async Task<GetAccountSettingsImagesResponseBody> CreateAccountImage(HttpClient methodClient, CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> CreateAccountImage(HttpClient methodClient, CreateAccountSettingsImageRequestBody createAccountSettingsImageRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'createAccountSettingsImageRequestBody' is set
         if (createAccountSettingsImageRequestBody == null)
@@ -192,9 +192,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.CreateAccountImage";
 
-        var result = await SendHttpRequestAsync<GetAccountSettingsImagesResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetAccountSettingsImagesResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetAccountSettingsImagesResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -204,8 +205,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> DeleteAccountImageById(string labelImageId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> DeleteAccountImageById(string labelImageId, CancellationToken cancellationToken = default)
     {
         return DeleteAccountImageById(_client, labelImageId, cancellationToken);
     }
@@ -218,8 +219,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteAccountImageById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> DeleteAccountImageById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'labelImageId' is set
         if (labelImageId == null)
@@ -234,9 +235,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.DeleteAccountImageById";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -246,8 +248,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    public Task<GetAccountSettingsImagesResponseBody> GetAccountSettingsImagesById(string labelImageId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    public Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> GetAccountSettingsImagesById(string labelImageId, CancellationToken cancellationToken = default)
     {
         return GetAccountSettingsImagesById(_client, labelImageId, cancellationToken);
     }
@@ -260,8 +262,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsImagesResponseBody)</returns>
-    public async Task<GetAccountSettingsImagesResponseBody> GetAccountSettingsImagesById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsImagesResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetAccountSettingsImagesResponseBody>> GetAccountSettingsImagesById(HttpClient methodClient, string labelImageId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'labelImageId' is set
         if (labelImageId == null)
@@ -276,9 +278,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.GetAccountSettingsImagesById";
 
-        var result = await SendHttpRequestAsync<GetAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetAccountSettingsImagesResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -287,8 +290,8 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListAccountSettingsImagesResponseBody)</returns>
-    public Task<ListAccountSettingsImagesResponseBody> ListAccountImages(CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListAccountSettingsImagesResponseBody)</returns>
+    public Task<ShipEngineResponse<ListAccountSettingsImagesResponseBody>> ListAccountImages(CancellationToken cancellationToken = default)
     {
         return ListAccountImages(_client, cancellationToken);
     }
@@ -300,8 +303,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListAccountSettingsImagesResponseBody)</returns>
-    public async Task<ListAccountSettingsImagesResponseBody> ListAccountImages(HttpClient methodClient, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListAccountSettingsImagesResponseBody)</returns>
+    public async Task<ShipEngineResponse<ListAccountSettingsImagesResponseBody>> ListAccountImages(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/account/settings/images");
@@ -309,9 +312,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.ListAccountImages";
 
-        var result = await SendHttpRequestAsync<ListAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<ListAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<ListAccountSettingsImagesResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -320,8 +324,8 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsResponseBody)</returns>
-    public Task<GetAccountSettingsResponseBody> ListAccountSettings(CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsResponseBody)</returns>
+    public Task<ShipEngineResponse<GetAccountSettingsResponseBody>> ListAccountSettings(CancellationToken cancellationToken = default)
     {
         return ListAccountSettings(_client, cancellationToken);
     }
@@ -333,8 +337,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetAccountSettingsResponseBody)</returns>
-    public async Task<GetAccountSettingsResponseBody> ListAccountSettings(HttpClient methodClient, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetAccountSettingsResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetAccountSettingsResponseBody>> ListAccountSettings(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/account/settings");
@@ -342,9 +346,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.ListAccountSettings";
 
-        var result = await SendHttpRequestAsync<GetAccountSettingsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<GetAccountSettingsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<GetAccountSettingsResponseBody>(data, response.StatusCode, headers);
     }
 
     /// <summary>
@@ -355,8 +360,8 @@ public partial class ShipEngine
     /// <param name="updateAccountSettingsImageRequestBody"></param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> UpdateAccountSettingsImagesById(UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> UpdateAccountSettingsImagesById(UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
     {
         return UpdateAccountSettingsImagesById(_client, updateAccountSettingsImageRequestBody, labelImageId, cancellationToken);
     }
@@ -370,8 +375,8 @@ public partial class ShipEngine
     /// <param name="updateAccountSettingsImageRequestBody"></param>
     /// <param name="labelImageId">Label Image Id</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateAccountSettingsImagesById(HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> UpdateAccountSettingsImagesById(HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'updateAccountSettingsImageRequestBody' is set
         if (updateAccountSettingsImageRequestBody == null)
@@ -393,9 +398,10 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.UpdateAccountSettingsImagesById";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
+        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
+            StringComparer.InvariantCultureIgnoreCase);
+        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
     }
 
 }

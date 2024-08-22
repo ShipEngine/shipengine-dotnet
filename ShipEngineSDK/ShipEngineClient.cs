@@ -226,6 +226,13 @@ namespace ShipEngineSDK
         /// <returns></returns>
         public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config, CancellationToken cancellationToken)
         {
+            (T data,  HttpResponseMessage message) = await GetHttpResponse<T>(method, path, jsonContent, client, config, cancellationToken);
+            return data;
+        }
+
+        public async Task<(T, HttpResponseMessage)> GetHttpResponse<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config,
+            CancellationToken cancellationToken)
+        {
             int retry = 0;
 
             HttpResponseMessage? response = null;
@@ -239,8 +246,7 @@ namespace ShipEngineSDK
                     response = await client.SendAsync(request, cancellationToken);
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
-
-                    return deserializedResult;
+                    return (deserializedResult, response);
                 }
                 catch (ShipEngineException e)
                 {
