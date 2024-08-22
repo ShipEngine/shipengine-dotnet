@@ -86,10 +86,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TokensApi.TokensGetEphemeralToken";
 
-        var (data, response) = await GetHttpResponse<TokensGetEphemeralTokenResponseBodyYaml>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<TokensGetEphemeralTokenResponseBodyYaml>(data, response.StatusCode, headers);
+        return await GetHttpResponse<TokensGetEphemeralTokenResponseBodyYaml>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

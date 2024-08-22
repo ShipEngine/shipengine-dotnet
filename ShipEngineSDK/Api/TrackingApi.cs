@@ -140,10 +140,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TrackingApi.GetTrackingLog";
 
-        var (data, response) = await GetHttpResponse<GetTrackingLogResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetTrackingLogResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetTrackingLogResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -186,10 +183,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TrackingApi.StartTracking";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -232,10 +226,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TrackingApi.StopTracking";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

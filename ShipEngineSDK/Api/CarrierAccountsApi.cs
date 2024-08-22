@@ -171,10 +171,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.ConnectCarrier";
 
-        var (data, response) = await GetHttpResponse<ConnectCarrierResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ConnectCarrierResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ConnectCarrierResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -223,10 +220,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.DisconnectCarrier";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -275,10 +269,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.GetCarrierSettings";
 
-        var (data, response) = await GetHttpResponse<GetCarrierSettingsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetCarrierSettingsResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetCarrierSettingsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -336,10 +327,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarrierAccountsApi.UpdateCarrierSettings";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

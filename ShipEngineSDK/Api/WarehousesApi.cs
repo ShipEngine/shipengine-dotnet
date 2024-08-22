@@ -196,10 +196,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.CreateWarehouse";
 
-        var (data, response) = await GetHttpResponse<CreateWarehouseResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateWarehouseResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateWarehouseResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -239,10 +236,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.DeleteWarehouse";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -282,10 +276,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.GetWarehouseById";
 
-        var (data, response) = await GetHttpResponse<GetWarehouseByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetWarehouseByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetWarehouseByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -316,10 +307,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.ListWarehouses";
 
-        var (data, response) = await GetHttpResponse<ListWarehousesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListWarehousesResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListWarehousesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -368,10 +356,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.UpdateWarehouse";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -420,10 +405,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WarehousesApi.UpdateWarehouseSettings";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

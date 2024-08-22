@@ -148,10 +148,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.AddFundsToInsurance";
 
-        var (data, response) = await GetHttpResponse<AddFundsToInsuranceResponseBody>(HttpMethods.Patch, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<AddFundsToInsuranceResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<AddFundsToInsuranceResponseBody>(HttpMethods.Patch, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -191,10 +188,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.ConnectInsurer";
 
-        var (data, response) = await GetHttpResponse<Object>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<Object>(data, response.StatusCode, headers);
+        return await GetHttpResponse<Object>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -225,10 +219,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.DisconnectInsurer";
 
-        var (data, response) = await GetHttpResponse<Object>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<Object>(data, response.StatusCode, headers);
+        return await GetHttpResponse<Object>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -259,10 +250,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "InsuranceApi.GetInsuranceBalance";
 
-        var (data, response) = await GetHttpResponse<GetInsuranceBalanceResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetInsuranceBalanceResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetInsuranceBalanceResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

@@ -187,11 +187,11 @@ namespace ShipEngineSDK
         /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
         /// 429 rate limit exceeded errors and subsequent retry logic.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="method"></param>
+        /// <typeparam name="T">Type of data to return</typeparam>
+        /// <param name="method">Http method for the request</param>
         /// <param name="requestOptions">Options for the request</param>
-        /// <param name="client"></param>
-        /// <param name="config"></param>
+        /// <param name="client">Client to use for the request</param>
+        /// <param name="config">Extra configuration for the request</param>
         /// <param name="cancellationToken">Token that can be used to cancel the request</param>
         /// <returns></returns>
         public virtual Task<T> SendHttpRequestAsync<T>(HttpMethod method, RequestOptions requestOptions,
@@ -202,12 +202,12 @@ namespace ShipEngineSDK
         /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
         /// 429 rate limit exceeded errors and subsequent retry logic.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="method"></param>
-        /// <param name="path"></param>
-        /// <param name="jsonContent"></param>
-        /// <param name="client"></param>
-        /// <param name="config"></param>
+        /// <typeparam name="T">Type of data to return</typeparam>
+        /// <param name="method">Http method for the request</param>
+        /// <param name="path">Path of the request</param>
+        /// <param name="jsonContent">Content to send to the server, already serialized to JSON</param>
+        /// <param name="client">Client to use for the request</param>
+        /// <param name="config">Extra configuration for the request</param>
         /// <returns></returns>
         public virtual Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config) =>
             SendHttpRequestAsync<T>(method, path, jsonContent, client, config, CancellationToken);
@@ -216,21 +216,33 @@ namespace ShipEngineSDK
         /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
         /// 429 rate limit exceeded errors and subsequent retry logic.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="method"></param>
-        /// <param name="path"></param>
-        /// <param name="jsonContent"></param>
-        /// <param name="client"></param>
-        /// <param name="config"></param>
+        /// <typeparam name="T">Type of data to return</typeparam>
+        /// <param name="method">Http method for the request</param>
+        /// <param name="path">Path of the request</param>
+        /// <param name="jsonContent">Content to send to the server, already serialized to JSON</param>
+        /// <param name="client">Client to use for the request</param>
+        /// <param name="config">Extra configuration for the request</param>
         /// <param name="cancellationToken">Token that can be used to cancel the request</param>
         /// <returns></returns>
         public virtual async Task<T> SendHttpRequestAsync<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config, CancellationToken cancellationToken)
         {
-            (T data,  HttpResponseMessage message) = await GetHttpResponse<T>(method, path, jsonContent, client, config, cancellationToken);
-            return data;
+            var response = await GetHttpResponse<T>(method, path, jsonContent, client, config, cancellationToken);
+            return response.Data;
         }
 
-        public async Task<(T, HttpResponseMessage)> GetHttpResponse<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config,
+        /// <summary>
+        /// Builds and sends an HTTP Request to the ShipEngine Client, has special logic for handling
+        /// 429 rate limit exceeded errors and subsequent retry logic.
+        /// </summary>
+        /// <typeparam name="T">Type of data to return</typeparam>
+        /// <param name="method">Http method for the request</param>
+        /// <param name="path">Path of the request</param>
+        /// <param name="jsonContent">Content to send to the server, already serialized to JSON</param>
+        /// <param name="client">Client to use for the request</param>
+        /// <param name="config">Extra configuration for the request</param>
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        /// <returns></returns>
+        public async Task<ShipEngineResponse<T>> GetHttpResponse<T>(HttpMethod method, string path, string? jsonContent, HttpClient client, Config config,
             CancellationToken cancellationToken)
         {
             int retry = 0;
@@ -246,7 +258,7 @@ namespace ShipEngineSDK
                     response = await client.SendAsync(request, cancellationToken);
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);
-                    return (deserializedResult, response);
+                    return new(deserializedResult, response);
                 }
                 catch (ShipEngineException e)
                 {

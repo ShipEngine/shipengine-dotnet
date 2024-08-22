@@ -238,10 +238,7 @@ namespace {{packageName}};
 
         requestOptions.Operation = "{{classname}}.{{operationId}}";
 
-        var (data, response) = await GetHttpResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(HttpMethods.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(data, response.StatusCode, headers);
+        return await GetHttpResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>(HttpMethods.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     {{/operation}}

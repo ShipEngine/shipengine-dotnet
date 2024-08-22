@@ -162,10 +162,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.DeleteScheduledPickup";
 
-        var (data, response) = await GetHttpResponse<DeletePickupByIdResponseBody>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<DeletePickupByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<DeletePickupByIdResponseBody>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -205,10 +202,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.GetPickupById";
 
-        var (data, response) = await GetHttpResponse<GetPickupByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetPickupByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetPickupByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -275,10 +269,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.ListScheduledPickups";
 
-        var (data, response) = await GetHttpResponse<GetPickupsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetPickupsResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetPickupsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -318,10 +309,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackagePickupsApi.SchedulePickup";
 
-        var (data, response) = await GetHttpResponse<SchedulePickupResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<SchedulePickupResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<SchedulePickupResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

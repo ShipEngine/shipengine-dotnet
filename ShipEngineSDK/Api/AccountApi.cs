@@ -192,10 +192,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.CreateAccountImage";
 
-        var (data, response) = await GetHttpResponse<GetAccountSettingsImagesResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetAccountSettingsImagesResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetAccountSettingsImagesResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -235,10 +232,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.DeleteAccountImageById";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -278,10 +272,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.GetAccountSettingsImagesById";
 
-        var (data, response) = await GetHttpResponse<GetAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetAccountSettingsImagesResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -312,10 +303,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.ListAccountImages";
 
-        var (data, response) = await GetHttpResponse<ListAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListAccountSettingsImagesResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListAccountSettingsImagesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -346,10 +334,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.ListAccountSettings";
 
-        var (data, response) = await GetHttpResponse<GetAccountSettingsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetAccountSettingsResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetAccountSettingsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -398,10 +383,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AccountApi.UpdateAccountSettingsImagesById";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

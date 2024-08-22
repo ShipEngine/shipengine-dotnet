@@ -173,10 +173,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.CreateWebhook";
 
-        var (data, response) = await GetHttpResponse<CreateWebhookResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateWebhookResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateWebhookResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -216,10 +213,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.DeleteWebhook";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -259,10 +253,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.GetWebhookById";
 
-        var (data, response) = await GetHttpResponse<GetWebhookByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetWebhookByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetWebhookByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -293,10 +284,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.ListWebhooks";
 
-        var (data, response) = await GetHttpResponse<List<Webhook>>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<List<Webhook>>(data, response.StatusCode, headers);
+        return await GetHttpResponse<List<Webhook>>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -345,10 +333,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.UpdateWebhook";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

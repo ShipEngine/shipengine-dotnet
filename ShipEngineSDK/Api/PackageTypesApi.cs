@@ -173,10 +173,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.CreatePackageType";
 
-        var (data, response) = await GetHttpResponse<CreatePackageTypeResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreatePackageTypeResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreatePackageTypeResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -216,10 +213,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.DeletePackageType";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -259,10 +253,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.GetPackageTypeById";
 
-        var (data, response) = await GetHttpResponse<GetPackageTypeByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetPackageTypeByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetPackageTypeByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -293,10 +284,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.ListPackageTypes";
 
-        var (data, response) = await GetHttpResponse<ListPackageTypesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListPackageTypesResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListPackageTypesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -345,10 +333,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "PackageTypesApi.UpdatePackageType";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

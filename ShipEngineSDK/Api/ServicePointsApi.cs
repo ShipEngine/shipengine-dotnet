@@ -132,10 +132,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ServicePointsApi.ServicePointsGetById";
 
-        var (data, response) = await GetHttpResponse<GetServicePointByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetServicePointByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetServicePointByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -175,10 +172,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ServicePointsApi.ServicePointsList";
 
-        var (data, response) = await GetHttpResponse<ListServicePointsResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListServicePointsResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListServicePointsResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

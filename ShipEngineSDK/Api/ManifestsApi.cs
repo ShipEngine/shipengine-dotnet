@@ -168,10 +168,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.CreateManifest";
 
-        var (data, response) = await GetHttpResponse<CreateManifestResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateManifestResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateManifestResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -211,10 +208,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.GetManifestById";
 
-        var (data, response) = await GetHttpResponse<GetManifestByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetManifestByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetManifestByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -254,10 +248,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.GetManifestRequestById";
 
-        var (data, response) = await GetHttpResponse<CreateManifestResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateManifestResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateManifestResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -342,10 +333,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "ManifestsApi.ListManifests";
 
-        var (data, response) = await GetHttpResponse<ListManifestsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListManifestsResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListManifestsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

@@ -293,10 +293,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.CreateLabel";
 
-        var (data, response) = await GetHttpResponse<CreateLabelResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateLabelResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateLabelResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -345,10 +342,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.CreateLabelFromRate";
 
-        var (data, response) = await GetHttpResponse<CreateLabelFromRateResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateLabelFromRateResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateLabelFromRateResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -397,10 +391,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.CreateLabelFromShipment";
 
-        var (data, response) = await GetHttpResponse<CreateLabelFromShipmentResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateLabelFromShipmentResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateLabelFromShipmentResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -449,10 +440,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.CreateReturnLabel";
 
-        var (data, response) = await GetHttpResponse<CreateReturnLabelResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateReturnLabelResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateReturnLabelResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -498,10 +486,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.GetLabelByExternalShipmentId";
 
-        var (data, response) = await GetHttpResponse<GetLabelByExternalShipmentIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetLabelByExternalShipmentIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetLabelByExternalShipmentIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -547,10 +532,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.GetLabelById";
 
-        var (data, response) = await GetHttpResponse<GetLabelByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetLabelByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetLabelByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -590,10 +572,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.GetTrackingLogFromLabel";
 
-        var (data, response) = await GetHttpResponse<GetTrackingLogFromLabelResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetTrackingLogFromLabelResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetTrackingLogFromLabelResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -708,10 +687,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.ListLabels";
 
-        var (data, response) = await GetHttpResponse<ListLabelsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListLabelsResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListLabelsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -751,10 +727,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "LabelsApi.VoidLabel";
 
-        var (data, response) = await GetHttpResponse<VoidLabelResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<VoidLabelResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<VoidLabelResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

@@ -152,10 +152,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.CalculateRates";
 
-        var (data, response) = await GetHttpResponse<CalculateRatesResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CalculateRatesResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CalculateRatesResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -195,10 +192,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.CompareBulkRates";
 
-        var (data, response) = await GetHttpResponse<List<BulkRate>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<List<BulkRate>>(data, response.StatusCode, headers);
+        return await GetHttpResponse<List<BulkRate>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -238,10 +232,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.EstimateRates";
 
-        var (data, response) = await GetHttpResponse<List<RateEstimate>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<List<RateEstimate>>(data, response.StatusCode, headers);
+        return await GetHttpResponse<List<RateEstimate>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -281,10 +272,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "RatesApi.GetRateById";
 
-        var (data, response) = await GetHttpResponse<GetRateByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetRateByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetRateByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

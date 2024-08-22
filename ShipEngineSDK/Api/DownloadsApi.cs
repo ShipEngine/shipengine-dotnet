@@ -127,10 +127,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "DownloadsApi.DownloadFile";
 
-        var (data, response) = await GetHttpResponse<System.IO.Stream>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<System.IO.Stream>(data, response.StatusCode, headers);
+        return await GetHttpResponse<System.IO.Stream>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

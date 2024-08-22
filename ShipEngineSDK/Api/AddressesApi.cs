@@ -110,10 +110,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AddressesApi.ParseAddress";
 
-        var (data, response) = await GetHttpResponse<ParseAddressResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ParseAddressResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ParseAddressResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -153,10 +150,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "AddressesApi.ValidateAddress";
 
-        var (data, response) = await GetHttpResponse<List<AddressValidationResult>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<List<AddressValidationResult>>(data, response.StatusCode, headers);
+        return await GetHttpResponse<List<AddressValidationResult>>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

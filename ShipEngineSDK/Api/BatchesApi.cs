@@ -307,10 +307,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.AddToBatch";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -350,10 +347,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.CreateBatch";
 
-        var (data, response) = await GetHttpResponse<CreateBatchResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<CreateBatchResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<CreateBatchResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -393,10 +387,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.DeleteBatch";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -436,10 +427,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.GetBatchByExternalId";
 
-        var (data, response) = await GetHttpResponse<GetBatchByExternalIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetBatchByExternalIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetBatchByExternalIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -479,10 +467,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.GetBatchById";
 
-        var (data, response) = await GetHttpResponse<GetBatchByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<GetBatchByIdResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<GetBatchByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -534,10 +519,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.ListBatchErrors";
 
-        var (data, response) = await GetHttpResponse<ListBatchErrorsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListBatchErrorsResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListBatchErrorsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -604,10 +586,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.ListBatches";
 
-        var (data, response) = await GetHttpResponse<ListBatchesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<ListBatchesResponseBody>(data, response.StatusCode, headers);
+        return await GetHttpResponse<ListBatchesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -656,10 +635,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.ProcessBatch";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -708,10 +684,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.RemoveFromBatch";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -751,10 +724,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "BatchesApi.UpdateBatch";
 
-        var (data, response) = await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
-        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value.FirstOrDefault(),
-            StringComparer.InvariantCultureIgnoreCase);
-        return new ShipEngineResponse<string>(data, response.StatusCode, headers);
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }
