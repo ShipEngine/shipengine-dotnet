@@ -184,3 +184,9 @@ Updated nuget package dependencies
 ## Changed
 
 - Make setters on readonly properties public
+
+## 3.0.0-beta.10
+
+## Changed
+
+- Allow requests to be modified before being sent
