@@ -1,5 +1,6 @@
 using ShipEngineSDK.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -19,6 +20,20 @@ namespace ShipEngineSDK
     /// </summary>
     public class ShipEngineClient
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ShipEngineClient() { }
+
+        /// <summary>
+        /// Constructor that takes a collection of request modifiers to apply to the request before it is sent
+        /// </summary>
+        /// <param name="requestModifiers">Collection of modifiers to be used for each request</param>
+        protected ShipEngineClient(IEnumerable<Action<HttpRequestMessage>> requestModifiers)
+        {
+            this.requestModifiers = requestModifiers;
+        }
+
         /// <summary>
         /// Options for serializing the method call params to JSON.
         /// A separate inline setting is used for deserializing the response
@@ -46,9 +61,13 @@ namespace ShipEngineSDK
         public CancellationToken CancellationToken { get; set; }
 
         /// <summary>
-        /// Modifies the client request before it is sent
+        /// Collections of request modifiers to apply to the request before it is sent
         /// </summary>
-        public Action<HttpRequestMessage>? ModifyRequest { get; set; }
+        /// <remarks>
+        /// This is a collection instead of a single action so that modifiers can be added at multiple levels.
+        /// For example, a consumer could add a modifier at the client level, and then add another at the method level.
+        /// </remarks>
+        protected IEnumerable<Action<HttpRequestMessage>> requestModifiers = [];
 
         /// <summary>
         /// Sets the HttpClient User agent, the json media type, and the API key to be used
@@ -209,7 +228,10 @@ namespace ShipEngineSDK
                 try
                 {
                     var request = BuildRequest(method, path, jsonContent);
-                    ModifyRequest?.Invoke(request);
+                    foreach (var modifier in requestModifiers ?? [])
+                    {
+                        modifier?.Invoke(request);
+                    }
                     response = await client.SendAsync(request, cancellationToken);
 
                     var deserializedResult = await DeserializedResultOrThrow<T>(response);

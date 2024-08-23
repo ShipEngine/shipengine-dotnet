@@ -1,10 +1,13 @@
 namespace ShipEngineTest
 {
+    using Moq;
+    using Moq.Protected;
     using ShipEngineSDK;
     using ShipEngineSDK.VoidLabelWithLabelId;
     using System;
     using System.Linq;
     using System.Net.Http;
+    using System.Threading;
     using System.Threading.Tasks;
     using Xunit;
 
@@ -173,7 +176,7 @@ namespace ShipEngineTest
             var mockShipEngineFixture = new MockShipEngineFixture(config);
             var shipengine = mockShipEngineFixture.ShipEngine;
 
-            // this scenario is similar to unparseable JSON - except that it is valid JSON
+            // this scenario is similar to unparsable JSON - except that it is valid JSON
             var responseBody = @"null";
             var requestId = mockShipEngineFixture.StubRequest(HttpMethod.Post, "/v1/something", System.Net.HttpStatusCode.OK,
                 responseBody);
@@ -197,7 +200,7 @@ namespace ShipEngineTest
             var mockShipEngineFixture = new MockShipEngineFixture(config);
             var shipengine = mockShipEngineFixture.ShipEngine;
 
-            // this scenario is similar to unparseable JSON - except that it is valid JSON
+            // this scenario is similar to unparsable JSON - except that it is valid JSON
             var responseBody = @"The Response";
             mockShipEngineFixture.StubRequest(HttpMethod.Delete, "/v1/something", System.Net.HttpStatusCode.OK,
                 responseBody);
@@ -214,14 +217,147 @@ namespace ShipEngineTest
             var mockShipEngineFixture = new MockShipEngineFixture(config);
             var shipengine = mockShipEngineFixture.ShipEngine;
 
-            // this scenario is similar to unparseable JSON - except that it is valid JSON
-            string responseBody = null;
-            mockShipEngineFixture.StubRequest(HttpMethod.Delete, "/v1/something", System.Net.HttpStatusCode.OK,
-                responseBody);
+            // this scenario is similar to unparsable JSON - except that it is valid JSON
+            mockShipEngineFixture.StubRequest(HttpMethod.Delete, "/v1/something", System.Net.HttpStatusCode.OK, null);
             var result = await shipengine.SendHttpRequestAsync<string>(HttpMethod.Delete, "/v1/something", "",
                 mockShipEngineFixture.HttpClient, config);
 
-            Assert.Null(responseBody);
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void WithRequestModifierDoesNotCreateNewHttpClient()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var httpClient = mockShipEngineFixture.HttpClient;
+
+            var originalShipEngine = mockShipEngineFixture.ShipEngine;
+
+            var newShipEngine = originalShipEngine.WithRequestModifier(x => x.Headers.Add("X-Test-Header", "Test"));
+
+            Assert.Same(config, newShipEngine._config);
+            Assert.Same(httpClient, newShipEngine._client);
+            Assert.NotSame(originalShipEngine, newShipEngine);
+        }
+
+        [Fact]
+        public void ModifyRequestDoesNotCreateNewHttpClientNorShipEngineInstance()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var httpClient = mockShipEngineFixture.HttpClient;
+
+            var originalShipEngine = mockShipEngineFixture.ShipEngine;
+
+            var newShipEngine = originalShipEngine.ModifyRequest(x => x.Headers.Add("X-Test-Header", "Test"));
+
+            Assert.Same(config, newShipEngine._config);
+            Assert.Same(httpClient, newShipEngine._client);
+            Assert.Same(originalShipEngine, newShipEngine);
+        }
+
+        [Fact]
+        public async Task WithSingleRequestModifierAppliesBeforeRequest()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine.WithRequestModifier(x => x.Headers.Add("X-Test-Header", "Test"));
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/foo");
+
+            await shipengine.SendHttpRequestAsync<string>(HttpMethod.Get, "/foo", "", mockShipEngineFixture.HttpClient, config);
+
+            mockShipEngineFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m => m.Headers.Any(x => x.Key == "X-Test-Header")),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public async Task WithRequestModifierDoesNotAffectOriginalClient()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine;
+            var modifiedShipEngine = shipengine.WithRequestModifier(x => x.Headers.Add("X-Test-Header", "Test"));
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/foo");
+
+            await shipengine.SendHttpRequestAsync<string>(HttpMethod.Get, "/foo", "", mockShipEngineFixture.HttpClient, config);
+
+            mockShipEngineFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m => !m.Headers.Any(x => x.Key == "X-Test-Header")),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public async Task WithTwoRequestModifierAppliesBeforeRequest()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine
+                .WithRequestModifier(x =>
+                {
+                    x.Headers.Add("X-Test-Header", "Test 1");
+                    x.Headers.Add("X-Second-Header", "Test 2");
+                })
+                .WithRequestModifier(x => x.Headers.Remove("X-Test-Header"));
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/foo");
+
+            await shipengine.SendHttpRequestAsync<string>(HttpMethod.Get, "/foo", "", mockShipEngineFixture.HttpClient, config);
+
+            mockShipEngineFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Any(x => x.Key == "X-Test-Header") &&
+                        m.Headers.Any(x => x.Key == "X-Second-Header")),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public async Task ModifyRequestAppliesBeforeRequest()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine.ModifyRequest(x => x.Headers.Add("X-Test-Header", "Test"));
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/foo");
+
+            await shipengine.SendHttpRequestAsync<string>(HttpMethod.Get, "/foo", "", mockShipEngineFixture.HttpClient, config);
+
+            mockShipEngineFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m => m.Headers.Any(x => x.Key == "X-Test-Header")),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public async Task ModifyRequestReplacesExistingModifiersAppliesBeforeRequest()
+        {
+            var config = new Config(apiKey: "test", timeout: TimeSpan.FromSeconds(0.5));
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+            var shipengine = mockShipEngineFixture.ShipEngine
+                .WithRequestModifier(x => x.Headers.Add("X-Test-Header", "Test 1"))
+                .ModifyRequest(x => x.Headers.Add("X-Second-Header", "Test 2"));
+            mockShipEngineFixture.StubRequest(HttpMethod.Get, "/foo");
+
+            await shipengine.SendHttpRequestAsync<string>(HttpMethod.Get, "/foo", "", mockShipEngineFixture.HttpClient, config);
+
+            mockShipEngineFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Headers.Any(x => x.Key == "X-Second-Header") &&
+                        !m.Headers.Any(x => x.Key == "X-Test-Header")),
+                    ItExpr.IsAny<CancellationToken>());
         }
     }
 }

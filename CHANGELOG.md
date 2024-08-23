@@ -168,3 +168,12 @@ Fixed handling of No Content responses
 ### Added
 
 - Added basic ability to modify the HttpClient in a request
+
+## 2.3.0
+
+### Added
+
+- Added ability to scope request modifiers by using the `.WithRequestModifier()` method instead of the `.ModifyRequest` property.
+  This will allow consumers to modify a single request without affecting any other consumers of the client. It also allows for
+  multiple modifiers to be added.  For example, a modifier could be added at the global level that applies to all requests and then
+  another modifier can be added for a single request.
