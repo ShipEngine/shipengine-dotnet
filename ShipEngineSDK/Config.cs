@@ -32,7 +32,7 @@ namespace ShipEngineSDK
         /// <param name="retries">The number of retries to attempt after a failed request. Defaults to 1</param>
         public Config(string apiKey, TimeSpan? timeout = null, int retries = 1)
         {
-            if (apiKey == null || apiKey == "")
+            if (string.IsNullOrEmpty(apiKey))
             {
                 var message = "A ShipEngine API key must be specified.";
                 throw new ShipEngineException(message, ErrorSource.Shipengine, ErrorType.Validation, ErrorCode.FieldValueRequired);

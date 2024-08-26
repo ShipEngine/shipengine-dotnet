@@ -6,6 +6,8 @@ using System.Runtime.Serialization;
 
 namespace ShipEngineSDK;
 
+using System.Diagnostics.CodeAnalysis;
+
 /// <summary>
 /// Utility functions providing some benefit to API client consumers.
 /// </summary>
@@ -69,7 +71,8 @@ internal static class ClientUtils
     /// </summary>
     /// <param name="obj">The parameter (header, path, query, form).</param>
     /// <returns>Formatted string.</returns>
-    public static string ParameterToString(object obj)
+    [return: NotNullIfNotNull("obj")]
+    public static string? ParameterToString(object? obj)
     {
         return obj switch
         {
@@ -111,17 +114,14 @@ internal static class ClientUtils
     /// </summary>
     /// <param name="enumVal"></param>
     /// <returns>EnumMember value as string otherwise null</returns>
-    private static string GetEnumMemberAttrValue(object enumVal)
+    private static string? GetEnumMemberAttrValue(object enumVal)
     {
         if (enumVal == null)
             throw new ArgumentNullException(nameof(enumVal));
         var enumType = enumVal.GetType();
         var memInfo = enumType.GetMember(enumVal.ToString() ?? throw new InvalidOperationException());
         var attr = memInfo.FirstOrDefault()?.GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();
-        if (attr != null)
-        {
-            return attr.Value;
-        }
-        return null;
+
+        return attr?.Value;
     }
 }

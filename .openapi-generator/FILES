@@ -17,7 +17,6 @@ ShipEngineSDK/Api/TokensApi.cs
 ShipEngineSDK/Api/TrackingApi.cs
 ShipEngineSDK/Api/WarehousesApi.cs
 ShipEngineSDK/Api/WebhooksApi.cs
-ShipEngineSDK/Model/AbstractOpenAPISchema.cs
 ShipEngineSDK/Model/AccountSettings.cs
 ShipEngineSDK/Model/AccountSettingsImages.cs
 ShipEngineSDK/Model/AddFundsToCarrierRequestBody.cs
@@ -182,6 +181,7 @@ ShipEngineSDK/Model/LabelDownloadType.cs
 ShipEngineSDK/Model/LabelFormat.cs
 ShipEngineSDK/Model/LabelLayout.cs
 ShipEngineSDK/Model/LabelMessages.cs
+ShipEngineSDK/Model/LabelPackage.cs
 ShipEngineSDK/Model/LabelPackagesInner.cs
 ShipEngineSDK/Model/LabelStatus.cs
 ShipEngineSDK/Model/Link.cs

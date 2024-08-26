@@ -8,11 +8,14 @@
     [JsonConverter(typeof({{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter))]
     {{>visibility}} class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}
     {
-        private string _value;
+        private readonly string _value;
 
         {{#allowableValues}}
         {{#enumVars}}
         {{#-first}}
+        /// <summary>
+        /// Create a new instance of {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} with a predefined value.
+        /// </summary>
         internal {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}()
         {
             _value = "{{value}}";
@@ -21,9 +24,17 @@
         {{/enumVars}}
         {{/allowableValues}}
 
+        /// <summary>
+        /// Create a new instance of {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} with a custom value.
+        /// </summary>
+        /// <param name="value">The value of the {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}</param>
+        /// <remarks>
+        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+        /// </remarks>
         public {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(string value)
         {
-
+            _value = value;
         }
 
         {{#allowableValues}}
@@ -39,13 +50,16 @@
         {{/enumVars}}
         {{/allowableValues}}
 
+        /// <summary>
+        /// Get a string representation of the current value
+        /// </summary>
         public override string ToString() => _value;
     }
 
     internal class {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}JsonConverter : JsonConverter<{{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}>
     {
         public override {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-            reader.TokenType == JsonTokenType.String ? new {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(reader.GetString()) : null;
+            reader.TokenType == JsonTokenType.String ? new {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}(reader.GetString()!) : null;
 
         public override void Write(Utf8JsonWriter writer, {{datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} value, JsonSerializerOptions options) =>
             writer.WriteStringValue(value.ToString());

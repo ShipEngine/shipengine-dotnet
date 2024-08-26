@@ -30,35 +30,37 @@
 {{>modelInnerEnum}}
     {{/complexType}}
     {{/isEnum}}
-    {{#isEnum}}
+    {{/vars}}
 
+    {{#vars}}
+    {{^isInherited}}
+    {{#isEnum}}
     /// <summary>
-    /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}  CLOVUS
+    /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
     /// </summary>
     {{#description}}
     /// <value>{{.}}</value>
     {{/description}}
+    {{#isReadOnly}}
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    {{/isReadOnly}}
     {{#example}}
     /// <example>
     /// {{.}}
     /// </example>
     {{/example}}
-    [JsonPropertyName("{{baseName}}")]{{#required}}
-    [JsonRequired]{{/required}}
-    {{#deprecated}}
-    [Obsolete]
-    {{/deprecated}}
-    public {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{^required}}?{{/required}}{{/isContainer}} {{name}} { get; set; }{{#required}} = new();
+    {{>partial_jsonAttributes}}
+    public{{>partial_requiredAttribute}} {{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{^isContainer}}{{>partial_optional}}{{/isContainer}} {{name}} {{>partial_getSet}}
 
-    {{/required}}
     {{/isEnum}}
-    {{/vars}}
-
-    {{#vars}}
-    {{^isInherited}}
     {{^isEnum}}
     {{#items.vars}}
     {{#-first}}
+    /// <summary>
+    /// Type of data of the elements in the list
+    /// </summary>
     public class {{classname}}Item
     {
     {{/-first}}
@@ -71,15 +73,8 @@
         /// {{.}}
         /// </example>
         {{/example}}
-        [JsonPropertyName("{{baseName}}")]{{#required}}
-        [JsonRequired]{{/required}}
-        {{#isDate}}
-        [JsonConverter(typeof(DateJsonConverter))]
-        {{/isDate}}
-        {{#deprecated}}
-        [Obsolete]
-        {{/deprecated}}
-        public {{{dataType}}}{{#isNullable}}?{{/isNullable}} {{name}} { get; set; }
+        {{>partial_jsonAttributes}}
+        public{{>partial_requiredAttribute}} {{{dataType}}}{{>partial_optional}} {{name}} {{>partial_getSet}}
 
     {{#-last}}
     }
@@ -87,22 +82,22 @@
     {{/items.vars}}
     /// <summary>
     /// {{description}}{{^description}}Gets or Sets {{{name}}}{{/description}}
-    /// </summary>{{#description}}
-    /// <value>{{.}}</value>{{/description}}
+    /// </summary>
+    {{#description}}
+    /// <value>{{.}}</value>
+    {{/description}}
+    {{#isReadOnly}}
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    {{/isReadOnly}}
     {{#example}}
     /// <example>
     /// {{.}}
     /// </example>
     {{/example}}
-    [JsonPropertyName("{{baseName}}")]{{#required}}
-    [JsonRequired]{{/required}}
-    {{#isDate}}
-    [JsonConverter(typeof(DateJsonConverter))]
-    {{/isDate}}
-    {{#deprecated}}
-    [Obsolete]
-    {{/deprecated}}
-    public {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}} {{name}} { get; set; }
+    {{>partial_jsonAttributes}}
+    public{{>partial_requiredAttribute}} {{#items.vars}}{{#-first}}List<{{classname}}Item>{{/-first}}{{/items.vars}}{{^items.vars}}{{{dataType}}}{{/items.vars}}{{>partial_optional}} {{name}} {{>partial_getSet}}
 
     {{/isEnum}}
     {{/isInherited}}
@@ -112,7 +107,7 @@
     /// Gets or Sets additional properties
     /// </summary>
     [JsonExtensionData]
-    public IDictionary<string, object> AdditionalProperties { get; set; }
+    public IDictionary<string, object> AdditionalProperties {{>partial_getSet}} = new Dictionary<string, object>();
 
     {{/isAdditionalPropertiesTrue}}
 
@@ -122,8 +117,9 @@
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("class {{classname}} {\n");
+#pragma warning disable CS0612 // Type or member is obsolete
         {{#parent}}
         sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
         {{/parent}}
@@ -133,6 +129,7 @@
         {{#isAdditionalPropertiesTrue}}
         sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
         {{/isAdditionalPropertiesTrue}}
+#pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
     }
