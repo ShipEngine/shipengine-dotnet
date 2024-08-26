@@ -1,14 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShipEngineSDK.Common;
-using ShipEngineSDK.Manifests;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Result = ShipEngineSDK.ValidateAddresses.Result;
 
 [assembly: InternalsVisibleTo("ShipEngineSDK.Test")]
 
@@ -189,12 +188,12 @@ namespace ShipEngineSDK
         /// <summary>
         /// Global HttpClient for ShipEngine instance.
         /// </summary>
-        private readonly HttpClient _client;
+        internal readonly HttpClient _client;
 
         /// <summary>
         /// Global config for ShipEngine instance.
         /// </summary>
-        private readonly Config _config;
+        internal readonly Config _config;
 
         /// <summary>
         /// Initialize the ShipEngine SDK with an API Key
@@ -228,13 +227,39 @@ namespace ShipEngineSDK
         }
 
         /// <summary>
+        /// Copy constructor that adds a request modifier to the existing collection
+        /// </summary>
+        /// <param name="client">Client to use for requests</param>
+        /// <param name="config">Config to use for the requests</param>
+        /// <param name="requestModifiers">List of request modifiers to use</param>
+        private ShipEngine(HttpClient client, Config config, IEnumerable<Action<HttpRequestMessage>> requestModifiers) :
+            base(requestModifiers)
+        {
+            _client = client;
+            _config = config;
+        }
+
+        /// <summary>
+        /// Gets a new instance of the ShipEngine client with the provided request modifier added to the collection
+        /// </summary>
+        /// <param name="modifier">Request modifier that will be added</param>
+        /// <returns>A new instance of the ShipEngine client</returns>
+        /// <remarks>The existing ShipEngine client is not modified</remarks>
+        public ShipEngine WithRequestModifier(Action<HttpRequestMessage> modifier) =>
+            new(_client, _config, requestModifiers.Append(modifier));
+
+        /// <summary>
         /// Modifies the request before it is sent to the ShipEngine API
         /// </summary>
-        /// <param name="modifyRequest"></param>
-        /// <returns></returns>
+        /// <param name="modifyRequest">Request modifier that will be used</param>
+        /// <returns>The current instance of the ShipEngine client</returns>
+        /// <remarks>
+        /// This method modifies the existing ShipEngine client and will replace any existing request modifiers with the one provided.
+        /// If you want to add a request modifier to the existing collection, use the WithRequestModifier method.
+        /// </remarks>
         public ShipEngine ModifyRequest(Action<HttpRequestMessage> modifyRequest)
         {
-            base.ModifyRequest = modifyRequest;
+            requestModifiers = [modifyRequest];
             return this;
         }
 
