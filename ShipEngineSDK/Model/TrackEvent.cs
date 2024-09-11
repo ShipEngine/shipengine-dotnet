@@ -210,6 +210,25 @@ public partial class TrackEvent
     [JsonPropertyName("signer"), JsonInclude]
     public string? Signer { get; set; }
 
+    /// <summary>
+    /// Gets or Sets StatusDetailCode
+    /// </summary>
+    [JsonPropertyName("status_detail_code"), JsonPropertyOrder(18)]
+    public StatusDetailCode? StatusDetailCode { get; set; }
+
+    /// <summary>
+    /// Event Status Detail Description
+    /// </summary>
+    /// <value>Event Status Detail Description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// Your shipment is on its way between depots.
+    /// </example>
+    [JsonPropertyName("status_detail_description"), JsonInclude]
+    public string? StatusDetailDescription { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -237,6 +256,8 @@ public partial class TrackEvent
         sb.Append("  Latitude: ").Append(Latitude).Append("\n");
         sb.Append("  Longitude: ").Append(Longitude).Append("\n");
         sb.Append("  Signer: ").Append(Signer).Append("\n");
+        sb.Append("  StatusDetailCode: ").Append(StatusDetailCode).Append("\n");
+        sb.Append("  StatusDetailDescription: ").Append(StatusDetailDescription).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

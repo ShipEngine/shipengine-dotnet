@@ -177,6 +177,25 @@ public partial class GetTrackingLogResponseBody
     [JsonPropertyName("status_description"), JsonInclude]
     public string? StatusDescription { get; set; }
 
+    /// <summary>
+    /// Gets or Sets StatusDetailCode
+    /// </summary>
+    [JsonPropertyName("status_detail_code"), JsonPropertyOrder(15)]
+    public StatusDetailCode? StatusDetailCode { get; set; }
+
+    /// <summary>
+    /// Status detail description
+    /// </summary>
+    /// <value>Status detail description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// Your shipment has been delivered.
+    /// </example>
+    [JsonPropertyName("status_detail_description"), JsonInclude]
+    public string? StatusDetailDescription { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -201,6 +220,8 @@ public partial class GetTrackingLogResponseBody
         sb.Append("  ExceptionDescription: ").Append(ExceptionDescription).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  StatusDescription: ").Append(StatusDescription).Append("\n");
+        sb.Append("  StatusDetailCode: ").Append(StatusDetailCode).Append("\n");
+        sb.Append("  StatusDetailDescription: ").Append(StatusDetailDescription).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

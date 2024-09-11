@@ -36,6 +36,7 @@ ShipEngineSDK/Model/AddressValidationStatus.cs
 ShipEngineSDK/Model/AdvancedShipmentOptions.cs
 ShipEngineSDK/Model/AdvancedShipmentOptionsDangerousGoodsContact.cs
 ShipEngineSDK/Model/AdvancedShipmentOptionsFedexFreight.cs
+ShipEngineSDK/Model/AdvancedShipmentOptionsWindsorFrameworkDetails.cs
 ShipEngineSDK/Model/AllowedIncoterms.cs
 ShipEngineSDK/Model/AlternativeIdentifier.cs
 ShipEngineSDK/Model/AlternativeIdentifiers.cs
@@ -163,6 +164,7 @@ ShipEngineSDK/Model/GetServicePointsRequestBody.cs
 ShipEngineSDK/Model/GetServicePointsRequestBodyAddress.cs
 ShipEngineSDK/Model/GetServicePointsRequestBodyProvidersInner.cs
 ShipEngineSDK/Model/GetServicePointsRequestBodyShipment.cs
+ShipEngineSDK/Model/GetServicePointsRequestBodyShipmentPackagesInner.cs
 ShipEngineSDK/Model/GetShipmentByExternalIdResponseBody.cs
 ShipEngineSDK/Model/GetShipmentByIdResponseBody.cs
 ShipEngineSDK/Model/GetTrackingLogFromLabelResponseBody.cs
@@ -243,6 +245,9 @@ ShipEngineSDK/Model/ProcessBatchRequestBody.cs
 ShipEngineSDK/Model/Products.cs
 ShipEngineSDK/Model/PurchaseLabelWithoutShipment.cs
 ShipEngineSDK/Model/Rate.cs
+ShipEngineSDK/Model/RateDetail.cs
+ShipEngineSDK/Model/RateDetailAttributes.cs
+ShipEngineSDK/Model/RateDetailType.cs
 ShipEngineSDK/Model/RateEstimate.cs
 ShipEngineSDK/Model/RateEstimateByCarrierId.cs
 ShipEngineSDK/Model/RateEstimateByCarrierIds.cs
@@ -276,9 +281,11 @@ ShipEngineSDK/Model/ShippingAddressTo.cs
 ShipEngineSDK/Model/SmartPostHub.cs
 ShipEngineSDK/Model/SortDir.cs
 ShipEngineSDK/Model/StatusCode.cs
+ShipEngineSDK/Model/StatusDetailCode.cs
 ShipEngineSDK/Model/Tag.cs
 ShipEngineSDK/Model/TagShipmentResponseBody.cs
 ShipEngineSDK/Model/TaxIdentifier.cs
+ShipEngineSDK/Model/TaxType.cs
 ShipEngineSDK/Model/TaxableEntityType.cs
 ShipEngineSDK/Model/TokensGetEphemeralTokenResponseBodyYaml.cs
 ShipEngineSDK/Model/TrackEvent.cs

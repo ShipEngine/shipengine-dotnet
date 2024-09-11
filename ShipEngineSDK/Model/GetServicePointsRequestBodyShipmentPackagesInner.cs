@@ -21,24 +21,17 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// Shipment information to be used for service point selection
+/// GetServicePointsRequestBodyShipmentPackagesInner
 /// </summary>
-public partial class GetServicePointsRequestBodyShipment
+public partial class GetServicePointsRequestBodyShipmentPackagesInner
 {
 
     /// <summary>
-    /// An array of package dimensions
+    /// The package dimensions
     /// </summary>
-    /// <value>An array of package dimensions</value>
-    [JsonPropertyName("packages"), JsonPropertyOrder(1)]
-    public List<GetServicePointsRequestBodyShipmentPackagesInner>? Packages { get; set; }
-
-    /// <summary>
-    /// Shipment total weight
-    /// </summary>
-    /// <value>Shipment total weight</value>
-    [JsonPropertyName("total_weight"), JsonPropertyOrder(2)]
-    public Weight? TotalWeight { get; set; }
+    /// <value>The package dimensions</value>
+    [JsonPropertyName("dimensions"), JsonPropertyOrder(1)]
+    public Dimensions? Dimensions { get; set; }
 
 
     /// <summary>
@@ -48,10 +41,9 @@ public partial class GetServicePointsRequestBodyShipment
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class GetServicePointsRequestBodyShipment {\n");
+        sb.Append("class GetServicePointsRequestBodyShipmentPackagesInner {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Packages: ").Append(Packages).Append("\n");
-        sb.Append("  TotalWeight: ").Append(TotalWeight).Append("\n");
+        sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

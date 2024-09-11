@@ -27,17 +27,31 @@ public partial class ConnectUpsRequestBody
 {
 
     /// <summary>
+    /// Account Country Code
+    /// </summary>
+    /// <value>Account Country Code</value>
+    [JsonPropertyName("account_country_code"), JsonPropertyOrder(1)]
+    public required string AccountCountryCode { get; set; }
+
+    /// <summary>
     /// Account number
     /// </summary>
     /// <value>Account number</value>
-    [JsonPropertyName("account_number"), JsonPropertyOrder(1)]
+    [JsonPropertyName("account_number"), JsonPropertyOrder(2)]
     public required string AccountNumber { get; set; }
+
+    /// <summary>
+    /// Account Postal Code
+    /// </summary>
+    /// <value>Account Postal Code</value>
+    [JsonPropertyName("account_postal_code"), JsonPropertyOrder(3)]
+    public required string AccountPostalCode { get; set; }
 
     /// <summary>
     /// Nickname
     /// </summary>
     /// <value>Nickname</value>
-    [JsonPropertyName("nickname"), JsonPropertyOrder(2)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(4)]
     public required string Nickname { get; set; }
 
 
@@ -50,7 +64,9 @@ public partial class ConnectUpsRequestBody
         var sb = new StringBuilder();
         sb.Append("class ConnectUpsRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
+        sb.Append("  AccountCountryCode: ").Append(AccountCountryCode).Append("\n");
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+        sb.Append("  AccountPostalCode: ").Append(AccountPostalCode).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

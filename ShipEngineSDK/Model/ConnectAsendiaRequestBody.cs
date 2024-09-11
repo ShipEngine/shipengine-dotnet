@@ -34,18 +34,11 @@ public partial class ConnectAsendiaRequestBody
     public required string AccountNumber { get; set; }
 
     /// <summary>
-    /// FTP password
+    /// Asendia api_key
     /// </summary>
-    /// <value>FTP password</value>
-    [JsonPropertyName("ftp_password"), JsonPropertyOrder(2)]
-    public required string FtpPassword { get; set; }
-
-    /// <summary>
-    /// FTP username
-    /// </summary>
-    /// <value>FTP username</value>
-    [JsonPropertyName("ftp_username"), JsonPropertyOrder(3)]
-    public required string FtpUsername { get; set; }
+    /// <value>Asendia api_key</value>
+    [JsonPropertyName("api_key"), JsonPropertyOrder(2)]
+    public required string ApiKey { get; set; }
 
     /// <summary>
     /// The nickname of the Asendia account
@@ -54,8 +47,36 @@ public partial class ConnectAsendiaRequestBody
     /// <example>
     /// Asendia account
     /// </example>
-    [JsonPropertyName("nickname"), JsonPropertyOrder(4)]
+    [JsonPropertyName("nickname"), JsonPropertyOrder(3)]
     public required string Nickname { get; set; }
+
+    /// <summary>
+    /// Asendia password
+    /// </summary>
+    /// <value>Asendia password</value>
+    [JsonPropertyName("password"), JsonPropertyOrder(4)]
+    public required string Password { get; set; }
+
+    /// <summary>
+    /// Asendia processing location, one of: &#39;MIA&#39;, &#39;JFK&#39;, &#39;ORD&#39;, &#39;PHL&#39;, &#39;SFO&#39;, &#39;LAX&#39;, &#39;SLC&#39;, &#39;TOR&#39;, &#39;BUF&#39;, &#39;CAL&#39;
+    /// </summary>
+    /// <value>Asendia processing location, one of: &#39;MIA&#39;, &#39;JFK&#39;, &#39;ORD&#39;, &#39;PHL&#39;, &#39;SFO&#39;, &#39;LAX&#39;, &#39;SLC&#39;, &#39;TOR&#39;, &#39;BUF&#39;, &#39;CAL&#39;</value>
+    [JsonPropertyName("processing_location"), JsonPropertyOrder(5)]
+    public required string ProcessingLocation { get; set; }
+
+    /// <summary>
+    /// Asendia username
+    /// </summary>
+    /// <value>Asendia username</value>
+    [JsonPropertyName("username"), JsonPropertyOrder(6)]
+    public required string Username { get; set; }
+
+    /// <summary>
+    /// Asendia sub account number
+    /// </summary>
+    /// <value>Asendia sub account number</value>
+    [JsonPropertyName("sub_account_number"), JsonPropertyOrder(7)]
+    public string? SubAccountNumber { get; set; }
 
 
     /// <summary>
@@ -68,9 +89,12 @@ public partial class ConnectAsendiaRequestBody
         sb.Append("class ConnectAsendiaRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-        sb.Append("  FtpPassword: ").Append(FtpPassword).Append("\n");
-        sb.Append("  FtpUsername: ").Append(FtpUsername).Append("\n");
+        sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
         sb.Append("  Nickname: ").Append(Nickname).Append("\n");
+        sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  ProcessingLocation: ").Append(ProcessingLocation).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  SubAccountNumber: ").Append(SubAccountNumber).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

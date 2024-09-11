@@ -219,3 +219,9 @@ Fixed handling of No Content responses
   This will allow consumers to modify a single request without affecting any other consumers of the client. It also allows for
   multiple modifiers to be added.  For example, a modifier could be added at the global level that applies to all requests and then
   another modifier can be added for a single request.
+
+## 3.0.0-beta.12
+
+## Changed
+
+- Updated to ShipEngine API 1.1.202409060709

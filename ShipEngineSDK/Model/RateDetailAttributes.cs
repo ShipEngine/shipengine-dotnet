@@ -21,24 +21,30 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// Shipment information to be used for service point selection
+/// Represents detailed information about a tax (e.g. VAT) contained in a shipping cost. 
 /// </summary>
-public partial class GetServicePointsRequestBodyShipment
+public partial class RateDetailAttributes
 {
 
     /// <summary>
-    /// An array of package dimensions
+    /// Code for a specific tax type
     /// </summary>
-    /// <value>An array of package dimensions</value>
-    [JsonPropertyName("packages"), JsonPropertyOrder(1)]
-    public List<GetServicePointsRequestBodyShipmentPackagesInner>? Packages { get; set; }
+    /// <value>Code for a specific tax type</value>
+    [JsonPropertyName("tax_code"), JsonPropertyOrder(1)]
+    public string? TaxCode { get; set; }
 
     /// <summary>
-    /// Shipment total weight
+    /// Tax percentage, e.g. 20 for 20%, added to the shipping cost
     /// </summary>
-    /// <value>Shipment total weight</value>
-    [JsonPropertyName("total_weight"), JsonPropertyOrder(2)]
-    public Weight? TotalWeight { get; set; }
+    /// <value>Tax percentage, e.g. 20 for 20%, added to the shipping cost</value>
+    [JsonPropertyName("tax_percentage"), JsonPropertyOrder(2)]
+    public decimal? TaxPercentage { get; set; }
+
+    /// <summary>
+    /// Gets or Sets TaxType
+    /// </summary>
+    [JsonPropertyName("tax_type"), JsonPropertyOrder(3)]
+    public TaxType? TaxType { get; set; }
 
 
     /// <summary>
@@ -48,10 +54,11 @@ public partial class GetServicePointsRequestBodyShipment
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class GetServicePointsRequestBodyShipment {\n");
+        sb.Append("class RateDetailAttributes {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Packages: ").Append(Packages).Append("\n");
-        sb.Append("  TotalWeight: ").Append(TotalWeight).Append("\n");
+        sb.Append("  TaxCode: ").Append(TaxCode).Append("\n");
+        sb.Append("  TaxPercentage: ").Append(TaxPercentage).Append("\n");
+        sb.Append("  TaxType: ").Append(TaxType).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

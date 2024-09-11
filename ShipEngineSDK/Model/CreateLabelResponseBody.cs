@@ -346,6 +346,16 @@ public partial class CreateLabelResponseBody
     public PaperlessDownload? PaperlessDownload { get; set; }
 
     /// <summary>
+    /// A list of rate details that are associated with shipping cost. This is useful for displaying a breakdown of the rate to the user. 
+    /// </summary>
+    /// <value>A list of rate details that are associated with shipping cost. This is useful for displaying a breakdown of the rate to the user. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("rate_details"), JsonInclude]
+    public List<RateDetail>? RateDetails { get; set; }
+
+    /// <summary>
     /// The total shipping cost for the specified comparison_rate_type. 
     /// </summary>
     /// <value>The total shipping cost for the specified comparison_rate_type. </value>
@@ -359,21 +369,21 @@ public partial class CreateLabelResponseBody
     /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
     /// </summary>
     /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-    [JsonPropertyName("rma_number"), JsonPropertyOrder(33)]
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(34)]
     public required string RmaNumber { get; set; }
 
     /// <summary>
     /// The shipment information used to generate the label
     /// </summary>
     /// <value>The shipment information used to generate the label</value>
-    [JsonPropertyName("shipment"), JsonPropertyOrder(34), JsonWriteOnly]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(35), JsonWriteOnly]
     public Shipment? Shipment { get; set; }
 
     /// <summary>
     /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
     /// </summary>
     /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-    [JsonPropertyName("test_label"), JsonPropertyOrder(35), JsonWriteOnly, Obsolete]
+    [JsonPropertyName("test_label"), JsonPropertyOrder(36), JsonWriteOnly, Obsolete]
     public bool? TestLabel { get; set; }
 
     /// <summary>
@@ -392,7 +402,7 @@ public partial class CreateLabelResponseBody
     /// <summary>
     /// Gets or Sets ValidateAddress
     /// </summary>
-    [JsonPropertyName("validate_address"), JsonPropertyOrder(37), JsonWriteOnly]
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(38), JsonWriteOnly]
     public ValidateAddress? ValidateAddress { get; set; }
 
     /// <summary>
@@ -449,6 +459,7 @@ public partial class CreateLabelResponseBody
         sb.Append("  LabelImageId: ").Append(LabelImageId).Append("\n");
         sb.Append("  OutboundLabelId: ").Append(OutboundLabelId).Append("\n");
         sb.Append("  PaperlessDownload: ").Append(PaperlessDownload).Append("\n");
+        sb.Append("  RateDetails: ").Append(RateDetails).Append("\n");
         sb.Append("  RequestedComparisonAmount: ").Append(RequestedComparisonAmount).Append("\n");
         sb.Append("  RmaNumber: ").Append(RmaNumber).Append("\n");
         sb.Append("  Shipment: ").Append(Shipment).Append("\n");

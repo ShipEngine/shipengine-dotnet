@@ -260,6 +260,16 @@ public partial class Rate
     public string? PackageType { get; set; }
 
     /// <summary>
+    /// A list of rate details that are associated with this rate. This is useful for displaying a breakdown of the rate to the user. 
+    /// </summary>
+    /// <value>A list of rate details that are associated with this rate. This is useful for displaying a breakdown of the rate to the user. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("rate_details"), JsonInclude]
+    public List<RateDetail>? RateDetails { get; set; }
+
+    /// <summary>
     /// The total shipping cost for the specified comparison_rate_type.
     /// </summary>
     /// <value>The total shipping cost for the specified comparison_rate_type.</value>
@@ -334,6 +344,7 @@ public partial class Rate
         sb.Append("  DeliveryDays: ").Append(DeliveryDays).Append("\n");
         sb.Append("  EstimatedDeliveryDate: ").Append(EstimatedDeliveryDate).Append("\n");
         sb.Append("  PackageType: ").Append(PackageType).Append("\n");
+        sb.Append("  RateDetails: ").Append(RateDetails).Append("\n");
         sb.Append("  RequestedComparisonAmount: ").Append(RequestedComparisonAmount).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");

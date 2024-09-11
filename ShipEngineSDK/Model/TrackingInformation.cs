@@ -155,13 +155,32 @@ public partial class TrackingInformation
     public string? StatusDescription { get; set; }
 
     /// <summary>
+    /// Gets or Sets StatusDetailCode
+    /// </summary>
+    [JsonPropertyName("status_detail_code"), JsonPropertyOrder(13)]
+    public StatusDetailCode? StatusDetailCode { get; set; }
+
+    /// <summary>
+    /// Status detail description
+    /// </summary>
+    /// <value>Status detail description</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// Your shipment has been delivered.
+    /// </example>
+    [JsonPropertyName("status_detail_description"), JsonInclude]
+    public string? StatusDetailDescription { get; set; }
+
+    /// <summary>
     /// A tracking number for a package. The format depends on the carrier.
     /// </summary>
     /// <value>A tracking number for a package. The format depends on the carrier.</value>
     /// <example>
     /// 1Z932R800392060079
     /// </example>
-    [JsonPropertyName("tracking_number"), JsonPropertyOrder(13)]
+    [JsonPropertyName("tracking_number"), JsonPropertyOrder(15)]
     public string? TrackingNumber { get; set; }
 
     /// <summary>
@@ -199,6 +218,8 @@ public partial class TrackingInformation
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
         sb.Append("  StatusDescription: ").Append(StatusDescription).Append("\n");
+        sb.Append("  StatusDetailCode: ").Append(StatusDetailCode).Append("\n");
+        sb.Append("  StatusDetailDescription: ").Append(StatusDetailDescription).Append("\n");
         sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
         sb.Append("  TrackingUrl: ").Append(TrackingUrl).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
