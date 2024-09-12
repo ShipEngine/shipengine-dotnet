@@ -100,7 +100,7 @@ namespace ShipEngineSDK.Common
         public OriginType? OriginType { get; set; }
 
         /// <summary>
-        /// Indicates if this is a shipper relesae
+        /// Indicates if this is a shipper release
         /// </summary>
         public bool? ShipperRelease { get; set; }
 
@@ -108,5 +108,20 @@ namespace ShipEngineSDK.Common
         /// Defer payment until package is delivered, instead of when it is ordered.
         /// </summary>
         public CollectOnDelivery? CollectOnDelivery { get; set; }
+
+        /// <summary>
+        /// License number for customs declaration
+        /// </summary>
+        public string? LicenseNumber { get; set; }
+
+        /// <summary>
+        /// Invoice number for customs declaration
+        /// </summary>
+        public string? InvoiceNumber { get; set; }
+
+        /// <summary>
+        /// Certificate number for customs declaration
+        /// </summary>
+        public string? CertificateNumber { get; set; }
     }
 }

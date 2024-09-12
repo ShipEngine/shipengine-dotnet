@@ -75,11 +75,13 @@ namespace ShipEngineTest
         /// <param name="path">The HTTP path.</param>
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
-        public string StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
+        public string StubRequest(HttpMethod method, string path, HttpStatusCode status = HttpStatusCode.OK, string response = null)
         {
             var requestId = Guid.NewGuid().ToString();
-            var responseMessage = new HttpResponseMessage(status);
-            responseMessage.Content = new StringContent(response ?? "");
+            var responseMessage = new HttpResponseMessage(status)
+            {
+                Content = new StringContent(response ?? "")
+            };
             responseMessage.Headers.Add("x-shipengine-requestid", requestId);
             responseMessage.Headers.Add("request-id", requestId);
 
