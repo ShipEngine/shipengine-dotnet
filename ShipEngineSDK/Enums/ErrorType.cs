@@ -41,6 +41,18 @@ namespace ShipEngineSDK
         /// An unknown or unexpected error occurred in our system. Or an error occurred that has not yet been assigned a specific error_type. If you receive persistent system errors, then please contact our support or check our API status page to see if there's a known issue.
         /// </summary>/
         [EnumMember(Value = "system")]
-        System
+        System,
+
+        /// <summary>
+        /// General wallet error type.
+        /// </summary>/
+        [EnumMember(Value = "wallet")]
+        Wallet,
+
+        /// <summary>
+        /// General funding sources error type.
+        /// </summary>/
+        [EnumMember(Value = "funding_sources")]
+        FundingSources
     }
 }
