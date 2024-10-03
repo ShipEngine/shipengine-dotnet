@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "ShipEngine API",
-    "version": "1.1.202409060709",
+    "version": "1.1.202410032110",
     "termsOfService": "https://www.shipengine.com/terms-of-service/",
     "x-logo": {
       "url": "https://shipengine.github.io/img/shipengine-logo-square.png",
@@ -5691,7 +5691,15 @@
           "incompatible_paired_labels",
           "invalid_charge_event",
           "invalid_object",
-          "no_rates_returned"
+          "no_rates_returned",
+          "file_not_found",
+          "shipping_rule_not_found",
+          "service_not_determined",
+          "no_rates_returned",
+          "funding_source_registration_in_progress",
+          "insurance_failure",
+          "funding_source_missing_configuration",
+          "funding_source_error"
         ],
         "description": "The error code specified for the failed API Call"
       },
@@ -11654,6 +11662,27 @@
                 "description": "An indicator that allows a shipper to declare the shipment as not-at-risk."
               }
             }
+          },
+          "license_number": {
+            "type": "string",
+            "nullable": true,
+            "default": null,
+            "example": 514785,
+            "description": "license number."
+          },
+          "invoice_number": {
+            "type": "string",
+            "nullable": true,
+            "default": null,
+            "example": "IOC56888",
+            "description": "invoice number."
+          },
+          "certificate_number": {
+            "type": "string",
+            "nullable": true,
+            "default": null,
+            "example": 784515,
+            "description": "certificate number."
           }
         }
       },
@@ -12756,7 +12785,6 @@
           "tracking_number",
           "status_code",
           "carrier_status_code",
-          "estimated_delivery_date",
           "events"
         ],
         "additionalProperties": false,
@@ -12896,10 +12924,11 @@
           "DE",
           "EX",
           "AT",
-          "NY"
+          "NY",
+          "SP"
         ],
         "type": "string",
-        "description": "The tracking status codes\n\n|Value       |Description\n|:---------  |:-----------------------------------------------------\n|`UN` | Unknown\n|`AC` | Accepted\n|`IT` | In Transit\n|`DE` | Delivered\n|`EX` | Exception\n|`AT` | Delivery Attempt\n|`NY` | Not Yet In System\n"
+        "description": "The tracking status codes\n\n|Value       |Description\n|:---------  |:-----------------------------------------------------\n|`UN` | Unknown\n|`AC` | Accepted\n|`IT` | In Transit\n|`DE` | Delivered\n|`EX` | Exception\n|`AT` | Delivery Attempt\n|`NY` | Not Yet In System\n|`SP` | Delivered To Collection Location\n"
       },
       "status_detail_code": {
         "readOnly": true,
@@ -16342,7 +16371,6 @@
           "carrier_id",
           "carrier_detail_code",
           "carrier_status_code",
-          "estimated_delivery_date",
           "events"
         ],
         "additionalProperties": false,

@@ -21,9 +21,9 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;UN&#x60; | Unknown |&#x60;AC&#x60; | Accepted |&#x60;IT&#x60; | In Transit |&#x60;DE&#x60; | Delivered |&#x60;EX&#x60; | Exception |&#x60;AT&#x60; | Delivery Attempt |&#x60;NY&#x60; | Not Yet In System 
+/// The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;UN&#x60; | Unknown |&#x60;AC&#x60; | Accepted |&#x60;IT&#x60; | In Transit |&#x60;DE&#x60; | Delivered |&#x60;EX&#x60; | Exception |&#x60;AT&#x60; | Delivery Attempt |&#x60;NY&#x60; | Not Yet In System |&#x60;SP&#x60; | Delivered To Collection Location 
 /// </summary>
-/// <value>The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;UN&#x60; | Unknown |&#x60;AC&#x60; | Accepted |&#x60;IT&#x60; | In Transit |&#x60;DE&#x60; | Delivered |&#x60;EX&#x60; | Exception |&#x60;AT&#x60; | Delivery Attempt |&#x60;NY&#x60; | Not Yet In System </value>
+/// <value>The tracking status codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |&#x60;UN&#x60; | Unknown |&#x60;AC&#x60; | Accepted |&#x60;IT&#x60; | In Transit |&#x60;DE&#x60; | Delivered |&#x60;EX&#x60; | Exception |&#x60;AT&#x60; | Delivery Attempt |&#x60;NY&#x60; | Not Yet In System |&#x60;SP&#x60; | Delivered To Collection Location </value>
 [JsonConverter(typeof(StatusCodeJsonConverter))]
 public class StatusCode
 {
@@ -90,6 +90,12 @@ public class StatusCode
     /// Enum NY for value: NY
     /// </summary>
     public static StatusCode NY { get; } = new("NY");
+
+
+    /// <summary>
+    /// Enum SP for value: SP
+    /// </summary>
+    public static StatusCode SP { get; } = new("SP");
 
 
     /// <summary>

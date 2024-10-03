@@ -40,16 +40,6 @@ public partial class GetTrackingLogFromLabelResponseBody
     public string? CarrierStatusCode { get; set; }
 
     /// <summary>
-    /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
-    /// </summary>
-    /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
-    /// <example>
-    /// 2018-09-23T15:00Z
-    /// </example>
-    [JsonPropertyName("estimated_delivery_date"), JsonPropertyOrder(2)]
-    public required DateTimeOffset EstimatedDeliveryDate { get; set; }
-
-    /// <summary>
     /// The events that have occured during the lifetime of this tracking number.
     /// </summary>
     /// <value>The events that have occured during the lifetime of this tracking number.</value>
@@ -62,7 +52,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <summary>
     /// Gets or Sets StatusCode
     /// </summary>
-    [JsonPropertyName("status_code"), JsonPropertyOrder(4)]
+    [JsonPropertyName("status_code"), JsonPropertyOrder(3)]
     public required StatusCode StatusCode { get; set; }
 
     /// <summary>
@@ -72,7 +62,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 1Z932R800392060079
     /// </example>
-    [JsonPropertyName("tracking_number"), JsonPropertyOrder(5)]
+    [JsonPropertyName("tracking_number"), JsonPropertyOrder(4)]
     public required string TrackingNumber { get; set; }
 
     /// <summary>
@@ -82,7 +72,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// 2018-09-23T15:00Z
     /// </example>
-    [JsonPropertyName("actual_delivery_date"), JsonPropertyOrder(6)]
+    [JsonPropertyName("actual_delivery_date"), JsonPropertyOrder(5)]
     public DateTimeOffset? ActualDeliveryDate { get; set; }
 
     /// <summary>
@@ -92,7 +82,7 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// <example>
     /// dhl_express
     /// </example>
-    [JsonPropertyName("carrier_code"), JsonPropertyOrder(7)]
+    [JsonPropertyName("carrier_code"), JsonPropertyOrder(6)]
     public string? CarrierCode { get; set; }
 
     /// <summary>
@@ -130,6 +120,16 @@ public partial class GetTrackingLogFromLabelResponseBody
     /// </example>
     [JsonPropertyName("carrier_status_description"), JsonInclude]
     public string? CarrierStatusDescription { get; set; }
+
+    /// <summary>
+    /// An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. 
+    /// </summary>
+    /// <value>An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date and time. </value>
+    /// <example>
+    /// 2018-09-23T15:00Z
+    /// </example>
+    [JsonPropertyName("estimated_delivery_date"), JsonPropertyOrder(10)]
+    public DateTimeOffset? EstimatedDeliveryDate { get; set; }
 
     /// <summary>
     /// Exception description
@@ -207,7 +207,6 @@ public partial class GetTrackingLogFromLabelResponseBody
         sb.Append("class GetTrackingLogFromLabelResponseBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  CarrierStatusCode: ").Append(CarrierStatusCode).Append("\n");
-        sb.Append("  EstimatedDeliveryDate: ").Append(EstimatedDeliveryDate).Append("\n");
         sb.Append("  Events: ").Append(Events).Append("\n");
         sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
         sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
@@ -216,6 +215,7 @@ public partial class GetTrackingLogFromLabelResponseBody
         sb.Append("  CarrierDetailCode: ").Append(CarrierDetailCode).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  CarrierStatusDescription: ").Append(CarrierStatusDescription).Append("\n");
+        sb.Append("  EstimatedDeliveryDate: ").Append(EstimatedDeliveryDate).Append("\n");
         sb.Append("  ExceptionDescription: ").Append(ExceptionDescription).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  StatusDescription: ").Append(StatusDescription).Append("\n");

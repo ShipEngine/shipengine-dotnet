@@ -309,6 +309,54 @@ public class ErrorCode
 
 
     /// <summary>
+    /// Enum FileNotFound for value: file_not_found
+    /// </summary>
+    public static ErrorCode FileNotFound { get; } = new("file_not_found");
+
+
+    /// <summary>
+    /// Enum ShippingRuleNotFound for value: shipping_rule_not_found
+    /// </summary>
+    public static ErrorCode ShippingRuleNotFound { get; } = new("shipping_rule_not_found");
+
+
+    /// <summary>
+    /// Enum ServiceNotDetermined for value: service_not_determined
+    /// </summary>
+    public static ErrorCode ServiceNotDetermined { get; } = new("service_not_determined");
+
+
+    /// <summary>
+    /// Enum NoRatesReturned2 for value: no_rates_returned
+    /// </summary>
+    public static ErrorCode NoRatesReturned2 { get; } = new("no_rates_returned");
+
+
+    /// <summary>
+    /// Enum FundingSourceRegistrationInProgress for value: funding_source_registration_in_progress
+    /// </summary>
+    public static ErrorCode FundingSourceRegistrationInProgress { get; } = new("funding_source_registration_in_progress");
+
+
+    /// <summary>
+    /// Enum InsuranceFailure for value: insurance_failure
+    /// </summary>
+    public static ErrorCode InsuranceFailure { get; } = new("insurance_failure");
+
+
+    /// <summary>
+    /// Enum FundingSourceMissingConfiguration for value: funding_source_missing_configuration
+    /// </summary>
+    public static ErrorCode FundingSourceMissingConfiguration { get; } = new("funding_source_missing_configuration");
+
+
+    /// <summary>
+    /// Enum FundingSourceError for value: funding_source_error
+    /// </summary>
+    public static ErrorCode FundingSourceError { get; } = new("funding_source_error");
+
+
+    /// <summary>
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;

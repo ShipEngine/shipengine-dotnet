@@ -65,77 +65,87 @@ public partial class AdvancedShipmentOptions
     public string? BillToPostalCode { get; set; }
 
     /// <summary>
+    /// certificate number.
+    /// </summary>
+    /// <value>certificate number.</value>
+    /// <example>
+    /// 784515
+    /// </example>
+    [JsonPropertyName("certificate_number"), JsonPropertyOrder(6)]
+    public string? CertificateNumber { get; set; }
+
+    /// <summary>
     /// Gets or Sets CollectOnDelivery
     /// </summary>
-    [JsonPropertyName("collect_on_delivery"), JsonPropertyOrder(6)]
+    [JsonPropertyName("collect_on_delivery"), JsonPropertyOrder(7)]
     public CollectOnDelivery? CollectOnDelivery { get; set; }
 
     /// <summary>
     /// Indicates that the shipment contains alcohol.
     /// </summary>
     /// <value>Indicates that the shipment contains alcohol.</value>
-    [JsonPropertyName("contains_alcohol"), JsonPropertyOrder(7)]
+    [JsonPropertyName("contains_alcohol"), JsonPropertyOrder(8)]
     public bool? ContainsAlcohol { get; set; }
 
     /// <summary>
     /// An arbitrary field that can be used to store information about the shipment. 
     /// </summary>
     /// <value>An arbitrary field that can be used to store information about the shipment. </value>
-    [JsonPropertyName("custom_field1"), JsonPropertyOrder(8)]
+    [JsonPropertyName("custom_field1"), JsonPropertyOrder(9)]
     public string? CustomField1 { get; set; }
 
     /// <summary>
     /// An arbitrary field that can be used to store information about the shipment. 
     /// </summary>
     /// <value>An arbitrary field that can be used to store information about the shipment. </value>
-    [JsonPropertyName("custom_field2"), JsonPropertyOrder(9)]
+    [JsonPropertyName("custom_field2"), JsonPropertyOrder(10)]
     public string? CustomField2 { get; set; }
 
     /// <summary>
     /// An arbitrary field that can be used to store information about the shipment. 
     /// </summary>
     /// <value>An arbitrary field that can be used to store information about the shipment. </value>
-    [JsonPropertyName("custom_field3"), JsonPropertyOrder(10)]
+    [JsonPropertyName("custom_field3"), JsonPropertyOrder(11)]
     public string? CustomField3 { get; set; }
 
     /// <summary>
     /// Indicates if the Dangerous goods are present in the shipment
     /// </summary>
     /// <value>Indicates if the Dangerous goods are present in the shipment</value>
-    [JsonPropertyName("dangerous_goods"), JsonPropertyOrder(11)]
+    [JsonPropertyName("dangerous_goods"), JsonPropertyOrder(12)]
     public bool? DangerousGoods { get; set; }
 
     /// <summary>
     /// Gets or Sets DangerousGoodsContact
     /// </summary>
-    [JsonPropertyName("dangerous_goods_contact"), JsonPropertyOrder(12)]
+    [JsonPropertyName("dangerous_goods_contact"), JsonPropertyOrder(13)]
     public AdvancedShipmentOptionsDangerousGoodsContact? DangerousGoodsContact { get; set; }
 
     /// <summary>
     /// Indicates that the shipper is paying the international delivery duties for this shipment.  This option is supported by UPS, FedEx, and DHL Express. 
     /// </summary>
     /// <value>Indicates that the shipper is paying the international delivery duties for this shipment.  This option is supported by UPS, FedEx, and DHL Express. </value>
-    [JsonPropertyName("delivered_duty_paid"), JsonPropertyOrder(13)]
+    [JsonPropertyName("delivered_duty_paid"), JsonPropertyOrder(14)]
     public bool? DeliveredDutyPaid { get; set; }
 
     /// <summary>
     /// Indicates if the shipment contain dry ice
     /// </summary>
     /// <value>Indicates if the shipment contain dry ice</value>
-    [JsonPropertyName("dry_ice"), JsonPropertyOrder(14)]
+    [JsonPropertyName("dry_ice"), JsonPropertyOrder(15)]
     public bool? DryIce { get; set; }
 
     /// <summary>
     /// The weight of the dry ice in the shipment
     /// </summary>
     /// <value>The weight of the dry ice in the shipment</value>
-    [JsonPropertyName("dry_ice_weight"), JsonPropertyOrder(15)]
+    [JsonPropertyName("dry_ice_weight"), JsonPropertyOrder(16)]
     public Weight? DryIceWeight { get; set; }
 
     /// <summary>
     /// Gets or Sets FedexFreight
     /// </summary>
-    [JsonPropertyName("fedex_freight"), JsonPropertyOrder(16)]
+    [JsonPropertyName("fedex_freight"), JsonPropertyOrder(17)]
     public AdvancedShipmentOptionsFedexFreight? FedexFreight { get; set; }
 
     /// <summary>
@@ -145,53 +155,73 @@ public partial class AdvancedShipmentOptions
     /// <example>
     /// 77.5
     /// </example>
-    [JsonPropertyName("freight_class"), JsonPropertyOrder(17)]
+    [JsonPropertyName("freight_class"), JsonPropertyOrder(18)]
     public string? FreightClass { get; set; }
+
+    /// <summary>
+    /// invoice number.
+    /// </summary>
+    /// <value>invoice number.</value>
+    /// <example>
+    /// IOC56888
+    /// </example>
+    [JsonPropertyName("invoice_number"), JsonPropertyOrder(19)]
+    public string? InvoiceNumber { get; set; }
+
+    /// <summary>
+    /// license number.
+    /// </summary>
+    /// <value>license number.</value>
+    /// <example>
+    /// 514785
+    /// </example>
+    [JsonPropertyName("license_number"), JsonPropertyOrder(20)]
+    public string? LicenseNumber { get; set; }
 
     /// <summary>
     /// Indicates that the package cannot be processed automatically because it is too large or irregularly shaped. This is primarily for USPS shipments.  See [Section 1.2 of the USPS parcel standards](https://pe.usps.com/text/dmm300/101.htm#ep1047495) for details. 
     /// </summary>
     /// <value>Indicates that the package cannot be processed automatically because it is too large or irregularly shaped. This is primarily for USPS shipments.  See [Section 1.2 of the USPS parcel standards](https://pe.usps.com/text/dmm300/101.htm#ep1047495) for details. </value>
-    [JsonPropertyName("non_machinable"), JsonPropertyOrder(18)]
+    [JsonPropertyName("non_machinable"), JsonPropertyOrder(21)]
     public bool? NonMachinable { get; set; }
 
     /// <summary>
     /// Gets or Sets OriginType
     /// </summary>
-    [JsonPropertyName("origin_type"), JsonPropertyOrder(19)]
+    [JsonPropertyName("origin_type"), JsonPropertyOrder(22)]
     public OriginType? OriginType { get; set; }
 
     /// <summary>
     /// Enables Saturday delivery, if supported by the carrier.
     /// </summary>
     /// <value>Enables Saturday delivery, if supported by the carrier.</value>
-    [JsonPropertyName("saturday_delivery"), JsonPropertyOrder(20)]
+    [JsonPropertyName("saturday_delivery"), JsonPropertyOrder(23)]
     public bool? SaturdayDelivery { get; set; }
 
     /// <summary>
     /// Gets or Sets ShipperRelease
     /// </summary>
-    [JsonPropertyName("shipper_release"), JsonPropertyOrder(21)]
+    [JsonPropertyName("shipper_release"), JsonPropertyOrder(24)]
     public bool? ShipperRelease { get; set; }
 
     /// <summary>
     /// Third Party Consignee option is a value-added service that allows the shipper to supply goods without commercial invoices being attached
     /// </summary>
     /// <value>Third Party Consignee option is a value-added service that allows the shipper to supply goods without commercial invoices being attached</value>
-    [JsonPropertyName("third_party_consignee"), JsonPropertyOrder(22)]
+    [JsonPropertyName("third_party_consignee"), JsonPropertyOrder(25)]
     public bool? ThirdPartyConsignee { get; set; }
 
     /// <summary>
     /// Whether to use [UPS Ground Freight pricing](https://www.shipengine.com/docs/shipping/ups-ground-freight/).  If enabled, then a &#x60;freight_class&#x60; must also be specified. 
     /// </summary>
     /// <value>Whether to use [UPS Ground Freight pricing](https://www.shipengine.com/docs/shipping/ups-ground-freight/).  If enabled, then a &#x60;freight_class&#x60; must also be specified. </value>
-    [JsonPropertyName("use_ups_ground_freight_pricing"), JsonPropertyOrder(23)]
+    [JsonPropertyName("use_ups_ground_freight_pricing"), JsonPropertyOrder(26)]
     public bool? UseUpsGroundFreightPricing { get; set; }
 
     /// <summary>
     /// Gets or Sets WindsorFrameworkDetails
     /// </summary>
-    [JsonPropertyName("windsor_framework_details"), JsonPropertyOrder(24)]
+    [JsonPropertyName("windsor_framework_details"), JsonPropertyOrder(27)]
     public AdvancedShipmentOptionsWindsorFrameworkDetails? WindsorFrameworkDetails { get; set; }
 
 
@@ -209,6 +239,7 @@ public partial class AdvancedShipmentOptions
         sb.Append("  BillToCountryCode: ").Append(BillToCountryCode).Append("\n");
         sb.Append("  BillToParty: ").Append(BillToParty).Append("\n");
         sb.Append("  BillToPostalCode: ").Append(BillToPostalCode).Append("\n");
+        sb.Append("  CertificateNumber: ").Append(CertificateNumber).Append("\n");
         sb.Append("  CollectOnDelivery: ").Append(CollectOnDelivery).Append("\n");
         sb.Append("  ContainsAlcohol: ").Append(ContainsAlcohol).Append("\n");
         sb.Append("  CustomField1: ").Append(CustomField1).Append("\n");
@@ -221,6 +252,8 @@ public partial class AdvancedShipmentOptions
         sb.Append("  DryIceWeight: ").Append(DryIceWeight).Append("\n");
         sb.Append("  FedexFreight: ").Append(FedexFreight).Append("\n");
         sb.Append("  FreightClass: ").Append(FreightClass).Append("\n");
+        sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
+        sb.Append("  LicenseNumber: ").Append(LicenseNumber).Append("\n");
         sb.Append("  NonMachinable: ").Append(NonMachinable).Append("\n");
         sb.Append("  OriginType: ").Append(OriginType).Append("\n");
         sb.Append("  SaturdayDelivery: ").Append(SaturdayDelivery).Append("\n");
