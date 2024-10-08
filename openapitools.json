@@ -14,7 +14,7 @@
         "ignoreFileOverride": "./.openapi-generator-ignore",
         "library": "generichost",
         "additionalProperties": {
-          "packageVersion": "3.0.0-beta.12",
+          "packageVersion": "3.0.0-beta.14",
           "targetFramework": "netstandard2.0",
           "validatable": false,
           "sourceFolder": "",

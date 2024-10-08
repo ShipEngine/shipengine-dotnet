@@ -57,6 +57,45 @@ public partial class Error
     [JsonPropertyName("message"), JsonInclude]
     public string? Message { get; set; }
 
+    /// <summary>
+    /// The name of the [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) that generated the error, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. 
+    /// </summary>
+    /// <value>The name of the [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) that generated the error, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// dhl_express
+    /// </example>
+    [JsonPropertyName("carrier_code"), JsonInclude]
+    public string? CarrierCode { get; set; }
+
+    /// <summary>
+    /// A string that uniquely identifies the carrier that generated the error.
+    /// </summary>
+    /// <value>A string that uniquely identifies the carrier that generated the error.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// se-28529731
+    /// </example>
+    [JsonPropertyName("carrier_id"), JsonInclude]
+    public string? CarrierId { get; set; }
+
+    /// <summary>
+    /// The name of the field that caused the error
+    /// </summary>
+    /// <value>The name of the field that caused the error</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// shipment.ship_to.phone_number
+    /// </example>
+    [JsonPropertyName("field_name"), JsonInclude]
+    public string? FieldName { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -71,6 +110,9 @@ public partial class Error
         sb.Append("  ErrorSource: ").Append(ErrorSource).Append("\n");
         sb.Append("  ErrorType: ").Append(ErrorType).Append("\n");
         sb.Append("  Message: ").Append(Message).Append("\n");
+        sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
+        sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
+        sb.Append("  FieldName: ").Append(FieldName).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

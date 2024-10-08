@@ -225,3 +225,10 @@ Fixed handling of No Content responses
 ## Changed
 
 - Updated to ShipEngine API 1.1.202409060709
+
+## 3.0.0-beta.14
+
+## Changed
+
+- Updated to ShipEngine API 1.1.202410081510
+- Add optional error properties, like field_name
