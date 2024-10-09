@@ -32,8 +32,8 @@ public partial interface IShipEngine
     /// <param name="addFundsToCarrierRequestBody"></param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (AddFundsToCarrierResponseBody)</returns>
+    Task<ShipEngineResponse<AddFundsToCarrierResponseBody>> AddFundsToCarrier(AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Add Funds To Carrier Add Funds To A Carrier
@@ -44,8 +44,8 @@ public partial interface IShipEngine
     /// <param name="addFundsToCarrierRequestBody"></param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (AddFundsToCarrierResponseBody)</returns>
+    Task<ShipEngineResponse<AddFundsToCarrierResponseBody>> AddFundsToCarrier(HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect Carrier by ID Disconnect a Carrier of the given ID from the account
@@ -54,8 +54,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DisconnectCarrierById(string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> DisconnectCarrierById(string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Disconnect Carrier by ID Disconnect a Carrier of the given ID from the account
@@ -65,8 +65,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DisconnectCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> DisconnectCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Carrier By ID Retrive carrier info by ID
@@ -75,8 +75,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierByIdResponseBody)</returns>
-    Task<GetCarrierByIdResponseBody> GetCarrierById(string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetCarrierByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetCarrierByIdResponseBody>> GetCarrierById(string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Carrier By ID Retrive carrier info by ID
@@ -86,8 +86,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierByIdResponseBody)</returns>
-    Task<GetCarrierByIdResponseBody> GetCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetCarrierByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetCarrierByIdResponseBody>> GetCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Carrier Options Get a list of the options available for the carrier
@@ -96,8 +96,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierOptionsResponseBody)</returns>
-    Task<GetCarrierOptionsResponseBody> GetCarrierOptions(string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetCarrierOptionsResponseBody)</returns>
+    Task<ShipEngineResponse<GetCarrierOptionsResponseBody>> GetCarrierOptions(string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Carrier Options Get a list of the options available for the carrier
@@ -107,8 +107,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierOptionsResponseBody)</returns>
-    Task<GetCarrierOptionsResponseBody> GetCarrierOptions(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetCarrierOptionsResponseBody)</returns>
+    Task<ShipEngineResponse<GetCarrierOptionsResponseBody>> GetCarrierOptions(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Carrier Package Types List the package types associated with the carrier
@@ -117,8 +117,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierPackageTypesResponseBody)</returns>
-    Task<ListCarrierPackageTypesResponseBody> ListCarrierPackageTypes(string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListCarrierPackageTypesResponseBody)</returns>
+    Task<ShipEngineResponse<ListCarrierPackageTypesResponseBody>> ListCarrierPackageTypes(string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Carrier Package Types List the package types associated with the carrier
@@ -128,8 +128,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierPackageTypesResponseBody)</returns>
-    Task<ListCarrierPackageTypesResponseBody> ListCarrierPackageTypes(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListCarrierPackageTypesResponseBody)</returns>
+    Task<ShipEngineResponse<ListCarrierPackageTypesResponseBody>> ListCarrierPackageTypes(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Carrier Services List the services associated with the carrier ID
@@ -138,8 +138,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierServicesResponseBody)</returns>
-    Task<ListCarrierServicesResponseBody> ListCarrierServices(string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListCarrierServicesResponseBody)</returns>
+    Task<ShipEngineResponse<ListCarrierServicesResponseBody>> ListCarrierServices(string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Carrier Services List the services associated with the carrier ID
@@ -149,8 +149,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierServicesResponseBody)</returns>
-    Task<ListCarrierServicesResponseBody> ListCarrierServices(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (ListCarrierServicesResponseBody)</returns>
+    Task<ShipEngineResponse<ListCarrierServicesResponseBody>> ListCarrierServices(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Carriers List all carriers that have been added to this account
@@ -158,8 +158,8 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarriersResponseBody)</returns>
-    Task<GetCarriersResponseBody> ListCarriers(CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetCarriersResponseBody)</returns>
+    Task<ShipEngineResponse<GetCarriersResponseBody>> ListCarriers(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Carriers List all carriers that have been added to this account
@@ -168,8 +168,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarriersResponseBody)</returns>
-    Task<GetCarriersResponseBody> ListCarriers(HttpClient methodClient, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetCarriersResponseBody)</returns>
+    Task<ShipEngineResponse<GetCarriersResponseBody>> ListCarriers(HttpClient methodClient, CancellationToken cancellationToken = default);
 
 }
 
@@ -186,8 +186,8 @@ public partial class ShipEngine
     /// <param name="addFundsToCarrierRequestBody"></param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    public Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (AddFundsToCarrierResponseBody)</returns>
+    public Task<ShipEngineResponse<AddFundsToCarrierResponseBody>> AddFundsToCarrier(AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
     {
         return AddFundsToCarrier(_client, addFundsToCarrierRequestBody, carrierId, cancellationToken);
     }
@@ -201,8 +201,8 @@ public partial class ShipEngine
     /// <param name="addFundsToCarrierRequestBody"></param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (AddFundsToCarrierResponseBody)</returns>
-    public async Task<AddFundsToCarrierResponseBody> AddFundsToCarrier(HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (AddFundsToCarrierResponseBody)</returns>
+    public async Task<ShipEngineResponse<AddFundsToCarrierResponseBody>> AddFundsToCarrier(HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'addFundsToCarrierRequestBody' is set
         if (addFundsToCarrierRequestBody == null)
@@ -224,9 +224,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarriersApi.AddFundsToCarrier";
 
-        var result = await SendHttpRequestAsync<AddFundsToCarrierResponseBody>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<AddFundsToCarrierResponseBody>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -236,8 +234,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> DisconnectCarrierById(string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> DisconnectCarrierById(string carrierId, CancellationToken cancellationToken = default)
     {
         return DisconnectCarrierById(_client, carrierId, cancellationToken);
     }
@@ -250,8 +248,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DisconnectCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> DisconnectCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -266,9 +264,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarriersApi.DisconnectCarrierById";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -278,8 +274,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierByIdResponseBody)</returns>
-    public Task<GetCarrierByIdResponseBody> GetCarrierById(string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetCarrierByIdResponseBody)</returns>
+    public Task<ShipEngineResponse<GetCarrierByIdResponseBody>> GetCarrierById(string carrierId, CancellationToken cancellationToken = default)
     {
         return GetCarrierById(_client, carrierId, cancellationToken);
     }
@@ -292,8 +288,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierByIdResponseBody)</returns>
-    public async Task<GetCarrierByIdResponseBody> GetCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetCarrierByIdResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetCarrierByIdResponseBody>> GetCarrierById(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -308,9 +304,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarriersApi.GetCarrierById";
 
-        var result = await SendHttpRequestAsync<GetCarrierByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<GetCarrierByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -320,8 +314,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierOptionsResponseBody)</returns>
-    public Task<GetCarrierOptionsResponseBody> GetCarrierOptions(string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetCarrierOptionsResponseBody)</returns>
+    public Task<ShipEngineResponse<GetCarrierOptionsResponseBody>> GetCarrierOptions(string carrierId, CancellationToken cancellationToken = default)
     {
         return GetCarrierOptions(_client, carrierId, cancellationToken);
     }
@@ -334,8 +328,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarrierOptionsResponseBody)</returns>
-    public async Task<GetCarrierOptionsResponseBody> GetCarrierOptions(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetCarrierOptionsResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetCarrierOptionsResponseBody>> GetCarrierOptions(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -350,9 +344,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarriersApi.GetCarrierOptions";
 
-        var result = await SendHttpRequestAsync<GetCarrierOptionsResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<GetCarrierOptionsResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -362,8 +354,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierPackageTypesResponseBody)</returns>
-    public Task<ListCarrierPackageTypesResponseBody> ListCarrierPackageTypes(string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListCarrierPackageTypesResponseBody)</returns>
+    public Task<ShipEngineResponse<ListCarrierPackageTypesResponseBody>> ListCarrierPackageTypes(string carrierId, CancellationToken cancellationToken = default)
     {
         return ListCarrierPackageTypes(_client, carrierId, cancellationToken);
     }
@@ -376,8 +368,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierPackageTypesResponseBody)</returns>
-    public async Task<ListCarrierPackageTypesResponseBody> ListCarrierPackageTypes(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListCarrierPackageTypesResponseBody)</returns>
+    public async Task<ShipEngineResponse<ListCarrierPackageTypesResponseBody>> ListCarrierPackageTypes(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -392,9 +384,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarriersApi.ListCarrierPackageTypes";
 
-        var result = await SendHttpRequestAsync<ListCarrierPackageTypesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<ListCarrierPackageTypesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -404,8 +394,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierServicesResponseBody)</returns>
-    public Task<ListCarrierServicesResponseBody> ListCarrierServices(string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListCarrierServicesResponseBody)</returns>
+    public Task<ShipEngineResponse<ListCarrierServicesResponseBody>> ListCarrierServices(string carrierId, CancellationToken cancellationToken = default)
     {
         return ListCarrierServices(_client, carrierId, cancellationToken);
     }
@@ -418,8 +408,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="carrierId">Carrier ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListCarrierServicesResponseBody)</returns>
-    public async Task<ListCarrierServicesResponseBody> ListCarrierServices(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (ListCarrierServicesResponseBody)</returns>
+    public async Task<ShipEngineResponse<ListCarrierServicesResponseBody>> ListCarrierServices(HttpClient methodClient, string carrierId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'carrierId' is set
         if (carrierId == null)
@@ -434,9 +424,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarriersApi.ListCarrierServices";
 
-        var result = await SendHttpRequestAsync<ListCarrierServicesResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<ListCarrierServicesResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -445,8 +433,8 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarriersResponseBody)</returns>
-    public Task<GetCarriersResponseBody> ListCarriers(CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetCarriersResponseBody)</returns>
+    public Task<ShipEngineResponse<GetCarriersResponseBody>> ListCarriers(CancellationToken cancellationToken = default)
     {
         return ListCarriers(_client, cancellationToken);
     }
@@ -458,8 +446,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetCarriersResponseBody)</returns>
-    public async Task<GetCarriersResponseBody> ListCarriers(HttpClient methodClient, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetCarriersResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetCarriersResponseBody>> ListCarriers(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/carriers");
@@ -467,9 +455,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "CarriersApi.ListCarriers";
 
-        var result = await SendHttpRequestAsync<GetCarriersResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<GetCarriersResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }
