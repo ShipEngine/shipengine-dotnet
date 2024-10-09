@@ -50,10 +50,10 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CalculateRatesRequestBody" /> class
-    /// with the <see cref="ShipmentRequest" /> class
+    /// with the <see cref="RateShipmentRequest" /> class
     /// </summary>
-    /// <param name="actualInstance">An instance of ShipmentRequest.</param>
-    public CalculateRatesRequestBody(ShipmentRequest actualInstance) : base("oneOf")
+    /// <param name="actualInstance">An instance of RateShipmentRequest.</param>
+    public CalculateRatesRequestBody(RateShipmentRequest actualInstance) : base("oneOf")
     {
         this.IsNullable = false;
         _actualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
@@ -77,13 +77,13 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
             {
                 this._actualInstance = value;
             }
-            else if (value.GetType() == typeof(ShipmentRequest))
+            else if (value.GetType() == typeof(RateShipmentRequest))
             {
                 this._actualInstance = value;
             }
             else
             {
-                throw new ArgumentException("Invalid instance found. Must be the following types: ShipmentIdRequest, ShipmentRequest");
+                throw new ArgumentException("Invalid instance found. Must be the following types: ShipmentIdRequest, RateShipmentRequest");
             }
         }
     }
@@ -99,13 +99,13 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
     }
 
     /// <summary>
-    /// Get the actual instance of `ShipmentRequest`. If the actual instance is not `ShipmentRequest`,
+    /// Get the actual instance of `RateShipmentRequest`. If the actual instance is not `RateShipmentRequest`,
     /// the InvalidClassException will be thrown
     /// </summary>
-    /// <returns>An instance of ShipmentRequest</returns>
-    public ShipmentRequest GetShipmentRequest()
+    /// <returns>An instance of RateShipmentRequest</returns>
+    public RateShipmentRequest GetRateShipmentRequest()
     {
-        return (ShipmentRequest)this.ActualInstance;
+        return (RateShipmentRequest)this.ActualInstance;
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
 /// </summary>
 public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRatesRequestBody>
 {
-    private static readonly HashSet<Type> OneOfTypes = [typeof(ShipmentIdRequest), typeof(ShipmentRequest)];
+    private static readonly HashSet<Type> OneOfTypes = [typeof(ShipmentIdRequest), typeof(RateShipmentRequest)];
     private static readonly HashSet<string> MandatoryFields = ["Shipment", "ShipmentId"];
     private static readonly JsonSerializerOptions DeserializingOptions = new(AbstractOpenAPISchema.SerializerSettings)
     {
@@ -236,18 +236,18 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
 
         try
         {
-            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentRequest>(DeserializingOptions)!)
+            newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<RateShipmentRequest>(DeserializingOptions)!)
             {
                 RateOptions = rateOptions,
             };
 
-            matchedTypes.Add("ShipmentRequest");
+            matchedTypes.Add("RateShipmentRequest");
             match++;
         }
         catch (Exception exception)
         {
             // deserialization failed, try the next one
-            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into ShipmentRequest: {1}", jsonDoc, exception);
+            System.Diagnostics.Debug.WriteLine("Failed to deserialize `{0}` into RateShipmentRequest: {1}", jsonDoc, exception);
         }
 
         if (match == 0)

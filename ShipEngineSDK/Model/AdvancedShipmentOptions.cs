@@ -224,6 +224,12 @@ public partial class AdvancedShipmentOptions
     [JsonPropertyName("windsor_framework_details"), JsonPropertyOrder(27)]
     public AdvancedShipmentOptionsWindsorFrameworkDetails? WindsorFrameworkDetails { get; set; }
 
+    /// <summary>
+    /// Gets or Sets additional properties
+    /// </summary>
+    [JsonExtensionData]
+    public IDictionary<string, object> AdditionalProperties { get; set; } = new Dictionary<string, object>();
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -261,6 +267,7 @@ public partial class AdvancedShipmentOptions
         sb.Append("  ThirdPartyConsignee: ").Append(ThirdPartyConsignee).Append("\n");
         sb.Append("  UseUpsGroundFreightPricing: ").Append(UseUpsGroundFreightPricing).Append("\n");
         sb.Append("  WindsorFrameworkDetails: ").Append(WindsorFrameworkDetails).Append("\n");
+        sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

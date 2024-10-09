@@ -185,6 +185,7 @@ ShipEngineSDK/Model/LabelLayout.cs
 ShipEngineSDK/Model/LabelMessages.cs
 ShipEngineSDK/Model/LabelPackage.cs
 ShipEngineSDK/Model/LabelPackagesInner.cs
+ShipEngineSDK/Model/LabelRequest.cs
 ShipEngineSDK/Model/LabelStatus.cs
 ShipEngineSDK/Model/Link.cs
 ShipEngineSDK/Model/ListAccountImagesResponseBody.cs
@@ -259,6 +260,7 @@ ShipEngineSDK/Model/RateRequestOptions.cs
 ShipEngineSDK/Model/RateRequestRateOptions.cs
 ShipEngineSDK/Model/RateResponse.cs
 ShipEngineSDK/Model/RateResponseStatus.cs
+ShipEngineSDK/Model/RateShipmentRequest.cs
 ShipEngineSDK/Model/RateType.cs
 ShipEngineSDK/Model/RatesInformation.cs
 ShipEngineSDK/Model/ReasonCode.cs
@@ -277,6 +279,7 @@ ShipEngineSDK/Model/ShipmentRequest.cs
 ShipEngineSDK/Model/ShipmentStatus.cs
 ShipEngineSDK/Model/ShipmentsSortBy.cs
 ShipEngineSDK/Model/ShippingAddress.cs
+ShipEngineSDK/Model/ShippingAddressFrom.cs
 ShipEngineSDK/Model/ShippingAddressTo.cs
 ShipEngineSDK/Model/SmartPostHub.cs
 ShipEngineSDK/Model/SortDir.cs

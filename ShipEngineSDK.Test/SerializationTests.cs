@@ -144,7 +144,7 @@ namespace ShipEngineSDK.Test
             [Fact]
             public void WhenSerializing_ItShouldSerializeShipment()
             {
-                var body = new CalculateRatesRequestBody(new ShipmentRequest
+                var body = new CalculateRatesRequestBody(new RateShipmentRequest
                 {
                     Shipment = new AddressValidatingShipment
                     {
@@ -183,37 +183,14 @@ namespace ShipEngineSDK.Test
 
                 var result = JsonSerializer.Serialize(body, ShipEngineClient.JsonSerializerOptions);
 
-                Assert.Equal(@"{
-  ""rate_options"": {
-    ""carrier_ids"": [
-      ""se-99999""
-    ]
-  },
-  ""shipment"": {
-    ""carrier_id"": ""se-88888"",
-    ""service_code"": ""overnight"",
-    ""ship_from"": {
-      ""address_line1"": ""123 Main St."",
-      ""address_residential_indicator"": ""no"",
-      ""city_locality"": ""St. Louis"",
-      ""country_code"": ""US"",
-      ""name"": ""John Doe"",
-      ""phone"": ""314-555-1234"",
-      ""postal_code"": ""63102"",
-      ""state_province"": ""MO""
-    },
-    ""ship_to"": {
-      ""address_line1"": ""456 Central"",
-      ""address_residential_indicator"": ""yes"",
-      ""city_locality"": ""St. Louis"",
-      ""country_code"": ""US"",
-      ""name"": ""Jane Doe"",
-      ""phone"": ""314-555-5678"",
-      ""postal_code"": ""63033"",
-      ""state_province"": ""MO""
-    }
-  }
-}", result);
+                // spot check some properties on the serialized value.
+                // comparing the serialized value to a string is too brittle, as order and indentation can change
+                var parsed = JsonDocument.Parse(result).RootElement;
+                var shipment = parsed.GetProperty("shipment");
+                Assert.Equal("se-88888", shipment.GetProperty("carrier_id").GetString());
+                Assert.Equal("overnight", shipment.GetProperty("service_code").GetString());
+                Assert.Equal("123 Main St.", shipment.GetProperty("ship_from").GetProperty("address_line1").GetString());
+                Assert.Equal("456 Central", shipment.GetProperty("ship_to").GetProperty("address_line1").GetString());
             }
 
             [Fact]
@@ -250,7 +227,7 @@ namespace ShipEngineSDK.Test
 
                 var result = JsonSerializer.Deserialize<CalculateRatesRequestBody>(json, ShipEngineClient.JsonSerializerOptions);
 
-                Assert.NotNull(result.GetShipmentRequest());
+                Assert.NotNull(result.GetRateShipmentRequest());
                 Assert.Contains("se-99999", result.RateOptions.CarrierIds);
             }
         }

@@ -21,50 +21,43 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// A purchase label request body
+/// A label represents the physical sticker that you affix to a package to ship it.  ShipEngine makes it easy for you to [create labels](https://www.shipengine.com/docs/labels/create-a-label/) and then download them in PDF, PNG, or ZPL format so you can print them. 
 /// </summary>
-public partial class CreateLabelRequestBody
+public partial class LabelRequest
 {
-
-    /// <summary>
-    /// The shipment information used to generate the label
-    /// </summary>
-    /// <value>The shipment information used to generate the label</value>
-    [JsonPropertyName("shipment"), JsonPropertyOrder(1)]
-    public required ShipmentRequest Shipment { get; set; }
 
     /// <summary>
     /// The label charge event. 
     /// </summary>
     /// <value>The label charge event. </value>
-    [JsonPropertyName("charge_event"), JsonPropertyOrder(2)]
+    [JsonPropertyName("charge_event"), JsonPropertyOrder(1)]
     public LabelChargeEvent? ChargeEvent { get; set; }
 
     /// <summary>
     /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme"), JsonPropertyOrder(3)]
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(2)]
     public DisplayScheme? DisplayScheme { get; set; }
 
     /// <summary>
     /// Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. 
     /// </summary>
     /// <value>Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. </value>
-    [JsonPropertyName("is_return_label"), JsonPropertyOrder(4)]
+    [JsonPropertyName("is_return_label"), JsonPropertyOrder(3)]
     public bool? IsReturnLabel { get; set; }
 
     /// <summary>
     /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type"), JsonPropertyOrder(5), JsonWriteOnly]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(4), JsonWriteOnly]
     public LabelDownloadType? LabelDownloadType { get; set; }
 
     /// <summary>
     /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
     /// </summary>
     /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
-    [JsonPropertyName("label_format"), JsonPropertyOrder(6)]
+    [JsonPropertyName("label_format"), JsonPropertyOrder(5)]
     public LabelFormat? LabelFormat { get; set; }
 
     /// <summary>
@@ -74,14 +67,14 @@ public partial class CreateLabelRequestBody
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id"), JsonPropertyOrder(7)]
+    [JsonPropertyName("label_image_id"), JsonPropertyOrder(6)]
     public string? LabelImageId { get; set; }
 
     /// <summary>
     /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
     /// </summary>
     /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    [JsonPropertyName("label_layout"), JsonPropertyOrder(8)]
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(7)]
     public LabelLayout? LabelLayout { get; set; }
 
     /// <summary>
@@ -91,47 +84,34 @@ public partial class CreateLabelRequestBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(9), JsonWriteOnly]
+    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(8), JsonWriteOnly]
     public string? OutboundLabelId { get; set; }
 
     /// <summary>
     /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
     /// </summary>
     /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-    [JsonPropertyName("rma_number"), JsonPropertyOrder(10)]
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(9)]
     public string? RmaNumber { get; set; }
 
     /// <summary>
-    /// A unique identifier for a carrier drop off point where a merchant plans to deliver packages. This will take precedence over a shipment&#39;s ship from address.
+    /// The shipment information used to generate the label
     /// </summary>
-    /// <value>A unique identifier for a carrier drop off point where a merchant plans to deliver packages. This will take precedence over a shipment&#39;s ship from address.</value>
-    /// <example>
-    /// 614940
-    /// </example>
-    [JsonPropertyName("ship_from_service_point_id"), JsonPropertyOrder(11)]
-    public string? ShipFromServicePointId { get; set; }
-
-    /// <summary>
-    /// A unique identifier for a carrier service point where the shipment will be delivered by the carrier. This will take precedence over a shipment&#39;s ship to address.
-    /// </summary>
-    /// <value>A unique identifier for a carrier service point where the shipment will be delivered by the carrier. This will take precedence over a shipment&#39;s ship to address.</value>
-    /// <example>
-    /// 614940
-    /// </example>
-    [JsonPropertyName("ship_to_service_point_id"), JsonPropertyOrder(12)]
-    public string? ShipToServicePointId { get; set; }
+    /// <value>The shipment information used to generate the label</value>
+    [JsonPropertyName("shipment"), JsonPropertyOrder(10)]
+    public ShipmentRequest? Shipment { get; set; }
 
     /// <summary>
     /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
     /// </summary>
     /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-    [JsonPropertyName("test_label"), JsonPropertyOrder(13), JsonWriteOnly, Obsolete]
+    [JsonPropertyName("test_label"), JsonPropertyOrder(11), JsonWriteOnly, Obsolete]
     public bool? TestLabel { get; set; }
 
     /// <summary>
     /// Gets or Sets ValidateAddress
     /// </summary>
-    [JsonPropertyName("validate_address"), JsonPropertyOrder(14), JsonWriteOnly]
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(12), JsonWriteOnly]
     public ValidateAddress? ValidateAddress { get; set; }
 
 
@@ -142,9 +122,8 @@ public partial class CreateLabelRequestBody
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class CreateLabelRequestBody {\n");
+        sb.Append("class LabelRequest {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Shipment: ").Append(Shipment).Append("\n");
         sb.Append("  ChargeEvent: ").Append(ChargeEvent).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
         sb.Append("  IsReturnLabel: ").Append(IsReturnLabel).Append("\n");
@@ -154,8 +133,7 @@ public partial class CreateLabelRequestBody
         sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
         sb.Append("  OutboundLabelId: ").Append(OutboundLabelId).Append("\n");
         sb.Append("  RmaNumber: ").Append(RmaNumber).Append("\n");
-        sb.Append("  ShipFromServicePointId: ").Append(ShipFromServicePointId).Append("\n");
-        sb.Append("  ShipToServicePointId: ").Append(ShipToServicePointId).Append("\n");
+        sb.Append("  Shipment: ").Append(Shipment).Append("\n");
         sb.Append("  TestLabel: ").Append(TestLabel).Append("\n");
         sb.Append("  ValidateAddress: ").Append(ValidateAddress).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
