@@ -181,19 +181,19 @@ Fixed handling of No Content responses
 
 ## 3.0.0-beta.1
 
-## Added
+### Added
 
 - Created new SDK methods for the entire API that sit next to the pre-existing methods.  The pre-existing methods will be deprecated eventually.
 
 ## 3.0.0-beta.2
 
-## Changed
+### Changed
 
 - Add more explicit nullable reference types
 
 ## 3.0.0-beta.3
 
-## Changed
+### Changed
 
 - Don't require any properties for deserialization so that small API changes don't completely break consumers
 - Don't try to serialize read-only properties
@@ -201,19 +201,19 @@ Fixed handling of No Content responses
 
 ## 3.0.0-beta.4
 
-## Changed
+### Changed
 
 - Make setters on readonly properties public
 
 ## 3.0.0-beta.10
 
-## Changed
+### Changed
 
 - Allow requests to be modified before being sent
 
 ## 3.0.0-beta.11
 
-## Changed
+### Changed
 
 - Added ability to scope request modifiers by using the `.WithRequestModifier()` method instead of the `.ModifyRequest` property.
   This will allow consumers to modify a single request without affecting any other consumers of the client. It also allows for
@@ -222,13 +222,20 @@ Fixed handling of No Content responses
 
 ## 3.0.0-beta.12
 
-## Changed
+### Changed
 
 - Updated to ShipEngine API 1.1.202409060709
 
 ## 3.0.0-beta.14
 
-## Changed
+### Changed
 
 - Updated to ShipEngine API 1.1.202410081510
 - Add optional error properties, like field_name
+
+## 3.0.0-beta.14
+
+### Changed
+
+- Updated to ShipEngine API 1.1.202410092210
+- AdvancedOptions now allow passing arbitrary key/values via AdditionalProperties
