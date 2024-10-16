@@ -63,6 +63,18 @@ public class LabelLayout
 
 
     /// <summary>
+    /// Enum A4 for value: A4
+    /// </summary>
+    public static LabelLayout A4 { get; } = new("A4");
+
+
+    /// <summary>
+    /// Enum A6 for value: A6
+    /// </summary>
+    public static LabelLayout A6 { get; } = new("A6");
+
+
+    /// <summary>
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;

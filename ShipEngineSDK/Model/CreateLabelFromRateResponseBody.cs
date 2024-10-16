@@ -285,9 +285,9 @@ public partial class CreateLabelFromRateResponseBody
     public string? ServiceCode { get; set; }
 
     /// <summary>
-    /// The date that the package was (or will be) shippped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead. 
+    /// The date that the package was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead. 
     /// </summary>
-    /// <value>The date that the package was (or will be) shippped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead. </value>
+    /// <value>The date that the package was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead. </value>
     /// <remarks>
     /// This should not be used for input as it will be ignored on serialization.
     /// </remarks>
