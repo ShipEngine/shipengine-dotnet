@@ -31,8 +31,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Redirect? redirect, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
+    Task<ShipEngineResponse<TokensGetEphemeralTokenResponseBodyYaml>> TokensGetEphemeralToken(Redirect? redirect, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Ephemeral Token This endpoint returns a token that can be passed to an application for authorized access.  The lifetime of this token is 10 seconds.
@@ -42,8 +42,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(HttpClient methodClient, Redirect? redirect, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
+    Task<ShipEngineResponse<TokensGetEphemeralTokenResponseBodyYaml>> TokensGetEphemeralToken(HttpClient methodClient, Redirect? redirect, CancellationToken cancellationToken = default);
 
 }
 
@@ -59,8 +59,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    public Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(Redirect? redirect = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
+    public Task<ShipEngineResponse<TokensGetEphemeralTokenResponseBodyYaml>> TokensGetEphemeralToken(Redirect? redirect = default, CancellationToken cancellationToken = default)
     {
         return TokensGetEphemeralToken(_client, redirect, cancellationToken);
     }
@@ -73,8 +73,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="redirect">Include a redirect url to the application formatted with the ephemeral token. (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
-    public async Task<TokensGetEphemeralTokenResponseBodyYaml> TokensGetEphemeralToken(HttpClient methodClient, Redirect? redirect = default, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (TokensGetEphemeralTokenResponseBodyYaml)</returns>
+    public async Task<ShipEngineResponse<TokensGetEphemeralTokenResponseBodyYaml>> TokensGetEphemeralToken(HttpClient methodClient, Redirect? redirect = default, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/tokens/ephemeral");
@@ -86,9 +86,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "TokensApi.TokensGetEphemeralToken";
 
-        var result = await SendHttpRequestAsync<TokensGetEphemeralTokenResponseBodyYaml>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<TokensGetEphemeralTokenResponseBodyYaml>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }

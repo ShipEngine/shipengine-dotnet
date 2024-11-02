@@ -31,8 +31,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="createWebhookRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateWebhookResponseBody)</returns>
-    Task<CreateWebhookResponseBody> CreateWebhook(CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (CreateWebhookResponseBody)</returns>
+    Task<ShipEngineResponse<CreateWebhookResponseBody>> CreateWebhook(CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create a Webhook Create a webook for specific events in the environment.
@@ -42,8 +42,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createWebhookRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateWebhookResponseBody)</returns>
-    Task<CreateWebhookResponseBody> CreateWebhook(HttpClient methodClient, CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (CreateWebhookResponseBody)</returns>
+    Task<ShipEngineResponse<CreateWebhookResponseBody>> CreateWebhook(HttpClient methodClient, CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Webhook By ID Delete a webhook
@@ -52,8 +52,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteWebhook(string webhookId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> DeleteWebhook(string webhookId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Webhook By ID Delete a webhook
@@ -63,8 +63,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> DeleteWebhook(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> DeleteWebhook(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Webhook By ID Retrieve individual webhook by an ID
@@ -73,8 +73,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetWebhookByIdResponseBody)</returns>
-    Task<GetWebhookByIdResponseBody> GetWebhookById(string webhookId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetWebhookByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetWebhookByIdResponseBody>> GetWebhookById(string webhookId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get Webhook By ID Retrieve individual webhook by an ID
@@ -84,8 +84,8 @@ public partial interface IShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetWebhookByIdResponseBody)</returns>
-    Task<GetWebhookByIdResponseBody> GetWebhookById(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (GetWebhookByIdResponseBody)</returns>
+    Task<ShipEngineResponse<GetWebhookByIdResponseBody>> GetWebhookById(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Webhooks List all webhooks currently enabled for the account.
@@ -93,8 +93,8 @@ public partial interface IShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;Webhook&gt;)</returns>
-    Task<List<Webhook>> ListWebhooks(CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;Webhook&gt;)</returns>
+    Task<ShipEngineResponse<List<Webhook>>> ListWebhooks(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List Webhooks List all webhooks currently enabled for the account.
@@ -103,8 +103,8 @@ public partial interface IShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;Webhook&gt;)</returns>
-    Task<List<Webhook>> ListWebhooks(HttpClient methodClient, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (List&lt;Webhook&gt;)</returns>
+    Task<ShipEngineResponse<List<Webhook>>> ListWebhooks(HttpClient methodClient, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update a Webhook Update the webhook url property
@@ -114,8 +114,8 @@ public partial interface IShipEngine
     /// <param name="updateWebhookRequestBody"></param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWebhook(UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> UpdateWebhook(UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update a Webhook Update the webhook url property
@@ -126,8 +126,8 @@ public partial interface IShipEngine
     /// <param name="updateWebhookRequestBody"></param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    Task<string> UpdateWebhook(HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default);
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    Task<ShipEngineResponse<string>> UpdateWebhook(HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default);
 
 }
 
@@ -143,8 +143,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="createWebhookRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateWebhookResponseBody)</returns>
-    public Task<CreateWebhookResponseBody> CreateWebhook(CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (CreateWebhookResponseBody)</returns>
+    public Task<ShipEngineResponse<CreateWebhookResponseBody>> CreateWebhook(CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default)
     {
         return CreateWebhook(_client, createWebhookRequestBody, cancellationToken);
     }
@@ -157,8 +157,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="createWebhookRequestBody"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (CreateWebhookResponseBody)</returns>
-    public async Task<CreateWebhookResponseBody> CreateWebhook(HttpClient methodClient, CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (CreateWebhookResponseBody)</returns>
+    public async Task<ShipEngineResponse<CreateWebhookResponseBody>> CreateWebhook(HttpClient methodClient, CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'createWebhookRequestBody' is set
         if (createWebhookRequestBody == null)
@@ -173,9 +173,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.CreateWebhook";
 
-        var result = await SendHttpRequestAsync<CreateWebhookResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<CreateWebhookResponseBody>(HttpMethods.Post, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -185,8 +183,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> DeleteWebhook(string webhookId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> DeleteWebhook(string webhookId, CancellationToken cancellationToken = default)
     {
         return DeleteWebhook(_client, webhookId, cancellationToken);
     }
@@ -199,8 +197,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> DeleteWebhook(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> DeleteWebhook(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'webhookId' is set
         if (webhookId == null)
@@ -215,9 +213,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.DeleteWebhook";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Delete, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<string>(HttpMethods.Delete, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -227,8 +223,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetWebhookByIdResponseBody)</returns>
-    public Task<GetWebhookByIdResponseBody> GetWebhookById(string webhookId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetWebhookByIdResponseBody)</returns>
+    public Task<ShipEngineResponse<GetWebhookByIdResponseBody>> GetWebhookById(string webhookId, CancellationToken cancellationToken = default)
     {
         return GetWebhookById(_client, webhookId, cancellationToken);
     }
@@ -241,8 +237,8 @@ public partial class ShipEngine
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetWebhookByIdResponseBody)</returns>
-    public async Task<GetWebhookByIdResponseBody> GetWebhookById(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (GetWebhookByIdResponseBody)</returns>
+    public async Task<ShipEngineResponse<GetWebhookByIdResponseBody>> GetWebhookById(HttpClient methodClient, string webhookId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'webhookId' is set
         if (webhookId == null)
@@ -257,9 +253,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.GetWebhookById";
 
-        var result = await SendHttpRequestAsync<GetWebhookByIdResponseBody>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<GetWebhookByIdResponseBody>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -268,8 +262,8 @@ public partial class ShipEngine
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;Webhook&gt;)</returns>
-    public Task<List<Webhook>> ListWebhooks(CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;Webhook&gt;)</returns>
+    public Task<ShipEngineResponse<List<Webhook>>> ListWebhooks(CancellationToken cancellationToken = default)
     {
         return ListWebhooks(_client, cancellationToken);
     }
@@ -281,8 +275,8 @@ public partial class ShipEngine
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="methodClient">HttpClient to use for the request</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (List&lt;Webhook&gt;)</returns>
-    public async Task<List<Webhook>> ListWebhooks(HttpClient methodClient, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (List&lt;Webhook&gt;)</returns>
+    public async Task<ShipEngineResponse<List<Webhook>>> ListWebhooks(HttpClient methodClient, CancellationToken cancellationToken = default)
     {
 
         RequestOptions requestOptions = new("/v1/environment/webhooks");
@@ -290,9 +284,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.ListWebhooks";
 
-        var result = await SendHttpRequestAsync<List<Webhook>>(HttpMethods.Get, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<List<Webhook>>(HttpMethods.Get, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
     /// <summary>
@@ -303,8 +295,8 @@ public partial class ShipEngine
     /// <param name="updateWebhookRequestBody"></param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public Task<string> UpdateWebhook(UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public Task<ShipEngineResponse<string>> UpdateWebhook(UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
     {
         return UpdateWebhook(_client, updateWebhookRequestBody, webhookId, cancellationToken);
     }
@@ -318,8 +310,8 @@ public partial class ShipEngine
     /// <param name="updateWebhookRequestBody"></param>
     /// <param name="webhookId">Webhook ID</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (string)</returns>
-    public async Task<string> UpdateWebhook(HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
+    /// <returns>Task of ShipEngineResponse (string)</returns>
+    public async Task<ShipEngineResponse<string>> UpdateWebhook(HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'updateWebhookRequestBody' is set
         if (updateWebhookRequestBody == null)
@@ -341,9 +333,7 @@ public partial class ShipEngine
 
         requestOptions.Operation = "WebhooksApi.UpdateWebhook";
 
-        var result = await SendHttpRequestAsync<string>(HttpMethods.Put, requestOptions, methodClient, _config, cancellationToken);
-
-        return result;
+        return await GetHttpResponse<string>(HttpMethods.Put, requestOptions.FullPath(), requestOptions.Data, methodClient, _config, cancellationToken);
     }
 
 }
