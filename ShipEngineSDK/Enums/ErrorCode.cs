@@ -261,5 +261,11 @@ namespace ShipEngineSDK
         /// </summary>
         [EnumMember(Value = "webhook_event_type_conflict")]
         WebhookEventTypeConflict,
+
+        /// <summary>
+        /// The attempted operation does not support multiple packages.
+        /// </summary>
+        [EnumMember(Value = "multipackage_not_supported")]
+        MultipackageNotSupported,
     }
 }

@@ -189,3 +189,15 @@ Fixed handling of No Content responses
 ### Added
 
 - Added funding_source and parcelguard to insurance provider enumeration
+
+## 2.3.3
+
+### Changed
+
+- update System.Text.Json to latest version 8.0.5
+
+## 2.3.4
+
+### Added
+
+- Added error code MultipackageNotSupported
