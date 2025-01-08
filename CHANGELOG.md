@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## 1.0.0
 
 ### Features
@@ -16,15 +15,13 @@ Implement the following SDK methods.
 - `CreateLabelFromRate`
 - `GetRatesWithShipmentDetails`
 
-
 ## 1.0.7
 
 ### Features
 
 Implement the following SDK methods.
+
 - `CreateImplicitManifest`
-
-
 
 ## 1.1.0
 
@@ -41,7 +38,6 @@ Rename LabelDownload method to the more generic Download
 
 Some documentation linking errors and minor typos
 
-
 ## 1.1.1
 
 ### Added
@@ -51,7 +47,6 @@ Some documentation linking errors and minor typos
 ### Fixed
 
 The Customs Item Quantity type has been changed to integer type for CreateLabelFromShipmentDetails model.
-
 
 ## 1.1.2
 
@@ -150,7 +145,7 @@ Updated nuget package dependencies
 
 ### Added
 
-- Created new SDK methods for the entire API that sit next to the pre-existing methods.  The pre-existing methods will be deprecated eventually.
+- Created new SDK methods for the entire API that sit next to the pre-existing methods. The pre-existing methods will be deprecated eventually.
 
 ## 2.2.0
 
@@ -175,7 +170,7 @@ Fixed handling of No Content responses
 
 - Added ability to scope request modifiers by using the `.WithRequestModifier()` method instead of the `.ModifyRequest` property.
   This will allow consumers to modify a single request without affecting any other consumers of the client. It also allows for
-  multiple modifiers to be added.  For example, a modifier could be added at the global level that applies to all requests and then
+  multiple modifiers to be added. For example, a modifier could be added at the global level that applies to all requests and then
   another modifier can be added for a single request.
 
 ## 2.3.1
@@ -201,3 +196,10 @@ Fixed handling of No Content responses
 ### Added
 
 - Added error code MultipackageNotSupported
+
+## 2.3.5
+
+### Added
+
+- Added error code FundingSourceMissingConfiguration
+- Added error code FundingSourceError
