@@ -4,7 +4,7 @@
 		<PackageId>ShipEngine</PackageId>
 		<PackageTags>sdk;rest;api;shipping;rates;label;tracking;cost;address;validation;normalization;fedex;ups;usps;</PackageTags>
 
-		<Version>2.3.2</Version>
+		<Version>2.3.4</Version>
 		<Authors>ShipEngine</Authors>
 		<Company>ShipEngine</Company>
 		<Summary>The official ShipEngine C# SDK for .NET</Summary>
@@ -32,7 +32,7 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-		<PackageReference Include="System.Text.Json" Version="8.0.4" />
+		<PackageReference Include="System.Text.Json" Version="8.0.5" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 

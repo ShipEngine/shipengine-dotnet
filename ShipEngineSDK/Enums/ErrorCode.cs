@@ -273,5 +273,11 @@ namespace ShipEngineSDK
         /// </summary>
         [EnumMember(Value = "funding_source_error")]
         FundingSourceError,
+        
+        /// <summary>
+        /// The attempted operation does not support multiple packages.
+        /// </summary>
+        [EnumMember(Value = "multipackage_not_supported")]
+        MultipackageNotSupported,
     }
 }

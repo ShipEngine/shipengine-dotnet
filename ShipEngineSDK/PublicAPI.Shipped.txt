@@ -857,6 +857,7 @@ ShipEngineSDK.ErrorCode.InvalidStatus = 20 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.InvalidStringLength = 21 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.LabelImagesNotSupported = 22 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.MeterFailure = 23 -> ShipEngineSDK.ErrorCode
+ShipEngineSDK.ErrorCode.MultipackageNotSupported = 39 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.NoRatesReturned = 25 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.NotFound = 24 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.RateLimitExceeded = 26 -> ShipEngineSDK.ErrorCode

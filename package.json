@@ -1,6 +1,6 @@
 {
   "name": "shipengine-dotnet",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Package primarily used to generate the API and models from OpenApi spec\"",
   "main": "index.js",
   "directories": {
