@@ -873,6 +873,8 @@ ShipEngineSDK.ErrorCode.Unspecified = 35 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.VerificationFailure = 36 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.WarehouseConflict = 37 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorCode.WebhookEventTypeConflict = 38 -> ShipEngineSDK.ErrorCode
+ShipEngineSDK.ErrorCode.FundingSourceMissingConfiguration = 39 -> ShipEngineSDK.ErrorCode
+ShipEngineSDK.ErrorCode.FundingSourceError = 40 -> ShipEngineSDK.ErrorCode
 ShipEngineSDK.ErrorSource
 ShipEngineSDK.ErrorSource.Carrier = 1 -> ShipEngineSDK.ErrorSource
 ShipEngineSDK.ErrorSource.OrderSource = 2 -> ShipEngineSDK.ErrorSource
