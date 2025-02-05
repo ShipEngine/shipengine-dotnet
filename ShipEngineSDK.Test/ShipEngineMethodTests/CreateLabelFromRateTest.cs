@@ -11,6 +11,8 @@ using Xunit;
 
 namespace ShipEngineTest
 {
+    using ShipEngineSDK.Model;
+
     public class CreateLabelFromRateTest
     {
 
@@ -24,10 +26,10 @@ namespace ShipEngineTest
             Params = new Params()
             {
                 RateId = "se-1234",
-                ValidateAddress = ValidateAddress.NoValidation,
-                LabelLayout = LabelLayout.Letter,
-                LabelFormat = LabelFormat.PDF,
-                LabelDownloadType = LabelDownloadType.Url
+                ValidateAddress = ShipEngineSDK.Common.Enums.ValidateAddress.NoValidation,
+                LabelLayout = ShipEngineSDK.Common.Enums.LabelLayout.Letter,
+                LabelFormat = ShipEngineSDK.Common.Enums.LabelFormat.PDF,
+                LabelDownloadType = ShipEngineSDK.CreateLabelFromRate.LabelDownloadType.Url
             };
 
             TestUtils = new TestUtils();
@@ -46,7 +48,7 @@ namespace ShipEngineTest
             var result = await mockShipEngineFixture.ShipEngine.CreateLabelFromRate(Params);
 
             Assert.Equal("se-80255646", result.LabelId);
-            Assert.Equal(LabelStatus.Completed, result.Status);
+            Assert.Equal(ShipEngineSDK.CreateLabelFromRate.LabelStatus.Completed, result.Status);
             Assert.Equal("se-153814671", result.ShipmentId);
             Assert.Equal("2021-08-27T00:00:00Z", result.ShipDate);
             Assert.Equal("2021-08-27T16:29:56.8779097Z", result.CreatedAt);
@@ -68,13 +70,13 @@ namespace ShipEngineTest
             Assert.Equal("package", result.PackageCode);
             Assert.False(result.Voided);
             Assert.Null(result.VoidedAt);
-            Assert.Equal(LabelFormat.PDF, result.LabelFormat);
-            Assert.Equal(DisplayScheme.Label, result.DisplayScheme);
-            Assert.Equal(LabelLayout.FourBySix, result.LabelLayout);
+            Assert.Equal(ShipEngineSDK.Common.Enums.LabelFormat.PDF, result.LabelFormat);
+            Assert.Equal(ShipEngineSDK.Common.Enums.DisplayScheme.Label, result.DisplayScheme);
+            Assert.Equal(ShipEngineSDK.Common.Enums.LabelLayout.FourBySix, result.LabelLayout);
             Assert.True(result.Trackable);
             Assert.Null(result.LabelImageId);
             Assert.Equal("ups", result.CarrierCode);
-            Assert.Equal(TrackingStatus.InTransit, result.TrackingStatus);
+            Assert.Equal(ShipEngineSDK.CreateLabelFromRate.TrackingStatus.InTransit, result.TrackingStatus);
 
             Assert.Equal("https://api.shipengine.com/v1/downloads/10/xJi-OIh8UU-_RBVmfA6dDw/label-80255646.pdf", result.LabelDownload.Pdf);
             Assert.Equal("https://api.shipengine.com/v1/downloads/10/xJi-OIh8UU-_RBVmfA6dDw/label-80255646.png", result.LabelDownload.Png);
@@ -89,9 +91,9 @@ namespace ShipEngineTest
 
             Assert.Equal("package", package.PackageCode);
             Assert.Equal(17.0, package.Weight.Value);
-            Assert.Equal(WeightUnit.Pound, package.Weight.Unit);
+            Assert.Equal(ShipEngineSDK.Common.Enums.WeightUnit.Pound, package.Weight.Unit);
 
-            Assert.Equal(DimensionUnit.Inch, package.Dimensions.Unit);
+            Assert.Equal(ShipEngineSDK.Common.Enums.DimensionUnit.Inch, package.Dimensions.Unit);
             Assert.Equal(36.0, package.Dimensions.Length);
             Assert.Equal(12.0, package.Dimensions.Width);
             Assert.Equal(24.0, package.Dimensions.Height);
@@ -157,11 +159,24 @@ namespace ShipEngineTest
             var shipEngine = mockHandler.Object;
 
             var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await shipEngine.CreateLabelFromRate(Params, methodConfig: new Config(apiKey: "12345", retries: -1)));
-            Assert.Equal(ErrorSource.Shipengine, ex.ErrorSource);
-            Assert.Equal(ErrorType.Validation, ex.ErrorType);
-            Assert.Equal(ErrorCode.InvalidFieldValue, ex.ErrorCode);
+            Assert.Equal(ShipEngineSDK.ErrorSource.Shipengine, ex.ErrorSource);
+            Assert.Equal(ShipEngineSDK.ErrorType.Validation, ex.ErrorType);
+            Assert.Equal(ShipEngineSDK.ErrorCode.InvalidFieldValue, ex.ErrorCode);
             Assert.Equal("Retries must be greater than zero.", ex.Message);
             Assert.Null(ex.RequestId);
         }
+
+
+        [Fact]
+        public void CanDeserializeLabelResponseWithGeneratedModel()
+        {
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromRate200Response.json"));
+
+            var response = JsonSerializer.Deserialize<CreateLabelResponseBody>(json);
+            Assert.Equal("1Z63R0960332529481", response.TrackingNumber);
+            var package = Assert.Single(response.Packages);
+            Assert.Equal("https://api.shipengine.com/v1/downloads/10/2zzavkE0J0irTipDXRePHQ/labelpackage-85151459.pdf", package.LabelDownload.Pdf);
+        }
+
     }
 }

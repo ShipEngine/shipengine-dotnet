@@ -7,13 +7,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ShipEngineSDK
 {
-    using HttpMethod = System.Net.Http.HttpMethod;
-
     /// <summary>
     /// ShipEngine Client is used for handling generic calls and settings that
     /// are needed for all ShipEngine API calls.
@@ -38,13 +37,40 @@ namespace ShipEngineSDK
         /// Options for serializing the method call params to JSON.
         /// A separate inline setting is used for deserializing the response
         /// </summary>
-        protected static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
+        internal static readonly JsonSerializerOptions JsonSerializerOptions = new()
         {
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            IgnoreReadOnlyProperties = true,
             PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
             PropertyNameCaseInsensitive = true,
             WriteIndented = true,
-            Converters = { new JsonStringEnumMemberConverter() }
+            Converters = { new JsonStringEnumMemberConverter() },
+            TypeInfoResolver = new DefaultJsonTypeInfoResolver
+            {
+                Modifiers =
+                {
+                    static typeInfo =>
+                    {
+                        if (typeInfo.Kind != JsonTypeInfoKind.Object)
+                            return;
+
+                        foreach (JsonPropertyInfo propertyInfo in typeInfo.Properties)
+                        {
+                            // Don't require any properties when deserializing since we should not break consumers
+                            // if the API changes slightly without consumers updating
+                            propertyInfo.IsRequired = false;
+
+                            // If a property is marked as writeOnly, we should not try deserializing it
+                            var writeOnly = propertyInfo.AttributeProvider?
+                                .GetCustomAttributes(typeof(JsonWriteOnlyAttribute), false).Any() ?? false;
+                            if (writeOnly)
+                            {
+                                propertyInfo.Set = (o, o1) => { };
+                            }
+                        }
+                    }
+                }
+            }
         };
 
         private static readonly string? OsPlatform = Environment.OSVersion.Platform.ToString();

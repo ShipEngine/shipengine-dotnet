@@ -26,11 +26,13 @@
 **/*.csproj
 appveyor.yml
 git_push.sh
+ShipEngineSDK/Api/IApi.cs
 ShipEngineSDK/Client/*.cs
+ShipEngineSDK/Extensions/*.cs
 
 # We should re-enable these eventually
-README.md
-docs/*.md
+*/README.md
+docs/scripts/*
 ShipEngineSDK.Test/*/*.cs
 api/**
 .gitignore

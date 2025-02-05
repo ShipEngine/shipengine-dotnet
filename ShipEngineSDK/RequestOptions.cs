@@ -59,12 +59,12 @@ public class RequestOptions(string path)
     /// <summary>
     /// Operation associated with the request path.
     /// </summary>
-    internal string Operation { get; set; }
+    internal string? Operation { get; set; }
 
     /// <summary>
     /// Any data associated with a request body.
     /// </summary>
-    internal string Data { get; set; }
+    internal string? Data { get; set; }
 
     internal string FullPath()
     {
