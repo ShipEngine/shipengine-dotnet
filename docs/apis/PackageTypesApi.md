@@ -57,14 +57,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createPackageTypeRequestBody** | [**CreatePackageTypeRequestBody**](CreatePackageTypeRequestBody.md) |  |  |
+| **createPackageTypeRequestBody** | [**CreatePackageTypeRequestBody**](../../docs//models/CreatePackageTypeRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreatePackageTypeResponseBody**](../models/CreatePackageTypeResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="deletepackagetype"></a>
 # **DeletePackageType**
@@ -122,8 +120,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getpackagetypebyid"></a>
 # **GetPackageTypeById**
 ```csharp
@@ -180,8 +176,6 @@ namespace Example
 
 [**GetPackageTypeByIdResponseBody**](../models/GetPackageTypeByIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="listpackagetypes"></a>
 # **ListPackageTypes**
 ```csharp
@@ -236,8 +230,6 @@ namespace Example
 
 [**ListPackageTypesResponseBody**](../models/ListPackageTypesResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="updatepackagetype"></a>
 # **UpdatePackageType**
 ```csharp
@@ -288,13 +280,11 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updatePackageTypeRequestBody** | [**UpdatePackageTypeRequestBody**](UpdatePackageTypeRequestBody.md) |  |  |
+| **updatePackageTypeRequestBody** | [**UpdatePackageTypeRequestBody**](../../docs//models/UpdatePackageTypeRequestBody.md) |  |  |
 | **packageId** | **string** | Package ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

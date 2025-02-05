@@ -16,5 +16,3 @@ Name | Type | Description | Notes
 **SubmissionId** | **string** | A string that uniquely identifies the submission | [readonly] 
 **WarehouseId** | **string** | A string that uniquely identifies the warehouse | [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

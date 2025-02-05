@@ -22,5 +22,3 @@ Name | Type | Description | Notes
 **TrackingNumber** | **string** | A tracking number for a package. The format depends on the carrier. | [optional] 
 **TrackingUrl** | **string** | Carrier Tracking Url, if available | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

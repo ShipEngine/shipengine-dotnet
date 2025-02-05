@@ -35,5 +35,3 @@ Name | Type | Description | Notes
 **TotalWeight** | [**Weight**](Weight.md) | The combined weight of all packages in the shipment | [optional] [readonly] 
 **WarehouseId** | **string** | The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either &#x60;warehouse_id&#x60; or &#x60;ship_from&#x60; must be specified.  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

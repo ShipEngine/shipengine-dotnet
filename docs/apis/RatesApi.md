@@ -56,14 +56,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **calculateRatesRequestBody** | [**CalculateRatesRequestBody**](CalculateRatesRequestBody.md) |  |  |
+| **calculateRatesRequestBody** | [**CalculateRatesRequestBody**](../../docs//models/CalculateRatesRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CalculateRatesResponseBody**](../models/CalculateRatesResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="comparebulkrates"></a>
 # **CompareBulkRates**
@@ -114,14 +112,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **compareBulkRatesRequestBody** | [**CompareBulkRatesRequestBody**](CompareBulkRatesRequestBody.md) |  |  |
+| **compareBulkRatesRequestBody** | [**CompareBulkRatesRequestBody**](../../docs//models/CompareBulkRatesRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**List&lt;BulkRate&gt;**](../models/BulkRate.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="estimaterates"></a>
 # **EstimateRates**
@@ -172,14 +168,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **estimateRatesRequestBody** | [**EstimateRatesRequestBody**](EstimateRatesRequestBody.md) |  |  |
+| **estimateRatesRequestBody** | [**EstimateRatesRequestBody**](../../docs//models/EstimateRatesRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**List&lt;RateEstimate&gt;**](../models/RateEstimate.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getratebyid"></a>
 # **GetRateById**
@@ -236,6 +230,4 @@ namespace Example
 ### Return type
 
 [**GetRateByIdResponseBody**](../models/GetRateByIdResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

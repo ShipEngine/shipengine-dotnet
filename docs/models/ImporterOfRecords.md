@@ -17,5 +17,3 @@ Name | Type | Description | Notes
 **Phone** | **string** | The phone number of a contact person at this address.  The format of this phone number varies depending on the country.  | [optional] 
 **StateProvince** | **string** | The state or province.  For some countries (including the U.S.) only abbreviations are allowed.  Other countries allow the full name or abbreviation.  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -10,5 +10,3 @@ Name | Type | Description | Notes
 **MailerId** | **int** | Mailer id | [optional] 
 **MerchantId** | **int** | Merchant id | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

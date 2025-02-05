@@ -63,15 +63,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **addToBatchRequestBody** | [**AddToBatchRequestBody**](AddToBatchRequestBody.md) |  |  |
+| **addToBatchRequestBody** | [**AddToBatchRequestBody**](../../docs//models/AddToBatchRequestBody.md) |  |  |
 | **batchId** | **string** | Batch ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="createbatch"></a>
 # **CreateBatch**
@@ -122,14 +120,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createBatchRequest** | [**CreateBatchRequest**](CreateBatchRequest.md) |  |  |
+| **createBatchRequest** | [**CreateBatchRequest**](../../docs//models/CreateBatchRequest.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateBatchResponseBody**](../models/CreateBatchResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="deletebatch"></a>
 # **DeleteBatch**
@@ -187,8 +183,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getbatchbyexternalid"></a>
 # **GetBatchByExternalId**
 ```csharp
@@ -245,8 +239,6 @@ namespace Example
 
 [**GetBatchByExternalIdResponseBody**](../models/GetBatchByExternalIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getbatchbyid"></a>
 # **GetBatchById**
 ```csharp
@@ -302,8 +294,6 @@ namespace Example
 ### Return type
 
 [**GetBatchByIdResponseBody**](../models/GetBatchByIdResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listbatcherrors"></a>
 # **ListBatchErrors**
@@ -364,8 +354,6 @@ namespace Example
 ### Return type
 
 [**ListBatchErrorsResponseBody**](../models/ListBatchErrorsResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listbatches"></a>
 # **ListBatches**
@@ -433,8 +421,6 @@ namespace Example
 
 [**ListBatchesResponseBody**](../models/ListBatchesResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="processbatch"></a>
 # **ProcessBatch**
 ```csharp
@@ -485,15 +471,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **processBatchRequestBody** | [**ProcessBatchRequestBody**](ProcessBatchRequestBody.md) |  |  |
+| **processBatchRequestBody** | [**ProcessBatchRequestBody**](../../docs//models/ProcessBatchRequestBody.md) |  |  |
 | **batchId** | **string** | Batch ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="removefrombatch"></a>
 # **RemoveFromBatch**
@@ -545,15 +529,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **removeFromBatchRequestBody** | [**RemoveFromBatchRequestBody**](RemoveFromBatchRequestBody.md) |  |  |
+| **removeFromBatchRequestBody** | [**RemoveFromBatchRequestBody**](../../docs//models/RemoveFromBatchRequestBody.md) |  |  |
 | **batchId** | **string** | Batch ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="updatebatch"></a>
 # **UpdateBatch**
@@ -610,6 +592,4 @@ namespace Example
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

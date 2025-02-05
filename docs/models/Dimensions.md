@@ -10,5 +10,3 @@ Name | Type | Description | Notes
 **Length** | **decimal** | The length of the package, in the specified unit | [default to 0M]
 **Width** | **decimal** | The width of the package, in the specified unit | [default to 0M]
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

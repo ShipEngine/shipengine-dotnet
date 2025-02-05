@@ -25,5 +25,3 @@ Name | Type | Description | Notes
 **StatusDetailCode** | **StatusDetailCode** |  | [optional] 
 **StatusDetailDescription** | **string** | Event Status Detail Description | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

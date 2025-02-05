@@ -13,5 +13,3 @@ Name | Type | Description | Notes
 **Name** | **string** | User friendly service name | [optional] [readonly] 
 **ServiceCode** | **string** | service code | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

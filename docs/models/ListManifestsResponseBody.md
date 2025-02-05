@@ -11,5 +11,3 @@ Name | Type | Description | Notes
 **Pages** | **int** | Total number of pages for list manifests results | [readonly] 
 **Total** | **long** | The total number of manifests returned | [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -13,5 +13,3 @@ Name | Type | Description | Notes
 **Tuesday** | [**List&lt;ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner&gt;**](ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner.md) |  | [optional] 
 **Wednesday** | [**List&lt;ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner&gt;**](ListServicePointsResponseBodyServicePointsInnerHoursOfOperationMondayInner.md) |  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -6,5 +6,3 @@ The available layouts (sizes) in which shipping labels can be downloaded.  The l
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

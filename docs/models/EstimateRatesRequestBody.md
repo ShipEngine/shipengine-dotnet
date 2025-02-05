@@ -19,5 +19,3 @@ Name | Type | Description | Notes
 **Confirmation** | **DeliveryConfirmation** |  | [optional] 
 **Dimensions** | [**Dimensions**](Dimensions.md) | The dimensions of the package | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

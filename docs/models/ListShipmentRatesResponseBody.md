@@ -13,5 +13,3 @@ Name | Type | Description | Notes
 **ShipmentId** | **string** | A string that uniquely identifies the shipment | [readonly] 
 **Status** | **RateResponseStatus** |  | [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

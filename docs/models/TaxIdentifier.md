@@ -10,5 +10,3 @@ Name | Type | Description | Notes
 **TaxableEntityType** | **TaxableEntityType** |  | 
 **Value** | **string** | The value of the identifier | 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

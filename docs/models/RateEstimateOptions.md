@@ -18,5 +18,3 @@ Name | Type | Description | Notes
 **ToStateProvince** | **string** | To state province | [optional] 
 **Weight** | [**Weight**](Weight.md) | The weight of the package | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

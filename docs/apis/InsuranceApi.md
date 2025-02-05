@@ -56,14 +56,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **addFundsToInsuranceRequestBody** | [**AddFundsToInsuranceRequestBody**](AddFundsToInsuranceRequestBody.md) |  |  |
+| **addFundsToInsuranceRequestBody** | [**AddFundsToInsuranceRequestBody**](../../docs//models/AddFundsToInsuranceRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**AddFundsToInsuranceResponseBody**](../models/AddFundsToInsuranceResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="connectinsurer"></a>
 # **ConnectInsurer**
@@ -114,14 +112,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **connectInsurerRequestBody** | [**ConnectInsurerRequestBody**](ConnectInsurerRequestBody.md) |  |  |
+| **connectInsurerRequestBody** | [**ConnectInsurerRequestBody**](../../docs//models/ConnectInsurerRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="disconnectinsurer"></a>
 # **DisconnectInsurer**
@@ -177,8 +173,6 @@ namespace Example
 
 **Object**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getinsurancebalance"></a>
 # **GetInsuranceBalance**
 ```csharp
@@ -232,6 +226,4 @@ namespace Example
 ### Return type
 
 [**GetInsuranceBalanceResponseBody**](../models/GetInsuranceBalanceResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

@@ -63,8 +63,6 @@ namespace Example
 
 [**CreateTagResponseBody**](../models/CreateTagResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="deletetag"></a>
 # **DeleteTag**
 ```csharp
@@ -121,8 +119,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="listtags"></a>
 # **ListTags**
 ```csharp
@@ -176,8 +172,6 @@ namespace Example
 ### Return type
 
 [**ListTagsResponseBody**](../models/ListTagsResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="renametag"></a>
 # **RenameTag**
@@ -236,6 +230,4 @@ namespace Example
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

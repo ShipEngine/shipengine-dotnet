@@ -33,5 +33,3 @@ Name | Type | Description | Notes
 **UseUpsGroundFreightPricing** | **bool** | Whether to use [UPS Ground Freight pricing](https://www.shipengine.com/docs/shipping/ups-ground-freight/).  If enabled, then a &#x60;freight_class&#x60; must also be specified.  | [optional] 
 **WindsorFrameworkDetails** | [**AdvancedShipmentOptionsWindsorFrameworkDetails**](AdvancedShipmentOptionsWindsorFrameworkDetails.md) |  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

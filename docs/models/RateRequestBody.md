@@ -12,5 +12,3 @@ Name | Type | Description | Notes
 **PreferredCurrency** | **string** | The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html  | [optional] 
 **ServiceCodes** | **List&lt;string&gt;** |  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

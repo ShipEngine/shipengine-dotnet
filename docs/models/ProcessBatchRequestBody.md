@@ -10,5 +10,3 @@ Name | Type | Description | Notes
 **LabelLayout** | **LabelLayout** |  | [optional] [default to "4x6"]
 **ShipDate** | **DateTimeOffset** | The Ship date the batch is being processed for | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

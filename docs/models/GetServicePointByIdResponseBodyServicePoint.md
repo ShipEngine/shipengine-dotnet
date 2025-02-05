@@ -20,5 +20,3 @@ Name | Type | Description | Notes
 **StateProvince** | **string** | The state or province. For some countries (including the U.S.) only abbreviations are allowed. Other countries allow the full name or abbreviation. | [optional] 
 **Type** | **string** | Service point type | [optional] [default to TypeEnum.Pudo]
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -10,5 +10,3 @@ Name | Type | Description | Notes
 **Png** | **string** | The URL for the png generated label | [optional] 
 **Zpl** | **string** | The URL for the zpl generated label | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

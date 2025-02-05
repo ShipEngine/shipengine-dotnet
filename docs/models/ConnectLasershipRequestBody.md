@@ -32,5 +32,3 @@ Name | Type | Description | Notes
 **Instructions** | **String** | Instructions | [optional] 
 **Phone** | **String** | Phone | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

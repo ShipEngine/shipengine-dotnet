@@ -6,5 +6,3 @@ The taxable entity type for this tax item. Valid values include the following  |
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

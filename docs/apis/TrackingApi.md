@@ -64,8 +64,6 @@ namespace Example
 
 [**GetTrackingLogResponseBody**](../models/GetTrackingLogResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="starttracking"></a>
 # **StartTracking**
 ```csharp
@@ -124,8 +122,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="stoptracking"></a>
 # **StopTracking**
 ```csharp
@@ -183,6 +179,4 @@ namespace Example
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

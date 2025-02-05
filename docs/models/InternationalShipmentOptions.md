@@ -14,5 +14,3 @@ Name | Type | Description | Notes
 **InvoiceAdditionalDetails** | [**InvoiceAdditionalDetails**](InvoiceAdditionalDetails.md) |  | [optional] 
 **TermsOfTradeCode** | **AllowedIncoterms** | Specifies the supported terms of trade code (incoterms) | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

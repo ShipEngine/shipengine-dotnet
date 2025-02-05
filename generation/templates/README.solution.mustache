@@ -61,17 +61,6 @@ API | Method | Description
 {{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{baseName}}* | [**{{operationId}}**]({{apiDocPath}}/{{classname}}.md#{{operationIdLowerCase}}) | {{{summary}}}
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
-<a id="documentation-for-models"></a>
-## Models
-
-{{#modelPackage}}
-{{#models}}{{#model}} - [{{{classname}}}]({{modelDocPath}}/{{{classname}}}.md)
-{{/model}}{{/models}}
-{{/modelPackage}}
-{{^modelPackage}}
-No model defined in this package
-{{/modelPackage}}
-
 ## Legacy Methods
 
 These methods have been deprecated in favor of the methods listed above, but are still in the SDK.

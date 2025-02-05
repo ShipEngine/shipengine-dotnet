@@ -63,8 +63,6 @@ namespace Example
 
 [**DeletePickupByIdResponseBody**](../models/DeletePickupByIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getpickupbyid"></a>
 # **GetPickupById**
 ```csharp
@@ -120,8 +118,6 @@ namespace Example
 ### Return type
 
 [**GetPickupByIdResponseBody**](../models/GetPickupByIdResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listscheduledpickups"></a>
 # **ListScheduledPickups**
@@ -189,8 +185,6 @@ namespace Example
 
 [**GetPickupsResponseBody**](../models/GetPickupsResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="schedulepickup"></a>
 # **SchedulePickup**
 ```csharp
@@ -240,12 +234,10 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **schedulePickupRequestBody** | [**SchedulePickupRequestBody**](SchedulePickupRequestBody.md) |  |  |
+| **schedulePickupRequestBody** | [**SchedulePickupRequestBody**](../../docs//models/SchedulePickupRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**SchedulePickupResponseBody**](../models/SchedulePickupResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

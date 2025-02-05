@@ -58,14 +58,12 @@ namespace Example
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **carrierName** | **CarrierName** | The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;. |  |
-| **connectCarrierRequestBody** | [**ConnectCarrierRequestBody**](ConnectCarrierRequestBody.md) |  |  |
+| **connectCarrierRequestBody** | [**ConnectCarrierRequestBody**](../../docs//models/ConnectCarrierRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**ConnectCarrierResponseBody**](../models/ConnectCarrierResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="disconnectcarrier"></a>
 # **DisconnectCarrier**
@@ -125,8 +123,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getcarriersettings"></a>
 # **GetCarrierSettings**
 ```csharp
@@ -185,8 +181,6 @@ namespace Example
 
 [**GetCarrierSettingsResponseBody**](../models/GetCarrierSettingsResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="updatecarriersettings"></a>
 # **UpdateCarrierSettings**
 ```csharp
@@ -239,13 +233,11 @@ namespace Example
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **carrierName** | **CarrierNameWithSettings** | The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;. |  |
-| **updateCarrierSettingsRequestBody** | [**UpdateCarrierSettingsRequestBody**](UpdateCarrierSettingsRequestBody.md) |  |  |
+| **updateCarrierSettingsRequestBody** | [**UpdateCarrierSettingsRequestBody**](../../docs//models/UpdateCarrierSettingsRequestBody.md) |  |  |
 | **carrierId** | **string** | Carrier ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

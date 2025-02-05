@@ -20,5 +20,3 @@ Name | Type | Description | Notes
 **ManifestRequests** | [**List&lt;ManifestRequest&gt;**](ManifestRequest.md) | Resulting manifest requests with statuses | [optional] 
 **Manifests** | [**List&lt;Manifest&gt;**](Manifest.md) | Resulting Manifests | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

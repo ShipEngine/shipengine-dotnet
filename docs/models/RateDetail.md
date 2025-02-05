@@ -13,5 +13,3 @@ Name | Type | Description | Notes
 **RateDetailAttributes** | [**RateDetailAttributes**](RateDetailAttributes.md) | If applicable, contains additional data about a rate detail of a specific type, e.g. VAT | [optional] 
 **RateDetailType** | **RateDetailType** |  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -27,5 +27,3 @@ Name | Type | Description | Notes
 **ExternalBatchId** | **string** | A string that uniquely identifies the external batch | [readonly] 
 **ProcessedAt** | **DateTimeOffset** | The date and time the batch was processed in ShipEngine | [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

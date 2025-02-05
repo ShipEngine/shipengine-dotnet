@@ -9,5 +9,3 @@ Name | Type | Description | Notes
 **Entities** | [**List&lt;RecognizedEntity&gt;**](RecognizedEntity.md) | All of the entities that were recognized in the text. An \&quot;entity\&quot; is a single piece of data, such as a city, a postal code, or an address line.  Each entity includes the original text and the parsed value.  | 
 **Score** | **double** | A confidence score between zero and one that indicates how certain the API is that it understood the text.  | 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

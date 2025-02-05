@@ -25,5 +25,3 @@ Name | Type | Description | Notes
 **TransportMean** | **TransportMean** |  | [optional] 
 **TunnelCode** | **string** | Defines which types of tunnels the shipment is allowed to go through | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

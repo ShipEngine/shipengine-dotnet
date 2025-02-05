@@ -61,14 +61,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelRequestBody** | [**CreateLabelRequestBody**](CreateLabelRequestBody.md) |  |  |
+| **createLabelRequestBody** | [**CreateLabelRequestBody**](../../docs//models/CreateLabelRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateLabelResponseBody**](../models/CreateLabelResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="createlabelfromrate"></a>
 # **CreateLabelFromRate**
@@ -120,15 +118,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelFromRateRequestBody** | [**CreateLabelFromRateRequestBody**](CreateLabelFromRateRequestBody.md) |  |  |
+| **createLabelFromRateRequestBody** | [**CreateLabelFromRateRequestBody**](../../docs//models/CreateLabelFromRateRequestBody.md) |  |  |
 | **rateId** | **string** | Rate ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateLabelFromRateResponseBody**](../models/CreateLabelFromRateResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="createlabelfromshipment"></a>
 # **CreateLabelFromShipment**
@@ -180,15 +176,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelFromShipmentRequestBody** | [**CreateLabelFromShipmentRequestBody**](CreateLabelFromShipmentRequestBody.md) |  |  |
+| **createLabelFromShipmentRequestBody** | [**CreateLabelFromShipmentRequestBody**](../../docs//models/CreateLabelFromShipmentRequestBody.md) |  |  |
 | **shipmentId** | **string** | Shipment ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateLabelFromShipmentResponseBody**](../models/CreateLabelFromShipmentResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="createreturnlabel"></a>
 # **CreateReturnLabel**
@@ -240,15 +234,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createReturnLabelRequestBody** | [**CreateReturnLabelRequestBody**](CreateReturnLabelRequestBody.md) |  |  |
+| **createReturnLabelRequestBody** | [**CreateReturnLabelRequestBody**](../../docs//models/CreateReturnLabelRequestBody.md) |  |  |
 | **labelId** | **string** | Label ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateReturnLabelResponseBody**](../models/CreateReturnLabelResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getlabelbyexternalshipmentid"></a>
 # **GetLabelByExternalShipmentId**
@@ -308,8 +300,6 @@ namespace Example
 
 [**GetLabelByExternalShipmentIdResponseBody**](../models/GetLabelByExternalShipmentIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getlabelbyid"></a>
 # **GetLabelById**
 ```csharp
@@ -368,8 +358,6 @@ namespace Example
 
 [**GetLabelByIdResponseBody**](../models/GetLabelByIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="gettrackinglogfromlabel"></a>
 # **GetTrackingLogFromLabel**
 ```csharp
@@ -425,8 +413,6 @@ namespace Example
 ### Return type
 
 [**GetTrackingLogFromLabelResponseBody**](../models/GetTrackingLogFromLabelResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listlabels"></a>
 # **ListLabels**
@@ -510,8 +496,6 @@ namespace Example
 
 [**ListLabelsResponseBody**](../models/ListLabelsResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="voidlabel"></a>
 # **VoidLabel**
 ```csharp
@@ -567,6 +551,4 @@ namespace Example
 ### Return type
 
 [**VoidLabelResponseBody**](../models/VoidLabelResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

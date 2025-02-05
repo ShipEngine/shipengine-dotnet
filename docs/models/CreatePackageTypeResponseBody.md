@@ -11,5 +11,3 @@ Name | Type | Description | Notes
 **Dimensions** | [**Dimensions**](Dimensions.md) | The custom dimensions for the package. | [optional] 
 **PackageId** | **string** | A string that uniquely identifies the package. | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

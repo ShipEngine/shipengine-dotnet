@@ -57,14 +57,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createWebhookRequestBody** | [**CreateWebhookRequestBody**](CreateWebhookRequestBody.md) |  |  |
+| **createWebhookRequestBody** | [**CreateWebhookRequestBody**](../../docs//models/CreateWebhookRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateWebhookResponseBody**](../models/CreateWebhookResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="deletewebhook"></a>
 # **DeleteWebhook**
@@ -122,8 +120,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getwebhookbyid"></a>
 # **GetWebhookById**
 ```csharp
@@ -180,8 +176,6 @@ namespace Example
 
 [**GetWebhookByIdResponseBody**](../models/GetWebhookByIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="listwebhooks"></a>
 # **ListWebhooks**
 ```csharp
@@ -236,8 +230,6 @@ namespace Example
 
 [**List&lt;Webhook&gt;**](../models/Webhook.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="updatewebhook"></a>
 # **UpdateWebhook**
 ```csharp
@@ -288,13 +280,11 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateWebhookRequestBody** | [**UpdateWebhookRequestBody**](UpdateWebhookRequestBody.md) |  |  |
+| **updateWebhookRequestBody** | [**UpdateWebhookRequestBody**](../../docs//models/UpdateWebhookRequestBody.md) |  |  |
 | **webhookId** | **string** | Webhook ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

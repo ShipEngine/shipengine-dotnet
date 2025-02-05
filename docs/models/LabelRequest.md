@@ -18,5 +18,3 @@ Name | Type | Description | Notes
 **TestLabel** | **bool** | Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account. | [optional] [default to false]
 **ValidateAddress** | **ValidateAddress** |  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

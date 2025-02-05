@@ -11,5 +11,3 @@ Name | Type | Description | Notes
 **Shipments** | [**List&lt;Shipment&gt;**](Shipment.md) | The list of shipments returned by the api call | [readonly] 
 **Total** | **long** | Total number of shipments returned by the api call | [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

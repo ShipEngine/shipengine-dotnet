@@ -60,15 +60,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **addFundsToCarrierRequestBody** | [**AddFundsToCarrierRequestBody**](AddFundsToCarrierRequestBody.md) |  |  |
+| **addFundsToCarrierRequestBody** | [**AddFundsToCarrierRequestBody**](../../docs//models/AddFundsToCarrierRequestBody.md) |  |  |
 | **carrierId** | **string** | Carrier ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**AddFundsToCarrierResponseBody**](../models/AddFundsToCarrierResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="disconnectcarrierbyid"></a>
 # **DisconnectCarrierById**
@@ -126,8 +124,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getcarrierbyid"></a>
 # **GetCarrierById**
 ```csharp
@@ -183,8 +179,6 @@ namespace Example
 ### Return type
 
 [**GetCarrierByIdResponseBody**](../models/GetCarrierByIdResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getcarrieroptions"></a>
 # **GetCarrierOptions**
@@ -242,8 +236,6 @@ namespace Example
 
 [**GetCarrierOptionsResponseBody**](../models/GetCarrierOptionsResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="listcarrierpackagetypes"></a>
 # **ListCarrierPackageTypes**
 ```csharp
@@ -299,8 +291,6 @@ namespace Example
 ### Return type
 
 [**ListCarrierPackageTypesResponseBody**](../models/ListCarrierPackageTypesResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listcarrierservices"></a>
 # **ListCarrierServices**
@@ -358,8 +348,6 @@ namespace Example
 
 [**ListCarrierServicesResponseBody**](../models/ListCarrierServicesResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="listcarriers"></a>
 # **ListCarriers**
 ```csharp
@@ -413,6 +401,4 @@ namespace Example
 ### Return type
 
 [**GetCarriersResponseBody**](../models/GetCarriersResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

@@ -20,5 +20,3 @@ Name | Type | Description | Notes
 **VatRate** | **decimal** | VAT rate applicable to the item | [optional] 
 **Weight** | [**Weight**](Weight.md) | The item weight | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

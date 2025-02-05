@@ -22,5 +22,3 @@ Name | Type | Description | Notes
 **StatusDetailCode** | **StatusDetailCode** |  | [optional] 
 **StatusDetailDescription** | **string** | Status detail description | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

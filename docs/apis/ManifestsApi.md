@@ -56,14 +56,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createManifestRequestBody** | [**CreateManifestRequestBody**](CreateManifestRequestBody.md) |  |  |
+| **createManifestRequestBody** | [**CreateManifestRequestBody**](../../docs//models/CreateManifestRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateManifestResponseBody**](../models/CreateManifestResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getmanifestbyid"></a>
 # **GetManifestById**
@@ -121,8 +119,6 @@ namespace Example
 
 [**GetManifestByIdResponseBody**](../models/GetManifestByIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getmanifestrequestbyid"></a>
 # **GetManifestRequestById**
 ```csharp
@@ -178,8 +174,6 @@ namespace Example
 ### Return type
 
 [**CreateManifestResponseBody**](../models/CreateManifestResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listmanifests"></a>
 # **ListManifests**
@@ -242,7 +236,7 @@ namespace Example
 | **shipDateEnd** | **DateTimeOffset** | ship date end range | [optional]  |
 | **createdAtStart** | **DateTimeOffset** | Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time) | [optional]  |
 | **createdAtEnd** | **DateTimeOffset** | Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time) | [optional]  |
-| **labelIds** | [**List&lt;string&gt;**](string.md) |  | [optional]  |
+| **labelIds** | [**List&lt;string&gt;**](../../docs//models/string.md) |  | [optional]  |
 | **warehouseId** | **string** | Warehouse ID | [optional]  |
 | **carrierId** | **string** | Carrier ID | [optional]  |
 | **page** | **int** | Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  | [optional] [default to 1] |
@@ -252,6 +246,4 @@ namespace Example
 ### Return type
 
 [**ListManifestsResponseBody**](../models/ListManifestsResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

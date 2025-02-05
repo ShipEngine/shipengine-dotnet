@@ -11,5 +11,3 @@ Name | Type | Description | Notes
 **Pages** | **int** | The total number of batch pages the API call returned | [readonly] 
 **Total** | **long** | The total number of batches the API call returned | [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -13,5 +13,3 @@ Name | Type | Description | Notes
 **CarrierId** | **string** | A string that uniquely identifies the carrier that generated the error. | [optional] [readonly] 
 **FieldName** | **string** | The name of the field that caused the error | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -9,5 +9,3 @@ Name | Type | Description | Notes
 **Password** | **string** | The password for the APC account | 
 **Username** | **string** | The username for the APC account | 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

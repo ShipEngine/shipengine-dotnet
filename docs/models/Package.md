@@ -18,5 +18,3 @@ Name | Type | Description | Notes
 **ShipmentPackageId** | **string** | A string that uniquely identifies this shipment package | [optional] [readonly] 
 **TrackingNumber** | **string** | The tracking number for the package.  The format depends on the carrier.  | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

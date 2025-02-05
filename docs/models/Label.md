@@ -45,5 +45,3 @@ Name | Type | Description | Notes
 **Voided** | **bool** | Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/)  | [optional] [readonly] 
 **VoidedAt** | **DateTimeOffset** | The date and time that the label was [voided](https://www.shipengine.com/docs/labels/voiding/), or &#x60;null&#x60; if the label has not been voided  | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

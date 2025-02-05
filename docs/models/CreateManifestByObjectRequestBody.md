@@ -11,5 +11,3 @@ Name | Type | Description | Notes
 **ExcludedLabelIds** | **List&lt;string&gt;** | The list of label ids to exclude from the manifest | [optional] 
 **LabelIds** | **List&lt;string&gt;** | The list of label ids to include for the manifest | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

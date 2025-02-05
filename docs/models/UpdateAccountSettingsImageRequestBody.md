@@ -13,5 +13,3 @@ Name | Type | Description | Notes
 **ModifiedAt** | **DateTimeOffset** | The date and time that the image was modified in ShipEngine. | [optional] [readonly] 
 **Name** | **string** | A human readable name for the image.  | [optional] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

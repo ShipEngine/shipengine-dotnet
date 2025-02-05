@@ -58,14 +58,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createWarehouseRequestBody** | [**CreateWarehouseRequestBody**](CreateWarehouseRequestBody.md) |  |  |
+| **createWarehouseRequestBody** | [**CreateWarehouseRequestBody**](../../docs//models/CreateWarehouseRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateWarehouseResponseBody**](../models/CreateWarehouseResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="deletewarehouse"></a>
 # **DeleteWarehouse**
@@ -123,8 +121,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getwarehousebyid"></a>
 # **GetWarehouseById**
 ```csharp
@@ -181,8 +177,6 @@ namespace Example
 
 [**GetWarehouseByIdResponseBody**](../models/GetWarehouseByIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="listwarehouses"></a>
 # **ListWarehouses**
 ```csharp
@@ -237,8 +231,6 @@ namespace Example
 
 [**ListWarehousesResponseBody**](../models/ListWarehousesResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="updatewarehouse"></a>
 # **UpdateWarehouse**
 ```csharp
@@ -289,15 +281,13 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateWarehouseRequestBody** | [**UpdateWarehouseRequestBody**](UpdateWarehouseRequestBody.md) |  |  |
+| **updateWarehouseRequestBody** | [**UpdateWarehouseRequestBody**](../../docs//models/UpdateWarehouseRequestBody.md) |  |  |
 | **warehouseId** | **string** | Warehouse ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="updatewarehousesettings"></a>
 # **UpdateWarehouseSettings**
@@ -349,13 +339,11 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateWarehouseSettingsRequestBody** | [**UpdateWarehouseSettingsRequestBody**](UpdateWarehouseSettingsRequestBody.md) |  |  |
+| **updateWarehouseSettingsRequestBody** | [**UpdateWarehouseSettingsRequestBody**](../../docs//models/UpdateWarehouseSettingsRequestBody.md) |  |  |
 | **warehouseId** | **string** | Warehouse ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

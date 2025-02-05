@@ -58,14 +58,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createAccountSettingsImageRequestBody** | [**CreateAccountSettingsImageRequestBody**](CreateAccountSettingsImageRequestBody.md) |  |  |
+| **createAccountSettingsImageRequestBody** | [**CreateAccountSettingsImageRequestBody**](../../docs//models/CreateAccountSettingsImageRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**GetAccountSettingsImagesResponseBody**](../models/GetAccountSettingsImagesResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="deleteaccountimagebyid"></a>
 # **DeleteAccountImageById**
@@ -123,8 +121,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getaccountsettingsimagesbyid"></a>
 # **GetAccountSettingsImagesById**
 ```csharp
@@ -181,8 +177,6 @@ namespace Example
 
 [**GetAccountSettingsImagesResponseBody**](../models/GetAccountSettingsImagesResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="listaccountimages"></a>
 # **ListAccountImages**
 ```csharp
@@ -236,8 +230,6 @@ namespace Example
 ### Return type
 
 [**ListAccountSettingsImagesResponseBody**](../models/ListAccountSettingsImagesResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listaccountsettings"></a>
 # **ListAccountSettings**
@@ -293,8 +285,6 @@ namespace Example
 
 [**GetAccountSettingsResponseBody**](../models/GetAccountSettingsResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="updateaccountsettingsimagesbyid"></a>
 # **UpdateAccountSettingsImagesById**
 ```csharp
@@ -345,13 +335,11 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateAccountSettingsImageRequestBody** | [**UpdateAccountSettingsImageRequestBody**](UpdateAccountSettingsImageRequestBody.md) |  |  |
+| **updateAccountSettingsImageRequestBody** | [**UpdateAccountSettingsImageRequestBody**](../../docs//models/UpdateAccountSettingsImageRequestBody.md) |  |  |
 | **labelImageId** | **string** | Label Image Id |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 **string**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

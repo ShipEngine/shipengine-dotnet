@@ -12,5 +12,3 @@ Name | Type | Description | Notes
 **WarehouseId** | **string** | A string that uniquely identifies the warehouse | [readonly] 
 **IsDefault** | **bool** | Designates which single warehouse is the default on the account | [optional] [default to false]
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-

@@ -71,8 +71,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="createshipments"></a>
 # **CreateShipments**
 ```csharp
@@ -122,14 +120,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createShipmentsRequestBody** | [**CreateShipmentsRequestBody**](CreateShipmentsRequestBody.md) |  |  |
+| **createShipmentsRequestBody** | [**CreateShipmentsRequestBody**](../../docs//models/CreateShipmentsRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**CreateShipmentsResponseBody**](../models/CreateShipmentsResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="getshipmentbyexternalid"></a>
 # **GetShipmentByExternalId**
@@ -187,8 +183,6 @@ namespace Example
 
 [**GetShipmentByExternalIdResponseBody**](../models/GetShipmentByExternalIdResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="getshipmentbyid"></a>
 # **GetShipmentById**
 ```csharp
@@ -244,8 +238,6 @@ namespace Example
 ### Return type
 
 [**GetShipmentByIdResponseBody**](../models/GetShipmentByIdResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listshipmentrates"></a>
 # **ListShipmentRates**
@@ -304,8 +296,6 @@ namespace Example
 ### Return type
 
 [**ListShipmentRatesResponseBody**](../models/ListShipmentRatesResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="listshipments"></a>
 # **ListShipments**
@@ -385,8 +375,6 @@ namespace Example
 
 [**ListShipmentsResponseBody**](../models/ListShipmentsResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="parseshipment"></a>
 # **ParseShipment**
 ```csharp
@@ -436,14 +424,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **parseShipmentRequestBody** | [**ParseShipmentRequestBody**](ParseShipmentRequestBody.md) | The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use.  |  |
+| **parseShipmentRequestBody** | [**ParseShipmentRequestBody**](../../docs//models/ParseShipmentRequestBody.md) | The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use.  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**ParseShipmentResponseBody**](../models/ParseShipmentResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="shipmentslisttags"></a>
 # **ShipmentsListTags**
@@ -501,8 +487,6 @@ namespace Example
 
 [**TagShipmentResponseBody**](../models/TagShipmentResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="shipmentsupdatetags"></a>
 # **ShipmentsUpdateTags**
 ```csharp
@@ -551,14 +535,12 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateShipmentsTagsRequestBody** | [**UpdateShipmentsTagsRequestBody**](UpdateShipmentsTagsRequestBody.md) |  |  |
+| **updateShipmentsTagsRequestBody** | [**UpdateShipmentsTagsRequestBody**](../../docs//models/UpdateShipmentsTagsRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 void (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 <a id="tagshipment"></a>
 # **TagShipment**
@@ -618,8 +600,6 @@ namespace Example
 
 [**TagShipmentResponseBody**](../models/TagShipmentResponseBody.md)
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="untagshipment"></a>
 # **UntagShipment**
 ```csharp
@@ -678,8 +658,6 @@ namespace Example
 
 **string**
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 <a id="updateshipment"></a>
 # **UpdateShipment**
 ```csharp
@@ -730,13 +708,11 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateShipmentRequestBody** | [**UpdateShipmentRequestBody**](UpdateShipmentRequestBody.md) |  |  |
+| **updateShipmentRequestBody** | [**UpdateShipmentRequestBody**](../../docs//models/UpdateShipmentRequestBody.md) |  |  |
 | **shipmentId** | **string** | Shipment ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
 [**UpdateShipmentResponseBody**](../models/UpdateShipmentResponseBody.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

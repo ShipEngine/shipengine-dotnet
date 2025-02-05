@@ -21,5 +21,3 @@ Name | Type | Description | Notes
 **Services** | [**List&lt;Service&gt;**](Service.md) | A list of services that are offered by the carrier | [optional] [readonly] 
 **SupportsLabelMessages** | **bool** | The carrier supports adding custom label messages to an order. | [optional] [readonly] 
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-
