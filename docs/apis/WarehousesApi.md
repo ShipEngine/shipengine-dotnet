@@ -1,15 +1,13 @@
-
-
 # Warehouses Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CreateWarehouse**](WarehousesApi.md#createwarehouse) | **POST** /v1/warehouses | Create Warehouse |
-| [**DeleteWarehouse**](WarehousesApi.md#deletewarehouse) | **DELETE** /v1/warehouses/{warehouse_id} | Delete Warehouse By ID |
-| [**GetWarehouseById**](WarehousesApi.md#getwarehousebyid) | **GET** /v1/warehouses/{warehouse_id} | Get Warehouse By Id |
-| [**ListWarehouses**](WarehousesApi.md#listwarehouses) | **GET** /v1/warehouses | List Warehouses |
-| [**UpdateWarehouse**](WarehousesApi.md#updatewarehouse) | **PUT** /v1/warehouses/{warehouse_id} | Update Warehouse By Id |
-| [**UpdateWarehouseSettings**](WarehousesApi.md#updatewarehousesettings) | **PUT** /v1/warehouses/{warehouse_id}/settings | Update Warehouse Settings |
+| Method | Description |
+|--------|-------------|
+| [**CreateWarehouse**](WarehousesApi.md#createwarehouse) | Create Warehouse |
+| [**DeleteWarehouse**](WarehousesApi.md#deletewarehouse) | Delete Warehouse By ID |
+| [**GetWarehouseById**](WarehousesApi.md#getwarehousebyid) | Get Warehouse By Id |
+| [**ListWarehouses**](WarehousesApi.md#listwarehouses) | List Warehouses |
+| [**UpdateWarehouse**](WarehousesApi.md#updatewarehouse) | Update Warehouse By Id |
+| [**UpdateWarehouseSettings**](WarehousesApi.md#updatewarehousesettings) | Update Warehouse Settings |
 
 <a id="createwarehouse"></a>
 # **CreateWarehouse**
@@ -188,9 +186,9 @@ namespace Example
 <a id="listwarehouses"></a>
 # **ListWarehouses**
 ```csharp
-ListWarehousesResponseBody ListWarehouses (, CancellationToken cancellationToken = default)
+ListWarehousesResponseBody ListWarehouses (CancellationToken cancellationToken = default)
 
-ListWarehousesResponseBody ListWarehouses (HttpClient methodClient, , CancellationToken cancellationToken = default)
+ListWarehousesResponseBody ListWarehouses (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 List Warehouses
@@ -244,9 +242,9 @@ namespace Example
 <a id="updatewarehouse"></a>
 # **UpdateWarehouse**
 ```csharp
-string UpdateWarehouse (UpdateWarehouseRequestBody updateWarehouseRequestBodystring warehouseId, CancellationToken cancellationToken = default)
+string UpdateWarehouse (UpdateWarehouseRequestBody updateWarehouseRequestBody, string warehouseId, CancellationToken cancellationToken = default)
 
-string UpdateWarehouse (HttpClient methodClient, UpdateWarehouseRequestBody updateWarehouseRequestBodystring warehouseId, CancellationToken cancellationToken = default)
+string UpdateWarehouse (HttpClient methodClient, UpdateWarehouseRequestBody updateWarehouseRequestBody, string warehouseId, CancellationToken cancellationToken = default)
 ```
 
 Update Warehouse By Id
@@ -304,9 +302,9 @@ namespace Example
 <a id="updatewarehousesettings"></a>
 # **UpdateWarehouseSettings**
 ```csharp
-string UpdateWarehouseSettings (UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBodystring warehouseId, CancellationToken cancellationToken = default)
+string UpdateWarehouseSettings (UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, string warehouseId, CancellationToken cancellationToken = default)
 
-string UpdateWarehouseSettings (HttpClient methodClient, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBodystring warehouseId, CancellationToken cancellationToken = default)
+string UpdateWarehouseSettings (HttpClient methodClient, UpdateWarehouseSettingsRequestBody updateWarehouseSettingsRequestBody, string warehouseId, CancellationToken cancellationToken = default)
 ```
 
 Update Warehouse Settings

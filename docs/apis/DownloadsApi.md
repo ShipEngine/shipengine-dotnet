@@ -1,17 +1,15 @@
-
-
 # Downloads Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**DownloadFile**](DownloadsApi.md#downloadfile) | **GET** /v1/downloads/{dir}/{subdir}/{filename} | Download File |
+| Method | Description |
+|--------|-------------|
+| [**DownloadFile**](DownloadsApi.md#downloadfile) | Download File |
 
 <a id="downloadfile"></a>
 # **DownloadFile**
 ```csharp
-System.IO.Stream DownloadFile (string subdirstring filenamestring dirint rotation = nullstring download = null, CancellationToken cancellationToken = default)
+System.IO.Stream DownloadFile (string subdir, string filename, string dir, int rotation = null, string download = null, CancellationToken cancellationToken = default)
 
-System.IO.Stream DownloadFile (HttpClient methodClient, string subdirstring filenamestring dirint rotation = nullstring download = null, CancellationToken cancellationToken = default)
+System.IO.Stream DownloadFile (HttpClient methodClient, string subdir, string filename, string dir, int rotation = null, string download = null, CancellationToken cancellationToken = default)
 ```
 
 Download File

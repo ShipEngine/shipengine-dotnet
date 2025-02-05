@@ -1,14 +1,12 @@
-
-
 # Webhooks Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CreateWebhook**](WebhooksApi.md#createwebhook) | **POST** /v1/environment/webhooks | Create a Webhook |
-| [**DeleteWebhook**](WebhooksApi.md#deletewebhook) | **DELETE** /v1/environment/webhooks/{webhook_id} | Delete Webhook By ID |
-| [**GetWebhookById**](WebhooksApi.md#getwebhookbyid) | **GET** /v1/environment/webhooks/{webhook_id} | Get Webhook By ID |
-| [**ListWebhooks**](WebhooksApi.md#listwebhooks) | **GET** /v1/environment/webhooks | List Webhooks |
-| [**UpdateWebhook**](WebhooksApi.md#updatewebhook) | **PUT** /v1/environment/webhooks/{webhook_id} | Update a Webhook |
+| Method | Description |
+|--------|-------------|
+| [**CreateWebhook**](WebhooksApi.md#createwebhook) | Create a Webhook |
+| [**DeleteWebhook**](WebhooksApi.md#deletewebhook) | Delete Webhook By ID |
+| [**GetWebhookById**](WebhooksApi.md#getwebhookbyid) | Get Webhook By ID |
+| [**ListWebhooks**](WebhooksApi.md#listwebhooks) | List Webhooks |
+| [**UpdateWebhook**](WebhooksApi.md#updatewebhook) | Update a Webhook |
 
 <a id="createwebhook"></a>
 # **CreateWebhook**
@@ -187,9 +185,9 @@ namespace Example
 <a id="listwebhooks"></a>
 # **ListWebhooks**
 ```csharp
-List&lt;Webhook&gt; ListWebhooks (, CancellationToken cancellationToken = default)
+List&lt;Webhook&gt; ListWebhooks (CancellationToken cancellationToken = default)
 
-List&lt;Webhook&gt; ListWebhooks (HttpClient methodClient, , CancellationToken cancellationToken = default)
+List&lt;Webhook&gt; ListWebhooks (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 List Webhooks
@@ -243,9 +241,9 @@ namespace Example
 <a id="updatewebhook"></a>
 # **UpdateWebhook**
 ```csharp
-string UpdateWebhook (UpdateWebhookRequestBody updateWebhookRequestBodystring webhookId, CancellationToken cancellationToken = default)
+string UpdateWebhook (UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
 
-string UpdateWebhook (HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBodystring webhookId, CancellationToken cancellationToken = default)
+string UpdateWebhook (HttpClient methodClient, UpdateWebhookRequestBody updateWebhookRequestBody, string webhookId, CancellationToken cancellationToken = default)
 ```
 
 Update a Webhook

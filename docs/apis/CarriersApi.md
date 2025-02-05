@@ -1,23 +1,21 @@
-
-
 # Carriers Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**AddFundsToCarrier**](CarriersApi.md#addfundstocarrier) | **PUT** /v1/carriers/{carrier_id}/add_funds | Add Funds To Carrier |
-| [**DisconnectCarrierById**](CarriersApi.md#disconnectcarrierbyid) | **DELETE** /v1/carriers/{carrier_id} | Disconnect Carrier by ID |
-| [**GetCarrierById**](CarriersApi.md#getcarrierbyid) | **GET** /v1/carriers/{carrier_id} | Get Carrier By ID |
-| [**GetCarrierOptions**](CarriersApi.md#getcarrieroptions) | **GET** /v1/carriers/{carrier_id}/options | Get Carrier Options |
-| [**ListCarrierPackageTypes**](CarriersApi.md#listcarrierpackagetypes) | **GET** /v1/carriers/{carrier_id}/packages | List Carrier Package Types |
-| [**ListCarrierServices**](CarriersApi.md#listcarrierservices) | **GET** /v1/carriers/{carrier_id}/services | List Carrier Services |
-| [**ListCarriers**](CarriersApi.md#listcarriers) | **GET** /v1/carriers | List Carriers |
+| Method | Description |
+|--------|-------------|
+| [**AddFundsToCarrier**](CarriersApi.md#addfundstocarrier) | Add Funds To Carrier |
+| [**DisconnectCarrierById**](CarriersApi.md#disconnectcarrierbyid) | Disconnect Carrier by ID |
+| [**GetCarrierById**](CarriersApi.md#getcarrierbyid) | Get Carrier By ID |
+| [**GetCarrierOptions**](CarriersApi.md#getcarrieroptions) | Get Carrier Options |
+| [**ListCarrierPackageTypes**](CarriersApi.md#listcarrierpackagetypes) | List Carrier Package Types |
+| [**ListCarrierServices**](CarriersApi.md#listcarrierservices) | List Carrier Services |
+| [**ListCarriers**](CarriersApi.md#listcarriers) | List Carriers |
 
 <a id="addfundstocarrier"></a>
 # **AddFundsToCarrier**
 ```csharp
-AddFundsToCarrierResponseBody AddFundsToCarrier (AddFundsToCarrierRequestBody addFundsToCarrierRequestBodystring carrierId, CancellationToken cancellationToken = default)
+AddFundsToCarrierResponseBody AddFundsToCarrier (AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
 
-AddFundsToCarrierResponseBody AddFundsToCarrier (HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBodystring carrierId, CancellationToken cancellationToken = default)
+AddFundsToCarrierResponseBody AddFundsToCarrier (HttpClient methodClient, AddFundsToCarrierRequestBody addFundsToCarrierRequestBody, string carrierId, CancellationToken cancellationToken = default)
 ```
 
 Add Funds To Carrier
@@ -365,9 +363,9 @@ namespace Example
 <a id="listcarriers"></a>
 # **ListCarriers**
 ```csharp
-GetCarriersResponseBody ListCarriers (, CancellationToken cancellationToken = default)
+GetCarriersResponseBody ListCarriers (CancellationToken cancellationToken = default)
 
-GetCarriersResponseBody ListCarriers (HttpClient methodClient, , CancellationToken cancellationToken = default)
+GetCarriersResponseBody ListCarriers (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 List Carriers

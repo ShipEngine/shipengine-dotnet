@@ -1,14 +1,12 @@
-
-
 # PackageTypes Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CreatePackageType**](PackageTypesApi.md#createpackagetype) | **POST** /v1/packages | Create Custom Package Type |
-| [**DeletePackageType**](PackageTypesApi.md#deletepackagetype) | **DELETE** /v1/packages/{package_id} | Delete A Custom Package By ID |
-| [**GetPackageTypeById**](PackageTypesApi.md#getpackagetypebyid) | **GET** /v1/packages/{package_id} | Get Custom Package Type By ID |
-| [**ListPackageTypes**](PackageTypesApi.md#listpackagetypes) | **GET** /v1/packages | List Custom Package Types |
-| [**UpdatePackageType**](PackageTypesApi.md#updatepackagetype) | **PUT** /v1/packages/{package_id} | Update Custom Package Type By ID |
+| Method | Description |
+|--------|-------------|
+| [**CreatePackageType**](PackageTypesApi.md#createpackagetype) | Create Custom Package Type |
+| [**DeletePackageType**](PackageTypesApi.md#deletepackagetype) | Delete A Custom Package By ID |
+| [**GetPackageTypeById**](PackageTypesApi.md#getpackagetypebyid) | Get Custom Package Type By ID |
+| [**ListPackageTypes**](PackageTypesApi.md#listpackagetypes) | List Custom Package Types |
+| [**UpdatePackageType**](PackageTypesApi.md#updatepackagetype) | Update Custom Package Type By ID |
 
 <a id="createpackagetype"></a>
 # **CreatePackageType**
@@ -187,9 +185,9 @@ namespace Example
 <a id="listpackagetypes"></a>
 # **ListPackageTypes**
 ```csharp
-ListPackageTypesResponseBody ListPackageTypes (, CancellationToken cancellationToken = default)
+ListPackageTypesResponseBody ListPackageTypes (CancellationToken cancellationToken = default)
 
-ListPackageTypesResponseBody ListPackageTypes (HttpClient methodClient, , CancellationToken cancellationToken = default)
+ListPackageTypesResponseBody ListPackageTypes (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 List Custom Package Types
@@ -243,9 +241,9 @@ namespace Example
 <a id="updatepackagetype"></a>
 # **UpdatePackageType**
 ```csharp
-string UpdatePackageType (UpdatePackageTypeRequestBody updatePackageTypeRequestBodystring packageId, CancellationToken cancellationToken = default)
+string UpdatePackageType (UpdatePackageTypeRequestBody updatePackageTypeRequestBody, string packageId, CancellationToken cancellationToken = default)
 
-string UpdatePackageType (HttpClient methodClient, UpdatePackageTypeRequestBody updatePackageTypeRequestBodystring packageId, CancellationToken cancellationToken = default)
+string UpdatePackageType (HttpClient methodClient, UpdatePackageTypeRequestBody updatePackageTypeRequestBody, string packageId, CancellationToken cancellationToken = default)
 ```
 
 Update Custom Package Type By ID

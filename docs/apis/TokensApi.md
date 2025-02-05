@@ -1,10 +1,8 @@
-
-
 # Tokens Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**TokensGetEphemeralToken**](TokensApi.md#tokensgetephemeraltoken) | **POST** /v1/tokens/ephemeral | Get Ephemeral Token |
+| Method | Description |
+|--------|-------------|
+| [**TokensGetEphemeralToken**](TokensApi.md#tokensgetephemeraltoken) | Get Ephemeral Token |
 
 <a id="tokensgetephemeraltoken"></a>
 # **TokensGetEphemeralToken**

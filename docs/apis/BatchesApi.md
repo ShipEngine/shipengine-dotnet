@@ -1,26 +1,24 @@
-
-
 # Batches Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**AddToBatch**](BatchesApi.md#addtobatch) | **POST** /v1/batches/{batch_id}/add | Add to a Batch |
-| [**CreateBatch**](BatchesApi.md#createbatch) | **POST** /v1/batches | Create A Batch |
-| [**DeleteBatch**](BatchesApi.md#deletebatch) | **DELETE** /v1/batches/{batch_id} | Delete Batch By Id |
-| [**GetBatchByExternalId**](BatchesApi.md#getbatchbyexternalid) | **GET** /v1/batches/external_batch_id/{external_batch_id} | Get Batch By External ID |
-| [**GetBatchById**](BatchesApi.md#getbatchbyid) | **GET** /v1/batches/{batch_id} | Get Batch By ID |
-| [**ListBatchErrors**](BatchesApi.md#listbatcherrors) | **GET** /v1/batches/{batch_id}/errors | Get Batch Errors |
-| [**ListBatches**](BatchesApi.md#listbatches) | **GET** /v1/batches | List Batches |
-| [**ProcessBatch**](BatchesApi.md#processbatch) | **POST** /v1/batches/{batch_id}/process/labels | Process Batch ID Labels |
-| [**RemoveFromBatch**](BatchesApi.md#removefrombatch) | **POST** /v1/batches/{batch_id}/remove | Remove From Batch |
-| [**UpdateBatch**](BatchesApi.md#updatebatch) | **PUT** /v1/batches/{batch_id} | Update Batch By Id |
+| Method | Description |
+|--------|-------------|
+| [**AddToBatch**](BatchesApi.md#addtobatch) | Add to a Batch |
+| [**CreateBatch**](BatchesApi.md#createbatch) | Create A Batch |
+| [**DeleteBatch**](BatchesApi.md#deletebatch) | Delete Batch By Id |
+| [**GetBatchByExternalId**](BatchesApi.md#getbatchbyexternalid) | Get Batch By External ID |
+| [**GetBatchById**](BatchesApi.md#getbatchbyid) | Get Batch By ID |
+| [**ListBatchErrors**](BatchesApi.md#listbatcherrors) | Get Batch Errors |
+| [**ListBatches**](BatchesApi.md#listbatches) | List Batches |
+| [**ProcessBatch**](BatchesApi.md#processbatch) | Process Batch ID Labels |
+| [**RemoveFromBatch**](BatchesApi.md#removefrombatch) | Remove From Batch |
+| [**UpdateBatch**](BatchesApi.md#updatebatch) | Update Batch By Id |
 
 <a id="addtobatch"></a>
 # **AddToBatch**
 ```csharp
-string AddToBatch (AddToBatchRequestBody addToBatchRequestBodystring batchId, CancellationToken cancellationToken = default)
+string AddToBatch (AddToBatchRequestBody addToBatchRequestBody, string batchId, CancellationToken cancellationToken = default)
 
-string AddToBatch (HttpClient methodClient, AddToBatchRequestBody addToBatchRequestBodystring batchId, CancellationToken cancellationToken = default)
+string AddToBatch (HttpClient methodClient, AddToBatchRequestBody addToBatchRequestBody, string batchId, CancellationToken cancellationToken = default)
 ```
 
 Add to a Batch
@@ -310,9 +308,9 @@ namespace Example
 <a id="listbatcherrors"></a>
 # **ListBatchErrors**
 ```csharp
-ListBatchErrorsResponseBody ListBatchErrors (string batchIdint pagesize = nullint page = null, CancellationToken cancellationToken = default)
+ListBatchErrorsResponseBody ListBatchErrors (string batchId, int pagesize = null, int page = null, CancellationToken cancellationToken = default)
 
-ListBatchErrorsResponseBody ListBatchErrors (HttpClient methodClient, string batchIdint pagesize = nullint page = null, CancellationToken cancellationToken = default)
+ListBatchErrorsResponseBody ListBatchErrors (HttpClient methodClient, string batchId, int pagesize = null, int page = null, CancellationToken cancellationToken = default)
 ```
 
 Get Batch Errors
@@ -372,9 +370,9 @@ namespace Example
 <a id="listbatches"></a>
 # **ListBatches**
 ```csharp
-ListBatchesResponseBody ListBatches (BatchStatus status = nullBatchesSortBy sortBy = nullSortDir sortDir = nullstring batchNumber = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+ListBatchesResponseBody ListBatches (BatchStatus status = null, BatchesSortBy sortBy = null, SortDir sortDir = null, string batchNumber = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 
-ListBatchesResponseBody ListBatches (HttpClient methodClient, BatchStatus status = nullBatchesSortBy sortBy = nullSortDir sortDir = nullstring batchNumber = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+ListBatchesResponseBody ListBatches (HttpClient methodClient, BatchStatus status = null, BatchesSortBy sortBy = null, SortDir sortDir = null, string batchNumber = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 ```
 
 List Batches
@@ -440,9 +438,9 @@ namespace Example
 <a id="processbatch"></a>
 # **ProcessBatch**
 ```csharp
-string ProcessBatch (ProcessBatchRequestBody processBatchRequestBodystring batchId, CancellationToken cancellationToken = default)
+string ProcessBatch (ProcessBatchRequestBody processBatchRequestBody, string batchId, CancellationToken cancellationToken = default)
 
-string ProcessBatch (HttpClient methodClient, ProcessBatchRequestBody processBatchRequestBodystring batchId, CancellationToken cancellationToken = default)
+string ProcessBatch (HttpClient methodClient, ProcessBatchRequestBody processBatchRequestBody, string batchId, CancellationToken cancellationToken = default)
 ```
 
 Process Batch ID Labels
@@ -500,9 +498,9 @@ namespace Example
 <a id="removefrombatch"></a>
 # **RemoveFromBatch**
 ```csharp
-string RemoveFromBatch (RemoveFromBatchRequestBody removeFromBatchRequestBodystring batchId, CancellationToken cancellationToken = default)
+string RemoveFromBatch (RemoveFromBatchRequestBody removeFromBatchRequestBody, string batchId, CancellationToken cancellationToken = default)
 
-string RemoveFromBatch (HttpClient methodClient, RemoveFromBatchRequestBody removeFromBatchRequestBodystring batchId, CancellationToken cancellationToken = default)
+string RemoveFromBatch (HttpClient methodClient, RemoveFromBatchRequestBody removeFromBatchRequestBody, string batchId, CancellationToken cancellationToken = default)
 ```
 
 Remove From Batch

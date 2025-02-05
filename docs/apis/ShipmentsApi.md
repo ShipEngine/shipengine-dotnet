@@ -1,21 +1,19 @@
-
-
 # Shipments Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CancelShipments**](ShipmentsApi.md#cancelshipments) | **PUT** /v1/shipments/{shipment_id}/cancel | Cancel a Shipment |
-| [**CreateShipments**](ShipmentsApi.md#createshipments) | **POST** /v1/shipments | Create Shipments |
-| [**GetShipmentByExternalId**](ShipmentsApi.md#getshipmentbyexternalid) | **GET** /v1/shipments/external_shipment_id/{external_shipment_id} | Get Shipment By External ID |
-| [**GetShipmentById**](ShipmentsApi.md#getshipmentbyid) | **GET** /v1/shipments/{shipment_id} | Get Shipment By ID |
-| [**ListShipmentRates**](ShipmentsApi.md#listshipmentrates) | **GET** /v1/shipments/{shipment_id}/rates | Get Shipment Rates |
-| [**ListShipments**](ShipmentsApi.md#listshipments) | **GET** /v1/shipments | List Shipments |
-| [**ParseShipment**](ShipmentsApi.md#parseshipment) | **PUT** /v1/shipments/recognize | Parse shipping info |
-| [**ShipmentsListTags**](ShipmentsApi.md#shipmentslisttags) | **GET** /v1/shipments/{shipment_id}/tags | Get Shipment Tags |
-| [**ShipmentsUpdateTags**](ShipmentsApi.md#shipmentsupdatetags) | **PUT** /v1/shipments/tags | Update Shipments Tags |
-| [**TagShipment**](ShipmentsApi.md#tagshipment) | **POST** /v1/shipments/{shipment_id}/tags/{tag_name} | Add Tag to Shipment |
-| [**UntagShipment**](ShipmentsApi.md#untagshipment) | **DELETE** /v1/shipments/{shipment_id}/tags/{tag_name} | Remove Tag from Shipment |
-| [**UpdateShipment**](ShipmentsApi.md#updateshipment) | **PUT** /v1/shipments/{shipment_id} | Update Shipment By ID |
+| Method | Description |
+|--------|-------------|
+| [**CancelShipments**](ShipmentsApi.md#cancelshipments) | Cancel a Shipment |
+| [**CreateShipments**](ShipmentsApi.md#createshipments) | Create Shipments |
+| [**GetShipmentByExternalId**](ShipmentsApi.md#getshipmentbyexternalid) | Get Shipment By External ID |
+| [**GetShipmentById**](ShipmentsApi.md#getshipmentbyid) | Get Shipment By ID |
+| [**ListShipmentRates**](ShipmentsApi.md#listshipmentrates) | Get Shipment Rates |
+| [**ListShipments**](ShipmentsApi.md#listshipments) | List Shipments |
+| [**ParseShipment**](ShipmentsApi.md#parseshipment) | Parse shipping info |
+| [**ShipmentsListTags**](ShipmentsApi.md#shipmentslisttags) | Get Shipment Tags |
+| [**ShipmentsUpdateTags**](ShipmentsApi.md#shipmentsupdatetags) | Update Shipments Tags |
+| [**TagShipment**](ShipmentsApi.md#tagshipment) | Add Tag to Shipment |
+| [**UntagShipment**](ShipmentsApi.md#untagshipment) | Remove Tag from Shipment |
+| [**UpdateShipment**](ShipmentsApi.md#updateshipment) | Update Shipment By ID |
 
 <a id="cancelshipments"></a>
 # **CancelShipments**
@@ -252,9 +250,9 @@ namespace Example
 <a id="listshipmentrates"></a>
 # **ListShipmentRates**
 ```csharp
-ListShipmentRatesResponseBody ListShipmentRates (string shipmentIdDateTimeOffset createdAtStart = null, CancellationToken cancellationToken = default)
+ListShipmentRatesResponseBody ListShipmentRates (string shipmentId, DateTimeOffset createdAtStart = null, CancellationToken cancellationToken = default)
 
-ListShipmentRatesResponseBody ListShipmentRates (HttpClient methodClient, string shipmentIdDateTimeOffset createdAtStart = null, CancellationToken cancellationToken = default)
+ListShipmentRatesResponseBody ListShipmentRates (HttpClient methodClient, string shipmentId, DateTimeOffset createdAtStart = null, CancellationToken cancellationToken = default)
 ```
 
 Get Shipment Rates
@@ -312,9 +310,9 @@ namespace Example
 <a id="listshipments"></a>
 # **ListShipments**
 ```csharp
-ListShipmentsResponseBody ListShipments (DateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullDateTimeOffset modifiedAtStart = nullDateTimeOffset modifiedAtEnd = nullShipmentStatus shipmentStatus = nullShipmentsSortBy sortBy = nullSortDir sortDir = nullstring batchId = nullstring tag = nullstring salesOrderId = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+ListShipmentsResponseBody ListShipments (DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, DateTimeOffset modifiedAtStart = null, DateTimeOffset modifiedAtEnd = null, ShipmentStatus shipmentStatus = null, ShipmentsSortBy sortBy = null, SortDir sortDir = null, string batchId = null, string tag = null, string salesOrderId = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 
-ListShipmentsResponseBody ListShipments (HttpClient methodClient, DateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullDateTimeOffset modifiedAtStart = nullDateTimeOffset modifiedAtEnd = nullShipmentStatus shipmentStatus = nullShipmentsSortBy sortBy = nullSortDir sortDir = nullstring batchId = nullstring tag = nullstring salesOrderId = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+ListShipmentsResponseBody ListShipments (HttpClient methodClient, DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, DateTimeOffset modifiedAtStart = null, DateTimeOffset modifiedAtEnd = null, ShipmentStatus shipmentStatus = null, ShipmentsSortBy sortBy = null, SortDir sortDir = null, string batchId = null, string tag = null, string salesOrderId = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 ```
 
 List Shipments
@@ -565,9 +563,9 @@ void (empty response body)
 <a id="tagshipment"></a>
 # **TagShipment**
 ```csharp
-TagShipmentResponseBody TagShipment (string shipmentIdstring tagName, CancellationToken cancellationToken = default)
+TagShipmentResponseBody TagShipment (string shipmentId, string tagName, CancellationToken cancellationToken = default)
 
-TagShipmentResponseBody TagShipment (HttpClient methodClient, string shipmentIdstring tagName, CancellationToken cancellationToken = default)
+TagShipmentResponseBody TagShipment (HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default)
 ```
 
 Add Tag to Shipment
@@ -625,9 +623,9 @@ namespace Example
 <a id="untagshipment"></a>
 # **UntagShipment**
 ```csharp
-string UntagShipment (string shipmentIdstring tagName, CancellationToken cancellationToken = default)
+string UntagShipment (string shipmentId, string tagName, CancellationToken cancellationToken = default)
 
-string UntagShipment (HttpClient methodClient, string shipmentIdstring tagName, CancellationToken cancellationToken = default)
+string UntagShipment (HttpClient methodClient, string shipmentId, string tagName, CancellationToken cancellationToken = default)
 ```
 
 Remove Tag from Shipment
@@ -685,9 +683,9 @@ namespace Example
 <a id="updateshipment"></a>
 # **UpdateShipment**
 ```csharp
-UpdateShipmentResponseBody UpdateShipment (UpdateShipmentRequestBody updateShipmentRequestBodystring shipmentId, CancellationToken cancellationToken = default)
+UpdateShipmentResponseBody UpdateShipment (UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
 
-UpdateShipmentResponseBody UpdateShipment (HttpClient methodClient, UpdateShipmentRequestBody updateShipmentRequestBodystring shipmentId, CancellationToken cancellationToken = default)
+UpdateShipmentResponseBody UpdateShipment (HttpClient methodClient, UpdateShipmentRequestBody updateShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
 ```
 
 Update Shipment By ID

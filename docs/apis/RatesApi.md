@@ -1,13 +1,11 @@
-
-
 # Rates Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CalculateRates**](RatesApi.md#calculaterates) | **POST** /v1/rates | Get Shipping Rates |
-| [**CompareBulkRates**](RatesApi.md#comparebulkrates) | **POST** /v1/rates/bulk | Get Bulk Rates |
-| [**EstimateRates**](RatesApi.md#estimaterates) | **POST** /v1/rates/estimate | Estimate Rates |
-| [**GetRateById**](RatesApi.md#getratebyid) | **GET** /v1/rates/{rate_id} | Get Rate By ID |
+| Method | Description |
+|--------|-------------|
+| [**CalculateRates**](RatesApi.md#calculaterates) | Get Shipping Rates |
+| [**CompareBulkRates**](RatesApi.md#comparebulkrates) | Get Bulk Rates |
+| [**EstimateRates**](RatesApi.md#estimaterates) | Estimate Rates |
+| [**GetRateById**](RatesApi.md#getratebyid) | Get Rate By ID |
 
 <a id="calculaterates"></a>
 # **CalculateRates**

@@ -1,18 +1,16 @@
-
-
 # ServicePoints Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**ServicePointsGetById**](ServicePointsApi.md#servicepointsgetbyid) | **GET** /v1/service_points/{carrier_code}/{country_code}/{service_point_id} | Get Service Point By ID |
-| [**ServicePointsList**](ServicePointsApi.md#servicepointslist) | **POST** /v1/service_points/list | List Service Points |
+| Method | Description |
+|--------|-------------|
+| [**ServicePointsGetById**](ServicePointsApi.md#servicepointsgetbyid) | Get Service Point By ID |
+| [**ServicePointsList**](ServicePointsApi.md#servicepointslist) | List Service Points |
 
 <a id="servicepointsgetbyid"></a>
 # **ServicePointsGetById**
 ```csharp
-GetServicePointByIdResponseBody ServicePointsGetById (string carrierCodestring countryCodestring servicePointId, CancellationToken cancellationToken = default)
+GetServicePointByIdResponseBody ServicePointsGetById (string carrierCode, string countryCode, string servicePointId, CancellationToken cancellationToken = default)
 
-GetServicePointByIdResponseBody ServicePointsGetById (HttpClient methodClient, string carrierCodestring countryCodestring servicePointId, CancellationToken cancellationToken = default)
+GetServicePointByIdResponseBody ServicePointsGetById (HttpClient methodClient, string carrierCode, string countryCode, string servicePointId, CancellationToken cancellationToken = default)
 ```
 
 Get Service Point By ID

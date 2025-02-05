@@ -1,15 +1,13 @@
-
-
 # Account Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CreateAccountImage**](AccountApi.md#createaccountimage) | **POST** /v1/account/settings/images | Create an Account Image |
-| [**DeleteAccountImageById**](AccountApi.md#deleteaccountimagebyid) | **DELETE** /v1/account/settings/images/{label_image_id} | Delete Account Image By Id |
-| [**GetAccountSettingsImagesById**](AccountApi.md#getaccountsettingsimagesbyid) | **GET** /v1/account/settings/images/{label_image_id} | Get Account Image By ID |
-| [**ListAccountImages**](AccountApi.md#listaccountimages) | **GET** /v1/account/settings/images | List Account Images |
-| [**ListAccountSettings**](AccountApi.md#listaccountsettings) | **GET** /v1/account/settings | List Account Settings |
-| [**UpdateAccountSettingsImagesById**](AccountApi.md#updateaccountsettingsimagesbyid) | **PUT** /v1/account/settings/images/{label_image_id} | Update Account Image By ID |
+| Method | Description |
+|--------|-------------|
+| [**CreateAccountImage**](AccountApi.md#createaccountimage) | Create an Account Image |
+| [**DeleteAccountImageById**](AccountApi.md#deleteaccountimagebyid) | Delete Account Image By Id |
+| [**GetAccountSettingsImagesById**](AccountApi.md#getaccountsettingsimagesbyid) | Get Account Image By ID |
+| [**ListAccountImages**](AccountApi.md#listaccountimages) | List Account Images |
+| [**ListAccountSettings**](AccountApi.md#listaccountsettings) | List Account Settings |
+| [**UpdateAccountSettingsImagesById**](AccountApi.md#updateaccountsettingsimagesbyid) | Update Account Image By ID |
 
 <a id="createaccountimage"></a>
 # **CreateAccountImage**
@@ -188,9 +186,9 @@ namespace Example
 <a id="listaccountimages"></a>
 # **ListAccountImages**
 ```csharp
-ListAccountSettingsImagesResponseBody ListAccountImages (, CancellationToken cancellationToken = default)
+ListAccountSettingsImagesResponseBody ListAccountImages (CancellationToken cancellationToken = default)
 
-ListAccountSettingsImagesResponseBody ListAccountImages (HttpClient methodClient, , CancellationToken cancellationToken = default)
+ListAccountSettingsImagesResponseBody ListAccountImages (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 List Account Images
@@ -244,9 +242,9 @@ namespace Example
 <a id="listaccountsettings"></a>
 # **ListAccountSettings**
 ```csharp
-GetAccountSettingsResponseBody ListAccountSettings (, CancellationToken cancellationToken = default)
+GetAccountSettingsResponseBody ListAccountSettings (CancellationToken cancellationToken = default)
 
-GetAccountSettingsResponseBody ListAccountSettings (HttpClient methodClient, , CancellationToken cancellationToken = default)
+GetAccountSettingsResponseBody ListAccountSettings (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 List Account Settings
@@ -300,9 +298,9 @@ namespace Example
 <a id="updateaccountsettingsimagesbyid"></a>
 # **UpdateAccountSettingsImagesById**
 ```csharp
-string UpdateAccountSettingsImagesById (UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBodystring labelImageId, CancellationToken cancellationToken = default)
+string UpdateAccountSettingsImagesById (UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
 
-string UpdateAccountSettingsImagesById (HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBodystring labelImageId, CancellationToken cancellationToken = default)
+string UpdateAccountSettingsImagesById (HttpClient methodClient, UpdateAccountSettingsImageRequestBody updateAccountSettingsImageRequestBody, string labelImageId, CancellationToken cancellationToken = default)
 ```
 
 Update Account Image By ID

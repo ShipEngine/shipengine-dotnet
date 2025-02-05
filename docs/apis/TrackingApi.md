@@ -1,19 +1,17 @@
-
-
 # Tracking Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**GetTrackingLog**](TrackingApi.md#gettrackinglog) | **GET** /v1/tracking | Get Tracking Information |
-| [**StartTracking**](TrackingApi.md#starttracking) | **POST** /v1/tracking/start | Start Tracking a Package |
-| [**StopTracking**](TrackingApi.md#stoptracking) | **POST** /v1/tracking/stop | Stop Tracking a Package |
+| Method | Description |
+|--------|-------------|
+| [**GetTrackingLog**](TrackingApi.md#gettrackinglog) | Get Tracking Information |
+| [**StartTracking**](TrackingApi.md#starttracking) | Start Tracking a Package |
+| [**StopTracking**](TrackingApi.md#stoptracking) | Stop Tracking a Package |
 
 <a id="gettrackinglog"></a>
 # **GetTrackingLog**
 ```csharp
-GetTrackingLogResponseBody GetTrackingLog (string carrierCode = nullstring trackingNumber = null, CancellationToken cancellationToken = default)
+GetTrackingLogResponseBody GetTrackingLog (string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
 
-GetTrackingLogResponseBody GetTrackingLog (HttpClient methodClient, string carrierCode = nullstring trackingNumber = null, CancellationToken cancellationToken = default)
+GetTrackingLogResponseBody GetTrackingLog (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
 ```
 
 Get Tracking Information
@@ -71,9 +69,9 @@ namespace Example
 <a id="starttracking"></a>
 # **StartTracking**
 ```csharp
-string StartTracking (string carrierCode = nullstring trackingNumber = null, CancellationToken cancellationToken = default)
+string StartTracking (string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
 
-string StartTracking (HttpClient methodClient, string carrierCode = nullstring trackingNumber = null, CancellationToken cancellationToken = default)
+string StartTracking (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
 ```
 
 Start Tracking a Package
@@ -131,9 +129,9 @@ namespace Example
 <a id="stoptracking"></a>
 # **StopTracking**
 ```csharp
-string StopTracking (string carrierCode = nullstring trackingNumber = null, CancellationToken cancellationToken = default)
+string StopTracking (string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
 
-string StopTracking (HttpClient methodClient, string carrierCode = nullstring trackingNumber = null, CancellationToken cancellationToken = default)
+string StopTracking (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
 ```
 
 Stop Tracking a Package

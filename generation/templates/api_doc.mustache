@@ -1,13 +1,11 @@
-
-
 # {{baseName}} Methods{{#description}}
 {{.}}{{/description}}
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
+| Method | Description |
+|--------|-------------|
 {{#operations}}
 {{#operation}}
-| [**{{operationId}}**]({{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}} | {{summary}} |
+| [**{{operationId}}**]({{classname}}.md#{{operationIdLowerCase}}) | {{summary}} |
 {{/operation}}
 {{/operations}}
 
@@ -16,9 +14,9 @@
 <a id="{{{operationIdLowerCase}}}"></a>
 # **{{{operationId}}}**
 ```csharp
-{{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{/allParams}}, CancellationToken cancellationToken = default)
+{{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
 
-{{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} (HttpClient methodClient, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{/allParams}}, CancellationToken cancellationToken = default)
+{{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} (HttpClient methodClient, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
 ```
 
 {{{summary}}}{{#notes}}

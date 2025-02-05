@@ -28,8 +28,6 @@ The only configuration requirement is an [API key](https://www.shipengine.com/do
 using ShipEngineSDK;
 
 var shipengine = new ShipEngine("___YOUR_API_KEY_HERE__");
-
-var carriers = await shipengine.ListCarriers(CancellationToken.Default);
 ```
 
 
@@ -462,7 +460,6 @@ API | Method | Description
  - [WeightUnit](docs//models/WeightUnit.md)
 
 
-
 ## Legacy Methods
 
 These methods have been deprecated in favor of the methods listed above, but are still in the SDK.
@@ -489,7 +486,7 @@ To build the project locally on your computer:
 1. **Clone this repo**<br>
    `git clone https://github.com/ShipEngine/shipengine-dotnet.git`
 
-2. **Install [.NET 8.x](https://dotnet.microsoft.com/download)**
+2. **Install [.NET 5.x](https://dotnet.microsoft.com/download)**
 
 3. **Install dependencies**<br>
    `dotnet restore`

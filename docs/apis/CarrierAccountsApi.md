@@ -1,20 +1,18 @@
-
-
 # CarrierAccounts Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**ConnectCarrier**](CarrierAccountsApi.md#connectcarrier) | **POST** /v1/connections/carriers/{carrier_name} | Connect a carrier account |
-| [**DisconnectCarrier**](CarrierAccountsApi.md#disconnectcarrier) | **DELETE** /v1/connections/carriers/{carrier_name}/{carrier_id} | Disconnect a carrier |
-| [**GetCarrierSettings**](CarrierAccountsApi.md#getcarriersettings) | **GET** /v1/connections/carriers/{carrier_name}/{carrier_id}/settings | Get carrier settings |
-| [**UpdateCarrierSettings**](CarrierAccountsApi.md#updatecarriersettings) | **PUT** /v1/connections/carriers/{carrier_name}/{carrier_id}/settings | Update carrier settings |
+| Method | Description |
+|--------|-------------|
+| [**ConnectCarrier**](CarrierAccountsApi.md#connectcarrier) | Connect a carrier account |
+| [**DisconnectCarrier**](CarrierAccountsApi.md#disconnectcarrier) | Disconnect a carrier |
+| [**GetCarrierSettings**](CarrierAccountsApi.md#getcarriersettings) | Get carrier settings |
+| [**UpdateCarrierSettings**](CarrierAccountsApi.md#updatecarriersettings) | Update carrier settings |
 
 <a id="connectcarrier"></a>
 # **ConnectCarrier**
 ```csharp
-ConnectCarrierResponseBody ConnectCarrier (CarrierName carrierNameConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
+ConnectCarrierResponseBody ConnectCarrier (CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
 
-ConnectCarrierResponseBody ConnectCarrier (HttpClient methodClient, CarrierName carrierNameConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
+ConnectCarrierResponseBody ConnectCarrier (HttpClient methodClient, CarrierName carrierName, ConnectCarrierRequestBody connectCarrierRequestBody, CancellationToken cancellationToken = default)
 ```
 
 Connect a carrier account
@@ -72,9 +70,9 @@ namespace Example
 <a id="disconnectcarrier"></a>
 # **DisconnectCarrier**
 ```csharp
-string DisconnectCarrier (CarrierName carrierNamestring carrierId, CancellationToken cancellationToken = default)
+string DisconnectCarrier (CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
 
-string DisconnectCarrier (HttpClient methodClient, CarrierName carrierNamestring carrierId, CancellationToken cancellationToken = default)
+string DisconnectCarrier (HttpClient methodClient, CarrierName carrierName, string carrierId, CancellationToken cancellationToken = default)
 ```
 
 Disconnect a carrier
@@ -132,9 +130,9 @@ namespace Example
 <a id="getcarriersettings"></a>
 # **GetCarrierSettings**
 ```csharp
-GetCarrierSettingsResponseBody GetCarrierSettings (CarrierNameWithSettings carrierNamestring carrierId, CancellationToken cancellationToken = default)
+GetCarrierSettingsResponseBody GetCarrierSettings (CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
 
-GetCarrierSettingsResponseBody GetCarrierSettings (HttpClient methodClient, CarrierNameWithSettings carrierNamestring carrierId, CancellationToken cancellationToken = default)
+GetCarrierSettingsResponseBody GetCarrierSettings (HttpClient methodClient, CarrierNameWithSettings carrierName, string carrierId, CancellationToken cancellationToken = default)
 ```
 
 Get carrier settings
@@ -192,9 +190,9 @@ namespace Example
 <a id="updatecarriersettings"></a>
 # **UpdateCarrierSettings**
 ```csharp
-string UpdateCarrierSettings (CarrierNameWithSettings carrierNameUpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBodystring carrierId, CancellationToken cancellationToken = default)
+string UpdateCarrierSettings (CarrierNameWithSettings carrierName, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, string carrierId, CancellationToken cancellationToken = default)
 
-string UpdateCarrierSettings (HttpClient methodClient, CarrierNameWithSettings carrierNameUpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBodystring carrierId, CancellationToken cancellationToken = default)
+string UpdateCarrierSettings (HttpClient methodClient, CarrierNameWithSettings carrierName, UpdateCarrierSettingsRequestBody updateCarrierSettingsRequestBody, string carrierId, CancellationToken cancellationToken = default)
 ```
 
 Update carrier settings

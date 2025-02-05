@@ -1,18 +1,16 @@
-
-
 # Labels Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CreateLabel**](LabelsApi.md#createlabel) | **POST** /v1/labels | Purchase Label |
-| [**CreateLabelFromRate**](LabelsApi.md#createlabelfromrate) | **POST** /v1/labels/rates/{rate_id} | Purchase Label with Rate ID |
-| [**CreateLabelFromShipment**](LabelsApi.md#createlabelfromshipment) | **POST** /v1/labels/shipment/{shipment_id} | Purchase Label with Shipment ID |
-| [**CreateReturnLabel**](LabelsApi.md#createreturnlabel) | **POST** /v1/labels/{label_id}/return | Create a return label |
-| [**GetLabelByExternalShipmentId**](LabelsApi.md#getlabelbyexternalshipmentid) | **GET** /v1/labels/external_shipment_id/{external_shipment_id} | Get Label By External Shipment ID |
-| [**GetLabelById**](LabelsApi.md#getlabelbyid) | **GET** /v1/labels/{label_id} | Get Label By ID |
-| [**GetTrackingLogFromLabel**](LabelsApi.md#gettrackinglogfromlabel) | **GET** /v1/labels/{label_id}/track | Get Label Tracking Information |
-| [**ListLabels**](LabelsApi.md#listlabels) | **GET** /v1/labels | List labels |
-| [**VoidLabel**](LabelsApi.md#voidlabel) | **PUT** /v1/labels/{label_id}/void | Void a Label By ID |
+| Method | Description |
+|--------|-------------|
+| [**CreateLabel**](LabelsApi.md#createlabel) | Purchase Label |
+| [**CreateLabelFromRate**](LabelsApi.md#createlabelfromrate) | Purchase Label with Rate ID |
+| [**CreateLabelFromShipment**](LabelsApi.md#createlabelfromshipment) | Purchase Label with Shipment ID |
+| [**CreateReturnLabel**](LabelsApi.md#createreturnlabel) | Create a return label |
+| [**GetLabelByExternalShipmentId**](LabelsApi.md#getlabelbyexternalshipmentid) | Get Label By External Shipment ID |
+| [**GetLabelById**](LabelsApi.md#getlabelbyid) | Get Label By ID |
+| [**GetTrackingLogFromLabel**](LabelsApi.md#gettrackinglogfromlabel) | Get Label Tracking Information |
+| [**ListLabels**](LabelsApi.md#listlabels) | List labels |
+| [**VoidLabel**](LabelsApi.md#voidlabel) | Void a Label By ID |
 
 <a id="createlabel"></a>
 # **CreateLabel**
@@ -75,9 +73,9 @@ namespace Example
 <a id="createlabelfromrate"></a>
 # **CreateLabelFromRate**
 ```csharp
-CreateLabelFromRateResponseBody CreateLabelFromRate (CreateLabelFromRateRequestBody createLabelFromRateRequestBodystring rateId, CancellationToken cancellationToken = default)
+CreateLabelFromRateResponseBody CreateLabelFromRate (CreateLabelFromRateRequestBody createLabelFromRateRequestBody, string rateId, CancellationToken cancellationToken = default)
 
-CreateLabelFromRateResponseBody CreateLabelFromRate (HttpClient methodClient, CreateLabelFromRateRequestBody createLabelFromRateRequestBodystring rateId, CancellationToken cancellationToken = default)
+CreateLabelFromRateResponseBody CreateLabelFromRate (HttpClient methodClient, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, string rateId, CancellationToken cancellationToken = default)
 ```
 
 Purchase Label with Rate ID
@@ -135,9 +133,9 @@ namespace Example
 <a id="createlabelfromshipment"></a>
 # **CreateLabelFromShipment**
 ```csharp
-CreateLabelFromShipmentResponseBody CreateLabelFromShipment (CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBodystring shipmentId, CancellationToken cancellationToken = default)
+CreateLabelFromShipmentResponseBody CreateLabelFromShipment (CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
 
-CreateLabelFromShipmentResponseBody CreateLabelFromShipment (HttpClient methodClient, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBodystring shipmentId, CancellationToken cancellationToken = default)
+CreateLabelFromShipmentResponseBody CreateLabelFromShipment (HttpClient methodClient, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default)
 ```
 
 Purchase Label with Shipment ID
@@ -195,9 +193,9 @@ namespace Example
 <a id="createreturnlabel"></a>
 # **CreateReturnLabel**
 ```csharp
-CreateReturnLabelResponseBody CreateReturnLabel (CreateReturnLabelRequestBody createReturnLabelRequestBodystring labelId, CancellationToken cancellationToken = default)
+CreateReturnLabelResponseBody CreateReturnLabel (CreateReturnLabelRequestBody createReturnLabelRequestBody, string labelId, CancellationToken cancellationToken = default)
 
-CreateReturnLabelResponseBody CreateReturnLabel (HttpClient methodClient, CreateReturnLabelRequestBody createReturnLabelRequestBodystring labelId, CancellationToken cancellationToken = default)
+CreateReturnLabelResponseBody CreateReturnLabel (HttpClient methodClient, CreateReturnLabelRequestBody createReturnLabelRequestBody, string labelId, CancellationToken cancellationToken = default)
 ```
 
 Create a return label
@@ -255,9 +253,9 @@ namespace Example
 <a id="getlabelbyexternalshipmentid"></a>
 # **GetLabelByExternalShipmentId**
 ```csharp
-GetLabelByExternalShipmentIdResponseBody GetLabelByExternalShipmentId (string externalShipmentIdLabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
+GetLabelByExternalShipmentIdResponseBody GetLabelByExternalShipmentId (string externalShipmentId, LabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
 
-GetLabelByExternalShipmentIdResponseBody GetLabelByExternalShipmentId (HttpClient methodClient, string externalShipmentIdLabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
+GetLabelByExternalShipmentIdResponseBody GetLabelByExternalShipmentId (HttpClient methodClient, string externalShipmentId, LabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
 ```
 
 Get Label By External Shipment ID
@@ -315,9 +313,9 @@ namespace Example
 <a id="getlabelbyid"></a>
 # **GetLabelById**
 ```csharp
-GetLabelByIdResponseBody GetLabelById (string labelIdLabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
+GetLabelByIdResponseBody GetLabelById (string labelId, LabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
 
-GetLabelByIdResponseBody GetLabelById (HttpClient methodClient, string labelIdLabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
+GetLabelByIdResponseBody GetLabelById (HttpClient methodClient, string labelId, LabelDownloadType labelDownloadType = null, CancellationToken cancellationToken = default)
 ```
 
 Get Label By ID
@@ -433,9 +431,9 @@ namespace Example
 <a id="listlabels"></a>
 # **ListLabels**
 ```csharp
-ListLabelsResponseBody ListLabels (DateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullLabelStatus labelStatus = nullSortDir sortDir = nullstring serviceCode = nullstring carrierId = nullstring trackingNumber = nullstring batchId = nullstring rateId = nullstring shipmentId = nullstring warehouseId = nullint page = nullint pageSize = nullstring sortBy = null, CancellationToken cancellationToken = default)
+ListLabelsResponseBody ListLabels (DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, LabelStatus labelStatus = null, SortDir sortDir = null, string serviceCode = null, string carrierId = null, string trackingNumber = null, string batchId = null, string rateId = null, string shipmentId = null, string warehouseId = null, int page = null, int pageSize = null, string sortBy = null, CancellationToken cancellationToken = default)
 
-ListLabelsResponseBody ListLabels (HttpClient methodClient, DateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullLabelStatus labelStatus = nullSortDir sortDir = nullstring serviceCode = nullstring carrierId = nullstring trackingNumber = nullstring batchId = nullstring rateId = nullstring shipmentId = nullstring warehouseId = nullint page = nullint pageSize = nullstring sortBy = null, CancellationToken cancellationToken = default)
+ListLabelsResponseBody ListLabels (HttpClient methodClient, DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, LabelStatus labelStatus = null, SortDir sortDir = null, string serviceCode = null, string carrierId = null, string trackingNumber = null, string batchId = null, string rateId = null, string shipmentId = null, string warehouseId = null, int page = null, int pageSize = null, string sortBy = null, CancellationToken cancellationToken = default)
 ```
 
 List labels

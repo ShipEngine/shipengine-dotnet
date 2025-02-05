@@ -1,13 +1,11 @@
-
-
 # Manifests Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CreateManifest**](ManifestsApi.md#createmanifest) | **POST** /v1/manifests | Create Manifest |
-| [**GetManifestById**](ManifestsApi.md#getmanifestbyid) | **GET** /v1/manifests/{manifest_id} | Get Manifest By Id |
-| [**GetManifestRequestById**](ManifestsApi.md#getmanifestrequestbyid) | **GET** /v1/manifests/requests/{manifest_request_id} | Get Manifest Request By Id |
-| [**ListManifests**](ManifestsApi.md#listmanifests) | **GET** /v1/manifests | List Manifests |
+| Method | Description |
+|--------|-------------|
+| [**CreateManifest**](ManifestsApi.md#createmanifest) | Create Manifest |
+| [**GetManifestById**](ManifestsApi.md#getmanifestbyid) | Get Manifest By Id |
+| [**GetManifestRequestById**](ManifestsApi.md#getmanifestrequestbyid) | Get Manifest Request By Id |
+| [**ListManifests**](ManifestsApi.md#listmanifests) | List Manifests |
 
 <a id="createmanifest"></a>
 # **CreateManifest**
@@ -186,9 +184,9 @@ namespace Example
 <a id="listmanifests"></a>
 # **ListManifests**
 ```csharp
-ListManifestsResponseBody ListManifests (DateTimeOffset shipDateStart = nullDateTimeOffset shipDateEnd = nullDateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullList<string> labelIds = nullstring warehouseId = nullstring carrierId = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+ListManifestsResponseBody ListManifests (DateTimeOffset shipDateStart = null, DateTimeOffset shipDateEnd = null, DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, List<string> labelIds = null, string warehouseId = null, string carrierId = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 
-ListManifestsResponseBody ListManifests (HttpClient methodClient, DateTimeOffset shipDateStart = nullDateTimeOffset shipDateEnd = nullDateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullList<string> labelIds = nullstring warehouseId = nullstring carrierId = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+ListManifestsResponseBody ListManifests (HttpClient methodClient, DateTimeOffset shipDateStart = null, DateTimeOffset shipDateEnd = null, DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, List<string> labelIds = null, string warehouseId = null, string carrierId = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 ```
 
 List Manifests

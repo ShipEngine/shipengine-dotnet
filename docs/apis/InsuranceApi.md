@@ -1,13 +1,11 @@
-
-
 # Insurance Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**AddFundsToInsurance**](InsuranceApi.md#addfundstoinsurance) | **PATCH** /v1/insurance/shipsurance/add_funds | Add Funds To Insurance |
-| [**ConnectInsurer**](InsuranceApi.md#connectinsurer) | **POST** /v1/connections/insurance/shipsurance | Connect a Shipsurance Account |
-| [**DisconnectInsurer**](InsuranceApi.md#disconnectinsurer) | **DELETE** /v1/connections/insurance/shipsurance | Disconnect a Shipsurance Account |
-| [**GetInsuranceBalance**](InsuranceApi.md#getinsurancebalance) | **GET** /v1/insurance/shipsurance/balance | Get Insurance Funds Balance |
+| Method | Description |
+|--------|-------------|
+| [**AddFundsToInsurance**](InsuranceApi.md#addfundstoinsurance) | Add Funds To Insurance |
+| [**ConnectInsurer**](InsuranceApi.md#connectinsurer) | Connect a Shipsurance Account |
+| [**DisconnectInsurer**](InsuranceApi.md#disconnectinsurer) | Disconnect a Shipsurance Account |
+| [**GetInsuranceBalance**](InsuranceApi.md#getinsurancebalance) | Get Insurance Funds Balance |
 
 <a id="addfundstoinsurance"></a>
 # **AddFundsToInsurance**
@@ -128,9 +126,9 @@ namespace Example
 <a id="disconnectinsurer"></a>
 # **DisconnectInsurer**
 ```csharp
-Object DisconnectInsurer (, CancellationToken cancellationToken = default)
+Object DisconnectInsurer (CancellationToken cancellationToken = default)
 
-Object DisconnectInsurer (HttpClient methodClient, , CancellationToken cancellationToken = default)
+Object DisconnectInsurer (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 Disconnect a Shipsurance Account
@@ -184,9 +182,9 @@ namespace Example
 <a id="getinsurancebalance"></a>
 # **GetInsuranceBalance**
 ```csharp
-GetInsuranceBalanceResponseBody GetInsuranceBalance (, CancellationToken cancellationToken = default)
+GetInsuranceBalanceResponseBody GetInsuranceBalance (CancellationToken cancellationToken = default)
 
-GetInsuranceBalanceResponseBody GetInsuranceBalance (HttpClient methodClient, , CancellationToken cancellationToken = default)
+GetInsuranceBalanceResponseBody GetInsuranceBalance (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 Get Insurance Funds Balance

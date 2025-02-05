@@ -1,11 +1,9 @@
-
-
 # Addresses Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**ParseAddress**](AddressesApi.md#parseaddress) | **PUT** /v1/addresses/recognize | Parse an address |
-| [**ValidateAddress**](AddressesApi.md#validateaddress) | **POST** /v1/addresses/validate | Validate An Address |
+| Method | Description |
+|--------|-------------|
+| [**ParseAddress**](AddressesApi.md#parseaddress) | Parse an address |
+| [**ValidateAddress**](AddressesApi.md#validateaddress) | Validate An Address |
 
 <a id="parseaddress"></a>
 # **ParseAddress**

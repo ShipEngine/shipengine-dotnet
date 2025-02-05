@@ -1,13 +1,11 @@
-
-
 # Tags Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**CreateTag**](TagsApi.md#createtag) | **POST** /v1/tags/{tag_name} | Create a New Tag |
-| [**DeleteTag**](TagsApi.md#deletetag) | **DELETE** /v1/tags/{tag_name} | Delete Tag |
-| [**ListTags**](TagsApi.md#listtags) | **GET** /v1/tags | Get Tags |
-| [**RenameTag**](TagsApi.md#renametag) | **PUT** /v1/tags/{tag_name}/{new_tag_name} | Update Tag Name |
+| Method | Description |
+|--------|-------------|
+| [**CreateTag**](TagsApi.md#createtag) | Create a New Tag |
+| [**DeleteTag**](TagsApi.md#deletetag) | Delete Tag |
+| [**ListTags**](TagsApi.md#listtags) | Get Tags |
+| [**RenameTag**](TagsApi.md#renametag) | Update Tag Name |
 
 <a id="createtag"></a>
 # **CreateTag**
@@ -128,9 +126,9 @@ namespace Example
 <a id="listtags"></a>
 # **ListTags**
 ```csharp
-ListTagsResponseBody ListTags (, CancellationToken cancellationToken = default)
+ListTagsResponseBody ListTags (CancellationToken cancellationToken = default)
 
-ListTagsResponseBody ListTags (HttpClient methodClient, , CancellationToken cancellationToken = default)
+ListTagsResponseBody ListTags (HttpClient methodClient, CancellationToken cancellationToken = default)
 ```
 
 Get Tags
@@ -184,9 +182,9 @@ namespace Example
 <a id="renametag"></a>
 # **RenameTag**
 ```csharp
-string RenameTag (string tagNamestring newTagName, CancellationToken cancellationToken = default)
+string RenameTag (string tagName, string newTagName, CancellationToken cancellationToken = default)
 
-string RenameTag (HttpClient methodClient, string tagNamestring newTagName, CancellationToken cancellationToken = default)
+string RenameTag (HttpClient methodClient, string tagName, string newTagName, CancellationToken cancellationToken = default)
 ```
 
 Update Tag Name

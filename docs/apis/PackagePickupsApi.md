@@ -1,13 +1,11 @@
-
-
 # PackagePickups Methods
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**DeleteScheduledPickup**](PackagePickupsApi.md#deletescheduledpickup) | **DELETE** /v1/pickups/{pickup_id} | Delete a Scheduled Pickup |
-| [**GetPickupById**](PackagePickupsApi.md#getpickupbyid) | **GET** /v1/pickups/{pickup_id} | Get Pickup By ID |
-| [**ListScheduledPickups**](PackagePickupsApi.md#listscheduledpickups) | **GET** /v1/pickups | List Scheduled Pickups |
-| [**SchedulePickup**](PackagePickupsApi.md#schedulepickup) | **POST** /v1/pickups | Schedule a Pickup |
+| Method | Description |
+|--------|-------------|
+| [**DeleteScheduledPickup**](PackagePickupsApi.md#deletescheduledpickup) | Delete a Scheduled Pickup |
+| [**GetPickupById**](PackagePickupsApi.md#getpickupbyid) | Get Pickup By ID |
+| [**ListScheduledPickups**](PackagePickupsApi.md#listscheduledpickups) | List Scheduled Pickups |
+| [**SchedulePickup**](PackagePickupsApi.md#schedulepickup) | Schedule a Pickup |
 
 <a id="deletescheduledpickup"></a>
 # **DeleteScheduledPickup**
@@ -128,9 +126,9 @@ namespace Example
 <a id="listscheduledpickups"></a>
 # **ListScheduledPickups**
 ```csharp
-GetPickupsResponseBody ListScheduledPickups (DateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullstring carrierId = nullstring warehouseId = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+GetPickupsResponseBody ListScheduledPickups (DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, string carrierId = null, string warehouseId = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 
-GetPickupsResponseBody ListScheduledPickups (HttpClient methodClient, DateTimeOffset createdAtStart = nullDateTimeOffset createdAtEnd = nullstring carrierId = nullstring warehouseId = nullint page = nullint pageSize = null, CancellationToken cancellationToken = default)
+GetPickupsResponseBody ListScheduledPickups (HttpClient methodClient, DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, string carrierId = null, string warehouseId = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 ```
 
 List Scheduled Pickups
