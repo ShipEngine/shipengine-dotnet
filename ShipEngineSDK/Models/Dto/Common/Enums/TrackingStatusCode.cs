@@ -52,7 +52,13 @@ namespace ShipEngineSDK.Common.Enums
         /// Not Yet In System
         /// </summary>
         [EnumMember(Value = "NY")]
-        NY
+        NY,
+
+        /// <summary>
+        /// Delivered To The Collection Location
+        /// </summary>
+        [EnumMember(Value = "SP")]
+        SP
 
     }
 }

@@ -261,5 +261,23 @@ namespace ShipEngineSDK
         /// </summary>
         [EnumMember(Value = "webhook_event_type_conflict")]
         WebhookEventTypeConflict,
+
+        /// <summary>
+        /// Funding source isnt properly configured and can't be used.
+        /// </summary>
+        [EnumMember(Value = "funding_source_missing_configuration")]
+        FundingSourceMissingConfiguration,
+
+        /// <summary>
+        /// There was an unexpected problem with a funding source.
+        /// </summary>
+        [EnumMember(Value = "funding_source_error")]
+        FundingSourceError,
+        
+        /// <summary>
+        /// The attempted operation does not support multiple packages.
+        /// </summary>
+        [EnumMember(Value = "multipackage_not_supported")]
+        MultipackageNotSupported,
     }
 }

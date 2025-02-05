@@ -433,6 +433,8 @@ ShipEngineSDK.Enums.ErrorCode.Unspecified = 35 -> ShipEngineSDK.Enums.ErrorCode
 ShipEngineSDK.Enums.ErrorCode.VerificationFailure = 36 -> ShipEngineSDK.Enums.ErrorCode
 ShipEngineSDK.Enums.ErrorCode.WarehouseConflict = 37 -> ShipEngineSDK.Enums.ErrorCode
 ShipEngineSDK.Enums.ErrorCode.WebhookEventTypeConflict = 38 -> ShipEngineSDK.Enums.ErrorCode
+ShipEngineSDK.Enums.ErrorCode.FundingSourceMissingConfiguration = 39 -> ShipEngineSDK.Enums.ErrorCode
+ShipEngineSDK.Enums.ErrorCode.FundingSourceError = 40 -> ShipEngineSDK.Enums.ErrorCode
 ShipEngineSDK.Enums.ErrorSource
 ShipEngineSDK.Enums.ErrorSource.Carrier = 1 -> ShipEngineSDK.Enums.ErrorSource
 ShipEngineSDK.Enums.ErrorSource.OrderSource = 2 -> ShipEngineSDK.Enums.ErrorSource
@@ -5532,6 +5534,8 @@ static ShipEngineSDK.Model.ErrorCode.Unspecified.get -> ShipEngineSDK.Model.Erro
 static ShipEngineSDK.Model.ErrorCode.VerificationFailure.get -> ShipEngineSDK.Model.ErrorCode!
 static ShipEngineSDK.Model.ErrorCode.WarehouseConflict.get -> ShipEngineSDK.Model.ErrorCode!
 static ShipEngineSDK.Model.ErrorCode.WebhookEventTypeConflict.get -> ShipEngineSDK.Model.ErrorCode!
+static ShipEngineSDK.Model.ErrorCode.FundingSourceMissingConfiguration.get -> ShipEngineSDK.Model.ErrorCode!
+static ShipEngineSDK.Model.ErrorCode.FundingSourceError.get -> ShipEngineSDK.Model.ErrorCode!
 static ShipEngineSDK.Model.ErrorSource.Carrier.get -> ShipEngineSDK.Model.ErrorSource!
 static ShipEngineSDK.Model.ErrorSource.OrderSource.get -> ShipEngineSDK.Model.ErrorSource!
 static ShipEngineSDK.Model.ErrorSource.Shipengine.get -> ShipEngineSDK.Model.ErrorSource!

@@ -173,6 +173,43 @@ Fixed handling of No Content responses
   multiple modifiers to be added. For example, a modifier could be added at the global level that applies to all requests and then
   another modifier can be added for a single request.
 
+## 2.3.1
+
+### Added
+
+- Added license number, invoice number, and certificate number to advanced options
+
+## 2.3.2
+
+### Added
+
+- Added funding_source and parcelguard to insurance provider enumeration
+
+## 2.3.3
+
+### Changed
+
+- update System.Text.Json to latest version 8.0.5
+
+## 2.3.4
+
+### Added
+
+- Added error code MultipackageNotSupported
+
+## 2.3.5
+
+### Added
+
+- Added error code FundingSourceMissingConfiguration
+- Added error code FundingSourceError
+
+## 2.3.6
+
+### Added
+
+- Added SP code TrackingStatusCode
+
 ## 3.0.0-beta.1
 
 ### Added
