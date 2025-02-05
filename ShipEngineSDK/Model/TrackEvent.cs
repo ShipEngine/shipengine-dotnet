@@ -224,7 +224,7 @@ public partial class TrackEvent
     /// This should not be used for input as it will be ignored on serialization.
     /// </remarks>
     /// <example>
-    /// Your shipment is on its way between depots.
+    /// Your shipment is on its way between the carrier hubs.
     /// </example>
     [JsonPropertyName("status_detail_description"), JsonInclude]
     public string? StatusDetailDescription { get; set; }

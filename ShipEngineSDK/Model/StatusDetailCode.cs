@@ -21,9 +21,9 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// The tracking status detail codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;COLLECTION_FAILED&#x60; | Shipment pickup failed. The delivery company will try again soon. | &#x60;AWAITING_DESPATCH&#x60; | Your shipment is ready to go and is waiting for pickup. | &#x60;COLLECTION_REQUESTED&#x60; | Your shipment pickup has been scheduled. | &#x60;DESPATCHED&#x60; | Your shipment has been handed over to the carrier or dropped off at collection point. It will soon start its journey. | &#x60;ELEC_ADVICE_RECD_BY_CARRIER&#x60; | Your shipment is now in the carrier&#39;s system. | &#x60;NOT_YET_RECEIVED_BY_CARRIER&#x60; | The sender couldn&#39;t hand over your shipment. The delivery company will try to collect it again. | &#x60;COLLECTION_MADE&#x60; | Your shipment has been picked up by the carrier. | &#x60;ATTEMPTED_DELIVERY&#x60; | Delivery attempt failed. Please check the carrier&#39;s instructions for next steps. | &#x60;ATTEMPTED_DELIVERY_2ND&#x60; | Second delivery attempt failed. Please check the carrier&#39;s instructions for next steps. | &#x60;ATTEMPTED_DELIVERY_3RD&#x60; | Third delivery attempt failed. Please check the carrier&#39;s instructions for next steps. | &#x60;COD_AMOUNT_NOT_PAID&#x60; | Delivery failed due to unpaid cash on delivery. Please check carrier instructions. | &#x60;COD_AMOUNT_PAID&#x60; | Cash on delivery payment received. | &#x60;CUSTOMER_CARDED&#x60; | Delivery attempt failed. Please check for delivery instructions left by the carrier. | &#x60;CUSTOMER_IDENTIFICATION_FAILED&#x60; | There was a recipient identification issue. Please check carrier instructions. | &#x60;INVALID_METHOD_OF_PAYMENT&#x60; | Delivery failed due to incorrect payment. Please check carrier instructions. | &#x60;NO_ACCESS_TO_RECIPIENTS_ADDRESS&#x60; | Delivery couldn&#39;t be completed due to issues with accessing address. Please follow carrier instructions. | &#x60;OUT_FOR_DELIVERY&#x60; | Your shipment is out for delivery. | &#x60;DELIVERED&#x60; | Your shipment has been delivered. | &#x60;DELIVERED_DAMAGED&#x60; | Your shipment was delivered but arrived damaged. | &#x60;DELIVERED_IN_PART&#x60; | Part of your shipment has been delivered. Check for updates on the rest. | &#x60;DELIVERED_SPECIFIED_SAFE_PLACE&#x60; | Your shipment has been left in your designated safe place. | &#x60;DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION&#x60; | Your shipment was delivered to an alternative location due to the delivery company being unable to deliver it to the specified address. Check carrier instructions for pickup details. | &#x60;DELIVERED_TO_NEIGHBOUR&#x60; | Your shipment was delivered to your neighbor. | &#x60;DELIVERED_TO_PO_BOX&#x60; | Your shipment was delivered to your PO Box. | &#x60;PARCEL_COLLECTED_FROM_PICKUP_POINT&#x60; | Your package has been picked up from the collection point. | &#x60;POST_TRANSIT_STATUS&#x60; | The carrier has added more information about your delivery. | &#x60;PROOF_OF_DELIVERY&#x60; | Delivery confirmed. | &#x60;CANCELLED&#x60; | Your shipment has been cancelled. | &#x60;CANCELLED_BEFORE_DESPATCH&#x60; | Your shipment was cancelled before pickup. Contact the sender if unexpected. | &#x60;CUSTOMER_MOVED&#x60; | Recipient not at address. Your shipment is being returned. | &#x60;HAZARDOUS_PROHIBITED&#x60; | Your parcel contained a prohibited item and is being returned. Contact the sender. | &#x60;NOT_COLLECTED_FROM_PICKUP_POINT&#x60; | Shipment not collected from the pickup point. Your parcel is being returned to the sender. | &#x60;NOT_DELIVERED&#x60; | Delivery attempts failed. Your parcel is being returned to the sender. | &#x60;NOT_DELIVERED_ADDRESSEE_DECEASED&#x60; | Delivery not possible due to recipient&#39;s passing. | &#x60;PARCEL_DAMAGED&#x60; | Your parcel was damaged and can&#39;t be delivered. It&#39;s being returned. Contact the sender. | &#x60;PARCEL_DISPOSED&#x60; | Shipment was disposed of. Contact the sender for details. | &#x60;PARCEL_LOST&#x60; | Your parcel is lost. Contact the sender for next steps. | &#x60;PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY&#x60; | Shipment is too large/heavy for delivery. Being returned. Contact sender. | &#x60;REFUSED_BY_CUSTOMER&#x60; | Delivery refused. Shipment being returned. Contact the sender. | &#x60;RETURN_TO_SENDER&#x60; | Your shipment is being returned to the sender. Contact them for details. | &#x60;ADDRESS_QUERY&#x60; | There&#39;s an issue with your delivery address. This may cause a delay or return. Contact sender or carrier. | &#x60;CARRIER_DELAYS&#x60; | There&#39;s a delivery delay. We&#39;ll update you when there&#39;s more info. | &#x60;CUSTOMS_CLEARED&#x60; | Your shipment has passed customs clearance. | &#x60;CUSTOMS_PROCESSING&#x60; | Your shipment is going through customs. | &#x60;DELAYED_NOT_CARRIER&#x60; | Unexpected delivery delay. We&#39;ll update you soon. | &#x60;DELIVERY_ARRANGED_WITH_RECIPIENT&#x60; | Delivery arranged by recipient. | &#x60;HELD_BY_CARRIER&#x60; | Your shipment is on hold due to a carrier issue. We&#39;ll update you soon. | &#x60;HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING&#x60; | Your shipment is held by carrier due to customs issues. We&#39;ll update you. | &#x60;HELD_BY_CUSTOMS&#x60; | Your shipment is held in customs. We&#39;ll update you. | &#x60;HELD_BY_EXPORT_CUSTOMS&#x60; | Your shipment is held in export customs. We&#39;ll update you. | &#x60;HELD_BY_IMPORT_CUSTOMS&#x60; | Your shipment is held in import customs. We&#39;ll update you. | &#x60;HUB_SCAN_OUT&#x60; | Your shipment is at the main delivery depot. | &#x60;IN_TRANSIT&#x60; | Your shipment is on its way between depots. | &#x60;INCORRECT_DECLARATION&#x60; | Incorrect shipment dimensions. Delivery may be delayed or returned. We&#39;ll update you. | &#x60;INFORMATION&#x60; | The carrier has shared additional shipment information. | &#x60;MISSORTED&#x60; | Your shipment was missorted. There might be a delivery delay. We&#39;ll update you. | &#x60;PARCEL_OVER_LABELLED&#x60; | Your shipment was over labelled by the delivery company to improve processing. | &#x60;PARCEL_REPACKED&#x60; | Your shipment packaging was damaged. It&#39;s being repacked. This might delay delivery. | &#x60;PARCEL_UPDATE_NOTIFICATION_VIA_EMAIL&#x60; | You&#39;ve received an email with a shipment update. | &#x60;PARCEL_UPDATE_NOTIFICATION_VIA_SMS&#x60; | You&#39;ve received a text message with a shipment update. | &#x60;RECEIVED_BY_CARRIER&#x60; | Your shipment has been received by the carrier. | &#x60;RECEIVED_LOCAL_DELIVERY_DEPOT&#x60; | Your shipment is at the local delivery depot, ready for delivery. | &#x60;ROUTING_ERROR&#x60; | Your shipment was sent to the wrong place. There might be a delay. | &#x60;SUB_CONTRACTOR_EVENT&#x60; | Your shipment is with the local delivery partner. | &#x60;SUB_CONTRACTOR_RECEIVED&#x60; | Your shipment has been received by the local delivery partner. | &#x60;RECD_BY_CARRIER_NO_ELEC_ADVICE&#x60; | There&#39;s a system issue with your shipment. Tracking updates might be delayed. | &#x60;AWAITING_ELECTRONIC_ADVICE&#x60; | Your tracking number is ready. Your shipment is waiting to be registered in the carrier system and scheduled for pickup. | &#x60;AWAITING_COLLECTION_FROM_PICKUP_POINT&#x60; | Your shipment is ready for pickup at the specified location. | &#x60;COLLECT_AT_LOCAL_PO&#x60; | Your shipment has been redirected to the local post office for pickup. Check carrier instructions. | &#x60;CUSTOMER_TO_COLLECT_FROM_CARRIER&#x60; | Your shipment is being held for pickup. Check carrier instructions. | &#x60;DELIVERED_TO_LOCKER_COLLECTION_POINT&#x60; | Your shipment has been delivered to your locker. | &#x60;CARRIER_STATUS_NOT_MAPPED&#x60; | Status not mapped. Please check the carrier&#39;s website for updates. 
+/// The tracking status detail codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;CARRIER_STATUS_NOT_MAPPED&#x60; | Status not mapped. Please check the carrier&#39;s website for updates. | &#x60;SHIPMENT_CREATED&#x60; | Your tracking number is ready. Your parcel is waiting to be registered in the carrier system and scheduled for pickup. | &#x60;AWAITING_PICKUP_DROP_OFF&#x60; | Your parcel is waiting to be handed over to the carrier. | &#x60;DROPPED_OFF&#x60; | Your parcel has been dropped off and is ready for carrier processing. | &#x60;ELEC_ADVICE_RECD_BY_CARRIER&#x60; | Your shipment is now in the carrier&#39;s system. | &#x60;PICKED_UP&#x60; | Your parcel has been picked up by the carrier. | &#x60;CUSTOMS_CLEARED&#x60; | Your parcel has cleared customs and is continuing its journey. | &#x60;CUSTOMS_PROCESSING&#x60; | Your parcel is currently being processed by customs. | &#x60;DELIVERY_ARRANGED_WITH_RECIPIENT&#x60; | Your parcel&#39;s delivery has been arranged with the carrier. | &#x60;HUB_SCAN_OUT&#x60; | Your parcel has left the carrier&#39;s hub. | &#x60;HUB_SCAN_IN&#x60; | Your parcel has arrived at the carrier&#39;s hub for processing. | &#x60;IN_TRANSIT&#x60; | Your shipment is on its way between the carrier hubs. | &#x60;INFORMATION&#x60; | The carrier has shared additional information about your parcel. | &#x60;PARCEL_OVER_LABELLED&#x60; | Your parcel&#39;s label has been updated by the carrier, which may affect tracking visibility. | &#x60;PARCEL_UPDATE_NOTIFICATION&#x60; | The carrier has sent you an update on your parcel status via SMS or email. | &#x60;RECEIVED_BY_CARRIER&#x60; | Your parcel has been received by the carrier and is beginning its journey. | &#x60;RECEIVED_LOCAL_DELIVERY_DEPOT&#x60; | Your parcel has arrived at the local delivery depot and is almost ready for delivery. | &#x60;SUB_CONTRACTOR_EVENT&#x60; | The carrier has shared additional information about your parcel&#39;s handling by a delivery partner. | &#x60;SUB_CONTRACTOR_RECEIVED&#x60; | Your parcel has been received by the carrier&#39;s local delivery partner. | &#x60;PARCEL_REDIRECTED&#x60; | Your parcel has been redirected to a new delivery address per your request. | &#x60;DELIVERY_SCHEDULED&#x60; | Your parcel&#39;s delivery has been scheduled and will soon be out for delivery. | &#x60;HUB_PROCESSING&#x60; | Your parcel is being processed at a carrier hub. | &#x60;DELIVERY_RESCHEDULED&#x60; | Your parcel&#39;s delivery has been rescheduled due to operational issues. | &#x60;ATTEMPTED_DELIVERY&#x60; | The carrier attempted to deliver your parcel but was unable to complete delivery. | &#x60;ATTEMPTED_DELIVERY_FINAL&#x60; | The carrier made a final attempt to deliver your parcel but was unable to complete delivery. Please check the carrier&#39;s instructions for next steps. | &#x60;COD_AMOUNT_PAID&#x60; | Cash on delivery payment received. | &#x60;CUSTOMER_CARDED&#x60; | Delivery attempt failed. Please follow delivery instructions left by the carrier. | &#x60;OUT_FOR_DELIVERY&#x60; | Your parcel is on its way and will be delivered today. | &#x60;AWAITING_COLLECTION_FROM_PICKUP_POINT&#x60; | Your parcel is ready for collection at the selected pickup point. | &#x60;COLLECT_AT_LOCAL_PO&#x60; | Your parcel is ready for collection at your local post office. | &#x60;CUSTOMER_TO_COLLECT_FROM_CARRIER&#x60; | Your parcel is available for collection from the carrier&#39;s local delivery unit. | &#x60;DELIVERED_TO_RECEPTION&#x60; | Your parcel has been delivered to your building&#39;s reception or designated mail area. | &#x60;DELIVERED&#x60; | Your parcel has been successfully delivered. | &#x60;DELIVERED_DAMAGED&#x60; | Your parcel was delivered but arrived with visible damage. | &#x60;DELIVERED_IN_PART&#x60; | Part of your shipment has been delivered. Check for updates on the rest. | &#x60;DELIVERED_SPECIFIED_SAFE_PLACE&#x60; | Your parcel has been delivered to your specified safe place. | &#x60;DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION&#x60; | Your parcel was delivered to an alternative location due to the delivery company being unable to deliver it to the specified address. Check carrier instructions for pickup details. | &#x60;DELIVERED_TO_NEIGHBOUR&#x60; | Your parcel was delivered to your neighbor. | &#x60;DELIVERED_TO_PO_BOX&#x60; | Your parcel has been delivered to your specified PO Box. | &#x60;PARCEL_COLLECTED_FROM_PICKUP_POINT&#x60; | Your package has been picked up from the pick up point. | &#x60;POST_TRANSIT_STATUS&#x60; | The carrier has added more information about your delivery. | &#x60;PROOF_OF_DELIVERY&#x60; | The carrier has confirmed delivery with proof, such as a signature or photo. | &#x60;PICKUP_FAILED&#x60; | Parcel pickup failed. The delivery company will try again soon. | &#x60;NOT_YET_RECEIVED_BY_CARRIER&#x60; | The carrier has not yet received your parcel, which may cause a delay. | &#x60;PARCEL_DAMAGED&#x60; | Your parcel was damaged in transit but will still be delivered. | &#x60;ADDRESS_QUERY&#x60; | There is an issue with the delivery address, which may delay your parcel. | &#x60;CARRIER_DELAYS&#x60; | Your parcel is delayed due to issues within the carrier network. | &#x60;DELAYED_NOT_CARRIER&#x60; | Your parcel is delayed due to circumstances beyond the carrier&#39;s control. | &#x60;HELD_BY_CARRIER&#x60; | Your parcel is being held due to an operational issue. Contact with the carrier for more information. | &#x60;HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING&#x60; | Your parcel is being held by the carrier for customs documentation checks. This may occur when the carrier must confirm documentation before the parcel can continue its journey. | &#x60;HELD_BY_CUSTOMS&#x60; | Your parcel is being held at customs, which may delay delivery. | &#x60;HELD_BY_EXPORT_CUSTOMS&#x60; | Your parcel is held at export customs, which may delay delivery. | &#x60;HELD_BY_IMPORT_CUSTOMS&#x60; | Your parcel is held at import customs and may require action to proceed. | &#x60;INCORRECT_DECLARATION&#x60; | Your parcel has been incorrectly declared but is still moving forward for delivery. | &#x60;MISROUTED&#x60; | Your parcel was sent to the wrong place due to a routing error but is being redirected. | &#x60;PARCEL_REPACKED&#x60; | Your parcel was repackaged by the carrier due to damage and will still be delivered. | &#x60;RECD_BY_CARRIER_NO_ELEC_ADVICE&#x60; | Your parcel has been received by the carrier but may experience delays due to missing pre-advice. | &#x60;COD_AMOUNT_NOT_PAID&#x60; | Delivery failed due to unpaid cash on delivery. Please follow carrier instructions. | &#x60;CUSTOMER_IDENTIFICATION_FAILED&#x60; | Delivery couldn&#39;t be completed as identification requirements were not met. | &#x60;NO_ACCESS_TO_RECIPIENTS_ADDRESS&#x60; | The carrier couldn&#39;t access the delivery location due to restricted entry. | &#x60;CANCELLED&#x60; | Your parcel has been cancelled. | &#x60;CUSTOMER_MOVED&#x60; | Delivery failed as the recipient is no longer at the specified address. Your parcel is being returned. | &#x60;HAZARDOUS_PROHIBITED&#x60; | Your parcel contains restricted items and will not be delivered. | &#x60;NOT_COLLECTED_FROM_PICKUP_POINT&#x60; | Your parcel was not collected from the pickup point within the designated time and will be returned. | &#x60;NOT_DELIVERED&#x60; | All delivery attempts failed. Your parcel is being returned to the sender. | &#x60;NOT_DELIVERED_ADDRESSEE_DECEASED&#x60; | The parcel could not be delivered as the addressee is reported deceased. | &#x60;PARCEL_DISPOSED&#x60; | Your parcel has been disposed of due to its contents or condition and will not be delivered. | &#x60;PARCEL_LOST&#x60; | The carrier has reported that your parcel is lost and will not be delivered. | &#x60;PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY&#x60; | The parcel cannot be delivered as it exceeds the carrier&#39;s service limits. | &#x60;REFUSED_BY_CUSTOMER&#x60; | You have refused the parcel, and it will be returned to the sender. | &#x60;RETURN_TO_SENDER&#x60; | Your parcel is being returned to the sender due to delivery issues. | &#x60;UNSPECIFIED_EXCEPTION&#x60; | The carrier has reported an issue with your parcel, but details are unavailable. 
 /// </summary>
-/// <value>The tracking status detail codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;COLLECTION_FAILED&#x60; | Shipment pickup failed. The delivery company will try again soon. | &#x60;AWAITING_DESPATCH&#x60; | Your shipment is ready to go and is waiting for pickup. | &#x60;COLLECTION_REQUESTED&#x60; | Your shipment pickup has been scheduled. | &#x60;DESPATCHED&#x60; | Your shipment has been handed over to the carrier or dropped off at collection point. It will soon start its journey. | &#x60;ELEC_ADVICE_RECD_BY_CARRIER&#x60; | Your shipment is now in the carrier&#39;s system. | &#x60;NOT_YET_RECEIVED_BY_CARRIER&#x60; | The sender couldn&#39;t hand over your shipment. The delivery company will try to collect it again. | &#x60;COLLECTION_MADE&#x60; | Your shipment has been picked up by the carrier. | &#x60;ATTEMPTED_DELIVERY&#x60; | Delivery attempt failed. Please check the carrier&#39;s instructions for next steps. | &#x60;ATTEMPTED_DELIVERY_2ND&#x60; | Second delivery attempt failed. Please check the carrier&#39;s instructions for next steps. | &#x60;ATTEMPTED_DELIVERY_3RD&#x60; | Third delivery attempt failed. Please check the carrier&#39;s instructions for next steps. | &#x60;COD_AMOUNT_NOT_PAID&#x60; | Delivery failed due to unpaid cash on delivery. Please check carrier instructions. | &#x60;COD_AMOUNT_PAID&#x60; | Cash on delivery payment received. | &#x60;CUSTOMER_CARDED&#x60; | Delivery attempt failed. Please check for delivery instructions left by the carrier. | &#x60;CUSTOMER_IDENTIFICATION_FAILED&#x60; | There was a recipient identification issue. Please check carrier instructions. | &#x60;INVALID_METHOD_OF_PAYMENT&#x60; | Delivery failed due to incorrect payment. Please check carrier instructions. | &#x60;NO_ACCESS_TO_RECIPIENTS_ADDRESS&#x60; | Delivery couldn&#39;t be completed due to issues with accessing address. Please follow carrier instructions. | &#x60;OUT_FOR_DELIVERY&#x60; | Your shipment is out for delivery. | &#x60;DELIVERED&#x60; | Your shipment has been delivered. | &#x60;DELIVERED_DAMAGED&#x60; | Your shipment was delivered but arrived damaged. | &#x60;DELIVERED_IN_PART&#x60; | Part of your shipment has been delivered. Check for updates on the rest. | &#x60;DELIVERED_SPECIFIED_SAFE_PLACE&#x60; | Your shipment has been left in your designated safe place. | &#x60;DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION&#x60; | Your shipment was delivered to an alternative location due to the delivery company being unable to deliver it to the specified address. Check carrier instructions for pickup details. | &#x60;DELIVERED_TO_NEIGHBOUR&#x60; | Your shipment was delivered to your neighbor. | &#x60;DELIVERED_TO_PO_BOX&#x60; | Your shipment was delivered to your PO Box. | &#x60;PARCEL_COLLECTED_FROM_PICKUP_POINT&#x60; | Your package has been picked up from the collection point. | &#x60;POST_TRANSIT_STATUS&#x60; | The carrier has added more information about your delivery. | &#x60;PROOF_OF_DELIVERY&#x60; | Delivery confirmed. | &#x60;CANCELLED&#x60; | Your shipment has been cancelled. | &#x60;CANCELLED_BEFORE_DESPATCH&#x60; | Your shipment was cancelled before pickup. Contact the sender if unexpected. | &#x60;CUSTOMER_MOVED&#x60; | Recipient not at address. Your shipment is being returned. | &#x60;HAZARDOUS_PROHIBITED&#x60; | Your parcel contained a prohibited item and is being returned. Contact the sender. | &#x60;NOT_COLLECTED_FROM_PICKUP_POINT&#x60; | Shipment not collected from the pickup point. Your parcel is being returned to the sender. | &#x60;NOT_DELIVERED&#x60; | Delivery attempts failed. Your parcel is being returned to the sender. | &#x60;NOT_DELIVERED_ADDRESSEE_DECEASED&#x60; | Delivery not possible due to recipient&#39;s passing. | &#x60;PARCEL_DAMAGED&#x60; | Your parcel was damaged and can&#39;t be delivered. It&#39;s being returned. Contact the sender. | &#x60;PARCEL_DISPOSED&#x60; | Shipment was disposed of. Contact the sender for details. | &#x60;PARCEL_LOST&#x60; | Your parcel is lost. Contact the sender for next steps. | &#x60;PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY&#x60; | Shipment is too large/heavy for delivery. Being returned. Contact sender. | &#x60;REFUSED_BY_CUSTOMER&#x60; | Delivery refused. Shipment being returned. Contact the sender. | &#x60;RETURN_TO_SENDER&#x60; | Your shipment is being returned to the sender. Contact them for details. | &#x60;ADDRESS_QUERY&#x60; | There&#39;s an issue with your delivery address. This may cause a delay or return. Contact sender or carrier. | &#x60;CARRIER_DELAYS&#x60; | There&#39;s a delivery delay. We&#39;ll update you when there&#39;s more info. | &#x60;CUSTOMS_CLEARED&#x60; | Your shipment has passed customs clearance. | &#x60;CUSTOMS_PROCESSING&#x60; | Your shipment is going through customs. | &#x60;DELAYED_NOT_CARRIER&#x60; | Unexpected delivery delay. We&#39;ll update you soon. | &#x60;DELIVERY_ARRANGED_WITH_RECIPIENT&#x60; | Delivery arranged by recipient. | &#x60;HELD_BY_CARRIER&#x60; | Your shipment is on hold due to a carrier issue. We&#39;ll update you soon. | &#x60;HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING&#x60; | Your shipment is held by carrier due to customs issues. We&#39;ll update you. | &#x60;HELD_BY_CUSTOMS&#x60; | Your shipment is held in customs. We&#39;ll update you. | &#x60;HELD_BY_EXPORT_CUSTOMS&#x60; | Your shipment is held in export customs. We&#39;ll update you. | &#x60;HELD_BY_IMPORT_CUSTOMS&#x60; | Your shipment is held in import customs. We&#39;ll update you. | &#x60;HUB_SCAN_OUT&#x60; | Your shipment is at the main delivery depot. | &#x60;IN_TRANSIT&#x60; | Your shipment is on its way between depots. | &#x60;INCORRECT_DECLARATION&#x60; | Incorrect shipment dimensions. Delivery may be delayed or returned. We&#39;ll update you. | &#x60;INFORMATION&#x60; | The carrier has shared additional shipment information. | &#x60;MISSORTED&#x60; | Your shipment was missorted. There might be a delivery delay. We&#39;ll update you. | &#x60;PARCEL_OVER_LABELLED&#x60; | Your shipment was over labelled by the delivery company to improve processing. | &#x60;PARCEL_REPACKED&#x60; | Your shipment packaging was damaged. It&#39;s being repacked. This might delay delivery. | &#x60;PARCEL_UPDATE_NOTIFICATION_VIA_EMAIL&#x60; | You&#39;ve received an email with a shipment update. | &#x60;PARCEL_UPDATE_NOTIFICATION_VIA_SMS&#x60; | You&#39;ve received a text message with a shipment update. | &#x60;RECEIVED_BY_CARRIER&#x60; | Your shipment has been received by the carrier. | &#x60;RECEIVED_LOCAL_DELIVERY_DEPOT&#x60; | Your shipment is at the local delivery depot, ready for delivery. | &#x60;ROUTING_ERROR&#x60; | Your shipment was sent to the wrong place. There might be a delay. | &#x60;SUB_CONTRACTOR_EVENT&#x60; | Your shipment is with the local delivery partner. | &#x60;SUB_CONTRACTOR_RECEIVED&#x60; | Your shipment has been received by the local delivery partner. | &#x60;RECD_BY_CARRIER_NO_ELEC_ADVICE&#x60; | There&#39;s a system issue with your shipment. Tracking updates might be delayed. | &#x60;AWAITING_ELECTRONIC_ADVICE&#x60; | Your tracking number is ready. Your shipment is waiting to be registered in the carrier system and scheduled for pickup. | &#x60;AWAITING_COLLECTION_FROM_PICKUP_POINT&#x60; | Your shipment is ready for pickup at the specified location. | &#x60;COLLECT_AT_LOCAL_PO&#x60; | Your shipment has been redirected to the local post office for pickup. Check carrier instructions. | &#x60;CUSTOMER_TO_COLLECT_FROM_CARRIER&#x60; | Your shipment is being held for pickup. Check carrier instructions. | &#x60;DELIVERED_TO_LOCKER_COLLECTION_POINT&#x60; | Your shipment has been delivered to your locker. | &#x60;CARRIER_STATUS_NOT_MAPPED&#x60; | Status not mapped. Please check the carrier&#39;s website for updates. </value>
+/// <value>The tracking status detail codes  |Value       |Description |:- -- -- -- --  |:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- | &#x60;CARRIER_STATUS_NOT_MAPPED&#x60; | Status not mapped. Please check the carrier&#39;s website for updates. | &#x60;SHIPMENT_CREATED&#x60; | Your tracking number is ready. Your parcel is waiting to be registered in the carrier system and scheduled for pickup. | &#x60;AWAITING_PICKUP_DROP_OFF&#x60; | Your parcel is waiting to be handed over to the carrier. | &#x60;DROPPED_OFF&#x60; | Your parcel has been dropped off and is ready for carrier processing. | &#x60;ELEC_ADVICE_RECD_BY_CARRIER&#x60; | Your shipment is now in the carrier&#39;s system. | &#x60;PICKED_UP&#x60; | Your parcel has been picked up by the carrier. | &#x60;CUSTOMS_CLEARED&#x60; | Your parcel has cleared customs and is continuing its journey. | &#x60;CUSTOMS_PROCESSING&#x60; | Your parcel is currently being processed by customs. | &#x60;DELIVERY_ARRANGED_WITH_RECIPIENT&#x60; | Your parcel&#39;s delivery has been arranged with the carrier. | &#x60;HUB_SCAN_OUT&#x60; | Your parcel has left the carrier&#39;s hub. | &#x60;HUB_SCAN_IN&#x60; | Your parcel has arrived at the carrier&#39;s hub for processing. | &#x60;IN_TRANSIT&#x60; | Your shipment is on its way between the carrier hubs. | &#x60;INFORMATION&#x60; | The carrier has shared additional information about your parcel. | &#x60;PARCEL_OVER_LABELLED&#x60; | Your parcel&#39;s label has been updated by the carrier, which may affect tracking visibility. | &#x60;PARCEL_UPDATE_NOTIFICATION&#x60; | The carrier has sent you an update on your parcel status via SMS or email. | &#x60;RECEIVED_BY_CARRIER&#x60; | Your parcel has been received by the carrier and is beginning its journey. | &#x60;RECEIVED_LOCAL_DELIVERY_DEPOT&#x60; | Your parcel has arrived at the local delivery depot and is almost ready for delivery. | &#x60;SUB_CONTRACTOR_EVENT&#x60; | The carrier has shared additional information about your parcel&#39;s handling by a delivery partner. | &#x60;SUB_CONTRACTOR_RECEIVED&#x60; | Your parcel has been received by the carrier&#39;s local delivery partner. | &#x60;PARCEL_REDIRECTED&#x60; | Your parcel has been redirected to a new delivery address per your request. | &#x60;DELIVERY_SCHEDULED&#x60; | Your parcel&#39;s delivery has been scheduled and will soon be out for delivery. | &#x60;HUB_PROCESSING&#x60; | Your parcel is being processed at a carrier hub. | &#x60;DELIVERY_RESCHEDULED&#x60; | Your parcel&#39;s delivery has been rescheduled due to operational issues. | &#x60;ATTEMPTED_DELIVERY&#x60; | The carrier attempted to deliver your parcel but was unable to complete delivery. | &#x60;ATTEMPTED_DELIVERY_FINAL&#x60; | The carrier made a final attempt to deliver your parcel but was unable to complete delivery. Please check the carrier&#39;s instructions for next steps. | &#x60;COD_AMOUNT_PAID&#x60; | Cash on delivery payment received. | &#x60;CUSTOMER_CARDED&#x60; | Delivery attempt failed. Please follow delivery instructions left by the carrier. | &#x60;OUT_FOR_DELIVERY&#x60; | Your parcel is on its way and will be delivered today. | &#x60;AWAITING_COLLECTION_FROM_PICKUP_POINT&#x60; | Your parcel is ready for collection at the selected pickup point. | &#x60;COLLECT_AT_LOCAL_PO&#x60; | Your parcel is ready for collection at your local post office. | &#x60;CUSTOMER_TO_COLLECT_FROM_CARRIER&#x60; | Your parcel is available for collection from the carrier&#39;s local delivery unit. | &#x60;DELIVERED_TO_RECEPTION&#x60; | Your parcel has been delivered to your building&#39;s reception or designated mail area. | &#x60;DELIVERED&#x60; | Your parcel has been successfully delivered. | &#x60;DELIVERED_DAMAGED&#x60; | Your parcel was delivered but arrived with visible damage. | &#x60;DELIVERED_IN_PART&#x60; | Part of your shipment has been delivered. Check for updates on the rest. | &#x60;DELIVERED_SPECIFIED_SAFE_PLACE&#x60; | Your parcel has been delivered to your specified safe place. | &#x60;DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION&#x60; | Your parcel was delivered to an alternative location due to the delivery company being unable to deliver it to the specified address. Check carrier instructions for pickup details. | &#x60;DELIVERED_TO_NEIGHBOUR&#x60; | Your parcel was delivered to your neighbor. | &#x60;DELIVERED_TO_PO_BOX&#x60; | Your parcel has been delivered to your specified PO Box. | &#x60;PARCEL_COLLECTED_FROM_PICKUP_POINT&#x60; | Your package has been picked up from the pick up point. | &#x60;POST_TRANSIT_STATUS&#x60; | The carrier has added more information about your delivery. | &#x60;PROOF_OF_DELIVERY&#x60; | The carrier has confirmed delivery with proof, such as a signature or photo. | &#x60;PICKUP_FAILED&#x60; | Parcel pickup failed. The delivery company will try again soon. | &#x60;NOT_YET_RECEIVED_BY_CARRIER&#x60; | The carrier has not yet received your parcel, which may cause a delay. | &#x60;PARCEL_DAMAGED&#x60; | Your parcel was damaged in transit but will still be delivered. | &#x60;ADDRESS_QUERY&#x60; | There is an issue with the delivery address, which may delay your parcel. | &#x60;CARRIER_DELAYS&#x60; | Your parcel is delayed due to issues within the carrier network. | &#x60;DELAYED_NOT_CARRIER&#x60; | Your parcel is delayed due to circumstances beyond the carrier&#39;s control. | &#x60;HELD_BY_CARRIER&#x60; | Your parcel is being held due to an operational issue. Contact with the carrier for more information. | &#x60;HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING&#x60; | Your parcel is being held by the carrier for customs documentation checks. This may occur when the carrier must confirm documentation before the parcel can continue its journey. | &#x60;HELD_BY_CUSTOMS&#x60; | Your parcel is being held at customs, which may delay delivery. | &#x60;HELD_BY_EXPORT_CUSTOMS&#x60; | Your parcel is held at export customs, which may delay delivery. | &#x60;HELD_BY_IMPORT_CUSTOMS&#x60; | Your parcel is held at import customs and may require action to proceed. | &#x60;INCORRECT_DECLARATION&#x60; | Your parcel has been incorrectly declared but is still moving forward for delivery. | &#x60;MISROUTED&#x60; | Your parcel was sent to the wrong place due to a routing error but is being redirected. | &#x60;PARCEL_REPACKED&#x60; | Your parcel was repackaged by the carrier due to damage and will still be delivered. | &#x60;RECD_BY_CARRIER_NO_ELEC_ADVICE&#x60; | Your parcel has been received by the carrier but may experience delays due to missing pre-advice. | &#x60;COD_AMOUNT_NOT_PAID&#x60; | Delivery failed due to unpaid cash on delivery. Please follow carrier instructions. | &#x60;CUSTOMER_IDENTIFICATION_FAILED&#x60; | Delivery couldn&#39;t be completed as identification requirements were not met. | &#x60;NO_ACCESS_TO_RECIPIENTS_ADDRESS&#x60; | The carrier couldn&#39;t access the delivery location due to restricted entry. | &#x60;CANCELLED&#x60; | Your parcel has been cancelled. | &#x60;CUSTOMER_MOVED&#x60; | Delivery failed as the recipient is no longer at the specified address. Your parcel is being returned. | &#x60;HAZARDOUS_PROHIBITED&#x60; | Your parcel contains restricted items and will not be delivered. | &#x60;NOT_COLLECTED_FROM_PICKUP_POINT&#x60; | Your parcel was not collected from the pickup point within the designated time and will be returned. | &#x60;NOT_DELIVERED&#x60; | All delivery attempts failed. Your parcel is being returned to the sender. | &#x60;NOT_DELIVERED_ADDRESSEE_DECEASED&#x60; | The parcel could not be delivered as the addressee is reported deceased. | &#x60;PARCEL_DISPOSED&#x60; | Your parcel has been disposed of due to its contents or condition and will not be delivered. | &#x60;PARCEL_LOST&#x60; | The carrier has reported that your parcel is lost and will not be delivered. | &#x60;PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY&#x60; | The parcel cannot be delivered as it exceeds the carrier&#39;s service limits. | &#x60;REFUSED_BY_CUSTOMER&#x60; | You have refused the parcel, and it will be returned to the sender. | &#x60;RETURN_TO_SENDER&#x60; | Your parcel is being returned to the sender due to delivery issues. | &#x60;UNSPECIFIED_EXCEPTION&#x60; | The carrier has reported an issue with your parcel, but details are unavailable. </value>
 [JsonConverter(typeof(StatusDetailCodeJsonConverter))]
 public class StatusDetailCode
 {
@@ -34,7 +34,7 @@ public class StatusDetailCode
     /// </summary>
     internal StatusDetailCode()
     {
-        _value = "COLLECTION_FAILED";
+        _value = "CARRIER_STATUS_NOT_MAPPED";
     }
 
     /// <summary>
@@ -51,27 +51,27 @@ public class StatusDetailCode
     }
 
     /// <summary>
-    /// Enum COLLECTIONFAILED for value: COLLECTION_FAILED
+    /// Enum CARRIERSTATUSNOTMAPPED for value: CARRIER_STATUS_NOT_MAPPED
     /// </summary>
-    public static StatusDetailCode COLLECTIONFAILED { get; } = new("COLLECTION_FAILED");
+    public static StatusDetailCode CARRIERSTATUSNOTMAPPED { get; } = new("CARRIER_STATUS_NOT_MAPPED");
 
 
     /// <summary>
-    /// Enum AWAITINGDESPATCH for value: AWAITING_DESPATCH
+    /// Enum SHIPMENTCREATED for value: SHIPMENT_CREATED
     /// </summary>
-    public static StatusDetailCode AWAITINGDESPATCH { get; } = new("AWAITING_DESPATCH");
+    public static StatusDetailCode SHIPMENTCREATED { get; } = new("SHIPMENT_CREATED");
 
 
     /// <summary>
-    /// Enum COLLECTIONREQUESTED for value: COLLECTION_REQUESTED
+    /// Enum AWAITINGPICKUPDROPOFF for value: AWAITING_PICKUP_DROP_OFF
     /// </summary>
-    public static StatusDetailCode COLLECTIONREQUESTED { get; } = new("COLLECTION_REQUESTED");
+    public static StatusDetailCode AWAITINGPICKUPDROPOFF { get; } = new("AWAITING_PICKUP_DROP_OFF");
 
 
     /// <summary>
-    /// Enum DESPATCHED for value: DESPATCHED
+    /// Enum DROPPEDOFF for value: DROPPED_OFF
     /// </summary>
-    public static StatusDetailCode DESPATCHED { get; } = new("DESPATCHED");
+    public static StatusDetailCode DROPPEDOFF { get; } = new("DROPPED_OFF");
 
 
     /// <summary>
@@ -81,15 +81,111 @@ public class StatusDetailCode
 
 
     /// <summary>
-    /// Enum NOTYETRECEIVEDBYCARRIER for value: NOT_YET_RECEIVED_BY_CARRIER
+    /// Enum PICKEDUP for value: PICKED_UP
     /// </summary>
-    public static StatusDetailCode NOTYETRECEIVEDBYCARRIER { get; } = new("NOT_YET_RECEIVED_BY_CARRIER");
+    public static StatusDetailCode PICKEDUP { get; } = new("PICKED_UP");
 
 
     /// <summary>
-    /// Enum COLLECTIONMADE for value: COLLECTION_MADE
+    /// Enum CUSTOMSCLEARED for value: CUSTOMS_CLEARED
     /// </summary>
-    public static StatusDetailCode COLLECTIONMADE { get; } = new("COLLECTION_MADE");
+    public static StatusDetailCode CUSTOMSCLEARED { get; } = new("CUSTOMS_CLEARED");
+
+
+    /// <summary>
+    /// Enum CUSTOMSPROCESSING for value: CUSTOMS_PROCESSING
+    /// </summary>
+    public static StatusDetailCode CUSTOMSPROCESSING { get; } = new("CUSTOMS_PROCESSING");
+
+
+    /// <summary>
+    /// Enum DELIVERYARRANGEDWITHRECIPIENT for value: DELIVERY_ARRANGED_WITH_RECIPIENT
+    /// </summary>
+    public static StatusDetailCode DELIVERYARRANGEDWITHRECIPIENT { get; } = new("DELIVERY_ARRANGED_WITH_RECIPIENT");
+
+
+    /// <summary>
+    /// Enum HUBSCANOUT for value: HUB_SCAN_OUT
+    /// </summary>
+    public static StatusDetailCode HUBSCANOUT { get; } = new("HUB_SCAN_OUT");
+
+
+    /// <summary>
+    /// Enum HUBSCANIN for value: HUB_SCAN_IN
+    /// </summary>
+    public static StatusDetailCode HUBSCANIN { get; } = new("HUB_SCAN_IN");
+
+
+    /// <summary>
+    /// Enum INTRANSIT for value: IN_TRANSIT
+    /// </summary>
+    public static StatusDetailCode INTRANSIT { get; } = new("IN_TRANSIT");
+
+
+    /// <summary>
+    /// Enum INFORMATION for value: INFORMATION
+    /// </summary>
+    public static StatusDetailCode INFORMATION { get; } = new("INFORMATION");
+
+
+    /// <summary>
+    /// Enum PARCELOVERLABELLED for value: PARCEL_OVER_LABELLED
+    /// </summary>
+    public static StatusDetailCode PARCELOVERLABELLED { get; } = new("PARCEL_OVER_LABELLED");
+
+
+    /// <summary>
+    /// Enum PARCELUPDATENOTIFICATION for value: PARCEL_UPDATE_NOTIFICATION
+    /// </summary>
+    public static StatusDetailCode PARCELUPDATENOTIFICATION { get; } = new("PARCEL_UPDATE_NOTIFICATION");
+
+
+    /// <summary>
+    /// Enum RECEIVEDBYCARRIER for value: RECEIVED_BY_CARRIER
+    /// </summary>
+    public static StatusDetailCode RECEIVEDBYCARRIER { get; } = new("RECEIVED_BY_CARRIER");
+
+
+    /// <summary>
+    /// Enum RECEIVEDLOCALDELIVERYDEPOT for value: RECEIVED_LOCAL_DELIVERY_DEPOT
+    /// </summary>
+    public static StatusDetailCode RECEIVEDLOCALDELIVERYDEPOT { get; } = new("RECEIVED_LOCAL_DELIVERY_DEPOT");
+
+
+    /// <summary>
+    /// Enum SUBCONTRACTOREVENT for value: SUB_CONTRACTOR_EVENT
+    /// </summary>
+    public static StatusDetailCode SUBCONTRACTOREVENT { get; } = new("SUB_CONTRACTOR_EVENT");
+
+
+    /// <summary>
+    /// Enum SUBCONTRACTORRECEIVED for value: SUB_CONTRACTOR_RECEIVED
+    /// </summary>
+    public static StatusDetailCode SUBCONTRACTORRECEIVED { get; } = new("SUB_CONTRACTOR_RECEIVED");
+
+
+    /// <summary>
+    /// Enum PARCELREDIRECTED for value: PARCEL_REDIRECTED
+    /// </summary>
+    public static StatusDetailCode PARCELREDIRECTED { get; } = new("PARCEL_REDIRECTED");
+
+
+    /// <summary>
+    /// Enum DELIVERYSCHEDULED for value: DELIVERY_SCHEDULED
+    /// </summary>
+    public static StatusDetailCode DELIVERYSCHEDULED { get; } = new("DELIVERY_SCHEDULED");
+
+
+    /// <summary>
+    /// Enum HUBPROCESSING for value: HUB_PROCESSING
+    /// </summary>
+    public static StatusDetailCode HUBPROCESSING { get; } = new("HUB_PROCESSING");
+
+
+    /// <summary>
+    /// Enum DELIVERYRESCHEDULED for value: DELIVERY_RESCHEDULED
+    /// </summary>
+    public static StatusDetailCode DELIVERYRESCHEDULED { get; } = new("DELIVERY_RESCHEDULED");
 
 
     /// <summary>
@@ -99,21 +195,9 @@ public class StatusDetailCode
 
 
     /// <summary>
-    /// Enum ATTEMPTEDDELIVERY2ND for value: ATTEMPTED_DELIVERY_2ND
+    /// Enum ATTEMPTEDDELIVERYFINAL for value: ATTEMPTED_DELIVERY_FINAL
     /// </summary>
-    public static StatusDetailCode ATTEMPTEDDELIVERY2ND { get; } = new("ATTEMPTED_DELIVERY_2ND");
-
-
-    /// <summary>
-    /// Enum ATTEMPTEDDELIVERY3RD for value: ATTEMPTED_DELIVERY_3RD
-    /// </summary>
-    public static StatusDetailCode ATTEMPTEDDELIVERY3RD { get; } = new("ATTEMPTED_DELIVERY_3RD");
-
-
-    /// <summary>
-    /// Enum CODAMOUNTNOTPAID for value: COD_AMOUNT_NOT_PAID
-    /// </summary>
-    public static StatusDetailCode CODAMOUNTNOTPAID { get; } = new("COD_AMOUNT_NOT_PAID");
+    public static StatusDetailCode ATTEMPTEDDELIVERYFINAL { get; } = new("ATTEMPTED_DELIVERY_FINAL");
 
 
     /// <summary>
@@ -129,27 +213,33 @@ public class StatusDetailCode
 
 
     /// <summary>
-    /// Enum CUSTOMERIDENTIFICATIONFAILED for value: CUSTOMER_IDENTIFICATION_FAILED
-    /// </summary>
-    public static StatusDetailCode CUSTOMERIDENTIFICATIONFAILED { get; } = new("CUSTOMER_IDENTIFICATION_FAILED");
-
-
-    /// <summary>
-    /// Enum INVALIDMETHODOFPAYMENT for value: INVALID_METHOD_OF_PAYMENT
-    /// </summary>
-    public static StatusDetailCode INVALIDMETHODOFPAYMENT { get; } = new("INVALID_METHOD_OF_PAYMENT");
-
-
-    /// <summary>
-    /// Enum NOACCESSTORECIPIENTSADDRESS for value: NO_ACCESS_TO_RECIPIENTS_ADDRESS
-    /// </summary>
-    public static StatusDetailCode NOACCESSTORECIPIENTSADDRESS { get; } = new("NO_ACCESS_TO_RECIPIENTS_ADDRESS");
-
-
-    /// <summary>
     /// Enum OUTFORDELIVERY for value: OUT_FOR_DELIVERY
     /// </summary>
     public static StatusDetailCode OUTFORDELIVERY { get; } = new("OUT_FOR_DELIVERY");
+
+
+    /// <summary>
+    /// Enum AWAITINGCOLLECTIONFROMPICKUPPOINT for value: AWAITING_COLLECTION_FROM_PICKUP_POINT
+    /// </summary>
+    public static StatusDetailCode AWAITINGCOLLECTIONFROMPICKUPPOINT { get; } = new("AWAITING_COLLECTION_FROM_PICKUP_POINT");
+
+
+    /// <summary>
+    /// Enum COLLECTATLOCALPO for value: COLLECT_AT_LOCAL_PO
+    /// </summary>
+    public static StatusDetailCode COLLECTATLOCALPO { get; } = new("COLLECT_AT_LOCAL_PO");
+
+
+    /// <summary>
+    /// Enum CUSTOMERTOCOLLECTFROMCARRIER for value: CUSTOMER_TO_COLLECT_FROM_CARRIER
+    /// </summary>
+    public static StatusDetailCode CUSTOMERTOCOLLECTFROMCARRIER { get; } = new("CUSTOMER_TO_COLLECT_FROM_CARRIER");
+
+
+    /// <summary>
+    /// Enum DELIVEREDTORECEPTION for value: DELIVERED_TO_RECEPTION
+    /// </summary>
+    public static StatusDetailCode DELIVEREDTORECEPTION { get; } = new("DELIVERED_TO_RECEPTION");
 
 
     /// <summary>
@@ -213,81 +303,21 @@ public class StatusDetailCode
 
 
     /// <summary>
-    /// Enum CANCELLED for value: CANCELLED
+    /// Enum PICKUPFAILED for value: PICKUP_FAILED
     /// </summary>
-    public static StatusDetailCode CANCELLED { get; } = new("CANCELLED");
+    public static StatusDetailCode PICKUPFAILED { get; } = new("PICKUP_FAILED");
 
 
     /// <summary>
-    /// Enum CANCELLEDBEFOREDESPATCH for value: CANCELLED_BEFORE_DESPATCH
+    /// Enum NOTYETRECEIVEDBYCARRIER for value: NOT_YET_RECEIVED_BY_CARRIER
     /// </summary>
-    public static StatusDetailCode CANCELLEDBEFOREDESPATCH { get; } = new("CANCELLED_BEFORE_DESPATCH");
-
-
-    /// <summary>
-    /// Enum CUSTOMERMOVED for value: CUSTOMER_MOVED
-    /// </summary>
-    public static StatusDetailCode CUSTOMERMOVED { get; } = new("CUSTOMER_MOVED");
-
-
-    /// <summary>
-    /// Enum HAZARDOUSPROHIBITED for value: HAZARDOUS_PROHIBITED
-    /// </summary>
-    public static StatusDetailCode HAZARDOUSPROHIBITED { get; } = new("HAZARDOUS_PROHIBITED");
-
-
-    /// <summary>
-    /// Enum NOTCOLLECTEDFROMPICKUPPOINT for value: NOT_COLLECTED_FROM_PICKUP_POINT
-    /// </summary>
-    public static StatusDetailCode NOTCOLLECTEDFROMPICKUPPOINT { get; } = new("NOT_COLLECTED_FROM_PICKUP_POINT");
-
-
-    /// <summary>
-    /// Enum NOTDELIVERED for value: NOT_DELIVERED
-    /// </summary>
-    public static StatusDetailCode NOTDELIVERED { get; } = new("NOT_DELIVERED");
-
-
-    /// <summary>
-    /// Enum NOTDELIVEREDADDRESSEEDECEASED for value: NOT_DELIVERED_ADDRESSEE_DECEASED
-    /// </summary>
-    public static StatusDetailCode NOTDELIVEREDADDRESSEEDECEASED { get; } = new("NOT_DELIVERED_ADDRESSEE_DECEASED");
+    public static StatusDetailCode NOTYETRECEIVEDBYCARRIER { get; } = new("NOT_YET_RECEIVED_BY_CARRIER");
 
 
     /// <summary>
     /// Enum PARCELDAMAGED for value: PARCEL_DAMAGED
     /// </summary>
     public static StatusDetailCode PARCELDAMAGED { get; } = new("PARCEL_DAMAGED");
-
-
-    /// <summary>
-    /// Enum PARCELDISPOSED for value: PARCEL_DISPOSED
-    /// </summary>
-    public static StatusDetailCode PARCELDISPOSED { get; } = new("PARCEL_DISPOSED");
-
-
-    /// <summary>
-    /// Enum PARCELLOST for value: PARCEL_LOST
-    /// </summary>
-    public static StatusDetailCode PARCELLOST { get; } = new("PARCEL_LOST");
-
-
-    /// <summary>
-    /// Enum PARCELOUTSIDEOFSERVICECAPABILITY for value: PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY
-    /// </summary>
-    public static StatusDetailCode PARCELOUTSIDEOFSERVICECAPABILITY { get; } = new("PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY");
-
-
-    /// <summary>
-    /// Enum REFUSEDBYCUSTOMER for value: REFUSED_BY_CUSTOMER
-    /// </summary>
-    public static StatusDetailCode REFUSEDBYCUSTOMER { get; } = new("REFUSED_BY_CUSTOMER");
-
-
-    /// <summary>
-    /// Enum RETURNTOSENDER for value: RETURN_TO_SENDER
-    /// </summary>
-    public static StatusDetailCode RETURNTOSENDER { get; } = new("RETURN_TO_SENDER");
 
 
     /// <summary>
@@ -303,27 +333,9 @@ public class StatusDetailCode
 
 
     /// <summary>
-    /// Enum CUSTOMSCLEARED for value: CUSTOMS_CLEARED
-    /// </summary>
-    public static StatusDetailCode CUSTOMSCLEARED { get; } = new("CUSTOMS_CLEARED");
-
-
-    /// <summary>
-    /// Enum CUSTOMSPROCESSING for value: CUSTOMS_PROCESSING
-    /// </summary>
-    public static StatusDetailCode CUSTOMSPROCESSING { get; } = new("CUSTOMS_PROCESSING");
-
-
-    /// <summary>
     /// Enum DELAYEDNOTCARRIER for value: DELAYED_NOT_CARRIER
     /// </summary>
     public static StatusDetailCode DELAYEDNOTCARRIER { get; } = new("DELAYED_NOT_CARRIER");
-
-
-    /// <summary>
-    /// Enum DELIVERYARRANGEDWITHRECIPIENT for value: DELIVERY_ARRANGED_WITH_RECIPIENT
-    /// </summary>
-    public static StatusDetailCode DELIVERYARRANGEDWITHRECIPIENT { get; } = new("DELIVERY_ARRANGED_WITH_RECIPIENT");
 
 
     /// <summary>
@@ -357,39 +369,15 @@ public class StatusDetailCode
 
 
     /// <summary>
-    /// Enum HUBSCANOUT for value: HUB_SCAN_OUT
-    /// </summary>
-    public static StatusDetailCode HUBSCANOUT { get; } = new("HUB_SCAN_OUT");
-
-
-    /// <summary>
-    /// Enum INTRANSIT for value: IN_TRANSIT
-    /// </summary>
-    public static StatusDetailCode INTRANSIT { get; } = new("IN_TRANSIT");
-
-
-    /// <summary>
     /// Enum INCORRECTDECLARATION for value: INCORRECT_DECLARATION
     /// </summary>
     public static StatusDetailCode INCORRECTDECLARATION { get; } = new("INCORRECT_DECLARATION");
 
 
     /// <summary>
-    /// Enum INFORMATION for value: INFORMATION
+    /// Enum MISROUTED for value: MISROUTED
     /// </summary>
-    public static StatusDetailCode INFORMATION { get; } = new("INFORMATION");
-
-
-    /// <summary>
-    /// Enum MISSORTED for value: MISSORTED
-    /// </summary>
-    public static StatusDetailCode MISSORTED { get; } = new("MISSORTED");
-
-
-    /// <summary>
-    /// Enum PARCELOVERLABELLED for value: PARCEL_OVER_LABELLED
-    /// </summary>
-    public static StatusDetailCode PARCELOVERLABELLED { get; } = new("PARCEL_OVER_LABELLED");
+    public static StatusDetailCode MISROUTED { get; } = new("MISROUTED");
 
 
     /// <summary>
@@ -399,87 +387,99 @@ public class StatusDetailCode
 
 
     /// <summary>
-    /// Enum PARCELUPDATENOTIFICATIONVIAEMAIL for value: PARCEL_UPDATE_NOTIFICATION_VIA_EMAIL
-    /// </summary>
-    public static StatusDetailCode PARCELUPDATENOTIFICATIONVIAEMAIL { get; } = new("PARCEL_UPDATE_NOTIFICATION_VIA_EMAIL");
-
-
-    /// <summary>
-    /// Enum PARCELUPDATENOTIFICATIONVIASMS for value: PARCEL_UPDATE_NOTIFICATION_VIA_SMS
-    /// </summary>
-    public static StatusDetailCode PARCELUPDATENOTIFICATIONVIASMS { get; } = new("PARCEL_UPDATE_NOTIFICATION_VIA_SMS");
-
-
-    /// <summary>
-    /// Enum RECEIVEDBYCARRIER for value: RECEIVED_BY_CARRIER
-    /// </summary>
-    public static StatusDetailCode RECEIVEDBYCARRIER { get; } = new("RECEIVED_BY_CARRIER");
-
-
-    /// <summary>
-    /// Enum RECEIVEDLOCALDELIVERYDEPOT for value: RECEIVED_LOCAL_DELIVERY_DEPOT
-    /// </summary>
-    public static StatusDetailCode RECEIVEDLOCALDELIVERYDEPOT { get; } = new("RECEIVED_LOCAL_DELIVERY_DEPOT");
-
-
-    /// <summary>
-    /// Enum ROUTINGERROR for value: ROUTING_ERROR
-    /// </summary>
-    public static StatusDetailCode ROUTINGERROR { get; } = new("ROUTING_ERROR");
-
-
-    /// <summary>
-    /// Enum SUBCONTRACTOREVENT for value: SUB_CONTRACTOR_EVENT
-    /// </summary>
-    public static StatusDetailCode SUBCONTRACTOREVENT { get; } = new("SUB_CONTRACTOR_EVENT");
-
-
-    /// <summary>
-    /// Enum SUBCONTRACTORRECEIVED for value: SUB_CONTRACTOR_RECEIVED
-    /// </summary>
-    public static StatusDetailCode SUBCONTRACTORRECEIVED { get; } = new("SUB_CONTRACTOR_RECEIVED");
-
-
-    /// <summary>
     /// Enum RECDBYCARRIERNOELECADVICE for value: RECD_BY_CARRIER_NO_ELEC_ADVICE
     /// </summary>
     public static StatusDetailCode RECDBYCARRIERNOELECADVICE { get; } = new("RECD_BY_CARRIER_NO_ELEC_ADVICE");
 
 
     /// <summary>
-    /// Enum AWAITINGELECTRONICADVICE for value: AWAITING_ELECTRONIC_ADVICE
+    /// Enum CODAMOUNTNOTPAID for value: COD_AMOUNT_NOT_PAID
     /// </summary>
-    public static StatusDetailCode AWAITINGELECTRONICADVICE { get; } = new("AWAITING_ELECTRONIC_ADVICE");
+    public static StatusDetailCode CODAMOUNTNOTPAID { get; } = new("COD_AMOUNT_NOT_PAID");
 
 
     /// <summary>
-    /// Enum AWAITINGCOLLECTIONFROMPICKUPPOINT for value: AWAITING_COLLECTION_FROM_PICKUP_POINT
+    /// Enum CUSTOMERIDENTIFICATIONFAILED for value: CUSTOMER_IDENTIFICATION_FAILED
     /// </summary>
-    public static StatusDetailCode AWAITINGCOLLECTIONFROMPICKUPPOINT { get; } = new("AWAITING_COLLECTION_FROM_PICKUP_POINT");
+    public static StatusDetailCode CUSTOMERIDENTIFICATIONFAILED { get; } = new("CUSTOMER_IDENTIFICATION_FAILED");
 
 
     /// <summary>
-    /// Enum COLLECTATLOCALPO for value: COLLECT_AT_LOCAL_PO
+    /// Enum NOACCESSTORECIPIENTSADDRESS for value: NO_ACCESS_TO_RECIPIENTS_ADDRESS
     /// </summary>
-    public static StatusDetailCode COLLECTATLOCALPO { get; } = new("COLLECT_AT_LOCAL_PO");
+    public static StatusDetailCode NOACCESSTORECIPIENTSADDRESS { get; } = new("NO_ACCESS_TO_RECIPIENTS_ADDRESS");
 
 
     /// <summary>
-    /// Enum CUSTOMERTOCOLLECTFROMCARRIER for value: CUSTOMER_TO_COLLECT_FROM_CARRIER
+    /// Enum CANCELLED for value: CANCELLED
     /// </summary>
-    public static StatusDetailCode CUSTOMERTOCOLLECTFROMCARRIER { get; } = new("CUSTOMER_TO_COLLECT_FROM_CARRIER");
+    public static StatusDetailCode CANCELLED { get; } = new("CANCELLED");
 
 
     /// <summary>
-    /// Enum DELIVEREDTOLOCKERCOLLECTIONPOINT for value: DELIVERED_TO_LOCKER_COLLECTION_POINT
+    /// Enum CUSTOMERMOVED for value: CUSTOMER_MOVED
     /// </summary>
-    public static StatusDetailCode DELIVEREDTOLOCKERCOLLECTIONPOINT { get; } = new("DELIVERED_TO_LOCKER_COLLECTION_POINT");
+    public static StatusDetailCode CUSTOMERMOVED { get; } = new("CUSTOMER_MOVED");
 
 
     /// <summary>
-    /// Enum CARRIERSTATUSNOTMAPPED for value: CARRIER_STATUS_NOT_MAPPED
+    /// Enum HAZARDOUSPROHIBITED for value: HAZARDOUS_PROHIBITED
     /// </summary>
-    public static StatusDetailCode CARRIERSTATUSNOTMAPPED { get; } = new("CARRIER_STATUS_NOT_MAPPED");
+    public static StatusDetailCode HAZARDOUSPROHIBITED { get; } = new("HAZARDOUS_PROHIBITED");
+
+
+    /// <summary>
+    /// Enum NOTCOLLECTEDFROMPICKUPPOINT for value: NOT_COLLECTED_FROM_PICKUP_POINT
+    /// </summary>
+    public static StatusDetailCode NOTCOLLECTEDFROMPICKUPPOINT { get; } = new("NOT_COLLECTED_FROM_PICKUP_POINT");
+
+
+    /// <summary>
+    /// Enum NOTDELIVERED for value: NOT_DELIVERED
+    /// </summary>
+    public static StatusDetailCode NOTDELIVERED { get; } = new("NOT_DELIVERED");
+
+
+    /// <summary>
+    /// Enum NOTDELIVEREDADDRESSEEDECEASED for value: NOT_DELIVERED_ADDRESSEE_DECEASED
+    /// </summary>
+    public static StatusDetailCode NOTDELIVEREDADDRESSEEDECEASED { get; } = new("NOT_DELIVERED_ADDRESSEE_DECEASED");
+
+
+    /// <summary>
+    /// Enum PARCELDISPOSED for value: PARCEL_DISPOSED
+    /// </summary>
+    public static StatusDetailCode PARCELDISPOSED { get; } = new("PARCEL_DISPOSED");
+
+
+    /// <summary>
+    /// Enum PARCELLOST for value: PARCEL_LOST
+    /// </summary>
+    public static StatusDetailCode PARCELLOST { get; } = new("PARCEL_LOST");
+
+
+    /// <summary>
+    /// Enum PARCELOUTSIDEOFSERVICECAPABILITY for value: PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY
+    /// </summary>
+    public static StatusDetailCode PARCELOUTSIDEOFSERVICECAPABILITY { get; } = new("PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY");
+
+
+    /// <summary>
+    /// Enum REFUSEDBYCUSTOMER for value: REFUSED_BY_CUSTOMER
+    /// </summary>
+    public static StatusDetailCode REFUSEDBYCUSTOMER { get; } = new("REFUSED_BY_CUSTOMER");
+
+
+    /// <summary>
+    /// Enum RETURNTOSENDER for value: RETURN_TO_SENDER
+    /// </summary>
+    public static StatusDetailCode RETURNTOSENDER { get; } = new("RETURN_TO_SENDER");
+
+
+    /// <summary>
+    /// Enum UNSPECIFIEDEXCEPTION for value: UNSPECIFIED_EXCEPTION
+    /// </summary>
+    public static StatusDetailCode UNSPECIFIEDEXCEPTION { get; } = new("UNSPECIFIED_EXCEPTION");
 
 
     /// <summary>

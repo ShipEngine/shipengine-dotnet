@@ -255,6 +255,18 @@ public class SmartPostHub
 
 
     /// <summary>
+    /// Enum MiddletownCt for value: middletown_ct
+    /// </summary>
+    public static SmartPostHub MiddletownCt { get; } = new("middletown_ct");
+
+
+    /// <summary>
+    /// Enum PortlandOr for value: portland_or
+    /// </summary>
+    public static SmartPostHub PortlandOr { get; } = new("portland_or");
+
+
+    /// <summary>
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;

@@ -51,61 +51,68 @@ public partial class Products
     public string? Description { get; set; }
 
     /// <summary>
+    /// Additional details about products
+    /// </summary>
+    /// <value>Additional details about products</value>
+    [JsonPropertyName("extended_details"), JsonPropertyOrder(4)]
+    public Dictionary<string, Object>? ExtendedDetails { get; set; }
+
+    /// <summary>
     /// The [Harmonized Tariff Code](https://en.wikipedia.org/wiki/Harmonized_System) of this item.
     /// </summary>
     /// <value>The [Harmonized Tariff Code](https://en.wikipedia.org/wiki/Harmonized_System) of this item.</value>
     /// <example>
     /// 3926.1
     /// </example>
-    [JsonPropertyName("harmonized_tariff_code"), JsonPropertyOrder(4)]
+    [JsonPropertyName("harmonized_tariff_code"), JsonPropertyOrder(5)]
     public string? HarmonizedTariffCode { get; set; }
 
     /// <summary>
     /// Manufacturers Identification code
     /// </summary>
     /// <value>Manufacturers Identification code</value>
-    [JsonPropertyName("mid_code"), JsonPropertyOrder(5)]
+    [JsonPropertyName("mid_code"), JsonPropertyOrder(6)]
     public string? MidCode { get; set; }
 
     /// <summary>
     /// link to the item on the seller website
     /// </summary>
     /// <value>link to the item on the seller website</value>
-    [JsonPropertyName("product_url"), JsonPropertyOrder(6)]
+    [JsonPropertyName("product_url"), JsonPropertyOrder(7)]
     public string? ProductUrl { get; set; }
 
     /// <summary>
     /// The quantity of this item in the shipment.
     /// </summary>
     /// <value>The quantity of this item in the shipment.</value>
-    [JsonPropertyName("quantity"), JsonPropertyOrder(7)]
+    [JsonPropertyName("quantity"), JsonPropertyOrder(8)]
     public int? Quantity { get; set; }
 
     /// <summary>
     /// The SKU (Stock Keeping Unit) of the item
     /// </summary>
     /// <value>The SKU (Stock Keeping Unit) of the item</value>
-    [JsonPropertyName("sku"), JsonPropertyOrder(8)]
+    [JsonPropertyName("sku"), JsonPropertyOrder(9)]
     public string? Sku { get; set; }
 
     /// <summary>
     /// Description of the Custom Item&#39;s SKU
     /// </summary>
     /// <value>Description of the Custom Item&#39;s SKU</value>
-    [JsonPropertyName("sku_description"), JsonPropertyOrder(9)]
+    [JsonPropertyName("sku_description"), JsonPropertyOrder(10)]
     public string? SkuDescription { get; set; }
 
     /// <summary>
     /// Gets or Sets UnitOfMeasure
     /// </summary>
-    [JsonPropertyName("unit_of_measure"), JsonPropertyOrder(10)]
+    [JsonPropertyName("unit_of_measure"), JsonPropertyOrder(11)]
     public string? UnitOfMeasure { get; set; }
 
     /// <summary>
     /// The declared value of each item
     /// </summary>
     /// <value>The declared value of each item</value>
-    [JsonPropertyName("value"), JsonPropertyOrder(11)]
+    [JsonPropertyName("value"), JsonPropertyOrder(12)]
     public MonetaryValue? Value { get; set; }
 
     /// <summary>
@@ -115,14 +122,14 @@ public partial class Products
     /// <example>
     /// 0.2
     /// </example>
-    [JsonPropertyName("vat_rate"), JsonPropertyOrder(12)]
+    [JsonPropertyName("vat_rate"), JsonPropertyOrder(13)]
     public decimal? VatRate { get; set; }
 
     /// <summary>
     /// The item weight
     /// </summary>
     /// <value>The item weight</value>
-    [JsonPropertyName("weight"), JsonPropertyOrder(13)]
+    [JsonPropertyName("weight"), JsonPropertyOrder(14)]
     public Weight? Weight { get; set; }
 
 
@@ -138,6 +145,7 @@ public partial class Products
         sb.Append("  CountryOfOrigin: ").Append(CountryOfOrigin).Append("\n");
         sb.Append("  DangerousGoods: ").Append(DangerousGoods).Append("\n");
         sb.Append("  Description: ").Append(Description).Append("\n");
+        sb.Append("  ExtendedDetails: ").Append(ExtendedDetails).Append("\n");
         sb.Append("  HarmonizedTariffCode: ").Append(HarmonizedTariffCode).Append("\n");
         sb.Append("  MidCode: ").Append(MidCode).Append("\n");
         sb.Append("  ProductUrl: ").Append(ProductUrl).Append("\n");

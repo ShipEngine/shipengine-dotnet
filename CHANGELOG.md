@@ -240,3 +240,13 @@ Fixed handling of No Content responses
 
 - Updated to ShipEngine API 1.1.202410161910
 - Added A4 and A6 as options for label layouts
+
+## 3.0.0-beta.17
+
+### Added
+
+- Updated to ShipEngine API 1.1.202501091801
+
+### Updated
+
+- Marked v2 methods as obsolete

@@ -168,7 +168,7 @@ public partial class TrackingInformation
     /// This should not be used for input as it will be ignored on serialization.
     /// </remarks>
     /// <example>
-    /// Your shipment has been delivered.
+    /// Your parcel has been successfully delivered.
     /// </example>
     [JsonPropertyName("status_detail_description"), JsonInclude]
     public string? StatusDetailDescription { get; set; }
