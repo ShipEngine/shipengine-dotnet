@@ -172,7 +172,7 @@ To build the project locally on your computer:
 1. **Clone this repo**<br>
    `git clone https://github.com/ShipEngine/shipengine-dotnet.git`
 
-2. **Install [.NET 5.x](https://dotnet.microsoft.com/download)**
+2. **Install [.NET 8.x](https://dotnet.microsoft.com/download)**
 
 3. **Install dependencies**<br>
    `dotnet restore`
@@ -186,7 +186,7 @@ To build the project locally on your computer:
 6. **Run the tests**<br>
    `dotnet test`<br><br>
    By default, the test project targets all supported frameworks, if your environment only supports a subset then you can specify in the CLI. <br><br>
-   `dotnet test -f net5.0`
+   `dotnet test -f net8.0`
 
 ### Generating from OpenAPI
 
