@@ -13,7 +13,7 @@
         "packageName": "ShipEngineSDK",
         "ignoreFileOverride": "./.openapi-generator-ignore",
         "additionalProperties": {
-          "packageVersion": "2.3.5",
+          "packageVersion": "2.3.6",
           "targetFramework": "netstandard2.0",
           "validatable": false,
           "sourceFolder": "",

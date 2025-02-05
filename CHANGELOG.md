@@ -203,3 +203,9 @@ Fixed handling of No Content responses
 
 - Added error code FundingSourceMissingConfiguration
 - Added error code FundingSourceError
+
+## 2.3.6
+
+### Added
+
+- Added SP code TrackingStatusCode
