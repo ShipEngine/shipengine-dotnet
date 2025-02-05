@@ -31,9 +31,7 @@ ShipEngineSDK/Client/*.cs
 ShipEngineSDK/Extensions/*.cs
 
 # We should re-enable these eventually
-#README.md
 */README.md
-#docs/**/*
 docs/scripts/*
 ShipEngineSDK.Test/*/*.cs
 api/**
