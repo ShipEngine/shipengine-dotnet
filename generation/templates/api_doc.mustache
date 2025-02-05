@@ -1,7 +1,7 @@
-# {{packageName}}.{{apiPackage}}.{{classname}}{{#description}}
-{{.}}{{/description}}
 
-All URIs are relative to *{{{basePath}}}*
+
+# {{baseName}} Methods{{#description}}
+{{.}}{{/description}}
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -15,7 +15,11 @@ All URIs are relative to *{{{basePath}}}*
 {{#operation}}
 <a id="{{{operationIdLowerCase}}}"></a>
 # **{{{operationId}}}**
-> {{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+```csharp
+{{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{/allParams}}, CancellationToken cancellationToken = default)
+
+{{returnType}}{{^returnType}}void{{/returnType}} {{operationId}} (HttpClient methodClient, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{/allParams}}, CancellationToken cancellationToken = default)
+```
 
 {{{summary}}}{{#notes}}
 
@@ -40,10 +44,10 @@ namespace Example
             var shipEngine = new ShipEngine("api_key");
             {{#allParams}}
             {{#isPrimitiveType}}
-            var {{paramName}} = {{{example}}};  // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+            var {{paramName}} = {{{example}}};
             {{/isPrimitiveType}}
             {{^isPrimitiveType}}
-            var {{paramName}} = new {{{dataType}}}(); // {{{dataType}}} | {{{description}}}{{^required}} (optional) {{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+            var {{paramName}} = new {{{dataType}}}();
             {{/isPrimitiveType}}
             {{/allParams}}
 
@@ -67,37 +71,17 @@ namespace Example
 ```
 
 ### Parameters
-{{^allParams}}This endpoint does not need any parameter.{{/allParams}}{{#allParams}}{{#-last}}
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-{{/-last}}
-{{/allParams}}
+| **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 {{#allParams}}
 | **{{paramName}}** | {{#isFile}}**{{dataType}}**{{/isFile}}{{#isPrimitiveType}}**{{dataType}}**{{/isPrimitiveType}}{{^isPrimitiveType}}{{^isFile}}[**{{dataType}}**]({{#isContainer}}{{baseType}}{{/isContainer}}{{^isContainer}}{{dataType}}{{/isContainer}}.md){{/isFile}}{{/isPrimitiveType}} | {{description}} | {{^required}}[optional] {{/required}}{{#defaultValue}}[default to {{.}}]{{/defaultValue}} |
 {{/allParams}}
+| **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
 
-{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{returnType}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}void (empty response body){{/returnType}}
-
-### Authorization
-
-{{^authMethods}}No authorization required{{/authMethods}}{{#authMethods}}[{{{name}}}](../README.md#{{{name}}}){{^-last}}, {{/-last}}{{/authMethods}}
-
-### HTTP request headers
-
- - **Content-Type**: {{#consumes}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/consumes}}{{^consumes}}Not defined{{/consumes}}
- - **Accept**: {{#produces}}{{{mediaType}}}{{^-last}}, {{/-last}}{{/produces}}{{^produces}}Not defined{{/produces}}
-
-{{#responses.0}}
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-{{#responses}}
-| **{{code}}** | {{message}} | {{#headers}} * {{baseName}} - {{description}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} |
-{{/responses}}
-{{/responses.0}}
+{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{returnType}}**](../models/{{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}void (empty response body){{/returnType}}
 
 [[Back to top]](#) [[Back to API list]](../{{#useGenericHost}}../{{/useGenericHost}}README.md#documentation-for-api-endpoints) [[Back to Model list]](../{{#useGenericHost}}../{{/useGenericHost}}README.md#documentation-for-models) [[Back to README]](../{{#useGenericHost}}../{{/useGenericHost}}README.md)
 

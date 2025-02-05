@@ -87,6 +87,18 @@ public class ErrorType
 
 
     /// <summary>
+    /// Enum Wallet for value: wallet
+    /// </summary>
+    public static ErrorType Wallet { get; } = new("wallet");
+
+
+    /// <summary>
+    /// Enum FundingSources for value: funding_sources
+    /// </summary>
+    public static ErrorType FundingSources { get; } = new("funding_sources");
+
+
+    /// <summary>
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;
