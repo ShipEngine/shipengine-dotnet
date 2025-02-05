@@ -210,80 +210,16 @@ Fixed handling of No Content responses
 
 - Added SP code TrackingStatusCode
 
-## 3.0.0-beta.1
+## 3.0.0
 
 ### Added
 
-- Created new SDK methods for the entire API that sit next to the pre-existing methods. The pre-existing methods will be deprecated eventually.
-
-## 3.0.0-beta.2
-
-### Changed
-
-- Add more explicit nullable reference types
-
-## 3.0.0-beta.3
-
-### Changed
-
-- Don't require any properties for deserialization so that small API changes don't completely break consumers
-- Don't try to serialize read-only properties
-- Don't try to deserialize write-only properties
-
-## 3.0.0-beta.4
-
-### Changed
-
-- Make setters on readonly properties public
-
-## 3.0.0-beta.10
-
-### Changed
-
-- Allow requests to be modified before being sent
-
-## 3.0.0-beta.11
-
-### Changed
-
+- Created new SDK methods for the entire ShipEngine API
 - Added ability to scope request modifiers by using the `.WithRequestModifier()` method instead of the `.ModifyRequest` property.
   This will allow consumers to modify a single request without affecting any other consumers of the client. It also allows for
   multiple modifiers to be added. For example, a modifier could be added at the global level that applies to all requests and then
   another modifier can be added for a single request.
 
-## 3.0.0-beta.12
-
 ### Changed
-
-- Updated to ShipEngine API 1.1.202409060709
-
-## 3.0.0-beta.14
-
-### Changed
-
-- Updated to ShipEngine API 1.1.202410081510
-- Add optional error properties, like field_name
-
-## 3.0.0-beta.15
-
-### Changed
-
-- Updated to ShipEngine API 1.1.202410092210
-- AdvancedOptions now allow passing arbitrary key/values via AdditionalProperties
-
-## 3.0.0-beta.16
-
-### Added
-
-- Updated to ShipEngine API 1.1.202410161910
-- Added A4 and A6 as options for label layouts
-
-## 3.0.0-beta.17
-
-### Added
-
-- Updated to ShipEngine API 1.1.202501091801
-
-### Updated
 
 - Marked v2 methods as obsolete
