@@ -75,25 +75,6 @@ jobs:
           ls -Rlh ShipEngineSDK.Test/TestResults/*/coverage.info
           cat ShipEngineSDK.Test/TestResults/*/coverage.info > ShipEngineSDK.Test/TestResults/lcov.info
 
-      - name: Send code coverage results to Coveralls
-        uses: coverallsapp/github-action@v1.1.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel: true
-          flag-name: run-${{ matrix.test_number }}
-          path-to-lcov: ShipEngineSDK.Test/TestResults/lcov.info
-
-  coverage:
-    name: Code Coverage
-    needs: dot_net_core_test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Coveralls Finished
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.github_token }}
-          parallel-finished: true
-
   nuget-deploy:
     runs-on: ubuntu-latest
     needs: [dot_net_framework_test, dot_net_core_test]

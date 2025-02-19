@@ -37,7 +37,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     /// <summary>
     /// {{summary}} {{notes}}
@@ -53,7 +53,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
+    Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}, {{/allParams}}CancellationToken cancellationToken = default);
 
     {{/operation}}
 }
@@ -77,7 +77,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
+    public Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         return {{operationId}}(_client, {{#allParams}}{{paramName}}, {{/allParams}}cancellationToken);
     }
@@ -96,7 +96,7 @@ namespace {{packageName}};
     {{#isDeprecated}}
     [Obsolete]
     {{/isDeprecated}}
-    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
+    public async Task<{{{returnType}}}{{^returnType}}Object{{/returnType}}> {{operationId}}(HttpClient methodClient, {{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default{{/optionalMethodArgument}}{{/required}}, {{/allParams}}CancellationToken cancellationToken = default)
     {
         {{#allParams}}
         {{#required}}
@@ -116,38 +116,38 @@ namespace {{packageName}};
         {{#constantParams}}
         {{#isPathParam}}
         // Set client side default value of Path Param "{{baseName}}".
-        requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant path parameter
+        requestOptions.PathParameters.Add("{{baseName}}", ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant path parameter
         {{/isPathParam}}
         {{/constantParams}}
         {{#pathParams}}
         {{#required}}
-        requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // path parameter
+        requestOptions.PathParameters.Add("{{baseName}}", ClientUtils.ParameterToString({{paramName}})); // path parameter
         {{/required}}
         {{^required}}
         if ({{paramName}} != null)
         {
-            requestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // path parameter
+            requestOptions.PathParameters.Add("{{baseName}}", ClientUtils.ParameterToString({{paramName}})); // path parameter
         }
         {{/required}}
         {{/pathParams}}
         {{#constantParams}}
         {{#isQueryParam}}
         // Set client side default value of Query Param "{{baseName}}".
-        requestOptions.QueryParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant query parameter
+        requestOptions.QueryParameters.Add("{{baseName}}", ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant query parameter
         {{/isQueryParam}}
         {{/constantParams}}
         {{#queryParams}}
         {{#required}}
         {{#isDeepObject}}
         {{#items.vars}}
-        requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}.{{name}}));
+        requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}.{{name}}));
         {{/items.vars}}
         {{^items}}
-        requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
+        requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
         {{/items}}
         {{/isDeepObject}}
         {{^isDeepObject}}
-        requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
+        requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
         {{/isDeepObject}}
         {{/required}}
         {{^required}}
@@ -157,15 +157,15 @@ namespace {{packageName}};
             {{#items.vars}}
             if ({{paramName}}.{{name}} != null)
             {
-                requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{paramName}}[{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}]", {{paramName}}.{{name}}));
+                requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{paramName}}[{{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}]", {{paramName}}.{{name}}));
             }
             {{/items.vars}}
             {{^items}}
-            requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("deepObject", "{{baseName}}", {{paramName}}));
             {{/items}}
             {{/isDeepObject}}
             {{^isDeepObject}}
-            requestOptions.QueryParameters.Add({{packageName}}.ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
+            requestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("{{collectionFormat}}", "{{baseName}}", {{paramName}}));
             {{/isDeepObject}}
         }
         {{/required}}
@@ -173,17 +173,17 @@ namespace {{packageName}};
         {{#constantParams}}
         {{#isHeaderParam}}
         // Set client side default value of Header Param "{{baseName}}".
-        requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant header parameter
+        requestOptions.HeaderParameters.Add("{{baseName}}", ClientUtils.ParameterToString({{#_enum}}"{{{.}}}"{{/_enum}})); // Constant header parameter
         {{/isHeaderParam}}
         {{/constantParams}}
         {{#headerParams}}
         {{#required}}
-        requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // header parameter
+        requestOptions.HeaderParameters.Add("{{baseName}}", ClientUtils.ParameterToString({{paramName}})); // header parameter
         {{/required}}
         {{^required}}
         if ({{paramName}} != null)
         {
-            requestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.ParameterToString({{paramName}})); // header parameter
+            requestOptions.HeaderParameters.Add("{{baseName}}", ClientUtils.ParameterToString({{paramName}})); // header parameter
         }
         {{/required}}
         {{/headerParams}}
@@ -205,7 +205,7 @@ namespace {{packageName}};
         {{/isArray}}
         {{/isFile}}
         {{^isFile}}
-        requestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
+        requestOptions.FormParameters.Add("{{baseName}}", ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
         {{/isFile}}
         {{/required}}
         {{^required}}
@@ -227,7 +227,7 @@ namespace {{packageName}};
             {{/isArray}}
             {{/isFile}}
             {{^isFile}}
-            requestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
+            requestOptions.FormParameters.Add("{{baseName}}", ClientUtils.{{#isPrimitiveType}}ParameterToString{{/isPrimitiveType}}{{^isPrimitiveType}}Serialize{{/isPrimitiveType}}({{paramName}})); // form parameter
             {{/isFile}}
         }
         {{/required}}

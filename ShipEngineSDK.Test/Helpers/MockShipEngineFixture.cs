@@ -21,10 +21,8 @@ namespace ShipEngineTest
             };
             HttpClient = new HttpClient(MockHandler.Object);
 
-            ShipEngine = new ShipEngine(config)
-            {
-                _client = ShipEngineClient.ConfigureHttpClient(config, HttpClient)
-            };
+            var client = ShipEngineClient.ConfigureHttpClient(config, HttpClient);
+            ShipEngine = new ShipEngine(config, client);
 
             JsonSerializerOptions = new JsonSerializerOptions()
             {

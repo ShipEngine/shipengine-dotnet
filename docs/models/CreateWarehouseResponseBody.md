@@ -1,0 +1,14 @@
+# ShipEngineSDK.Model.CreateWarehouseResponseBody
+A create warehouse response body
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CreatedAt** | **DateTimeOffset** | Timestamp that indicates when the warehouse was created | [readonly] 
+**Name** | **string** | Name of the warehouse | 
+**OriginAddress** | [**Address**](Address.md) | The origin address of the warehouse | 
+**ReturnAddress** | [**Address**](Address.md) | The return address associated with the warehouse | 
+**WarehouseId** | **string** | A string that uniquely identifies the warehouse | [readonly] 
+**IsDefault** | **bool** | Designates which single warehouse is the default on the account | [optional] [default to false]
+

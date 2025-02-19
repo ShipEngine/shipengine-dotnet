@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "ShipEngine API",
-    "version": "1.1.202406212006",
+    "version": "1.1.202501091801",
     "termsOfService": "https://www.shipengine.com/terms-of-service/",
     "x-logo": {
       "url": "https://shipengine.github.io/img/shipengine-logo-square.png",
@@ -2141,7 +2141,7 @@
     },
     "/v1/labels": {
       "summary": "Print shipping labels",
-      "description": "Print shipping labels for any of the top global carriers in minutesâ€”instead of weeks. Simply [connect your existing carrier accounts](https://www.shipengine.com/docs/carriers/setup/)\nin the API dashboard, and then [begin creating labels](https://www.shipengine.com/docs/shipping/use-a-carrier-service/).\n",
+      "description": "Print shipping labels for any of the top global carriers in minutes—instead of weeks. Simply [connect your existing carrier accounts](https://www.shipengine.com/docs/carriers/setup/)\nin the API dashboard, and then [begin creating labels](https://www.shipengine.com/docs/shipping/use-a-carrier-service/).\n",
       "get": {
         "summary": "List labels",
         "description": "This endpoint returns a list of labels that you've [created](https://www.shipengine.com/docs/labels/create-a-label/). You can optionally filter the results as well as control their sort order and the number of results returned at a time.\n\nBy default, all labels are returned, 25 at a time, starting with the most recently created ones.  You can combine multiple filter options to narrow-down the results.  For example, if you only want to get your UPS labels for your east coast warehouse you could query by both `warehouse_id` and `carrier_id`\n",
@@ -5619,6 +5619,30 @@
             "example": "Body of request cannot be null.",
             "minLength": 1,
             "description": "An error message associated with the failed API call"
+          },
+          "carrier_id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "A string that uniquely identifies the carrier that generated the error."
+          },
+          "carrier_code": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/carrier_code"
+              }
+            ],
+            "description": "The name of the [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) that generated the error, such as `fedex`, `dhl_express`, `stamps_com`, etc.\n"
+          },
+          "field_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "shipment.ship_to.phone_number",
+            "description": "The name of the field that caused the error"
           }
         }
       },
@@ -5694,10 +5718,32 @@
           "invalid_charge_event",
           "invalid_object",
           "no_rates_returned",
+          "file_not_found",
+          "shipping_rule_not_found",
+          "service_not_determined",
+          "no_rates_returned",
+          "funding_source_registration_in_progress",
+          "insurance_failure",
           "funding_source_missing_configuration",
           "funding_source_error"
         ],
         "description": "The error code specified for the failed API Call"
+      },
+      "se_id": {
+        "title": "se_id",
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 25,
+        "pattern": "^se(-[a-z0-9]+)+$",
+        "example": "se-28529731",
+        "description": "A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc."
+      },
+      "carrier_code": {
+        "title": "carrier_code",
+        "type": "string",
+        "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+        "example": "dhl_express",
+        "description": "A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as `fedex`, `dhl_express`, `stamps_com`, etc.\n"
       },
       "list_account_settings_images_response_body": {
         "title": "list_account_settings_images_response_body",
@@ -6391,13 +6437,10 @@
         "description": "Any residential or business mailing address, anywhere in the world.\n\n> **Note:** Either `name` or `company_name` must be set. Both may be specified, if relevant.\n",
         "required": [
           "name",
-          "phone",
           "address_line1",
           "city_locality",
           "state_province",
-          "postal_code",
-          "country_code",
-          "address_residential_indicator"
+          "postal_code"
         ],
         "additionalProperties": false,
         "allOf": [
@@ -6858,7 +6901,9 @@
         "type": "string",
         "enum": [
           "4x6",
-          "letter"
+          "letter",
+          "A4",
+          "A6"
         ],
         "description": "The available layouts (sizes) in which shipping labels can be downloaded.  The label format determines which sizes are supported.  `4x6` is supported for all label formats, whereas `letter` (8.5\" x 11\") is only supported for `pdf` format.\n"
       },
@@ -6871,15 +6916,6 @@
           "zpl"
         ],
         "description": "The possible file formats in which shipping labels can be downloaded.  We recommend `pdf` format because it is supported by all carriers, whereas some carriers do not support the `png` or `zpl` formats.\n\n|Label Format  | Supported Carriers\n|--------------|-----------------------------------\n|`pdf`         | All carriers\n|`png`         | `fedex` <br> `stamps_com` <br> `ups` <br> `usps`\n|`zpl`         | `access_worldwide` <br> `apc` <br> `asendia` <br> `dhl_global_mail` <br> `dhl_express` <br> `dhl_express_australia` <br> `dhl_express_canada` <br> `dhl_express_worldwide` <br> `dhl_express_uk` <br> `dpd` <br> `endicia` <br> `fedex` <br> `fedex_uk` <br> `firstmile` <br> `imex` <br> `newgistics` <br> `ontrac` <br> `rr_donnelley` <br> `stamps_com` <br> `ups` <br> `usps`\n"
-      },
-      "se_id": {
-        "title": "se_id",
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 25,
-        "pattern": "^se(-[a-z0-9]+)+$",
-        "example": "se-28529731",
-        "description": "A string that uniquely identifies a ShipEngine resource, such as a carrier, label, shipment, etc."
       },
       "label_download": {
         "title": "label_download",
@@ -7368,7 +7404,6 @@
           },
           "balance": {
             "type": "number",
-            "format": "double",
             "readOnly": true,
             "example": 3799.52,
             "minimum": 0,
@@ -7387,6 +7422,16 @@
             "minLength": 1,
             "example": "Stamps.com",
             "description": "Screen readable name"
+          },
+          "funding_source_id": {
+            "readOnly": true,
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "Funding source ID for the carrier"
           },
           "primary": {
             "type": "boolean",
@@ -7448,13 +7493,6 @@
             "description": "A list of options that are available to that carrier"
           }
         }
-      },
-      "carrier_code": {
-        "title": "carrier_code",
-        "type": "string",
-        "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
-        "example": "dhl_express",
-        "description": "A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as `fedex`, `dhl_express`, `stamps_com`, etc.\n"
       },
       "service": {
         "title": "service",
@@ -7588,21 +7626,18 @@
           },
           "length": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The length of the package, in the specified unit"
           },
           "width": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The width of the package, in the specified unit"
           },
           "height": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The height of the package, in the specified unit"
@@ -7687,7 +7722,6 @@
           },
           "amount": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "description": "The monetary amount, in the specified currency."
           }
@@ -8041,8 +8075,10 @@
         "required": [
           "nickname",
           "account_number",
-          "ftp_username",
-          "ftp_password"
+          "username",
+          "password",
+          "api_key",
+          "processing_location"
         ],
         "additionalProperties": false,
         "properties": {
@@ -8057,15 +8093,30 @@
             "minLength": 1,
             "description": "Asendia account number"
           },
-          "ftp_username": {
+          "username": {
             "type": "string",
             "minLength": 1,
-            "description": "FTP username"
+            "description": "Asendia username"
           },
-          "ftp_password": {
+          "password": {
             "type": "string",
             "minLength": 1,
-            "description": "FTP password"
+            "description": "Asendia password"
+          },
+          "api_key": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Asendia api_key"
+          },
+          "processing_location": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Asendia processing location, one of: 'MIA', 'JFK', 'ORD', 'PHL', 'SFO', 'LAX', 'SLC', 'TOR', 'BUF', 'CAL'"
+          },
+          "sub_account_number": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Asendia sub account number"
           }
         }
       },
@@ -9100,7 +9151,9 @@
         "description": "A UPS account information request body.  The location header from this call should be used to redirect to UPS for sign in.",
         "required": [
           "nickname",
-          "account_number"
+          "account_number",
+          "account_postal_code",
+          "account_country_code"
         ],
         "additionalProperties": false,
         "properties": {
@@ -9113,6 +9166,16 @@
             "type": "string",
             "minLength": 1,
             "description": "Account number"
+          },
+          "account_postal_code": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Account Postal Code"
+          },
+          "account_country_code": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Account Country Code"
           }
         }
       },
@@ -9307,7 +9370,9 @@
           "newark_ny",
           "south_brunswick_nj",
           "scranton_pa",
-          "wheeling_il"
+          "wheeling_il",
+          "middletown_ct",
+          "portland_or"
         ],
         "description": "The possible smart post hub values"
       },
@@ -9428,7 +9493,6 @@
           },
           "invoice_amount": {
             "type": "number",
-            "format": "double",
             "minimum": 0
           },
           "invoice_currency_code": {
@@ -9874,7 +9938,7 @@
                     }
                   ],
                   "readOnly": true,
-                  "description": "The date that the package was (or will be) shippped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
+                  "description": "The date that the package was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
                 },
                 "created_at": {
                   "readOnly": true,
@@ -9911,6 +9975,18 @@
                     }
                   ],
                   "description": "The total shipping cost for the specified comparison_rate_type.\n"
+                },
+                "rate_details": {
+                  "readOnly": true,
+                  "description": "A list of rate details that are associated with shipping cost. This is useful for\ndisplaying a breakdown of the rate to the user.\n",
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/rate_detail"
+                      }
+                    ]
+                  }
                 },
                 "tracking_number": {
                   "type": "string",
@@ -10130,7 +10206,7 @@
                   "items": {
                     "allOf": [
                       {
-                        "$ref": "#/components/schemas/package"
+                        "$ref": "#/components/schemas/label_package"
                       },
                       {
                         "$ref": "#/components/schemas/alternative_identifiers"
@@ -10174,7 +10250,7 @@
         "additionalProperties": false,
         "allOf": [
           {
-            "$ref": "#/components/schemas/label"
+            "$ref": "#/components/schemas/label_request"
           }
         ],
         "properties": {
@@ -10192,98 +10268,19 @@
           }
         }
       },
-      "label": {
-        "title": "label",
+      "label_request": {
+        "title": "label_request",
         "type": "object",
         "description": "A label represents the physical sticker that you affix to a package to ship it.  ShipEngine makes it easy for you to [create labels](https://www.shipengine.com/docs/labels/create-a-label/) and then download them in PDF, PNG, or ZPL format so you can print them.\n",
         "additionalProperties": false,
         "properties": {
-          "label_id": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/se_id"
-              }
-            ],
-            "description": "A string that uniquely identifies the label. This ID is generated by ShipEngine when the label is created.\n"
-          },
-          "status": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/label_status"
-              }
-            ]
-          },
-          "shipment_id": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/se_id"
-              }
-            ],
-            "description": "The shipment that this label is for.  ShipEngine can create a shipment for you automatically when you [create a label](https://www.shipengine.com/docs/labels/create-a-label/), or you can [create your own shipment](https://www.shipengine.com/docs/shipping/create-a-shipment/) and then [use it to print a label](https://www.shipengine.com/docs/labels/create-from-shipment/)\n"
-          },
           "shipment": {
-            "writeOnly": true,
             "allOf": [
               {
-                "$ref": "#/components/schemas/shipment"
+                "$ref": "#/components/schemas/shipment_request"
               }
             ],
             "description": "The shipment information used to generate the label"
-          },
-          "ship_date": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/date"
-              }
-            ],
-            "readOnly": true,
-            "description": "The date that the package was (or will be) shippped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
-          },
-          "created_at": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/date_time"
-              }
-            ],
-            "description": "The date and time that the label was created in ShipEngine."
-          },
-          "shipment_cost": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/monetary_value"
-              }
-            ],
-            "description": "The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs.\n"
-          },
-          "insurance_cost": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/monetary_value"
-              }
-            ],
-            "description": "The insurance cost for this package.  Add this to the `shipment_cost` field to get the total cost.\n"
-          },
-          "requested_comparison_amount": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/monetary_value"
-              }
-            ],
-            "description": "The total shipping cost for the specified comparison_rate_type.\n"
-          },
-          "tracking_number": {
-            "type": "string",
-            "minLength": 1,
-            "readOnly": true,
-            "example": "782758401696",
-            "description": "The tracking number for the package. Tracking number formats vary across carriers."
           },
           "is_return_label": {
             "type": "boolean",
@@ -10293,29 +10290,6 @@
             "type": "string",
             "nullable": true,
             "description": "An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value.\n"
-          },
-          "is_international": {
-            "type": "boolean",
-            "readOnly": true,
-            "description": "Indicates whether this is an international shipment.  That is, the originating country and destination country are different.\n"
-          },
-          "batch_id": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/se_id"
-              }
-            ],
-            "description": "If this label was created as part of a [batch](https://www.shipengine.com/docs/labels/bulk/), then this is the unique ID of that batch.\n"
-          },
-          "carrier_id": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/se_id"
-              }
-            ],
-            "description": "The unique ID of the [carrier account](https://www.shipengine.com/docs/carriers/setup/) that was used to create this label\n"
           },
           "charge_event": {
             "allOf": [
@@ -10334,30 +10308,12 @@
             "writeOnly": true,
             "description": "The `label_id` of the original (outgoing) label that the return label is for. This associates the two labels together, which is\nrequired by some carriers.\n"
           },
-          "service_code": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/service_code"
-              }
-            ],
-            "readOnly": true,
-            "description": "The [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) used to ship the package, such as `fedex_ground`, `usps_first_class_mail`, `flat_rate_envelope`, etc.\n"
-          },
           "test_label": {
             "writeOnly": true,
             "type": "boolean",
             "default": false,
             "deprecated": true,
             "description": "Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account."
-          },
-          "package_code": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/package_code"
-              }
-            ],
-            "description": "The [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/), such as `thick_envelope`, `small_flat_rate_box`, `large_package`, etc.  The code `package` indicates a custom or unknown package type.\n"
           },
           "validate_address": {
             "writeOnly": true,
@@ -10367,21 +10323,6 @@
                 "$ref": "#/components/schemas/validate_address"
               }
             ]
-          },
-          "voided": {
-            "type": "boolean",
-            "readOnly": true,
-            "description": "Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/)\n"
-          },
-          "voided_at": {
-            "nullable": true,
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/date_time"
-              }
-            ],
-            "description": "The date and time that the label was [voided](https://www.shipengine.com/docs/labels/voiding/), or `null` if the label has not been voided\n"
           },
           "label_download_type": {
             "writeOnly": true,
@@ -10419,11 +10360,6 @@
             ],
             "description": "The layout (size) that you want the label to be in.  The `label_format` determines which sizes are allowed.  `4x6` is supported for all label formats, whereas `letter` (8.5\" x 11\") is only supported for `pdf` format.\n"
           },
-          "trackable": {
-            "type": "boolean",
-            "readOnly": true,
-            "description": "Indicates whether the shipment is trackable, in which case the `tracking_status` field will reflect the current status and each package will have a `tracking_number`.\n"
-          },
           "label_image_id": {
             "nullable": true,
             "allOf": [
@@ -10432,142 +10368,21 @@
               }
             ],
             "description": "The label image resource that was used to create a custom label image."
-          },
-          "carrier_code": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/carrier_code"
-              }
-            ],
-            "description": "The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as `fedex`, `dhl_express`, `stamps_com`, etc.\n"
-          },
-          "tracking_status": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/tracking_status"
-              }
-            ],
-            "description": "The current status of the package, such as `in_transit` or `delivered`"
-          },
-          "label_download": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/label_download"
-              }
-            ],
-            "readOnly": true
-          },
-          "form_download": {
-            "readOnly": true,
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/link"
-              }
-            ],
-            "description": "The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it.\n"
-          },
-          "paperless_download": {
-            "readOnly": true,
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/paperless_download"
-              }
-            ],
-            "description": "The paperless details which may contain elements like `href`, `instructions` and `handoff_code`.\n"
-          },
-          "insurance_claim": {
-            "readOnly": true,
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/link"
-              }
-            ],
-            "description": "The link to submit an insurance claim for the shipment.  This field is null if the shipment is not insured or if the insurance provider does not support online claim submission.\n"
-          },
-          "packages": {
-            "type": "array",
-            "readOnly": true,
-            "description": "The label's package(s).\n\n> **Note:** Some carriers only allow one package per label.  If you attempt to create a multi-package label for a carrier that doesn't allow it, an error will be returned.\n",
-            "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/package"
-                },
-                {
-                  "$ref": "#/components/schemas/alternative_identifiers"
-                }
-              ]
-            }
-          },
-          "alternative_identifiers": {
-            "type": "array",
-            "readOnly": true,
-            "nullable": true,
-            "description": "Additional information some carriers may provide by which to identify a given label in their system. \n",
-            "items": {
-              "$ref": "#/components/schemas/alternative_identifier"
-            }
-          },
-          "tracking_url": {
-            "readOnly": true,
-            "nullable": true,
-            "type": "string",
-            "example": "https://www.fedex.com/fedextrack/?action=track&trackingnumber=1234",
-            "description": "The URL to track the package. This URL is provided by the carrier and is unique to the tracking number.\n"
           }
         }
       },
-      "shipment": {
-        "title": "shipment",
+      "shipment_request": {
+        "title": "shipment_request",
         "type": "object",
         "description": "The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight.\n\n> **Note:** Either `ship_from` or `warehouse_id` must be set.\n",
         "required": [
-          "shipment_id",
           "carrier_id",
           "service_code",
-          "ship_date",
-          "created_at",
-          "modified_at",
-          "shipment_status",
           "ship_to",
-          "ship_from",
-          "warehouse_id",
-          "return_to",
-          "confirmation",
-          "customs",
-          "advanced_options",
-          "insurance_provider",
-          "tags",
-          "packages",
-          "total_weight"
+          "packages"
         ],
         "additionalProperties": false,
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/partial_shipment"
-          }
-        ]
-      },
-      "partial_shipment": {
-        "title": "partial_shipment",
-        "type": "object",
-        "description": "The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight.\n",
-        "additionalProperties": false,
         "properties": {
-          "shipment_id": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/se_id"
-              }
-            ],
-            "description": "A string that uniquely identifies the shipment"
-          },
           "carrier_id": {
             "allOf": [
               {
@@ -10638,35 +10453,7 @@
                 "$ref": "#/components/schemas/date"
               }
             ],
-            "description": "The date that the shipment was (or will be) shippped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
-          },
-          "created_at": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/date_time"
-              }
-            ],
-            "description": "The date and time that the shipment was created in ShipEngine."
-          },
-          "modified_at": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/date_time"
-              }
-            ],
-            "description": "The date and time that the shipment was created or last modified."
-          },
-          "shipment_status": {
-            "readOnly": true,
-            "default": "pending",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/shipment_status"
-              }
-            ],
-            "description": "The current status of the shipment"
+            "description": "The date that the shipment was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
           },
           "ship_to": {
             "allOf": [
@@ -10679,7 +10466,7 @@
           "ship_from": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/shipping_address"
+                "$ref": "#/components/schemas/shipping_address_from"
               }
             ],
             "description": "The shipment's origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the `warehouse_id` rather than the complete address each time.\n"
@@ -10744,20 +10531,6 @@
             ],
             "description": "The insurance provider to use for any insured packages in the shipment.\n"
           },
-          "tags": {
-            "type": "array",
-            "readOnly": true,
-            "default": [],
-            "minItems": 0,
-            "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/tag"
-                }
-              ]
-            },
-            "description": "Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags.\n"
-          },
           "order_source_code": {
             "allOf": [
               {
@@ -10776,15 +10549,6 @@
               ]
             },
             "description": "The packages in the shipment.\n\n> **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn't allow it, an error will be returned.\n"
-          },
-          "total_weight": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/weight"
-              }
-            ],
-            "description": "The combined weight of all packages in the shipment"
           },
           "comparison_rate_type": {
             "nullable": true,
@@ -10941,9 +10705,10 @@
           "pccc",
           "oss",
           "passport",
-          "abn"
+          "abn",
+          "ukims"
         ],
-        "description": "Tax identifier type for customs declaration\n\n|Pickup Type    | Description\n|---------------|-----------------------------------------\n|`vat`          | The tax identifier is a Value Added Tax.\n|`eori`         | The tax identifier is an Economic Operators Registration and Identification Number (EORI).\n|`ssn`          | The tax identifier is a Social Security Number.\n|`ein`          | The tax identifier is an Employer Identification Number (EIN).\n|`tin`          | The tax identifier is a Tax Identification Number (TIN).\n|`ioss`         | The tax identifier is an Import One-Stop Shop (IOSS).\n|`pan`          | The tax identifier is a Permanent Account Number (PAN).\n|`voec`         | The tax identifier is a Norwegian VAT On E-Commerce(VOEC).\n|`pccc`         | The tax identifier is a Personal Customs Clearance Code (PCCC).\n|`oss`          | The tax identifier is an One-Stop Shop (OSS).\n|`passport`     | The tax identifier is a Passport Number.\n|`abn`          | The tax identifier is an Australian Business Number.\n"
+        "description": "Tax identifier type for customs declaration\n\n|Pickup Type    | Description\n|---------------|-----------------------------------------\n|`vat`          | The tax identifier is a Value Added Tax.\n|`eori`         | The tax identifier is an Economic Operators Registration and Identification Number (EORI).\n|`ssn`          | The tax identifier is a Social Security Number.\n|`ein`          | The tax identifier is an Employer Identification Number (EIN).\n|`tin`          | The tax identifier is a Tax Identification Number (TIN).\n|`ioss`         | The tax identifier is an Import One-Stop Shop (IOSS).\n|`pan`          | The tax identifier is a Permanent Account Number (PAN).\n|`voec`         | The tax identifier is a Norwegian VAT On E-Commerce(VOEC).\n|`pccc`         | The tax identifier is a Personal Customs Clearance Code (PCCC).\n|`oss`          | The tax identifier is an One-Stop Shop (OSS).\n|`passport`     | The tax identifier is a Passport Number.\n|`abn`          | The tax identifier is an Australian Business Number.\n|`ukims`        | The tax identifier is an UK Internal Market Scheme number.\n"
       },
       "date": {
         "title": "date",
@@ -10952,17 +10717,6 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[-+]\\d{2}:\\d{2}))?$",
         "example": "2018-09-23T00:00:00.000Z",
         "description": "An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date, but not a specific time.  The value _may_ contain a time component, but it will be set to `00:00:00` UTC by ShipEngine.\n"
-      },
-      "shipment_status": {
-        "title": "shipment_status",
-        "type": "string",
-        "enum": [
-          "pending",
-          "processing",
-          "label_purchased",
-          "cancelled"
-        ],
-        "description": "The possible shipment status values"
       },
       "shipping_address_to": {
         "title": "shipping_address_to",
@@ -11012,10 +10766,14 @@
           }
         }
       },
-      "shipping_address": {
-        "title": "shipping_address",
+      "shipping_address_from": {
+        "title": "shipping_address_from",
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "phone",
+          "country_code"
+        ],
         "allOf": [
           {
             "$ref": "#/components/schemas/address"
@@ -11038,6 +10796,19 @@
             "description": "Additional text about how to handle the shipment at this address.\n"
           }
         }
+      },
+      "shipping_address": {
+        "title": "shipping_address",
+        "type": "object",
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/address"
+          },
+          {
+            "$ref": "#/components/schemas/partial_shipping_address"
+          }
+        ]
       },
       "delivery_confirmation": {
         "title": "delivery_confirmation",
@@ -11332,7 +11103,6 @@
           },
           "value": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "description": "The monetary amount, in the specified currency."
           },
@@ -11393,7 +11163,6 @@
         "properties": {
           "value": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "exclusiveMinimum": true,
             "description": "The weight, in the specified unit"
@@ -11422,7 +11191,7 @@
         "title": "advanced_shipment_options",
         "type": "object",
         "description": "Advanced shipment options",
-        "additionalProperties": false,
+        "additionalProperties": true,
         "properties": {
           "bill_to_account": {
             "type": "string",
@@ -11582,6 +11351,47 @@
                 "description": "Phone number of the contact"
               }
             }
+          },
+          "windsor_framework_details": {
+            "type": "object",
+            "description": "The Windsor framework is a new regulation in the UK that simplifies customs procedures for goods moved from the UK mainland to Northern Ireland.",
+            "properties": {
+              "movement_indicator": {
+                "type": "string",
+                "description": "An indicator that will tell the carrier and HMRC the type of movement for the shipment.",
+                "enum": [
+                  "c2c",
+                  "b2c",
+                  "c2b",
+                  "b2b"
+                ]
+              },
+              "not_at_risk": {
+                "type": "boolean",
+                "description": "An indicator that allows a shipper to declare the shipment as not-at-risk."
+              }
+            }
+          },
+          "license_number": {
+            "type": "string",
+            "nullable": true,
+            "default": null,
+            "example": 514785,
+            "description": "license number."
+          },
+          "invoice_number": {
+            "type": "string",
+            "nullable": true,
+            "default": null,
+            "example": "IOC56888",
+            "description": "invoice number."
+          },
+          "certificate_number": {
+            "type": "string",
+            "nullable": true,
+            "default": null,
+            "example": 784515,
+            "description": "certificate number."
           }
         }
       },
@@ -11644,7 +11454,6 @@
           },
           "amount": {
             "minimum": 0,
-            "format": "double",
             "type": "number"
           }
         }
@@ -11660,32 +11469,24 @@
         ],
         "description": "The possible insurance provider values"
       },
-      "tag": {
-        "title": "tag",
-        "type": "object",
-        "description": "Tags are arbitrary strings that you can use to categorize shipments.  For example, you may want to use tags to distinguish between domestic and international shipments, or between insured and uninsured shipments.  Or maybe you want to create a tag for each of your customers so you can easily retrieve every shipment for a customer.\n",
-        "required": [
-          "name"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "name": {
-            "type": "string",
-            "minLength": 1,
-            "example": "Fragile",
-            "description": "The tag name."
-          }
-        }
-      },
       "package": {
         "title": "package",
         "type": "object",
-        "description": "A package associated with a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/)\n",
+        "description": "A package associated with a shipment\n",
         "required": [
           "weight"
         ],
         "additionalProperties": false,
         "properties": {
+          "shipment_package_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "readOnly": true,
+            "description": "A string that uniquely identifies this shipment package"
+          },
           "package_id": {
             "allOf": [
               {
@@ -11702,13 +11503,9 @@
             ],
             "description": "The [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/), such as `thick_envelope`, `small_flat_rate_box`, `large_package`, etc.  The code `package` indicates a custom or unknown package type.\n"
           },
-          "content_description": {
+          "package_name": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 35,
-            "description": "A short description of the package content. Required for shipments moving to, from, and through Mexico.\n",
-            "example": "Hand knitted wool socks",
-            "nullable": true
+            "description": "The name of the of the [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/)"
           },
           "weight": {
             "allOf": [
@@ -11732,22 +11529,11 @@
                 "$ref": "#/components/schemas/monetary_value"
               }
             ],
-            "default": [
-              {
-                "currency": "usd",
-                "amount": 0
-              }
-            ],
+            "default": {
+              "currency": "USD",
+              "amount": 0
+            },
             "description": "The insured value of the package.  Requires the `insurance_provider` field of the shipment to be set.\n"
-          },
-          "tracking_number": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/tracking_number"
-              }
-            ],
-            "description": "The tracking number for the package.  The format depends on the carrier.\n"
           },
           "label_messages": {
             "allOf": [
@@ -11761,38 +11547,22 @@
             "minLength": 1,
             "description": "An external package id."
           },
-          "label_download": {
+          "tracking_number": {
             "readOnly": true,
             "allOf": [
               {
-                "$ref": "#/components/schemas/label_download"
+                "$ref": "#/components/schemas/tracking_number"
               }
             ],
-            "description": "The label download for the package"
+            "description": "The tracking number for the package.  The format depends on the carrier.\n"
           },
-          "form_download": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/optional_link"
-              }
-            ],
-            "description": "The form download for any customs that are needed"
-          },
-          "paperless_download": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/paperless_download"
-              }
-            ],
-            "description": "The paperless details which may contain elements like `href`, `instructions` and `handoff_code`."
-          },
-          "sequence": {
-            "readOnly": true,
-            "format": "int32",
-            "type": "integer",
-            "description": "Package sequence"
+          "content_description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "description": "A short description of the package content. Required for shipments moving to, from, and through Mexico.\n",
+            "example": "Hand knitted wool socks",
+            "nullable": true
           },
           "products": {
             "type": "array",
@@ -11804,13 +11574,6 @@
             }
           }
         }
-      },
-      "tracking_number": {
-        "title": "tracking_number",
-        "type": "string",
-        "minLength": 1,
-        "example": "1Z932R800392060079",
-        "description": "A tracking number for a package. The format depends on the carrier."
       },
       "label_messages": {
         "title": "label_messages",
@@ -11842,6 +11605,13 @@
             "description": "The third line of the custom label message.  Some carriers may prefix this line with something like \"PO\", \"Reference 3\", etc.\n"
           }
         }
+      },
+      "tracking_number": {
+        "title": "tracking_number",
+        "type": "string",
+        "minLength": 1,
+        "example": "1Z932R800392060079",
+        "description": "A tracking number for a package. The format depends on the carrier."
       },
       "products": {
         "title": "products",
@@ -11922,7 +11692,6 @@
           },
           "vat_rate": {
             "type": "number",
-            "format": "double",
             "description": "VAT rate applicable to the item",
             "nullable": true,
             "example": 0.2
@@ -11935,6 +11704,11 @@
             "items": {
               "$ref": "#/components/schemas/dangerous_goods"
             }
+          },
+          "extended_details": {
+            "type": "object",
+            "description": "Additional details about products",
+            "additionalProperties": true
           }
         }
       },
@@ -12068,7 +11842,6 @@
         "properties": {
           "amount": {
             "type": "number",
-            "format": "double",
             "minimum": 0,
             "default": 0,
             "description": "The amount of dangerous goods."
@@ -12140,6 +11913,796 @@
         ],
         "description": "There are two different ways to [download a label](https://www.shipengine.com/docs/labels/downloading/):\n\n|Label Download Type | Description\n|--------------------|------------------------------\n|`url`               |You will receive a URL, which you can use to download the label in a separate request. The URL will remain valid for 90 days.<br><br>This is the default if `label_download_type` is unspecified.\n|`inline`            |You will receive the Base64-encoded label as part of the response. No need for a second request to download the label.\n"
       },
+      "create_label_response_body": {
+        "title": "create_label_response_body",
+        "type": "object",
+        "description": "A create label response body",
+        "additionalProperties": false,
+        "required": [
+          "label_id",
+          "status",
+          "shipment_id",
+          "ship_date",
+          "created_at",
+          "shipment_cost",
+          "insurance_cost",
+          "tracking_number",
+          "is_international",
+          "batch_id",
+          "carrier_id",
+          "service_code",
+          "voided",
+          "label_image_id",
+          "label_format",
+          "label_layout",
+          "trackable",
+          "carrier_code",
+          "tracking_status",
+          "label_download",
+          "form_download",
+          "paperless_download",
+          "insurance_claim",
+          "packages",
+          "is_return_label",
+          "rma_number",
+          "charge_event",
+          "package_code",
+          "display_scheme"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/label"
+          }
+        ]
+      },
+      "label": {
+        "title": "label",
+        "type": "object",
+        "description": "A label represents the physical sticker that you affix to a package to ship it.  ShipEngine makes it easy for you to [create labels](https://www.shipengine.com/docs/labels/create-a-label/) and then download them in PDF, PNG, or ZPL format so you can print them.\n",
+        "additionalProperties": false,
+        "properties": {
+          "label_id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "A string that uniquely identifies the label. This ID is generated by ShipEngine when the label is created.\n"
+          },
+          "status": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_status"
+              }
+            ]
+          },
+          "shipment_id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "The shipment that this label is for.  ShipEngine can create a shipment for you automatically when you [create a label](https://www.shipengine.com/docs/labels/create-a-label/), or you can [create your own shipment](https://www.shipengine.com/docs/shipping/create-a-shipment/) and then [use it to print a label](https://www.shipengine.com/docs/labels/create-from-shipment/)\n"
+          },
+          "shipment": {
+            "writeOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipment"
+              }
+            ],
+            "description": "The shipment information used to generate the label"
+          },
+          "ship_date": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date"
+              }
+            ],
+            "readOnly": true,
+            "description": "The date that the package was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
+          },
+          "created_at": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date_time"
+              }
+            ],
+            "description": "The date and time that the label was created in ShipEngine."
+          },
+          "shipment_cost": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "description": "The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs.\n"
+          },
+          "insurance_cost": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "description": "The insurance cost for this package.  Add this to the `shipment_cost` field to get the total cost.\n"
+          },
+          "requested_comparison_amount": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "description": "The total shipping cost for the specified comparison_rate_type.\n"
+          },
+          "rate_details": {
+            "readOnly": true,
+            "description": "A list of rate details that are associated with shipping cost. This is useful for\ndisplaying a breakdown of the rate to the user.\n",
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/rate_detail"
+                }
+              ]
+            }
+          },
+          "tracking_number": {
+            "type": "string",
+            "minLength": 1,
+            "readOnly": true,
+            "example": "782758401696",
+            "description": "The tracking number for the package. Tracking number formats vary across carriers."
+          },
+          "is_return_label": {
+            "type": "boolean",
+            "description": "Indicates whether this is a return label.  You may also want to set the `rma_number` so you know what is being returned.\n"
+          },
+          "rma_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value.\n"
+          },
+          "is_international": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "Indicates whether this is an international shipment.  That is, the originating country and destination country are different.\n"
+          },
+          "batch_id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "If this label was created as part of a [batch](https://www.shipengine.com/docs/labels/bulk/), then this is the unique ID of that batch.\n"
+          },
+          "carrier_id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "The unique ID of the [carrier account](https://www.shipengine.com/docs/carriers/setup/) that was used to create this label\n"
+          },
+          "charge_event": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_charge_event"
+              }
+            ],
+            "description": "The label charge event.\n"
+          },
+          "outbound_label_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "writeOnly": true,
+            "description": "The `label_id` of the original (outgoing) label that the return label is for. This associates the two labels together, which is\nrequired by some carriers.\n"
+          },
+          "service_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/service_code"
+              }
+            ],
+            "readOnly": true,
+            "description": "The [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) used to ship the package, such as `fedex_ground`, `usps_first_class_mail`, `flat_rate_envelope`, etc.\n"
+          },
+          "test_label": {
+            "writeOnly": true,
+            "type": "boolean",
+            "default": false,
+            "deprecated": true,
+            "description": "Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account."
+          },
+          "package_code": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/package_code"
+              }
+            ],
+            "description": "The [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/), such as `thick_envelope`, `small_flat_rate_box`, `large_package`, etc.  The code `package` indicates a custom or unknown package type.\n"
+          },
+          "validate_address": {
+            "writeOnly": true,
+            "default": "validate_and_clean",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/validate_address"
+              }
+            ]
+          },
+          "voided": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/)\n"
+          },
+          "voided_at": {
+            "nullable": true,
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date_time"
+              }
+            ],
+            "description": "The date and time that the label was [voided](https://www.shipengine.com/docs/labels/voiding/), or `null` if the label has not been voided\n"
+          },
+          "label_download_type": {
+            "writeOnly": true,
+            "default": "url",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_download_type"
+              }
+            ]
+          },
+          "label_format": {
+            "default": "pdf",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_format"
+              }
+            ],
+            "description": "The file format that you want the label to be in.  We recommend `pdf` format because it is supported by all carriers, whereas some carriers do not support the `png` or `zpl` formats.\n"
+          },
+          "display_scheme": {
+            "default": "label",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/display_scheme"
+              }
+            ],
+            "description": "The display format that the label should be shown in."
+          },
+          "label_layout": {
+            "default": "4x6",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_layout"
+              }
+            ],
+            "description": "The layout (size) that you want the label to be in.  The `label_format` determines which sizes are allowed.  `4x6` is supported for all label formats, whereas `letter` (8.5\" x 11\") is only supported for `pdf` format.\n"
+          },
+          "trackable": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "Indicates whether the shipment is trackable, in which case the `tracking_status` field will reflect the current status and each package will have a `tracking_number`.\n"
+          },
+          "label_image_id": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/image_id"
+              }
+            ],
+            "description": "The label image resource that was used to create a custom label image."
+          },
+          "carrier_code": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/carrier_code"
+              }
+            ],
+            "description": "The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as `fedex`, `dhl_express`, `stamps_com`, etc.\n"
+          },
+          "tracking_status": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/tracking_status"
+              }
+            ],
+            "description": "The current status of the package, such as `in_transit` or `delivered`"
+          },
+          "label_download": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_download"
+              }
+            ],
+            "readOnly": true
+          },
+          "form_download": {
+            "readOnly": true,
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/link"
+              }
+            ],
+            "description": "The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it.\n"
+          },
+          "paperless_download": {
+            "readOnly": true,
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/paperless_download"
+              }
+            ],
+            "description": "The paperless details which may contain elements like `href`, `instructions` and `handoff_code`.\n"
+          },
+          "insurance_claim": {
+            "readOnly": true,
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/link"
+              }
+            ],
+            "description": "The link to submit an insurance claim for the shipment.  This field is null if the shipment is not insured or if the insurance provider does not support online claim submission.\n"
+          },
+          "packages": {
+            "type": "array",
+            "readOnly": true,
+            "description": "The label's package(s).\n\n> **Note:** Some carriers only allow one package per label.  If you attempt to create a multi-package label for a carrier that doesn't allow it, an error will be returned.\n",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/label_package"
+                },
+                {
+                  "$ref": "#/components/schemas/alternative_identifiers"
+                }
+              ]
+            }
+          },
+          "alternative_identifiers": {
+            "type": "array",
+            "readOnly": true,
+            "nullable": true,
+            "description": "Additional information some carriers may provide by which to identify a given label in their system. \n",
+            "items": {
+              "$ref": "#/components/schemas/alternative_identifier"
+            }
+          },
+          "tracking_url": {
+            "readOnly": true,
+            "nullable": true,
+            "type": "string",
+            "example": "https://www.fedex.com/fedextrack/?action=track&trackingnumber=1234",
+            "description": "The URL to track the package. This URL is provided by the carrier and is unique to the tracking number.\n"
+          }
+        }
+      },
+      "shipment": {
+        "title": "shipment",
+        "type": "object",
+        "description": "The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight.\n\n> **Note:** Either `ship_from` or `warehouse_id` must be set.\n",
+        "required": [
+          "shipment_id",
+          "carrier_id",
+          "service_code",
+          "ship_date",
+          "created_at",
+          "modified_at",
+          "shipment_status",
+          "ship_to",
+          "ship_from",
+          "warehouse_id",
+          "return_to",
+          "confirmation",
+          "customs",
+          "advanced_options",
+          "insurance_provider",
+          "tags",
+          "packages",
+          "total_weight"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/partial_shipment"
+          }
+        ]
+      },
+      "partial_shipment": {
+        "title": "partial_shipment",
+        "type": "object",
+        "description": "The information necessary to ship a package, such as the origin, the destination, the carrier service, and the package dimensions and weight.\n",
+        "additionalProperties": false,
+        "properties": {
+          "shipment_id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "A string that uniquely identifies the shipment"
+          },
+          "carrier_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "The carrier account that is billed for the shipping charges"
+          },
+          "service_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/service_code"
+              }
+            ],
+            "description": "The [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) used to ship the package, such as `fedex_ground`, `usps_first_class_mail`, `flat_rate_envelope`, etc.\n"
+          },
+          "shipping_rule_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "ID of the shipping rule, which you want to use to automate carrier/carrier service selection for the shipment\n"
+          },
+          "external_order_id": {
+            "type": "string",
+            "nullable": true,
+            "description": "ID that the Order Source assigned"
+          },
+          "items": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/shipment_item"
+                }
+              ]
+            },
+            "description": "Describe the packages included in this shipment as related to potential metadata that was imported from\nexternal order sources\n"
+          },
+          "tax_identifiers": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/tax_identifier"
+                }
+              ]
+            }
+          },
+          "external_shipment_id": {
+            "type": "string",
+            "maxLength": 50,
+            "nullable": true,
+            "description": "A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.\n\n> **Warning:** The `external_shipment_id` is limited to 50 characters. Any additional characters will be truncated.\n"
+          },
+          "shipment_number": {
+            "type": "string",
+            "maxLength": 50,
+            "nullable": true,
+            "description": "A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.\n\n> **Warning:** The `shipment_number` is limited to 50 characters. Any additional characters will be truncated.\n"
+          },
+          "ship_date": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date"
+              }
+            ],
+            "description": "The date that the shipment was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
+          },
+          "created_at": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date_time"
+              }
+            ],
+            "description": "The date and time that the shipment was created in ShipEngine."
+          },
+          "modified_at": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date_time"
+              }
+            ],
+            "description": "The date and time that the shipment was created or last modified."
+          },
+          "shipment_status": {
+            "readOnly": true,
+            "default": "pending",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipment_status"
+              }
+            ],
+            "description": "The current status of the shipment"
+          },
+          "ship_to": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipping_address_to"
+              }
+            ],
+            "description": "The recipient's mailing address"
+          },
+          "ship_from": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipping_address"
+              }
+            ],
+            "description": "The shipment's origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the `warehouse_id` rather than the complete address each time.\n"
+          },
+          "warehouse_id": {
+            "nullable": true,
+            "default": null,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either `warehouse_id` or `ship_from` must be specified.\n"
+          },
+          "return_to": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipping_address"
+              }
+            ],
+            "description": "The return address for this shipment.  Defaults to the `ship_from` address.\n"
+          },
+          "is_return": {
+            "type": "boolean",
+            "nullable": true,
+            "default": false,
+            "description": "An optional indicator if the shipment is intended to be a return. Defaults to false if not provided.\n"
+          },
+          "confirmation": {
+            "default": "none",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/delivery_confirmation"
+              }
+            ],
+            "description": "The type of delivery confirmation that is required for this shipment."
+          },
+          "customs": {
+            "nullable": true,
+            "default": null,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/international_shipment_options"
+              }
+            ],
+            "description": "Customs information.  This is usually only needed for international shipments.\n"
+          },
+          "advanced_options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/advanced_shipment_options"
+              }
+            ],
+            "description": "Advanced shipment options.  These are entirely optional."
+          },
+          "insurance_provider": {
+            "default": "none",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/insurance_provider"
+              }
+            ],
+            "description": "The insurance provider to use for any insured packages in the shipment.\n"
+          },
+          "tags": {
+            "type": "array",
+            "readOnly": true,
+            "default": [],
+            "minItems": 0,
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/tag"
+                }
+              ]
+            },
+            "description": "Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags.\n"
+          },
+          "order_source_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/order_source_name"
+              }
+            ]
+          },
+          "packages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/package"
+                }
+              ]
+            },
+            "description": "The packages in the shipment.\n\n> **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn't allow it, an error will be returned.\n"
+          },
+          "total_weight": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/weight"
+              }
+            ],
+            "description": "The combined weight of all packages in the shipment"
+          },
+          "comparison_rate_type": {
+            "nullable": true,
+            "type": "string",
+            "description": "Calculate a rate for this shipment with the requested carrier using a ratecard that differs from the default.  Only supported for UPS and USPS.",
+            "example": "retail"
+          }
+        }
+      },
+      "shipment_status": {
+        "title": "shipment_status",
+        "type": "string",
+        "enum": [
+          "pending",
+          "processing",
+          "label_purchased",
+          "cancelled"
+        ],
+        "description": "The possible shipment status values"
+      },
+      "tag": {
+        "title": "tag",
+        "type": "object",
+        "description": "Tags are arbitrary strings that you can use to categorize shipments.  For example, you may want to use tags to distinguish between domestic and international shipments, or between insured and uninsured shipments.  Or maybe you want to create a tag for each of your customers so you can easily retrieve every shipment for a customer.\n",
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Fragile",
+            "description": "The tag name."
+          }
+        }
+      },
+      "rate_detail": {
+        "title": "rate_detail",
+        "type": "object",
+        "description": "Represents detailed information about a shipping cost\n",
+        "additionalProperties": false,
+        "properties": {
+          "rate_detail_type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/rate_detail_type"
+              }
+            ]
+          },
+          "carrier_description": {
+            "type": "string",
+            "description": "A rate detail description defined by a carrier"
+          },
+          "carrier_billing_code": {
+            "type": "string",
+            "description": "A rate detail code defined by a carrier"
+          },
+          "carrier_memo": {
+            "type": "string",
+            "description": "Contains any additional information"
+          },
+          "amount": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ]
+          },
+          "rate_detail_attributes": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/rate_detail_attributes"
+              }
+            ],
+            "description": "If applicable, contains additional data about a rate detail of a specific type, e.g. VAT"
+          },
+          "billing_source": {
+            "type": "string",
+            "description": "The source of the billing information. This is typically the carrier, but could be a third party, e.g insurance"
+          }
+        }
+      },
+      "rate_detail_type": {
+        "title": "rate_detail_type",
+        "type": "string",
+        "enum": [
+          "uncategorized",
+          "shipping",
+          "insurance",
+          "confirmation",
+          "discount",
+          "fuel_charge",
+          "additional_fees",
+          "tariff",
+          "tax",
+          "delivery",
+          "handling",
+          "special_goods",
+          "pickup",
+          "location_fee",
+          "oversize",
+          "returns",
+          "notifications",
+          "tip",
+          "duties_and_taxes",
+          "brokerage_fee",
+          "admin_fee",
+          "adjustment"
+        ],
+        "description": "The possible rate detail type values"
+      },
+      "rate_detail_attributes": {
+        "title": "rate_detail_attributes",
+        "type": "object",
+        "description": "Represents detailed information about a tax (e.g. VAT) contained in a shipping cost.\n",
+        "additionalProperties": false,
+        "properties": {
+          "tax_type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/tax_type"
+              }
+            ]
+          },
+          "tax_code": {
+            "type": "string",
+            "description": "Code for a specific tax type"
+          },
+          "tax_percentage": {
+            "type": "number",
+            "description": "Tax percentage, e.g. 20 for 20%, added to the shipping cost"
+          }
+        }
+      },
+      "tax_type": {
+        "title": "tax_type",
+        "type": "string",
+        "enum": [
+          "vat"
+        ],
+        "description": "Type of a tax added to shipping cost"
+      },
       "tracking_status": {
         "title": "tracking_status",
         "type": "string",
@@ -12150,6 +12713,146 @@
           "delivered"
         ],
         "description": "The different statuses that can apply to a shipment."
+      },
+      "label_package": {
+        "title": "label_package",
+        "type": "object",
+        "description": "A package returned in the response from creating a [shipping label](https://www.shipengine.com/docs/labels/create-a-label/)\n",
+        "required": [
+          "weight"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "package_id": {
+            "readOnly": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "The shipment package id"
+          },
+          "package_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/package_code"
+              }
+            ],
+            "description": "The [package type](https://www.shipengine.com/docs/reference/list-carrier-packages/), such as `thick_envelope`, `small_flat_rate_box`, `large_package`, etc.  The code `package` indicates a custom or unknown package type.\n"
+          },
+          "weight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/weight"
+              }
+            ],
+            "description": "The package weight"
+          },
+          "dimensions": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/dimensions"
+              }
+            ],
+            "description": "The package dimensions"
+          },
+          "insured_value": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "default": {
+              "currency": "USD",
+              "amount": 0
+            },
+            "description": "The insured value of the package.  Requires the `insurance_provider` field of the shipment to be set.\n"
+          },
+          "tracking_number": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/tracking_number"
+              }
+            ],
+            "description": "The tracking number for the package.  The format depends on the carrier.\n"
+          },
+          "label_download": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_download"
+              }
+            ],
+            "description": "The label download for the package"
+          },
+          "form_download": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/optional_link"
+              }
+            ],
+            "description": "The form download for any customs that are needed"
+          },
+          "qr_code_download": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/optional_link"
+              }
+            ],
+            "description": "The QR code download for the package"
+          },
+          "paperless_download": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/paperless_download"
+              }
+            ],
+            "description": "The paperless details which may contain elements like `href`, `instructions` and `handoff_code`."
+          },
+          "label_messages": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_messages"
+              }
+            ]
+          },
+          "external_package_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "An external package id."
+          },
+          "content_description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "description": "A short description of the package content. Required for shipments moving to, from, and through Mexico.\n",
+            "example": "Hand knitted wool socks",
+            "nullable": true
+          },
+          "sequence": {
+            "readOnly": true,
+            "format": "int32",
+            "type": "integer",
+            "description": "Package sequence"
+          },
+          "has_label_documents": {
+            "type": "boolean",
+            "description": "Whether the package has label documents available for download"
+          },
+          "has_form_documents": {
+            "type": "boolean",
+            "description": "Whether the package has form documents available for download"
+          },
+          "has_qr_code_documents": {
+            "type": "boolean",
+            "description": "Whether the package has QR code documents available for download"
+          },
+          "has_paperless_label_documents": {
+            "type": "boolean",
+            "description": "Whether the package has paperless documents available for download"
+          }
+        }
       },
       "alternative_identifiers": {
         "title": "alternative_identifiers",
@@ -12187,49 +12890,6 @@
           }
         }
       },
-      "create_label_response_body": {
-        "title": "create_label_response_body",
-        "type": "object",
-        "description": "A create label response body",
-        "additionalProperties": false,
-        "required": [
-          "label_id",
-          "status",
-          "shipment_id",
-          "ship_date",
-          "created_at",
-          "shipment_cost",
-          "insurance_cost",
-          "tracking_number",
-          "is_international",
-          "batch_id",
-          "carrier_id",
-          "service_code",
-          "voided",
-          "voided_at",
-          "label_image_id",
-          "label_format",
-          "label_layout",
-          "trackable",
-          "carrier_code",
-          "tracking_status",
-          "label_download",
-          "form_download",
-          "paperless_download",
-          "insurance_claim",
-          "packages",
-          "is_return_label",
-          "rma_number",
-          "charge_event",
-          "package_code",
-          "display_scheme"
-        ],
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/label"
-          }
-        ]
-      },
       "get_label_by_external_shipment_id_response_body": {
         "title": "get_label_by_external_shipment_id_response_body",
         "type": "object",
@@ -12250,7 +12910,21 @@
           {
             "$ref": "#/components/schemas/purchase_label_without_shipment"
           }
-        ]
+        ],
+        "properties": {
+          "custom_field1": {
+            "type": "string",
+            "description": "Optional - Value will be saved in the shipment's advanced_options > custom_field1"
+          },
+          "custom_field2": {
+            "type": "string",
+            "description": "Optional - Value will be saved in the shipment's advanced_options > custom_field2"
+          },
+          "custom_field3": {
+            "type": "string",
+            "description": "Optional - Value will be saved in the shipment's advanced_options > custom_field3"
+          }
+        }
       },
       "purchase_label_without_shipment": {
         "title": "purchase_label_without_shipment",
@@ -12459,7 +13133,6 @@
           "tracking_number",
           "status_code",
           "carrier_status_code",
-          "estimated_delivery_date",
           "events"
         ],
         "additionalProperties": false,
@@ -12493,7 +13166,16 @@
               {
                 "$ref": "#/components/schemas/status_code"
               }
-            ]
+            ],
+            "example": "DE"
+          },
+          "status_detail_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/status_detail_code"
+              }
+            ],
+            "example": "DELIVERED"
           },
           "carrier_code": {
             "allOf": [
@@ -12503,11 +13185,10 @@
             ]
           },
           "carrier_id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/se_id"
-              }
-            ]
+            "readOnly": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "The unique ID of the [carrier account](https://www.shipengine.com/docs/carriers/setup/) that was used to create this label\n"
           },
           "status_description": {
             "type": "string",
@@ -12515,6 +13196,13 @@
             "example": "Delivered",
             "minLength": 0,
             "description": "Status description"
+          },
+          "status_detail_description": {
+            "type": "string",
+            "readOnly": true,
+            "example": "Your parcel has been successfully delivered.",
+            "minLength": 0,
+            "description": "Status detail description"
           },
           "carrier_status_code": {
             "type": "string",
@@ -12578,16 +13266,97 @@
         "readOnly": true,
         "title": "status_code",
         "enum": [
-          "un",
-          "ac",
-          "it",
-          "de",
-          "ex",
-          "at",
-          "ny"
+          "UN",
+          "AC",
+          "IT",
+          "DE",
+          "EX",
+          "AT",
+          "NY",
+          "SP"
         ],
         "type": "string",
-        "description": "The tracking status codes\n\n|Value       |Description\n|:---------  |:-----------------------------------------------------\n|`un` | Unknown\n|`ac` | Accepted\n|`it` | In Transit\n|`de` | Delivered\n|`ex` | Exception\n|`at` | Delivery Attempt\n|`ny` | Not Yet In System\n"
+        "description": "The tracking status codes\n\n|Value       |Description\n|:---------  |:-----------------------------------------------------\n|`UN` | Unknown\n|`AC` | Accepted\n|`IT` | In Transit\n|`DE` | Delivered\n|`EX` | Exception\n|`AT` | Delivery Attempt\n|`NY` | Not Yet In System\n|`SP` | Delivered To Collection Location\n"
+      },
+      "status_detail_code": {
+        "readOnly": true,
+        "title": "status_detail_code",
+        "enum": [
+          "CARRIER_STATUS_NOT_MAPPED",
+          "SHIPMENT_CREATED",
+          "AWAITING_PICKUP_DROP_OFF",
+          "DROPPED_OFF",
+          "ELEC_ADVICE_RECD_BY_CARRIER",
+          "PICKED_UP",
+          "CUSTOMS_CLEARED",
+          "CUSTOMS_PROCESSING",
+          "DELIVERY_ARRANGED_WITH_RECIPIENT",
+          "HUB_SCAN_OUT",
+          "HUB_SCAN_IN",
+          "IN_TRANSIT",
+          "INFORMATION",
+          "PARCEL_OVER_LABELLED",
+          "PARCEL_UPDATE_NOTIFICATION",
+          "RECEIVED_BY_CARRIER",
+          "RECEIVED_LOCAL_DELIVERY_DEPOT",
+          "SUB_CONTRACTOR_EVENT",
+          "SUB_CONTRACTOR_RECEIVED",
+          "PARCEL_REDIRECTED",
+          "DELIVERY_SCHEDULED",
+          "HUB_PROCESSING",
+          "DELIVERY_RESCHEDULED",
+          "ATTEMPTED_DELIVERY",
+          "ATTEMPTED_DELIVERY_FINAL",
+          "COD_AMOUNT_PAID",
+          "CUSTOMER_CARDED",
+          "OUT_FOR_DELIVERY",
+          "AWAITING_COLLECTION_FROM_PICKUP_POINT",
+          "COLLECT_AT_LOCAL_PO",
+          "CUSTOMER_TO_COLLECT_FROM_CARRIER",
+          "DELIVERED_TO_RECEPTION",
+          "DELIVERED",
+          "DELIVERED_DAMAGED",
+          "DELIVERED_IN_PART",
+          "DELIVERED_SPECIFIED_SAFE_PLACE",
+          "DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION",
+          "DELIVERED_TO_NEIGHBOUR",
+          "DELIVERED_TO_PO_BOX",
+          "PARCEL_COLLECTED_FROM_PICKUP_POINT",
+          "POST_TRANSIT_STATUS",
+          "PROOF_OF_DELIVERY",
+          "PICKUP_FAILED",
+          "NOT_YET_RECEIVED_BY_CARRIER",
+          "PARCEL_DAMAGED",
+          "ADDRESS_QUERY",
+          "CARRIER_DELAYS",
+          "DELAYED_NOT_CARRIER",
+          "HELD_BY_CARRIER",
+          "HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING",
+          "HELD_BY_CUSTOMS",
+          "HELD_BY_EXPORT_CUSTOMS",
+          "HELD_BY_IMPORT_CUSTOMS",
+          "INCORRECT_DECLARATION",
+          "MISROUTED",
+          "PARCEL_REPACKED",
+          "RECD_BY_CARRIER_NO_ELEC_ADVICE",
+          "COD_AMOUNT_NOT_PAID",
+          "CUSTOMER_IDENTIFICATION_FAILED",
+          "NO_ACCESS_TO_RECIPIENTS_ADDRESS",
+          "CANCELLED",
+          "CUSTOMER_MOVED",
+          "HAZARDOUS_PROHIBITED",
+          "NOT_COLLECTED_FROM_PICKUP_POINT",
+          "NOT_DELIVERED",
+          "NOT_DELIVERED_ADDRESSEE_DECEASED",
+          "PARCEL_DISPOSED",
+          "PARCEL_LOST",
+          "PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY",
+          "REFUSED_BY_CUSTOMER",
+          "RETURN_TO_SENDER",
+          "UNSPECIFIED_EXCEPTION"
+        ],
+        "type": "string",
+        "description": "The tracking status detail codes\n\n|Value       |Description\n|:---------  |:-----------------------------------------------------\n| `CARRIER_STATUS_NOT_MAPPED` | Status not mapped. Please check the carrier's website for updates.\n| `SHIPMENT_CREATED` | Your tracking number is ready. Your parcel is waiting to be registered in the carrier system and scheduled for pickup.\n| `AWAITING_PICKUP_DROP_OFF` | Your parcel is waiting to be handed over to the carrier.\n| `DROPPED_OFF` | Your parcel has been dropped off and is ready for carrier processing.\n| `ELEC_ADVICE_RECD_BY_CARRIER` | Your shipment is now in the carrier's system.\n| `PICKED_UP` | Your parcel has been picked up by the carrier.\n| `CUSTOMS_CLEARED` | Your parcel has cleared customs and is continuing its journey.\n| `CUSTOMS_PROCESSING` | Your parcel is currently being processed by customs.\n| `DELIVERY_ARRANGED_WITH_RECIPIENT` | Your parcel's delivery has been arranged with the carrier.\n| `HUB_SCAN_OUT` | Your parcel has left the carrier's hub.\n| `HUB_SCAN_IN` | Your parcel has arrived at the carrier's hub for processing.\n| `IN_TRANSIT` | Your shipment is on its way between the carrier hubs.\n| `INFORMATION` | The carrier has shared additional information about your parcel.\n| `PARCEL_OVER_LABELLED` | Your parcel's label has been updated by the carrier, which may affect tracking visibility.\n| `PARCEL_UPDATE_NOTIFICATION` | The carrier has sent you an update on your parcel status via SMS or email.\n| `RECEIVED_BY_CARRIER` | Your parcel has been received by the carrier and is beginning its journey.\n| `RECEIVED_LOCAL_DELIVERY_DEPOT` | Your parcel has arrived at the local delivery depot and is almost ready for delivery.\n| `SUB_CONTRACTOR_EVENT` | The carrier has shared additional information about your parcel's handling by a delivery partner.\n| `SUB_CONTRACTOR_RECEIVED` | Your parcel has been received by the carrier's local delivery partner.\n| `PARCEL_REDIRECTED` | Your parcel has been redirected to a new delivery address per your request.\n| `DELIVERY_SCHEDULED` | Your parcel's delivery has been scheduled and will soon be out for delivery.\n| `HUB_PROCESSING` | Your parcel is being processed at a carrier hub.\n| `DELIVERY_RESCHEDULED` | Your parcel's delivery has been rescheduled due to operational issues.\n| `ATTEMPTED_DELIVERY` | The carrier attempted to deliver your parcel but was unable to complete delivery.\n| `ATTEMPTED_DELIVERY_FINAL` | The carrier made a final attempt to deliver your parcel but was unable to complete delivery. Please check the carrier's instructions for next steps.\n| `COD_AMOUNT_PAID` | Cash on delivery payment received.\n| `CUSTOMER_CARDED` | Delivery attempt failed. Please follow delivery instructions left by the carrier.\n| `OUT_FOR_DELIVERY` | Your parcel is on its way and will be delivered today.\n| `AWAITING_COLLECTION_FROM_PICKUP_POINT` | Your parcel is ready for collection at the selected pickup point.\n| `COLLECT_AT_LOCAL_PO` | Your parcel is ready for collection at your local post office.\n| `CUSTOMER_TO_COLLECT_FROM_CARRIER` | Your parcel is available for collection from the carrier's local delivery unit.\n| `DELIVERED_TO_RECEPTION` | Your parcel has been delivered to your building's reception or designated mail area.\n| `DELIVERED` | Your parcel has been successfully delivered.\n| `DELIVERED_DAMAGED` | Your parcel was delivered but arrived with visible damage.\n| `DELIVERED_IN_PART` | Part of your shipment has been delivered. Check for updates on the rest.\n| `DELIVERED_SPECIFIED_SAFE_PLACE` | Your parcel has been delivered to your specified safe place.\n| `DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION` | Your parcel was delivered to an alternative location due to the delivery company being unable to deliver it to the specified address. Check carrier instructions for pickup details.\n| `DELIVERED_TO_NEIGHBOUR` | Your parcel was delivered to your neighbor.\n| `DELIVERED_TO_PO_BOX` | Your parcel has been delivered to your specified PO Box.\n| `PARCEL_COLLECTED_FROM_PICKUP_POINT` | Your package has been picked up from the pick up point.\n| `POST_TRANSIT_STATUS` | The carrier has added more information about your delivery.\n| `PROOF_OF_DELIVERY` | The carrier has confirmed delivery with proof, such as a signature or photo.\n| `PICKUP_FAILED` | Parcel pickup failed. The delivery company will try again soon.\n| `NOT_YET_RECEIVED_BY_CARRIER` | The carrier has not yet received your parcel, which may cause a delay.\n| `PARCEL_DAMAGED` | Your parcel was damaged in transit but will still be delivered.\n| `ADDRESS_QUERY` | There is an issue with the delivery address, which may delay your parcel.\n| `CARRIER_DELAYS` | Your parcel is delayed due to issues within the carrier network.\n| `DELAYED_NOT_CARRIER` | Your parcel is delayed due to circumstances beyond the carrier's control.\n| `HELD_BY_CARRIER` | Your parcel is being held due to an operational issue. Contact with the carrier for more information.\n| `HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING` | Your parcel is being held by the carrier for customs documentation checks. This may occur when the carrier must confirm documentation before the parcel can continue its journey.\n| `HELD_BY_CUSTOMS` | Your parcel is being held at customs, which may delay delivery.\n| `HELD_BY_EXPORT_CUSTOMS` | Your parcel is held at export customs, which may delay delivery.\n| `HELD_BY_IMPORT_CUSTOMS` | Your parcel is held at import customs and may require action to proceed.\n| `INCORRECT_DECLARATION` | Your parcel has been incorrectly declared but is still moving forward for delivery.\n| `MISROUTED` | Your parcel was sent to the wrong place due to a routing error but is being redirected.\n| `PARCEL_REPACKED` | Your parcel was repackaged by the carrier due to damage and will still be delivered.\n| `RECD_BY_CARRIER_NO_ELEC_ADVICE` | Your parcel has been received by the carrier but may experience delays due to missing pre-advice.\n| `COD_AMOUNT_NOT_PAID` | Delivery failed due to unpaid cash on delivery. Please follow carrier instructions.\n| `CUSTOMER_IDENTIFICATION_FAILED` | Delivery couldn't be completed as identification requirements were not met.\n| `NO_ACCESS_TO_RECIPIENTS_ADDRESS` | The carrier couldn't access the delivery location due to restricted entry.\n| `CANCELLED` | Your parcel has been cancelled.\n| `CUSTOMER_MOVED` | Delivery failed as the recipient is no longer at the specified address. Your parcel is being returned.\n| `HAZARDOUS_PROHIBITED` | Your parcel contains restricted items and will not be delivered.\n| `NOT_COLLECTED_FROM_PICKUP_POINT` | Your parcel was not collected from the pickup point within the designated time and will be returned.\n| `NOT_DELIVERED` | All delivery attempts failed. Your parcel is being returned to the sender.\n| `NOT_DELIVERED_ADDRESSEE_DECEASED` | The parcel could not be delivered as the addressee is reported deceased.\n| `PARCEL_DISPOSED` | Your parcel has been disposed of due to its contents or condition and will not be delivered.\n| `PARCEL_LOST` | The carrier has reported that your parcel is lost and will not be delivered.\n| `PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY` | The parcel cannot be delivered as it exceeds the carrier's service limits.\n| `REFUSED_BY_CUSTOMER` | You have refused the parcel, and it will be returned to the sender.\n| `RETURN_TO_SENDER` | Your parcel is being returned to the sender due to delivery issues.\n| `UNSPECIFIED_EXCEPTION` | The carrier has reported an issue with your parcel, but details are unavailable.\n"
       },
       "track_event": {
         "title": "track_event",
@@ -12687,7 +13456,16 @@
               {
                 "$ref": "#/components/schemas/status_code"
               }
-            ]
+            ],
+            "example": "IT"
+          },
+          "status_detail_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/status_detail_code"
+              }
+            ],
+            "example": "IN_TRANSIT"
           },
           "status_description": {
             "type": "string",
@@ -12695,6 +13473,13 @@
             "minLength": 1,
             "example": "In Transit",
             "description": "Event Status Description"
+          },
+          "status_detail_description": {
+            "type": "string",
+            "readOnly": true,
+            "minLength": 0,
+            "example": "Your shipment is on its way between the carrier hubs.",
+            "description": "Event Status Detail Description"
           },
           "carrier_status_code": {
             "type": "string",
@@ -12756,7 +13541,7 @@
                 "$ref": "#/components/schemas/reason_code"
               }
             ],
-            "description": "Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. â€œunknownâ€ codes may be specified later.",
+            "description": "Indicates a normalized reason for the conditions if the void attempt was not approved. Will not populate if approved is true. “unknown” codes may be specified later.",
             "example": "label_not_found_within_void_period"
           }
         }
@@ -13712,7 +14497,7 @@
             "$ref": "#/components/schemas/shipment_id_request"
           },
           {
-            "$ref": "#/components/schemas/shipment_request"
+            "$ref": "#/components/schemas/rate_shipment_request"
           }
         ],
         "allOf": [
@@ -13735,8 +14520,8 @@
           }
         }
       },
-      "shipment_request": {
-        "title": "shipment_request",
+      "rate_shipment_request": {
+        "title": "rate_shipment_request",
         "type": "object",
         "properties": {
           "shipment": {
@@ -14087,6 +14872,18 @@
               }
             ],
             "description": "Tariff and additional taxes associated with an international shipment."
+          },
+          "rate_details": {
+            "readOnly": true,
+            "description": "A list of rate details that are associated with this rate. This is useful for\ndisplaying a breakdown of the rate to the user.\n",
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/rate_detail"
+                }
+              ]
+            }
           },
           "zone": {
             "type": "integer",
@@ -14927,6 +15724,23 @@
                   }
                 ],
                 "description": "Shipment total weight"
+              },
+              "packages": {
+                "type": "array",
+                "description": "An array of package dimensions",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "dimensions": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/dimensions"
+                        }
+                      ],
+                      "description": "The package dimensions"
+                    }
+                  }
+                }
               }
             }
           }
@@ -15905,7 +16719,6 @@
           "carrier_id",
           "carrier_detail_code",
           "carrier_status_code",
-          "estimated_delivery_date",
           "events"
         ],
         "additionalProperties": false,
@@ -16146,7 +16959,7 @@
     },
     {
       "name": "carrier_accounts",
-      "description": "carrier accounts\n",
+      "description": "A carrier account is a connection to a shipping carrier that allows you to create labels, track packages, and more.  You can connect your own carrier accounts to ShipEngine, or use one of our built-in carrier accounts.  [Learn more about carrier accounts here.](https://www.shipengine.com/docs/carriers/setup/)\n",
       "x-displayName": "Carrier Accounts"
     },
     {
@@ -16166,7 +16979,7 @@
     },
     {
       "name": "labels",
-      "description": "Print shipping labels for any of the top global carriers in minutesâ€”instead of weeks. Simply [connect your existing carrier accounts](https://www.shipengine.com/docs/carriers/setup/) in the API dashboard, and then [begin creating labels](https://www.shipengine.com/docs/shipping/use-a-carrier-service/).\n",
+      "description": "Print shipping labels for any of the top global carriers in minutes—instead of weeks. Simply [connect your existing carrier accounts](https://www.shipengine.com/docs/carriers/setup/) in the API dashboard, and then [begin creating labels](https://www.shipengine.com/docs/shipping/use-a-carrier-service/).\n",
       "externalDocs": {
         "url": "https://www.shipengine.com/docs/labels/create-a-label/",
         "description": "Follow this quick start guide to create your first shipping label with ShipEngine"
