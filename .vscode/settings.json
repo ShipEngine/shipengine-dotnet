@@ -3,5 +3,25 @@
     "omnisharp.useEditorFormattingSettings": false,
     "[csharp]": {
         "editor.defaultFormatter": "ms-dotnettools.csharp"
-    }
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#26b7e8",
+      "activityBar.background": "#26b7e8",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#ca159c",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#26b7e8",
+      "statusBar.background": "#1599c6",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#26b7e8",
+      "statusBarItem.remoteBackground": "#1599c6",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#1599c6",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#1599c699",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#1599c6"
 }
