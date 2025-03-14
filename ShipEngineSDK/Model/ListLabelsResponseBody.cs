@@ -292,6 +292,13 @@ public partial class ListLabelsResponseBody
         public TrackingStatus? TrackingStatus { get; set; }
 
         /// <summary>
+        /// The type of delivery confirmation that is required for this shipment.
+        /// </summary>
+        /// <value>The type of delivery confirmation that is required for this shipment.</value>
+        [JsonPropertyName("confirmation"), JsonInclude]
+        public DeliveryConfirmation? Confirmation { get; set; }
+
+        /// <summary>
         /// Gets or Sets LabelDownload
         /// </summary>
         [JsonPropertyName("label_download"), JsonInclude]

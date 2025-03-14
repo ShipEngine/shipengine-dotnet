@@ -34,31 +34,38 @@ public partial class InvoiceAdditionalDetails
     public MonetaryValue? Discount { get; set; }
 
     /// <summary>
+    /// Estimated import charges for commercial invoices for international shipments.
+    /// </summary>
+    /// <value>Estimated import charges for commercial invoices for international shipments.</value>
+    [JsonPropertyName("estimated_import_charges"), JsonPropertyOrder(2)]
+    public EstimatedImportCharges? EstimatedImportCharges { get; set; }
+
+    /// <summary>
     /// Freight Charge for shipment.
     /// </summary>
     /// <value>Freight Charge for shipment.</value>
-    [JsonPropertyName("freight_charge"), JsonPropertyOrder(2)]
+    [JsonPropertyName("freight_charge"), JsonPropertyOrder(3)]
     public MonetaryValue? FreightCharge { get; set; }
 
     /// <summary>
     /// Insurance Charge for shipment.
     /// </summary>
     /// <value>Insurance Charge for shipment.</value>
-    [JsonPropertyName("insurance_charge"), JsonPropertyOrder(3)]
+    [JsonPropertyName("insurance_charge"), JsonPropertyOrder(4)]
     public MonetaryValue? InsuranceCharge { get; set; }
 
     /// <summary>
     /// Other charge for shipment.
     /// </summary>
     /// <value>Other charge for shipment.</value>
-    [JsonPropertyName("other_charge"), JsonPropertyOrder(4)]
+    [JsonPropertyName("other_charge"), JsonPropertyOrder(5)]
     public MonetaryValue? OtherCharge { get; set; }
 
     /// <summary>
     /// Description for the other charge (if provided).
     /// </summary>
     /// <value>Description for the other charge (if provided).</value>
-    [JsonPropertyName("other_charge_description"), JsonPropertyOrder(5)]
+    [JsonPropertyName("other_charge_description"), JsonPropertyOrder(6)]
     public string? OtherChargeDescription { get; set; }
 
 
@@ -72,6 +79,7 @@ public partial class InvoiceAdditionalDetails
         sb.Append("class InvoiceAdditionalDetails {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Discount: ").Append(Discount).Append("\n");
+        sb.Append("  EstimatedImportCharges: ").Append(EstimatedImportCharges).Append("\n");
         sb.Append("  FreightCharge: ").Append(FreightCharge).Append("\n");
         sb.Append("  InsuranceCharge: ").Append(InsuranceCharge).Append("\n");
         sb.Append("  OtherCharge: ").Append(OtherCharge).Append("\n");

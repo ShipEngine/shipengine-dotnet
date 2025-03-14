@@ -25,6 +25,27 @@ namespace ShipEngineSDK;
 public partial interface IShipEngine
 {
     /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(HttpClient methodClient, CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Purchase Label Purchase and print a label for shipment
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
@@ -256,6 +277,48 @@ public partial interface IShipEngine
 /// </summary>
 public partial class ShipEngine
 {
+    /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    public Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default)
+    {
+        return CreateCombinedLabelDocument(_client, createCombinedLabelDocumentRequestBody, cancellationToken);
+    }
+
+    /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    public async Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(HttpClient methodClient, CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'createCombinedLabelDocumentRequestBody' is set
+        if (createCombinedLabelDocumentRequestBody == null)
+        {
+            throw new ArgumentNullException(nameof(createCombinedLabelDocumentRequestBody));
+        }
+
+
+        RequestOptions requestOptions = new("/v1/documents/combined_labels");
+
+        requestOptions.Data = JsonSerializer.Serialize(createCombinedLabelDocumentRequestBody, JsonSerializerOptions);
+
+        requestOptions.Operation = "LabelsApi.CreateCombinedLabelDocument";
+
+        var result = await SendHttpRequestAsync<CreateCombinedLabelDocumentResponseBodyYaml>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
+
+        return result;
+    }
+
     /// <summary>
     /// Purchase Label Purchase and print a label for shipment
     /// </summary>

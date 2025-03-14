@@ -25,17 +25,38 @@ namespace ShipEngineSDK;
 public partial interface IShipEngine
 {
     /// <summary>
-    /// Create a New Tag Create a new Tag for customizing how you track your shipments
+    /// Create a New Tag Create a new tag for customizing how you track your shipments.
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createTagRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
+    Task<CreateTagResponseBody> CreateTag(CreateTagRequestBody createTagRequestBody, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Create a New Tag Create a new tag for customizing how you track your shipments.
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createTagRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
+    Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, CreateTagRequestBody createTagRequestBody, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Create a New Tag Create a new tag for customizing how you track your shipments (deprecated - use POST /v1/tags instead)
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    Task<CreateTagResponseBody> CreateTag(string tagName, CancellationToken cancellationToken = default);
+    Task<CreateTagResponseBody> CreateTag_0(string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Create a New Tag Create a new Tag for customizing how you track your shipments
+    /// Create a New Tag Create a new tag for customizing how you track your shipments (deprecated - use POST /v1/tags instead)
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -43,7 +64,7 @@ public partial interface IShipEngine
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default);
+    Task<CreateTagResponseBody> CreateTag_0(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete Tag Delete a tag that is no longer needed
@@ -116,20 +137,62 @@ public partial interface IShipEngine
 public partial class ShipEngine
 {
     /// <summary>
-    /// Create a New Tag Create a new Tag for customizing how you track your shipments
+    /// Create a New Tag Create a new tag for customizing how you track your shipments.
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createTagRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
+    public Task<CreateTagResponseBody> CreateTag(CreateTagRequestBody createTagRequestBody, CancellationToken cancellationToken = default)
+    {
+        return CreateTag(_client, createTagRequestBody, cancellationToken);
+    }
+
+    /// <summary>
+    /// Create a New Tag Create a new tag for customizing how you track your shipments.
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createTagRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
+    public async Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, CreateTagRequestBody createTagRequestBody, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'createTagRequestBody' is set
+        if (createTagRequestBody == null)
+        {
+            throw new ArgumentNullException(nameof(createTagRequestBody));
+        }
+
+
+        RequestOptions requestOptions = new("/v1/tags");
+
+        requestOptions.Data = JsonSerializer.Serialize(createTagRequestBody, JsonSerializerOptions);
+
+        requestOptions.Operation = "TagsApi.CreateTag";
+
+        var result = await SendHttpRequestAsync<CreateTagResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
+
+        return result;
+    }
+
+    /// <summary>
+    /// Create a New Tag Create a new tag for customizing how you track your shipments (deprecated - use POST /v1/tags instead)
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    public Task<CreateTagResponseBody> CreateTag(string tagName, CancellationToken cancellationToken = default)
+    public Task<CreateTagResponseBody> CreateTag_0(string tagName, CancellationToken cancellationToken = default)
     {
-        return CreateTag(_client, tagName, cancellationToken);
+        return CreateTag_0(_client, tagName, cancellationToken);
     }
 
     /// <summary>
-    /// Create a New Tag Create a new Tag for customizing how you track your shipments
+    /// Create a New Tag Create a new tag for customizing how you track your shipments (deprecated - use POST /v1/tags instead)
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -137,7 +200,7 @@ public partial class ShipEngine
     /// <param name="tagName"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateTagResponseBody)</returns>
-    public async Task<CreateTagResponseBody> CreateTag(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default)
+    public async Task<CreateTagResponseBody> CreateTag_0(HttpClient methodClient, string tagName, CancellationToken cancellationToken = default)
     {
         // verify the required parameter 'tagName' is set
         if (tagName == null)
@@ -150,7 +213,7 @@ public partial class ShipEngine
 
         requestOptions.PathParameters.Add("tag_name", ClientUtils.ParameterToString(tagName)); // path parameter
 
-        requestOptions.Operation = "TagsApi.CreateTag";
+        requestOptions.Operation = "TagsApi.CreateTag_0";
 
         var result = await SendHttpRequestAsync<CreateTagResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
 

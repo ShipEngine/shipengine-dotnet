@@ -56,7 +56,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **calculateRatesRequestBody** | [**CalculateRatesRequestBody**](../../docs//models/CalculateRatesRequestBody.md) |  |  |
+| **calculateRatesRequestBody** | [**CalculateRatesRequestBody**](../../docs/\models/CalculateRatesRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -112,7 +112,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **compareBulkRatesRequestBody** | [**CompareBulkRatesRequestBody**](../../docs//models/CompareBulkRatesRequestBody.md) |  |  |
+| **compareBulkRatesRequestBody** | [**CompareBulkRatesRequestBody**](../../docs/\models/CompareBulkRatesRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -168,7 +168,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **estimateRatesRequestBody** | [**EstimateRatesRequestBody**](../../docs//models/EstimateRatesRequestBody.md) |  |  |
+| **estimateRatesRequestBody** | [**EstimateRatesRequestBody**](../../docs/\models/EstimateRatesRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type

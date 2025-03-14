@@ -3,6 +3,7 @@
 | Method | Description |
 |--------|-------------|
 | [**CreateTag**](TagsApi.md#createtag) | Create a New Tag |
+| [**CreateTag_0**](TagsApi.md#createtag_0) | Create a New Tag |
 | [**DeleteTag**](TagsApi.md#deletetag) | Delete Tag |
 | [**ListTags**](TagsApi.md#listtags) | Get Tags |
 | [**RenameTag**](TagsApi.md#renametag) | Update Tag Name |
@@ -10,14 +11,14 @@
 <a id="createtag"></a>
 # **CreateTag**
 ```csharp
-CreateTagResponseBody CreateTag (string tagName, CancellationToken cancellationToken = default)
+CreateTagResponseBody CreateTag (CreateTagRequestBody createTagRequestBody, CancellationToken cancellationToken = default)
 
-CreateTagResponseBody CreateTag (HttpClient methodClient, string tagName, CancellationToken cancellationToken = default)
+CreateTagResponseBody CreateTag (HttpClient methodClient, CreateTagRequestBody createTagRequestBody, CancellationToken cancellationToken = default)
 ```
 
 Create a New Tag
 
-Create a new Tag for customizing how you track your shipments
+Create a new tag for customizing how you track your shipments.
 
 ### Example
 ```csharp
@@ -33,17 +34,73 @@ namespace Example
         public static async Task Main()
         {
             var shipEngine = new ShipEngine("api_key");
-            var tagName = "tagName_example";
+            var createTagRequestBody = new CreateTagRequestBody();
 
             try
             {
                 // Create a New Tag
-                CreateTagResponseBody result = await shipEngine.CreateTag(tagName);
+                CreateTagResponseBody result = await shipEngine.CreateTag(createTagRequestBody);
                 Debug.WriteLine(result);
             }
             catch (ShipEngineException e)
             {
                 Debug.Print("Exception when calling TagsApi.CreateTag: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
+| **createTagRequestBody** | [**CreateTagRequestBody**](../../docs/\models/CreateTagRequestBody.md) |  |  |
+| **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
+
+### Return type
+
+[**CreateTagResponseBody**](../models/CreateTagResponseBody.md)
+
+<a id="createtag_0"></a>
+# **CreateTag_0**
+```csharp
+CreateTagResponseBody CreateTag_0 (string tagName, CancellationToken cancellationToken = default)
+
+CreateTagResponseBody CreateTag_0 (HttpClient methodClient, string tagName, CancellationToken cancellationToken = default)
+```
+
+Create a New Tag
+
+Create a new tag for customizing how you track your shipments (deprecated - use POST /v1/tags instead)
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using ShipEngineSDK;
+using ShipEngineSDK.Model;
+
+namespace Example
+{
+    public class CreateTag_0Example
+    {
+        public static async Task Main()
+        {
+            var shipEngine = new ShipEngine("api_key");
+            var tagName = "tagName_example";
+
+            try
+            {
+                // Create a New Tag
+                CreateTagResponseBody result = await shipEngine.CreateTag_0(tagName);
+                Debug.WriteLine(result);
+            }
+            catch (ShipEngineException e)
+            {
+                Debug.Print("Exception when calling TagsApi.CreateTag_0: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

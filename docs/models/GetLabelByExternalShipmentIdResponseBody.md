@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CarrierCode** | **string** | The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  | [optional] [readonly] 
 **CarrierId** | **string** | The unique ID of the [carrier account](https://www.shipengine.com/docs/carriers/setup/) that was used to create this label  | [optional] [readonly] 
 **ChargeEvent** | **LabelChargeEvent** | The label charge event.  | [optional] 
+**Confirmation** | **DeliveryConfirmation** | The type of delivery confirmation that is required for this shipment. | [optional] [readonly] 
 **CreatedAt** | **DateTimeOffset** | The date and time that the label was created in ShipEngine. | [optional] [readonly] 
 **DisplayScheme** | **DisplayScheme** | The display format that the label should be shown in. | [optional] 
 **FormDownload** | [**Link**](Link.md) | The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it.  | [optional] [readonly] 

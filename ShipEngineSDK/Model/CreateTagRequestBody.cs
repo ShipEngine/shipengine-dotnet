@@ -21,9 +21,9 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// Response body for creating tags
+/// A create tag request body
 /// </summary>
-public partial class CreateTagResponseBody
+public partial class CreateTagRequestBody
 {
 
     /// <summary>
@@ -46,19 +46,6 @@ public partial class CreateTagResponseBody
     [JsonPropertyName("color"), JsonPropertyOrder(2)]
     public string? Color { get; set; }
 
-    /// <summary>
-    /// An integer uniquely identifying a tag.
-    /// </summary>
-    /// <value>An integer uniquely identifying a tag.</value>
-    /// <remarks>
-    /// This should not be used for input as it will be ignored on serialization.
-    /// </remarks>
-    /// <example>
-    /// 8712
-    /// </example>
-    [JsonPropertyName("tag_id"), JsonInclude]
-    public int? TagId { get; set; }
-
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -67,11 +54,10 @@ public partial class CreateTagResponseBody
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class CreateTagResponseBody {\n");
+        sb.Append("class CreateTagRequestBody {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  Color: ").Append(Color).Append("\n");
-        sb.Append("  TagId: ").Append(TagId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -56,7 +56,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **addFundsToInsuranceRequestBody** | [**AddFundsToInsuranceRequestBody**](../../docs//models/AddFundsToInsuranceRequestBody.md) |  |  |
+| **addFundsToInsuranceRequestBody** | [**AddFundsToInsuranceRequestBody**](../../docs/\models/AddFundsToInsuranceRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -112,7 +112,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **connectInsurerRequestBody** | [**ConnectInsurerRequestBody**](../../docs//models/ConnectInsurerRequestBody.md) |  |  |
+| **connectInsurerRequestBody** | [**ConnectInsurerRequestBody**](../../docs/\models/ConnectInsurerRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type

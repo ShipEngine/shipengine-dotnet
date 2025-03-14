@@ -96,6 +96,8 @@ ShipEngineSDK/Model/CreateAndValidateShipment.cs
 ShipEngineSDK/Model/CreateBatchRequest.cs
 ShipEngineSDK/Model/CreateBatchRequestBody.cs
 ShipEngineSDK/Model/CreateBatchResponseBody.cs
+ShipEngineSDK/Model/CreateCombinedLabelDocumentRequestBody.cs
+ShipEngineSDK/Model/CreateCombinedLabelDocumentResponseBodyYaml.cs
 ShipEngineSDK/Model/CreateLabelFromRateRequestBody.cs
 ShipEngineSDK/Model/CreateLabelFromRateResponseBody.cs
 ShipEngineSDK/Model/CreateLabelFromShipmentRequestBody.cs
@@ -113,6 +115,7 @@ ShipEngineSDK/Model/CreateReturnLabelResponseBody.cs
 ShipEngineSDK/Model/CreateShipmentResponseBodyFields.cs
 ShipEngineSDK/Model/CreateShipmentsRequestBody.cs
 ShipEngineSDK/Model/CreateShipmentsResponseBody.cs
+ShipEngineSDK/Model/CreateTagRequestBody.cs
 ShipEngineSDK/Model/CreateTagResponseBody.cs
 ShipEngineSDK/Model/CreateWarehouseRequestBody.cs
 ShipEngineSDK/Model/CreateWarehouseResponseBody.cs
@@ -138,6 +141,7 @@ ShipEngineSDK/Model/ErrorSource.cs
 ShipEngineSDK/Model/ErrorType.cs
 ShipEngineSDK/Model/ErrorWithLabelIdResponseBody.cs
 ShipEngineSDK/Model/EstimateRatesRequestBody.cs
+ShipEngineSDK/Model/EstimatedImportCharges.cs
 ShipEngineSDK/Model/FedexAccountSettings.cs
 ShipEngineSDK/Model/FedexAccountSettingsRequestBody.cs
 ShipEngineSDK/Model/FedexPickupType.cs
@@ -424,6 +428,8 @@ docs/models/CreateAndValidateShipment.md
 docs/models/CreateBatchRequest.md
 docs/models/CreateBatchRequestBody.md
 docs/models/CreateBatchResponseBody.md
+docs/models/CreateCombinedLabelDocumentRequestBody.md
+docs/models/CreateCombinedLabelDocumentResponseBodyYaml.md
 docs/models/CreateLabelFromRateRequestBody.md
 docs/models/CreateLabelFromRateResponseBody.md
 docs/models/CreateLabelFromShipmentRequestBody.md
@@ -441,6 +447,7 @@ docs/models/CreateReturnLabelResponseBody.md
 docs/models/CreateShipmentResponseBodyFields.md
 docs/models/CreateShipmentsRequestBody.md
 docs/models/CreateShipmentsResponseBody.md
+docs/models/CreateTagRequestBody.md
 docs/models/CreateTagResponseBody.md
 docs/models/CreateWarehouseRequestBody.md
 docs/models/CreateWarehouseResponseBody.md
@@ -466,6 +473,7 @@ docs/models/ErrorSource.md
 docs/models/ErrorType.md
 docs/models/ErrorWithLabelIdResponseBody.md
 docs/models/EstimateRatesRequestBody.md
+docs/models/EstimatedImportCharges.md
 docs/models/FedexAccountSettings.md
 docs/models/FedexAccountSettingsRequestBody.md
 docs/models/FedexPickupType.md

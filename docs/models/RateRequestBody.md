@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **IsReturn** | **bool** | Indicate if it&#39;s a return shipment | [optional] 
 **PackageTypes** | **List&lt;string&gt;** |  | [optional] 
 **PreferredCurrency** | **string** | The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html  | [optional] 
+**RateType** | **string** | Indicates what type of rating to perform | [optional] 
 **ServiceCodes** | **List&lt;string&gt;** |  | [optional] 
 

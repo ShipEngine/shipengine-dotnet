@@ -2,6 +2,7 @@
 
 | Method | Description |
 |--------|-------------|
+| [**CreateCombinedLabelDocument**](LabelsApi.md#createcombinedlabeldocument) | Created Combined Label Document |
 | [**CreateLabel**](LabelsApi.md#createlabel) | Purchase Label |
 | [**CreateLabelFromRate**](LabelsApi.md#createlabelfromrate) | Purchase Label with Rate ID |
 | [**CreateLabelFromShipment**](LabelsApi.md#createlabelfromshipment) | Purchase Label with Shipment ID |
@@ -11,6 +12,62 @@
 | [**GetTrackingLogFromLabel**](LabelsApi.md#gettrackinglogfromlabel) | Get Label Tracking Information |
 | [**ListLabels**](LabelsApi.md#listlabels) | List labels |
 | [**VoidLabel**](LabelsApi.md#voidlabel) | Void a Label By ID |
+
+<a id="createcombinedlabeldocument"></a>
+# **CreateCombinedLabelDocument**
+```csharp
+CreateCombinedLabelDocumentResponseBodyYaml CreateCombinedLabelDocument (CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default)
+
+CreateCombinedLabelDocumentResponseBodyYaml CreateCombinedLabelDocument (HttpClient methodClient, CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default)
+```
+
+Created Combined Label Document
+
+Download a combined label file
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using ShipEngineSDK;
+using ShipEngineSDK.Model;
+
+namespace Example
+{
+    public class CreateCombinedLabelDocumentExample
+    {
+        public static async Task Main()
+        {
+            var shipEngine = new ShipEngine("api_key");
+            var createCombinedLabelDocumentRequestBody = new CreateCombinedLabelDocumentRequestBody();
+
+            try
+            {
+                // Created Combined Label Document
+                CreateCombinedLabelDocumentResponseBodyYaml result = await shipEngine.CreateCombinedLabelDocument(createCombinedLabelDocumentRequestBody);
+                Debug.WriteLine(result);
+            }
+            catch (ShipEngineException e)
+            {
+                Debug.Print("Exception when calling LabelsApi.CreateCombinedLabelDocument: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
+| **createCombinedLabelDocumentRequestBody** | [**CreateCombinedLabelDocumentRequestBody**](../../docs/\models/CreateCombinedLabelDocumentRequestBody.md) |  |  |
+| **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
+
+### Return type
+
+[**CreateCombinedLabelDocumentResponseBodyYaml**](../models/CreateCombinedLabelDocumentResponseBodyYaml.md)
 
 <a id="createlabel"></a>
 # **CreateLabel**
@@ -61,7 +118,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelRequestBody** | [**CreateLabelRequestBody**](../../docs//models/CreateLabelRequestBody.md) |  |  |
+| **createLabelRequestBody** | [**CreateLabelRequestBody**](../../docs/\models/CreateLabelRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -118,7 +175,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelFromRateRequestBody** | [**CreateLabelFromRateRequestBody**](../../docs//models/CreateLabelFromRateRequestBody.md) |  |  |
+| **createLabelFromRateRequestBody** | [**CreateLabelFromRateRequestBody**](../../docs/\models/CreateLabelFromRateRequestBody.md) |  |  |
 | **rateId** | **string** | Rate ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
@@ -176,7 +233,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelFromShipmentRequestBody** | [**CreateLabelFromShipmentRequestBody**](../../docs//models/CreateLabelFromShipmentRequestBody.md) |  |  |
+| **createLabelFromShipmentRequestBody** | [**CreateLabelFromShipmentRequestBody**](../../docs/\models/CreateLabelFromShipmentRequestBody.md) |  |  |
 | **shipmentId** | **string** | Shipment ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
@@ -234,7 +291,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createReturnLabelRequestBody** | [**CreateReturnLabelRequestBody**](../../docs//models/CreateReturnLabelRequestBody.md) |  |  |
+| **createReturnLabelRequestBody** | [**CreateReturnLabelRequestBody**](../../docs/\models/CreateReturnLabelRequestBody.md) |  |  |
 | **labelId** | **string** | Label ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 

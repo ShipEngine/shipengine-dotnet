@@ -6,4 +6,6 @@ Tags are arbitrary strings that you can use to categorize shipments.  For exampl
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The tag name. | 
+**Color** | **string** | A hex-coded string identifying the color of the tag. | [optional] 
+**TagId** | **int** | An integer uniquely identifying a tag. | [optional] [readonly] 
 

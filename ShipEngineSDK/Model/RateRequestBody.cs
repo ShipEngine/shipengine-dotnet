@@ -25,6 +25,72 @@ namespace ShipEngineSDK.Model;
 /// </summary>
 public partial class RateRequestBody
 {
+    /// <summary>
+    /// Indicates what type of rating to perform
+    /// </summary>
+    /// <value>Indicates what type of rating to perform</value>
+    [JsonConverter(typeof(RateTypeEnumJsonConverter))]
+    public class RateTypeEnum
+    {
+        private readonly string _value;
+
+        /// <summary>
+        /// Create a new instance of RateTypeEnum with a predefined value.
+        /// </summary>
+        internal RateTypeEnum()
+        {
+            _value = "check";
+        }
+
+        /// <summary>
+        /// Create a new instance of RateTypeEnum with a custom value.
+        /// </summary>
+        /// <param name="value">The value of the RateTypeEnum</param>
+        /// <remarks>
+        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+        /// </remarks>
+        public RateTypeEnum(string value)
+        {
+            _value = value;
+        }
+
+        /// <summary>
+        /// Enum Check for value: check
+        /// </summary>
+        public static RateTypeEnum Check { get; } = new("check");
+
+
+        /// <summary>
+        /// Enum Shipment for value: shipment
+        /// </summary>
+        public static RateTypeEnum Shipment { get; } = new("shipment");
+
+
+        /// <summary>
+        /// Enum Quick for value: quick
+        /// </summary>
+        public static RateTypeEnum Quick { get; } = new("quick");
+
+
+        /// <summary>
+        /// Get a string representation of the current value
+        /// </summary>
+        public override string ToString() => _value;
+    }
+
+    internal class RateTypeEnumJsonConverter : JsonConverter<RateTypeEnum>
+    {
+        public override RateTypeEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+            reader.TokenType == JsonTokenType.String ? new RateTypeEnum(reader.GetString()!) : null;
+
+        public override void Write(Utf8JsonWriter writer, RateTypeEnum value, JsonSerializerOptions options) =>
+            writer.WriteStringValue(value.ToString());
+
+        public override bool CanConvert(Type typeToConvert) =>
+            typeToConvert == typeof(RateTypeEnum);
+    }
+
 
     /// <summary>
     /// Array of carrier ids to get rates for
@@ -61,9 +127,16 @@ public partial class RateRequestBody
     public string? PreferredCurrency { get; set; }
 
     /// <summary>
+    /// Indicates what type of rating to perform
+    /// </summary>
+    /// <value>Indicates what type of rating to perform</value>
+    [JsonPropertyName("rate_type"), JsonPropertyOrder(6)]
+    public RateTypeEnum? RateType { get; set; }
+
+    /// <summary>
     /// Gets or Sets ServiceCodes
     /// </summary>
-    [JsonPropertyName("service_codes"), JsonPropertyOrder(6)]
+    [JsonPropertyName("service_codes"), JsonPropertyOrder(7)]
     public List<string>? ServiceCodes { get; set; }
 
 
@@ -81,6 +154,7 @@ public partial class RateRequestBody
         sb.Append("  IsReturn: ").Append(IsReturn).Append("\n");
         sb.Append("  PackageTypes: ").Append(PackageTypes).Append("\n");
         sb.Append("  PreferredCurrency: ").Append(PreferredCurrency).Append("\n");
+        sb.Append("  RateType: ").Append(RateType).Append("\n");
         sb.Append("  ServiceCodes: ").Append(ServiceCodes).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

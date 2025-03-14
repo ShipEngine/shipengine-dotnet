@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **TrackingStatus** | **TrackingStatus** | The current status of the package, such as &#x60;in_transit&#x60; or &#x60;delivered&#x60; | [readonly] 
 **Voided** | **bool** | Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/)  | [readonly] 
 **AlternativeIdentifiers** | [**List&lt;AlternativeIdentifier&gt;**](AlternativeIdentifier.md) | Additional information some carriers may provide by which to identify a given label in their system.   | [optional] [readonly] 
+**Confirmation** | **DeliveryConfirmation** | The type of delivery confirmation that is required for this shipment. | [optional] [readonly] 
 **FormDownload** | [**Link**](Link.md) | The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it.  | [readonly] 
 **InsuranceClaim** | [**Link**](Link.md) | The link to submit an insurance claim for the shipment.  This field is null if the shipment is not insured or if the insurance provider does not support online claim submission.  | [readonly] 
 **LabelDownloadType** | **LabelDownloadType** |  | [optional] 
