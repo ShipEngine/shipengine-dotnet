@@ -12770,8 +12770,10 @@
         "additionalProperties": false,
         "properties": {
           "tag_id": {
-            "type": "int",
-            "minLength": 1,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true,
+            "minimum": 1,
             "example": 8712,
             "description": "An integer uniquely identifying a tag."
           },
