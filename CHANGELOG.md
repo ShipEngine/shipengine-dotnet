@@ -223,3 +223,13 @@ Fixed handling of No Content responses
 ### Changed
 
 - Marked v2 methods as obsolete
+
+## 3.1.0
+
+### Added
+
+- Created new EstimatedImportCharges model for commercial invoices for international shipments.
+
+### Changed
+
+- Extend shipment endpoints to request, create, update and delete estimated import charges.

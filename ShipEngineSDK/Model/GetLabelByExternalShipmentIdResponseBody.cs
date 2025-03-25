@@ -83,6 +83,16 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     public LabelChargeEvent? ChargeEvent { get; set; }
 
     /// <summary>
+    /// The type of delivery confirmation that is required for this shipment.
+    /// </summary>
+    /// <value>The type of delivery confirmation that is required for this shipment.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("confirmation"), JsonInclude]
+    public DeliveryConfirmation? Confirmation { get; set; }
+
+    /// <summary>
     /// The date and time that the label was created in ShipEngine.
     /// </summary>
     /// <value>The date and time that the label was created in ShipEngine.</value>
@@ -99,7 +109,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// The display format that the label should be shown in.
     /// </summary>
     /// <value>The display format that the label should be shown in.</value>
-    [JsonPropertyName("display_scheme"), JsonPropertyOrder(7)]
+    [JsonPropertyName("display_scheme"), JsonPropertyOrder(8)]
     public DisplayScheme? DisplayScheme { get; set; }
 
     /// <summary>
@@ -146,7 +156,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. 
     /// </summary>
     /// <value>Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. </value>
-    [JsonPropertyName("is_return_label"), JsonPropertyOrder(12)]
+    [JsonPropertyName("is_return_label"), JsonPropertyOrder(13)]
     public bool? IsReturnLabel { get; set; }
 
     /// <summary>
@@ -161,14 +171,14 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// <summary>
     /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type"), JsonPropertyOrder(14), JsonWriteOnly]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(15), JsonWriteOnly]
     public LabelDownloadType? LabelDownloadType { get; set; }
 
     /// <summary>
     /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
     /// </summary>
     /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
-    [JsonPropertyName("label_format"), JsonPropertyOrder(15)]
+    [JsonPropertyName("label_format"), JsonPropertyOrder(16)]
     public LabelFormat? LabelFormat { get; set; }
 
     /// <summary>
@@ -191,14 +201,14 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id"), JsonPropertyOrder(17)]
+    [JsonPropertyName("label_image_id"), JsonPropertyOrder(18)]
     public string? LabelImageId { get; set; }
 
     /// <summary>
     /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
     /// </summary>
     /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-    [JsonPropertyName("label_layout"), JsonPropertyOrder(18)]
+    [JsonPropertyName("label_layout"), JsonPropertyOrder(19)]
     public LabelLayout? LabelLayout { get; set; }
 
     /// <summary>
@@ -208,7 +218,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(19), JsonWriteOnly]
+    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(20), JsonWriteOnly]
     public string? OutboundLabelId { get; set; }
 
     /// <summary>
@@ -268,7 +278,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
     /// </summary>
     /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-    [JsonPropertyName("rma_number"), JsonPropertyOrder(25)]
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(26)]
     public string? RmaNumber { get; set; }
 
     /// <summary>
@@ -301,7 +311,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// The shipment information used to generate the label
     /// </summary>
     /// <value>The shipment information used to generate the label</value>
-    [JsonPropertyName("shipment"), JsonPropertyOrder(28), JsonWriteOnly]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(29), JsonWriteOnly]
     public Shipment? Shipment { get; set; }
 
     /// <summary>
@@ -340,7 +350,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
     /// </summary>
     /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-    [JsonPropertyName("test_label"), JsonPropertyOrder(32), JsonWriteOnly, Obsolete]
+    [JsonPropertyName("test_label"), JsonPropertyOrder(33), JsonWriteOnly, Obsolete]
     public bool? TestLabel { get; set; }
 
     /// <summary>
@@ -392,7 +402,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
     /// <summary>
     /// Gets or Sets ValidateAddress
     /// </summary>
-    [JsonPropertyName("validate_address"), JsonPropertyOrder(37), JsonWriteOnly]
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(38), JsonWriteOnly]
     public ValidateAddress? ValidateAddress { get; set; }
 
     /// <summary>
@@ -433,6 +443,7 @@ public partial class GetLabelByExternalShipmentIdResponseBody
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
         sb.Append("  ChargeEvent: ").Append(ChargeEvent).Append("\n");
+        sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
         sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
         sb.Append("  DisplayScheme: ").Append(DisplayScheme).Append("\n");
         sb.Append("  FormDownload: ").Append(FormDownload).Append("\n");

@@ -290,6 +290,16 @@ public partial class CreateLabelResponseBody
     public List<AlternativeIdentifier>? AlternativeIdentifiers { get; set; }
 
     /// <summary>
+    /// The type of delivery confirmation that is required for this shipment.
+    /// </summary>
+    /// <value>The type of delivery confirmation that is required for this shipment.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("confirmation"), JsonInclude]
+    public DeliveryConfirmation? Confirmation { get; set; }
+
+    /// <summary>
     /// The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it. 
     /// </summary>
     /// <value>The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it. </value>
@@ -312,7 +322,7 @@ public partial class CreateLabelResponseBody
     /// <summary>
     /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type"), JsonPropertyOrder(28), JsonWriteOnly]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(29), JsonWriteOnly]
     public LabelDownloadType? LabelDownloadType { get; set; }
 
     /// <summary>
@@ -322,7 +332,7 @@ public partial class CreateLabelResponseBody
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id"), JsonPropertyOrder(29)]
+    [JsonPropertyName("label_image_id"), JsonPropertyOrder(30)]
     public required string LabelImageId { get; set; }
 
     /// <summary>
@@ -332,7 +342,7 @@ public partial class CreateLabelResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(30), JsonWriteOnly]
+    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(31), JsonWriteOnly]
     public string? OutboundLabelId { get; set; }
 
     /// <summary>
@@ -369,21 +379,21 @@ public partial class CreateLabelResponseBody
     /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
     /// </summary>
     /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-    [JsonPropertyName("rma_number"), JsonPropertyOrder(34)]
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(35)]
     public required string RmaNumber { get; set; }
 
     /// <summary>
     /// The shipment information used to generate the label
     /// </summary>
     /// <value>The shipment information used to generate the label</value>
-    [JsonPropertyName("shipment"), JsonPropertyOrder(35), JsonWriteOnly]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(36), JsonWriteOnly]
     public Shipment? Shipment { get; set; }
 
     /// <summary>
     /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
     /// </summary>
     /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-    [JsonPropertyName("test_label"), JsonPropertyOrder(36), JsonWriteOnly, Obsolete]
+    [JsonPropertyName("test_label"), JsonPropertyOrder(37), JsonWriteOnly, Obsolete]
     public bool? TestLabel { get; set; }
 
     /// <summary>
@@ -402,7 +412,7 @@ public partial class CreateLabelResponseBody
     /// <summary>
     /// Gets or Sets ValidateAddress
     /// </summary>
-    [JsonPropertyName("validate_address"), JsonPropertyOrder(38), JsonWriteOnly]
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(39), JsonWriteOnly]
     public ValidateAddress? ValidateAddress { get; set; }
 
     /// <summary>
@@ -453,6 +463,7 @@ public partial class CreateLabelResponseBody
         sb.Append("  TrackingStatus: ").Append(TrackingStatus).Append("\n");
         sb.Append("  Voided: ").Append(Voided).Append("\n");
         sb.Append("  AlternativeIdentifiers: ").Append(AlternativeIdentifiers).Append("\n");
+        sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
         sb.Append("  FormDownload: ").Append(FormDownload).Append("\n");
         sb.Append("  InsuranceClaim: ").Append(InsuranceClaim).Append("\n");
         sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");

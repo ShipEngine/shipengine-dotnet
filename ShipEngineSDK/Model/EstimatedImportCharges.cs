@@ -21,43 +21,24 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// Response body for creating tags
+/// Estimated import charges for commercial invoices for international shipments. 
 /// </summary>
-public partial class CreateTagResponseBody
+public partial class EstimatedImportCharges
 {
 
     /// <summary>
-    /// The tag name.
+    /// Estimated import duties.
     /// </summary>
-    /// <value>The tag name.</value>
-    /// <example>
-    /// Fragile
-    /// </example>
-    [JsonPropertyName("name"), JsonPropertyOrder(1)]
-    public required string Name { get; set; }
+    /// <value>Estimated import duties.</value>
+    [JsonPropertyName("duties"), JsonPropertyOrder(1)]
+    public MonetaryValue? Duties { get; set; }
 
     /// <summary>
-    /// A hex-coded string identifying the color of the tag.
+    /// Estimated import taxes.
     /// </summary>
-    /// <value>A hex-coded string identifying the color of the tag.</value>
-    /// <example>
-    /// #FF0000
-    /// </example>
-    [JsonPropertyName("color"), JsonPropertyOrder(2)]
-    public string? Color { get; set; }
-
-    /// <summary>
-    /// An integer uniquely identifying a tag.
-    /// </summary>
-    /// <value>An integer uniquely identifying a tag.</value>
-    /// <remarks>
-    /// This should not be used for input as it will be ignored on serialization.
-    /// </remarks>
-    /// <example>
-    /// 8712
-    /// </example>
-    [JsonPropertyName("tag_id"), JsonInclude]
-    public int? TagId { get; set; }
+    /// <value>Estimated import taxes.</value>
+    [JsonPropertyName("taxes"), JsonPropertyOrder(2)]
+    public MonetaryValue? Taxes { get; set; }
 
 
     /// <summary>
@@ -67,11 +48,10 @@ public partial class CreateTagResponseBody
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class CreateTagResponseBody {\n");
+        sb.Append("class EstimatedImportCharges {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  Name: ").Append(Name).Append("\n");
-        sb.Append("  Color: ").Append(Color).Append("\n");
-        sb.Append("  TagId: ").Append(TagId).Append("\n");
+        sb.Append("  Duties: ").Append(Duties).Append("\n");
+        sb.Append("  Taxes: ").Append(Taxes).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

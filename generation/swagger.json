@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "ShipEngine API",
-    "version": "1.1.202501091801",
+    "version": "1.1.202503131403",
     "termsOfService": "https://www.shipengine.com/terms-of-service/",
     "x-logo": {
       "url": "https://shipengine.github.io/img/shipengine-logo-square.png",
@@ -1783,6 +1783,49 @@
           },
           "400": {
             "$ref": "#/components/responses/400_error_response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500_error_response"
+          }
+        }
+      }
+    },
+    "/v1/documents/combined_labels": {
+      "summary": "Created Combined Label Document",
+      "description": "Download a combined label file",
+      "post": {
+        "summary": "Created Combined Label Document",
+        "description": "Download a combined label file",
+        "tags": [
+          "labels"
+        ],
+        "operationId": "create_combined_label_document",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_combined_label_document_request_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The requested object creation was a success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/create_combined_label_document_response_body.yaml"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400_error_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404_error_response"
           },
           "500": {
             "$ref": "#/components/responses/500_error_response"
@@ -4885,6 +4928,45 @@
             "$ref": "#/components/responses/500_error_response"
           }
         }
+      },
+      "post": {
+        "summary": "Create a New Tag",
+        "description": "Create a new tag for customizing how you track your shipments.",
+        "tags": [
+          "tags"
+        ],
+        "operationId": "create_tag",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_tag_request_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The requested object creation was a success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/create_tag_response_body"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400_error_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404_error_response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500_error_response"
+          }
+        }
       }
     },
     "/v1/tags/{tag_name}": {
@@ -4902,7 +4984,7 @@
       ],
       "post": {
         "summary": "Create a New Tag",
-        "description": "Create a new Tag for customizing how you track your shipments",
+        "description": "Create a new tag for customizing how you track your shipments (deprecated - use POST /v1/tags instead)",
         "tags": [
           "tags"
         ],
@@ -5665,9 +5747,7 @@
           "validation",
           "security",
           "system",
-          "integrations",
-          "wallet",
-          "funding_sources"
+          "integrations"
         ],
         "description": "The type of error\n"
       },
@@ -9611,6 +9691,56 @@
         "title": "connect_insurer_response_body",
         "type": "object"
       },
+      "create_combined_label_document_request_body": {
+        "title": "create_combined_label_document_request_body",
+        "type": "object",
+        "description": "A create combined label document request body",
+        "additionalProperties": false,
+        "properties": {
+          "label_ids": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/se_id"
+                }
+              ]
+            },
+            "description": "The list of up to 30 label ids to include in the combined label document.\nNote that to avoid response size limits, you should only expect to be able to combine 30 single page labels similar in size to that of USPS labels.\n"
+          },
+          "label_format": {
+            "enum": [
+              "pdf"
+            ],
+            "type": "string",
+            "description": "The file format for the combined label document; note that currently only `\"pdf\"` is supported."
+          },
+          "label_download_type": {
+            "enum": [
+              "inline"
+            ],
+            "type": "string",
+            "description": "The download type for the combined label document; note that currently only `\"inline\"` is supported."
+          }
+        }
+      },
+      "create_combined_label_document_response_body.yaml": {
+        "title": "create_combined_label_document_response_body.yaml",
+        "type": "object",
+        "description": "A create combined label document response body",
+        "additionalProperties": false,
+        "properties": {
+          "label_download": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_download"
+              }
+            ],
+            "description": "The download for the combined label document"
+          }
+        }
+      },
       "download_file_pdf_response_body": {
         "title": "download_file_pdf_response_body",
         "type": "string",
@@ -10160,6 +10290,15 @@
                     }
                   ],
                   "description": "The current status of the package, such as `in_transit` or `delivered`"
+                },
+                "confirmation": {
+                  "readOnly": true,
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/delivery_confirmation"
+                    }
+                  ],
+                  "description": "The type of delivery confirmation that is required for this shipment."
                 },
                 "label_download": {
                   "allOf": [
@@ -10969,6 +11108,14 @@
             ],
             "description": "Discount for shipment."
           },
+          "estimated_import_charges": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/estimated_import_charges"
+              }
+            ],
+            "description": "Estimated import charges for commercial invoices for international shipments."
+          },
           "other_charge": {
             "allOf": [
               {
@@ -10980,6 +11127,30 @@
           "other_charge_description": {
             "type": "string",
             "description": "Description for the other charge (if provided)."
+          }
+        }
+      },
+      "estimated_import_charges": {
+        "title": "estimated_import_charges",
+        "type": "object",
+        "description": "Estimated import charges for commercial invoices for international shipments.\n",
+        "additionalProperties": false,
+        "properties": {
+          "taxes": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "description": "Estimated import taxes."
+          },
+          "duties": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "description": "Estimated import duties."
           }
         }
       },
@@ -12226,6 +12397,15 @@
             ],
             "description": "The current status of the package, such as `in_transit` or `delivered`"
           },
+          "confirmation": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/delivery_confirmation"
+              }
+            ],
+            "description": "The type of delivery confirmation that is required for this shipment."
+          },
           "label_download": {
             "allOf": [
               {
@@ -12589,11 +12769,25 @@
         ],
         "additionalProperties": false,
         "properties": {
+          "tag_id": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true,
+            "minimum": 1,
+            "example": 8712,
+            "description": "An integer uniquely identifying a tag."
+          },
           "name": {
             "type": "string",
             "minLength": 1,
             "example": "Fragile",
             "description": "The tag name."
+          },
+          "color": {
+            "type": "string",
+            "minLength": 1,
+            "example": "#FF0000",
+            "description": "A hex-coded string identifying the color of the tag."
           }
         }
       },
@@ -14634,6 +14828,15 @@
           "is_return": {
             "type": "boolean",
             "description": "Indicate if it's a return shipment"
+          },
+          "rate_type": {
+            "type": "string",
+            "enum": [
+              "check",
+              "shipment",
+              "quick"
+            ],
+            "description": "Indicates what type of rating to perform"
           }
         }
       },
@@ -16671,6 +16874,29 @@
               ]
             },
             "description": "The array of tags returned by the API call"
+          }
+        }
+      },
+      "create_tag_request_body": {
+        "title": "create_tag_request_body",
+        "type": "object",
+        "description": "A create tag request body",
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Fragile",
+            "description": "The tag name."
+          },
+          "color": {
+            "type": "string",
+            "minLength": 1,
+            "example": "#FF0000",
+            "description": "A hex-coded string identifying the color of the tag."
           }
         }
       },
