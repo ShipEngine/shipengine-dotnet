@@ -62,7 +62,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createCombinedLabelDocumentRequestBody** | [**CreateCombinedLabelDocumentRequestBody**](../../docs/\models/CreateCombinedLabelDocumentRequestBody.md) |  |  |
+| **createCombinedLabelDocumentRequestBody** | [**CreateCombinedLabelDocumentRequestBody**](../../docs//models/CreateCombinedLabelDocumentRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -118,7 +118,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelRequestBody** | [**CreateLabelRequestBody**](../../docs/\models/CreateLabelRequestBody.md) |  |  |
+| **createLabelRequestBody** | [**CreateLabelRequestBody**](../../docs//models/CreateLabelRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -175,7 +175,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelFromRateRequestBody** | [**CreateLabelFromRateRequestBody**](../../docs/\models/CreateLabelFromRateRequestBody.md) |  |  |
+| **createLabelFromRateRequestBody** | [**CreateLabelFromRateRequestBody**](../../docs//models/CreateLabelFromRateRequestBody.md) |  |  |
 | **rateId** | **string** | Rate ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
@@ -233,7 +233,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createLabelFromShipmentRequestBody** | [**CreateLabelFromShipmentRequestBody**](../../docs/\models/CreateLabelFromShipmentRequestBody.md) |  |  |
+| **createLabelFromShipmentRequestBody** | [**CreateLabelFromShipmentRequestBody**](../../docs//models/CreateLabelFromShipmentRequestBody.md) |  |  |
 | **shipmentId** | **string** | Shipment ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
@@ -291,7 +291,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createReturnLabelRequestBody** | [**CreateReturnLabelRequestBody**](../../docs/\models/CreateReturnLabelRequestBody.md) |  |  |
+| **createReturnLabelRequestBody** | [**CreateReturnLabelRequestBody**](../../docs//models/CreateReturnLabelRequestBody.md) |  |  |
 | **labelId** | **string** | Label ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 

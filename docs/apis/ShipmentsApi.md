@@ -120,7 +120,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createShipmentsRequestBody** | [**CreateShipmentsRequestBody**](../../docs/\models/CreateShipmentsRequestBody.md) |  |  |
+| **createShipmentsRequestBody** | [**CreateShipmentsRequestBody**](../../docs//models/CreateShipmentsRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -424,7 +424,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **parseShipmentRequestBody** | [**ParseShipmentRequestBody**](../../docs/\models/ParseShipmentRequestBody.md) | The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use.  |  |
+| **parseShipmentRequestBody** | [**ParseShipmentRequestBody**](../../docs//models/ParseShipmentRequestBody.md) | The only required field is &#x60;text&#x60;, which is the text to be parsed. You can optionally also provide a &#x60;shipment&#x60; containing any already-known values. For example, you probably already know the &#x60;ship_from&#x60; address, and you may also already know what carrier and service you want to use.  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -535,7 +535,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateShipmentsTagsRequestBody** | [**UpdateShipmentsTagsRequestBody**](../../docs/\models/UpdateShipmentsTagsRequestBody.md) |  |  |
+| **updateShipmentsTagsRequestBody** | [**UpdateShipmentsTagsRequestBody**](../../docs//models/UpdateShipmentsTagsRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -708,7 +708,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateShipmentRequestBody** | [**UpdateShipmentRequestBody**](../../docs/\models/UpdateShipmentRequestBody.md) |  |  |
+| **updateShipmentRequestBody** | [**UpdateShipmentRequestBody**](../../docs//models/UpdateShipmentRequestBody.md) |  |  |
 | **shipmentId** | **string** | Shipment ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 

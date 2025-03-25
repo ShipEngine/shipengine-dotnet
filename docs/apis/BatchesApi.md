@@ -63,7 +63,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **addToBatchRequestBody** | [**AddToBatchRequestBody**](../../docs/\models/AddToBatchRequestBody.md) |  |  |
+| **addToBatchRequestBody** | [**AddToBatchRequestBody**](../../docs//models/AddToBatchRequestBody.md) |  |  |
 | **batchId** | **string** | Batch ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
@@ -120,7 +120,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createBatchRequest** | [**CreateBatchRequest**](../../docs/\models/CreateBatchRequest.md) |  |  |
+| **createBatchRequest** | [**CreateBatchRequest**](../../docs//models/CreateBatchRequest.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -471,7 +471,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **processBatchRequestBody** | [**ProcessBatchRequestBody**](../../docs/\models/ProcessBatchRequestBody.md) |  |  |
+| **processBatchRequestBody** | [**ProcessBatchRequestBody**](../../docs//models/ProcessBatchRequestBody.md) |  |  |
 | **batchId** | **string** | Batch ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
@@ -529,7 +529,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **removeFromBatchRequestBody** | [**RemoveFromBatchRequestBody**](../../docs/\models/RemoveFromBatchRequestBody.md) |  |  |
+| **removeFromBatchRequestBody** | [**RemoveFromBatchRequestBody**](../../docs//models/RemoveFromBatchRequestBody.md) |  |  |
 | **batchId** | **string** | Batch ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 

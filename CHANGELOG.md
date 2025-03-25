@@ -224,7 +224,7 @@ Fixed handling of No Content responses
 
 - Marked v2 methods as obsolete
 
-## 3.0.1
+## 3.1.0
 
 ### Added
 

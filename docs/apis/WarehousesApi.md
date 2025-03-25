@@ -58,7 +58,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **createWarehouseRequestBody** | [**CreateWarehouseRequestBody**](../../docs/\models/CreateWarehouseRequestBody.md) |  |  |
+| **createWarehouseRequestBody** | [**CreateWarehouseRequestBody**](../../docs//models/CreateWarehouseRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -281,7 +281,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateWarehouseRequestBody** | [**UpdateWarehouseRequestBody**](../../docs/\models/UpdateWarehouseRequestBody.md) |  |  |
+| **updateWarehouseRequestBody** | [**UpdateWarehouseRequestBody**](../../docs//models/UpdateWarehouseRequestBody.md) |  |  |
 | **warehouseId** | **string** | Warehouse ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
@@ -339,7 +339,7 @@ namespace Example
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
-| **updateWarehouseSettingsRequestBody** | [**UpdateWarehouseSettingsRequestBody**](../../docs/\models/UpdateWarehouseSettingsRequestBody.md) |  |  |
+| **updateWarehouseSettingsRequestBody** | [**UpdateWarehouseSettingsRequestBody**](../../docs//models/UpdateWarehouseSettingsRequestBody.md) |  |  |
 | **warehouseId** | **string** | Warehouse ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 

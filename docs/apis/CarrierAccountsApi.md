@@ -58,7 +58,7 @@ namespace Example
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **carrierName** | **CarrierName** | The carrier name, such as &#x60;stamps_com&#x60;, &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;. |  |
-| **connectCarrierRequestBody** | [**ConnectCarrierRequestBody**](../../docs/\models/ConnectCarrierRequestBody.md) |  |  |
+| **connectCarrierRequestBody** | [**ConnectCarrierRequestBody**](../../docs//models/ConnectCarrierRequestBody.md) |  |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -233,7 +233,7 @@ namespace Example
 |------|------|-------------|-------|
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **carrierName** | **CarrierNameWithSettings** | The carrier name, such as &#x60;ups&#x60;, &#x60;fedex&#x60;, or &#x60;dhl_express&#x60;. |  |
-| **updateCarrierSettingsRequestBody** | [**UpdateCarrierSettingsRequestBody**](../../docs/\models/UpdateCarrierSettingsRequestBody.md) |  |  |
+| **updateCarrierSettingsRequestBody** | [**UpdateCarrierSettingsRequestBody**](../../docs//models/UpdateCarrierSettingsRequestBody.md) |  |  |
 | **carrierId** | **string** | Carrier ID |  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
