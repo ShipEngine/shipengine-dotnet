@@ -58,10 +58,24 @@ public partial class ListLabelsResponseBody
         public string? ShipmentId { get; set; }
 
         /// <summary>
+        /// A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment. 
+        /// </summary>
+        /// <value>A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment. </value>
+        [JsonPropertyName("external_shipment_id"), JsonInclude]
+        public string? ExternalShipmentId { get; set; }
+
+        /// <summary>
+        /// ID that the Order Source assigne
+        /// </summary>
+        /// <value>ID that the Order Source assigne</value>
+        [JsonPropertyName("external_order_id"), JsonInclude]
+        public string? ExternalOrderId { get; set; }
+
+        /// <summary>
         /// The shipment information used to generate the label
         /// </summary>
         /// <value>The shipment information used to generate the label</value>
-        [JsonPropertyName("shipment"), JsonPropertyOrder(4), JsonWriteOnly]
+        [JsonPropertyName("shipment"), JsonPropertyOrder(6), JsonWriteOnly]
         public Shipment? Shipment { get; set; }
 
         /// <summary>
@@ -126,14 +140,14 @@ public partial class ListLabelsResponseBody
         /// Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. 
         /// </summary>
         /// <value>Indicates whether this is a return label.  You may also want to set the &#x60;rma_number&#x60; so you know what is being returned. </value>
-        [JsonPropertyName("is_return_label"), JsonPropertyOrder(12)]
+        [JsonPropertyName("is_return_label"), JsonPropertyOrder(14)]
         public bool? IsReturnLabel { get; set; }
 
         /// <summary>
         /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
         /// </summary>
         /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-        [JsonPropertyName("rma_number"), JsonPropertyOrder(13)]
+        [JsonPropertyName("rma_number"), JsonPropertyOrder(15)]
         public string? RmaNumber { get; set; }
 
         /// <summary>
@@ -167,7 +181,7 @@ public partial class ListLabelsResponseBody
         /// The label charge event. 
         /// </summary>
         /// <value>The label charge event. </value>
-        [JsonPropertyName("charge_event"), JsonPropertyOrder(17)]
+        [JsonPropertyName("charge_event"), JsonPropertyOrder(19)]
         public LabelChargeEvent? ChargeEvent { get; set; }
 
         /// <summary>
@@ -177,7 +191,7 @@ public partial class ListLabelsResponseBody
         /// <example>
         /// se-28529731
         /// </example>
-        [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(18), JsonWriteOnly]
+        [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(20), JsonWriteOnly]
         public string? OutboundLabelId { get; set; }
 
         /// <summary>
@@ -194,7 +208,7 @@ public partial class ListLabelsResponseBody
         /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
         /// </summary>
         /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-        [JsonPropertyName("test_label"), JsonPropertyOrder(20), JsonWriteOnly, Obsolete]
+        [JsonPropertyName("test_label"), JsonPropertyOrder(22), JsonWriteOnly, Obsolete]
         public bool? TestLabel { get; set; }
 
         /// <summary>
@@ -210,7 +224,7 @@ public partial class ListLabelsResponseBody
         /// <summary>
         /// Gets or Sets ValidateAddress
         /// </summary>
-        [JsonPropertyName("validate_address"), JsonPropertyOrder(22), JsonWriteOnly]
+        [JsonPropertyName("validate_address"), JsonPropertyOrder(24), JsonWriteOnly]
         public ValidateAddress? ValidateAddress { get; set; }
 
         /// <summary>
@@ -233,28 +247,28 @@ public partial class ListLabelsResponseBody
         /// <summary>
         /// Gets or Sets LabelDownloadType
         /// </summary>
-        [JsonPropertyName("label_download_type"), JsonPropertyOrder(25), JsonWriteOnly]
+        [JsonPropertyName("label_download_type"), JsonPropertyOrder(27), JsonWriteOnly]
         public LabelDownloadType? LabelDownloadType { get; set; }
 
         /// <summary>
         /// The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. 
         /// </summary>
         /// <value>The file format that you want the label to be in.  We recommend &#x60;pdf&#x60; format because it is supported by all carriers, whereas some carriers do not support the &#x60;png&#x60; or &#x60;zpl&#x60; formats. </value>
-        [JsonPropertyName("label_format"), JsonPropertyOrder(26)]
+        [JsonPropertyName("label_format"), JsonPropertyOrder(28)]
         public LabelFormat? LabelFormat { get; set; }
 
         /// <summary>
         /// The display format that the label should be shown in.
         /// </summary>
         /// <value>The display format that the label should be shown in.</value>
-        [JsonPropertyName("display_scheme"), JsonPropertyOrder(27)]
+        [JsonPropertyName("display_scheme"), JsonPropertyOrder(29)]
         public DisplayScheme? DisplayScheme { get; set; }
 
         /// <summary>
         /// The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. 
         /// </summary>
         /// <value>The layout (size) that you want the label to be in.  The &#x60;label_format&#x60; determines which sizes are allowed.  &#x60;4x6&#x60; is supported for all label formats, whereas &#x60;letter&#x60; (8.5\&quot; x 11\&quot;) is only supported for &#x60;pdf&#x60; format. </value>
-        [JsonPropertyName("label_layout"), JsonPropertyOrder(28)]
+        [JsonPropertyName("label_layout"), JsonPropertyOrder(30)]
         public LabelLayout? LabelLayout { get; set; }
 
         /// <summary>
@@ -271,7 +285,7 @@ public partial class ListLabelsResponseBody
         /// <example>
         /// img_DtBXupDBxREpHnwEXhTfgK
         /// </example>
-        [JsonPropertyName("label_image_id"), JsonPropertyOrder(30)]
+        [JsonPropertyName("label_image_id"), JsonPropertyOrder(32)]
         public string? LabelImageId { get; set; }
 
         /// <summary>
@@ -292,6 +306,13 @@ public partial class ListLabelsResponseBody
         public TrackingStatus? TrackingStatus { get; set; }
 
         /// <summary>
+        /// The type of delivery confirmation that is required for this shipment.
+        /// </summary>
+        /// <value>The type of delivery confirmation that is required for this shipment.</value>
+        [JsonPropertyName("confirmation"), JsonInclude]
+        public DeliveryConfirmation? Confirmation { get; set; }
+
+        /// <summary>
         /// Gets or Sets LabelDownload
         /// </summary>
         [JsonPropertyName("label_download"), JsonInclude]
@@ -303,6 +324,13 @@ public partial class ListLabelsResponseBody
         /// <value>The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it. </value>
         [JsonPropertyName("form_download"), JsonInclude]
         public Link? FormDownload { get; set; }
+
+        /// <summary>
+        /// The QR code download for the package
+        /// </summary>
+        /// <value>The QR code download for the package</value>
+        [JsonPropertyName("qr_code_download"), JsonInclude]
+        public OptionalLink? QrCodeDownload { get; set; }
 
         /// <summary>
         /// The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;. 
@@ -341,6 +369,13 @@ public partial class ListLabelsResponseBody
         /// </example>
         [JsonPropertyName("tracking_url"), JsonInclude]
         public string? TrackingUrl { get; set; }
+
+        /// <summary>
+        /// The recipient&#39;s mailing address
+        /// </summary>
+        /// <value>The recipient&#39;s mailing address</value>
+        [JsonPropertyName("ship_to"), JsonInclude]
+        public ShippingAddressTo? ShipTo { get; set; }
 
     }
     /// <summary>

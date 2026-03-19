@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **DeliveryDays** | **int** | The number of days estimated for delivery, this will show the _actual_ delivery time if for example, the package gets shipped on a Friday  | [optional] [readonly] 
 **EstimatedDeliveryDate** | **DateTimeOffset** | An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string that represents a date, but not a specific time.  The value _may_ contain a time component, but it will be set to &#x60;00:00:00&#x60; UTC by ShipEngine.  | [optional] [readonly] 
 **PackageType** | **string** | package type that this rate was estimated for | [readonly] 
+**RateAttributes** | [**List&lt;RateAttributes&gt;**](RateAttributes.md) | Optional attributes that indicate the most profitable rates | [optional] 
 **ShipDate** | **DateTimeOffset** | ship date | [optional] [readonly] 
 **TaxAmount** | [**MonetaryValue**](MonetaryValue.md) | Tariff and additional taxes associated with an international shipment. | [optional] [readonly] 
 **Zone** | **int** | Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of custom zones that vary depending upon the ship_to and ship_from location  | [readonly] 

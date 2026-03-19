@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "ShipEngine API",
-    "version": "1.1.202501091801",
+    "version": "1.1.202603171403",
     "termsOfService": "https://www.shipengine.com/terms-of-service/",
     "x-logo": {
       "url": "https://shipengine.github.io/img/shipengine-logo-square.png",
@@ -729,6 +729,50 @@
               "type": "string"
             },
             "description": "Batch Number"
+          },
+          {
+            "description": "Only return batches that were created on or after a specific date/time",
+            "name": "created_at_start",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2019-03-12T19:24:13.657Z"
+          },
+          {
+            "description": "Only return batches that were created on or before a specific date/time",
+            "name": "created_at_end",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2019-03-12T19:24:13.657Z"
+          },
+          {
+            "description": "Only return batches that were processed on or after a specific date/time",
+            "name": "processed_at_start",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2019-03-12T19:24:13.657Z"
+          },
+          {
+            "description": "Only return batches that were processed on or before a specific date/time",
+            "name": "processed_at_end",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": "2019-03-12T19:24:13.657Z"
           },
           {
             "name": "sort_by",
@@ -1790,6 +1834,49 @@
         }
       }
     },
+    "/v1/documents/combined_labels": {
+      "summary": "Created Combined Label Document",
+      "description": "Download a combined label file",
+      "post": {
+        "summary": "Created Combined Label Document",
+        "description": "Download a combined label file",
+        "tags": [
+          "labels"
+        ],
+        "operationId": "create_combined_label_document",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_combined_label_document_request_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The requested object creation was a success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/create_combined_label_document_response_body.yaml"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400_error_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404_error_response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500_error_response"
+          }
+        }
+      }
+    },
     "/v1/downloads/{dir}/{subdir}/{filename}": {
       "summary": "File Download",
       "description": "This endpoint is used to download forms that are generated in the various pdf, png, zpl formats\nsuch as labels and batches\n",
@@ -1909,7 +1996,7 @@
       },
       "post": {
         "summary": "Create a Webhook",
-        "description": "Create a webook for specific events in the environment.",
+        "description": "Create a webhook for specific events in the environment.",
         "tags": [
           "webhooks"
         ],
@@ -2295,7 +2382,8 @@
               "type": "string",
               "enum": [
                 "modified_at",
-                "created_at"
+                "created_at",
+                "voided_at"
               ],
               "default": "created_at"
             },
@@ -2470,6 +2558,162 @@
         }
       }
     },
+    "/v1/labels/rate_shopper_id/{rate_shopper_id}": {
+      "summary": "Purchase Label from Rate Shopper",
+      "description": "Purchase and print a label using Rate Shopper to automatically select carrier and service",
+      "parameters": [
+        {
+          "name": "rate_shopper_id",
+          "in": "path",
+          "required": true,
+          "description": "The rate selection strategy for the Rate Shopper. This determines which carrier\nand service will be automatically selected from your wallet carriers based on\nthe rates returned for the shipment.\n",
+          "schema": {
+            "$ref": "#/components/schemas/rate_attributes"
+          }
+        }
+      ],
+      "post": {
+        "summary": "Purchase Label from Rate Shopper",
+        "description": "Purchase and print a shipping label using the Rate Shopper. The Rate Shopper\nautomatically selects the optimal carrier and service from your wallet carriers\nbased on your specified rate selection strategy (cheapest, fastest, or best_value).\nFor more information about this in the [rates documentation](https://www.shipengine.com/docs/rates/#about-the-response).\n",
+        "tags": [
+          "labels"
+        ],
+        "operationId": "create_label_from_rate_shopper",
+        "parameters": [
+          {
+            "name": "rate_shopper_id",
+            "in": "path",
+            "required": true,
+            "description": "The rate selection strategy for the Rate Shopper. This determines which carrier\nand service will be automatically selected from your wallet carriers based on\nthe rates returned for the shipment.\n",
+            "schema": {
+              "$ref": "#/components/schemas/rate_attributes"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Label creation details with inline shipment",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_label_rate_shopper_request_body"
+              },
+              "examples": {
+                "domestic_shipment": {
+                  "summary": "Domestic shipment with Rate Shopper",
+                  "value": {
+                    "shipment": {
+                      "ship_to": {
+                        "name": "John Doe",
+                        "company_name": "Example Corp",
+                        "address_line1": "123 Main St",
+                        "city_locality": "Austin",
+                        "state_province": "TX",
+                        "postal_code": "78701",
+                        "country_code": "US",
+                        "phone": "512-555-1234"
+                      },
+                      "ship_from": {
+                        "name": "Warehouse A",
+                        "address_line1": "456 Warehouse Blvd",
+                        "city_locality": "Dallas",
+                        "state_province": "TX",
+                        "postal_code": "75001",
+                        "country_code": "US"
+                      },
+                      "packages": [
+                        {
+                          "weight": {
+                            "value": 5,
+                            "unit": "pound"
+                          },
+                          "dimensions": {
+                            "length": 12,
+                            "width": 8,
+                            "height": 6,
+                            "unit": "inch"
+                          }
+                        }
+                      ]
+                    },
+                    "label_format": "pdf",
+                    "label_layout": "4x6"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Label created successfully using Rate Shopper. The response includes the\nselected carrier_id, service_code, and rate_shopper_id that was used.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/create_label_rate_shopper_response_body"
+                },
+                "examples": {
+                  "successful_label": {
+                    "summary": "Successfully created label",
+                    "value": {
+                      "label_id": "se-123456",
+                      "status": "completed",
+                      "shipment_id": "se-789012",
+                      "ship_date": "2026-02-25T00:00:00Z",
+                      "created_at": "2026-02-25T10:30:00Z",
+                      "shipment_cost": {
+                        "currency": "usd",
+                        "amount": 7.33
+                      },
+                      "insurance_cost": {
+                        "currency": "usd",
+                        "amount": 0
+                      },
+                      "tracking_number": "1Z999AA10123456784",
+                      "is_return_label": false,
+                      "rma_number": null,
+                      "is_international": false,
+                      "batch_id": "",
+                      "carrier_id": "se-456789",
+                      "service_code": "usps_priority_mail",
+                      "package_code": "package",
+                      "voided": false,
+                      "voided_at": null,
+                      "label_format": "pdf",
+                      "label_layout": "4x6",
+                      "trackable": true,
+                      "label_image_id": null,
+                      "carrier_code": "stamps_com",
+                      "tracking_status": "in_transit",
+                      "label_download": {
+                        "pdf": "https://api.shipengine.com/v1/downloads/10/label-123456.pdf",
+                        "png": "https://api.shipengine.com/v1/downloads/10/label-123456.png",
+                        "zpl": "https://api.shipengine.com/v1/downloads/10/label-123456.zpl",
+                        "href": "https://api.shipengine.com/v1/downloads/10/label-123456.pdf"
+                      },
+                      "form_download": null,
+                      "insurance_claim": null,
+                      "packages": [],
+                      "charge_event": "carrier_default",
+                      "rate_shopper_id": "cheapest"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400_error_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404_error_response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500_error_response"
+          }
+        }
+      }
+    },
     "/v1/labels/shipment/{shipment_id}": {
       "summary": "Purchase label using shipment ID",
       "description": "Purchase a label using a shipment ID that has already been created with the desired address and\npackage info.\n",
@@ -2594,7 +2838,7 @@
       ],
       "post": {
         "summary": "Create a return label",
-        "description": "Create a return label",
+        "description": "Create a return label for an existing outbound label. You can optionally specify a custom RMA (Return Merchandise Authorization) number. If no RMA number is provided, the system will auto-generate one.\n",
         "tags": [
           "labels"
         ],
@@ -2605,6 +2849,27 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/create_return_label_request_body"
+              },
+              "examples": {
+                "with_custom_rma": {
+                  "summary": "Return label with custom RMA number",
+                  "description": "Create a return label with a specific RMA number",
+                  "value": {
+                    "label_format": "pdf",
+                    "label_layout": "4x6",
+                    "charge_event": "carrier_default",
+                    "rma_number": "RMA-2024-001234"
+                  }
+                },
+                "without_rma": {
+                  "summary": "Return label with auto-generated RMA",
+                  "description": "Create a return label using default RMA generation",
+                  "value": {
+                    "label_format": "pdf",
+                    "label_layout": "4x6",
+                    "charge_event": "carrier_default"
+                  }
+                }
               }
             }
           }
@@ -4885,6 +5150,45 @@
             "$ref": "#/components/responses/500_error_response"
           }
         }
+      },
+      "post": {
+        "summary": "Create a New Tag",
+        "description": "Create a new tag for customizing how you track your shipments.",
+        "tags": [
+          "tags"
+        ],
+        "operationId": "create_tag",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_tag_request_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The requested object creation was a success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/create_tag_response_body"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400_error_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404_error_response"
+          },
+          "500": {
+            "$ref": "#/components/responses/500_error_response"
+          }
+        }
       }
     },
     "/v1/tags/{tag_name}": {
@@ -4902,7 +5206,7 @@
       ],
       "post": {
         "summary": "Create a New Tag",
-        "description": "Create a new Tag for customizing how you track your shipments",
+        "description": "Create a new tag for customizing how you track your shipments (deprecated - use POST /v1/tags instead)",
         "tags": [
           "tags"
         ],
@@ -5085,6 +5389,15 @@
             },
             "example": "9405511899223197428490",
             "description": "The tracking number associated with a shipment"
+          },
+          {
+            "name": "carrier_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/se_id"
+            },
+            "description": "Carrier ID"
           }
         ],
         "responses": {
@@ -5142,6 +5455,15 @@
             },
             "example": "9405511899223197428490",
             "description": "The tracking number associated with a shipment"
+          },
+          {
+            "name": "carrier_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/se_id"
+            },
+            "description": "Carrier ID"
           }
         ],
         "responses": {
@@ -5204,6 +5526,15 @@
             },
             "example": "9405511899223197428490",
             "description": "The tracking number associated with a shipment"
+          },
+          {
+            "name": "carrier_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/se_id"
+            },
+            "description": "Carrier ID"
           }
         ],
         "responses": {
@@ -5665,9 +5996,7 @@
           "validation",
           "security",
           "system",
-          "integrations",
-          "wallet",
-          "funding_sources"
+          "integrations"
         ],
         "description": "The type of error\n"
       },
@@ -7443,6 +7772,11 @@
             "readOnly": true,
             "description": "Carrier supports multiple packages per shipment"
           },
+          "allows_returns": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "The carrier has services that support return shipments."
+          },
           "supports_label_messages": {
             "type": "boolean",
             "readOnly": true,
@@ -7491,6 +7825,25 @@
               ]
             },
             "description": "A list of options that are available to that carrier"
+          },
+          "send_rates": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "The carrier provides rates for the shipment."
+          },
+          "supports_user_managed_rates": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "The carrier supports user-managed rates for shipments."
+          },
+          "connection_status": {
+            "type": "string",
+            "readOnly": true,
+            "enum": [
+              "pending_approval",
+              "approved"
+            ],
+            "description": "The current connection status of the carrier. Indicates whether the carrier connection is pending approval or has been approved for use."
           }
         }
       },
@@ -7544,6 +7897,11 @@
             "type": "boolean",
             "readOnly": true,
             "description": "Carrier supports multiple packages per shipment"
+          },
+          "is_return_supported": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "This service supports return shipments."
           }
         }
       },
@@ -9611,6 +9969,66 @@
         "title": "connect_insurer_response_body",
         "type": "object"
       },
+      "create_combined_label_document_request_body": {
+        "title": "create_combined_label_document_request_body",
+        "type": "object",
+        "description": "A create combined label document request body",
+        "additionalProperties": false,
+        "properties": {
+          "label_ids": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/se_id"
+                }
+              ]
+            },
+            "description": "The list of up to 30 label ids to include in the combined label document.\nNote that to avoid response size limits, you should only expect to be able to combine 30 single page labels similar in size to that of USPS labels.\n"
+          },
+          "label_format": {
+            "enum": [
+              "pdf"
+            ],
+            "type": "string",
+            "description": "The file format for the combined label document; note that currently only `\"pdf\"` is supported."
+          },
+          "label_download_type": {
+            "default": "inline",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_download_type"
+              }
+            ]
+          }
+        }
+      },
+      "label_download_type": {
+        "title": "label_download_type",
+        "type": "string",
+        "enum": [
+          "url",
+          "inline"
+        ],
+        "description": "There are two different ways to [download a label](https://www.shipengine.com/docs/labels/downloading/):\n\n|Label Download Type | Description\n|--------------------|------------------------------\n|`url`               |You will receive a URL, which you can use to download the label in a separate request. The URL will remain valid for 90 days.\n|`inline`            |You will receive the Base64-encoded label as part of the response. No need for a second request to download the label.\n"
+      },
+      "create_combined_label_document_response_body.yaml": {
+        "title": "create_combined_label_document_response_body.yaml",
+        "type": "object",
+        "description": "A create combined label document response body",
+        "additionalProperties": false,
+        "properties": {
+          "label_download": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_download"
+              }
+            ],
+            "description": "The download for the combined label document"
+          }
+        }
+      },
       "download_file_pdf_response_body": {
         "title": "download_file_pdf_response_body",
         "type": "string",
@@ -9680,6 +10098,17 @@
               ]
             },
             "description": "Array of custom webhook headers"
+          },
+          "name": {
+            "type": "string",
+            "example": "My Webhook",
+            "description": "The name of the webhook"
+          },
+          "store_id": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123456,
+            "description": "Store ID"
           }
         }
       },
@@ -9695,7 +10124,7 @@
           "sales_orders_imported",
           "track"
         ],
-        "description": "The possible webook event values"
+        "description": "The possible webhook event values"
       },
       "webhook_header": {
         "title": "webhook_header",
@@ -9763,6 +10192,17 @@
               ]
             },
             "description": "Array of custom webhook headers"
+          },
+          "name": {
+            "type": "string",
+            "example": "My New Webhook",
+            "description": "The name of the webhook"
+          },
+          "store_id": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123456,
+            "description": "Store ID"
           }
         }
       },
@@ -9823,6 +10263,17 @@
               ]
             },
             "description": "Array of custom webhook headers"
+          },
+          "name": {
+            "type": "string",
+            "example": "My Updated Webhook",
+            "description": "The name of the webhook"
+          },
+          "store_id": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123456,
+            "description": "Store ID"
           }
         }
       },
@@ -9921,6 +10372,19 @@
                     }
                   ],
                   "description": "The shipment that this label is for.  ShipEngine can create a shipment for you automatically when you [create a label](https://www.shipengine.com/docs/labels/create-a-label/), or you can [create your own shipment](https://www.shipengine.com/docs/shipping/create-a-shipment/) and then [use it to print a label](https://www.shipengine.com/docs/labels/create-from-shipment/)\n"
+                },
+                "external_shipment_id": {
+                  "readOnly": true,
+                  "type": "string",
+                  "maxLength": 50,
+                  "nullable": true,
+                  "description": "A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.\n"
+                },
+                "external_order_id": {
+                  "readOnly": true,
+                  "type": "string",
+                  "nullable": true,
+                  "description": "ID that the Order Source assigne"
                 },
                 "shipment": {
                   "writeOnly": true,
@@ -10161,6 +10625,15 @@
                   ],
                   "description": "The current status of the package, such as `in_transit` or `delivered`"
                 },
+                "confirmation": {
+                  "readOnly": true,
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/delivery_confirmation"
+                    }
+                  ],
+                  "description": "The type of delivery confirmation that is required for this shipment."
+                },
                 "label_download": {
                   "allOf": [
                     {
@@ -10178,6 +10651,16 @@
                     }
                   ],
                   "description": "The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it.\n"
+                },
+                "qr_code_download": {
+                  "readOnly": true,
+                  "nullable": true,
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/optional_link"
+                    }
+                  ],
+                  "description": "The QR code download for the package"
                 },
                 "paperless_download": {
                   "readOnly": true,
@@ -10229,6 +10712,15 @@
                   "type": "string",
                   "example": "https://www.fedex.com/fedextrack/?action=track&trackingnumber=1234",
                   "description": "The URL to track the package. This URL is provided by the carrier and is unique to the tracking number.\n"
+                },
+                "ship_to": {
+                  "readOnly": true,
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/shipping_address_to"
+                    }
+                  ],
+                  "description": "The recipient's mailing address"
                 }
               }
             }
@@ -10317,7 +10809,7 @@
           },
           "validate_address": {
             "writeOnly": true,
-            "default": "validate_and_clean",
+            "default": "no_validation",
             "allOf": [
               {
                 "$ref": "#/components/schemas/validate_address"
@@ -10590,6 +11082,12 @@
             "nullable": true,
             "description": "Item Stock Keeping Unit"
           },
+          "bundle_sku": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true,
+            "description": "Item Stock Keeping Unit of the product bundle"
+          },
           "external_order_id": {
             "type": "string",
             "nullable": true,
@@ -10820,7 +11318,9 @@
           "adult_signature",
           "direct_signature",
           "delivery_mailed",
-          "verbal_confirmation"
+          "verbal_confirmation",
+          "delivery_code",
+          "age_verification_16_plus"
         ],
         "description": "The possible delivery confirmation values"
       },
@@ -10884,6 +11384,14 @@
                 "$ref": "#/components/schemas/importer_of_records"
               }
             ]
+          },
+          "license_number": {
+            "type": "string",
+            "description": "The license number to be used in the customs."
+          },
+          "certificate_number": {
+            "type": "string",
+            "description": "The certificate number to be used in the customs."
           },
           "customs_items": {
             "deprecated": true,
@@ -10969,6 +11477,14 @@
             ],
             "description": "Discount for shipment."
           },
+          "estimated_import_charges": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/estimated_import_charges"
+              }
+            ],
+            "description": "Estimated import charges for commercial invoices for international shipments."
+          },
           "other_charge": {
             "allOf": [
               {
@@ -10980,6 +11496,34 @@
           "other_charge_description": {
             "type": "string",
             "description": "Description for the other charge (if provided)."
+          },
+          "invoice_number": {
+            "type": "string",
+            "description": "The invoice number to be used in the customs."
+          }
+        }
+      },
+      "estimated_import_charges": {
+        "title": "estimated_import_charges",
+        "type": "object",
+        "description": "Estimated import charges for commercial invoices for international shipments.\n",
+        "additionalProperties": false,
+        "properties": {
+          "taxes": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "description": "Estimated import taxes."
+          },
+          "duties": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/monetary_value"
+              }
+            ],
+            "description": "Estimated import duties."
           }
         }
       },
@@ -11377,21 +11921,41 @@
             "nullable": true,
             "default": null,
             "example": 514785,
-            "description": "license number."
+            "description": "license_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object."
           },
           "invoice_number": {
             "type": "string",
             "nullable": true,
             "default": null,
             "example": "IOC56888",
-            "description": "invoice number."
+            "description": "invoice_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object."
           },
           "certificate_number": {
             "type": "string",
             "nullable": true,
             "default": null,
             "example": 784515,
-            "description": "certificate number."
+            "description": "certificate_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object."
+          },
+          "delivery-as-addressed": {
+            "type": "boolean",
+            "default": false,
+            "description": "Instructs the carrier to deliver the package only to the exact address provided."
+          },
+          "return-after-first-attempt": {
+            "type": "boolean",
+            "default": false,
+            "description": "Ensures the shipment is immediately flagged for return to the sender if the initial delivery attempt fails."
+          },
+          "regulated_content_type": {
+            "nullable": true,
+            "default": null,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/regulated_content_type"
+              }
+            ],
+            "description": "Indicates the category of goods in the shipment that is subject to special regulatory or compliance requirements."
           }
         }
       },
@@ -11457,6 +12021,15 @@
             "type": "number"
           }
         }
+      },
+      "regulated_content_type": {
+        "title": "regulated_content_type",
+        "type": "string",
+        "enum": [
+          "day_old_poultry",
+          "other_live_animal"
+        ],
+        "description": "Indicates the category of goods in the shipment that is subject to special regulatory or compliance requirements."
       },
       "insurance_provider": {
         "title": "insurance_provider",
@@ -11904,15 +12477,6 @@
         ],
         "description": "The possible validate address values"
       },
-      "label_download_type": {
-        "title": "label_download_type",
-        "type": "string",
-        "enum": [
-          "url",
-          "inline"
-        ],
-        "description": "There are two different ways to [download a label](https://www.shipengine.com/docs/labels/downloading/):\n\n|Label Download Type | Description\n|--------------------|------------------------------\n|`url`               |You will receive a URL, which you can use to download the label in a separate request. The URL will remain valid for 90 days.<br><br>This is the default if `label_download_type` is unspecified.\n|`inline`            |You will receive the Base64-encoded label as part of the response. No need for a second request to download the label.\n"
-      },
       "create_label_response_body": {
         "title": "create_label_response_body",
         "type": "object",
@@ -11922,6 +12486,8 @@
           "label_id",
           "status",
           "shipment_id",
+          "external_shipment_id",
+          "external_order_id",
           "ship_date",
           "created_at",
           "shipment_cost",
@@ -11940,6 +12506,7 @@
           "tracking_status",
           "label_download",
           "form_download",
+          "qr_code_download",
           "paperless_download",
           "insurance_claim",
           "packages",
@@ -11947,7 +12514,8 @@
           "rma_number",
           "charge_event",
           "package_code",
-          "display_scheme"
+          "display_scheme",
+          "ship_to"
         ],
         "allOf": [
           {
@@ -11986,6 +12554,19 @@
               }
             ],
             "description": "The shipment that this label is for.  ShipEngine can create a shipment for you automatically when you [create a label](https://www.shipengine.com/docs/labels/create-a-label/), or you can [create your own shipment](https://www.shipengine.com/docs/shipping/create-a-shipment/) and then [use it to print a label](https://www.shipengine.com/docs/labels/create-from-shipment/)\n"
+          },
+          "external_shipment_id": {
+            "readOnly": true,
+            "type": "string",
+            "maxLength": 50,
+            "nullable": true,
+            "description": "A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.\n"
+          },
+          "external_order_id": {
+            "readOnly": true,
+            "type": "string",
+            "nullable": true,
+            "description": "ID that the Order Source assigne"
           },
           "shipment": {
             "writeOnly": true,
@@ -12226,6 +12807,15 @@
             ],
             "description": "The current status of the package, such as `in_transit` or `delivered`"
           },
+          "confirmation": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/delivery_confirmation"
+              }
+            ],
+            "description": "The type of delivery confirmation that is required for this shipment."
+          },
           "label_download": {
             "allOf": [
               {
@@ -12243,6 +12833,16 @@
               }
             ],
             "description": "The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it.\n"
+          },
+          "qr_code_download": {
+            "readOnly": true,
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/optional_link"
+              }
+            ],
+            "description": "The QR code download for the package"
           },
           "paperless_download": {
             "readOnly": true,
@@ -12294,6 +12894,15 @@
             "type": "string",
             "example": "https://www.fedex.com/fedextrack/?action=track&trackingnumber=1234",
             "description": "The URL to track the package. This URL is provided by the carrier and is unique to the tracking number.\n"
+          },
+          "ship_to": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipping_address_to"
+              }
+            ],
+            "description": "The recipient's mailing address"
           }
         }
       },
@@ -12566,6 +13175,15 @@
             "type": "string",
             "description": "Calculate a rate for this shipment with the requested carrier using a ratecard that differs from the default.  Only supported for UPS and USPS.",
             "example": "retail"
+          },
+          "zone": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true,
+            "minimum": 0,
+            "example": 6,
+            "description": "Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of\ncustom zones that vary depending upon the ship_to and ship_from location\n"
           }
         }
       },
@@ -12589,11 +13207,25 @@
         ],
         "additionalProperties": false,
         "properties": {
+          "tag_id": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true,
+            "minimum": 1,
+            "example": 8712,
+            "description": "An integer uniquely identifying a tag."
+          },
           "name": {
             "type": "string",
             "minLength": 1,
             "example": "Fragile",
             "description": "The tag name."
+          },
+          "color": {
+            "type": "string",
+            "minLength": 1,
+            "example": "#FF0000",
+            "description": "A hex-coded string identifying the color of the tag."
           }
         }
       },
@@ -12684,10 +13316,6 @@
                 "$ref": "#/components/schemas/tax_type"
               }
             ]
-          },
-          "tax_code": {
-            "type": "string",
-            "description": "Code for a specific tax type"
           },
           "tax_percentage": {
             "type": "number",
@@ -12956,6 +13584,7 @@
             ]
           },
           "label_download_type": {
+            "default": "url",
             "allOf": [
               {
                 "$ref": "#/components/schemas/label_download_type"
@@ -12983,6 +13612,377 @@
             "$ref": "#/components/schemas/label"
           }
         ]
+      },
+      "rate_attributes": {
+        "title": "rate_attributes",
+        "type": "string",
+        "enum": [
+          "best_value",
+          "cheapest",
+          "fastest"
+        ],
+        "description": "Optional attributes that indicate the most profitable rates"
+      },
+      "create_label_rate_shopper_request_body": {
+        "title": "create_label_rate_shopper_request_body",
+        "type": "object",
+        "description": "Request body for creating a label using the Rate Shopper. The Rate Shopper\nautomatically selects the carrier and service based on your specified strategy.\n\n**Important Constraints:**\n- You MUST provide shipment details inline in the `shipment` object\n- You MUST NOT set `shipment_id` (inline shipment only)\n- You MUST NOT include `carrier_id`, `service_code`, or `shipping_rule_id`\n  in the shipment (Rate Shopper selects these automatically)\n- Only carriers configured in your wallet will be considered\n- This endpoint is not available in sandbox mode\n",
+        "additionalProperties": false,
+        "required": [
+          "shipment"
+        ],
+        "properties": {
+          "shipment": {
+            "description": "The shipment details for which to create a label. Must be provided inline.\nThe carrier_id, service_code, and shipping_rule_id are not included as these\nwill be automatically determined by the Rate Shopper based on your strategy.\n",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/partial_shipment_for_rate_shopper"
+              }
+            ]
+          },
+          "is_return_label": {
+            "type": "boolean",
+            "description": "Indicates whether this is a return label.  You may also want to set the `rma_number` so you know what is being returned.\n"
+          },
+          "rma_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value.\n"
+          },
+          "charge_event": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_charge_event"
+              }
+            ],
+            "description": "The label charge event.\n"
+          },
+          "outbound_label_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "writeOnly": true,
+            "description": "The `label_id` of the original (outgoing) label that the return label is for. This associates the two labels together, which is\nrequired by some carriers.\n"
+          },
+          "test_label": {
+            "writeOnly": true,
+            "type": "boolean",
+            "default": false,
+            "deprecated": true,
+            "description": "Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account."
+          },
+          "validate_address": {
+            "writeOnly": true,
+            "default": "no_validation",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/validate_address"
+              }
+            ]
+          },
+          "label_download_type": {
+            "writeOnly": true,
+            "default": "url",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_download_type"
+              }
+            ]
+          },
+          "label_format": {
+            "default": "pdf",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_format"
+              }
+            ],
+            "description": "The file format that you want the label to be in.  We recommend `pdf` format because it is supported by all carriers, whereas some carriers do not support the `png` or `zpl` formats.\n"
+          },
+          "display_scheme": {
+            "default": "label",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/display_scheme"
+              }
+            ],
+            "description": "The display format that the label should be shown in."
+          },
+          "label_layout": {
+            "default": "4x6",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/label_layout"
+              }
+            ],
+            "description": "The layout (size) that you want the label to be in.  The `label_format` determines which sizes are allowed.  `4x6` is supported for all label formats, whereas `letter` (8.5\" x 11\") is only supported for `pdf` format.\n"
+          },
+          "label_image_id": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/image_id"
+              }
+            ],
+            "description": "The label image resource that was used to create a custom label image."
+          }
+        }
+      },
+      "partial_shipment_for_rate_shopper": {
+        "title": "partial_shipment_for_rate_shopper",
+        "type": "object",
+        "description": "The information necessary to ship a package for Rate Shopper, such as the origin, the destination, and the package dimensions and weight.\n\n**Note:** This schema excludes carrier_id, service_code, and shipping_rule_id as these are automatically selected by the Rate Shopper based on your chosen strategy.\n",
+        "additionalProperties": false,
+        "properties": {
+          "shipment_id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "A string that uniquely identifies the shipment"
+          },
+          "external_order_id": {
+            "type": "string",
+            "nullable": true,
+            "description": "ID that the Order Source assigned"
+          },
+          "items": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/shipment_item"
+                }
+              ]
+            },
+            "description": "Describe the packages included in this shipment as related to potential metadata that was imported from\nexternal order sources\n"
+          },
+          "tax_identifiers": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/tax_identifier"
+                }
+              ]
+            }
+          },
+          "external_shipment_id": {
+            "type": "string",
+            "maxLength": 50,
+            "nullable": true,
+            "description": "A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.\n\n> **Warning:** The `external_shipment_id` is limited to 50 characters. Any additional characters will be truncated.\n"
+          },
+          "shipment_number": {
+            "type": "string",
+            "maxLength": 50,
+            "nullable": true,
+            "description": "A non-unique user-defined number used to identify a shipment.  If undefined, this will match the external_shipment_id of the shipment.\n\n> **Warning:** The `shipment_number` is limited to 50 characters. Any additional characters will be truncated.\n"
+          },
+          "ship_date": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date"
+              }
+            ],
+            "description": "The date that the shipment was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.\n"
+          },
+          "created_at": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date_time"
+              }
+            ],
+            "description": "The date and time that the shipment was created in ShipEngine."
+          },
+          "modified_at": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/date_time"
+              }
+            ],
+            "description": "The date and time that the shipment was created or last modified."
+          },
+          "shipment_status": {
+            "readOnly": true,
+            "default": "pending",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipment_status"
+              }
+            ],
+            "description": "The current status of the shipment"
+          },
+          "ship_to": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipping_address_to"
+              }
+            ],
+            "description": "The recipient's mailing address"
+          },
+          "ship_from": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipping_address"
+              }
+            ],
+            "description": "The shipment's origin address. If you frequently ship from the same location, consider [creating a warehouse](https://www.shipengine.com/docs/reference/create-warehouse/).  Then you can simply specify the `warehouse_id` rather than the complete address each time.\n"
+          },
+          "warehouse_id": {
+            "nullable": true,
+            "default": null,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/se_id"
+              }
+            ],
+            "description": "The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either `warehouse_id` or `ship_from` must be specified.\n"
+          },
+          "return_to": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shipping_address"
+              }
+            ],
+            "description": "The return address for this shipment.  Defaults to the `ship_from` address.\n"
+          },
+          "is_return": {
+            "type": "boolean",
+            "nullable": true,
+            "default": false,
+            "description": "An optional indicator if the shipment is intended to be a return. Defaults to false if not provided.\n"
+          },
+          "confirmation": {
+            "default": "none",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/delivery_confirmation"
+              }
+            ],
+            "description": "The type of delivery confirmation that is required for this shipment."
+          },
+          "customs": {
+            "nullable": true,
+            "default": null,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/international_shipment_options"
+              }
+            ],
+            "description": "Customs information.  This is usually only needed for international shipments.\n"
+          },
+          "advanced_options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/advanced_shipment_options"
+              }
+            ],
+            "description": "Advanced shipment options.  These are entirely optional."
+          },
+          "insurance_provider": {
+            "default": "none",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/insurance_provider"
+              }
+            ],
+            "description": "The insurance provider to use for any insured packages in the shipment.\n"
+          },
+          "tags": {
+            "type": "array",
+            "readOnly": true,
+            "default": [],
+            "minItems": 0,
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/tag"
+                }
+              ]
+            },
+            "description": "Arbitrary tags associated with this shipment.  Tags can be used to categorize shipments, and shipments can be queried by their tags.\n"
+          },
+          "order_source_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/order_source_name"
+              }
+            ]
+          },
+          "packages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/package"
+                }
+              ]
+            },
+            "description": "The packages in the shipment.\n\n> **Note:** Some carriers only allow one package per shipment.  If you attempt to create a multi-package shipment for a carrier that doesn't allow it, an error will be returned.\n"
+          },
+          "total_weight": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/weight"
+              }
+            ],
+            "description": "The combined weight of all packages in the shipment"
+          },
+          "comparison_rate_type": {
+            "nullable": true,
+            "type": "string",
+            "description": "Calculate a rate for this shipment with the requested carrier using a ratecard that differs from the default.  Only supported for UPS and USPS.",
+            "example": "retail"
+          },
+          "zone": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true,
+            "minimum": 0,
+            "example": 6,
+            "description": "Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of\ncustom zones that vary depending upon the ship_to and ship_from location\n"
+          }
+        }
+      },
+      "create_label_rate_shopper_response_body": {
+        "title": "create_label_rate_shopper_response_body",
+        "type": "object",
+        "description": "The response from creating a label using the Rate Shopper. Includes all standard\nlabel information plus the rate_shopper_id indicating which strategy was used.\n",
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/label"
+          }
+        ],
+        "properties": {
+          "rate_shopper_id": {
+            "description": "The rate selection strategy that was used to create this label. This will\nmatch the rate_shopper_id provided in the request path.\n",
+            "readOnly": true,
+            "allOf": [
+              {
+                "title": "rate_attributes",
+                "type": "string",
+                "enum": [
+                  "best_value",
+                  "cheapest",
+                  "fastest"
+                ],
+                "description": "Optional attributes that indicate the most profitable rates"
+              }
+            ]
+          }
+        }
       },
       "create_label_from_shipment_request_body": {
         "title": "create_label_from_shipment_request_body",
@@ -13014,6 +14014,7 @@
             ]
           },
           "label_download_type": {
+            "default": "url",
             "allOf": [
               {
                 "$ref": "#/components/schemas/label_download_type"
@@ -13111,6 +14112,11 @@
               }
             ],
             "description": "The label image resource that was used to create a custom label image."
+          },
+          "rma_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "An optional Return Merchandise Authorization number. If provided, this value will be used as the return label's RMA number. If omitted, the system will auto-generate an RMA number (current default behavior). You can set it to any string value.\n"
           }
         }
       },
@@ -13333,8 +14339,6 @@
           "HELD_BY_CARRIER",
           "HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING",
           "HELD_BY_CUSTOMS",
-          "HELD_BY_EXPORT_CUSTOMS",
-          "HELD_BY_IMPORT_CUSTOMS",
           "INCORRECT_DECLARATION",
           "MISROUTED",
           "PARCEL_REPACKED",
@@ -13353,10 +14357,15 @@
           "PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY",
           "REFUSED_BY_CUSTOMER",
           "RETURN_TO_SENDER",
-          "UNSPECIFIED_EXCEPTION"
+          "UNSPECIFIED_EXCEPTION",
+          "TRACKING_EXPIRED",
+          "DUTY_NOT_PAID",
+          "PARCEL_REDIRECTED_BY_CARRIER",
+          "DELIVERED_TO_PICKUP_POINT",
+          "UNDELIVERABLE_RETURNED_TO_SENDER"
         ],
         "type": "string",
-        "description": "The tracking status detail codes\n\n|Value       |Description\n|:---------  |:-----------------------------------------------------\n| `CARRIER_STATUS_NOT_MAPPED` | Status not mapped. Please check the carrier's website for updates.\n| `SHIPMENT_CREATED` | Your tracking number is ready. Your parcel is waiting to be registered in the carrier system and scheduled for pickup.\n| `AWAITING_PICKUP_DROP_OFF` | Your parcel is waiting to be handed over to the carrier.\n| `DROPPED_OFF` | Your parcel has been dropped off and is ready for carrier processing.\n| `ELEC_ADVICE_RECD_BY_CARRIER` | Your shipment is now in the carrier's system.\n| `PICKED_UP` | Your parcel has been picked up by the carrier.\n| `CUSTOMS_CLEARED` | Your parcel has cleared customs and is continuing its journey.\n| `CUSTOMS_PROCESSING` | Your parcel is currently being processed by customs.\n| `DELIVERY_ARRANGED_WITH_RECIPIENT` | Your parcel's delivery has been arranged with the carrier.\n| `HUB_SCAN_OUT` | Your parcel has left the carrier's hub.\n| `HUB_SCAN_IN` | Your parcel has arrived at the carrier's hub for processing.\n| `IN_TRANSIT` | Your shipment is on its way between the carrier hubs.\n| `INFORMATION` | The carrier has shared additional information about your parcel.\n| `PARCEL_OVER_LABELLED` | Your parcel's label has been updated by the carrier, which may affect tracking visibility.\n| `PARCEL_UPDATE_NOTIFICATION` | The carrier has sent you an update on your parcel status via SMS or email.\n| `RECEIVED_BY_CARRIER` | Your parcel has been received by the carrier and is beginning its journey.\n| `RECEIVED_LOCAL_DELIVERY_DEPOT` | Your parcel has arrived at the local delivery depot and is almost ready for delivery.\n| `SUB_CONTRACTOR_EVENT` | The carrier has shared additional information about your parcel's handling by a delivery partner.\n| `SUB_CONTRACTOR_RECEIVED` | Your parcel has been received by the carrier's local delivery partner.\n| `PARCEL_REDIRECTED` | Your parcel has been redirected to a new delivery address per your request.\n| `DELIVERY_SCHEDULED` | Your parcel's delivery has been scheduled and will soon be out for delivery.\n| `HUB_PROCESSING` | Your parcel is being processed at a carrier hub.\n| `DELIVERY_RESCHEDULED` | Your parcel's delivery has been rescheduled due to operational issues.\n| `ATTEMPTED_DELIVERY` | The carrier attempted to deliver your parcel but was unable to complete delivery.\n| `ATTEMPTED_DELIVERY_FINAL` | The carrier made a final attempt to deliver your parcel but was unable to complete delivery. Please check the carrier's instructions for next steps.\n| `COD_AMOUNT_PAID` | Cash on delivery payment received.\n| `CUSTOMER_CARDED` | Delivery attempt failed. Please follow delivery instructions left by the carrier.\n| `OUT_FOR_DELIVERY` | Your parcel is on its way and will be delivered today.\n| `AWAITING_COLLECTION_FROM_PICKUP_POINT` | Your parcel is ready for collection at the selected pickup point.\n| `COLLECT_AT_LOCAL_PO` | Your parcel is ready for collection at your local post office.\n| `CUSTOMER_TO_COLLECT_FROM_CARRIER` | Your parcel is available for collection from the carrier's local delivery unit.\n| `DELIVERED_TO_RECEPTION` | Your parcel has been delivered to your building's reception or designated mail area.\n| `DELIVERED` | Your parcel has been successfully delivered.\n| `DELIVERED_DAMAGED` | Your parcel was delivered but arrived with visible damage.\n| `DELIVERED_IN_PART` | Part of your shipment has been delivered. Check for updates on the rest.\n| `DELIVERED_SPECIFIED_SAFE_PLACE` | Your parcel has been delivered to your specified safe place.\n| `DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION` | Your parcel was delivered to an alternative location due to the delivery company being unable to deliver it to the specified address. Check carrier instructions for pickup details.\n| `DELIVERED_TO_NEIGHBOUR` | Your parcel was delivered to your neighbor.\n| `DELIVERED_TO_PO_BOX` | Your parcel has been delivered to your specified PO Box.\n| `PARCEL_COLLECTED_FROM_PICKUP_POINT` | Your package has been picked up from the pick up point.\n| `POST_TRANSIT_STATUS` | The carrier has added more information about your delivery.\n| `PROOF_OF_DELIVERY` | The carrier has confirmed delivery with proof, such as a signature or photo.\n| `PICKUP_FAILED` | Parcel pickup failed. The delivery company will try again soon.\n| `NOT_YET_RECEIVED_BY_CARRIER` | The carrier has not yet received your parcel, which may cause a delay.\n| `PARCEL_DAMAGED` | Your parcel was damaged in transit but will still be delivered.\n| `ADDRESS_QUERY` | There is an issue with the delivery address, which may delay your parcel.\n| `CARRIER_DELAYS` | Your parcel is delayed due to issues within the carrier network.\n| `DELAYED_NOT_CARRIER` | Your parcel is delayed due to circumstances beyond the carrier's control.\n| `HELD_BY_CARRIER` | Your parcel is being held due to an operational issue. Contact with the carrier for more information.\n| `HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING` | Your parcel is being held by the carrier for customs documentation checks. This may occur when the carrier must confirm documentation before the parcel can continue its journey.\n| `HELD_BY_CUSTOMS` | Your parcel is being held at customs, which may delay delivery.\n| `HELD_BY_EXPORT_CUSTOMS` | Your parcel is held at export customs, which may delay delivery.\n| `HELD_BY_IMPORT_CUSTOMS` | Your parcel is held at import customs and may require action to proceed.\n| `INCORRECT_DECLARATION` | Your parcel has been incorrectly declared but is still moving forward for delivery.\n| `MISROUTED` | Your parcel was sent to the wrong place due to a routing error but is being redirected.\n| `PARCEL_REPACKED` | Your parcel was repackaged by the carrier due to damage and will still be delivered.\n| `RECD_BY_CARRIER_NO_ELEC_ADVICE` | Your parcel has been received by the carrier but may experience delays due to missing pre-advice.\n| `COD_AMOUNT_NOT_PAID` | Delivery failed due to unpaid cash on delivery. Please follow carrier instructions.\n| `CUSTOMER_IDENTIFICATION_FAILED` | Delivery couldn't be completed as identification requirements were not met.\n| `NO_ACCESS_TO_RECIPIENTS_ADDRESS` | The carrier couldn't access the delivery location due to restricted entry.\n| `CANCELLED` | Your parcel has been cancelled.\n| `CUSTOMER_MOVED` | Delivery failed as the recipient is no longer at the specified address. Your parcel is being returned.\n| `HAZARDOUS_PROHIBITED` | Your parcel contains restricted items and will not be delivered.\n| `NOT_COLLECTED_FROM_PICKUP_POINT` | Your parcel was not collected from the pickup point within the designated time and will be returned.\n| `NOT_DELIVERED` | All delivery attempts failed. Your parcel is being returned to the sender.\n| `NOT_DELIVERED_ADDRESSEE_DECEASED` | The parcel could not be delivered as the addressee is reported deceased.\n| `PARCEL_DISPOSED` | Your parcel has been disposed of due to its contents or condition and will not be delivered.\n| `PARCEL_LOST` | The carrier has reported that your parcel is lost and will not be delivered.\n| `PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY` | The parcel cannot be delivered as it exceeds the carrier's service limits.\n| `REFUSED_BY_CUSTOMER` | You have refused the parcel, and it will be returned to the sender.\n| `RETURN_TO_SENDER` | Your parcel is being returned to the sender due to delivery issues.\n| `UNSPECIFIED_EXCEPTION` | The carrier has reported an issue with your parcel, but details are unavailable.\n"
+        "description": "The tracking status detail codes\n\n|Value       |Description\n|:---------  |:-----------------------------------------------------\n| `CARRIER_STATUS_NOT_MAPPED` | Status not mapped. Please check the carrier's website for updates.\n| `SHIPMENT_CREATED` | Your tracking number is ready. Your parcel is waiting to be registered in the carrier system and scheduled for pickup.\n| `AWAITING_PICKUP_DROP_OFF` | Your parcel is waiting to be handed over to the carrier.\n| `DROPPED_OFF` | Your parcel has been dropped off and is ready for carrier processing.\n| `ELEC_ADVICE_RECD_BY_CARRIER` | Your shipment is now in the carrier's system.\n| `PICKED_UP` | Your parcel has been picked up by the carrier.\n| `CUSTOMS_CLEARED` | Your parcel has cleared customs and is continuing its journey.\n| `CUSTOMS_PROCESSING` | Your parcel is currently being processed by customs.\n| `DELIVERY_ARRANGED_WITH_RECIPIENT` | Your parcel's delivery has been arranged with the carrier.\n| `HUB_SCAN_OUT` | Your parcel has left the carrier's hub.\n| `HUB_SCAN_IN` | Your parcel has arrived at the carrier's hub for processing.\n| `IN_TRANSIT` | Your shipment is on its way between the carrier hubs.\n| `INFORMATION` | The carrier has shared additional information about your parcel.\n| `PARCEL_OVER_LABELLED` | Your parcel's label has been updated by the carrier, which may affect tracking visibility.\n| `PARCEL_UPDATE_NOTIFICATION` | The carrier has sent you an update on your parcel status via SMS or email.\n| `RECEIVED_BY_CARRIER` | Your parcel has been received by the carrier and is beginning its journey.\n| `RECEIVED_LOCAL_DELIVERY_DEPOT` | Your parcel has arrived at the local delivery depot and is almost ready for delivery.\n| `SUB_CONTRACTOR_EVENT` | The carrier has shared additional information about your parcel's handling by a delivery partner.\n| `SUB_CONTRACTOR_RECEIVED` | Your parcel has been received by the carrier's local delivery partner.\n| `PARCEL_REDIRECTED` | Your parcel has been redirected to a new delivery address per your request.\n| `DELIVERY_SCHEDULED` | Your parcel's delivery has been scheduled and will soon be out for delivery.\n| `HUB_PROCESSING` | Your parcel is being processed at a carrier hub.\n| `DELIVERY_RESCHEDULED` | Your parcel's delivery has been rescheduled due to operational issues.\n| `ATTEMPTED_DELIVERY` | The carrier attempted to deliver your parcel but was unable to complete delivery.\n| `ATTEMPTED_DELIVERY_FINAL` | The carrier made a final attempt to deliver your parcel but was unable to complete delivery. Please check the carrier's instructions for next steps.\n| `COD_AMOUNT_PAID` | Cash on delivery payment received.\n| `CUSTOMER_CARDED` | Delivery attempt failed. Please follow delivery instructions left by the carrier.\n| `OUT_FOR_DELIVERY` | Your parcel is on its way and will be delivered today.\n| `AWAITING_COLLECTION_FROM_PICKUP_POINT` | Your parcel is ready for collection at the selected pickup point.\n| `COLLECT_AT_LOCAL_PO` | Your parcel is ready for collection at your local post office.\n| `CUSTOMER_TO_COLLECT_FROM_CARRIER` | Your parcel is available for collection from the carrier's local delivery unit.\n| `DELIVERED_TO_RECEPTION` | Your parcel has been delivered to your building's reception or designated mail area.\n| `DELIVERED` | Your parcel has been successfully delivered.\n| `DELIVERED_DAMAGED` | Your parcel was delivered but arrived with visible damage.\n| `DELIVERED_IN_PART` | Part of your shipment has been delivered. Check for updates on the rest.\n| `DELIVERED_SPECIFIED_SAFE_PLACE` | Your parcel has been delivered to your specified safe place.\n| `DELIVERED_TO_ALTERNATIVE_DELIVERY_LOCATION` | Your parcel was delivered to an alternative location due to the delivery company being unable to deliver it to the specified address. Check carrier instructions for pickup details.\n| `DELIVERED_TO_NEIGHBOUR` | Your parcel was delivered to your neighbor.\n| `DELIVERED_TO_PO_BOX` | Your parcel has been delivered to your specified PO Box.\n| `PARCEL_COLLECTED_FROM_PICKUP_POINT` | Your package has been picked up from the pick up point.\n| `POST_TRANSIT_STATUS` | The carrier has added more information about your delivery.\n| `PROOF_OF_DELIVERY` | The carrier has confirmed delivery with proof, such as a signature or photo.\n| `PICKUP_FAILED` | Parcel pickup failed. The delivery company will try again soon.\n| `NOT_YET_RECEIVED_BY_CARRIER` | The carrier has not yet received your parcel, which may cause a delay.\n| `PARCEL_DAMAGED` | Your parcel was damaged in transit but will still be delivered.\n| `ADDRESS_QUERY` | There is an issue with the delivery address, which may delay your parcel.\n| `CARRIER_DELAYS` | Your parcel is delayed due to issues within the carrier network.\n| `DELAYED_NOT_CARRIER` | Your parcel is delayed due to circumstances beyond the carrier's control.\n| `HELD_BY_CARRIER` | Your parcel is being held due to an operational issue. Contact with the carrier for more information.\n| `HELD_BY_CARRIER_FOR_CLEARANCE_PRE_PROCESSING` | Your parcel is being held by the carrier for customs documentation checks. This may occur when the carrier must confirm documentation before the parcel can continue its journey.\n| `HELD_BY_CUSTOMS` | Your parcel is being held at customs, which may delay delivery.\n| `INCORRECT_DECLARATION` | Your parcel has been incorrectly declared but is still moving forward for delivery.\n| `MISROUTED` | Your parcel was sent to the wrong place due to a routing error but is being redirected.\n| `PARCEL_REPACKED` | Your parcel was repackaged by the carrier due to damage and will still be delivered.\n| `RECD_BY_CARRIER_NO_ELEC_ADVICE` | Your parcel has been received by the carrier but may experience delays due to missing pre-advice.\n| `COD_AMOUNT_NOT_PAID` | Delivery failed due to unpaid cash on delivery. Please follow carrier instructions.\n| `CUSTOMER_IDENTIFICATION_FAILED` | Delivery couldn't be completed as identification requirements were not met.\n| `NO_ACCESS_TO_RECIPIENTS_ADDRESS` | The carrier couldn't access the delivery location due to restricted entry.\n| `CANCELLED` | Your parcel has been cancelled.\n| `CUSTOMER_MOVED` | Delivery failed as the recipient is no longer at the specified address. Your parcel is being returned.\n| `HAZARDOUS_PROHIBITED` | Your parcel contains restricted items and will not be delivered.\n| `NOT_COLLECTED_FROM_PICKUP_POINT` | Your parcel was not collected from the pickup point within the designated time and will be returned.\n| `NOT_DELIVERED` | All delivery attempts failed. Your parcel is being returned to the sender.\n| `NOT_DELIVERED_ADDRESSEE_DECEASED` | The parcel could not be delivered as the addressee is reported deceased.\n| `PARCEL_DISPOSED` | Your parcel has been disposed of due to its contents or condition and will not be delivered.\n| `PARCEL_LOST` | The carrier has reported that your parcel is lost and will not be delivered.\n| `PARCEL_OUTSIDE_OF_SERVICE_CAPABILITY` | The parcel cannot be delivered as it exceeds the carrier's service limits.\n| `REFUSED_BY_CUSTOMER` | You have refused the parcel, and it will be returned to the sender.\n| `RETURN_TO_SENDER` | Your parcel is being returned to the sender due to delivery issues.\n| `UNSPECIFIED_EXCEPTION` | The carrier has reported an issue with your parcel, but details are unavailable.\n| `TRACKING_EXPIRED` | Tracking for this parcel has expired. If you are still expecting this delivery, please contact the carrier for assistance.\n| `DUTY_NOT_PAID` | The import taxes or duties for this package havent been paid and it may be subject to disposal by customs authorities if payment is not made.\n| `PARCEL_REDIRECTED_BY_CARRIER` | The carrier has redirected your parcel due to an operational issue. The package is likely being rerouted to a nearby pickup point. You may contact the carrier for more details about the new delivery location.\n| `DELIVERED_TO_PICKUP_POINT` | Your package has been delivered to the pickup point. You will be notified when its ready for collection.\n| `UNDELIVERABLE_RETURNED_TO_SENDER` | The shipment has been returned to the sender. Please contact the sender for further information.\n"
       },
       "track_event": {
         "title": "track_event",
@@ -13508,6 +14517,12 @@
             "minimum": -180,
             "maximum": 180,
             "description": "Longitude coordinate of tracking event."
+          },
+          "proof_of_delivery_url": {
+            "type": "string",
+            "readOnly": true,
+            "example": "https://tracking-service-prod.s3.amazonaws.com/proof-of-delivery/dummy_module/0000000001/bc6dd17969bd97f24262ca73ac6ff36062aafecba25ef16d4178264bf7c0e72c.png",
+            "description": "A URL to an image captured at the time of delivery, serving as evidence that the shipment was successfully delivered to the recipient. It can be used to capture things like recipient's signature, location of delivery, condition of the package upon delivery, etc."
           }
         }
       },
@@ -14504,7 +15519,21 @@
           {
             "$ref": "#/components/schemas/rate_request_options"
           }
-        ]
+        ],
+        "properties": {
+          "ship_to_service_point_id": {
+            "nullable": true,
+            "type": "string",
+            "description": "A unique identifier for a carrier service point where the shipment will be delivered by the carrier. This will take precedence over a shipment's ship to address.",
+            "example": "614940"
+          },
+          "ship_from_service_point_id": {
+            "nullable": true,
+            "type": "string",
+            "description": "A unique identifier for a carrier drop off point where a merchant plans to deliver packages. This will take precedence over a shipment's ship from address.",
+            "example": "614940"
+          }
+        }
       },
       "shipment_id_request": {
         "title": "shipment_id_request",
@@ -14634,6 +15663,15 @@
           "is_return": {
             "type": "boolean",
             "description": "Indicate if it's a return shipment"
+          },
+          "rate_type": {
+            "type": "string",
+            "enum": [
+              "check",
+              "shipment",
+              "quick"
+            ],
+            "description": "Indicates what type of rating to perform"
           }
         }
       },
@@ -14696,6 +15734,22 @@
               "allOf": [
                 {
                   "$ref": "#/components/schemas/rate"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "rate_attributes": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/rate_attributes"
+                          }
+                        ]
+                      },
+                      "description": "Optional attributes that indicate the most profitable rates"
+                    }
+                  }
                 }
               ],
               "description": "Shipment Rates"
@@ -15061,7 +16115,21 @@
           {
             "$ref": "#/components/schemas/rate_request_by_shipments"
           }
-        ]
+        ],
+        "properties": {
+          "ship_to_service_point_id": {
+            "nullable": true,
+            "type": "string",
+            "description": "A unique identifier for a carrier service point where the shipment will be delivered by the carrier. This will take precedence over a shipment's ship to address.",
+            "example": "614940"
+          },
+          "ship_from_service_point_id": {
+            "nullable": true,
+            "type": "string",
+            "description": "A unique identifier for a carrier drop off point where a merchant plans to deliver packages. This will take precedence over a shipment's ship from address.",
+            "example": "614940"
+          }
+        }
       },
       "rate_request_rate_options": {
         "title": "rate_request_rate_options",
@@ -15579,6 +16647,17 @@
               "description": "error message"
             },
             "description": "The error messages"
+          },
+          "rate_attributes": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/rate_attributes"
+                }
+              ]
+            },
+            "description": "Optional attributes that indicate the most profitable rates"
           }
         }
       },
@@ -16671,6 +17750,29 @@
               ]
             },
             "description": "The array of tags returned by the API call"
+          }
+        }
+      },
+      "create_tag_request_body": {
+        "title": "create_tag_request_body",
+        "type": "object",
+        "description": "A create tag request body",
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Fragile",
+            "description": "The tag name."
+          },
+          "color": {
+            "type": "string",
+            "minLength": 1,
+            "example": "#FF0000",
+            "description": "A hex-coded string identifying the color of the tag."
           }
         }
       },

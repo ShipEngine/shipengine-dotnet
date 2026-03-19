@@ -258,6 +258,19 @@ public partial class Shipment
     [JsonPropertyName("warehouse_id"), JsonPropertyOrder(27)]
     public required string WarehouseId { get; set; }
 
+    /// <summary>
+    /// Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of custom zones that vary depending upon the ship_to and ship_from location 
+    /// </summary>
+    /// <value>Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of custom zones that vary depending upon the ship_to and ship_from location </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// 6
+    /// </example>
+    [JsonPropertyName("zone"), JsonInclude]
+    public int? Zone { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -295,6 +308,7 @@ public partial class Shipment
         sb.Append("  ShippingRuleId: ").Append(ShippingRuleId).Append("\n");
         sb.Append("  TaxIdentifiers: ").Append(TaxIdentifiers).Append("\n");
         sb.Append("  WarehouseId: ").Append(WarehouseId).Append("\n");
+        sb.Append("  Zone: ").Append(Zone).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

@@ -96,10 +96,14 @@ ShipEngineSDK/Model/CreateAndValidateShipment.cs
 ShipEngineSDK/Model/CreateBatchRequest.cs
 ShipEngineSDK/Model/CreateBatchRequestBody.cs
 ShipEngineSDK/Model/CreateBatchResponseBody.cs
+ShipEngineSDK/Model/CreateCombinedLabelDocumentRequestBody.cs
+ShipEngineSDK/Model/CreateCombinedLabelDocumentResponseBodyYaml.cs
 ShipEngineSDK/Model/CreateLabelFromRateRequestBody.cs
 ShipEngineSDK/Model/CreateLabelFromRateResponseBody.cs
 ShipEngineSDK/Model/CreateLabelFromShipmentRequestBody.cs
 ShipEngineSDK/Model/CreateLabelFromShipmentResponseBody.cs
+ShipEngineSDK/Model/CreateLabelRateShopperRequestBody.cs
+ShipEngineSDK/Model/CreateLabelRateShopperResponseBody.cs
 ShipEngineSDK/Model/CreateLabelRequestBody.cs
 ShipEngineSDK/Model/CreateLabelResponseBody.cs
 ShipEngineSDK/Model/CreateManifestByObjectRequestBody.cs
@@ -113,6 +117,7 @@ ShipEngineSDK/Model/CreateReturnLabelResponseBody.cs
 ShipEngineSDK/Model/CreateShipmentResponseBodyFields.cs
 ShipEngineSDK/Model/CreateShipmentsRequestBody.cs
 ShipEngineSDK/Model/CreateShipmentsResponseBody.cs
+ShipEngineSDK/Model/CreateTagRequestBody.cs
 ShipEngineSDK/Model/CreateTagResponseBody.cs
 ShipEngineSDK/Model/CreateWarehouseRequestBody.cs
 ShipEngineSDK/Model/CreateWarehouseResponseBody.cs
@@ -138,6 +143,7 @@ ShipEngineSDK/Model/ErrorSource.cs
 ShipEngineSDK/Model/ErrorType.cs
 ShipEngineSDK/Model/ErrorWithLabelIdResponseBody.cs
 ShipEngineSDK/Model/EstimateRatesRequestBody.cs
+ShipEngineSDK/Model/EstimatedImportCharges.cs
 ShipEngineSDK/Model/FedexAccountSettings.cs
 ShipEngineSDK/Model/FedexAccountSettingsRequestBody.cs
 ShipEngineSDK/Model/FedexPickupType.cs
@@ -235,6 +241,7 @@ ShipEngineSDK/Model/ParseShipmentRequestBody.cs
 ShipEngineSDK/Model/ParseShipmentResponseBody.cs
 ShipEngineSDK/Model/PartialAddress.cs
 ShipEngineSDK/Model/PartialShipment.cs
+ShipEngineSDK/Model/PartialShipmentForRateShopper.cs
 ShipEngineSDK/Model/PartialShippingAddress.cs
 ShipEngineSDK/Model/PartialShippingAddressTo.cs
 ShipEngineSDK/Model/PartialShippingAddressToGeolocationInner.cs
@@ -247,6 +254,7 @@ ShipEngineSDK/Model/ProcessBatchRequestBody.cs
 ShipEngineSDK/Model/Products.cs
 ShipEngineSDK/Model/PurchaseLabelWithoutShipment.cs
 ShipEngineSDK/Model/Rate.cs
+ShipEngineSDK/Model/RateAttributes.cs
 ShipEngineSDK/Model/RateDetail.cs
 ShipEngineSDK/Model/RateDetailAttributes.cs
 ShipEngineSDK/Model/RateDetailType.cs
@@ -264,9 +272,11 @@ ShipEngineSDK/Model/RateResponseStatus.cs
 ShipEngineSDK/Model/RateShipmentRequest.cs
 ShipEngineSDK/Model/RateType.cs
 ShipEngineSDK/Model/RatesInformation.cs
+ShipEngineSDK/Model/RatesInformationRatesInner.cs
 ShipEngineSDK/Model/ReasonCode.cs
 ShipEngineSDK/Model/RecognizedEntity.cs
 ShipEngineSDK/Model/Redirect.cs
+ShipEngineSDK/Model/RegulatedContentType.cs
 ShipEngineSDK/Model/RegulationLevel.cs
 ShipEngineSDK/Model/RemoveFromBatchRequestBody.cs
 ShipEngineSDK/Model/ResponseMessage.cs
@@ -424,10 +434,14 @@ docs/models/CreateAndValidateShipment.md
 docs/models/CreateBatchRequest.md
 docs/models/CreateBatchRequestBody.md
 docs/models/CreateBatchResponseBody.md
+docs/models/CreateCombinedLabelDocumentRequestBody.md
+docs/models/CreateCombinedLabelDocumentResponseBodyYaml.md
 docs/models/CreateLabelFromRateRequestBody.md
 docs/models/CreateLabelFromRateResponseBody.md
 docs/models/CreateLabelFromShipmentRequestBody.md
 docs/models/CreateLabelFromShipmentResponseBody.md
+docs/models/CreateLabelRateShopperRequestBody.md
+docs/models/CreateLabelRateShopperResponseBody.md
 docs/models/CreateLabelRequestBody.md
 docs/models/CreateLabelResponseBody.md
 docs/models/CreateManifestByObjectRequestBody.md
@@ -441,6 +455,7 @@ docs/models/CreateReturnLabelResponseBody.md
 docs/models/CreateShipmentResponseBodyFields.md
 docs/models/CreateShipmentsRequestBody.md
 docs/models/CreateShipmentsResponseBody.md
+docs/models/CreateTagRequestBody.md
 docs/models/CreateTagResponseBody.md
 docs/models/CreateWarehouseRequestBody.md
 docs/models/CreateWarehouseResponseBody.md
@@ -466,6 +481,7 @@ docs/models/ErrorSource.md
 docs/models/ErrorType.md
 docs/models/ErrorWithLabelIdResponseBody.md
 docs/models/EstimateRatesRequestBody.md
+docs/models/EstimatedImportCharges.md
 docs/models/FedexAccountSettings.md
 docs/models/FedexAccountSettingsRequestBody.md
 docs/models/FedexPickupType.md
@@ -563,6 +579,7 @@ docs/models/ParseShipmentRequestBody.md
 docs/models/ParseShipmentResponseBody.md
 docs/models/PartialAddress.md
 docs/models/PartialShipment.md
+docs/models/PartialShipmentForRateShopper.md
 docs/models/PartialShippingAddress.md
 docs/models/PartialShippingAddressTo.md
 docs/models/PartialShippingAddressToGeolocationInner.md
@@ -575,6 +592,7 @@ docs/models/ProcessBatchRequestBody.md
 docs/models/Products.md
 docs/models/PurchaseLabelWithoutShipment.md
 docs/models/Rate.md
+docs/models/RateAttributes.md
 docs/models/RateDetail.md
 docs/models/RateDetailAttributes.md
 docs/models/RateDetailType.md
@@ -592,9 +610,11 @@ docs/models/RateResponseStatus.md
 docs/models/RateShipmentRequest.md
 docs/models/RateType.md
 docs/models/RatesInformation.md
+docs/models/RatesInformationRatesInner.md
 docs/models/ReasonCode.md
 docs/models/RecognizedEntity.md
 docs/models/Redirect.md
+docs/models/RegulatedContentType.md
 docs/models/RegulationLevel.md
 docs/models/RemoveFromBatchRequestBody.md
 docs/models/ResponseMessage.md

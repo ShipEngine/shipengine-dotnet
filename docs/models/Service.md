@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Domestic** | **bool** | Supports domestic shipping | [optional] [readonly] 
 **International** | **bool** | Supports international shipping. | [optional] [readonly] 
 **IsMultiPackageSupported** | **bool** | Carrier supports multiple packages per shipment | [optional] [readonly] 
+**IsReturnSupported** | **bool** | This service supports return shipments. | [optional] [readonly] 
 **Name** | **string** | User friendly service name | [optional] [readonly] 
 **ServiceCode** | **string** | service code | [optional] [readonly] 
 

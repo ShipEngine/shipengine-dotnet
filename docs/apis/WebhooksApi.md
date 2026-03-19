@@ -18,7 +18,7 @@ CreateWebhookResponseBody CreateWebhook (HttpClient methodClient, CreateWebhookR
 
 Create a Webhook
 
-Create a webook for specific events in the environment.
+Create a webhook for specific events in the environment.
 
 ### Example
 ```csharp

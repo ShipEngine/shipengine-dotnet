@@ -41,43 +41,57 @@ public partial class InternationalShipmentOptions
     public required NonDelivery NonDelivery { get; set; }
 
     /// <summary>
+    /// The certificate number to be used in the customs.
+    /// </summary>
+    /// <value>The certificate number to be used in the customs.</value>
+    [JsonPropertyName("certificate_number"), JsonPropertyOrder(3)]
+    public string? CertificateNumber { get; set; }
+
+    /// <summary>
     /// Explanation for contents (required if the &#x60;contents&#x60; is provided as &#x60;other&#x60;)
     /// </summary>
     /// <value>Explanation for contents (required if the &#x60;contents&#x60; is provided as &#x60;other&#x60;)</value>
-    [JsonPropertyName("contents_explanation"), JsonPropertyOrder(3)]
+    [JsonPropertyName("contents_explanation"), JsonPropertyOrder(4)]
     public string? ContentsExplanation { get; set; }
 
     /// <summary>
     /// Customs declarations for each item in the shipment. (Please provide this information under &#x60;products&#x60; inside &#x60;packages&#x60;)
     /// </summary>
     /// <value>Customs declarations for each item in the shipment. (Please provide this information under &#x60;products&#x60; inside &#x60;packages&#x60;)</value>
-    [JsonPropertyName("customs_items"), JsonPropertyOrder(4), Obsolete]
+    [JsonPropertyName("customs_items"), JsonPropertyOrder(5), Obsolete]
     public List<CustomsItem>? CustomsItems { get; set; }
 
     /// <summary>
     /// Declaration statement to be placed on the commercial invoice
     /// </summary>
     /// <value>Declaration statement to be placed on the commercial invoice</value>
-    [JsonPropertyName("declaration"), JsonPropertyOrder(5)]
+    [JsonPropertyName("declaration"), JsonPropertyOrder(6)]
     public string? Declaration { get; set; }
 
     /// <summary>
     /// Gets or Sets ImporterOfRecord
     /// </summary>
-    [JsonPropertyName("importer_of_record"), JsonPropertyOrder(6)]
+    [JsonPropertyName("importer_of_record"), JsonPropertyOrder(7)]
     public ImporterOfRecords? ImporterOfRecord { get; set; }
 
     /// <summary>
     /// Gets or Sets InvoiceAdditionalDetails
     /// </summary>
-    [JsonPropertyName("invoice_additional_details"), JsonPropertyOrder(7)]
+    [JsonPropertyName("invoice_additional_details"), JsonPropertyOrder(8)]
     public InvoiceAdditionalDetails? InvoiceAdditionalDetails { get; set; }
+
+    /// <summary>
+    /// The license number to be used in the customs.
+    /// </summary>
+    /// <value>The license number to be used in the customs.</value>
+    [JsonPropertyName("license_number"), JsonPropertyOrder(9)]
+    public string? LicenseNumber { get; set; }
 
     /// <summary>
     /// Specifies the supported terms of trade code (incoterms)
     /// </summary>
     /// <value>Specifies the supported terms of trade code (incoterms)</value>
-    [JsonPropertyName("terms_of_trade_code"), JsonPropertyOrder(8)]
+    [JsonPropertyName("terms_of_trade_code"), JsonPropertyOrder(10)]
     public AllowedIncoterms? TermsOfTradeCode { get; set; }
 
 
@@ -92,11 +106,13 @@ public partial class InternationalShipmentOptions
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Contents: ").Append(Contents).Append("\n");
         sb.Append("  NonDelivery: ").Append(NonDelivery).Append("\n");
+        sb.Append("  CertificateNumber: ").Append(CertificateNumber).Append("\n");
         sb.Append("  ContentsExplanation: ").Append(ContentsExplanation).Append("\n");
         sb.Append("  CustomsItems: ").Append(CustomsItems).Append("\n");
         sb.Append("  Declaration: ").Append(Declaration).Append("\n");
         sb.Append("  ImporterOfRecord: ").Append(ImporterOfRecord).Append("\n");
         sb.Append("  InvoiceAdditionalDetails: ").Append(InvoiceAdditionalDetails).Append("\n");
+        sb.Append("  LicenseNumber: ").Append(LicenseNumber).Append("\n");
         sb.Append("  TermsOfTradeCode: ").Append(TermsOfTradeCode).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");

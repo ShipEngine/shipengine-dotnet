@@ -25,6 +25,66 @@ namespace ShipEngineSDK.Model;
 /// </summary>
 public partial class Carrier
 {
+    /// <summary>
+    /// The current connection status of the carrier. Indicates whether the carrier connection is pending approval or has been approved for use.
+    /// </summary>
+    /// <value>The current connection status of the carrier. Indicates whether the carrier connection is pending approval or has been approved for use.</value>
+    [JsonConverter(typeof(ConnectionStatusEnumJsonConverter))]
+    public class ConnectionStatusEnum
+    {
+        private readonly string _value;
+
+        /// <summary>
+        /// Create a new instance of ConnectionStatusEnum with a predefined value.
+        /// </summary>
+        internal ConnectionStatusEnum()
+        {
+            _value = "pending_approval";
+        }
+
+        /// <summary>
+        /// Create a new instance of ConnectionStatusEnum with a custom value.
+        /// </summary>
+        /// <param name="value">The value of the ConnectionStatusEnum</param>
+        /// <remarks>
+        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
+        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
+        /// </remarks>
+        public ConnectionStatusEnum(string value)
+        {
+            _value = value;
+        }
+
+        /// <summary>
+        /// Enum PendingApproval for value: pending_approval
+        /// </summary>
+        public static ConnectionStatusEnum PendingApproval { get; } = new("pending_approval");
+
+
+        /// <summary>
+        /// Enum Approved for value: approved
+        /// </summary>
+        public static ConnectionStatusEnum Approved { get; } = new("approved");
+
+
+        /// <summary>
+        /// Get a string representation of the current value
+        /// </summary>
+        public override string ToString() => _value;
+    }
+
+    internal class ConnectionStatusEnumJsonConverter : JsonConverter<ConnectionStatusEnum>
+    {
+        public override ConnectionStatusEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+            reader.TokenType == JsonTokenType.String ? new ConnectionStatusEnum(reader.GetString()!) : null;
+
+        public override void Write(Utf8JsonWriter writer, ConnectionStatusEnum value, JsonSerializerOptions options) =>
+            writer.WriteStringValue(value.ToString());
+
+        public override bool CanConvert(Type typeToConvert) =>
+            typeToConvert == typeof(ConnectionStatusEnum);
+    }
+
 
     /// <summary>
     /// The account number that the carrier is connected to.
@@ -38,6 +98,16 @@ public partial class Carrier
     /// </example>
     [JsonPropertyName("account_number"), JsonInclude]
     public string? AccountNumber { get; set; }
+
+    /// <summary>
+    /// The carrier has services that support return shipments.
+    /// </summary>
+    /// <value>The carrier has services that support return shipments.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("allows_returns"), JsonInclude]
+    public bool? AllowsReturns { get; set; }
 
     /// <summary>
     /// Current available balance
@@ -77,6 +147,16 @@ public partial class Carrier
     /// </example>
     [JsonPropertyName("carrier_id"), JsonInclude]
     public string? CarrierId { get; set; }
+
+    /// <summary>
+    /// The current connection status of the carrier. Indicates whether the carrier connection is pending approval or has been approved for use.
+    /// </summary>
+    /// <value>The current connection status of the carrier. Indicates whether the carrier connection is pending approval or has been approved for use.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("connection_status"), JsonInclude]
+    public ConnectionStatusEnum? ConnectionStatus { get; set; }
 
     /// <summary>
     /// The carrier is disabled by the current ShipEngine account&#39;s billing plan.
@@ -178,6 +258,16 @@ public partial class Carrier
     public bool? RequiresFundedAmount { get; set; }
 
     /// <summary>
+    /// The carrier provides rates for the shipment.
+    /// </summary>
+    /// <value>The carrier provides rates for the shipment.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("send_rates"), JsonInclude]
+    public bool? SendRates { get; set; }
+
+    /// <summary>
     /// A list of services that are offered by the carrier
     /// </summary>
     /// <value>A list of services that are offered by the carrier</value>
@@ -197,6 +287,16 @@ public partial class Carrier
     [JsonPropertyName("supports_label_messages"), JsonInclude]
     public bool? SupportsLabelMessages { get; set; }
 
+    /// <summary>
+    /// The carrier supports user-managed rates for shipments.
+    /// </summary>
+    /// <value>The carrier supports user-managed rates for shipments.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("supports_user_managed_rates"), JsonInclude]
+    public bool? SupportsUserManagedRates { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -208,9 +308,11 @@ public partial class Carrier
         sb.Append("class Carrier {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
+        sb.Append("  AllowsReturns: ").Append(AllowsReturns).Append("\n");
         sb.Append("  Balance: ").Append(Balance).Append("\n");
         sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
         sb.Append("  CarrierId: ").Append(CarrierId).Append("\n");
+        sb.Append("  ConnectionStatus: ").Append(ConnectionStatus).Append("\n");
         sb.Append("  DisabledByBillingPlan: ").Append(DisabledByBillingPlan).Append("\n");
         sb.Append("  FriendlyName: ").Append(FriendlyName).Append("\n");
         sb.Append("  FundingSourceId: ").Append(FundingSourceId).Append("\n");
@@ -220,8 +322,10 @@ public partial class Carrier
         sb.Append("  Packages: ").Append(Packages).Append("\n");
         sb.Append("  Primary: ").Append(Primary).Append("\n");
         sb.Append("  RequiresFundedAmount: ").Append(RequiresFundedAmount).Append("\n");
+        sb.Append("  SendRates: ").Append(SendRates).Append("\n");
         sb.Append("  Services: ").Append(Services).Append("\n");
         sb.Append("  SupportsLabelMessages: ").Append(SupportsLabelMessages).Append("\n");
+        sb.Append("  SupportsUserManagedRates: ").Append(SupportsUserManagedRates).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

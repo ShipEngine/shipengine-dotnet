@@ -25,6 +25,27 @@ namespace ShipEngineSDK;
 public partial interface IShipEngine
 {
     /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(HttpClient methodClient, CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Purchase Label Purchase and print a label for shipment
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
@@ -69,6 +90,29 @@ public partial interface IShipEngine
     Task<CreateLabelFromRateResponseBody> CreateLabelFromRate(HttpClient methodClient, CreateLabelFromRateRequestBody createLabelFromRateRequestBody, string rateId, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Purchase Label from Rate Shopper Purchase and print a shipping label using the Rate Shopper. The Rate Shopper automatically selects the optimal carrier and service from your wallet carriers based on your specified rate selection strategy (cheapest, fastest, or best_value). For more information about this in the [rates documentation](https://www.shipengine.com/docs/rates/#about-the-response). 
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createLabelRateShopperRequestBody">Label creation details with inline shipment</param>
+    /// <param name="rateShopperId">The rate selection strategy for the Rate Shopper. This determines which carrier and service will be automatically selected from your wallet carriers based on the rates returned for the shipment. </param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateLabelRateShopperResponseBody)</returns>
+    Task<CreateLabelRateShopperResponseBody> CreateLabelFromRateShopper(CreateLabelRateShopperRequestBody createLabelRateShopperRequestBody, RateAttributes rateShopperId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Purchase Label from Rate Shopper Purchase and print a shipping label using the Rate Shopper. The Rate Shopper automatically selects the optimal carrier and service from your wallet carriers based on your specified rate selection strategy (cheapest, fastest, or best_value). For more information about this in the [rates documentation](https://www.shipengine.com/docs/rates/#about-the-response). 
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createLabelRateShopperRequestBody">Label creation details with inline shipment</param>
+    /// <param name="rateShopperId">The rate selection strategy for the Rate Shopper. This determines which carrier and service will be automatically selected from your wallet carriers based on the rates returned for the shipment. </param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateLabelRateShopperResponseBody)</returns>
+    Task<CreateLabelRateShopperResponseBody> CreateLabelFromRateShopper(HttpClient methodClient, CreateLabelRateShopperRequestBody createLabelRateShopperRequestBody, RateAttributes rateShopperId, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Purchase Label with Shipment ID Purchase a label using a shipment ID that has already been created with the desired address and package info. 
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
@@ -92,7 +136,7 @@ public partial interface IShipEngine
     Task<CreateLabelFromShipmentResponseBody> CreateLabelFromShipment(HttpClient methodClient, CreateLabelFromShipmentRequestBody createLabelFromShipmentRequestBody, string shipmentId, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Create a return label Create a return label
+    /// Create a return label Create a return label for an existing outbound label. You can optionally specify a custom RMA (Return Merchandise Authorization) number. If no RMA number is provided, the system will auto-generate one. 
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -103,7 +147,7 @@ public partial interface IShipEngine
     Task<CreateReturnLabelResponseBody> CreateReturnLabel(CreateReturnLabelRequestBody createReturnLabelRequestBody, string labelId, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Create a return label Create a return label
+    /// Create a return label Create a return label for an existing outbound label. You can optionally specify a custom RMA (Return Merchandise Authorization) number. If no RMA number is provided, the system will auto-generate one. 
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -257,6 +301,48 @@ public partial interface IShipEngine
 public partial class ShipEngine
 {
     /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    public Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default)
+    {
+        return CreateCombinedLabelDocument(_client, createCombinedLabelDocumentRequestBody, cancellationToken);
+    }
+
+    /// <summary>
+    /// Created Combined Label Document Download a combined label file
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createCombinedLabelDocumentRequestBody"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateCombinedLabelDocumentResponseBodyYaml)</returns>
+    public async Task<CreateCombinedLabelDocumentResponseBodyYaml> CreateCombinedLabelDocument(HttpClient methodClient, CreateCombinedLabelDocumentRequestBody createCombinedLabelDocumentRequestBody, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'createCombinedLabelDocumentRequestBody' is set
+        if (createCombinedLabelDocumentRequestBody == null)
+        {
+            throw new ArgumentNullException(nameof(createCombinedLabelDocumentRequestBody));
+        }
+
+
+        RequestOptions requestOptions = new("/v1/documents/combined_labels");
+
+        requestOptions.Data = JsonSerializer.Serialize(createCombinedLabelDocumentRequestBody, JsonSerializerOptions);
+
+        requestOptions.Operation = "LabelsApi.CreateCombinedLabelDocument";
+
+        var result = await SendHttpRequestAsync<CreateCombinedLabelDocumentResponseBodyYaml>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
+
+        return result;
+    }
+
+    /// <summary>
     /// Purchase Label Purchase and print a label for shipment
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
@@ -350,6 +436,57 @@ public partial class ShipEngine
     }
 
     /// <summary>
+    /// Purchase Label from Rate Shopper Purchase and print a shipping label using the Rate Shopper. The Rate Shopper automatically selects the optimal carrier and service from your wallet carriers based on your specified rate selection strategy (cheapest, fastest, or best_value). For more information about this in the [rates documentation](https://www.shipengine.com/docs/rates/#about-the-response). 
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="createLabelRateShopperRequestBody">Label creation details with inline shipment</param>
+    /// <param name="rateShopperId">The rate selection strategy for the Rate Shopper. This determines which carrier and service will be automatically selected from your wallet carriers based on the rates returned for the shipment. </param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateLabelRateShopperResponseBody)</returns>
+    public Task<CreateLabelRateShopperResponseBody> CreateLabelFromRateShopper(CreateLabelRateShopperRequestBody createLabelRateShopperRequestBody, RateAttributes rateShopperId, CancellationToken cancellationToken = default)
+    {
+        return CreateLabelFromRateShopper(_client, createLabelRateShopperRequestBody, rateShopperId, cancellationToken);
+    }
+
+    /// <summary>
+    /// Purchase Label from Rate Shopper Purchase and print a shipping label using the Rate Shopper. The Rate Shopper automatically selects the optimal carrier and service from your wallet carriers based on your specified rate selection strategy (cheapest, fastest, or best_value). For more information about this in the [rates documentation](https://www.shipengine.com/docs/rates/#about-the-response). 
+    /// </summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
+    /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
+    /// <param name="methodClient">HttpClient to use for the request</param>
+    /// <param name="createLabelRateShopperRequestBody">Label creation details with inline shipment</param>
+    /// <param name="rateShopperId">The rate selection strategy for the Rate Shopper. This determines which carrier and service will be automatically selected from your wallet carriers based on the rates returned for the shipment. </param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CreateLabelRateShopperResponseBody)</returns>
+    public async Task<CreateLabelRateShopperResponseBody> CreateLabelFromRateShopper(HttpClient methodClient, CreateLabelRateShopperRequestBody createLabelRateShopperRequestBody, RateAttributes rateShopperId, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'createLabelRateShopperRequestBody' is set
+        if (createLabelRateShopperRequestBody == null)
+        {
+            throw new ArgumentNullException(nameof(createLabelRateShopperRequestBody));
+        }
+
+        // verify the required parameter 'rateShopperId' is set
+        if (rateShopperId == null)
+        {
+            throw new ArgumentNullException(nameof(rateShopperId));
+        }
+
+
+        RequestOptions requestOptions = new("/v1/labels/rate_shopper_id/{rate_shopper_id}");
+
+        requestOptions.PathParameters.Add("rate_shopper_id", ClientUtils.ParameterToString(rateShopperId)); // path parameter
+        requestOptions.Data = JsonSerializer.Serialize(createLabelRateShopperRequestBody, JsonSerializerOptions);
+
+        requestOptions.Operation = "LabelsApi.CreateLabelFromRateShopper";
+
+        var result = await SendHttpRequestAsync<CreateLabelRateShopperResponseBody>(HttpMethods.Post, requestOptions, methodClient, _config, cancellationToken);
+
+        return result;
+    }
+
+    /// <summary>
     /// Purchase Label with Shipment ID Purchase a label using a shipment ID that has already been created with the desired address and package info. 
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
@@ -401,7 +538,7 @@ public partial class ShipEngine
     }
 
     /// <summary>
-    /// Create a return label Create a return label
+    /// Create a return label Create a return label for an existing outbound label. You can optionally specify a custom RMA (Return Merchandise Authorization) number. If no RMA number is provided, the system will auto-generate one. 
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -415,7 +552,7 @@ public partial class ShipEngine
     }
 
     /// <summary>
-    /// Create a return label Create a return label
+    /// Create a return label Create a return label for an existing outbound label. You can optionally specify a custom RMA (Return Merchandise Authorization) number. If no RMA number is provided, the system will auto-generate one. 
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
