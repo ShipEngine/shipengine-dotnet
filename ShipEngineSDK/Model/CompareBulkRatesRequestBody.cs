@@ -203,10 +203,16 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
 
         writer.WritePropertyName("rate_options");
         JsonSerializer.Serialize(writer, value.RateOptions, options);
-        writer.WritePropertyName("ship_from_service_point_id");
-        JsonSerializer.Serialize(writer, value.ShipFromServicePointId, options);
-        writer.WritePropertyName("ship_to_service_point_id");
-        JsonSerializer.Serialize(writer, value.ShipToServicePointId, options);
+        if (value.ShipFromServicePointId != null)
+        {
+            writer.WritePropertyName("ship_from_service_point_id");
+            JsonSerializer.Serialize(writer, value.ShipFromServicePointId, options);
+        }
+        if (value.ShipToServicePointId != null)
+        {
+            writer.WritePropertyName("ship_to_service_point_id");
+            JsonSerializer.Serialize(writer, value.ShipToServicePointId, options);
+        }
 
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
@@ -240,8 +246,8 @@ public class CompareBulkRatesRequestBodyJsonConverter : JsonConverter<CompareBul
 
         // Deserialize all the common properties of the model so they can be used in object initializers later
         var rateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
-        var shipFromServicePointId = jsonDoc.RootElement.GetProperty("ship_from_service_point_id").Deserialize<string>(DeserializingOptions)!;
-        var shipToServicePointId = jsonDoc.RootElement.GetProperty("ship_to_service_point_id").Deserialize<string>(DeserializingOptions)!;
+        var shipFromServicePointId = jsonDoc.RootElement.TryGetProperty("ship_from_service_point_id", out var shipFromServicePointIdElement) ? shipFromServicePointIdElement.Deserialize<string>(DeserializingOptions) : null;
+        var shipToServicePointId = jsonDoc.RootElement.TryGetProperty("ship_to_service_point_id", out var shipToServicePointIdElement) ? shipToServicePointIdElement.Deserialize<string>(DeserializingOptions) : null;
 
         int match = 0;
         var matchedTypes = new List<string>();

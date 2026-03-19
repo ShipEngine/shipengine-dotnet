@@ -19,3 +19,4 @@ docker-compose.*
 
 node_modules
 out
+.claude
