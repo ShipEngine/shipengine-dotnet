@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **EventCode** | **string** | Event Code | [optional] 
 **Latitude** | **double** | Latitude coordinate of tracking event. | [optional] 
 **Longitude** | **double** | Longitude coordinate of tracking event. | [optional] 
+**ProofOfDeliveryUrl** | **string** | A URL to an image captured at the time of delivery, serving as evidence that the shipment was successfully delivered to the recipient. It can be used to capture things like recipient&#39;s signature, location of delivery, condition of the package upon delivery, etc. | [optional] [readonly] 
 **Signer** | **string** | Signer information | [optional] [readonly] 
 **StatusDetailCode** | **StatusDetailCode** |  | [optional] 
 **StatusDetailDescription** | **string** | Event Status Detail Description | [optional] [readonly] 

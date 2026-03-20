@@ -65,9 +65,9 @@ public partial class AdvancedShipmentOptions
     public string? BillToPostalCode { get; set; }
 
     /// <summary>
-    /// certificate number.
+    /// certificate_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object.
     /// </summary>
-    /// <value>certificate number.</value>
+    /// <value>certificate_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object.</value>
     /// <example>
     /// 784515
     /// </example>
@@ -129,23 +129,30 @@ public partial class AdvancedShipmentOptions
     public bool? DeliveredDutyPaid { get; set; }
 
     /// <summary>
+    /// Instructs the carrier to deliver the package only to the exact address provided.
+    /// </summary>
+    /// <value>Instructs the carrier to deliver the package only to the exact address provided.</value>
+    [JsonPropertyName("delivery-as-addressed"), JsonPropertyOrder(15)]
+    public bool? DeliveryAsAddressed { get; set; }
+
+    /// <summary>
     /// Indicates if the shipment contain dry ice
     /// </summary>
     /// <value>Indicates if the shipment contain dry ice</value>
-    [JsonPropertyName("dry_ice"), JsonPropertyOrder(15)]
+    [JsonPropertyName("dry_ice"), JsonPropertyOrder(16)]
     public bool? DryIce { get; set; }
 
     /// <summary>
     /// The weight of the dry ice in the shipment
     /// </summary>
     /// <value>The weight of the dry ice in the shipment</value>
-    [JsonPropertyName("dry_ice_weight"), JsonPropertyOrder(16)]
+    [JsonPropertyName("dry_ice_weight"), JsonPropertyOrder(17)]
     public Weight? DryIceWeight { get; set; }
 
     /// <summary>
     /// Gets or Sets FedexFreight
     /// </summary>
-    [JsonPropertyName("fedex_freight"), JsonPropertyOrder(17)]
+    [JsonPropertyName("fedex_freight"), JsonPropertyOrder(18)]
     public AdvancedShipmentOptionsFedexFreight? FedexFreight { get; set; }
 
     /// <summary>
@@ -155,73 +162,87 @@ public partial class AdvancedShipmentOptions
     /// <example>
     /// 77.5
     /// </example>
-    [JsonPropertyName("freight_class"), JsonPropertyOrder(18)]
+    [JsonPropertyName("freight_class"), JsonPropertyOrder(19)]
     public string? FreightClass { get; set; }
 
     /// <summary>
-    /// invoice number.
+    /// invoice_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object.
     /// </summary>
-    /// <value>invoice number.</value>
+    /// <value>invoice_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object.</value>
     /// <example>
     /// IOC56888
     /// </example>
-    [JsonPropertyName("invoice_number"), JsonPropertyOrder(19)]
+    [JsonPropertyName("invoice_number"), JsonPropertyOrder(20)]
     public string? InvoiceNumber { get; set; }
 
     /// <summary>
-    /// license number.
+    /// license_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object.
     /// </summary>
-    /// <value>license number.</value>
+    /// <value>license_number - This field was part of a historical implementation for passing customs-related data. For new integrations, please use the corresponding parameters within the shipment.customs object.</value>
     /// <example>
     /// 514785
     /// </example>
-    [JsonPropertyName("license_number"), JsonPropertyOrder(20)]
+    [JsonPropertyName("license_number"), JsonPropertyOrder(21)]
     public string? LicenseNumber { get; set; }
 
     /// <summary>
     /// Indicates that the package cannot be processed automatically because it is too large or irregularly shaped. This is primarily for USPS shipments.  See [Section 1.2 of the USPS parcel standards](https://pe.usps.com/text/dmm300/101.htm#ep1047495) for details. 
     /// </summary>
     /// <value>Indicates that the package cannot be processed automatically because it is too large or irregularly shaped. This is primarily for USPS shipments.  See [Section 1.2 of the USPS parcel standards](https://pe.usps.com/text/dmm300/101.htm#ep1047495) for details. </value>
-    [JsonPropertyName("non_machinable"), JsonPropertyOrder(21)]
+    [JsonPropertyName("non_machinable"), JsonPropertyOrder(22)]
     public bool? NonMachinable { get; set; }
 
     /// <summary>
     /// Gets or Sets OriginType
     /// </summary>
-    [JsonPropertyName("origin_type"), JsonPropertyOrder(22)]
+    [JsonPropertyName("origin_type"), JsonPropertyOrder(23)]
     public OriginType? OriginType { get; set; }
+
+    /// <summary>
+    /// Indicates the category of goods in the shipment that is subject to special regulatory or compliance requirements.
+    /// </summary>
+    /// <value>Indicates the category of goods in the shipment that is subject to special regulatory or compliance requirements.</value>
+    [JsonPropertyName("regulated_content_type"), JsonPropertyOrder(24)]
+    public RegulatedContentType? RegulatedContentType { get; set; }
+
+    /// <summary>
+    /// Ensures the shipment is immediately flagged for return to the sender if the initial delivery attempt fails.
+    /// </summary>
+    /// <value>Ensures the shipment is immediately flagged for return to the sender if the initial delivery attempt fails.</value>
+    [JsonPropertyName("return-after-first-attempt"), JsonPropertyOrder(25)]
+    public bool? ReturnAfterFirstAttempt { get; set; }
 
     /// <summary>
     /// Enables Saturday delivery, if supported by the carrier.
     /// </summary>
     /// <value>Enables Saturday delivery, if supported by the carrier.</value>
-    [JsonPropertyName("saturday_delivery"), JsonPropertyOrder(23)]
+    [JsonPropertyName("saturday_delivery"), JsonPropertyOrder(26)]
     public bool? SaturdayDelivery { get; set; }
 
     /// <summary>
     /// Gets or Sets ShipperRelease
     /// </summary>
-    [JsonPropertyName("shipper_release"), JsonPropertyOrder(24)]
+    [JsonPropertyName("shipper_release"), JsonPropertyOrder(27)]
     public bool? ShipperRelease { get; set; }
 
     /// <summary>
     /// Third Party Consignee option is a value-added service that allows the shipper to supply goods without commercial invoices being attached
     /// </summary>
     /// <value>Third Party Consignee option is a value-added service that allows the shipper to supply goods without commercial invoices being attached</value>
-    [JsonPropertyName("third_party_consignee"), JsonPropertyOrder(25)]
+    [JsonPropertyName("third_party_consignee"), JsonPropertyOrder(28)]
     public bool? ThirdPartyConsignee { get; set; }
 
     /// <summary>
     /// Whether to use [UPS Ground Freight pricing](https://www.shipengine.com/docs/shipping/ups-ground-freight/).  If enabled, then a &#x60;freight_class&#x60; must also be specified. 
     /// </summary>
     /// <value>Whether to use [UPS Ground Freight pricing](https://www.shipengine.com/docs/shipping/ups-ground-freight/).  If enabled, then a &#x60;freight_class&#x60; must also be specified. </value>
-    [JsonPropertyName("use_ups_ground_freight_pricing"), JsonPropertyOrder(26)]
+    [JsonPropertyName("use_ups_ground_freight_pricing"), JsonPropertyOrder(29)]
     public bool? UseUpsGroundFreightPricing { get; set; }
 
     /// <summary>
     /// Gets or Sets WindsorFrameworkDetails
     /// </summary>
-    [JsonPropertyName("windsor_framework_details"), JsonPropertyOrder(27)]
+    [JsonPropertyName("windsor_framework_details"), JsonPropertyOrder(30)]
     public AdvancedShipmentOptionsWindsorFrameworkDetails? WindsorFrameworkDetails { get; set; }
 
     /// <summary>
@@ -254,6 +275,7 @@ public partial class AdvancedShipmentOptions
         sb.Append("  DangerousGoods: ").Append(DangerousGoods).Append("\n");
         sb.Append("  DangerousGoodsContact: ").Append(DangerousGoodsContact).Append("\n");
         sb.Append("  DeliveredDutyPaid: ").Append(DeliveredDutyPaid).Append("\n");
+        sb.Append("  DeliveryAsAddressed: ").Append(DeliveryAsAddressed).Append("\n");
         sb.Append("  DryIce: ").Append(DryIce).Append("\n");
         sb.Append("  DryIceWeight: ").Append(DryIceWeight).Append("\n");
         sb.Append("  FedexFreight: ").Append(FedexFreight).Append("\n");
@@ -262,6 +284,8 @@ public partial class AdvancedShipmentOptions
         sb.Append("  LicenseNumber: ").Append(LicenseNumber).Append("\n");
         sb.Append("  NonMachinable: ").Append(NonMachinable).Append("\n");
         sb.Append("  OriginType: ").Append(OriginType).Append("\n");
+        sb.Append("  RegulatedContentType: ").Append(RegulatedContentType).Append("\n");
+        sb.Append("  ReturnAfterFirstAttempt: ").Append(ReturnAfterFirstAttempt).Append("\n");
         sb.Append("  SaturdayDelivery: ").Append(SaturdayDelivery).Append("\n");
         sb.Append("  ShipperRelease: ").Append(ShipperRelease).Append("\n");
         sb.Append("  ThirdPartyConsignee: ").Append(ThirdPartyConsignee).Append("\n");

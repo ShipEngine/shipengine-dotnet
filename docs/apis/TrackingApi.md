@@ -9,9 +9,9 @@
 <a id="gettrackinglog"></a>
 # **GetTrackingLog**
 ```csharp
-GetTrackingLogResponseBody GetTrackingLog (string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
+GetTrackingLogResponseBody GetTrackingLog (string carrierCode = null, string trackingNumber = null, string carrierId = null, CancellationToken cancellationToken = default)
 
-GetTrackingLogResponseBody GetTrackingLog (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
+GetTrackingLogResponseBody GetTrackingLog (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, string carrierId = null, CancellationToken cancellationToken = default)
 ```
 
 Get Tracking Information
@@ -34,11 +34,12 @@ namespace Example
             var shipEngine = new ShipEngine("api_key");
             var carrierCode = stamps_com;
             var trackingNumber = 9405511899223197428490;
+            var carrierId = "carrierId_example";
 
             try
             {
                 // Get Tracking Information
-                GetTrackingLogResponseBody result = await shipEngine.GetTrackingLog(carrierCode, trackingNumber);
+                GetTrackingLogResponseBody result = await shipEngine.GetTrackingLog(carrierCode, trackingNumber, carrierId);
                 Debug.WriteLine(result);
             }
             catch (ShipEngineException e)
@@ -58,6 +59,7 @@ namespace Example
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **carrierCode** | **string** | A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  | [optional]  |
 | **trackingNumber** | **string** | The tracking number associated with a shipment | [optional]  |
+| **carrierId** | **string** | Carrier ID | [optional]  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -67,9 +69,9 @@ namespace Example
 <a id="starttracking"></a>
 # **StartTracking**
 ```csharp
-string StartTracking (string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
+string StartTracking (string carrierCode = null, string trackingNumber = null, string carrierId = null, CancellationToken cancellationToken = default)
 
-string StartTracking (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
+string StartTracking (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, string carrierId = null, CancellationToken cancellationToken = default)
 ```
 
 Start Tracking a Package
@@ -92,11 +94,12 @@ namespace Example
             var shipEngine = new ShipEngine("api_key");
             var carrierCode = stamps_com;
             var trackingNumber = 9405511899223197428490;
+            var carrierId = "carrierId_example";
 
             try
             {
                 // Start Tracking a Package
-                string result = await shipEngine.StartTracking(carrierCode, trackingNumber);
+                string result = await shipEngine.StartTracking(carrierCode, trackingNumber, carrierId);
                 Debug.WriteLine(result);
             }
             catch (ShipEngineException e)
@@ -116,6 +119,7 @@ namespace Example
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **carrierCode** | **string** | A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  | [optional]  |
 | **trackingNumber** | **string** | The tracking number associated with a shipment | [optional]  |
+| **carrierId** | **string** | Carrier ID | [optional]  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type
@@ -125,9 +129,9 @@ namespace Example
 <a id="stoptracking"></a>
 # **StopTracking**
 ```csharp
-string StopTracking (string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
+string StopTracking (string carrierCode = null, string trackingNumber = null, string carrierId = null, CancellationToken cancellationToken = default)
 
-string StopTracking (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, CancellationToken cancellationToken = default)
+string StopTracking (HttpClient methodClient, string carrierCode = null, string trackingNumber = null, string carrierId = null, CancellationToken cancellationToken = default)
 ```
 
 Stop Tracking a Package
@@ -150,11 +154,12 @@ namespace Example
             var shipEngine = new ShipEngine("api_key");
             var carrierCode = stamps_com;
             var trackingNumber = 9405511899223197428490;
+            var carrierId = "carrierId_example";
 
             try
             {
                 // Stop Tracking a Package
-                string result = await shipEngine.StopTracking(carrierCode, trackingNumber);
+                string result = await shipEngine.StopTracking(carrierCode, trackingNumber, carrierId);
                 Debug.WriteLine(result);
             }
             catch (ShipEngineException e)
@@ -174,6 +179,7 @@ namespace Example
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **carrierCode** | **string** | A [shipping carrier](https://www.shipengine.com/docs/carriers/setup/), such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  | [optional]  |
 | **trackingNumber** | **string** | The tracking number associated with a shipment | [optional]  |
+| **carrierId** | **string** | Carrier ID | [optional]  |
 | **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
 
 ### Return type

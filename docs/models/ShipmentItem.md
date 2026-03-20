@@ -6,6 +6,7 @@ A shipment item
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Asin** | **string** | Amazon Standard Identification Number | [optional] 
+**BundleSku** | **string** | Item Stock Keeping Unit of the product bundle | [optional] [readonly] 
 **ExternalOrderId** | **string** | external order id | [optional] 
 **ExternalOrderItemId** | **string** | external order item id | [optional] 
 **Name** | **string** | item name | [optional] 

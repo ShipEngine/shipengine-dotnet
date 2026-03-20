@@ -55,17 +55,24 @@ public partial class InvoiceAdditionalDetails
     public MonetaryValue? InsuranceCharge { get; set; }
 
     /// <summary>
+    /// The invoice number to be used in the customs.
+    /// </summary>
+    /// <value>The invoice number to be used in the customs.</value>
+    [JsonPropertyName("invoice_number"), JsonPropertyOrder(5)]
+    public string? InvoiceNumber { get; set; }
+
+    /// <summary>
     /// Other charge for shipment.
     /// </summary>
     /// <value>Other charge for shipment.</value>
-    [JsonPropertyName("other_charge"), JsonPropertyOrder(5)]
+    [JsonPropertyName("other_charge"), JsonPropertyOrder(6)]
     public MonetaryValue? OtherCharge { get; set; }
 
     /// <summary>
     /// Description for the other charge (if provided).
     /// </summary>
     /// <value>Description for the other charge (if provided).</value>
-    [JsonPropertyName("other_charge_description"), JsonPropertyOrder(6)]
+    [JsonPropertyName("other_charge_description"), JsonPropertyOrder(7)]
     public string? OtherChargeDescription { get; set; }
 
 
@@ -82,6 +89,7 @@ public partial class InvoiceAdditionalDetails
         sb.Append("  EstimatedImportCharges: ").Append(EstimatedImportCharges).Append("\n");
         sb.Append("  FreightCharge: ").Append(FreightCharge).Append("\n");
         sb.Append("  InsuranceCharge: ").Append(InsuranceCharge).Append("\n");
+        sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
         sb.Append("  OtherCharge: ").Append(OtherCharge).Append("\n");
         sb.Append("  OtherChargeDescription: ").Append(OtherChargeDescription).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete

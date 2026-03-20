@@ -6,9 +6,11 @@ A get carrier by id response body
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountNumber** | **string** | The account number that the carrier is connected to. | [optional] [readonly] 
+**AllowsReturns** | **bool** | The carrier has services that support return shipments. | [optional] [readonly] 
 **Balance** | **decimal** | Current available balance | [optional] [readonly] 
 **CarrierCode** | **string** | The [shipping carrier](https://www.shipengine.com/docs/carriers/setup/) who will ship the package, such as &#x60;fedex&#x60;, &#x60;dhl_express&#x60;, &#x60;stamps_com&#x60;, etc.  | [optional] [readonly] 
 **CarrierId** | **string** | A string that uniquely identifies the carrier. | [optional] [readonly] 
+**ConnectionStatus** | **string** | The current connection status of the carrier. Indicates whether the carrier connection is pending approval or has been approved for use. | [optional] [readonly] 
 **DisabledByBillingPlan** | **bool** | The carrier is disabled by the current ShipEngine account&#39;s billing plan. | [optional] [readonly] 
 **FriendlyName** | **string** | Screen readable name | [optional] [readonly] 
 **FundingSourceId** | **string** | Funding source ID for the carrier | [optional] [readonly] 
@@ -18,6 +20,8 @@ Name | Type | Description | Notes
 **Packages** | [**List&lt;PackageType&gt;**](PackageType.md) | A list of package types that are supported by the carrier | [optional] [readonly] 
 **Primary** | **bool** | Is this the primary carrier that is used by default when no carrier is specified in label/shipment creation | [optional] [readonly] 
 **RequiresFundedAmount** | **bool** | Indicates whether the carrier requires funding to use its services | [optional] [readonly] 
+**SendRates** | **bool** | The carrier provides rates for the shipment. | [optional] [readonly] 
 **Services** | [**List&lt;Service&gt;**](Service.md) | A list of services that are offered by the carrier | [optional] [readonly] 
 **SupportsLabelMessages** | **bool** | The carrier supports adding custom label messages to an order. | [optional] [readonly] 
+**SupportsUserManagedRates** | **bool** | The carrier supports user-managed rates for shipments. | [optional] [readonly] 
 

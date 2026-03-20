@@ -358,9 +358,9 @@ namespace Example
 <a id="listbatches"></a>
 # **ListBatches**
 ```csharp
-ListBatchesResponseBody ListBatches (BatchStatus status = null, BatchesSortBy sortBy = null, SortDir sortDir = null, string batchNumber = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
+ListBatchesResponseBody ListBatches (BatchStatus status = null, BatchesSortBy sortBy = null, DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, DateTimeOffset processedAtStart = null, DateTimeOffset processedAtEnd = null, SortDir sortDir = null, string batchNumber = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 
-ListBatchesResponseBody ListBatches (HttpClient methodClient, BatchStatus status = null, BatchesSortBy sortBy = null, SortDir sortDir = null, string batchNumber = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
+ListBatchesResponseBody ListBatches (HttpClient methodClient, BatchStatus status = null, BatchesSortBy sortBy = null, DateTimeOffset createdAtStart = null, DateTimeOffset createdAtEnd = null, DateTimeOffset processedAtStart = null, DateTimeOffset processedAtEnd = null, SortDir sortDir = null, string batchNumber = null, int page = null, int pageSize = null, CancellationToken cancellationToken = default)
 ```
 
 List Batches
@@ -383,6 +383,10 @@ namespace Example
             var shipEngine = new ShipEngine("api_key");
             var status = (BatchStatus) "open";
             var sortBy = (BatchesSortBy) "ship_date";
+            var createdAtStart = 2019-03-12T19:24:13.657Z;
+            var createdAtEnd = 2019-03-12T19:24:13.657Z;
+            var processedAtStart = 2019-03-12T19:24:13.657Z;
+            var processedAtEnd = 2019-03-12T19:24:13.657Z;
             var sortDir = (SortDir) "asc";
             var batchNumber = "batchNumber_example";
             var page = 2;
@@ -391,7 +395,7 @@ namespace Example
             try
             {
                 // List Batches
-                ListBatchesResponseBody result = await shipEngine.ListBatches(status, sortBy, sortDir, batchNumber, page, pageSize);
+                ListBatchesResponseBody result = await shipEngine.ListBatches(status, sortBy, createdAtStart, createdAtEnd, processedAtStart, processedAtEnd, sortDir, batchNumber, page, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ShipEngineException e)
@@ -411,6 +415,10 @@ namespace Example
 | **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
 | **status** | **BatchStatus** |  | [optional]  |
 | **sortBy** | **BatchesSortBy** |  | [optional]  |
+| **createdAtStart** | **DateTimeOffset** | Only return batches that were created on or after a specific date/time | [optional]  |
+| **createdAtEnd** | **DateTimeOffset** | Only return batches that were created on or before a specific date/time | [optional]  |
+| **processedAtStart** | **DateTimeOffset** | Only return batches that were processed on or after a specific date/time | [optional]  |
+| **processedAtEnd** | **DateTimeOffset** | Only return batches that were processed on or before a specific date/time | [optional]  |
 | **sortDir** | **SortDir** | Controls the sort order of the query. | [optional]  |
 | **batchNumber** | **string** | Batch Number | [optional]  |
 | **page** | **int** | Return a specific page of results. Defaults to the first page. If set to a number that&#39;s greater than the number of pages of results, an empty page is returned.  | [optional] [default to 1] |

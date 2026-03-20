@@ -27,23 +27,16 @@ public partial class RateDetailAttributes
 {
 
     /// <summary>
-    /// Code for a specific tax type
-    /// </summary>
-    /// <value>Code for a specific tax type</value>
-    [JsonPropertyName("tax_code"), JsonPropertyOrder(1)]
-    public string? TaxCode { get; set; }
-
-    /// <summary>
     /// Tax percentage, e.g. 20 for 20%, added to the shipping cost
     /// </summary>
     /// <value>Tax percentage, e.g. 20 for 20%, added to the shipping cost</value>
-    [JsonPropertyName("tax_percentage"), JsonPropertyOrder(2)]
+    [JsonPropertyName("tax_percentage"), JsonPropertyOrder(1)]
     public decimal? TaxPercentage { get; set; }
 
     /// <summary>
     /// Gets or Sets TaxType
     /// </summary>
-    [JsonPropertyName("tax_type"), JsonPropertyOrder(3)]
+    [JsonPropertyName("tax_type"), JsonPropertyOrder(2)]
     public TaxType? TaxType { get; set; }
 
 
@@ -56,7 +49,6 @@ public partial class RateDetailAttributes
         var sb = new StringBuilder();
         sb.Append("class RateDetailAttributes {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
-        sb.Append("  TaxCode: ").Append(TaxCode).Append("\n");
         sb.Append("  TaxPercentage: ").Append(TaxPercentage).Append("\n");
         sb.Append("  TaxType: ").Append(TaxType).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete

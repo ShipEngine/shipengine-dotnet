@@ -201,6 +201,19 @@ public partial class TrackEvent
     public double? Longitude { get; set; }
 
     /// <summary>
+    /// A URL to an image captured at the time of delivery, serving as evidence that the shipment was successfully delivered to the recipient. It can be used to capture things like recipient&#39;s signature, location of delivery, condition of the package upon delivery, etc.
+    /// </summary>
+    /// <value>A URL to an image captured at the time of delivery, serving as evidence that the shipment was successfully delivered to the recipient. It can be used to capture things like recipient&#39;s signature, location of delivery, condition of the package upon delivery, etc.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    /// <example>
+    /// https://tracking-service-prod.s3.amazonaws.com/proof-of-delivery/dummy_module/0000000001/bc6dd17969bd97f24262ca73ac6ff36062aafecba25ef16d4178264bf7c0e72c.png
+    /// </example>
+    [JsonPropertyName("proof_of_delivery_url"), JsonInclude]
+    public string? ProofOfDeliveryUrl { get; set; }
+
+    /// <summary>
     /// Signer information
     /// </summary>
     /// <value>Signer information</value>
@@ -213,7 +226,7 @@ public partial class TrackEvent
     /// <summary>
     /// Gets or Sets StatusDetailCode
     /// </summary>
-    [JsonPropertyName("status_detail_code"), JsonPropertyOrder(18)]
+    [JsonPropertyName("status_detail_code"), JsonPropertyOrder(19)]
     public StatusDetailCode? StatusDetailCode { get; set; }
 
     /// <summary>
@@ -255,6 +268,7 @@ public partial class TrackEvent
         sb.Append("  EventCode: ").Append(EventCode).Append("\n");
         sb.Append("  Latitude: ").Append(Latitude).Append("\n");
         sb.Append("  Longitude: ").Append(Longitude).Append("\n");
+        sb.Append("  ProofOfDeliveryUrl: ").Append(ProofOfDeliveryUrl).Append("\n");
         sb.Append("  Signer: ").Append(Signer).Append("\n");
         sb.Append("  StatusDetailCode: ").Append(StatusDetailCode).Append("\n");
         sb.Append("  StatusDetailDescription: ").Append(StatusDetailDescription).Append("\n");

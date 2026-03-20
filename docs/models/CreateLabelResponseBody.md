@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Packages** | [**List&lt;LabelPackagesInner&gt;**](LabelPackagesInner.md) | The label&#39;s package(s).  &gt; **Note:** Some carriers only allow one package per label.  If you attempt to create a multi-package label for a carrier that doesn&#39;t allow it, an error will be returned.  | [readonly] 
 **ServiceCode** | **string** | The [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/) used to ship the package, such as &#x60;fedex_ground&#x60;, &#x60;usps_first_class_mail&#x60;, &#x60;flat_rate_envelope&#x60;, etc.  | [readonly] 
 **ShipDate** | **DateTimeOffset** | The date that the package was (or will be) shipped.  ShipEngine will take the day of week into consideration. For example, if the carrier does not operate on Sundays, then a package that would have shipped on Sunday will ship on Monday instead.  | [readonly] 
+**ShipTo** | [**ShippingAddressTo**](ShippingAddressTo.md) | The recipient&#39;s mailing address | [readonly] 
 **ShipmentCost** | [**MonetaryValue**](MonetaryValue.md) | The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs.  | [readonly] 
 **ShipmentId** | **string** | The shipment that this label is for.  ShipEngine can create a shipment for you automatically when you [create a label](https://www.shipengine.com/docs/labels/create-a-label/), or you can [create your own shipment](https://www.shipengine.com/docs/shipping/create-a-shipment/) and then [use it to print a label](https://www.shipengine.com/docs/labels/create-from-shipment/)  | [readonly] 
 **Status** | **LabelStatus** |  | [readonly] 
@@ -31,12 +32,15 @@ Name | Type | Description | Notes
 **Voided** | **bool** | Indicates whether the label has been [voided](https://www.shipengine.com/docs/labels/voiding/)  | [readonly] 
 **AlternativeIdentifiers** | [**List&lt;AlternativeIdentifier&gt;**](AlternativeIdentifier.md) | Additional information some carriers may provide by which to identify a given label in their system.   | [optional] [readonly] 
 **Confirmation** | **DeliveryConfirmation** | The type of delivery confirmation that is required for this shipment. | [optional] [readonly] 
+**ExternalOrderId** | **string** | ID that the Order Source assigne | [readonly] 
+**ExternalShipmentId** | **string** | A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment.  | [readonly] 
 **FormDownload** | [**Link**](Link.md) | The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it.  | [readonly] 
 **InsuranceClaim** | [**Link**](Link.md) | The link to submit an insurance claim for the shipment.  This field is null if the shipment is not insured or if the insurance provider does not support online claim submission.  | [readonly] 
 **LabelDownloadType** | **LabelDownloadType** |  | [optional] 
 **LabelImageId** | **string** | The label image resource that was used to create a custom label image. | 
 **OutboundLabelId** | **string** | The &#x60;label_id&#x60; of the original (outgoing) label that the return label is for. This associates the two labels together, which is required by some carriers.  | [optional] 
 **PaperlessDownload** | [**PaperlessDownload**](PaperlessDownload.md) | The paperless details which may contain elements like &#x60;href&#x60;, &#x60;instructions&#x60; and &#x60;handoff_code&#x60;.  | [readonly] 
+**QrCodeDownload** | [**OptionalLink**](OptionalLink.md) | The QR code download for the package | [readonly] 
 **RateDetails** | [**List&lt;RateDetail&gt;**](RateDetail.md) | A list of rate details that are associated with shipping cost. This is useful for displaying a breakdown of the rate to the user.  | [optional] [readonly] 
 **RequestedComparisonAmount** | [**MonetaryValue**](MonetaryValue.md) | The total shipping cost for the specified comparison_rate_type.  | [optional] [readonly] 
 **RmaNumber** | **string** | An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value.  | 

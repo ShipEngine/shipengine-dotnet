@@ -205,6 +205,16 @@ public partial class CreateLabelResponseBody
     public DateTimeOffset? ShipDate { get; set; }
 
     /// <summary>
+    /// The recipient&#39;s mailing address
+    /// </summary>
+    /// <value>The recipient&#39;s mailing address</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("ship_to"), JsonInclude]
+    public ShippingAddressTo? ShipTo { get; set; }
+
+    /// <summary>
     /// The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs. 
     /// </summary>
     /// <value>The cost of shipping, delivery confirmation, and other carrier charges.  This amount **does not** include insurance costs. </value>
@@ -300,6 +310,26 @@ public partial class CreateLabelResponseBody
     public DeliveryConfirmation? Confirmation { get; set; }
 
     /// <summary>
+    /// ID that the Order Source assigne
+    /// </summary>
+    /// <value>ID that the Order Source assigne</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("external_order_id"), JsonInclude]
+    public string? ExternalOrderId { get; set; }
+
+    /// <summary>
+    /// A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment. 
+    /// </summary>
+    /// <value>A unique user-defined key to identify a shipment.  This can be used to retrieve the shipment. </value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("external_shipment_id"), JsonInclude]
+    public string? ExternalShipmentId { get; set; }
+
+    /// <summary>
     /// The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it. 
     /// </summary>
     /// <value>The link to download the customs form (a.k.a. commercial invoice) for this shipment, if any.  Forms are in PDF format. This field is null if the shipment does not require a customs form, or if the carrier does not support it. </value>
@@ -322,7 +352,7 @@ public partial class CreateLabelResponseBody
     /// <summary>
     /// Gets or Sets LabelDownloadType
     /// </summary>
-    [JsonPropertyName("label_download_type"), JsonPropertyOrder(29), JsonWriteOnly]
+    [JsonPropertyName("label_download_type"), JsonPropertyOrder(32), JsonWriteOnly]
     public LabelDownloadType? LabelDownloadType { get; set; }
 
     /// <summary>
@@ -332,7 +362,7 @@ public partial class CreateLabelResponseBody
     /// <example>
     /// img_DtBXupDBxREpHnwEXhTfgK
     /// </example>
-    [JsonPropertyName("label_image_id"), JsonPropertyOrder(30)]
+    [JsonPropertyName("label_image_id"), JsonPropertyOrder(33)]
     public required string LabelImageId { get; set; }
 
     /// <summary>
@@ -342,7 +372,7 @@ public partial class CreateLabelResponseBody
     /// <example>
     /// se-28529731
     /// </example>
-    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(31), JsonWriteOnly]
+    [JsonPropertyName("outbound_label_id"), JsonPropertyOrder(34), JsonWriteOnly]
     public string? OutboundLabelId { get; set; }
 
     /// <summary>
@@ -354,6 +384,16 @@ public partial class CreateLabelResponseBody
     /// </remarks>
     [JsonPropertyName("paperless_download"), JsonInclude]
     public PaperlessDownload? PaperlessDownload { get; set; }
+
+    /// <summary>
+    /// The QR code download for the package
+    /// </summary>
+    /// <value>The QR code download for the package</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("qr_code_download"), JsonInclude]
+    public OptionalLink? QrCodeDownload { get; set; }
 
     /// <summary>
     /// A list of rate details that are associated with shipping cost. This is useful for displaying a breakdown of the rate to the user. 
@@ -379,21 +419,21 @@ public partial class CreateLabelResponseBody
     /// An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. 
     /// </summary>
     /// <value>An optional Return Merchandise Authorization number.  This field is useful for return labels.  You can set it to any string value. </value>
-    [JsonPropertyName("rma_number"), JsonPropertyOrder(35)]
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(39)]
     public required string RmaNumber { get; set; }
 
     /// <summary>
     /// The shipment information used to generate the label
     /// </summary>
     /// <value>The shipment information used to generate the label</value>
-    [JsonPropertyName("shipment"), JsonPropertyOrder(36), JsonWriteOnly]
+    [JsonPropertyName("shipment"), JsonPropertyOrder(40), JsonWriteOnly]
     public Shipment? Shipment { get; set; }
 
     /// <summary>
     /// Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.
     /// </summary>
     /// <value>Indicate if this label is being used only for testing purposes. If true, then no charge will be added to your account.</value>
-    [JsonPropertyName("test_label"), JsonPropertyOrder(37), JsonWriteOnly, Obsolete]
+    [JsonPropertyName("test_label"), JsonPropertyOrder(41), JsonWriteOnly, Obsolete]
     public bool? TestLabel { get; set; }
 
     /// <summary>
@@ -412,7 +452,7 @@ public partial class CreateLabelResponseBody
     /// <summary>
     /// Gets or Sets ValidateAddress
     /// </summary>
-    [JsonPropertyName("validate_address"), JsonPropertyOrder(39), JsonWriteOnly]
+    [JsonPropertyName("validate_address"), JsonPropertyOrder(43), JsonWriteOnly]
     public ValidateAddress? ValidateAddress { get; set; }
 
     /// <summary>
@@ -455,6 +495,7 @@ public partial class CreateLabelResponseBody
         sb.Append("  Packages: ").Append(Packages).Append("\n");
         sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
+        sb.Append("  ShipTo: ").Append(ShipTo).Append("\n");
         sb.Append("  ShipmentCost: ").Append(ShipmentCost).Append("\n");
         sb.Append("  ShipmentId: ").Append(ShipmentId).Append("\n");
         sb.Append("  Status: ").Append(Status).Append("\n");
@@ -464,12 +505,15 @@ public partial class CreateLabelResponseBody
         sb.Append("  Voided: ").Append(Voided).Append("\n");
         sb.Append("  AlternativeIdentifiers: ").Append(AlternativeIdentifiers).Append("\n");
         sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
+        sb.Append("  ExternalOrderId: ").Append(ExternalOrderId).Append("\n");
+        sb.Append("  ExternalShipmentId: ").Append(ExternalShipmentId).Append("\n");
         sb.Append("  FormDownload: ").Append(FormDownload).Append("\n");
         sb.Append("  InsuranceClaim: ").Append(InsuranceClaim).Append("\n");
         sb.Append("  LabelDownloadType: ").Append(LabelDownloadType).Append("\n");
         sb.Append("  LabelImageId: ").Append(LabelImageId).Append("\n");
         sb.Append("  OutboundLabelId: ").Append(OutboundLabelId).Append("\n");
         sb.Append("  PaperlessDownload: ").Append(PaperlessDownload).Append("\n");
+        sb.Append("  QrCodeDownload: ").Append(QrCodeDownload).Append("\n");
         sb.Append("  RateDetails: ").Append(RateDetails).Append("\n");
         sb.Append("  RequestedComparisonAmount: ").Append(RequestedComparisonAmount).Append("\n");
         sb.Append("  RmaNumber: ").Append(RmaNumber).Append("\n");

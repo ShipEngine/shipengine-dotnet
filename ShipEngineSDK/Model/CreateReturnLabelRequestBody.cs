@@ -70,6 +70,13 @@ public partial class CreateReturnLabelRequestBody
     [JsonPropertyName("label_layout"), JsonPropertyOrder(6)]
     public LabelLayout? LabelLayout { get; set; }
 
+    /// <summary>
+    /// An optional Return Merchandise Authorization number. If provided, this value will be used as the return label&#39;s RMA number. If omitted, the system will auto-generate an RMA number (current default behavior). You can set it to any string value. 
+    /// </summary>
+    /// <value>An optional Return Merchandise Authorization number. If provided, this value will be used as the return label&#39;s RMA number. If omitted, the system will auto-generate an RMA number (current default behavior). You can set it to any string value. </value>
+    [JsonPropertyName("rma_number"), JsonPropertyOrder(7)]
+    public string? RmaNumber { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -86,6 +93,7 @@ public partial class CreateReturnLabelRequestBody
         sb.Append("  LabelFormat: ").Append(LabelFormat).Append("\n");
         sb.Append("  LabelImageId: ").Append(LabelImageId).Append("\n");
         sb.Append("  LabelLayout: ").Append(LabelLayout).Append("\n");
+        sb.Append("  RmaNumber: ").Append(RmaNumber).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();

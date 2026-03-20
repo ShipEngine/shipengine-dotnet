@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **EstimatedImportCharges** | [**EstimatedImportCharges**](EstimatedImportCharges.md) | Estimated import charges for commercial invoices for international shipments. | [optional] 
 **FreightCharge** | [**MonetaryValue**](MonetaryValue.md) | Freight Charge for shipment. | [optional] 
 **InsuranceCharge** | [**MonetaryValue**](MonetaryValue.md) | Insurance Charge for shipment. | [optional] 
+**InvoiceNumber** | **string** | The invoice number to be used in the customs. | [optional] 
 **OtherCharge** | [**MonetaryValue**](MonetaryValue.md) | Other charge for shipment. | [optional] 
 **OtherChargeDescription** | **string** | Description for the other charge (if provided). | [optional] 
 

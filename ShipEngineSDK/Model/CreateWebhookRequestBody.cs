@@ -49,6 +49,26 @@ public partial class CreateWebhookRequestBody
     [JsonPropertyName("headers"), JsonPropertyOrder(3)]
     public List<WebhookHeader>? Headers { get; set; }
 
+    /// <summary>
+    /// The name of the webhook
+    /// </summary>
+    /// <value>The name of the webhook</value>
+    /// <example>
+    /// My New Webhook
+    /// </example>
+    [JsonPropertyName("name"), JsonPropertyOrder(4)]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Store ID
+    /// </summary>
+    /// <value>Store ID</value>
+    /// <example>
+    /// 123456
+    /// </example>
+    [JsonPropertyName("store_id"), JsonPropertyOrder(5)]
+    public int? StoreId { get; set; }
+
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -62,6 +82,8 @@ public partial class CreateWebhookRequestBody
         sb.Append("  Event: ").Append(Event).Append("\n");
         sb.Append("  Url: ").Append(Url).Append("\n");
         sb.Append("  Headers: ").Append(Headers).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  StoreId: ").Append(StoreId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete
         sb.Append("}\n");
         return sb.ToString();
