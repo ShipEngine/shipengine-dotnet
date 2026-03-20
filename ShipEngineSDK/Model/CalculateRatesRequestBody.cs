@@ -36,6 +36,26 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
     [JsonPropertyName("rate_options"), JsonPropertyOrder(1)]
     public RateRequestBody? RateOptions { get; set; }
 
+    /// <summary>
+    /// A unique identifier for a carrier drop off point where a merchant plans to deliver packages. This will take precedence over a shipment&#39;s ship from address.
+    /// </summary>
+    /// <value>A unique identifier for a carrier drop off point where a merchant plans to deliver packages. This will take precedence over a shipment&#39;s ship from address.</value>
+    /// <example>
+    /// 614940
+    /// </example>
+    [JsonPropertyName("ship_from_service_point_id"), JsonPropertyOrder(2)]
+    public string? ShipFromServicePointId { get; set; }
+
+    /// <summary>
+    /// A unique identifier for a carrier service point where the shipment will be delivered by the carrier. This will take precedence over a shipment&#39;s ship to address.
+    /// </summary>
+    /// <value>A unique identifier for a carrier service point where the shipment will be delivered by the carrier. This will take precedence over a shipment&#39;s ship to address.</value>
+    /// <example>
+    /// 614940
+    /// </example>
+    [JsonPropertyName("ship_to_service_point_id"), JsonPropertyOrder(3)]
+    public string? ShipToServicePointId { get; set; }
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CalculateRatesRequestBody" /> class
@@ -118,6 +138,8 @@ public partial class CalculateRatesRequestBody : AbstractOpenAPISchema
         sb.Append("class CalculateRatesRequestBody {\n");
         sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
         sb.Append("  RateOptions: ").Append(this.RateOptions).Append("\n");
+        sb.Append("  ShipFromServicePointId: ").Append(this.ShipFromServicePointId).Append("\n");
+        sb.Append("  ShipToServicePointId: ").Append(this.ShipToServicePointId).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }
@@ -179,8 +201,21 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
     {
         writer.WriteStartObject();
 
-        writer.WritePropertyName("rate_options");
-        JsonSerializer.Serialize(writer, value.RateOptions, options);
+        if (value.RateOptions != null)
+        {
+            writer.WritePropertyName("rate_options");
+            JsonSerializer.Serialize(writer, value.RateOptions, options);
+        }
+        if (value.ShipFromServicePointId != null)
+        {
+            writer.WritePropertyName("ship_from_service_point_id");
+            JsonSerializer.Serialize(writer, value.ShipFromServicePointId, options);
+        }
+        if (value.ShipToServicePointId != null)
+        {
+            writer.WritePropertyName("ship_to_service_point_id");
+            JsonSerializer.Serialize(writer, value.ShipToServicePointId, options);
+        }
 
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
@@ -213,7 +248,9 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
         CalculateRatesRequestBody? newCalculateRatesRequestBody = null;
 
         // Deserialize all the common properties of the model so they can be used in object initializers later
-        var rateOptions = jsonDoc.RootElement.GetProperty("rate_options").Deserialize<RateRequestBody>(DeserializingOptions)!;
+        var rateOptions = jsonDoc.RootElement.TryGetProperty("rate_options", out var rateOptionsElement) ? rateOptionsElement.Deserialize<RateRequestBody>(DeserializingOptions) : null;
+        var shipFromServicePointId = jsonDoc.RootElement.TryGetProperty("ship_from_service_point_id", out var shipFromServicePointIdElement) ? shipFromServicePointIdElement.Deserialize<string>(DeserializingOptions) : null;
+        var shipToServicePointId = jsonDoc.RootElement.TryGetProperty("ship_to_service_point_id", out var shipToServicePointIdElement) ? shipToServicePointIdElement.Deserialize<string>(DeserializingOptions) : null;
 
         int match = 0;
         var matchedTypes = new List<string>();
@@ -223,6 +260,8 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
             newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<ShipmentIdRequest>(DeserializingOptions)!)
             {
                 RateOptions = rateOptions,
+                ShipFromServicePointId = shipFromServicePointId,
+                ShipToServicePointId = shipToServicePointId,
             };
 
             matchedTypes.Add("ShipmentIdRequest");
@@ -239,6 +278,8 @@ public class CalculateRatesRequestBodyJsonConverter : JsonConverter<CalculateRat
             newCalculateRatesRequestBody = new CalculateRatesRequestBody(jsonDoc.Deserialize<RateShipmentRequest>(DeserializingOptions)!)
             {
                 RateOptions = rateOptions,
+                ShipFromServicePointId = shipFromServicePointId,
+                ShipToServicePointId = shipToServicePointId,
             };
 
             matchedTypes.Add("RateShipmentRequest");

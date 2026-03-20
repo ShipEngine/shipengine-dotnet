@@ -80,6 +80,16 @@ public partial class Service
     public bool? IsMultiPackageSupported { get; set; }
 
     /// <summary>
+    /// This service supports return shipments.
+    /// </summary>
+    /// <value>This service supports return shipments.</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("is_return_supported"), JsonInclude]
+    public bool? IsReturnSupported { get; set; }
+
+    /// <summary>
     /// User friendly service name
     /// </summary>
     /// <value>User friendly service name</value>
@@ -120,6 +130,7 @@ public partial class Service
         sb.Append("  Domestic: ").Append(Domestic).Append("\n");
         sb.Append("  International: ").Append(International).Append("\n");
         sb.Append("  IsMultiPackageSupported: ").Append(IsMultiPackageSupported).Append("\n");
+        sb.Append("  IsReturnSupported: ").Append(IsReturnSupported).Append("\n");
         sb.Append("  Name: ").Append(Name).Append("\n");
         sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete

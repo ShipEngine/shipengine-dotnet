@@ -93,6 +93,18 @@ public class DeliveryConfirmation
 
 
     /// <summary>
+    /// Enum DeliveryCode for value: delivery_code
+    /// </summary>
+    public static DeliveryConfirmation DeliveryCode { get; } = new("delivery_code");
+
+
+    /// <summary>
+    /// Enum AgeVerification16Plus for value: age_verification_16_plus
+    /// </summary>
+    public static DeliveryConfirmation AgeVerification16Plus { get; } = new("age_verification_16_plus");
+
+
+    /// <summary>
     /// Get a string representation of the current value
     /// </summary>
     public override string ToString() => _value;

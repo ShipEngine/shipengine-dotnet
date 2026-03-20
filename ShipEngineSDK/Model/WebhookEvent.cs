@@ -21,9 +21,9 @@ using System.Text.RegularExpressions;
 namespace ShipEngineSDK.Model;
 
 /// <summary>
-/// The possible webook event values
+/// The possible webhook event values
 /// </summary>
-/// <value>The possible webook event values</value>
+/// <value>The possible webhook event values</value>
 [JsonConverter(typeof(WebhookEventJsonConverter))]
 public class WebhookEvent
 {

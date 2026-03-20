@@ -316,12 +316,21 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         JsonSerializer.Serialize(writer, value.ToStateProvince, options);
         writer.WritePropertyName("weight");
         JsonSerializer.Serialize(writer, value.Weight, options);
-        writer.WritePropertyName("address_residential_indicator");
-        JsonSerializer.Serialize(writer, value.AddressResidentialIndicator, options);
-        writer.WritePropertyName("confirmation");
-        JsonSerializer.Serialize(writer, value.Confirmation, options);
-        writer.WritePropertyName("dimensions");
-        JsonSerializer.Serialize(writer, value.Dimensions, options);
+        if (value.AddressResidentialIndicator != null)
+        {
+            writer.WritePropertyName("address_residential_indicator");
+            JsonSerializer.Serialize(writer, value.AddressResidentialIndicator, options);
+        }
+        if (value.Confirmation != null)
+        {
+            writer.WritePropertyName("confirmation");
+            JsonSerializer.Serialize(writer, value.Confirmation, options);
+        }
+        if (value.Dimensions != null)
+        {
+            writer.WritePropertyName("dimensions");
+            JsonSerializer.Serialize(writer, value.Dimensions, options);
+        }
 
         var node = JsonSerializer.SerializeToNode(value.ActualInstance, options);
         foreach (var prop in node?.AsObject() ?? [])
@@ -364,9 +373,9 @@ public class EstimateRatesRequestBodyJsonConverter : JsonConverter<EstimateRates
         var toPostalCode = jsonDoc.RootElement.GetProperty("to_postal_code").Deserialize<string>(DeserializingOptions)!;
         var toStateProvince = jsonDoc.RootElement.GetProperty("to_state_province").Deserialize<string>(DeserializingOptions)!;
         var weight = jsonDoc.RootElement.GetProperty("weight").Deserialize<Weight>(DeserializingOptions)!;
-        var addressResidentialIndicator = jsonDoc.RootElement.GetProperty("address_residential_indicator").Deserialize<AddressResidentialIndicator>(DeserializingOptions)!;
-        var confirmation = jsonDoc.RootElement.GetProperty("confirmation").Deserialize<DeliveryConfirmation>(DeserializingOptions)!;
-        var dimensions = jsonDoc.RootElement.GetProperty("dimensions").Deserialize<Dimensions>(DeserializingOptions)!;
+        var addressResidentialIndicator = jsonDoc.RootElement.TryGetProperty("address_residential_indicator", out var addressResidentialIndicatorElement) ? addressResidentialIndicatorElement.Deserialize<AddressResidentialIndicator>(DeserializingOptions) : null;
+        var confirmation = jsonDoc.RootElement.TryGetProperty("confirmation", out var confirmationElement) ? confirmationElement.Deserialize<DeliveryConfirmation>(DeserializingOptions) : null;
+        var dimensions = jsonDoc.RootElement.TryGetProperty("dimensions", out var dimensionsElement) ? dimensionsElement.Deserialize<Dimensions>(DeserializingOptions) : null;
 
         int match = 0;
         var matchedTypes = new List<string>();

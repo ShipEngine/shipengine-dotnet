@@ -73,7 +73,7 @@ public partial class RatesInformation
     /// This should not be used for input as it will be ignored on serialization.
     /// </remarks>
     [JsonPropertyName("rates"), JsonInclude]
-    public List<Rate>? Rates { get; set; }
+    public List<RatesInformationRatesInner>? Rates { get; set; }
 
     /// <summary>
     /// A string that uniquely identifies the shipment

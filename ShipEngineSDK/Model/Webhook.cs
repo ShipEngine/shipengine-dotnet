@@ -40,13 +40,33 @@ public partial class Webhook
     public List<WebhookHeader>? Headers { get; set; }
 
     /// <summary>
+    /// The name of the webhook
+    /// </summary>
+    /// <value>The name of the webhook</value>
+    /// <example>
+    /// My Webhook
+    /// </example>
+    [JsonPropertyName("name"), JsonPropertyOrder(3)]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Store ID
+    /// </summary>
+    /// <value>Store ID</value>
+    /// <example>
+    /// 123456
+    /// </example>
+    [JsonPropertyName("store_id"), JsonPropertyOrder(4)]
+    public int? StoreId { get; set; }
+
+    /// <summary>
     /// The url that the webhook sends the request to
     /// </summary>
     /// <value>The url that the webhook sends the request to</value>
     /// <example>
     /// http://api.shipengine.com/v1/labels/se-28529731
     /// </example>
-    [JsonPropertyName("url"), JsonPropertyOrder(3)]
+    [JsonPropertyName("url"), JsonPropertyOrder(5)]
     public string? Url { get; set; }
 
     /// <summary>
@@ -74,6 +94,8 @@ public partial class Webhook
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Event: ").Append(Event).Append("\n");
         sb.Append("  Headers: ").Append(Headers).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  StoreId: ").Append(StoreId).Append("\n");
         sb.Append("  Url: ").Append(Url).Append("\n");
         sb.Append("  WebhookId: ").Append(WebhookId).Append("\n");
 #pragma warning restore CS0612 // Type or member is obsolete

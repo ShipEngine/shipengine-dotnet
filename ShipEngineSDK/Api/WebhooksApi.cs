@@ -25,7 +25,7 @@ namespace ShipEngineSDK;
 public partial interface IShipEngine
 {
     /// <summary>
-    /// Create a Webhook Create a webook for specific events in the environment.
+    /// Create a Webhook Create a webhook for specific events in the environment.
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -35,7 +35,7 @@ public partial interface IShipEngine
     Task<CreateWebhookResponseBody> CreateWebhook(CreateWebhookRequestBody createWebhookRequestBody, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Create a Webhook Create a webook for specific events in the environment.
+    /// Create a Webhook Create a webhook for specific events in the environment.
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -137,7 +137,7 @@ public partial interface IShipEngine
 public partial class ShipEngine
 {
     /// <summary>
-    /// Create a Webhook Create a webook for specific events in the environment.
+    /// Create a Webhook Create a webhook for specific events in the environment.
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>
@@ -150,7 +150,7 @@ public partial class ShipEngine
     }
 
     /// <summary>
-    /// Create a Webhook Create a webook for specific events in the environment.
+    /// Create a Webhook Create a webhook for specific events in the environment.
     /// </summary>
     /// <exception cref="System.ArgumentNullException">Thrown when required argument is null</exception>
     /// <exception cref="ShipEngineSDK.ShipEngineException">Thrown when fails to make API call</exception>

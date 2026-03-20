@@ -1,5 +1,5 @@
 # ShipEngineSDK.Model.WebhookEvent
-The possible webook event values
+The possible webhook event values
 
 ## Properties
 

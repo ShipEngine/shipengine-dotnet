@@ -5,6 +5,7 @@
 | [**CreateCombinedLabelDocument**](LabelsApi.md#createcombinedlabeldocument) | Created Combined Label Document |
 | [**CreateLabel**](LabelsApi.md#createlabel) | Purchase Label |
 | [**CreateLabelFromRate**](LabelsApi.md#createlabelfromrate) | Purchase Label with Rate ID |
+| [**CreateLabelFromRateShopper**](LabelsApi.md#createlabelfromrateshopper) | Purchase Label from Rate Shopper |
 | [**CreateLabelFromShipment**](LabelsApi.md#createlabelfromshipment) | Purchase Label with Shipment ID |
 | [**CreateReturnLabel**](LabelsApi.md#createreturnlabel) | Create a return label |
 | [**GetLabelByExternalShipmentId**](LabelsApi.md#getlabelbyexternalshipmentid) | Get Label By External Shipment ID |
@@ -183,6 +184,64 @@ namespace Example
 
 [**CreateLabelFromRateResponseBody**](../models/CreateLabelFromRateResponseBody.md)
 
+<a id="createlabelfromrateshopper"></a>
+# **CreateLabelFromRateShopper**
+```csharp
+CreateLabelRateShopperResponseBody CreateLabelFromRateShopper (CreateLabelRateShopperRequestBody createLabelRateShopperRequestBody, RateAttributes rateShopperId, CancellationToken cancellationToken = default)
+
+CreateLabelRateShopperResponseBody CreateLabelFromRateShopper (HttpClient methodClient, CreateLabelRateShopperRequestBody createLabelRateShopperRequestBody, RateAttributes rateShopperId, CancellationToken cancellationToken = default)
+```
+
+Purchase Label from Rate Shopper
+
+Purchase and print a shipping label using the Rate Shopper. The Rate Shopper automatically selects the optimal carrier and service from your wallet carriers based on your specified rate selection strategy (cheapest, fastest, or best_value). For more information about this in the [rates documentation](https://www.shipengine.com/docs/rates/#about-the-response). 
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using ShipEngineSDK;
+using ShipEngineSDK.Model;
+
+namespace Example
+{
+    public class CreateLabelFromRateShopperExample
+    {
+        public static async Task Main()
+        {
+            var shipEngine = new ShipEngine("api_key");
+            var createLabelRateShopperRequestBody = new CreateLabelRateShopperRequestBody();
+            var rateShopperId = (RateAttributes) "best_value";
+
+            try
+            {
+                // Purchase Label from Rate Shopper
+                CreateLabelRateShopperResponseBody result = await shipEngine.CreateLabelFromRateShopper(createLabelRateShopperRequestBody, rateShopperId);
+                Debug.WriteLine(result);
+            }
+            catch (ShipEngineException e)
+            {
+                Debug.Print("Exception when calling LabelsApi.CreateLabelFromRateShopper: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **methodClient** | [**HttpClient**](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0) | The HttpClient instance to use for the request. |  |
+| **createLabelRateShopperRequestBody** | [**CreateLabelRateShopperRequestBody**](../../docs//models/CreateLabelRateShopperRequestBody.md) | Label creation details with inline shipment |  |
+| **rateShopperId** | **RateAttributes** | The rate selection strategy for the Rate Shopper. This determines which carrier and service will be automatically selected from your wallet carriers based on the rates returned for the shipment.  |  |
+| **cancellationToken** | [**CancellationToken**](https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=netstandard-2.0) | The cancellation token to use for the request. |  |
+
+### Return type
+
+[**CreateLabelRateShopperResponseBody**](../models/CreateLabelRateShopperResponseBody.md)
+
 <a id="createlabelfromshipment"></a>
 # **CreateLabelFromShipment**
 ```csharp
@@ -251,7 +310,7 @@ CreateReturnLabelResponseBody CreateReturnLabel (HttpClient methodClient, Create
 
 Create a return label
 
-Create a return label
+Create a return label for an existing outbound label. You can optionally specify a custom RMA (Return Merchandise Authorization) number. If no RMA number is provided, the system will auto-generate one. 
 
 ### Example
 ```csharp

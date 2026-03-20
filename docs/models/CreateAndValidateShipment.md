@@ -34,4 +34,5 @@ Name | Type | Description | Notes
 **TaxIdentifiers** | [**List&lt;TaxIdentifier&gt;**](TaxIdentifier.md) |  | [optional] 
 **TotalWeight** | [**Weight**](Weight.md) | The combined weight of all packages in the shipment | [optional] [readonly] 
 **WarehouseId** | **string** | The [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/) that the shipment is being shipped from.  Either &#x60;warehouse_id&#x60; or &#x60;ship_from&#x60; must be specified.  | [optional] 
+**Zone** | **int** | Certain carriers base [their rates](https://blog.stamps.com/2017/09/08/usps-postal-zones/) off of custom zones that vary depending upon the ship_to and ship_from location  | [optional] [readonly] 
 

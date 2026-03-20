@@ -26,60 +26,6 @@ namespace ShipEngineSDK.Model;
 public partial class CreateCombinedLabelDocumentRequestBody
 {
     /// <summary>
-    /// The download type for the combined label document; note that currently only &#x60;\&quot;inline\&quot;&#x60; is supported.
-    /// </summary>
-    /// <value>The download type for the combined label document; note that currently only &#x60;\&quot;inline\&quot;&#x60; is supported.</value>
-    [JsonConverter(typeof(LabelDownloadTypeEnumJsonConverter))]
-    public class LabelDownloadTypeEnum
-    {
-        private readonly string _value;
-
-        /// <summary>
-        /// Create a new instance of LabelDownloadTypeEnum with a predefined value.
-        /// </summary>
-        internal LabelDownloadTypeEnum()
-        {
-            _value = "inline";
-        }
-
-        /// <summary>
-        /// Create a new instance of LabelDownloadTypeEnum with a custom value.
-        /// </summary>
-        /// <param name="value">The value of the LabelDownloadTypeEnum</param>
-        /// <remarks>
-        /// You can send a custom value to the API using this constructor, but the API most likely won't know what to do with it.
-        /// You should use the predefined values returned by the static properties of this class unless you know that the value is value.
-        /// </remarks>
-        public LabelDownloadTypeEnum(string value)
-        {
-            _value = value;
-        }
-
-        /// <summary>
-        /// Enum Inline for value: inline
-        /// </summary>
-        public static LabelDownloadTypeEnum Inline { get; } = new("inline");
-
-
-        /// <summary>
-        /// Get a string representation of the current value
-        /// </summary>
-        public override string ToString() => _value;
-    }
-
-    internal class LabelDownloadTypeEnumJsonConverter : JsonConverter<LabelDownloadTypeEnum>
-    {
-        public override LabelDownloadTypeEnum? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-            reader.TokenType == JsonTokenType.String ? new LabelDownloadTypeEnum(reader.GetString()!) : null;
-
-        public override void Write(Utf8JsonWriter writer, LabelDownloadTypeEnum value, JsonSerializerOptions options) =>
-            writer.WriteStringValue(value.ToString());
-
-        public override bool CanConvert(Type typeToConvert) =>
-            typeToConvert == typeof(LabelDownloadTypeEnum);
-    }
-
-    /// <summary>
     /// The file format for the combined label document; note that currently only &#x60;\&quot;pdf\&quot;&#x60; is supported.
     /// </summary>
     /// <value>The file format for the combined label document; note that currently only &#x60;\&quot;pdf\&quot;&#x60; is supported.</value>
@@ -135,11 +81,10 @@ public partial class CreateCombinedLabelDocumentRequestBody
 
 
     /// <summary>
-    /// The download type for the combined label document; note that currently only &#x60;\&quot;inline\&quot;&#x60; is supported.
+    /// Gets or Sets LabelDownloadType
     /// </summary>
-    /// <value>The download type for the combined label document; note that currently only &#x60;\&quot;inline\&quot;&#x60; is supported.</value>
     [JsonPropertyName("label_download_type"), JsonPropertyOrder(1)]
-    public LabelDownloadTypeEnum? LabelDownloadType { get; set; }
+    public LabelDownloadType? LabelDownloadType { get; set; }
 
     /// <summary>
     /// The file format for the combined label document; note that currently only &#x60;\&quot;pdf\&quot;&#x60; is supported.

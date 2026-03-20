@@ -247,6 +247,13 @@ public partial class RateEstimate
     public string? PackageType { get; set; }
 
     /// <summary>
+    /// Optional attributes that indicate the most profitable rates
+    /// </summary>
+    /// <value>Optional attributes that indicate the most profitable rates</value>
+    [JsonPropertyName("rate_attributes"), JsonPropertyOrder(22)]
+    public List<RateAttributes>? RateAttributes { get; set; }
+
+    /// <summary>
     /// ship date
     /// </summary>
     /// <value>ship date</value>
@@ -310,6 +317,7 @@ public partial class RateEstimate
         sb.Append("  DeliveryDays: ").Append(DeliveryDays).Append("\n");
         sb.Append("  EstimatedDeliveryDate: ").Append(EstimatedDeliveryDate).Append("\n");
         sb.Append("  PackageType: ").Append(PackageType).Append("\n");
+        sb.Append("  RateAttributes: ").Append(RateAttributes).Append("\n");
         sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
         sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");
         sb.Append("  Zone: ").Append(Zone).Append("\n");

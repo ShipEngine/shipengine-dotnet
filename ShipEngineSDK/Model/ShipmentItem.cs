@@ -37,58 +37,68 @@ public partial class ShipmentItem
     public string? Asin { get; set; }
 
     /// <summary>
+    /// Item Stock Keeping Unit of the product bundle
+    /// </summary>
+    /// <value>Item Stock Keeping Unit of the product bundle</value>
+    /// <remarks>
+    /// This should not be used for input as it will be ignored on serialization.
+    /// </remarks>
+    [JsonPropertyName("bundle_sku"), JsonInclude]
+    public string? BundleSku { get; set; }
+
+    /// <summary>
     /// external order id
     /// </summary>
     /// <value>external order id</value>
-    [JsonPropertyName("external_order_id"), JsonPropertyOrder(2)]
+    [JsonPropertyName("external_order_id"), JsonPropertyOrder(3)]
     public string? ExternalOrderId { get; set; }
 
     /// <summary>
     /// external order item id
     /// </summary>
     /// <value>external order item id</value>
-    [JsonPropertyName("external_order_item_id"), JsonPropertyOrder(3)]
+    [JsonPropertyName("external_order_item_id"), JsonPropertyOrder(4)]
     public string? ExternalOrderItemId { get; set; }
 
     /// <summary>
     /// item name
     /// </summary>
     /// <value>item name</value>
-    [JsonPropertyName("name"), JsonPropertyOrder(4)]
+    [JsonPropertyName("name"), JsonPropertyOrder(5)]
     public string? Name { get; set; }
 
     /// <summary>
     /// Gets or Sets OrderSourceCode
     /// </summary>
-    [JsonPropertyName("order_source_code"), JsonPropertyOrder(5)]
+    [JsonPropertyName("order_source_code"), JsonPropertyOrder(6)]
     public OrderSourceName? OrderSourceCode { get; set; }
 
     /// <summary>
     /// The quantity of this item included in the shipment
     /// </summary>
     /// <value>The quantity of this item included in the shipment</value>
-    [JsonPropertyName("quantity"), JsonPropertyOrder(6)]
+    [JsonPropertyName("quantity"), JsonPropertyOrder(7)]
     public int? Quantity { get; set; }
 
     /// <summary>
     /// sales order id
     /// </summary>
     /// <value>sales order id</value>
-    [JsonPropertyName("sales_order_id"), JsonPropertyOrder(7)]
+    [JsonPropertyName("sales_order_id"), JsonPropertyOrder(8)]
     public string? SalesOrderId { get; set; }
 
     /// <summary>
     /// sales order item id
     /// </summary>
     /// <value>sales order item id</value>
-    [JsonPropertyName("sales_order_item_id"), JsonPropertyOrder(8)]
+    [JsonPropertyName("sales_order_item_id"), JsonPropertyOrder(9)]
     public string? SalesOrderItemId { get; set; }
 
     /// <summary>
     /// Item Stock Keeping Unit
     /// </summary>
     /// <value>Item Stock Keeping Unit</value>
-    [JsonPropertyName("sku"), JsonPropertyOrder(9)]
+    [JsonPropertyName("sku"), JsonPropertyOrder(10)]
     public string? Sku { get; set; }
 
 
@@ -102,6 +112,7 @@ public partial class ShipmentItem
         sb.Append("class ShipmentItem {\n");
 #pragma warning disable CS0612 // Type or member is obsolete
         sb.Append("  Asin: ").Append(Asin).Append("\n");
+        sb.Append("  BundleSku: ").Append(BundleSku).Append("\n");
         sb.Append("  ExternalOrderId: ").Append(ExternalOrderId).Append("\n");
         sb.Append("  ExternalOrderItemId: ").Append(ExternalOrderItemId).Append("\n");
         sb.Append("  Name: ").Append(Name).Append("\n");

@@ -233,3 +233,11 @@ Fixed handling of No Content responses
 ### Changed
 
 - Extend shipment endpoints to request, create, update and delete estimated import charges.
+
+## 3.2.0
+
+### Changed
+
+- Updated to latest spec
+- Fixed serialization so that nullable fields are not required in deserialization,
+  and not emitted during serialization if they are null.
