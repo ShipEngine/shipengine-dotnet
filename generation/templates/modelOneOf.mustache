@@ -294,8 +294,17 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
 
 {{#composedSchemas.allOf}}
         {{#allVars}}
+        {{#required}}
         writer.WritePropertyName("{{baseName}}");
         JsonSerializer.Serialize(writer, value.{{name}}, options);
+        {{/required}}
+        {{^required}}
+        if (value.{{name}} != null)
+        {
+            writer.WritePropertyName("{{baseName}}");
+            JsonSerializer.Serialize(writer, value.{{name}}, options);
+        }
+        {{/required}}
         {{/allVars}}
 {{/composedSchemas.allOf}}
 
@@ -332,7 +341,12 @@ public class {{classname}}JsonConverter : JsonConverter<{{classname}}>
 {{#composedSchemas.allOf}}
         // Deserialize all the common properties of the model so they can be used in object initializers later
         {{#allVars}}
+        {{#required}}
         var {{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}} = jsonDoc.RootElement.GetProperty("{{baseName}}").Deserialize<{{#isEnum}}{{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}>(DeserializingOptions)!;
+        {{/required}}
+        {{^required}}
+        var {{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}} = jsonDoc.RootElement.TryGetProperty("{{baseName}}", out var {{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}Element) ? {{#lambda.camelcase_sanitize_param}}{{name}}{{/lambda.camelcase_sanitize_param}}Element.Deserialize<{{#isEnum}}{{{complexType}}}{{^complexType}}{{{datatypeWithEnum}}}{{/complexType}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}>(DeserializingOptions) : null;
+        {{/required}}
         {{/allVars}}
 {{/composedSchemas.allOf}}
 
