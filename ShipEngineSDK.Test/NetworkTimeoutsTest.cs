@@ -171,5 +171,61 @@ namespace ShipEngineTest
             Assert.Equal(ErrorCode.Timeout, ex.ErrorCode);
             Assert.Equal("204c855f-dcc0-4270-ba12-c585fc5ef4bf", ex.RequestId);
         }
+
+        // Regression: TimeSpan.Seconds returns only the seconds component (0-59),
+        // so a timeout of 60+ seconds would incorrectly compare as 0 and always
+        // throw a timeout exception instead of retrying.
+        [Fact]
+        public async Task RetryWorksWithTimeoutGreaterThanOrEqualTo60Seconds()
+        {
+            var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromSeconds(60), retries: 1);
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+
+            mockShipEngineFixture.MockHandler.Protected()
+                .SetupSequence<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Put &&
+                        m.RequestUri.AbsolutePath == "/v1/labels/se-1234/void"),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(RateLimitResponseMessage))
+                .Returns(Task.FromResult(
+                    new HttpResponseMessage(HttpStatusCode.OK)
+                    {
+                        Content = new StringContent(VoidLabelResponse)
+                    }
+                ));
+
+            // Should retry successfully, not throw a timeout exception
+            await mockShipEngineFixture.ShipEngine.VoidLabelWithLabelId("se-1234");
+
+            mockShipEngineFixture.AssertRequest(HttpMethod.Put, "/v1/labels/se-1234/void", numberOfCalls: 2);
+        }
+
+        [Fact]
+        public async Task TimeoutMessageShowsCorrectMillisecondsForLargeTimeouts()
+        {
+            // RetryAfter header is 1 second; set timeout to 0.5s so it triggers the timeout path
+            var config = new Config(apiKey: "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk", timeout: TimeSpan.FromMilliseconds(1500), retries: 1);
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+
+            var rateLimitWithHighRetryAfter = new HttpResponseMessage((HttpStatusCode)429);
+            rateLimitWithHighRetryAfter.Content = new StringContent(rateLimitResponse);
+            rateLimitWithHighRetryAfter.Headers.Add("RetryAfter", "2");
+
+            mockShipEngineFixture.MockHandler.Protected()
+                .SetupSequence<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Put &&
+                        m.RequestUri.AbsolutePath == "/v1/labels/se-1234/void"),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(rateLimitWithHighRetryAfter));
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(async () => await mockShipEngineFixture.ShipEngine.VoidLabelWithLabelId("se-1234"));
+
+            Assert.Equal("The request took longer than the 1500 milliseconds allowed", ex.Message);
+            Assert.Equal(ErrorCode.Timeout, ex.ErrorCode);
+        }
     }
 }
