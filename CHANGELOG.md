@@ -241,3 +241,9 @@ Fixed handling of No Content responses
 - Updated to latest spec
 - Fixed serialization so that nullable fields are not required in deserialization,
   and not emitted during serialization if they are null.
+
+## 3.2.1
+
+### Changed
+
+- Fixed retry timeout handling to use the configured timeout value correctly

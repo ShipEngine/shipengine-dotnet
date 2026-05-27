@@ -300,10 +300,10 @@ namespace ShipEngineSDK
                 retryAfter = 5;
             }
 
-            if (config.Timeout.Seconds < retryAfter)
+            if (config.Timeout.TotalSeconds < retryAfter)
             {
                 throw new ShipEngineException(
-                    $"The request took longer than the {config.Timeout.Milliseconds} milliseconds allowed",
+                    $"The request took longer than the {config.Timeout.TotalMilliseconds} milliseconds allowed",
                     ErrorSource.Shipengine,
                     ErrorType.System,
                     ErrorCode.Timeout,
