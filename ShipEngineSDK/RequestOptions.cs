@@ -69,7 +69,7 @@ public class RequestOptions(string path)
     internal string FullPath()
     {
         var path = PathParameters.Aggregate(_path,
-            (x, y) => x.Replace("{" + y.Key + "}", Uri.EscapeDataString(y.Value)));
+            (x, y) => x.Replace("{" + y.Key + "}", EscapePathParameter(y.Key, y.Value)));
         if (!QueryParameters.Any())
         {
             return path;
@@ -79,5 +79,17 @@ public class RequestOptions(string path)
             QueryParameters.Select(x => $"{x.Key}={Uri.EscapeDataString(String.Join(",", x.Value))}"));
 
         return $"{path}?{queryString}";
+    }
+
+    private static string EscapePathParameter(string name, string value)
+    {
+        // EscapeDataString does not encode '.', so "." and ".." would become dot-segments that
+        // Uri removes when resolving the request, sending it to a different endpoint.
+        if (value is "" or "." or "..")
+        {
+            throw new ArgumentException($"Path parameter '{name}' must not be empty, \".\" or \"..\".", name);
+        }
+
+        return Uri.EscapeDataString(value);
     }
 }

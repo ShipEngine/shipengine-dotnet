@@ -28,6 +28,28 @@ namespace ShipEngineTest
             Assert.Equal("/v1/foo/foo%20bar", result.FullPath());
         }
 
+        [Theory]
+        [InlineData("")]
+        [InlineData(".")]
+        [InlineData("..")]
+        public void FullPathThrowsForEmptyOrDotSegmentParameters(string value)
+        {
+            var result = new RequestOptions("/v1/shipments/{shipment_id}/tags/{tag_name}");
+            result.PathParameters.Add("shipment_id", value);
+            result.PathParameters.Add("tag_name", "t");
+            Assert.Throws<System.ArgumentException>(() => result.FullPath());
+        }
+
+        [Fact]
+        public void FullPathAllowsParametersContainingDots()
+        {
+            var result = new RequestOptions("/v1/downloads/{dir}/{subdir}/{filename}");
+            result.PathParameters.Add("dir", "...");
+            result.PathParameters.Add("subdir", ".hidden");
+            result.PathParameters.Add("filename", "label.pdf");
+            Assert.Equal("/v1/downloads/.../.hidden/label.pdf", result.FullPath());
+        }
+
         [Fact]
         public void FullPathReturnsQueryParameters()
         {
