@@ -290,6 +290,21 @@ namespace ShipEngineSDK
         }
 
         /// <summary>
+        /// Escapes a caller-supplied id for use as a single URL path segment.
+        /// Rejects the dot segments "." and "..", which <see cref="Uri.EscapeDataString(string)"/>
+        /// leaves unchanged and which would otherwise be resolved as relative path navigation.
+        /// </summary>
+        private static string EscapePathSegment(string value)
+        {
+            if (value == "." || value == "..")
+            {
+                throw new ShipEngineException($"'{value}' is not a valid id.", ErrorSource.Shipengine, ErrorType.Validation, ErrorCode.InvalidFieldValue);
+            }
+
+            return Uri.EscapeDataString(value ?? string.Empty);
+        }
+
+        /// <summary>
         /// Validates an address in nearly any country in the world.
         /// </summary>
         /// <param name="addresses">The address to validate. This can even be an incomplete or improperly formatted address</param>
@@ -409,7 +424,7 @@ namespace ShipEngineSDK
         [Obsolete("This method is deprecated. Please use VoidLabel(string labelId) instead", false)]
         public async Task<VoidLabelWithLabelId.Result> VoidLabelWithLabelId(string labelId)
         {
-            var path = $"v1/labels/{labelId}/void";
+            var path = $"v1/labels/{EscapePathSegment(labelId)}/void";
 
             var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result>(HttpMethod.Put, path, null, _client, _config);
 
@@ -427,7 +442,7 @@ namespace ShipEngineSDK
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var path = $"v1/labels/{labelId}/void";
+            var path = $"v1/labels/{EscapePathSegment(labelId)}/void";
 
             var voidedLabelResponse = await SendHttpRequestAsync<VoidLabelWithLabelId.Result>(HttpMethod.Put, path, null, client, methodConfig);
 
@@ -444,7 +459,7 @@ namespace ShipEngineSDK
         [Obsolete("This method is deprecated. Please use GetTrackingLogFromLabel(string labelId) instead", false)]
         public async Task<TrackUsingLabelId.Result> TrackUsingLabelId(string labelId)
         {
-            var path = $"/v1/labels/{labelId}/track";
+            var path = $"/v1/labels/{EscapePathSegment(labelId)}/track";
 
             var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result>(HttpMethod.Get, path, null, _client, _config);
 
@@ -462,7 +477,7 @@ namespace ShipEngineSDK
         {
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var path = $"/v1/labels/{labelId}/track";
+            var path = $"/v1/labels/{EscapePathSegment(labelId)}/track";
 
             var trackingInfo = await SendHttpRequestAsync<TrackUsingLabelId.Result>(HttpMethod.Get, path, null, client, methodConfig);
 
@@ -557,7 +572,7 @@ namespace ShipEngineSDK
         [Obsolete("This method is deprecated. Please use CreateLabelFromRate(CreateLabelFromRateRequestBody createLabelFromRateRequestBody) instead", false)]
         public async Task<CreateLabelFromRate.Result> CreateLabelFromRate(CreateLabelFromRate.Params createLabelFromRateParams)
         {
-            var path = $"/v1/labels/rates/{createLabelFromRateParams.RateId}";
+            var path = $"/v1/labels/rates/{EscapePathSegment(createLabelFromRateParams.RateId)}";
 
             string createLabelFromRateParamsString = JsonSerializer.Serialize(createLabelFromRateParams, JsonSerializerOptions);
 
@@ -578,7 +593,7 @@ namespace ShipEngineSDK
 
             var client = ConfigureHttpClient(methodConfig, new HttpClient());
 
-            var path = $"/v1/labels/rates/{createLabelFromRateParams.RateId}";
+            var path = $"/v1/labels/rates/{EscapePathSegment(createLabelFromRateParams.RateId)}";
 
             string createLabelFromRateParamsString = JsonSerializer.Serialize(createLabelFromRateParams, JsonSerializerOptions);
 

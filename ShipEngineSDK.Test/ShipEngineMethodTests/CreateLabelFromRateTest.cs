@@ -36,6 +36,47 @@ namespace ShipEngineTest
         }
 
         [Fact]
+        public async Task RateIdIsEscapedInRequestPath()
+        {
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/CreateLabelFromRate200Response.json"));
+            var escapedPath = "/v1/labels/rates/..%2F..%2Fv1%2Fshipments%2Fx%2Fcancel%3F";
+            Params.RateId = "../../v1/shipments/x/cancel?";
+
+            mockShipEngineFixture.StubRequest(HttpMethod.Post, escapedPath, System.Net.HttpStatusCode.OK, json);
+
+            await mockShipEngineFixture.ShipEngine.CreateLabelFromRate(Params);
+
+            mockShipEngineFixture.AssertRequest(HttpMethod.Post, escapedPath);
+
+            var mockHandler = new Mock<ShipEngine>(config);
+            mockHandler
+                .Setup(x => x.SendHttpRequestAsync<ShipEngineSDK.CreateLabelFromRate.Result>(HttpMethod.Post, escapedPath, It.IsAny<string>(), It.IsAny<HttpClient>(), It.IsAny<Config>()))
+                .Returns(Task.FromResult(new ShipEngineSDK.CreateLabelFromRate.Result()));
+
+            await mockHandler.Object.CreateLabelFromRate(Params, methodConfig: new Config(apiKey: "12345"));
+
+            mockHandler.VerifyAll();
+        }
+
+        [Theory]
+        [InlineData(".")]
+        [InlineData("..")]
+        public async Task DotSegmentRateIdIsRejected(string rateId)
+        {
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockHandler = new Mock<ShipEngine>(config);
+            Params.RateId = rateId;
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(() => mockHandler.Object.CreateLabelFromRate(Params));
+            Assert.Equal(ShipEngineSDK.ErrorType.Validation, ex.ErrorType);
+
+            mockHandler.Verify(x => x.SendHttpRequestAsync<ShipEngineSDK.CreateLabelFromRate.Result>(It.IsAny<HttpMethod>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<HttpClient>(), It.IsAny<Config>()), Times.Never);
+        }
+
+        [Fact]
         public async Task ValidCreateLabelFromRateTest()
         {
             var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");

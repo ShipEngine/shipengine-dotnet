@@ -37,6 +37,45 @@ namespace ShipEngineTest
         }
 
         [Fact]
+        public async Task LabelIdIsEscapedInRequestPath()
+        {
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockShipEngineFixture = new MockShipEngineFixture(config);
+
+            string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../HttpResponseMocks/VoidLabelWithLabelId200Response.json"));
+            var escapedPath = "/v1/labels/..%2F..%2Fv1%2Fshipments%2Fx%2Fcancel%3F/void";
+
+            mockShipEngineFixture.StubRequest(HttpMethod.Put, escapedPath, System.Net.HttpStatusCode.OK, json);
+
+            await mockShipEngineFixture.ShipEngine.VoidLabelWithLabelId("../../v1/shipments/x/cancel?");
+
+            mockShipEngineFixture.AssertRequest(HttpMethod.Put, escapedPath);
+
+            var mockHandler = new Mock<ShipEngine>(config);
+            mockHandler
+                .Setup(x => x.SendHttpRequestAsync<Result>(HttpMethod.Put, escapedPath.TrimStart('/'), null, It.IsAny<HttpClient>(), It.IsAny<Config>()))
+                .Returns(Task.FromResult(JsonSerializer.Deserialize<Result>(json, TestUtils.JsonSerializerOptions)));
+
+            await mockHandler.Object.VoidLabelWithLabelId("../../v1/shipments/x/cancel?", methodConfig: new Config(apiKey: "12345"));
+
+            mockHandler.VerifyAll();
+        }
+
+        [Theory]
+        [InlineData(".")]
+        [InlineData("..")]
+        public async Task DotSegmentLabelIdIsRejected(string labelId)
+        {
+            var config = new Config("TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk");
+            var mockHandler = new Mock<ShipEngine>(config);
+
+            var ex = await Assert.ThrowsAsync<ShipEngineException>(() => mockHandler.Object.VoidLabelWithLabelId(labelId, methodConfig: new Config(apiKey: "12345")));
+            Assert.Equal(ErrorType.Validation, ex.ErrorType);
+
+            mockHandler.Verify(x => x.SendHttpRequestAsync<Result>(It.IsAny<HttpMethod>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<HttpClient>(), It.IsAny<Config>()), Times.Never);
+        }
+
+        [Fact]
         public async Task ValidateCustomSettingsAtMethodLevel()
         {
             var apiKeyString = "TEST_bTYAskEX6tD7vv6u/cZ/M4LaUSWBJ219+8S1jgFcnkk";
