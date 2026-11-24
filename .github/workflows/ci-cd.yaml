@@ -86,8 +86,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [dot_net_framework_test, dot_net_core_test]
     if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    # `id-token: write` is only for nuget.org Trusted Publishing (OIDC). Nothing here pushes to git.
     permissions:
       contents: read
+      id-token: write
     outputs:
       version: ${{ steps.version.outputs.version }}
       published: ${{ steps.check.outputs.published }}
@@ -142,10 +144,19 @@ jobs:
         if: steps.check.outputs.published == 'true'
         run: dotnet pack ShipEngineSDK/ShipEngineSDK.csproj --configuration Release --output ./artifacts
 
+      # Right before the push on purpose: the short-lived key lasts 1 h and can only be
+      # exchanged once. `user` is the nuget.org profile name (not the email) that owns the policy.
+      - name: NuGet login (OIDC)
+        if: steps.check.outputs.published == 'true'
+        id: nuget-login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Push to nuget.org
         if: steps.check.outputs.published == 'true'
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_KEY }}
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
         run: >-
           dotnet nuget push "./artifacts/*.nupkg"
           --api-key "$NUGET_API_KEY"
