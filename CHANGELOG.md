@@ -247,3 +247,9 @@ Fixed handling of No Content responses
 ### Changed
 
 - Fixed retry timeout handling to use the configured timeout value correctly
+
+## 3.2.2
+
+### Changed
+
+- Escaped values interpolated into request paths so that special characters in identifiers are encoded correctly
