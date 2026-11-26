@@ -9,6 +9,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   dot_net_framework_test:
     name: .Net Framework 4.6.2
@@ -17,13 +20,15 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Setup MSBuild Path
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@c26a08ba26249b81327e26f6ef381897b6a8754d # v1.0.2
 
       - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1
+        uses: NuGet/setup-nuget@296fd3ccf8528660c91106efefe2364482f86d6f # v1
         with:
           nuget-version: "5.x"
 
@@ -49,10 +54,12 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
-        
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
       - name: Setup dotnet 8.0.x
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: 8.0.x
 
@@ -79,48 +86,99 @@ jobs:
     runs-on: ubuntu-latest
     needs: [dot_net_framework_test, dot_net_core_test]
     if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    # `id-token: write` is only for nuget.org Trusted Publishing (OIDC). Nothing here pushes to git.
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      published: ${{ steps.check.outputs.published }}
     steps:
-      # Checkout code if release was created
-      - uses: actions/checkout@v2
-      
-      - uses: bbonkr/get-version-action@v1
-        id: get_version
+      - name: Checkout source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          project: './ShipEngineSDK/ShipEngineSDK.csproj'
-          show_log_message: true
+          persist-credentials: false
 
-      # Setup Dotnet if release was created
       - name: Setup dotnet 8.0.x
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: 8.0.x
 
-      - name: publish on version change
-        id: publish_nuget
-        uses: alirezanet/publish-nuget@v3.1.0
-        if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && steps.get_version.outputs.pre-release != '')
+      - name: Read package version
+        id: version
+        run: |
+          version=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' ShipEngineSDK/ShipEngineSDK.csproj | head -n 1 | tr -d '[:space:]')
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Unexpected version: '$version'" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [[ "$version" == *-* ]]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Package version: $version"
 
+      # Publish on version change: skip when this version is already on nuget.org.
+      # On workflow_dispatch from a non-main ref, only prerelease versions are published.
+      - name: Check if version is already published
+        id: check
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          PRERELEASE: ${{ steps.version.outputs.prerelease }}
+        run: |
+          lower="${VERSION,,}"
+          status=$(curl -s -o /dev/null -w '%{http_code}' "https://api.nuget.org/v3-flatcontainer/shipengine/${lower}/shipengine.${lower}.nupkg")
+          if [[ "$status" == "200" ]]; then
+            echo "ShipEngine $VERSION already on nuget.org, nothing to publish."
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          elif [[ "${GITHUB_REF}" == "refs/heads/main" || "$PRERELEASE" == "true" ]]; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Manual run on a non-main ref with a stable version: not publishing."
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pack
+        if: steps.check.outputs.published == 'true'
+        run: dotnet pack ShipEngineSDK/ShipEngineSDK.csproj --configuration Release --output ./artifacts
+
+      # Right before the push on purpose: the short-lived key lasts 1 h and can only be
+      # exchanged once. `user` is the nuget.org profile name (not the email) that owns the policy.
+      - name: NuGet login (OIDC)
+        if: steps.check.outputs.published == 'true'
+        id: nuget-login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
         with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: ShipEngineSDK/ShipEngineSDK.csproj
+          user: ${{ secrets.NUGET_USER }}
 
-          # NuGet package id, used for version detection & defaults to project name
-          PACKAGE_NAME: ShipEngine
+      - name: Push to nuget.org
+        if: steps.check.outputs.published == 'true'
+        env:
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+        run: >-
+          dotnet nuget push "./artifacts/*.nupkg"
+          --api-key "$NUGET_API_KEY"
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
 
-          # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
-          # VERSION_FILE_PATH: Directory.Build.props
-
-          # Regex pattern to extract version info in a capturing group
-          # VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-
-          # Flag to toggle git tagging, enabled by default
-          TAG_COMMIT: true
-
-          # Format of the git tag, [*] gets replaced with actual version
-          TAG_FORMAT: v*
-
-          # API key to authenticate with NuGet server
-          NUGET_KEY: ${{secrets.NUGET_KEY}}
-
-          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          INCLUDE_SYMBOLS: false
+  # Separate job so that only the tagging step gets `contents: write`, and it never runs
+  # alongside the publishing credentials.
+  tag-release:
+    runs-on: ubuntu-latest
+    needs: nuget-deploy
+    if: needs.nuget-deploy.outputs.published == 'true'
+    permissions:
+      contents: write
+    steps:
+      - name: Create git tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: v${{ needs.nuget-deploy.outputs.version }}
+        run: |
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG}" >/dev/null 2>&1; then
+            echo "Tag ${TAG} already exists."
+          else
+            gh api "repos/${GITHUB_REPOSITORY}/git/refs" -f ref="refs/tags/${TAG}" -f sha="${GITHUB_SHA}"
+          fi
